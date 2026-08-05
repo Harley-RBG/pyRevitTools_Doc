@@ -53,6 +53,37 @@ npm run preview
 5. Commit and push the updated files (`bundle.md`, `index.html`, diagnostics) to GitHub.
 6. Your GitHub deploy flow publishes the updated webpage.
 
+## Local Node Setup (No Admin / No Global npm)
+
+This workspace supports local Node tooling from:
+
+- `C:\node`
+- `C:\nvm`
+
+### PowerShell session setup
+
+Run this once per new PowerShell terminal session:
+
+```powershell
+. .\scripts\use-local-node.ps1
+```
+
+Then run normal npm commands:
+
+```powershell
+npm run site:update
+```
+
+### One-click CMD workflow
+
+If PowerShell execution policy blocks npm scripts, use:
+
+```bat
+site-update.cmd
+```
+
+This file prepends `C:\node` and `C:\nvm` to `PATH` and runs `npm run site:update` via `npm.cmd`.
+
 ## Notes
 
 - Tool adds/removes are automatic when new `*.pushbutton` paths appear/disappear in `bundle.md`.
