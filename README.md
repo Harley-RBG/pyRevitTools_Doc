@@ -91,6 +91,7 @@ This file prepends `C:\node` and `C:\nvm` to `PATH` and runs `npm run site:updat
 - Binary files in the bundle are counted in tree/file totals but not rendered as content.
 - The page header includes metadata coverage stats and fallback counts for quick QA.
 - Full diagnostics are written to `generated/catalog-diagnostics.json` on each run.
+- `.nojekyll` is included at repo root so GitHub Pages serves this as a static site without Jekyll processing.
 - Optional source override for bundle updates:
 
 ```bash
