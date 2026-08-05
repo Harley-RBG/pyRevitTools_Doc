@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-08-05T04:00:59.128Z",
+  "totals": {
+    "tools": 47,
+    "tabs": 2,
+    "filesInBundle": 343
+  },
+  "metadataCoverage": {
+    "withBundleYaml": 6,
+    "withToolContext": 39,
+    "titleFromPathFallback": 7,
+    "functionFallback": 7,
+    "purposeFallback": 8
+  },
+  "duplicateTitles": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@figma/my-make-file",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-static-site.mjs",
+    "preview": "npx --yes serve . -l 4173"
+  }
+}
