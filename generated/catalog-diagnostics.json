@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-08-05T04:05:31.570Z",
+  "generatedAt": "2026-08-05T06:23:16.378Z",
   "totals": {
-    "tools": 47,
-    "tabs": 2,
-    "filesInBundle": 343
+    "tools": 38,
+    "tabs": 1,
+    "filesInBundle": 312
   },
   "metadataCoverage": {
-    "withBundleYaml": 6,
-    "withToolContext": 39,
-    "titleFromPathFallback": 7,
-    "functionFallback": 7,
-    "purposeFallback": 8
+    "withBundleYaml": 18,
+    "withToolContext": 17,
+    "titleFromPathFallback": 18,
+    "functionFallback": 18,
+    "purposeFallback": 21
   },
   "duplicateTitles": []
 }

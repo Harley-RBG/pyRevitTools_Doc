@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "bundle:update": "node scripts/update-bundle.mjs",
     "generate": "node scripts/generate-static-site.mjs",
+    "site:update": "npm run bundle:update && npm run generate",
     "preview": "npx --yes serve . -l 4173"
   }
 }

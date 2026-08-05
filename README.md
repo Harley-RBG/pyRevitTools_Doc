@@ -9,6 +9,11 @@ The runtime output is:
 
 ## How It Works
 
+`scripts/update-bundle.mjs` rebuilds `bundle.md` directly from your extension source folder.
+Default source path:
+
+`P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension`
+
 `scripts/generate-static-site.mjs` parses `bundle.md` and extracts:
 
 - Toolbar tree structure (tab, panel, stack)
@@ -20,18 +25,33 @@ It then rewrites `index.html` with updated catalog data and writes parser diagno
 
 ## Update Workflow
 
-1. Refresh `bundle.md` from your pyRevit extension snapshot.
-2. Run:
+1. Update files in your `.extension` folder.
+2. Rebuild `bundle.md` from the extension source:
+
+```bash
+npm run bundle:update
+```
+
+3. Regenerate the webpage from `bundle.md`:
 
 ```bash
 npm run generate
 ```
 
-3. Open `index.html` directly, or run a local preview server:
+Or run both in one step:
+
+```bash
+npm run site:update
+```
+
+4. Open `index.html` directly, or run a local preview server:
 
 ```bash
 npm run preview
 ```
+
+5. Commit and push the updated files (`bundle.md`, `index.html`, diagnostics) to GitHub.
+6. Your GitHub deploy flow publishes the updated webpage.
 
 ## Notes
 
@@ -40,4 +60,9 @@ npm run preview
 - Binary files in the bundle are counted in tree/file totals but not rendered as content.
 - The page header includes metadata coverage stats and fallback counts for quick QA.
 - Full diagnostics are written to `generated/catalog-diagnostics.json` on each run.
+- Optional source override for bundle updates:
+
+```bash
+node scripts/update-bundle.mjs --source="P:\\Production\\Computational\\RBG_pyRevit\\Extension\\RBG_SYD.extension"
+```
   
