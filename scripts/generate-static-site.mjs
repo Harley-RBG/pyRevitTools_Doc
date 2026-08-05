@@ -350,7 +350,7 @@ function buildDiagnostics(payload) {
 }
 
 function buildHtml(data, diagnostics, generatedAt, allFileCount) {
-  const dataJson = JSON.stringify(data, null, 2);
+  const dataJson = JSON.stringify(data);
 
   return `<!doctype html>
 <html lang="en">
@@ -365,50 +365,91 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Business Standard</span>
+      <span class="topbar-sub">Generated from extension bundle metadata</span>
+      <span class="topbar-tag">v1</span>
+    </div>
 
-    <header class="site-header">
-      <p class="kicker">pyRevit extension reference</p>
-      <h1>Tool Catalog + File Tree Overview</h1>
-      <p class="lede">
-        Generated from <strong>bundle.md</strong>. Update your extension, regenerate the bundle,
-        then run the catalog generator to refresh this page.
-      </p>
+    <div class="page">
+      <nav class="toc">
+        <span class="toc-part">I · Foundations</span>
+        <div class="toc-links">
+          <a href="#summary-section">Summary</a>
+          <a href="#tree-section">Extension Tree</a>
+          <a href="#catalog-section">Tool Catalog</a>
+        </div>
+      </nav>
 
-      <div class="stats" id="summary-stats"></div>
-      <div class="diagnostics" id="coverage-summary"></div>
-
-      <div class="controls">
-        <div class="tabs" id="tab-buttons"></div>
-        <label class="search-wrap">
-          <span>Search tools</span>
-          <input id="search-input" type="search" placeholder="Title, panel, stack, path..." />
-        </label>
+      <div class="priority-card">
+        <strong>Priority rule.</strong> Bundle metadata is authoritative. Keep
+        <code>bundle.yaml</code> and <code>tool-context.md</code> maintained for each pushbutton.
+        Current coverage: <strong>${diagnostics.metadataCoverage.withToolContext}/${diagnostics.totals.tools}</strong>
+        with tool-context docs, <strong>${diagnostics.metadataCoverage.withBundleYaml}/${diagnostics.totals.tools}</strong>
+        with bundle metadata.
       </div>
-    </header>
 
-    <main class="layout">
-      <section class="tree card-block">
-        <div class="block-header">
-          <h2>Extension Tree</h2>
-          <p>Tabs, panels, and stacks inferred from pushbutton paths in bundle data.</p>
+      <div class="part" id="summary-section">
+        <span class="part-num">Part I</span>
+        <span class="part-title">Catalog Summary</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <section class="card site-header">
+        <div class="card-head">
+          <span class="card-title">Tool Catalog + File Tree Overview</span>
+          <span class="card-hint">Search, tab filter, and metadata confidence</span>
         </div>
-        <div id="tree-root" class="tree-root"></div>
+        <div class="card-body">
+          <p class="kicker">pyRevit extension reference</p>
+          <p class="lede">
+            Generated from <strong>bundle.md</strong>. Update your extension, regenerate the bundle,
+            then run the catalog generator to refresh this page.
+          </p>
+
+          <div class="stats" id="summary-stats"></div>
+          <div class="diagnostics" id="coverage-summary"></div>
+
+          <div class="controls">
+            <div class="tabs" id="tab-buttons"></div>
+            <label class="search-wrap">
+              <span>Search tools</span>
+              <input id="search-input" type="search" placeholder="Title, panel, stack, path..." />
+            </label>
+          </div>
+        </div>
       </section>
 
-      <section class="catalog card-block">
-        <div class="block-header">
-          <h2>Tool Catalog</h2>
-          <p>Tool cards grouped by panel inside the selected tab.</p>
-        </div>
-        <div id="catalog-root" class="catalog-root"></div>
-      </section>
-    </main>
+      <div class="part" id="tree-section">
+        <span class="part-num">Part II</span>
+        <span class="part-title">Extension Structure</span>
+        <span class="part-rule"></span>
+      </div>
 
-    <footer class="site-footer">
-      <p>Generated: ${generatedAt}</p>
-      <p>Total files in bundle: ${allFileCount}</p>
-    </footer>
+      <main class="layout">
+        <section class="tree card card-block">
+          <div class="card-head">
+            <span class="card-title">Extension Tree</span>
+            <span class="card-hint">Tabs, panels, and stacks inferred from pushbutton paths</span>
+          </div>
+          <div class="card-body tree-root" id="tree-root"></div>
+        </section>
+
+        <section class="catalog card card-block" id="catalog-section">
+          <div class="card-head">
+            <span class="card-title">Tool Catalog</span>
+            <span class="card-hint">Cards grouped by panel inside selected tab</span>
+          </div>
+          <div class="card-body catalog-root" id="catalog-root"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Generated: ${generatedAt}</p>
+        <p>Total files in bundle: ${allFileCount}</p>
+      </footer>
+    </div>
 
     <script>
       const DATA = ${dataJson};
