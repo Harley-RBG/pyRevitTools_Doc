@@ -4,6 +4,7 @@ import path from "node:path";
 const repoRoot = process.cwd();
 const bundlePath = path.join(repoRoot, "bundle.md");
 const htmlPath = path.join(repoRoot, "index.html");
+const toolsPagesDir = path.join(repoRoot, "tools");
 const diagnosticsDir = path.join(repoRoot, "generated");
 const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
 
@@ -21,6 +22,219 @@ function ensureDir(dirPath) {
 
 function writeJson(filePath, value) {
   writeText(filePath, JSON.stringify(value, null, 2));
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function toSlug(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-")
+    .slice(0, 120);
+}
+
+function clearGeneratedHtmlFiles(dirPath) {
+  ensureDir(dirPath);
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.toLowerCase().endsWith(".html")) {
+      fs.unlinkSync(path.join(dirPath, entry.name));
+    }
+  }
+}
+
+function extractWpfMockup(xamlFiles) {
+  if (!xamlFiles || xamlFiles.length === 0) {
+    return {
+      hasXaml: false,
+      fileNames: [],
+      controlCounts: [],
+      namedElements: [],
+      mockRows: [],
+    };
+  }
+
+  const controlMap = new Map();
+  const namedElements = [];
+  for (const file of xamlFiles) {
+    const text = file.content;
+    const controlMatches = text.matchAll(/<([A-Z][A-Za-z0-9]+)\b/g);
+    for (const match of controlMatches) {
+      const control = match[1];
+      if (["Window", "ResourceDictionary", "Style", "Setter", "Trigger"].includes(control)) {
+        continue;
+      }
+      controlMap.set(control, (controlMap.get(control) || 0) + 1);
+    }
+
+    const nameMatches = text.matchAll(/x:Name\s*=\s*"([^"]+)"/g);
+    for (const match of nameMatches) {
+      if (namedElements.length >= 12) {
+        break;
+      }
+      namedElements.push(match[1]);
+    }
+  }
+
+  const controlCounts = Array.from(controlMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+  const mockRows = controlCounts.slice(0, 8).map((item) => {
+    const kind = ["Button", "ComboBox", "TextBox", "CheckBox", "RadioButton", "ListBox", "DataGrid"].includes(item.name)
+      ? item.name
+      : "Block";
+    return {
+      label: item.name,
+      kind,
+      count: item.count,
+    };
+  });
+
+  return {
+    hasXaml: true,
+    fileNames: xamlFiles.map((f) => f.name),
+    controlCounts,
+    namedElements: namedElements.slice(0, 10),
+    mockRows,
+  };
+}
+
+function buildToolPageHtml(tool, generatedAt) {
+  const inputsHtml = tool.inputs.length
+    ? `<ul>${tool.inputs.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "<p class=\"muted\">No explicit click or shift-click input hints were detected.</p>";
+
+  const filesHtml = tool.files.length
+    ? `<ul>${tool.files.map((file) => `<li><code>${escapeHtml(file)}</code></li>`).join("")}</ul>`
+    : "<p class=\"muted\">No file listing available.</p>";
+
+  const xamlFilesHtml = tool.uiMockup.fileNames.length
+    ? `<ul>${tool.uiMockup.fileNames.map((name) => `<li><code>${escapeHtml(name)}</code></li>`).join("")}</ul>`
+    : "<p class=\"muted\">No XAML file found for this tool in bundle data.</p>";
+
+  const controlsHtml = tool.uiMockup.controlCounts.length
+    ? `<div class=\"mockup-chip-row\">${tool.uiMockup.controlCounts.slice(0, 12).map((item) => `<span class=\"mockup-chip\">${escapeHtml(item.name)} <strong>${item.count}</strong></span>`).join("")}</div>`
+    : "<p class=\"muted\">No control tags detected.</p>";
+
+  const mockRowsHtml = tool.uiMockup.mockRows.length
+    ? tool.uiMockup.mockRows.map((row) => `<div class=\"mock-row mock-${escapeHtml(row.kind.toLowerCase())}\"><span>${escapeHtml(row.label)}</span><span>${row.count}</span></div>`).join("")
+    : `<div class=\"mock-row mock-block\"><span>No WPF layout detected</span><span>0</span></div>`;
+
+  const namedElementsHtml = tool.uiMockup.namedElements.length
+    ? `<ul>${tool.uiMockup.namedElements.map((name) => `<li><code>${escapeHtml(name)}</code></li>`).join("")}</ul>`
+    : "<p class=\"muted\">No x:Name elements detected.</p>";
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${escapeHtml(tool.title)} | pyRevit Tool</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Tool Detail</span>
+      <span class="topbar-sub">Generated from bundle metadata + WPF structure</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Tool</span>
+        <span class="part-title">${escapeHtml(tool.title)}</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>Toolbar path:</strong> ${escapeHtml(tool.location)}
+      </div>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Tool Overview</span>
+          <span class="card-hint">${escapeHtml(tool.tab)} / ${escapeHtml(tool.panel)} / ${escapeHtml(tool.stack)}</span>
+        </div>
+        <div class="card-body tool-page-summary">
+          <a class="back-link" href="../index.html">← Back to catalog</a>
+          <p><strong>Function:</strong> ${escapeHtml(tool.function)}</p>
+          <p><strong>Purpose:</strong> ${escapeHtml(tool.purpose)}</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">WPF UI Mockup</span>
+          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+        </div>
+        <div class="card-body">
+          <div class="mock-window">
+            <div class="mock-window-bar">
+              <span>${escapeHtml(tool.title)}</span>
+              <span>${escapeHtml(tool.stack)}</span>
+            </div>
+            <div class="mock-window-body">
+              ${mockRowsHtml}
+            </div>
+          </div>
+
+          <h4 class="subhead">Detected Controls</h4>
+          ${controlsHtml}
+
+          <h4 class="subhead">XAML Files</h4>
+          ${xamlFilesHtml}
+
+          <h4 class="subhead">Named Elements</h4>
+          ${namedElementsHtml}
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-hint">Inputs and bundle file coverage</span>
+        </div>
+        <div class="card-body tool-detail-grid">
+          <div>
+            <h4 class="subhead">Inputs</h4>
+            ${inputsHtml}
+          </div>
+          <div>
+            <h4 class="subhead">Files (${tool.fileCount})</h4>
+            ${filesHtml}
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>Generated: ${generatedAt}</p>
+        <p>Source: bundle.md</p>
+      </footer>
+    </div>
+  </body>
+</html>`;
+}
+
+function writeToolPages(tools, generatedAt) {
+  clearGeneratedHtmlFiles(toolsPagesDir);
+
+  for (const tool of tools) {
+    const html = buildToolPageHtml(tool, generatedAt);
+    const outputPath = path.join(repoRoot, tool.pagePath);
+    ensureDir(path.dirname(outputPath));
+    writeText(outputPath, html);
+  }
 }
 
 function parseBundle(bundleText) {
@@ -206,6 +420,16 @@ function buildCatalog(bundleData) {
       .filter((p) => p.startsWith(`${dirPath}/`))
       .map((p) => p.slice(dirPath.length + 1));
 
+    const xamlFiles = relatedFiles
+      .filter((name) => name.toLowerCase().endsWith(".xaml"))
+      .map((name) => ({
+        name,
+        content: textFiles.get(`${dirPath}/${name}`) || "",
+      }))
+      .filter((item) => Boolean(item.content));
+
+    const uiMockup = extractWpfMockup(xamlFiles);
+
     const functionText = yamlInfo.tooltip || contextInfo.entryPoints || "See tool context and source files for behavior details.";
     const purposeText = contextInfo.purpose || "Purpose not documented in tool-context.md.";
 
@@ -216,6 +440,8 @@ function buildCatalog(bundleData) {
     ]);
 
     const inputs = parseTooltipInputs(yamlInfo.tooltip);
+
+    const pageSlug = toSlug(`${tab}-${panelName}-${toolSlug}`) || toSlug(toolSlug) || "tool";
 
     const tool = {
       id: dirPath,
@@ -230,6 +456,8 @@ function buildCatalog(bundleData) {
       notes,
       fileCount: relatedFiles.length,
       files: relatedFiles,
+      pagePath: `tools/${pageSlug}.html`,
+      uiMockup,
       sources: {
         hasYaml,
         hasContext,
@@ -373,14 +601,12 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
     </div>
 
     <div class="page">
-      <nav class="toc">
-        <span class="toc-part">I · Foundations</span>
-        <div class="toc-links">
-          <a href="#summary-section">Summary</a>
-          <a href="#tree-section">Extension Tree</a>
-          <a href="#catalog-section">Tool Catalog</a>
-        </div>
-      </nav>
+
+      <div class="part" id="summary-section">
+        <span class="part-num">Part I</span>
+        <span class="part-title">Catalog Summary</span>
+        <span class="part-rule"></span>
+      </div>
 
       <div class="priority-card">
         <strong>Priority rule.</strong> Bundle metadata is authoritative. Keep
@@ -388,12 +614,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         Current coverage: <strong>${diagnostics.metadataCoverage.withToolContext}/${diagnostics.totals.tools}</strong>
         with tool-context docs, <strong>${diagnostics.metadataCoverage.withBundleYaml}/${diagnostics.totals.tools}</strong>
         with bundle metadata.
-      </div>
-
-      <div class="part" id="summary-section">
-        <span class="part-num">Part I</span>
-        <span class="part-title">Catalog Summary</span>
-        <span class="part-rule"></span>
       </div>
 
       <section class="card site-header">
@@ -412,7 +632,10 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
           <div class="diagnostics" id="coverage-summary"></div>
 
           <div class="controls">
-            <div class="tabs" id="tab-buttons"></div>
+            <div class="tab-panel-filters">
+              <div class="tabs" id="tab-buttons"></div>
+              <div class="panel-buttons" id="panel-buttons"></div>
+            </div>
             <label class="search-wrap">
               <span>Search tools</span>
               <input id="search-input" type="search" placeholder="Title, panel, stack, path..." />
@@ -456,12 +679,14 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
       const state = {
         activeTab: DATA.tree[0] ? DATA.tree[0].name : "",
+        activePanel: "",
         query: "",
       };
 
       const summaryStats = document.getElementById("summary-stats");
       const coverageSummary = document.getElementById("coverage-summary");
       const tabButtons = document.getElementById("tab-buttons");
+      const panelButtons = document.getElementById("panel-buttons");
       const treeRoot = document.getElementById("tree-root");
       const catalogRoot = document.getElementById("catalog-root");
       const searchInput = document.getElementById("search-input");
@@ -502,6 +727,13 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       }
 
       function renderTabs() {
+        const activeTabNode = DATA.tree.find(function (tab) { return tab.name === state.activeTab; });
+        const activePanels = activeTabNode ? activeTabNode.panels.map(function (panel) { return panel.name; }) : [];
+
+        if (!state.activePanel || !activePanels.includes(state.activePanel)) {
+          state.activePanel = activePanels[0] || "";
+        }
+
         tabButtons.innerHTML = DATA.tree
           .map(function (tab) {
             const activeClass = tab.name === state.activeTab ? "is-active" : "";
@@ -509,10 +741,28 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
           })
           .join("");
 
+        panelButtons.innerHTML = activePanels
+          .map(function (panel) {
+            const activeClass = panel === state.activePanel ? "is-active" : "";
+            return '<button class="panel-btn ' + activeClass + '" data-panel="' + panel + '">' + panel + '</button>';
+          })
+          .join("");
+
         Array.from(tabButtons.querySelectorAll("button")).forEach(function (button) {
           button.addEventListener("click", function () {
             state.activeTab = button.getAttribute("data-tab") || state.activeTab;
+            const selectedTab = DATA.tree.find(function (tab) { return tab.name === state.activeTab; });
+            const panels = selectedTab ? selectedTab.panels : [];
+            state.activePanel = panels[0] ? panels[0].name : "";
             render();
+          });
+        });
+
+        Array.from(panelButtons.querySelectorAll("button")).forEach(function (button) {
+          button.addEventListener("click", function () {
+            state.activePanel = button.getAttribute("data-panel") || state.activePanel;
+            renderCatalog();
+            renderTabs();
           });
         });
       }
@@ -540,6 +790,10 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       function filterTools() {
         return DATA.tools.filter(function (tool) {
           if (tool.tab !== state.activeTab) {
+            return false;
+          }
+
+          if (state.activePanel && tool.panel !== state.activePanel) {
             return false;
           }
 
@@ -590,17 +844,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
                     ? '<ul>' + tool.inputs.map(function (item) { return '<li>' + item + '</li>'; }).join('') + '</ul>'
                     : '<p class="muted">No explicit click/shift input hints were detected.</p>';
 
-                const notesHtml =
-                  tool.notes.length > 0
-                    ? '<ul>' + tool.notes.map(function (item) { return '<li>' + item + '</li>'; }).join('') + '</ul>'
-                    : '<p class="muted">No constraints or working notes were detected.</p>';
-
                 return '<article class="tool-card">' +
-                  '<header><p class="stack-pill">' + tool.stack + '</p><h4>' + tool.title + '</h4><code>' + tool.location + '</code></header>' +
+                  '<header><p class="stack-pill">' + tool.stack + '</p><h4><a class="tool-link" href="./' + tool.pagePath + '">' + tool.title + '</a></h4><code>' + tool.location + '</code></header>' +
                   '<p class="function">' + tool.function + '</p>' +
                   '<details open><summary>Purpose</summary><p>' + tool.purpose + '</p></details>' +
                   '<details><summary>Inputs</summary>' + inputsHtml + '</details>' +
-                  '<details><summary>Notes</summary>' + notesHtml + '</details>' +
                   '<details><summary>Files (' + tool.fileCount + ')</summary><p class="files">' + tool.files.join(', ') + '</p></details>' +
                 '</article>';
               })
@@ -665,10 +913,12 @@ function main() {
 
   const html = buildHtml(payload, diagnostics, generatedAt, bundleData.allPaths.length);
   writeText(htmlPath, html);
+  writeToolPages(payload.tools, generatedAt);
 
   const summary = [
     `Generated ${path.basename(htmlPath)} from ${path.basename(bundlePath)}`,
     `Tools: ${payload.tools.length}`,
+    `Tool pages: ${payload.tools.length}`,
     `Tabs: ${payload.tree.length}`,
     `Files in bundle: ${payload.meta.totalFiles}`,
     `Diagnostics: ${path.relative(repoRoot, diagnosticsPath)}`,

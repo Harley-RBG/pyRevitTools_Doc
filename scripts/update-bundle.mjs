@@ -5,6 +5,7 @@ import crypto from "node:crypto";
 const repoRoot = process.cwd();
 const DEFAULT_SOURCE = String.raw`P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension`;
 const DEFAULT_OUT = path.join(repoRoot, "bundle.md");
+const CACHE_PATH = path.join(repoRoot, "generated", "bundle-cache.json");
 
 const EXCLUDE_DIRS = new Set([
   ".git",
@@ -79,23 +80,17 @@ function sha1Buffer(buffer) {
   return crypto.createHash("sha1").update(buffer).digest("hex");
 }
 
-function sha1File(filePath) {
-  return sha1Buffer(fs.readFileSync(filePath));
-}
-
-function looksBinary(filePath) {
+function looksBinary(filePath, buffer) {
   const ext = path.extname(filePath).toLowerCase();
   if (BINARY_EXT_HINTS.has(ext)) {
     return true;
   }
 
-  const buffer = fs.readFileSync(filePath);
   const probe = buffer.subarray(0, 4096);
   return probe.includes(0);
 }
 
-function safeReadText(filePath) {
-  const buffer = fs.readFileSync(filePath);
+function safeReadText(buffer) {
 
   for (const encoding of ["utf8", "latin1"]) {
     try {
@@ -125,6 +120,87 @@ function langFor(filePath) {
   };
 
   return map[ext] || "";
+}
+
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function parseExistingBundle(bundlePath) {
+  if (!fs.existsSync(bundlePath)) {
+    return new Map();
+  }
+
+  const text = fs.readFileSync(bundlePath, "utf8");
+  const blockRegex = /^## FILE_START: (.+)\r?\n([\s\S]*?)^## FILE_END: \1\r?\n?/gm;
+  const blocks = new Map();
+
+  for (const match of text.matchAll(blockRegex)) {
+    const relPath = match[1];
+    const fullBlock = `## FILE_START: ${relPath}\n${match[2]}## FILE_END: ${relPath}\n`;
+    blocks.set(relPath, fullBlock);
+  }
+
+  return blocks;
+}
+
+function renderFileBlock({ rel, filePath, buffer, fileSize }) {
+  const lines = [];
+  const sha = sha1Buffer(buffer);
+
+  lines.push(`## FILE_START: ${rel}`);
+  lines.push(`## META: sha1=${sha} size=${fileSize}`);
+
+  const isBinary = looksBinary(filePath, buffer);
+  if (isBinary) {
+    lines.push("## TYPE: binary");
+    lines.push("(binary not inlined)");
+    lines.push(`## FILE_END: ${rel}`);
+    lines.push("");
+    return {
+      block: lines.join("\n"),
+      cacheEntry: {
+        size: fileSize,
+        mtimeMs: null,
+        sha1: sha,
+        binary: true,
+      },
+    };
+  }
+
+  const text = safeReadText(buffer);
+  lines.push("## TYPE: text");
+
+  if (path.extname(filePath).toLowerCase() === ".py") {
+    const analysis = analyzePython(text);
+    lines.push(`## IMPORTS: ${JSON.stringify(analysis.imports)}`);
+    lines.push(`## FUNCTIONS: ${JSON.stringify(analysis.functions)}`);
+    lines.push(`## CLASSES: ${JSON.stringify(analysis.classes)}`);
+  }
+
+  lines.push("```" + langFor(filePath));
+  lines.push(text);
+  lines.push("```");
+  lines.push(`## FILE_END: ${rel}`);
+  lines.push("");
+
+  return {
+    block: lines.join("\n"),
+    cacheEntry: {
+      size: fileSize,
+      mtimeMs: null,
+      sha1: sha,
+      binary: false,
+    },
+  };
 }
 
 function analyzePython(text) {
@@ -172,10 +248,21 @@ function collectFiles(rootDir) {
   const results = [];
 
   function walk(currentDir) {
-    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    let entries;
+    try {
+      entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    } catch (error) {
+      process.stdout.write(`Skipping unreadable directory: ${currentDir} (${error.message})\n`);
+      return;
+    }
+
     for (const entry of entries) {
       const absPath = path.join(currentDir, entry.name);
       const relPath = toPosix(path.relative(rootDir, absPath));
+
+      if (entry.isSymbolicLink()) {
+        continue;
+      }
 
       if (entry.isDirectory()) {
         if (EXCLUDE_DIRS.has(entry.name)) {
@@ -199,23 +286,37 @@ function collectFiles(rootDir) {
         continue;
       }
 
-      results.push(absPath);
+      let stat;
+      try {
+        stat = fs.statSync(absPath);
+      } catch (error) {
+        process.stdout.write(`Skipping unreadable file: ${absPath} (${error.message})\n`);
+        continue;
+      }
+
+      results.push({
+        absPath,
+        relPath,
+        size: stat.size,
+        mtimeMs: stat.mtimeMs,
+      });
     }
   }
 
   walk(rootDir);
 
   results.sort((a, b) => {
-    const relA = toPosix(path.relative(rootDir, a)).toLowerCase();
-    const relB = toPosix(path.relative(rootDir, b)).toLowerCase();
-    return relA.localeCompare(relB);
+    return a.relPath.toLowerCase().localeCompare(b.relPath.toLowerCase());
   });
 
   return results;
 }
 
 function buildBundle({ sourceDir, outFile }) {
+  process.stdout.write(`Scanning source: ${sourceDir}\n`);
   const files = collectFiles(sourceDir);
+  const previousBlocks = parseExistingBundle(outFile);
+  const existingCache = readJsonIfExists(CACHE_PATH) || {};
   const now = new Date().toISOString();
 
   const lines = [];
@@ -225,48 +326,70 @@ function buildBundle({ sourceDir, outFile }) {
   lines.push(`Total Files: ${files.length}`);
   lines.push("");
 
-  const pyFiles = files.filter((f) => path.extname(f).toLowerCase() === ".py");
+  const pyFiles = files.filter((f) => path.extname(f.absPath).toLowerCase() === ".py");
   const entryPoints = pyFiles
-    .map((f) => toPosix(path.relative(sourceDir, f)))
+    .map((f) => f.relPath)
     .filter((rel) => ["main.py", "app.py", "run.py", "__main__.py"].includes(path.basename(rel)));
 
   lines.push(`## ENTRY_POINTS: ${JSON.stringify(entryPoints)}`);
   lines.push("");
 
   let totalBytes = 0;
+  let processedCount = 0;
+  let reusedCount = 0;
+  let rebuiltCount = 0;
+  const nextCache = {};
+  process.stdout.write(
+    `Scanning complete. Building bundle from ${files.length} files...\n`
+  );
 
-  for (const filePath of files) {
-    const rel = toPosix(path.relative(sourceDir, filePath));
-    const stat = fs.statSync(filePath);
-    totalBytes += stat.size;
-    const sha = sha1File(filePath);
+  function maybeLogProgress() {
+    const reachedBoundary = processedCount > 0 && processedCount % 25 === 0;
+    const isDone = processedCount === files.length;
+    if (isDone || reachedBoundary) {
+      process.stdout.write(`Progress: ${processedCount}/${files.length} files\n`);
+    }
+  }
 
-    lines.push(`## FILE_START: ${rel}`);
-    lines.push(`## META: sha1=${sha} size=${stat.size}`);
+  for (const file of files) {
+    totalBytes += file.size;
 
-    if (looksBinary(filePath)) {
-      lines.push("## TYPE: binary");
-      lines.push("(binary not inlined)");
-      lines.push(`## FILE_END: ${rel}`);
+    const cached = existingCache[file.relPath];
+    const cachedBlock = previousBlocks.get(file.relPath);
+    const canReuse =
+      Boolean(cachedBlock) &&
+      cached &&
+      cached.size === file.size &&
+      cached.mtimeMs === file.mtimeMs;
+
+    if (canReuse) {
+      lines.push(cachedBlock.trimEnd());
       lines.push("");
+      nextCache[file.relPath] = cached;
+      reusedCount += 1;
+      processedCount += 1;
+      maybeLogProgress();
       continue;
     }
 
-    const text = safeReadText(filePath);
-    lines.push("## TYPE: text");
+    const buffer = fs.readFileSync(file.absPath);
+    const rendered = renderFileBlock({
+      rel: file.relPath,
+      filePath: file.absPath,
+      buffer,
+      fileSize: file.size,
+    });
 
-    if (path.extname(filePath).toLowerCase() === ".py") {
-      const analysis = analyzePython(text);
-      lines.push(`## IMPORTS: ${JSON.stringify(analysis.imports)}`);
-      lines.push(`## FUNCTIONS: ${JSON.stringify(analysis.functions)}`);
-      lines.push(`## CLASSES: ${JSON.stringify(analysis.classes)}`);
-    }
-
-    lines.push("```" + langFor(filePath));
-    lines.push(text);
-    lines.push("```");
-    lines.push(`## FILE_END: ${rel}`);
+    lines.push(rendered.block.trimEnd());
     lines.push("");
+    nextCache[file.relPath] = {
+      ...rendered.cacheEntry,
+      size: file.size,
+      mtimeMs: file.mtimeMs,
+    };
+    rebuiltCount += 1;
+    processedCount += 1;
+    maybeLogProgress();
   }
 
   lines.push("## BUNDLE_INTEGRITY");
@@ -276,13 +399,17 @@ function buildBundle({ sourceDir, outFile }) {
   lines.push("TRUNCATION: NONE");
   lines.push("## END_BUNDLE");
 
+  fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
   fs.writeFileSync(outFile, lines.join("\n") + "\n", "utf8");
+  fs.writeFileSync(CACHE_PATH, JSON.stringify(nextCache, null, 2) + "\n", "utf8");
 
   return {
     fileCount: files.length,
     totalBytes,
     outFile,
     sourceDir,
+    reusedCount,
+    rebuiltCount,
   };
 }
 
@@ -297,7 +424,7 @@ function main() {
 
   const result = buildBundle({ sourceDir, outFile });
   process.stdout.write(
-    `Updated bundle: ${path.basename(result.outFile)} | Source: ${result.sourceDir} | Files: ${result.fileCount} | Bytes: ${result.totalBytes}\n`
+    `Updated bundle: ${path.basename(result.outFile)} | Source: ${result.sourceDir} | Files: ${result.fileCount} | Reused: ${result.reusedCount} | Rebuilt: ${result.rebuiltCount} | Bytes: ${result.totalBytes}\n`
   );
 }
 

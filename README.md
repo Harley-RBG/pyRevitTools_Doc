@@ -14,6 +14,8 @@ Default source path:
 
 `P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension`
 
+The updater keeps a local cache at `generated/bundle-cache.json` and reuses unchanged file blocks from the previous bundle when file size and modified time match. On repeated runs, only changed files are re-read and rebuilt.
+
 `scripts/generate-static-site.mjs` parses `bundle.md` and extracts:
 
 - Toolbar tree structure (tab, panel, stack)
@@ -43,6 +45,10 @@ Or run both in one step:
 ```bash
 npm run site:update
 ```
+
+Note: when the source is on a network drive (for example `P:`), `bundle:update` can take a while.
+The script now prints scan and progress checkpoints (`Progress: x/total files`) so you can see it is actively working.
+`site:update` runs two separate steps by design: first `bundle:update`, then `generate`. It should not rescan unchanged source file contents on every run anymore.
 
 4. Open `index.html` directly, or run a local preview server:
 
