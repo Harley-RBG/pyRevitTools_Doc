@@ -40,9 +40,19 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Targets</h5><p>Input</p></article><article class="xaml-pane"><h5>Plan + extent stages</h5><p>Stage</p></article><article class="xaml-pane"><h5>Crop vertical extents from Levels</h5><p>Stage</p></article><article class="xaml-pane"><h5>Run Output</h5><p>Stage</p></article><article class="xaml-pane"><h5>Section/Detail Vertical Extension Updater</h5><p>Stage</p></article><article class="xaml-pane"><h5>Stage-based tool with per-view explicit vertical mapping</h5><p>Stage</p></article><article class="xaml-pane"><h5>Sections list</h5><p>Stage</p></article><article class="xaml-pane"><h5>Affected sections: 0</h5><p>Stage</p></article></div>
+            <p class="muted">No command button labels detected in XAML.</p>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:2;--xaml-rows:7;"><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>GroupBox</h6><p>Targets</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>ComboBox</h6><p>ComboBox</p></article><article class="xaml-grid-item " style="grid-row:3/4;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-button" style="grid-row:6/7;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-panel" style="grid-row:7/8;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item " style="grid-row:3/4;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:2/3;"><h6>GroupBox</h6><p>Plan + extent stages</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>ComboBox</h6><p>ComboBox</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>ComboBox</h6><p>ComboBox</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Section Move</span>
@@ -53,11 +63,23 @@
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <p class="muted">No explicit staged workflow was inferred from script methods.</p>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>main()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>31</strong></span><span class="mockup-chip">ColumnDefinition <strong>12</strong></span><span class="mockup-chip">Button <strong>11</strong></span><span class="mockup-chip">Grid <strong>8</strong></span><span class="mockup-chip">ComboBoxItem <strong>7</strong></span><span class="mockup-chip">RowDefinition <strong>7</strong></span><span class="mockup-chip">StackPanel <strong>7</strong></span><span class="mockup-chip">CheckBox <strong>6</strong></span><span class="mockup-chip">ComboBox <strong>6</strong></span><span class="mockup-chip">GroupBox <strong>4</strong></span><span class="mockup-chip">TextBox <strong>4</strong></span><span class="mockup-chip">WrapPanel <strong>4</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>DetailMoveWindow.xaml</code></li></ul>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Section/Detail Updater</li></ul>
 
           <h4 class="subhead">Named Elements</h4>
           <p class="muted">No x:Name elements detected.</p>
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

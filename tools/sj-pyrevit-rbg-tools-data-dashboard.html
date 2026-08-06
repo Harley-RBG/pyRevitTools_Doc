@@ -40,9 +40,19 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>{Binding source_badge}</h5><p>Input</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">All</span><span class="xaml-action">Starred</span><span class="xaml-action">Recent</span><span class="xaml-action">✕</span><span class="xaml-action">New Group</span><span class="xaml-action">Delete Group</span><span class="xaml-action">Add to Group</span><span class="xaml-action">Remove from Group</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:2;--xaml-rows:7;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Button</p></article><article class="xaml-grid-item is-button" style="grid-row:2/3;grid-column:1/2;"><h6>Button</h6><p>All</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>Starred</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>Button</h6><p>Recent</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>✕</p></article><article class="xaml-grid-item " style="grid-row:6/7;grid-column:1/2;"><h6>TextBox</h6><p>SearchBox</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>New Group</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Delete Group</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Add to Group</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Remove from Group</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>TreeView</h6><p>GroupTree</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>TreeView</h6><p>TreeView</p></article><article class="xaml-grid-item is-panel" style="grid-row:7/8;grid-column:1/2;"><h6>ListBox</h6><p>CardGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:7/8;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>&amp;#9734;</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Run Tool</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Close</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Tool Dashboard</span>
@@ -53,11 +63,23 @@
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_load_from_cache()</code></li><li><code>_load_ui_module()</code></li><li><code>_select_group_tag()</code></li><li><code>_load_groups()</code></li><li><code>_refresh_favorites_bar()</code></li><li><code>_build_cards()</code></li><li><code>_refresh_tools()</code></li><li><code>_build_source_line()</code></li><li><code>_load_dock_module()</code></li><li><code>main()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.ask_for_string</span><span class="mockup-chip">forms.is_registered_dockable_panel</span><span class="mockup-chip">forms.open_dockable_panel</span><span class="mockup-chip">forms.register_dockable_panel</span><span class="mockup-chip">forms.SelectFromList</span><span class="mockup-chip">forms.WPFPanel</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>40</strong></span><span class="mockup-chip">Button <strong>24</strong></span><span class="mockup-chip">Border <strong>22</strong></span><span class="mockup-chip">StackPanel <strong>20</strong></span><span class="mockup-chip">Grid <strong>16</strong></span><span class="mockup-chip">RowDefinition <strong>14</strong></span><span class="mockup-chip">ColumnDefinition <strong>10</strong></span><span class="mockup-chip">DockPanel <strong>10</strong></span><span class="mockup-chip">ControlTemplate <strong>4</strong></span><span class="mockup-chip">DataTemplate <strong>4</strong></span><span class="mockup-chip">ItemsControl <strong>4</strong></span><span class="mockup-chip">ItemsPanelTemplate <strong>4</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>40</strong></span><span class="mockup-chip">Button <strong>24</strong></span><span class="mockup-chip">Border <strong>22</strong></span><span class="mockup-chip">StackPanel <strong>20</strong></span><span class="mockup-chip">Grid <strong>16</strong></span><span class="mockup-chip">RowDefinition <strong>14</strong></span><span class="mockup-chip">ColumnDefinition <strong>10</strong></span><span class="mockup-chip">DockPanel <strong>10</strong></span><span class="mockup-chip">TreeView <strong>5</strong></span><span class="mockup-chip">ControlTemplate <strong>4</strong></span><span class="mockup-chip">DataTemplate <strong>4</strong></span><span class="mockup-chip">ItemsControl <strong>4</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>dashboard.xaml</code></li><li><code>panel.xaml</code></li></ul>
+
+          <h4 class="subhead">Window Titles</h4>
+          <p class="muted">No explicit __title__ strings detected in script files.</p>
 
           <h4 class="subhead">Named Elements</h4>
           <ul><li><code>CardBorder</code></li><li><code>AllFilterButton</code></li><li><code>FavoritesFilterButton</code></li><li><code>RecentFilterButton</code></li><li><code>SummaryText</code></li><li><code>SearchBox</code></li><li><code>FavoritesSection</code></li><li><code>FavoritesBar</code></li><li><code>GroupTree</code></li><li><code>CardGrid</code></li></ul>
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

@@ -40,27 +40,49 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <p class="muted">No pane/group headers detected in XAML.</p>
+            <div class="xaml-action-row"><span class="xaml-action">Select All Elements</span><span class="xaml-action">Close</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:3;--xaml-rows:1;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>TextBlock</h6><p>Type Name</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>Element Id</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Select All Elements</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Close</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Elements by Level</span>
               <span>ElementStack2</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>ControlTemplate</span><span>8</span></div><div class="mock-row mock-block"><span>Border</span><span>7</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>4</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>4</span></div><div class="mock-row mock-block"><span>ContentPresenter</span><span>3</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>3</span></div><div class="mock-row mock-button"><span>Button</span><span>2</span></div><div class="mock-row mock-block"><span>Grid</span><span>2</span></div>
+              <div class="mock-row mock-block"><span>TextBlock</span><span>9</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>8</span></div><div class="mock-row mock-block"><span>ControlTemplate</span><span>8</span></div><div class="mock-row mock-block"><span>Grid</span><span>8</span></div><div class="mock-row mock-block"><span>Border</span><span>7</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>6</span></div><div class="mock-row mock-button"><span>Button</span><span>5</span></div><div class="mock-row mock-block"><span>Expander</span><span>5</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>build_grouped_dict()</code></li><li><code>_build_category_block()</code></li><li><code>_build_element_row()</code></li><li><code>_on_select_all()</code></li><li><code>_on_select_category()</code></li><li><code>_on_select_element()</code></li><li><code>_on_close()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.SelectFromList</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">ControlTemplate <strong>8</strong></span><span class="mockup-chip">Border <strong>7</strong></span><span class="mockup-chip">ColumnDefinition <strong>4</strong></span><span class="mockup-chip">TextBlock <strong>4</strong></span><span class="mockup-chip">ContentPresenter <strong>3</strong></span><span class="mockup-chip">StackPanel <strong>3</strong></span><span class="mockup-chip">Button <strong>2</strong></span><span class="mockup-chip">Grid <strong>2</strong></span><span class="mockup-chip">DockPanel <strong>1</strong></span><span class="mockup-chip">Path <strong>1</strong></span><span class="mockup-chip">ScrollViewer <strong>1</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>9</strong></span><span class="mockup-chip">ColumnDefinition <strong>8</strong></span><span class="mockup-chip">ControlTemplate <strong>8</strong></span><span class="mockup-chip">Grid <strong>8</strong></span><span class="mockup-chip">Border <strong>7</strong></span><span class="mockup-chip">StackPanel <strong>6</strong></span><span class="mockup-chip">Button <strong>5</strong></span><span class="mockup-chip">Expander <strong>5</strong></span><span class="mockup-chip">ContentPresenter <strong>3</strong></span><span class="mockup-chip">DockPanel <strong>1</strong></span><span class="mockup-chip">Path <strong>1</strong></span><span class="mockup-chip">ScrollViewer <strong>1</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>SelectByLevelWindow.xaml</code></li></ul>
 
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Elements by Level</li></ul>
+
           <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>Arrow</code></li><li><code>TxtTitle</code></li><li><code>TxtSummary</code></li><li><code>BtnSelectAll</code></li><li><code>BtnClose</code></li><li><code>CategoryPanel</code></li></ul>
+          <ul><li><code>Arrow</code></li><li><code>TxtTitle</code></li><li><code>TxtSummary</code></li><li><code>BtnSelectAll</code></li><li><code>BtnClose</code></li><li><code>CategoryPanel</code></li><li><code>on_select_all</code></li><li><code>on_select_category</code></li><li><code>on_select_element</code></li><li><code>on_close</code></li></ul>
         </div>
       </section>
 
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

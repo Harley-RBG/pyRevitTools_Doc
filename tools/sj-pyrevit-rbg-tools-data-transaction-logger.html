@@ -40,9 +40,19 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Capture Mode</h5><p>Stage</p></article><article class="xaml-pane"><h5>Categories</h5><p>Stage</p></article><article class="xaml-pane"><h5>Snapshot Mode</h5><p>Stage</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">Cancel</span><span class="xaml-action">Start Logging</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:1;--xaml-rows:5;"><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>GroupBox</h6><p>Capture Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>RadioButton</h6><p>Full model + annotations</p></article><article class="xaml-grid-item is-button" style="grid-row:2/3;grid-column:1/2;"><h6>RadioButton</h6><p>Targeted categories</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>GroupBox</h6><p>Categories</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>lstCategories</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>GroupBox</h6><p>Snapshot Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>RadioButton</h6><p>Off — fast, no before/after diff</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>RadioButton</h6><p>Lazy — capture element state (enables diff)</p></article><article class="xaml-grid-item " style="grid-row:5/6;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Cancel</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Start Logging</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Transaction Logger</span>
@@ -53,14 +63,26 @@
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_on_mode_change()</code></li><li><code>_on_start()</code></li><li><code>_on_cancel()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">RowDefinition <strong>5</strong></span><span class="mockup-chip">RadioButton <strong>4</strong></span><span class="mockup-chip">GroupBox <strong>3</strong></span><span class="mockup-chip">StackPanel <strong>3</strong></span><span class="mockup-chip">Button <strong>2</strong></span><span class="mockup-chip">Grid <strong>2</strong></span><span class="mockup-chip">ListBox <strong>1</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>launcher.xaml</code></li></ul>
 
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Transaction Logger</li></ul>
+
           <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>rbFull</code></li><li><code>rbTargeted</code></li><li><code>gbCategories</code></li><li><code>lstCategories</code></li><li><code>rbSnapNone</code></li><li><code>rbSnapLazy</code></li><li><code>btnCancel</code></li><li><code>btnStart</code></li></ul>
+          <ul><li><code>rbFull</code></li><li><code>rbTargeted</code></li><li><code>gbCategories</code></li><li><code>lstCategories</code></li><li><code>rbSnapNone</code></li><li><code>rbSnapLazy</code></li><li><code>btnCancel</code></li><li><code>btnStart</code></li><li><code>on_mode_change</code></li><li><code>on_start</code></li><li><code>on_cancel</code></li></ul>
         </div>
       </section>
 
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

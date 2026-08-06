@@ -40,24 +40,46 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <div class="xaml-tab-row"><span class="xaml-tab is-active">1. View Set</span><span class="xaml-tab ">2. Section Snapshot</span><span class="xaml-tab ">3. Sheet Layout</span><span class="xaml-tab ">Assignments</span><span class="xaml-tab ">Sheet Preview</span></div>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Source Mode</h5><p>Input</p></article><article class="xaml-pane"><h5>Creator Source</h5><p>Input</p></article><article class="xaml-pane"><h5>1. Scope Box Selection</h5><p>Input</p></article><article class="xaml-pane"><h5>1. Category Selection</h5><p>Input</p></article><article class="xaml-pane"><h5>2. Element Selection (Number -&gt; Base Level -&gt; Type Name)</h5><p>Input</p></article><article class="xaml-pane"><h5>2. Level Filter</h5><p>Input</p></article><article class="xaml-pane"><h5>3. Applicable Levels</h5><p>Stage</p></article><article class="xaml-pane"><h5>3. Element Instances</h5><p>Stage</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">Select Visible</span><span class="xaml-action">Clear Visible</span><span class="xaml-action">Run Stage 1: Create/Collect Views</span><span class="xaml-action">Run Stage 1: Collect Selected Views</span><span class="xaml-action">Pick Plan Rotation</span><span class="xaml-action">Pick Section Alignment (Aligned)</span><span class="xaml-action">Apply To Selected Rows</span><span class="xaml-action">Read Current Extents</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:12;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Create and Layout Views on Sheets from Creator or Selector</p></article><article class="xaml-grid-item is-tab" style="grid-row:1/2;grid-column:1/2;"><h6>TabItem</h6><p>1. View Set</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>GroupBox</h6><p>Source Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>RadioButton</h6><p>View Creator</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>RadioButton</h6><p>View Selector</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>GroupBox</h6><p>Creator Source</p></article><article class="xaml-grid-item is-button" style="grid-row:6/7;grid-column:1/2;"><h6>RadioButton</h6><p>Scope Boxes</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>RadioButton</h6><p>Element Selection</p></article><article class="xaml-grid-item is-panel" style="grid-row:8/9;grid-column:1/2;"><h6>GroupBox</h6><p>1. Scope Box Selection</p></article><article class="xaml-grid-item " style="grid-row:9/10;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item " style="grid-row:10/11;grid-column:1/2;"><h6>ComboBox</h6><p>ComboBox</p></article><article class="xaml-grid-item " style="grid-row:11/12;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>ListBox</h6><p>lbScopeBoxes</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>GroupBox</h6><p>1. Category Selection</p></article><article class="xaml-grid-item " style="grid-row:12/13;grid-column:1/2;"><h6>TextBox</h6><p>tbCreatorCategoryFilter</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>ListBox</h6><p>lbCreatorCategories</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>GroupBox</h6><p>GroupBox</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBox</h6><p>tbCreatorTypeFilter</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>ComboBox</h6><p>cbCreatorGroupFilterField</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Scope Box View Creation</span>
               <span>ViewStack2</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>ColumnDefinition</span><span>127</span></div><div class="mock-row mock-block"><span>Grid</span><span>114</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>77</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>55</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>41</span></div><div class="mock-row mock-block"><span>DataGridTextColumn</span><span>32</span></div><div class="mock-row mock-button"><span>Button</span><span>31</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>31</span></div>
+              <div class="mock-row mock-block"><span>Grid</span><span>141</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>130</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>102</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>64</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>41</span></div><div class="mock-row mock-block"><span>DataGridTextColumn</span><span>32</span></div><div class="mock-row mock-button"><span>Button</span><span>31</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>31</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_build_section_basis()</code></li><li><code>build_remapped_view_range_signature()</code></li><li><code>_build_creator_element_row()</code></li><li><code>build_existing_view_map()</code></li><li><code>build_existing_view_map_for_creator()</code></li><li><code>build_existing_sheet_numbers()</code></li><li><code>build_placed_view_id_set()</code></li><li><code>build_viewport_index_by_view_id()</code></li><li><code>build_scope_frame()</code></li><li><code>build_section_box()</code></li><li><code>build_grid_positions()</code></li><li><code>build_grid_positions_with_rows()</code></li><li><code>build_vertical_stack_positions()</code></li><li><code>build_plan_top_sections_positions()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">ColumnDefinition <strong>127</strong></span><span class="mockup-chip">Grid <strong>114</strong></span><span class="mockup-chip">TextBlock <strong>77</strong></span><span class="mockup-chip">StackPanel <strong>55</strong></span><span class="mockup-chip">ComboBox <strong>41</strong></span><span class="mockup-chip">DataGridTextColumn <strong>32</strong></span><span class="mockup-chip">Button <strong>31</strong></span><span class="mockup-chip">RowDefinition <strong>31</strong></span><span class="mockup-chip">TextBox <strong>29</strong></span><span class="mockup-chip">GroupBox <strong>25</strong></span><span class="mockup-chip">DataGridTemplateColumn <strong>16</strong></span><span class="mockup-chip">CheckBox <strong>12</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>141</strong></span><span class="mockup-chip">ColumnDefinition <strong>130</strong></span><span class="mockup-chip">TextBlock <strong>102</strong></span><span class="mockup-chip">StackPanel <strong>64</strong></span><span class="mockup-chip">ComboBox <strong>41</strong></span><span class="mockup-chip">DataGridTextColumn <strong>32</strong></span><span class="mockup-chip">Button <strong>31</strong></span><span class="mockup-chip">RowDefinition <strong>31</strong></span><span class="mockup-chip">TextBox <strong>29</strong></span><span class="mockup-chip">GroupBox <strong>25</strong></span><span class="mockup-chip">DataGridTemplateColumn <strong>16</strong></span><span class="mockup-chip">CheckBox <strong>14</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>ViewCreator.xaml</code></li></ul>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>View Creator / Selector</li></ul>
 
           <h4 class="subhead">Named Elements</h4>
           <ul><li><code>colStageLeft</code></li><li><code>colStageGap</code></li><li><code>colStageRight</code></li><li><code>stageInputPane</code></li><li><code>tabWorkflow</code></li><li><code>tabViewSet</code></li><li><code>rbSourceCreator</code></li><li><code>rbSourceSelector</code></li><li><code>pnlCreatorMode</code></li><li><code>rbCreatorScopeBoxes</code></li></ul>
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

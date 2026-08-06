@@ -40,27 +40,41 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: Python UI inference (WPF/forms)</span>
         </div>
         <div class="card-body">
+          
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>ParamCopier</span>
               <span>DataStack2</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>No WPF layout detected</span><span>0</span></div>
+              <div class="mock-row mock-block"><span>TextBlock</span><span>48</span></div><div class="mock-row mock-block"><span>Grid</span><span>34</span></div><div class="mock-row mock-block"><span>Border</span><span>22</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>20</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>14</span></div><div class="mock-row mock-listbox"><span>ListBox</span><span>5</span></div><div class="mock-row mock-block"><span>TabControl</span><span>5</span></div><div class="mock-row mock-textbox"><span>TextBox</span><span>5</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>build_preview()</code></li><li><code>execute_copy()</code></li><li><code>_pick_interactively()</code></li><li><code>_choose_elements()</code></li><li><code>_on_load()</code></li><li><code>_load_scope()</code></li><li><code>_filter_and_refresh()</code></li><li><code>_on_left_filter()</code></li><li><code>_on_right_filter()</code></li><li><code>_on_format_changed()</code></li><li><code>_on_left_select()</code></li><li><code>_on_right_select()</code></li><li><code>_on_copy()</code></li><li><code>_on_cancel()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <p class="muted">No control tags detected.</p>
+          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>48</strong></span><span class="mockup-chip">Grid <strong>34</strong></span><span class="mockup-chip">Border <strong>22</strong></span><span class="mockup-chip">StackPanel <strong>20</strong></span><span class="mockup-chip">ColumnDefinition <strong>14</strong></span><span class="mockup-chip">ListBox <strong>5</strong></span><span class="mockup-chip">TabControl <strong>5</strong></span><span class="mockup-chip">TextBox <strong>5</strong></span><span class="mockup-chip">Button <strong>4</strong></span><span class="mockup-chip">ComboBox <strong>4</strong></span><span class="mockup-chip">Expander <strong>2</strong></span><span class="mockup-chip">CheckBox <strong>1</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <p class="muted">No XAML file found for this tool in bundle data.</p>
 
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Param Copier</li></ul>
+
           <h4 class="subhead">Named Elements</h4>
-          <p class="muted">No x:Name elements detected.</p>
+          <ul><li><code>on_load</code></li><li><code>on_left_filter</code></li><li><code>on_right_filter</code></li><li><code>on_format_changed</code></li><li><code>on_left_select</code></li><li><code>on_right_select</code></li><li><code>on_copy</code></li><li><code>on_cancel</code></li></ul>
         </div>
       </section>
 
@@ -82,7 +96,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

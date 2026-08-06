@@ -40,24 +40,46 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Batch Link View Setup</h5><p>Stage</p></article><article class="xaml-pane"><h5>0 linked views</h5><p>Stage</p></article><article class="xaml-pane"><h5>0 host views</h5><p>Stage</p></article><article class="xaml-pane"><h5>Host View</h5><p>Stage</p></article><article class="xaml-pane"><h5>Scope Box</h5><p>Stage</p></article><article class="xaml-pane"><h5>Linked View</h5><p>Stage</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">Select All</span><span class="xaml-action">Select None</span><span class="xaml-action">Select Placed</span><span class="xaml-action">Preview Matches</span><span class="xaml-action">Apply</span><span class="xaml-action">Close</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:1;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Link Instance</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>ComboBox</h6><p>cmbLink</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>Match Mode</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>ComboBox</h6><p>cmbMatchMode</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>CheckBox</h6><p>Placed views only</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Select All</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Select None</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Select Placed</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Preview Matches</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Apply</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Close</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Use</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>TextBlock</h6><p>Host View</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>Level</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Scope Box</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Sheet</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Linked View</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Result</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>LinkedViews</span>
               <span>ViewStack1</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>TextBlock</span><span>13</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>12</span></div><div class="mock-row mock-button"><span>Button</span><span>6</span></div><div class="mock-row mock-block"><span>Grid</span><span>4</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>3</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>2</span></div><div class="mock-row mock-checkbox"><span>CheckBox</span><span>1</span></div><div class="mock-row mock-block"><span>DockPanel</span><span>1</span></div>
+              <div class="mock-row mock-block"><span>Grid</span><span>97</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>63</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>55</span></div><div class="mock-row mock-button"><span>Button</span><span>22</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>22</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>19</span></div><div class="mock-row mock-block"><span>Border</span><span>9</span></div><div class="mock-row mock-checkbox"><span>CheckBox</span><span>5</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_refresh_single_linked_lists()</code></li><li><code>_refresh_multi_linked_counts()</code></li><li><code>_selected_scope()</code></li><li><code>_selected_template()</code></li><li><code>_selected_level_from()</code></li><li><code>_selected_level_to()</code></li><li><code>_refresh_mode_panels()</code></li><li><code>_refresh_rule_panel_visibility()</code></li><li><code>_refresh_window()</code></li><li><code>_refresh_counts()</code></li><li><code>_build_rows()</code></li><li><code>_build_single_row()</code></li><li><code>_build_multi_row()</code></li><li><code>_build_rule_row()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>13</strong></span><span class="mockup-chip">ColumnDefinition <strong>12</strong></span><span class="mockup-chip">Button <strong>6</strong></span><span class="mockup-chip">Grid <strong>4</strong></span><span class="mockup-chip">StackPanel <strong>3</strong></span><span class="mockup-chip">ComboBox <strong>2</strong></span><span class="mockup-chip">CheckBox <strong>1</strong></span><span class="mockup-chip">DockPanel <strong>1</strong></span><span class="mockup-chip">ScrollViewer <strong>1</strong></span><span class="mockup-chip">WrapPanel <strong>1</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>97</strong></span><span class="mockup-chip">ColumnDefinition <strong>63</strong></span><span class="mockup-chip">TextBlock <strong>55</strong></span><span class="mockup-chip">Button <strong>22</strong></span><span class="mockup-chip">StackPanel <strong>22</strong></span><span class="mockup-chip">ComboBox <strong>19</strong></span><span class="mockup-chip">Border <strong>9</strong></span><span class="mockup-chip">CheckBox <strong>5</strong></span><span class="mockup-chip">TextBox <strong>5</strong></span><span class="mockup-chip">DockPanel <strong>1</strong></span><span class="mockup-chip">ScrollViewer <strong>1</strong></span><span class="mockup-chip">WrapPanel <strong>1</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
-          <ul><li><code>BatchLinkViewSetup.xaml</code></li></ul>
+          <ul><li><code>BatchLinkViewSetup.xaml</code></li><li><code>BatchLinkViewSetup_runtime.xaml</code></li></ul>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Batch Link View Setup</li></ul>
 
           <h4 class="subhead">Named Elements</h4>
           <ul><li><code>cmbLink</code></li><li><code>cmbMatchMode</code></li><li><code>chkPlacedOnly</code></li><li><code>txtLinkedCount</code></li><li><code>txtRowCount</code></li><li><code>btnSelectAll</code></li><li><code>btnSelectNone</code></li><li><code>btnSelectPlaced</code></li><li><code>btnPreview</code></li><li><code>btnApply</code></li></ul>
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

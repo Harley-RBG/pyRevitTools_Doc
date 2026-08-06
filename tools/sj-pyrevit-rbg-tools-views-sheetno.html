@@ -40,9 +40,19 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Select sheet scope, filter and select target sheets, then apply default or custom parameter mapping.</h5><p>Input</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">Select All Visible</span><span class="xaml-action">Clear Selection</span><span class="xaml-action">Apply Updates</span><span class="xaml-action">Close</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:9;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>TextBlock</h6><p>TxtModelSummary</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Sheet Scope</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>ComboBox</h6><p>CmbScope</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>Sheet Set</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>ComboBox</h6><p>CmbSheetSet</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Sheet # Param</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>ComboBox</h6><p>CmbSheetNoParam</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBox</h6><p>TxtFilter</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:2/3;"><h6>Button</h6><p>Select All Visible</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:3/4;"><h6>Button</h6><p>Clear Selection</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>DataGrid</h6><p>GridSheets</p></article><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet No.</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet Name</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>TxtSelectionSummary</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Total # Param</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>ComboBox</h6><p>CmbOfParam</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGrid</h6><p>GridPreview</p></article><article class="xaml-grid-item is-panel" style="grid-row:4/5;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet Name</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>SheetNo</span>
@@ -53,11 +63,23 @@
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_filter_changed()</code></li><li><code>_select_all_visible_click()</code></li><li><code>_load_scope_rows()</code></li><li><code>_selected_sheets()</code></li><li><code>_refresh_analysis_and_params()</code></li><li><code>_selected_param_keys()</code></li><li><code>_refresh_preview()</code></li><li><code>main()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>18</strong></span><span class="mockup-chip">ColumnDefinition <strong>17</strong></span><span class="mockup-chip">TextBlock <strong>13</strong></span><span class="mockup-chip">RowDefinition <strong>9</strong></span><span class="mockup-chip">DataGridTemplateColumn <strong>8</strong></span><span class="mockup-chip">Border <strong>6</strong></span><span class="mockup-chip">Button <strong>4</strong></span><span class="mockup-chip">ComboBox <strong>4</strong></span><span class="mockup-chip">DataGrid <strong>4</strong></span><span class="mockup-chip">DataTemplate <strong>4</strong></span><span class="mockup-chip">DataGridTextColumn <strong>3</strong></span><span class="mockup-chip">ControlTemplate <strong>2</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>SheetNoOfNoWindow.xaml</code></li></ul>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Sheet # of #</li></ul>
 
           <h4 class="subhead">Named Elements</h4>
           <ul><li><code>TxtModelSummary</code></li><li><code>CmbScope</code></li><li><code>TxtSheetSetLabel</code></li><li><code>CmbSheetSet</code></li><li><code>CmbSheetNoParam</code></li><li><code>TxtFilter</code></li><li><code>BtnSelectAllVisible</code></li><li><code>BtnClearSelection</code></li><li><code>GridSheets</code></li><li><code>TxtSelectionSummary</code></li></ul>
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

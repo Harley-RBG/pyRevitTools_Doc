@@ -40,27 +40,49 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Preview of value:</h5><p>Output</p></article><article class="xaml-pane"><h5>{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}</h5><p>Input</p></article><article class="xaml-pane"><h5>Column Filters</h5><p>Input</p></article><article class="xaml-pane"><h5>Filter by column</h5><p>Input</p></article><article class="xaml-pane"><h5>Filter by:</h5><p>Input</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">&amp;gt;</span><span class="xaml-action">&amp;lt;</span><span class="xaml-action">&amp;#x2191;</span><span class="xaml-action">&amp;#x2193;</span><span class="xaml-action">Cancel</span><span class="xaml-action">OK</span><span class="xaml-action">Edit Formats</span><span class="xaml-action">Import</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:3;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Import</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:3/4;"><h6>Button</h6><p>Export</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Save Rule</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Duplicate</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:3/4;"><h6>Button</h6><p>Delete</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>TextBox</h6><p>{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>formats_lb</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item " style="grid-row:3/4;grid-column:1/2;"><h6>ComboBox</h6><p>paramtype_cb</p></article><article class="xaml-grid-item " style="grid-row:3/4;grid-column:1/2;"><h6>TextBox</h6><p>search_tb</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>formatters_wp</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>&amp;#x276F;</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>&amp;#x276E;</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>↑</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>↓</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGrid</h6><p>rules_dg</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Jason Exporter</span>
               <span>Direct</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>ComboBoxItem</span><span>204</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>126</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>100</span></div><div class="mock-row mock-block"><span>Grid</span><span>92</span></div><div class="mock-row mock-button"><span>Button</span><span>61</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>59</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>31</span></div><div class="mock-row mock-block"><span>DockPanel</span><span>30</span></div>
+              <div class="mock-row mock-block"><span>ComboBoxItem</span><span>204</span></div><div class="mock-row mock-block"><span>Grid</span><span>200</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>159</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>130</span></div><div class="mock-row mock-button"><span>Button</span><span>84</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>63</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>62</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>40</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_on_key_down()</code></li><li><code>_on_preview_key()</code></li><li><code>_build_col_names()</code></li><li><code>_on_preview()</code></li><li><code>_on_ok()</code></li><li><code>_load_of_profiles_from_config()</code></li><li><code>_refresh_of_profile_cb()</code></li><li><code>_on_reset()</code></li><li><code>_on_cancel()</code></li><li><code>_on_window_closing()</code></li><li><code>_select_all()</code></li><li><code>_refresh_list()</code></li><li><code>_on_mouse_down()</code></li><li><code>_on_mouse_up()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.ask_for_string</span><span class="mockup-chip">forms.check_modeldoc</span><span class="mockup-chip">forms.ProgressBar</span><span class="mockup-chip">forms.reactive</span><span class="mockup-chip">forms.Reactive</span><span class="mockup-chip">forms.select_open_docs</span><span class="mockup-chip">forms.SelectFromList</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">ComboBoxItem <strong>204</strong></span><span class="mockup-chip">ColumnDefinition <strong>126</strong></span><span class="mockup-chip">TextBlock <strong>100</strong></span><span class="mockup-chip">Grid <strong>92</strong></span><span class="mockup-chip">Button <strong>61</strong></span><span class="mockup-chip">ComboBox <strong>59</strong></span><span class="mockup-chip">RowDefinition <strong>31</strong></span><span class="mockup-chip">DockPanel <strong>30</strong></span><span class="mockup-chip">StackPanel <strong>25</strong></span><span class="mockup-chip">DataGridTextColumn <strong>22</strong></span><span class="mockup-chip">Border <strong>20</strong></span><span class="mockup-chip">CheckBox <strong>19</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">ComboBoxItem <strong>204</strong></span><span class="mockup-chip">Grid <strong>200</strong></span><span class="mockup-chip">ColumnDefinition <strong>159</strong></span><span class="mockup-chip">TextBlock <strong>130</strong></span><span class="mockup-chip">Button <strong>84</strong></span><span class="mockup-chip">ComboBox <strong>63</strong></span><span class="mockup-chip">RowDefinition <strong>62</strong></span><span class="mockup-chip">StackPanel <strong>40</strong></span><span class="mockup-chip">DockPanel <strong>30</strong></span><span class="mockup-chip">DataGrid <strong>26</strong></span><span class="mockup-chip">ListBox <strong>25</strong></span><span class="mockup-chip">Border <strong>22</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>ColumnPicker.xaml</code></li><li><code>DWG3DOptions_ui.xaml</code></li><li><code>EditNamingFormats.xaml</code></li><li><code>FilterEditor_ui.xaml</code></li><li><code>IFCOptions_ui.xaml</code></li><li><code>JasonExporter.xaml</code></li><li><code>NWCOptions_ui.xaml</code></li><li><code>Sorting_ui.xaml</code></li></ul>
 
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Jason Exporter</li></ul>
+
           <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>paramtype_cb</code></li><li><code>search_tb</code></li><li><code>available_lb</code></li><li><code>active_lb</code></li><li><code>dwg3d_use_viewname_rb</code></li><li><code>dwg3d_use_filename_rb</code></li><li><code>dwg3d_use_format_rb</code></li><li><code>dwg3d_format_panel</code></li><li><code>dwg3d_namingformat_cb</code></li><li><code>dwg3d_shared_coords_cb</code></li></ul>
+          <ul><li><code>paramtype_cb</code></li><li><code>search_tb</code></li><li><code>available_lb</code></li><li><code>active_lb</code></li><li><code>dwg3d_use_viewname_rb</code></li><li><code>dwg3d_use_filename_rb</code></li><li><code>dwg3d_use_format_rb</code></li><li><code>dwg3d_format_panel</code></li><li><code>dwg3d_namingformat_cb</code></li><li><code>dwg3d_shared_coords_cb</code></li><li><code>on_key_down</code></li><li><code>on_preview_key</code></li><li><code>on_preview</code></li><li><code>on_ok</code></li></ul>
         </div>
       </section>
 
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

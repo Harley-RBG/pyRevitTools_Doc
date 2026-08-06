@@ -40,27 +40,49 @@
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
         <div class="card-body">
+          
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            <p class="muted">No tab headers detected in XAML.</p>
+            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Reorder Viewports</h5><p>Stage</p></article><article class="xaml-pane"><h5>Choose which sheets to reorder viewports on.</h5><p>Stage</p></article><article class="xaml-pane"><h5>Reorder viewports on&amp;#x0a;the active sheet only</h5><p>Stage</p></article><article class="xaml-pane"><h5>Pick sheets then reorder&amp;#x0a;viewports on each one</h5><p>Stage</p></article><article class="xaml-pane"><h5>Reorder Viewports - Select Sheets</h5><p>Stage</p></article><article class="xaml-pane"><h5>Filter All Sheets</h5><p>Input</p></article></div>
+            <div class="xaml-action-row"><span class="xaml-action">Cancel</span><span class="xaml-action">Reset</span><span class="xaml-action">&amp;#x276F;</span><span class="xaml-action">&amp;#x226B;</span><span class="xaml-action">&amp;#x276E;</span><span class="xaml-action">&amp;#x226A;</span><span class="xaml-action">Back</span><span class="xaml-action">Next</span></div>
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            <div class="xaml-grid-model" style="--xaml-cols:3;--xaml-rows:7;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Reorder Viewports - Select Sheets</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>TextBlock</h6><p>TextBlock</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Reset</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>TextBox</h6><p>FilterNumber</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>Button</h6><p>Reset</p></article><article class="xaml-grid-item " style="grid-row:4/5;grid-column:1/2;"><h6>TextBox</h6><p>FilterName</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>ALL SHEETS</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>SHEETS TO PROCESS</p></article><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>ListBox</h6><p>AllSheetsList</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>&amp;#x276F;</p></article><article class="xaml-grid-item is-button" style="grid-row:6/7;grid-column:1/2;"><h6>Button</h6><p>&amp;#x226B;</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>&amp;#x276E;</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>&amp;#x226A;</p></article><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:3/4;"><h6>ListBox</h6><p>SelectedSheetsList</p></article><article class="xaml-grid-item " style="grid-row:6/7;grid-column:1/2;"><h6>TextBlock</h6><p>0 sheet(s) selected to process</p></article><article class="xaml-grid-item " style="grid-row:7/8;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Back</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Cancel</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>Button</h6><p>Next</p></article></div>
+          </div>
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>Reorder Viewports</span>
               <span>Sheet Tools</span>
             </div>
             <div class="mock-window-body">
-              <div class="mock-row mock-button"><span>Button</span><span>20</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>20</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>19</span></div><div class="mock-row mock-block"><span>Grid</span><span>14</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>11</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>8</span></div><div class="mock-row mock-block"><span>Border</span><span>3</span></div><div class="mock-row mock-block"><span>DockPanel</span><span>3</span></div>
+              <div class="mock-row mock-block"><span>TextBlock</span><span>26</span></div><div class="mock-row mock-button"><span>Button</span><span>20</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>19</span></div><div class="mock-row mock-block"><span>Grid</span><span>14</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>11</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>11</span></div><div class="mock-row mock-textbox"><span>TextBox</span><span>9</span></div><div class="mock-row mock-block"><span>Border</span><span>7</span></div>
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>build_sheet_label()</code></li><li><code>build_sheet_item()</code></li><li><code>build_viewport_item()</code></li><li><code>_on_current()</code></li><li><code>_on_multiple()</code></li><li><code>_on_cancel()</code></li><li><code>_on_filter_changed()</code></li><li><code>_on_reset_number()</code></li><li><code>_on_reset_name()</code></li><li><code>_refresh_status()</code></li><li><code>_on_add()</code></li><li><code>_on_add_all()</code></li><li><code>_on_remove()</code></li><li><code>_on_remove_all()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span></div>
+
           <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">Button <strong>20</strong></span><span class="mockup-chip">TextBlock <strong>20</strong></span><span class="mockup-chip">RowDefinition <strong>19</strong></span><span class="mockup-chip">Grid <strong>14</strong></span><span class="mockup-chip">ColumnDefinition <strong>11</strong></span><span class="mockup-chip">StackPanel <strong>8</strong></span><span class="mockup-chip">Border <strong>3</strong></span><span class="mockup-chip">DockPanel <strong>3</strong></span><span class="mockup-chip">ListBox <strong>3</strong></span><span class="mockup-chip">TextBox <strong>2</strong></span></div>
+          <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>26</strong></span><span class="mockup-chip">Button <strong>20</strong></span><span class="mockup-chip">RowDefinition <strong>19</strong></span><span class="mockup-chip">Grid <strong>14</strong></span><span class="mockup-chip">ColumnDefinition <strong>11</strong></span><span class="mockup-chip">StackPanel <strong>11</strong></span><span class="mockup-chip">TextBox <strong>9</strong></span><span class="mockup-chip">Border <strong>7</strong></span><span class="mockup-chip">ListBox <strong>4</strong></span><span class="mockup-chip">DockPanel <strong>3</strong></span></div>
 
           <h4 class="subhead">XAML Files</h4>
           <ul><li><code>ReorderViewports_mode_ui.xaml</code></li><li><code>ReorderViewports_sheets_ui.xaml</code></li><li><code>ReorderViewports_ui.xaml</code></li></ul>
 
+          <h4 class="subhead">Window Titles</h4>
+          <p class="muted">No explicit __title__ strings detected in script files.</p>
+
           <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>CurrentSheetBtn</code></li><li><code>MultipleSheetsBtn</code></li><li><code>CancelBtn</code></li><li><code>ResetNumberBtn</code></li><li><code>FilterNumber</code></li><li><code>ResetNameBtn</code></li><li><code>FilterName</code></li><li><code>AllSheetsList</code></li><li><code>AddBtn</code></li><li><code>AddAllBtn</code></li></ul>
+          <ul><li><code>CurrentSheetBtn</code></li><li><code>MultipleSheetsBtn</code></li><li><code>CancelBtn</code></li><li><code>ResetNumberBtn</code></li><li><code>FilterNumber</code></li><li><code>ResetNameBtn</code></li><li><code>FilterName</code></li><li><code>AllSheetsList</code></li><li><code>AddBtn</code></li><li><code>AddAllBtn</code></li><li><code>on_current</code></li><li><code>on_multiple</code></li><li><code>on_cancel</code></li><li><code>on_filter_changed</code></li></ul>
         </div>
       </section>
 
@@ -82,7 +104,7 @@
       </section>
 
       <footer class="site-footer">
-        <p>Generated: 2026-08-06T03:07:29.442Z</p>
+        <p>Generated: 2026-08-06T05:03:21.743Z</p>
         <p>Source: bundle.md</p>
       </footer>
     </div>

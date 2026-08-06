@@ -52,6 +52,123 @@ function clearGeneratedHtmlFiles(dirPath) {
   }
 }
 
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function extractGridLayoutFromXaml(xamlText) {
+  const rawColumnCount = Math.max(1, (xamlText.match(/<ColumnDefinition\b/g) || []).length);
+  const rawRowCount = Math.max(1, (xamlText.match(/<RowDefinition\b/g) || []).length);
+
+  const tagRegex = /<([A-Z][A-Za-z0-9]+)\b([^>]*)>/g;
+  const blocks = [];
+  const relevantTags = new Set([
+    "TabControl",
+    "TabItem",
+    "GroupBox",
+    "Button",
+    "TextBox",
+    "ComboBox",
+    "CheckBox",
+    "RadioButton",
+    "ListBox",
+    "DataGrid",
+    "DataGridTextColumn",
+    "DataGridTemplateColumn",
+    "TreeView",
+    "StackPanel",
+    "TextBlock",
+    "Label",
+  ]);
+  let autoRowCursor = 0;
+
+  const getAttr = (attrs, name) => {
+    const regex = new RegExp(`${name}\\s*=\\s*"([^\"]+)"`, "i");
+    const match = attrs.match(regex);
+    return match ? match[1].trim() : "";
+  };
+
+  const pickLabel = (tag, attrs) => {
+    const candidates = [
+      getAttr(attrs, "Header"),
+      getAttr(attrs, "Content"),
+      getAttr(attrs, "Text"),
+      getAttr(attrs, "x:Name"),
+    ].filter(Boolean);
+
+    if (candidates.length > 0) {
+      return candidates[0].replace(/\s+/g, " ").trim();
+    }
+
+    return tag;
+  };
+
+  for (const match of xamlText.matchAll(tagRegex)) {
+    if (blocks.length >= 24) {
+      break;
+    }
+
+    const tag = match[1];
+    const attrs = match[2] || "";
+    if (["Window", "Grid", "Style", "Setter", "Trigger", "ResourceDictionary", "RowDefinition", "ColumnDefinition"].includes(tag)) {
+      continue;
+    }
+
+    if (!relevantTags.has(tag)) {
+      continue;
+    }
+
+    const rawRowAttr = getAttr(attrs, "Grid.Row");
+    const rawColAttr = getAttr(attrs, "Grid.Column");
+    const row = Number.parseInt(rawRowAttr || "0", 10);
+    const col = Number.parseInt(rawColAttr || "0", 10);
+    const rowSpan = Number.parseInt(getAttr(attrs, "Grid.RowSpan") || "1", 10);
+    const colSpan = Number.parseInt(getAttr(attrs, "Grid.ColumnSpan") || "1", 10);
+
+    const hasExplicitGridPos = rawRowAttr !== "" || rawColAttr !== "";
+    const isInteractive = /Button|ComboBox|CheckBox|RadioButton|ListBox|DataGrid|TextBox|TreeView/.test(tag);
+    const isMajorContainer = /TabItem|GroupBox/.test(tag);
+
+    if (!hasExplicitGridPos && !isInteractive && !isMajorContainer) {
+      continue;
+    }
+
+    const inferredRow = hasExplicitGridPos ? row : autoRowCursor;
+    const inferredCol = hasExplicitGridPos ? col : 0;
+    if (!hasExplicitGridPos && (isInteractive || isMajorContainer)) {
+      autoRowCursor += 1;
+    }
+
+    const safeRow = clamp(Number.isFinite(inferredRow) ? inferredRow : 0, 0, Math.max(0, rawRowCount - 1));
+    const safeCol = clamp(Number.isFinite(inferredCol) ? inferredCol : 0, 0, Math.max(0, rawColumnCount - 1));
+    const safeRowSpan = clamp(Number.isFinite(rowSpan) ? rowSpan : 1, 1, rawRowCount);
+    const safeColSpan = clamp(Number.isFinite(colSpan) ? colSpan : 1, 1, rawColumnCount);
+
+    const label = pickLabel(tag, attrs);
+    blocks.push({
+      tag,
+      label,
+      row: safeRow,
+      col: safeCol,
+      rowSpan: safeRowSpan,
+      colSpan: safeColSpan,
+    });
+  }
+
+  const effectiveRows = blocks.length
+    ? Math.max(...blocks.map((b) => b.row + b.rowSpan))
+    : 1;
+  const effectiveCols = blocks.length
+    ? Math.max(...blocks.map((b) => b.col + b.colSpan))
+    : 1;
+
+  return {
+    rowCount: clamp(effectiveRows, 1, 12),
+    columnCount: clamp(effectiveCols, 1, 4),
+    blocks,
+  };
+}
+
 function extractWpfMockup(xamlFiles) {
   if (!xamlFiles || xamlFiles.length === 0) {
     return {
@@ -60,13 +177,37 @@ function extractWpfMockup(xamlFiles) {
       controlCounts: [],
       namedElements: [],
       mockRows: [],
+      xamlLayout: {
+        hasLayout: false,
+        tabs: [],
+        panes: [],
+        actionButtons: [],
+      },
     };
   }
 
   const controlMap = new Map();
   const namedElements = [];
+  const tabHeaders = [];
+  const groupHeaders = [];
+  const textLabels = [];
+  const buttonLabels = [];
+  let bestGridLayout = { rowCount: 1, columnCount: 1, blocks: [] };
+
+  const pushUnique = (arr, value, max = 16) => {
+    const cleaned = String(value || "").replace(/\s+/g, " ").trim();
+    if (!cleaned || arr.includes(cleaned) || arr.length >= max) {
+      return;
+    }
+    arr.push(cleaned);
+  };
+
   for (const file of xamlFiles) {
     const text = file.content;
+    const gridLayout = extractGridLayoutFromXaml(text);
+    if (gridLayout.blocks.length > bestGridLayout.blocks.length) {
+      bestGridLayout = gridLayout;
+    }
     const controlMatches = text.matchAll(/<([A-Z][A-Za-z0-9]+)\b/g);
     for (const match of controlMatches) {
       const control = match[1];
@@ -82,6 +223,31 @@ function extractWpfMockup(xamlFiles) {
         break;
       }
       namedElements.push(match[1]);
+    }
+
+    const tabMatches = text.matchAll(/<TabItem\b[^>]*\bHeader\s*=\s*"([^"]+)"/g);
+    for (const match of tabMatches) {
+      pushUnique(tabHeaders, match[1], 8);
+    }
+
+    const groupMatches = text.matchAll(/<GroupBox\b[^>]*\bHeader\s*=\s*"([^"]+)"/g);
+    for (const match of groupMatches) {
+      pushUnique(groupHeaders, match[1], 14);
+    }
+
+    const textBlockMatches = text.matchAll(/<TextBlock\b[^>]*\bText\s*=\s*"([^"]+)"/g);
+    for (const match of textBlockMatches) {
+      pushUnique(textLabels, match[1], 24);
+    }
+
+    const labelMatches = text.matchAll(/<(?:Label|TextBox)\b[^>]*(?:Content|Text)\s*=\s*"([^"]+)"/g);
+    for (const match of labelMatches) {
+      pushUnique(textLabels, match[1], 24);
+    }
+
+    const buttonMatches = text.matchAll(/<Button\b[^>]*\bContent\s*=\s*"([^"]+)"/g);
+    for (const match of buttonMatches) {
+      pushUnique(buttonLabels, match[1], 12);
     }
   }
 
@@ -100,12 +266,209 @@ function extractWpfMockup(xamlFiles) {
     };
   });
 
+  const paneNames = dedupe([
+    ...groupHeaders,
+    ...textLabels.filter((label) =>
+      /(source|target|filter|settings|selection|applicable|assignment|results|preview|scope box|section|layout|view)/i.test(label)
+    ),
+  ]).slice(0, 8);
+
+  const panes = paneNames.map((name) => ({
+    title: name,
+    hint: /filter|selection|source|target/i.test(name) ? "Input" : /result|preview|status/i.test(name) ? "Output" : "Stage",
+  }));
+
+  const xamlLayout = {
+    hasLayout: tabHeaders.length > 0 || panes.length > 0 || buttonLabels.length > 0,
+    tabs: tabHeaders.slice(0, 8),
+    panes,
+    actionButtons: buttonLabels.slice(0, 8),
+    gridModel: {
+      rowCount: clamp(bestGridLayout.rowCount, 1, 12),
+      columnCount: clamp(bestGridLayout.columnCount, 1, 8),
+      blocks: bestGridLayout.blocks.slice(0, 20),
+    },
+  };
+
   return {
     hasXaml: true,
     fileNames: xamlFiles.map((f) => f.name),
     controlCounts,
     namedElements: namedElements.slice(0, 10),
     mockRows,
+    xamlLayout,
+  };
+}
+
+function extractPythonUiSignals(pyFiles) {
+  if (!pyFiles || pyFiles.length === 0) {
+    return {
+      hasPythonUi: false,
+      hasWpfWindowClass: false,
+      xamlReferences: [],
+      formsCalls: [],
+      controlCounts: [],
+      workflowStages: [],
+      eventHandlers: [],
+      windowTitles: [],
+    };
+  }
+
+  const formsCallSet = new Set();
+  const xamlReferenceSet = new Set();
+  const eventHandlers = [];
+  const functionNames = [];
+  const titleSet = new Set();
+  let hasWpfWindowClass = false;
+
+  const controlNames = [
+    "Button",
+    "ComboBox",
+    "TextBox",
+    "CheckBox",
+    "RadioButton",
+    "ListBox",
+    "DataGrid",
+    "DataGridTextColumn",
+    "TextBlock",
+    "TreeView",
+    "TabControl",
+    "StackPanel",
+    "Grid",
+    "RowDefinition",
+    "ColumnDefinition",
+    "Expander",
+    "Border",
+  ];
+  const controlMap = new Map(controlNames.map((name) => [name, 0]));
+
+  for (const file of pyFiles) {
+    const text = file.content;
+
+    if (/class\s+[A-Za-z_][A-Za-z0-9_]*\s*\(\s*forms\.WPFWindow\s*\)/.test(text)) {
+      hasWpfWindowClass = true;
+    }
+
+    const titleMatches = text.matchAll(/__title__\s*=\s*["']([^"']+)["']/g);
+    for (const match of titleMatches) {
+      titleSet.add(match[1].replace(/\s+/g, " ").trim());
+    }
+
+    const xamlMatches = text.matchAll(/["']([^"'\n]+\.xaml)["']/gi);
+    for (const match of xamlMatches) {
+      xamlReferenceSet.add(match[1]);
+    }
+
+    const formsMatches = text.matchAll(/\bforms\.([A-Za-z_][A-Za-z0-9_]*)\b/g);
+    for (const match of formsMatches) {
+      formsCallSet.add(match[1]);
+    }
+
+    const defMatches = text.matchAll(/^\s*def\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(/gm);
+    for (const match of defMatches) {
+      const fn = match[1];
+      functionNames.push(fn);
+      if (fn.startsWith("_on_")) {
+        eventHandlers.push(fn.replace(/^_on_/, ""));
+      }
+    }
+
+    for (const control of controlNames) {
+      const regex = new RegExp(`\\b${control}\\b`, "g");
+      const hits = text.match(regex);
+      if (hits && hits.length > 0) {
+        controlMap.set(control, (controlMap.get(control) || 0) + hits.length);
+      }
+    }
+  }
+
+  const stageRules = [
+    { terms: ["choose", "pick", "select"], label: "Selection stage" },
+    { terms: ["load", "collect", "reload", "refresh"], label: "Load and preparation stage" },
+    { terms: ["filter", "search", "scope"], label: "Filter and scope stage" },
+    { terms: ["preview", "sample", "inspect"], label: "Preview and inspection stage" },
+    { terms: ["copy", "apply", "execute", "run", "update", "swap"], label: "Execution stage" },
+    { terms: ["result", "status", "report", "summary", "output"], label: "Results and status stage" },
+  ];
+
+  const workflowStages = [];
+  const normalizedFns = functionNames.map((fn) => fn.toLowerCase());
+  for (const rule of stageRules) {
+    const hit = normalizedFns.some((fn) => rule.terms.some((term) => fn.includes(term)));
+    if (hit) {
+      workflowStages.push(rule.label);
+    }
+  }
+
+  const keyWorkflowMethods = dedupe(
+    functionNames.filter((fn) =>
+      /(^main$|^run$|^execute|^build_|^_build_|^_load|^_refresh|^_filter|^_choose|^_pick|^_select|^_copy|^_on_)/i.test(fn)
+    )
+  ).slice(0, 14);
+
+  const rankedControls = Array.from(controlMap.entries())
+    .filter((entry) => entry[1] > 0)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+  return {
+    hasPythonUi: hasWpfWindowClass || formsCallSet.size > 0 || rankedControls.length > 0,
+    hasWpfWindowClass,
+    xamlReferences: Array.from(xamlReferenceSet).sort((a, b) => a.localeCompare(b)),
+    formsCalls: Array.from(formsCallSet).sort((a, b) => a.localeCompare(b)),
+    controlCounts: rankedControls,
+    workflowStages,
+    keyWorkflowMethods,
+    eventHandlers: dedupe(eventHandlers).slice(0, 12),
+    windowTitles: Array.from(titleSet).slice(0, 6),
+  };
+}
+
+function mergeUiMockup(wpfMockup, pythonUi) {
+  const mergedControlMap = new Map();
+  for (const item of wpfMockup.controlCounts || []) {
+    mergedControlMap.set(item.name, (mergedControlMap.get(item.name) || 0) + item.count);
+  }
+  for (const item of pythonUi.controlCounts || []) {
+    mergedControlMap.set(item.name, (mergedControlMap.get(item.name) || 0) + item.count);
+  }
+
+  const controlCounts = Array.from(mergedControlMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+  const namedElements = dedupe([
+    ...(wpfMockup.namedElements || []),
+    ...(pythonUi.eventHandlers || []).map((name) => `on_${name}`),
+  ]).slice(0, 14);
+
+  const fileNames = dedupe([...(wpfMockup.fileNames || []), ...(pythonUi.xamlReferences || [])]);
+
+  const mockRows = controlCounts.slice(0, 8).map((item) => {
+    const kind = ["Button", "ComboBox", "TextBox", "CheckBox", "RadioButton", "ListBox", "DataGrid"].includes(item.name)
+      ? item.name
+      : "Block";
+    return {
+      label: item.name,
+      kind,
+      count: item.count,
+    };
+  });
+
+  return {
+    sourceType: wpfMockup.hasXaml ? "xaml" : pythonUi.hasPythonUi ? "python" : "none",
+    hasXaml: wpfMockup.hasXaml,
+    hasPythonUi: pythonUi.hasPythonUi,
+    hasWpfWindowClass: pythonUi.hasWpfWindowClass,
+    xamlLayout: wpfMockup.xamlLayout || { hasLayout: false, tabs: [], panes: [], actionButtons: [] },
+    fileNames,
+    controlCounts,
+    namedElements,
+    mockRows,
+    formsCalls: pythonUi.formsCalls || [],
+    workflowStages: pythonUi.workflowStages || [],
+    keyWorkflowMethods: pythonUi.keyWorkflowMethods || [],
+    windowTitles: pythonUi.windowTitles || [],
   };
 }
 
@@ -133,6 +496,70 @@ function buildToolPageHtml(tool, generatedAt) {
   const namedElementsHtml = tool.uiMockup.namedElements.length
     ? `<ul>${tool.uiMockup.namedElements.map((name) => `<li><code>${escapeHtml(name)}</code></li>`).join("")}</ul>`
     : "<p class=\"muted\">No x:Name elements detected.</p>";
+
+  const parserMode = tool.uiMockup.sourceType === "xaml"
+    ? "XAML + Python signals"
+    : tool.uiMockup.sourceType === "python"
+      ? "Python UI inference (WPF/forms)"
+      : "No UI artifacts detected";
+
+  const workflowStagesHtml = tool.uiMockup.workflowStages.length
+    ? `<ul>${tool.uiMockup.workflowStages.map((stage) => `<li>${escapeHtml(stage)}</li>`).join("")}</ul>`
+    : "<p class=\"muted\">No explicit staged workflow was inferred from script methods.</p>";
+
+  const workflowMethodsHtml = tool.uiMockup.keyWorkflowMethods && tool.uiMockup.keyWorkflowMethods.length
+    ? `<ul>${tool.uiMockup.keyWorkflowMethods.map((item) => `<li><code>${escapeHtml(item)}()</code></li>`).join("")}</ul>`
+    : "<p class=\"muted\">No key workflow methods detected.</p>";
+
+  const formsCallsHtml = tool.uiMockup.formsCalls.length
+    ? `<div class=\"mockup-chip-row\">${tool.uiMockup.formsCalls.map((item) => `<span class=\"mockup-chip\">forms.${escapeHtml(item)}</span>`).join("")}</div>`
+    : "<p class=\"muted\">No pyRevit forms calls detected.</p>";
+
+  const windowTitlesHtml = tool.uiMockup.windowTitles.length
+    ? `<ul>${tool.uiMockup.windowTitles.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "<p class=\"muted\">No explicit __title__ strings detected in script files.</p>";
+
+  const xamlTabsHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.tabs.length
+    ? `<div class=\"xaml-tab-row\">${tool.uiMockup.xamlLayout.tabs.map((tab, index) => `<span class=\"xaml-tab ${index === 0 ? "is-active" : ""}\">${escapeHtml(tab)}</span>`).join("")}</div>`
+    : "<p class=\"muted\">No tab headers detected in XAML.</p>";
+
+  const xamlPanesHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.panes.length
+    ? `<div class=\"xaml-pane-grid\">${tool.uiMockup.xamlLayout.panes.map((pane) => `<article class=\"xaml-pane\"><h5>${escapeHtml(pane.title)}</h5><p>${escapeHtml(pane.hint)}</p></article>`).join("")}</div>`
+    : "<p class=\"muted\">No pane/group headers detected in XAML.</p>";
+
+  const xamlActionsHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.actionButtons.length
+    ? `<div class=\"xaml-action-row\">${tool.uiMockup.xamlLayout.actionButtons.map((action) => `<span class=\"xaml-action\">${escapeHtml(action)}</span>`).join("")}</div>`
+    : "<p class=\"muted\">No command button labels detected in XAML.</p>";
+
+  const xamlGridModel = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.gridModel
+    ? tool.uiMockup.xamlLayout.gridModel
+    : { rowCount: 1, columnCount: 1, blocks: [] };
+
+  const xamlGridBlocksHtml = xamlGridModel.blocks.length
+    ? xamlGridModel.blocks.map((block) => {
+      const maxRows = clamp(Number(xamlGridModel.rowCount) || 1, 1, 12);
+      const maxCols = clamp(Number(xamlGridModel.columnCount) || 1, 1, 4);
+      const startRow = clamp((Number(block.row) || 0) + 1, 1, maxRows);
+      const startCol = clamp((Number(block.col) || 0) + 1, 1, maxCols);
+      const endRow = clamp(startRow + clamp(Number(block.rowSpan) || 1, 1, maxRows), startRow + 1, maxRows + 1);
+      const endCol = clamp(startCol + clamp(Number(block.colSpan) || 1, 1, maxCols), startCol + 1, maxCols + 1);
+      const blockClass = /button/i.test(block.tag)
+        ? "is-button"
+        : /tab/i.test(block.tag)
+          ? "is-tab"
+          : /groupbox|datagrid|listbox/i.test(block.tag)
+            ? "is-panel"
+            : "";
+
+      return `<article class=\"xaml-grid-item ${blockClass}\" style=\"grid-row:${startRow}/${endRow};grid-column:${startCol}/${endCol};\"><h6>${escapeHtml(block.tag)}</h6><p>${escapeHtml(block.label)}</p></article>`;
+    }).join("")
+    : "<p class=\"muted\">No positioned grid controls were inferred from XAML.</p>";
+
+  const xamlGridHtml = xamlGridModel.blocks.length
+    ? `<div class=\"xaml-grid-model\" style=\"--xaml-cols:${xamlGridModel.columnCount};--xaml-rows:${xamlGridModel.rowCount};\">${xamlGridBlocksHtml}</div>`
+    : xamlGridBlocksHtml;
+
+  const hasXamlWireframe = Boolean(tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.hasLayout);
 
   return `<!doctype html>
 <html lang="en">
@@ -176,9 +603,19 @@ function buildToolPageHtml(tool, generatedAt) {
       <section class="card">
         <div class="card-head">
           <span class="card-title">WPF UI Mockup</span>
-          <span class="card-hint">Derived from XAML tags and named elements in bundle files</span>
+          <span class="card-hint">Parser mode: ${escapeHtml(parserMode)}</span>
         </div>
         <div class="card-body">
+          ${hasXamlWireframe ? `
+          <div class="xaml-wireframe">
+            <h4 class="subhead">XAML Wireframe</h4>
+            ${xamlTabsHtml}
+            ${xamlPanesHtml}
+            ${xamlActionsHtml}
+            <h4 class="subhead">Grid Layout Approximation</h4>
+            ${xamlGridHtml}
+          </div>` : ""}
+
           <div class="mock-window">
             <div class="mock-window-bar">
               <span>${escapeHtml(tool.title)}</span>
@@ -189,11 +626,23 @@ function buildToolPageHtml(tool, generatedAt) {
             </div>
           </div>
 
+          <h4 class="subhead">Workflow Stages</h4>
+          ${workflowStagesHtml}
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          ${workflowMethodsHtml}
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          ${formsCallsHtml}
+
           <h4 class="subhead">Detected Controls</h4>
           ${controlsHtml}
 
           <h4 class="subhead">XAML Files</h4>
           ${xamlFilesHtml}
+
+          <h4 class="subhead">Window Titles</h4>
+          ${windowTitlesHtml}
 
           <h4 class="subhead">Named Elements</h4>
           ${namedElementsHtml}
@@ -428,7 +877,17 @@ function buildCatalog(bundleData) {
       }))
       .filter((item) => Boolean(item.content));
 
-    const uiMockup = extractWpfMockup(xamlFiles);
+    const pyFiles = relatedFiles
+      .filter((name) => name.toLowerCase().endsWith(".py"))
+      .map((name) => ({
+        name,
+        content: textFiles.get(`${dirPath}/${name}`) || "",
+      }))
+      .filter((item) => Boolean(item.content));
+
+    const wpfMockup = extractWpfMockup(xamlFiles);
+    const pythonUi = extractPythonUiSignals(pyFiles);
+    const uiMockup = mergeUiMockup(wpfMockup, pythonUi);
 
     const functionText = yamlInfo.tooltip || contextInfo.entryPoints || "See tool context and source files for behavior details.";
     const purposeText = contextInfo.purpose || "Purpose not documented in tool-context.md.";

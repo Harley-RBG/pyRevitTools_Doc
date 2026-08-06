@@ -618,6 +618,134 @@ body {
   color: var(--on-surface-var);
 }
 
+.xaml-wireframe {
+  border: 1px solid var(--outline);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f5f6f9 0%, #eef0f4 100%);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.xaml-tab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.xaml-tab {
+  border: 1px solid #bfc6d5;
+  border-bottom-color: #9aa7c2;
+  background: #eceff5;
+  color: #3c475a;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px 6px 0 0;
+  padding: 4px 10px;
+}
+
+.xaml-tab.is-active {
+  background: #ffffff;
+  color: #1f2a44;
+  border-color: #94a2c2;
+}
+
+.xaml-pane-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.xaml-pane {
+  border: 1px solid #cbd1de;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 8px;
+  min-height: 66px;
+}
+
+.xaml-pane h5 {
+  font-size: 11px;
+  margin: 0 0 4px;
+  color: #2f3b52;
+}
+
+.xaml-pane p {
+  margin: 0;
+  font-size: 10px;
+  color: #6d7483;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.xaml-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.xaml-action {
+  background: #3b4263;
+  border: 1px solid #2f3552;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+.xaml-grid-model {
+  margin-top: 8px;
+  border: 1px dashed #aeb8cd;
+  border-radius: 8px;
+  background: #f8f9fc;
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(var(--xaml-cols, 1), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--xaml-rows, 1), minmax(30px, auto));
+  max-height: 420px;
+  overflow: auto;
+}
+
+.xaml-grid-item {
+  border: 1px solid #c7cfdf;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 5px 6px;
+  min-height: 28px;
+}
+
+.xaml-grid-item h6 {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #495165;
+}
+
+.xaml-grid-item p {
+  margin: 2px 0 0;
+  font-size: 10px;
+  color: #2f3950;
+}
+
+.xaml-grid-item.is-button {
+  background: #e8edfa;
+  border-color: #9fb0d8;
+}
+
+.xaml-grid-item.is-panel {
+  background: #f6f7fb;
+  border-color: #b8c0d2;
+}
+
+.xaml-grid-item.is-tab {
+  background: #e2e8f8;
+  border-color: #8fa2cd;
+}
+
 .mock-window {
   border: 1px solid var(--outline);
   border-radius: 10px;
