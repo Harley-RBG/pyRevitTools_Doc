@@ -25,26 +25,52 @@
         <strong>Toolbar path:</strong> RBG_SYD_Tools.tab &gt; RBG Tools_Views.panel &gt; ViewStack2.stack &gt; SheetNo.pushbutton
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">SJ pyRevit / RBG Tools Views / ViewStack2</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
-          <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
+            <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> RBG Tools Views</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_filter_changed()</code></li><li><code>_select_all_visible_click()</code></li><li><code>_load_scope_rows()</code></li><li><code>_selected_sheets()</code></li><li><code>_refresh_analysis_and_params()</code></li><li><code>_selected_param_keys()</code></li><li><code>_refresh_preview()</code></li><li><code>main()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Sheet # of #</li></ul>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
-          <div class="ui-preview-canvas"><section class="ui-preview-node ui-preview-window"><div class="ui-preview-window-title">Sheet # of #</div><header><span class="ui-preview-node-tag">Window</span><span class="ui-preview-node-label">Sheet # of #</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Sheet # of #</div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Select sheet scope, filter and select target sheets, then apply default or custom parameter mapping.</div></div></section><div class="ui-preview-node ui-preview-textblock ui-preview-text">TxtModelSummary</div></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Sheet Scope</div><div class="ui-preview-node ui-preview-combobox"><span class="ui-preview-node-tag">ComboBox</span><span class="ui-preview-node-label">CmbScope</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Sheet Set</div><div class="ui-preview-node ui-preview-combobox"><span class="ui-preview-node-tag">ComboBox</span><span class="ui-preview-node-label">CmbSheetSet</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Sheet # Param</div><div class="ui-preview-node ui-preview-combobox"><span class="ui-preview-node-tag">ComboBox</span><span class="ui-preview-node-label">CmbSheetNoParam</span></div></div></section></div></section><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textbox"><span class="ui-preview-node-tag">TextBox</span><span class="ui-preview-node-label">TxtFilter</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Select All Visible</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Clear Selection</span></div></div></section><section class="ui-preview-node ui-preview-datagrid"><header><span class="ui-preview-node-tag">DataGrid</span><span class="ui-preview-node-label">GridSheets</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">Sheet No.</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">Sheet Name</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">TxtSelectionSummary</div><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Total # Param</div><div class="ui-preview-node ui-preview-combobox"><span class="ui-preview-node-tag">ComboBox</span><span class="ui-preview-node-label">CmbOfParam</span></div></div></section><section class="ui-preview-node ui-preview-datagrid"><header><span class="ui-preview-node-tag">DataGrid</span><span class="ui-preview-node-label">GridPreview</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">Sheet Name</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtemplatecolumn"><header><span class="ui-preview-node-tag">DataGridTemplateColumn</span><span class="ui-preview-node-label">Current Sheet no.</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtemplatecolumn"><header><span class="ui-preview-node-tag">DataGridTemplateColumn</span><span class="ui-preview-node-label">New Sheet no.</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtemplatecolumn"><header><span class="ui-preview-node-tag">DataGridTemplateColumn</span><span class="ui-preview-node-label">Current Of</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtemplatecolumn"><header><span class="ui-preview-node-tag">DataGridTemplateColumn</span><span class="ui-preview-node-label">New Of</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Ready.</div><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Apply Updates</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Close</span></div></div></section></div></section></div></section></div></section></div></section></div>
+          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
 
           <h4 class="subhead">Preview Sources</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
@@ -56,7 +82,7 @@
             <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Select sheet scope, filter and select target sheets, then apply default or custom parameter mapping.</h5><p>Input</p></article></div>
             <div class="xaml-action-row"><span class="xaml-action">Select All Visible</span><span class="xaml-action">Clear Selection</span><span class="xaml-action">Apply Updates</span><span class="xaml-action">Close</span></div>
             <h4 class="subhead">Grid Layout Approximation</h4>
-            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:9;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>TextBlock</h6><p>TxtModelSummary</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Sheet Scope</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>ComboBox</h6><p>CmbScope</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>TextBlock</h6><p>Sheet Set</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>ComboBox</h6><p>CmbSheetSet</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>TextBlock</h6><p>Sheet # Param</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:4/5;"><h6>ComboBox</h6><p>CmbSheetNoParam</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBox</h6><p>TxtFilter</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:2/3;"><h6>Button</h6><p>Select All Visible</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:3/4;"><h6>Button</h6><p>Clear Selection</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>DataGrid</h6><p>GridSheets</p></article><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet No.</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet Name</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>TxtSelectionSummary</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Total # Param</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:2/3;"><h6>ComboBox</h6><p>CmbOfParam</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>DataGrid</h6><p>GridPreview</p></article><article class="xaml-grid-item is-panel" style="grid-row:4/5;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Sheet Name</p></article></div>
+            <p class="muted">No positioned grid controls were inferred from XAML.</p>
           </div>
 
           <div class="mock-window">
@@ -68,15 +94,6 @@
               <div class="mock-row mock-block"><span>Grid</span><span>18</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>17</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>13</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>9</span></div><div class="mock-row mock-block"><span>DataGridTemplateColumn</span><span>8</span></div><div class="mock-row mock-block"><span>Border</span><span>6</span></div><div class="mock-row mock-button"><span>Button</span><span>4</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>4</span></div>
             </div>
           </div>
-
-          <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          <ul><li><code>_filter_changed()</code></li><li><code>_select_all_visible_click()</code></li><li><code>_load_scope_rows()</code></li><li><code>_selected_sheets()</code></li><li><code>_refresh_analysis_and_params()</code></li><li><code>_selected_param_keys()</code></li><li><code>_refresh_preview()</code></li><li><code>main()</code></li></ul>
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
 
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>18</strong></span><span class="mockup-chip">ColumnDefinition <strong>17</strong></span><span class="mockup-chip">TextBlock <strong>13</strong></span><span class="mockup-chip">RowDefinition <strong>9</strong></span><span class="mockup-chip">DataGridTemplateColumn <strong>8</strong></span><span class="mockup-chip">Border <strong>6</strong></span><span class="mockup-chip">Button <strong>4</strong></span><span class="mockup-chip">ComboBox <strong>4</strong></span><span class="mockup-chip">DataGrid <strong>4</strong></span><span class="mockup-chip">DataTemplate <strong>4</strong></span><span class="mockup-chip">DataGridTextColumn <strong>3</strong></span><span class="mockup-chip">ControlTemplate <strong>2</strong></span></div>
@@ -92,12 +109,12 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             <p class="muted">No explicit click or shift-click input hints were detected.</p>
@@ -109,10 +126,92 @@
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: 2026-08-07T05:26:20.066Z</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html">Scope Box View Creation</a></h5><p>RBG Tools Views / ViewStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-sectionupdater.html">Section Move</a></h5><p>RBG Tools Views / ViewStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-cropview.html">Crop Views Quick Off</a></h5><p>RBG Tools Views / ViewStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-gridextents.html">Grids
+2D / 3D</a></h5><p>RBG Tools Views / ShiftClick1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-levelsextents.html">Levels
+2D / 3D</a></h5><p>RBG Tools Views / ShiftClick1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html">Levels: Head Switch
+Left / Right</a></h5><p>RBG Tools Views / ShiftClick1</p></article></div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> tools/sj-pyrevit-rbg-tools-views-sheetno.html</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>

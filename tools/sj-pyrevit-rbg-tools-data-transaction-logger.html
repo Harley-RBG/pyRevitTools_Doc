@@ -25,26 +25,52 @@
         <strong>Toolbar path:</strong> RBG_SYD_Tools.tab &gt; RBG Tools_Data.panel &gt; DataStack2.stack &gt; Transaction Logger.pushbutton
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">SJ pyRevit / RBG Tools Data / DataStack2</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> `script.py`</p>
-          <p><strong>Purpose:</strong> Configure and toggle transaction logging for the active Revit session, either across the full model or targeted categories.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> `script.py`</p>
+            <p><strong>Purpose:</strong> Configure and toggle transaction logging for the active Revit session, either across the full model or targeted categories.</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> RBG Tools Data</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_on_mode_change()</code></li><li><code>_on_start()</code></li><li><code>_on_cancel()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Transaction Logger</li></ul>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
-          <div class="ui-preview-canvas"><section class="ui-preview-node ui-preview-window"><div class="ui-preview-window-title">Transaction Logger</div><header><span class="ui-preview-node-tag">Window</span><span class="ui-preview-node-label">Transaction Logger</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Capture Mode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-radiobutton"><span class="ui-preview-node-tag">RadioButton</span><span class="ui-preview-node-label">Full model + annotations</span></div><div class="ui-preview-node ui-preview-radiobutton"><span class="ui-preview-node-tag">RadioButton</span><span class="ui-preview-node-label">Targeted categories</span></div></div></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Categories</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-listbox"><header><span class="ui-preview-node-tag">ListBox</span><span class="ui-preview-node-label">lstCategories</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Snapshot Mode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-radiobutton"><span class="ui-preview-node-tag">RadioButton</span><span class="ui-preview-node-label">Off — fast, no before/after diff</span></div><div class="ui-preview-node ui-preview-radiobutton"><span class="ui-preview-node-tag">RadioButton</span><span class="ui-preview-node-label">Lazy — capture element state (enables diff)</span></div></div></section></div></section><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Cancel</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Start Logging</span></div></div></section></div></section></div></section></div>
+          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
 
           <h4 class="subhead">Preview Sources</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
@@ -56,7 +82,7 @@
             <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Capture Mode</h5><p>Stage</p></article><article class="xaml-pane"><h5>Categories</h5><p>Stage</p></article><article class="xaml-pane"><h5>Snapshot Mode</h5><p>Stage</p></article></div>
             <div class="xaml-action-row"><span class="xaml-action">Cancel</span><span class="xaml-action">Start Logging</span></div>
             <h4 class="subhead">Grid Layout Approximation</h4>
-            <div class="xaml-grid-model" style="--xaml-cols:1;--xaml-rows:5;"><article class="xaml-grid-item is-panel" style="grid-row:1/2;grid-column:1/2;"><h6>GroupBox</h6><p>Capture Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>RadioButton</h6><p>Full model + annotations</p></article><article class="xaml-grid-item is-button" style="grid-row:2/3;grid-column:1/2;"><h6>RadioButton</h6><p>Targeted categories</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>GroupBox</h6><p>Categories</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>lstCategories</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>GroupBox</h6><p>Snapshot Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>RadioButton</h6><p>Off — fast, no before/after diff</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>RadioButton</h6><p>Lazy — capture element state (enables diff)</p></article><article class="xaml-grid-item " style="grid-row:5/6;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Cancel</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Start Logging</p></article></div>
+            <p class="muted">No positioned grid controls were inferred from XAML.</p>
           </div>
 
           <div class="mock-window">
@@ -68,15 +94,6 @@
               <div class="mock-row mock-block"><span>RowDefinition</span><span>5</span></div><div class="mock-row mock-radiobutton"><span>RadioButton</span><span>4</span></div><div class="mock-row mock-block"><span>GroupBox</span><span>3</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>3</span></div><div class="mock-row mock-button"><span>Button</span><span>2</span></div><div class="mock-row mock-block"><span>Grid</span><span>2</span></div><div class="mock-row mock-listbox"><span>ListBox</span><span>1</span></div>
             </div>
           </div>
-
-          <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Results and status stage</li></ul>
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          <ul><li><code>_on_mode_change()</code></li><li><code>_on_start()</code></li><li><code>_on_cancel()</code></li></ul>
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
 
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">RowDefinition <strong>5</strong></span><span class="mockup-chip">RadioButton <strong>4</strong></span><span class="mockup-chip">GroupBox <strong>3</strong></span><span class="mockup-chip">StackPanel <strong>3</strong></span><span class="mockup-chip">Button <strong>2</strong></span><span class="mockup-chip">Grid <strong>2</strong></span><span class="mockup-chip">ListBox <strong>1</strong></span></div>
@@ -92,12 +109,12 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             <p class="muted">No explicit click or shift-click input hints were detected.</p>
@@ -109,10 +126,89 @@
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: 2026-08-07T05:26:20.066Z</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-paramcopier.html">ParamCopier</a></h5><p>RBG Tools Data / DataStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-addcoordinates.html">Add Coordinates</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-magpiegroup.html">MagpieGroup Data</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-packagecreator.html">PackageCreator Dockable Panel</a></h5><p>RBG Tools Data / DataStack3</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html">Schedule Updater</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-dashboard.html">Tool Dashboard</a></h5><p>RBG Tools Data / DataStack3</p></article></div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> tools/sj-pyrevit-rbg-tools-data-transaction-logger.html</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>

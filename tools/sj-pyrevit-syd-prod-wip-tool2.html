@@ -25,26 +25,52 @@
         <strong>Toolbar path:</strong> RBG_SYD_Tools.tab &gt; SYD_Prod_WIP.panel &gt; Josh.pulldown &gt; Tool2.pushbutton
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">SJ pyRevit / SYD Prod WIP / Josh</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
-          <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
+            <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> SYD Prod WIP</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_load_window()</code></li><li><code>_copy_viewrange()</code></li><li><code>_on_filter_changed()</code></li><li><code>_on_selection_changed()</code></li><li><code>_on_refresh()</code></li><li><code>_on_swap()</code></li><li><code>_on_copy_a_to_b()</code></li><li><code>_on_copy_b_to_a()</code></li><li><code>_on_copy_a_to_targets()</code></li><li><code>_on_close()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <p class="muted">No pyRevit forms calls detected.</p>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>Plan View Range Tool</li></ul>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
-          <div class="ui-preview-canvas"><section class="ui-preview-node ui-preview-window"><div class="ui-preview-window-title">View Range Compare + Copy</div><header><span class="ui-preview-node-tag">Window</span><span class="ui-preview-node-label">View Range Compare + Copy</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-dockpanel"><header><span class="ui-preview-node-tag">DockPanel</span><span class="ui-preview-node-label">DockPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Refresh Views</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">(each list has its own filter)</div></div></section><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Plan A</div><div class="ui-preview-node ui-preview-textbox"><span class="ui-preview-node-tag">TextBox</span><span class="ui-preview-node-label">tbFilterA</span></div><section class="ui-preview-node ui-preview-listbox"><header><span class="ui-preview-node-tag">ListBox</span><span class="ui-preview-node-label">lbPlanA</span></header><div class="ui-preview-placeholder">Interactive content</div></section><div class="ui-preview-node ui-preview-textblock ui-preview-text">Template: - | View Range Controlled: -</div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Copy A → B</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Copy B → A</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Plan B</div><div class="ui-preview-node ui-preview-textbox"><span class="ui-preview-node-tag">TextBox</span><span class="ui-preview-node-label">tbFilterB</span></div><section class="ui-preview-node ui-preview-listbox"><header><span class="ui-preview-node-tag">ListBox</span><span class="ui-preview-node-label">lbPlanB</span></header><div class="ui-preview-placeholder">Interactive content</div></section><div class="ui-preview-node ui-preview-textblock ui-preview-text">Template: - | View Range Controlled: -</div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Swap A ↔ B</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Close</span></div></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-dockpanel"><header><span class="ui-preview-node-tag">DockPanel</span><span class="ui-preview-node-label">DockPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">View Range Comparison (live)</div><div class="ui-preview-node ui-preview-checkbox"><span class="ui-preview-node-tag">CheckBox</span><span class="ui-preview-node-label">Show different planes only</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">(different rows highlighted)</div></div></section><section class="ui-preview-node ui-preview-datagrid"><header><span class="ui-preview-node-tag">DataGrid</span><span class="ui-preview-node-label">dgCompare</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">Plane</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">A Level</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">A Offset</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">B Level</span></header><div class="ui-preview-placeholder">Interactive content</div></section><section class="ui-preview-node ui-preview-datagridtextcolumn"><header><span class="ui-preview-node-tag">DataGridTextColumn</span><span class="ui-preview-node-label">B Offset</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Targets (multi-select)</div><div class="ui-preview-node ui-preview-textbox"><span class="ui-preview-node-tag">TextBox</span><span class="ui-preview-node-label">tbFilterT</span></div><section class="ui-preview-node ui-preview-listbox"><header><span class="ui-preview-node-tag">ListBox</span><span class="ui-preview-node-label">lbTargets</span></header><div class="ui-preview-placeholder">Interactive content</div></section><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Copy A → Selected Targets</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Tip: Ctrl/Shift to multi-select.</div></div></section></div></section></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Ready.</div></div></section></div></section></div></section></div>
+          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
 
           <h4 class="subhead">Preview Sources</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
@@ -56,7 +82,7 @@
             <div class="xaml-pane-grid"><article class="xaml-pane"><h5>(each list has its own filter)</h5><p>Input</p></article><article class="xaml-pane"><h5>Template: - | View Range Controlled: -</h5><p>Stage</p></article><article class="xaml-pane"><h5>View Range Comparison (live)</h5><p>Stage</p></article><article class="xaml-pane"><h5>Targets (multi-select)</h5><p>Input</p></article></div>
             <div class="xaml-action-row"><span class="xaml-action">Refresh Views</span><span class="xaml-action">Copy A → B</span><span class="xaml-action">Copy B → A</span><span class="xaml-action">Swap A ↔ B</span><span class="xaml-action">Close</span><span class="xaml-action">Copy A → Selected Targets</span></div>
             <h4 class="subhead">Grid Layout Approximation</h4>
-            <div class="xaml-grid-model" style="--xaml-cols:1;--xaml-rows:5;"><article class="xaml-grid-item is-button" style="grid-row:1/2;grid-column:1/2;"><h6>Button</h6><p>Refresh Views</p></article><article class="xaml-grid-item " style="grid-row:2/3;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item is-panel" style="grid-row:3/4;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>Button</h6><p>Copy A → B</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Copy B → A</p></article><article class="xaml-grid-item " style="grid-row:5/6;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Swap A ↔ B</p></article><article class="xaml-grid-item is-button" style="grid-row:5/6;grid-column:1/2;"><h6>Button</h6><p>Close</p></article><article class="xaml-grid-item " style="grid-row:5/6;grid-column:1/2;"><h6>CheckBox</h6><p>Show different planes only</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGrid</h6><p>DataGrid</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>Plane</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>A Level</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>A Offset</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>B Level</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>DataGridTextColumn</h6><p>B Offset</p></article><article class="xaml-grid-item " style="grid-row:5/6;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>ListBox</h6><p>ListBox</p></article></div>
+            <p class="muted">No positioned grid controls were inferred from XAML.</p>
           </div>
 
           <div class="mock-window">
@@ -68,15 +94,6 @@
               <div class="mock-row mock-block"><span>TextBlock</span><span>10</span></div><div class="mock-row mock-block"><span>SolidColorBrush</span><span>9</span></div><div class="mock-row mock-button"><span>Button</span><span>6</span></div><div class="mock-row mock-block"><span>Grid</span><span>6</span></div><div class="mock-row mock-block"><span>Border</span><span>5</span></div><div class="mock-row mock-block"><span>DataGridTextColumn</span><span>5</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>5</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>3</span></div>
             </div>
           </div>
-
-          <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          <ul><li><code>_load_window()</code></li><li><code>_copy_viewrange()</code></li><li><code>_on_filter_changed()</code></li><li><code>_on_selection_changed()</code></li><li><code>_on_refresh()</code></li><li><code>_on_swap()</code></li><li><code>_on_copy_a_to_b()</code></li><li><code>_on_copy_b_to_a()</code></li><li><code>_on_copy_a_to_targets()</code></li><li><code>_on_close()</code></li></ul>
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          <p class="muted">No pyRevit forms calls detected.</p>
 
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">TextBlock <strong>10</strong></span><span class="mockup-chip">SolidColorBrush <strong>9</strong></span><span class="mockup-chip">Button <strong>6</strong></span><span class="mockup-chip">Grid <strong>6</strong></span><span class="mockup-chip">Border <strong>5</strong></span><span class="mockup-chip">DataGridTextColumn <strong>5</strong></span><span class="mockup-chip">RowDefinition <strong>5</strong></span><span class="mockup-chip">ColumnDefinition <strong>3</strong></span><span class="mockup-chip">DataGrid <strong>3</strong></span><span class="mockup-chip">ListBox <strong>3</strong></span><span class="mockup-chip">TextBox <strong>3</strong></span><span class="mockup-chip">ControlTemplate <strong>2</strong></span></div>
@@ -92,12 +109,12 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             <p class="muted">No explicit click or shift-click input hints were detected.</p>
@@ -109,10 +126,89 @@
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: 2026-08-07T05:26:20.066Z</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-syd-prod-wip-tool1.html">Tool1</a></h5><p>SYD Prod WIP / Josh</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-addcoordinates.html">Add Coordinates</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-categorypicker.html">CategoryPicker</a></h5><p>Selection / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-sheets-cloudrevisions.html">Cloud Revisions</a></h5><p>Sheets / Sheet Tools</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-copy-state.html">Copy State</a></h5><p>Selection / memo</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-cropview.html">Crop Views Quick Off</a></h5><p>RBG Tools Views / ViewStack1</p></article></div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> tools/sj-pyrevit-syd-prod-wip-tool2.html</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>

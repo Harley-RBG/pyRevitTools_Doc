@@ -822,6 +822,127 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.wiki-toc {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.wiki-toc a {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--outline);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--on-surface-var);
+  text-decoration: none;
+  background: var(--surface-container);
+  transition: border-color 140ms var(--ease), color 140ms var(--ease), background 140ms var(--ease);
+}
+
+.wiki-toc a:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-container);
+}
+
+.wiki-toc a.is-active {
+  border-color: var(--primary);
+  color: var(--on-primary);
+  background: var(--primary);
+}
+
+.wiki-article-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  align-items: start;
+}
+
+.wiki-article-main {
+  min-width: 0;
+}
+
+.wiki-rail {
+  position: sticky;
+  top: 62px;
+  border: 1px solid var(--outline);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.wiki-rail h3 {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--on-surface-var);
+}
+
+.wiki-rail .wiki-toc {
+  margin-top: 10px;
+}
+
+.wiki-section {
+  scroll-margin-top: 60px;
+}
+
+.wiki-body > p {
+  margin: 0;
+}
+
+.wiki-meta-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.wiki-meta-grid p {
+  margin: 0;
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  background: var(--surface-container);
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.related-tool-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.related-tool-card {
+  border: 1px solid var(--outline);
+  border-radius: 10px;
+  background: var(--surface-container);
+  padding: 10px;
+}
+
+.related-tool-card h5 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.related-tool-card h5 a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.related-tool-card h5 a:hover {
+  text-decoration: underline;
+}
+
+.related-tool-card p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: var(--on-surface-var);
+}
+
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
@@ -839,6 +960,16 @@ body {
     order: 2;
     width: 100%;
   }
+
+  .wiki-article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-rail {
+    position: static;
+    top: auto;
+    padding: 10px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -848,6 +979,15 @@ body {
 
   .tab-btn,
   .panel-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wiki-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-toc a {
     width: 100%;
     justify-content: center;
   }

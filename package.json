@@ -6,6 +6,7 @@
   "scripts": {
     "bundle:update": "node scripts/update-bundle.mjs",
     "generate": "node scripts/generate-static-site.mjs",
+    "generate:dev": "node scripts/generate-static-site.mjs --index-only",
     "generate:quick": "node scripts/generate-static-site.mjs --index-only",
     "generate:full": "node scripts/generate-static-site.mjs --full-ui",
     "generate:force": "node scripts/generate-static-site.mjs --force",

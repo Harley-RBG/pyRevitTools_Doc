@@ -9,6 +9,7 @@ const toolsPagesDir = path.join(repoRoot, "tools");
 const diagnosticsDir = path.join(repoRoot, "generated");
 const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
 const generateCachePath = path.join(diagnosticsDir, "generate-cache.json");
+const toolPagesCachePath = path.join(diagnosticsDir, "tool-pages-cache.json");
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -34,12 +35,42 @@ function writeText(filePath, content) {
   fs.writeFileSync(filePath, content, "utf8");
 }
 
+function writeTextIfChanged(filePath, content) {
+  if (fs.existsSync(filePath)) {
+    const current = readText(filePath);
+    if (current === content) {
+      return false;
+    }
+  }
+
+  writeText(filePath, content);
+  return true;
+}
+
+function writeTextIfChangedWithTransform(filePath, content, transform) {
+  const normalize = typeof transform === "function" ? transform : (value) => value;
+  if (fs.existsSync(filePath)) {
+    const current = readText(filePath);
+    if (normalize(current) === normalize(content)) {
+      return false;
+    }
+  }
+
+  writeText(filePath, content);
+  return true;
+}
+
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
 
 function writeJson(filePath, value) {
   writeText(filePath, JSON.stringify(value, null, 2));
+}
+
+function writeJsonIfChanged(filePath, value) {
+  const json = JSON.stringify(value, null, 2);
+  return writeTextIfChanged(filePath, json);
 }
 
 function readJsonIfExists(filePath) {
@@ -84,6 +115,17 @@ function clearGeneratedHtmlFiles(dirPath) {
       fs.unlinkSync(path.join(dirPath, entry.name));
     }
   }
+}
+
+function listHtmlFiles(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".html"))
+    .map((entry) => entry.name);
 }
 
 function asArray(value) {
@@ -761,7 +803,7 @@ function mergeUiMockup(wpfMockup, pythonUi) {
   };
 }
 
-function buildToolPageHtml(tool, generatedAt) {
+function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
   const inputsHtml = tool.inputs.length
     ? `<ul>${tool.inputs.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No explicit click or shift-click input hints were detected.</p>";
@@ -858,6 +900,10 @@ function buildToolPageHtml(tool, generatedAt) {
 
   const hasXamlWireframe = Boolean(tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.hasLayout);
 
+  const relatedToolsHtml = relatedTools.length
+    ? `<div class="related-tool-grid">${relatedTools.map((item) => `<article class="related-tool-card"><h5><a href="../${escapeHtml(item.pagePath)}">${escapeHtml(item.title)}</a></h5><p>${escapeHtml(item.panel)} / ${escapeHtml(item.stack)}</p></article>`).join("")}</div>`
+    : "<p class=\"muted\">No nearby tools were inferred for this panel yet.</p>";
+
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -885,24 +931,50 @@ function buildToolPageHtml(tool, generatedAt) {
         <strong>Toolbar path:</strong> ${escapeHtml(tool.location)}
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">${escapeHtml(tool.tab)} / ${escapeHtml(tool.panel)} / ${escapeHtml(tool.stack)}</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> ${escapeHtml(tool.function)}</p>
-          <p><strong>Purpose:</strong> ${escapeHtml(tool.purpose)}</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> ${escapeHtml(tool.function)}</p>
+            <p><strong>Purpose:</strong> ${escapeHtml(tool.purpose)}</p>
+            <p><strong>Toolbar tab:</strong> ${escapeHtml(tool.tab)}</p>
+            <p><strong>Panel:</strong> ${escapeHtml(tool.panel)}</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          ${workflowStagesHtml}
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          ${workflowMethodsHtml}
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          ${formsCallsHtml}
+
+          <h4 class="subhead">Window Titles</h4>
+          ${windowTitlesHtml}
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: ${escapeHtml(parserMode)}</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
           ${previewTreeHtml}
 
@@ -929,15 +1001,6 @@ function buildToolPageHtml(tool, generatedAt) {
             </div>
           </div>
 
-          <h4 class="subhead">Workflow Stages</h4>
-          ${workflowStagesHtml}
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          ${workflowMethodsHtml}
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          ${formsCallsHtml}
-
           <h4 class="subhead">Detected Controls</h4>
           ${controlsHtml}
 
@@ -952,12 +1015,12 @@ function buildToolPageHtml(tool, generatedAt) {
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             ${inputsHtml}
@@ -969,24 +1032,173 @@ function buildToolPageHtml(tool, generatedAt) {
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: ${generatedAt}</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          ${relatedToolsHtml}
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> ${generatedAt}</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> ${escapeHtml(tool.pagePath)}</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>`;
 }
 
-function writeToolPages(tools, generatedAt) {
-  clearGeneratedHtmlFiles(toolsPagesDir);
+function writeToolPages(tools, generatedAt, options = {}) {
+  ensureDir(toolsPagesDir);
+
+  const mode = options.mode || "fast";
+  const cache = readJsonIfExists(toolPagesCachePath) || {};
+  const previous = (cache.byMode && cache.byMode[mode] && cache.byMode[mode].pages) || {};
+  const nextPages = {};
+  const expected = new Set();
+
+  let written = 0;
+  let skipped = 0;
+  let deleted = 0;
 
   for (const tool of tools) {
-    const html = buildToolPageHtml(tool, generatedAt);
-    const outputPath = path.join(repoRoot, tool.pagePath);
+    const pagePath = tool.pagePath.replace(/\\/g, "/");
+    expected.add(pagePath);
+
+    const relatedTools = tools
+      .filter((candidate) => candidate.id !== tool.id)
+      .map((candidate) => {
+        const samePanel = candidate.panel === tool.panel;
+        const sameStack = candidate.stack === tool.stack;
+        const sameTab = candidate.tab === tool.tab;
+        const score = (sameStack ? 3 : 0) + (samePanel ? 2 : 0) + (sameTab ? 1 : 0);
+        return { candidate, score };
+      })
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title))
+      .slice(0, 6)
+      .map((entry) => ({
+        title: entry.candidate.title,
+        pagePath: entry.candidate.pagePath,
+        panel: entry.candidate.panel,
+        stack: entry.candidate.stack,
+      }));
+
+    const html = buildToolPageHtml(tool, generatedAt, relatedTools);
+    const stableHtml = html.replace(`Generated: ${generatedAt}`, "Generated: __GENERATED_AT__");
+    const pageHash = sha1Text(stableHtml);
+    nextPages[pagePath] = { hash: pageHash };
+
+    const outputPath = path.join(repoRoot, pagePath);
+    const prevHash = previous[pagePath] ? previous[pagePath].hash : null;
+    if (prevHash === pageHash && fs.existsSync(outputPath)) {
+      skipped += 1;
+      continue;
+    }
+
     ensureDir(path.dirname(outputPath));
     writeText(outputPath, html);
+    written += 1;
   }
+
+  for (const fileName of listHtmlFiles(toolsPagesDir)) {
+    const rel = `tools/${fileName}`;
+    if (expected.has(rel)) {
+      continue;
+    }
+    fs.unlinkSync(path.join(toolsPagesDir, fileName));
+    deleted += 1;
+  }
+
+  const nextCache = {
+    byMode: {
+      ...((cache && cache.byMode) || {}),
+      [mode]: {
+        generatedAt,
+        pages: nextPages,
+      },
+    },
+  };
+  writeJson(toolPagesCachePath, nextCache);
+
+  return {
+    written,
+    skipped,
+    deleted,
+    total: tools.length,
+  };
 }
 
 function parseBundle(bundleText) {
@@ -1729,13 +1941,18 @@ function main() {
   payload.meta.coverage = diagnostics.metadataCoverage;
   payload.meta.duplicateTitles = diagnostics.duplicateTitles.length;
 
+  const normalizeGeneratedAt = (value) =>
+    String(value).replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z/g, "__GENERATED_AT__");
+
   ensureDir(diagnosticsDir);
-  writeJson(diagnosticsPath, diagnostics);
+  const diagnosticsText = JSON.stringify(diagnostics, null, 2);
+  const diagnosticsWritten = writeTextIfChangedWithTransform(diagnosticsPath, diagnosticsText, normalizeGeneratedAt);
 
   const html = buildHtml(payload, diagnostics, generatedAt, bundleData.allPaths.length);
-  writeText(htmlPath, html);
+  const indexWritten = writeTextIfChangedWithTransform(htmlPath, html, normalizeGeneratedAt);
+  let pageStats = null;
   if (options.writeToolPages) {
-    writeToolPages(payload.tools, generatedAt);
+    pageStats = writeToolPages(payload.tools, generatedAt, options);
   }
   const nextCache = {
     byMode: {
@@ -1755,7 +1972,11 @@ function main() {
     `Generated ${path.basename(htmlPath)} from ${path.basename(bundlePath)}`,
     `Mode: ${options.mode}`,
     `Tools: ${payload.tools.length}`,
-    options.writeToolPages ? `Tool pages: ${payload.tools.length}` : "Tool pages: skipped",
+    options.writeToolPages
+      ? `Tool pages: ${pageStats.written} written, ${pageStats.skipped} skipped, ${pageStats.deleted} deleted`
+      : "Tool pages: skipped",
+    `Index: ${indexWritten ? "written" : "skipped"}`,
+    `Diagnostics file: ${diagnosticsWritten ? "written" : "skipped"}`,
     `Tabs: ${payload.tree.length}`,
     `Files in bundle: ${payload.meta.totalFiles}`,
     `Diagnostics: ${path.relative(repoRoot, diagnosticsPath)}`,

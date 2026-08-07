@@ -25,24 +25,50 @@
         <strong>Toolbar path:</strong> JasonHacksRevit.tab &gt; Selection.panel &gt; memo.stack &gt; Paste State.pushbutton
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">SJ pyRevit / Selection / memo</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
-          <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> See tool context and source files for behavior details.</p>
+            <p><strong>Purpose:</strong> Purpose not documented in tool-context.md.</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> Selection</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_on_mouse_down()</code></li><li><code>_on_select_all()</code></li><li><code>_on_clear_all()</code></li><li><code>_on_ok()</code></li><li><code>_on_cancel()</code></li><li><code>_on_paste()</code></li><li><code>_on_selection()</code></li><li><code>_on_double_click()</code></li><li><code>_on_filter()</code></li><li><code>_on_select_active()</code></li><li><code>_on_list_mouse_down()</code></li><li><code>_on_check_all()</code></li><li><code>_on_uncheck_all()</code></li><li><code>_on_toggle()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.CommandSwitchWindow</span><span class="mockup-chip">forms.select_viewtemplates</span></div>
+
+          <h4 class="subhead">Window Titles</h4>
+          <p class="muted">No explicit __title__ strings detected in script files.</p>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: Python UI inference (WPF/forms)</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
           <p class="muted">No parsed XAML preview is available for this tool yet.</p>
 
@@ -61,15 +87,6 @@
             </div>
           </div>
 
-          <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Execution stage</li></ul>
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          <ul><li><code>_on_mouse_down()</code></li><li><code>_on_select_all()</code></li><li><code>_on_clear_all()</code></li><li><code>_on_ok()</code></li><li><code>_on_cancel()</code></li><li><code>_on_paste()</code></li><li><code>_on_selection()</code></li><li><code>_on_double_click()</code></li><li><code>_on_filter()</code></li><li><code>_on_select_active()</code></li><li><code>_on_list_mouse_down()</code></li><li><code>_on_check_all()</code></li><li><code>_on_uncheck_all()</code></li><li><code>_on_toggle()</code></li></ul>
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.CommandSwitchWindow</span><span class="mockup-chip">forms.select_viewtemplates</span></div>
-
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>153</strong></span><span class="mockup-chip">RowDefinition <strong>56</strong></span><span class="mockup-chip">Button <strong>37</strong></span><span class="mockup-chip">TextBlock <strong>35</strong></span><span class="mockup-chip">StackPanel <strong>32</strong></span><span class="mockup-chip">ColumnDefinition <strong>28</strong></span><span class="mockup-chip">Border <strong>20</strong></span><span class="mockup-chip">ListBox <strong>11</strong></span><span class="mockup-chip">CheckBox <strong>10</strong></span><span class="mockup-chip">TextBox <strong>3</strong></span><span class="mockup-chip">ComboBox <strong>1</strong></span></div>
 
@@ -84,12 +101,12 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             <p class="muted">No explicit click or shift-click input hints were detected.</p>
@@ -101,10 +118,89 @@
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: 2026-08-07T05:26:20.066Z</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-copy-state.html">Copy State</a></h5><p>Selection / memo</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-categorypicker.html">CategoryPicker</a></h5><p>Selection / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-mclear.html">MClear</a></h5><p>Selection / Memory</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-mdeduct.html">MDeduct</a></h5><p>Selection / Memory</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-next.html">Next</a></h5><p>Selection / Memory</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-prev.html">Prev</a></h5><p>Selection / Memory</p></article></div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> tools/sj-pyrevit-selection-paste-state.html</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>

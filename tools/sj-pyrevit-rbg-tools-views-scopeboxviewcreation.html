@@ -25,26 +25,52 @@
         <strong>Toolbar path:</strong> RBG_SYD_Tools.tab &gt; RBG Tools_Views.panel &gt; ViewStack2.stack &gt; ScopeBoxViewCreation.pushbutton
       </div>
 
-      <section class="card">
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
         <div class="card-head">
-          <span class="card-title">Tool Overview</span>
+          <span class="card-title">Overview</span>
           <span class="card-hint">SJ pyRevit / RBG Tools Views / ViewStack2</span>
         </div>
-        <div class="card-body tool-page-summary">
+        <div class="card-body tool-page-summary wiki-body">
           <a class="back-link" href="../index.html">← Back to catalog</a>
-          <p><strong>Function:</strong> `script.py` `ViewCreator.xaml`</p>
-          <p><strong>Purpose:</strong> Create and lay out views on sheets from a scope-box driven workflow with a WPF creator and selector interface.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> `script.py` `ViewCreator.xaml`</p>
+            <p><strong>Purpose:</strong> Create and lay out views on sheets from a scope-box driven workflow with a WPF creator and selector interface.</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> RBG Tools Views</p>
+          </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Detected operational flow from scripts</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Workflow Stages</h4>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>_build_section_basis()</code></li><li><code>build_remapped_view_range_signature()</code></li><li><code>_build_creator_element_row()</code></li><li><code>build_existing_view_map()</code></li><li><code>build_existing_view_map_for_creator()</code></li><li><code>build_existing_sheet_numbers()</code></li><li><code>build_placed_view_id_set()</code></li><li><code>build_viewport_index_by_view_id()</code></li><li><code>build_scope_frame()</code></li><li><code>build_section_box()</code></li><li><code>build_grid_positions()</code></li><li><code>build_grid_positions_with_rows()</code></li><li><code>build_vertical_stack_positions()</code></li><li><code>build_plan_top_sections_positions()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>View Creator / Selector</li></ul>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="ui-preview">
         <div class="card-head">
           <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: XAML + Python signals</span>
         </div>
-        <div class="card-body">
+        <div class="card-body wiki-body">
           <h4 class="subhead">Rendered Preview</h4>
-          <div class="ui-preview-canvas"><section class="ui-preview-node ui-preview-window"><div class="ui-preview-window-title">View Creator / Selector</div><header><span class="ui-preview-node-tag">Window</span><span class="ui-preview-node-label">View Creator / Selector</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Create and Layout Views on Sheets from Creator or Selector</div><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">stageInputPane</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-scrollviewer"><header><span class="ui-preview-node-tag">ScrollViewer</span><span class="ui-preview-node-label">ScrollViewer</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-tabcontrol"><header><span class="ui-preview-node-tag">TabControl</span><span class="ui-preview-node-label">tabWorkflow</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-tabitem"><header><span class="ui-preview-node-tag">TabItem</span><span class="ui-preview-node-label">1. View Set</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Source Mode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">pnlCreatorMode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">pnlSelectorMode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">1. View Selector Filters</span></header></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">2. Existing Views</span></header></section><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Run Stage 1: Collect Selected Views</span></div></div></section></div></section></div></section><section class="ui-preview-node ui-preview-tabitem"><header><span class="ui-preview-node-tag">TabItem</span><span class="ui-preview-node-label">2. Section Snapshot</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Section Snapshot Controls</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Section Snapshot Row Manager</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Stage 1 View Name Editor</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-tabitem"><header><span class="ui-preview-node-tag">TabItem</span><span class="ui-preview-node-label">3. Sheet Layout</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">5. Layout Type</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">6. Create Mode</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">7. Sheet Settings</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">8. Post-Create Stages</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header></section></div></section></div></section></div></section></div></section></div></section></div></section><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">btnPreview</span></div><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">bdrProgress</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Running...</div></div></section></div></section></div></section><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">stageSnapshotPane</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-dockpanel"><header><span class="ui-preview-node-tag">DockPanel</span><span class="ui-preview-node-label">DockPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Refresh</span></div><div class="ui-preview-node ui-preview-textblock ui-preview-text">Stage 2 snapshot: rendered rows with Plan View (left) and Section View (right).</div></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-scrollviewer"><header><span class="ui-preview-node-tag">ScrollViewer</span><span class="ui-preview-node-label">ScrollViewer</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">spStage2SnapshotRows</span></header></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">stageLayoutPane</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">txtSummary</div><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">bdrWarnings</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">txtWarnings</div></div></section></div></section><section class="ui-preview-node ui-preview-tabcontrol"><header><span class="ui-preview-node-tag">TabControl</span><span class="ui-preview-node-label">tabStage2Pane</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-tabitem"><header><span class="ui-preview-node-tag">TabItem</span><span class="ui-preview-node-label">Assignments</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Creator Assignment Manager</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-checkbox"><span class="ui-preview-node-tag">CheckBox</span><span class="ui-preview-node-label">Advanced Mode</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Select All</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Clear Selection</span></div></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header></section></div></section><section class="ui-preview-node ui-preview-datagrid"><header><span class="ui-preview-node-tag">DataGrid</span><span class="ui-preview-node-label">dgCreatorAssignments</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section></div></section><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Selector Layout Manager</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Selected Views</div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Select All</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Clear Selection</span></div></div></section><section class="ui-preview-node ui-preview-border"><header><span class="ui-preview-node-tag">Border</span><span class="ui-preview-node-label">Border</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header></section></div></section><section class="ui-preview-node ui-preview-datagrid"><header><span class="ui-preview-node-tag">DataGrid</span><span class="ui-preview-node-label">dgSelectorAssignments</span></header><div class="ui-preview-placeholder">Interactive content</div></section></div></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-tabitem"><header><span class="ui-preview-node-tag">TabItem</span><span class="ui-preview-node-label">Sheet Preview</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-groupbox"><header><span class="ui-preview-node-tag">GroupBox</span><span class="ui-preview-node-label">Preview</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-dockpanel"><header><span class="ui-preview-node-tag">DockPanel</span><span class="ui-preview-node-label">DockPanel</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-grid"><header><span class="ui-preview-node-tag">Grid</span><span class="ui-preview-node-label">Grid</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Select source data, then click Preview.</div><div class="ui-preview-node ui-preview-checkbox"><span class="ui-preview-node-tag">CheckBox</span><span class="ui-preview-node-label">Summary-only for very large sets</span></div><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Sheet Limit</div><div class="ui-preview-node ui-preview-combobox"><span class="ui-preview-node-tag">ComboBox</span><span class="ui-preview-node-label">cbPreviewCardLimit</span></div></div></section><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Reset Free-Form Positions</span></div></div></section><section class="ui-preview-node ui-preview-wrappanel"><header><span class="ui-preview-node-tag">WrapPanel</span><span class="ui-preview-node-label">WrapPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-textblock ui-preview-text">Free-Form Align</div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Views Bottom</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Views Left</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Titles Baseline</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Titles Left</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">Clear Selection</span></div></div></section><section class="ui-preview-node ui-preview-scrollviewer"><header><span class="ui-preview-node-tag">ScrollViewer</span><span class="ui-preview-node-label">ScrollViewer</span></header><div class="ui-preview-children"><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">spPreviewCards</span></header></section></div></section></div></section></div></section></div></section></div></section></div></section></div></section><section class="ui-preview-node ui-preview-stackpanel"><header><span class="ui-preview-node-tag">StackPanel</span><span class="ui-preview-node-label">StackPanel</span></header><div class="ui-preview-children"><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">btnCreate</span></div><div class="ui-preview-node ui-preview-button"><span class="ui-preview-node-tag">Button</span><span class="ui-preview-node-label">btnCancel</span></div></div></section></div></section></div></section></div>
+          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
 
           <h4 class="subhead">Preview Sources</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
@@ -56,7 +82,7 @@
             <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Source Mode</h5><p>Input</p></article><article class="xaml-pane"><h5>Creator Source</h5><p>Input</p></article><article class="xaml-pane"><h5>1. Scope Box Selection</h5><p>Input</p></article><article class="xaml-pane"><h5>1. Category Selection</h5><p>Input</p></article><article class="xaml-pane"><h5>2. Element Selection (Number -&gt; Base Level -&gt; Type Name)</h5><p>Input</p></article><article class="xaml-pane"><h5>2. Level Filter</h5><p>Input</p></article><article class="xaml-pane"><h5>3. Applicable Levels</h5><p>Stage</p></article><article class="xaml-pane"><h5>3. Element Instances</h5><p>Stage</p></article></div>
             <div class="xaml-action-row"><span class="xaml-action">Select Visible</span><span class="xaml-action">Clear Visible</span><span class="xaml-action">Run Stage 1: Create/Collect Views</span><span class="xaml-action">Run Stage 1: Collect Selected Views</span><span class="xaml-action">Pick Plan Rotation</span><span class="xaml-action">Pick Section Alignment (Aligned)</span><span class="xaml-action">Apply To Selected Rows</span><span class="xaml-action">Read Current Extents</span></div>
             <h4 class="subhead">Grid Layout Approximation</h4>
-            <div class="xaml-grid-model" style="--xaml-cols:4;--xaml-rows:12;"><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBlock</h6><p>Create and Layout Views on Sheets from Creator or Selector</p></article><article class="xaml-grid-item is-tab" style="grid-row:1/2;grid-column:1/2;"><h6>TabItem</h6><p>1. View Set</p></article><article class="xaml-grid-item is-panel" style="grid-row:2/3;grid-column:1/2;"><h6>GroupBox</h6><p>Source Mode</p></article><article class="xaml-grid-item is-button" style="grid-row:3/4;grid-column:1/2;"><h6>RadioButton</h6><p>View Creator</p></article><article class="xaml-grid-item is-button" style="grid-row:4/5;grid-column:1/2;"><h6>RadioButton</h6><p>View Selector</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>StackPanel</h6><p>StackPanel</p></article><article class="xaml-grid-item is-panel" style="grid-row:5/6;grid-column:1/2;"><h6>GroupBox</h6><p>Creator Source</p></article><article class="xaml-grid-item is-button" style="grid-row:6/7;grid-column:1/2;"><h6>RadioButton</h6><p>Scope Boxes</p></article><article class="xaml-grid-item is-button" style="grid-row:7/8;grid-column:1/2;"><h6>RadioButton</h6><p>Element Selection</p></article><article class="xaml-grid-item is-panel" style="grid-row:8/9;grid-column:1/2;"><h6>GroupBox</h6><p>1. Scope Box Selection</p></article><article class="xaml-grid-item " style="grid-row:9/10;grid-column:1/2;"><h6>TextBox</h6><p>TextBox</p></article><article class="xaml-grid-item " style="grid-row:10/11;grid-column:1/2;"><h6>ComboBox</h6><p>ComboBox</p></article><article class="xaml-grid-item " style="grid-row:11/12;grid-column:1/2;"><h6>CheckBox</h6><p>CheckBox</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>ListBox</h6><p>lbScopeBoxes</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>GroupBox</h6><p>1. Category Selection</p></article><article class="xaml-grid-item " style="grid-row:12/13;grid-column:1/2;"><h6>TextBox</h6><p>tbCreatorCategoryFilter</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>ListBox</h6><p>lbCreatorCategories</p></article><article class="xaml-grid-item is-panel" style="grid-row:12/13;grid-column:1/2;"><h6>GroupBox</h6><p>GroupBox</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:1/2;"><h6>TextBox</h6><p>tbCreatorTypeFilter</p></article><article class="xaml-grid-item " style="grid-row:1/2;grid-column:3/4;"><h6>ComboBox</h6><p>cbCreatorGroupFilterField</p></article></div>
+            <p class="muted">No positioned grid controls were inferred from XAML.</p>
           </div>
 
           <div class="mock-window">
@@ -68,15 +94,6 @@
               <div class="mock-row mock-block"><span>Grid</span><span>141</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>130</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>102</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>64</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>41</span></div><div class="mock-row mock-block"><span>DataGridTextColumn</span><span>32</span></div><div class="mock-row mock-button"><span>Button</span><span>31</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>31</span></div>
             </div>
           </div>
-
-          <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Filter and scope stage</li><li>Preview and inspection stage</li><li>Execution stage</li><li>Results and status stage</li></ul>
-
-          <h4 class="subhead">Key Workflow Methods</h4>
-          <ul><li><code>_build_section_basis()</code></li><li><code>build_remapped_view_range_signature()</code></li><li><code>_build_creator_element_row()</code></li><li><code>build_existing_view_map()</code></li><li><code>build_existing_view_map_for_creator()</code></li><li><code>build_existing_sheet_numbers()</code></li><li><code>build_placed_view_id_set()</code></li><li><code>build_viewport_index_by_view_id()</code></li><li><code>build_scope_frame()</code></li><li><code>build_section_box()</code></li><li><code>build_grid_positions()</code></li><li><code>build_grid_positions_with_rows()</code></li><li><code>build_vertical_stack_positions()</code></li><li><code>build_plan_top_sections_positions()</code></li></ul>
-
-          <h4 class="subhead">Detected Forms Calls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span><span class="mockup-chip">forms.WPFWindow</span></div>
 
           <h4 class="subhead">Detected Controls</h4>
           <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>141</strong></span><span class="mockup-chip">ColumnDefinition <strong>130</strong></span><span class="mockup-chip">TextBlock <strong>102</strong></span><span class="mockup-chip">StackPanel <strong>64</strong></span><span class="mockup-chip">ComboBox <strong>41</strong></span><span class="mockup-chip">DataGridTextColumn <strong>32</strong></span><span class="mockup-chip">Button <strong>31</strong></span><span class="mockup-chip">RowDefinition <strong>31</strong></span><span class="mockup-chip">TextBox <strong>29</strong></span><span class="mockup-chip">GroupBox <strong>25</strong></span><span class="mockup-chip">DataGridTemplateColumn <strong>16</strong></span><span class="mockup-chip">CheckBox <strong>14</strong></span></div>
@@ -92,12 +109,12 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card wiki-section" id="implementation">
         <div class="card-head">
-          <span class="card-title">Tool Functionality Details</span>
+          <span class="card-title">Implementation</span>
           <span class="card-hint">Inputs and bundle file coverage</span>
         </div>
-        <div class="card-body tool-detail-grid">
+        <div class="card-body tool-detail-grid wiki-body">
           <div>
             <h4 class="subhead">Inputs</h4>
             <p class="muted">No explicit click or shift-click input hints were detected.</p>
@@ -109,10 +126,92 @@
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: 2026-08-07T05:26:20.066Z</p>
-        <p>Source: bundle.md</p>
-      </footer>
+      <section class="card wiki-section" id="related-tools">
+        <div class="card-head">
+          <span class="card-title">Related Tools</span>
+          <span class="card-hint">Nearby panel and stack affinity</span>
+        </div>
+        <div class="card-body wiki-body">
+          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-sectionupdater.html">Section Move</a></h5><p>RBG Tools Views / ViewStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-sheetno.html">SheetNo</a></h5><p>RBG Tools Views / ViewStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-cropview.html">Crop Views Quick Off</a></h5><p>RBG Tools Views / ViewStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-gridextents.html">Grids
+2D / 3D</a></h5><p>RBG Tools Views / ShiftClick1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-levelsextents.html">Levels
+2D / 3D</a></h5><p>RBG Tools Views / ShiftClick1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html">Levels: Head Switch
+Left / Right</a></h5><p>RBG Tools Views / ShiftClick1</p></article></div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="provenance">
+        <div class="card-head">
+          <span class="card-title">Provenance</span>
+          <span class="card-hint">Build and source traceability</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
+          <p><strong>Source:</strong> bundle.md</p>
+          <p><strong>Page:</strong> tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html</p>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
+            <a class="wiki-toc-link" href="#implementation">Implementation</a>
+            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
+            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+          </nav>
+        </aside>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
   </body>
 </html>

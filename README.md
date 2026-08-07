@@ -6,6 +6,7 @@ The runtime output is:
 
 - `index.html` (includes inline JavaScript + embedded tool data)
 - `styles.css`
+- `tools/*.html` (tool detail pages)
 
 ## How It Works
 
@@ -24,6 +25,12 @@ The updater keeps a local cache at `generated/bundle-cache.json` and reuses unch
 - Purpose/constraints/notes from `tool-context.md` where available
 
 It then rewrites `index.html` with updated catalog data and writes parser diagnostics to `generated/catalog-diagnostics.json`.
+When tool pages are enabled, it performs hash-based incremental updates so unchanged `tools/*.html` files are skipped.
+The generator also skips rewriting `index.html` and diagnostics when only generated timestamp values changed.
+
+Tool page cache location:
+
+- `generated/tool-pages-cache.json`
 
 ## Update Workflow
 
@@ -41,6 +48,12 @@ npm run generate
 ```
 
 `generate` now runs in a lightweight mode and skips the rebuild entirely when `bundle.md` is unchanged.
+
+For iterative UI/content work on the homepage only:
+
+```bash
+npm run generate:dev
+```
 
 For the fastest refresh (index + diagnostics only, no tool page rebuild):
 
@@ -65,6 +78,8 @@ npm run generate:full   # heavier full UI preview parsing
 npm run generate:force  # force rebuild even when bundle.md is unchanged
 npm run site:update:quick  # bundle update + quick generate
 ```
+
+`generate:force` still rebuilds index/diagnostics, but tool pages now use content comparison and skip unchanged files.
 
 4. Open `index.html` directly, or run a local preview server:
 
@@ -114,9 +129,40 @@ This file prepends `C:\node` and `C:\nvm` to `PATH` and runs `npm run site:updat
 - The page header includes metadata coverage stats and fallback counts for quick QA.
 - Full diagnostics are written to `generated/catalog-diagnostics.json` on each run.
 - `.nojekyll` is included at repo root so GitHub Pages serves this as a static site without Jekyll processing.
+- Incremental tool page write stats are shown in generate output (`written`, `skipped`, `deleted`).
 - Optional source override for bundle updates:
 
 ```bash
 node scripts/update-bundle.mjs --source="P:\\Production\\Computational\\RBG_pyRevit\\Extension\\RBG_SYD.extension"
 ```
+
+## Wiki Refactor Roadmap
+
+Phase 1: Information Architecture (in progress)
+
+- Keep landing page as the catalog + navigation shell.
+- Treat each tool page as a mini wiki article with consistent sections (overview, workflow, UI, implementation, provenance).
+- Prioritize panel-first browsing and tool-level deep links.
+- Implemented: section anchor navigation on generated tool pages for faster in-page scanning.
+- Implemented: sticky right-side page progress rail with active section highlighting.
+- Implemented: related-tools recommendations at the end of each tool page using tab/panel/stack affinity.
+
+Phase 2: Preview Fidelity Tiers
+
+- Tier 1: Real screenshots (best, when available in source docs).
+- Tier 2: Parsed XAML visual approximation (structured layout + controls).
+- Tier 3: Python/forms inference (workflow and control hints).
+- Tier 4: Technical fallback (control tags, names, source files).
+
+Phase 3: Telemetry Snapshot Ingestion
+
+- Generate static telemetry snapshots during build (no runtime network calls).
+- Surface usage totals and trend summaries on landing and tool pages.
+- Keep GitHub Pages output static-only and cache-friendly.
+
+Phase 4: Publishing and Validation
+
+- Validate parser coverage changes with `generated/catalog-diagnostics.json`.
+- Run quick mode during iteration; run full mode before publish.
+- Use incremental write stats to monitor churn and generation cost over time.
   
