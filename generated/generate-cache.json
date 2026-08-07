@@ -1,0 +1,25 @@
+{
+  "byMode": {
+    "fast": {
+      "generatedAt": "2026-08-07T05:26:09.654Z",
+      "mode": "fast",
+      "bundleSha1": "ed1af0df623313eb6a0fd9acc3168f8c1e2f6193",
+      "tools": 38,
+      "filesInBundle": 312
+    },
+    "full": {
+      "generatedAt": "2026-08-07T05:26:20.066Z",
+      "mode": "full",
+      "bundleSha1": "ed1af0df623313eb6a0fd9acc3168f8c1e2f6193",
+      "tools": 38,
+      "filesInBundle": 312
+    },
+    "quick": {
+      "generatedAt": "2026-08-07T05:28:34.021Z",
+      "mode": "quick",
+      "bundleSha1": "ed1af0df623313eb6a0fd9acc3168f8c1e2f6193",
+      "tools": 38,
+      "filesInBundle": 312
+    }
+  }
+}

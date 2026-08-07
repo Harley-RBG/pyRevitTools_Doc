@@ -40,6 +40,14 @@ npm run bundle:update
 npm run generate
 ```
 
+`generate` now runs in a lightweight mode and skips the rebuild entirely when `bundle.md` is unchanged.
+
+For the fastest refresh (index + diagnostics only, no tool page rebuild):
+
+```bash
+npm run generate:quick
+```
+
 Or run both in one step:
 
 ```bash
@@ -49,6 +57,14 @@ npm run site:update
 Note: when the source is on a network drive (for example `P:`), `bundle:update` can take a while.
 The script now prints scan and progress checkpoints (`Progress: x/total files`) so you can see it is actively working.
 `site:update` runs two separate steps by design: first `bundle:update`, then `generate`. It should not rescan unchanged source file contents on every run anymore.
+
+Optional generation modes:
+
+```bash
+npm run generate:full   # heavier full UI preview parsing
+npm run generate:force  # force rebuild even when bundle.md is unchanged
+npm run site:update:quick  # bundle update + quick generate
+```
 
 4. Open `index.html` directly, or run a local preview server:
 

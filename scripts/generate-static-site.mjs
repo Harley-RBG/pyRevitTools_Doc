@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 
 const repoRoot = process.cwd();
 const bundlePath = path.join(repoRoot, "bundle.md");
@@ -7,6 +8,23 @@ const htmlPath = path.join(repoRoot, "index.html");
 const toolsPagesDir = path.join(repoRoot, "tools");
 const diagnosticsDir = path.join(repoRoot, "generated");
 const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
+const generateCachePath = path.join(diagnosticsDir, "generate-cache.json");
+
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const quick = args.includes("--index-only");
+  const fullUi = args.includes("--full-ui");
+  const skipIfUnchanged = !args.includes("--force");
+
+  return {
+    mode: quick ? "quick" : fullUi ? "full" : "fast",
+    includeHeavyUi: fullUi,
+    includeUiSignals: !quick,
+    writeToolPages: !quick,
+    skipIfUnchanged,
+    progress: true,
+  };
+}
 
 function readText(filePath) {
   return fs.readFileSync(filePath, "utf8");
@@ -22,6 +40,22 @@ function ensureDir(dirPath) {
 
 function writeJson(filePath, value) {
   writeText(filePath, JSON.stringify(value, null, 2));
+}
+
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(readText(filePath));
+  } catch {
+    return null;
+  }
+}
+
+function sha1Text(value) {
+  return crypto.createHash("sha1").update(value).digest("hex");
 }
 
 function escapeHtml(value) {
@@ -50,6 +84,240 @@ function clearGeneratedHtmlFiles(dirPath) {
       fs.unlinkSync(path.join(dirPath, entry.name));
     }
   }
+}
+
+function asArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  if (value === undefined || value === null) {
+    return [];
+  }
+  return [value];
+}
+
+function stripNamespace(value) {
+  return String(value || "").split(":").pop();
+}
+
+function parseXmlAttributes(rawAttrs) {
+  const attrs = {};
+  const attrRegex = /([A-Za-z_][A-Za-z0-9_:\.-]*)\s*=\s*"([^"]*)"/g;
+  for (const match of rawAttrs.matchAll(attrRegex)) {
+    attrs[`@_${match[1]}`] = match[2];
+  }
+  return attrs;
+}
+
+function parseSimpleXmlTree(xmlText) {
+  const cleaned = String(xmlText || "")
+    .replace(/<\?xml[\s\S]*?\?>/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
+
+  const tokenRegex = /<([^>]+)>|([^<]+)/g;
+  const root = { name: "__root__", children: [] };
+  const stack = [root];
+
+  for (const match of cleaned.matchAll(tokenRegex)) {
+    const tagToken = match[1];
+    const textToken = match[2];
+
+    if (textToken) {
+      const text = textToken.replace(/\s+/g, " ").trim();
+      if (text) {
+        const current = stack[stack.length - 1];
+        current.text = current.text ? `${current.text} ${text}` : text;
+      }
+      continue;
+    }
+
+    const tagBody = tagToken.trim();
+    if (!tagBody || tagBody.startsWith("!") || tagBody.startsWith("?")) {
+      continue;
+    }
+
+    if (tagBody.startsWith("/")) {
+      const closingName = tagBody.slice(1).trim();
+      while (stack.length > 1) {
+        const current = stack.pop();
+        if (current.name === closingName) {
+          break;
+        }
+      }
+      continue;
+    }
+
+    const selfClosing = tagBody.endsWith("/");
+    const normalizedBody = selfClosing ? tagBody.slice(0, -1).trim() : tagBody;
+    const firstSpace = normalizedBody.search(/\s/);
+    const tagName = firstSpace === -1 ? normalizedBody : normalizedBody.slice(0, firstSpace);
+    const rawAttrs = firstSpace === -1 ? "" : normalizedBody.slice(firstSpace + 1);
+
+    const node = {
+      name: tagName,
+      attrs: parseXmlAttributes(rawAttrs),
+      children: [],
+      text: "",
+    };
+
+    stack[stack.length - 1].children.push(node);
+    if (!selfClosing) {
+      stack.push(node);
+    }
+  }
+
+  return root.children[0] || null;
+}
+
+function extractInlineXamlSources(pyFiles) {
+  const sources = [];
+
+  for (const file of pyFiles || []) {
+    const regex = /([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:r|u|ur|ru|R|U|UR|RU)?(["']{3})([\s\S]*?<Window[\s\S]*?<\/Window>)\2/g;
+    for (const match of file.content.matchAll(regex)) {
+      const variableName = match[1];
+      const xamlText = match[3].trim();
+      if (!xamlText.includes("<Window")) {
+        continue;
+      }
+
+      sources.push({
+        name: `${file.name}:${variableName}`,
+        sourceKind: "inline-xaml",
+        content: xamlText,
+      });
+    }
+  }
+
+  return sources;
+}
+
+function getXamlNodeLabel(nodeName, node) {
+  const attrs = node && typeof node === "object" ? (node.attrs || {}) : {};
+  const label = attrs["@_Header"]
+    || attrs["@_Content"]
+    || attrs["@_Text"]
+    || attrs["@_Title"]
+    || attrs["@_x:Name"]
+    || attrs["@_Name"]
+    || node.text;
+
+  if (typeof label === "string") {
+    return label.replace(/\s+/g, " ").trim();
+  }
+
+  return stripNamespace(nodeName);
+}
+
+function collectXamlChildren(node) {
+  if (!node || typeof node !== "object") {
+    return [];
+  }
+
+  return asArray(node.children).map((child) => ({ key: child.name, value: child }));
+}
+
+function simplifyXamlPreviewNode(nodeName, node, depth = 0) {
+  if (!node || typeof node !== "object" || depth > 10) {
+    return null;
+  }
+
+  const keyName = stripNamespace(nodeName);
+  const structuralWrappers = new Set([
+    "Window.Resources",
+    "Grid.RowDefinitions",
+    "Grid.ColumnDefinitions",
+    "ListBox.ItemContainerStyle",
+    "ComboBox.Template",
+    "Setter.Value",
+    "ControlTemplate",
+    "Style",
+    "Style.Triggers",
+    "Trigger",
+    "DataTemplate",
+    "Border.BorderBrush",
+  ]);
+
+  if (structuralWrappers.has(keyName) || keyName.endsWith(".Resources") || keyName.endsWith(".Triggers")) {
+    return null;
+  }
+
+  const containerTags = new Set(["Window", "Grid", "StackPanel", "DockPanel", "WrapPanel", "ScrollViewer", "GroupBox", "TabControl", "TabItem", "Border"]);
+  const leafTags = new Set(["TextBlock", "Label", "TextBox", "ComboBox", "CheckBox", "RadioButton", "ListBox", "DataGrid", "DataGridTextColumn", "DataGridTemplateColumn", "Button", "TreeView"]);
+
+  const childNodes = collectXamlChildren(node)
+    .map((child) => simplifyXamlPreviewNode(child.key, child.value, depth + 1))
+    .filter(Boolean);
+
+  if (!containerTags.has(keyName) && !leafTags.has(keyName)) {
+    if (childNodes.length === 1) {
+      return childNodes[0];
+    }
+    if (childNodes.length > 1) {
+      return {
+        type: "Fragment",
+        label: "Fragment",
+        children: childNodes,
+      };
+    }
+    return null;
+  }
+
+  const label = getXamlNodeLabel(nodeName, node);
+  const previewNode = {
+    type: keyName,
+    label,
+    children: childNodes,
+  };
+
+  if (keyName === "Window") {
+    previewNode.title = (node.attrs && node.attrs["@_Title"]) || label;
+  }
+
+  return previewNode;
+}
+
+function buildPreviewTreeFromXamlText(xamlText) {
+  try {
+    const parsed = parseSimpleXmlTree(xamlText);
+    if (!parsed || stripNamespace(parsed.name) !== "Window") {
+      return null;
+    }
+
+    return simplifyXamlPreviewNode(parsed.name, parsed);
+  } catch {
+    return null;
+  }
+}
+
+function renderXamlPreviewNode(node) {
+  if (!node) {
+    return "";
+  }
+
+  if (node.type === "Fragment") {
+    return node.children.map((child) => renderXamlPreviewNode(child)).join("");
+  }
+
+  const cssType = toSlug(node.type || "node");
+  const label = escapeHtml(node.label || node.type || "Node");
+  const title = node.title ? `<div class="ui-preview-window-title">${escapeHtml(node.title)}</div>` : "";
+  const childrenHtml = (node.children || []).map((child) => renderXamlPreviewNode(child)).join("");
+  const body = childrenHtml ? `<div class="ui-preview-children">${childrenHtml}</div>` : "";
+
+  if (["TextBlock", "Label"].includes(node.type)) {
+    return `<div class="ui-preview-node ui-preview-${cssType} ui-preview-text">${label}</div>`;
+  }
+
+  if (["TextBox", "ComboBox", "CheckBox", "RadioButton", "Button"].includes(node.type)) {
+    return `<div class="ui-preview-node ui-preview-${cssType}"><span class="ui-preview-node-tag">${escapeHtml(node.type)}</span><span class="ui-preview-node-label">${label}</span></div>`;
+  }
+
+  if (["ListBox", "DataGrid", "TreeView", "DataGridTextColumn", "DataGridTemplateColumn"].includes(node.type)) {
+    return `<section class="ui-preview-node ui-preview-${cssType}"><header><span class="ui-preview-node-tag">${escapeHtml(node.type)}</span><span class="ui-preview-node-label">${label}</span></header>${body || '<div class="ui-preview-placeholder">Interactive content</div>'}</section>`;
+  }
+
+  return `<section class="ui-preview-node ui-preview-${cssType}">${title}<header><span class="ui-preview-node-tag">${escapeHtml(node.type)}</span><span class="ui-preview-node-label">${label}</span></header>${body}</section>`;
 }
 
 function clamp(value, min, max) {
@@ -169,14 +437,17 @@ function extractGridLayoutFromXaml(xamlText) {
   };
 }
 
-function extractWpfMockup(xamlFiles) {
+function extractWpfMockup(xamlFiles, options = {}) {
+  const includeHeavyUi = Boolean(options.includeHeavyUi);
   if (!xamlFiles || xamlFiles.length === 0) {
     return {
       hasXaml: false,
       fileNames: [],
+      sourceKinds: [],
       controlCounts: [],
       namedElements: [],
       mockRows: [],
+      previewTree: null,
       xamlLayout: {
         hasLayout: false,
         tabs: [],
@@ -192,7 +463,9 @@ function extractWpfMockup(xamlFiles) {
   const groupHeaders = [];
   const textLabels = [];
   const buttonLabels = [];
+  const sourceKinds = new Set();
   let bestGridLayout = { rowCount: 1, columnCount: 1, blocks: [] };
+  let previewTree = null;
 
   const pushUnique = (arr, value, max = 16) => {
     const cleaned = String(value || "").replace(/\s+/g, " ").trim();
@@ -204,9 +477,17 @@ function extractWpfMockup(xamlFiles) {
 
   for (const file of xamlFiles) {
     const text = file.content;
-    const gridLayout = extractGridLayoutFromXaml(text);
-    if (gridLayout.blocks.length > bestGridLayout.blocks.length) {
-      bestGridLayout = gridLayout;
+    if (file.sourceKind) {
+      sourceKinds.add(file.sourceKind);
+    }
+    if (includeHeavyUi && !previewTree) {
+      previewTree = buildPreviewTreeFromXamlText(text);
+    }
+    if (includeHeavyUi) {
+      const gridLayout = extractGridLayoutFromXaml(text);
+      if (gridLayout.blocks.length > bestGridLayout.blocks.length) {
+        bestGridLayout = gridLayout;
+      }
     }
     const controlMatches = text.matchAll(/<([A-Z][A-Za-z0-9]+)\b/g);
     for (const match of controlMatches) {
@@ -293,19 +574,23 @@ function extractWpfMockup(xamlFiles) {
   return {
     hasXaml: true,
     fileNames: xamlFiles.map((f) => f.name),
+    sourceKinds: Array.from(sourceKinds),
     controlCounts,
     namedElements: namedElements.slice(0, 10),
     mockRows,
+    previewTree,
     xamlLayout,
   };
 }
 
-function extractPythonUiSignals(pyFiles) {
+function extractPythonUiSignals(pyFiles, options = {}) {
+  const includeHeavyUi = Boolean(options.includeHeavyUi);
   if (!pyFiles || pyFiles.length === 0) {
     return {
       hasPythonUi: false,
       hasWpfWindowClass: false,
       xamlReferences: [],
+      inlineXamlSources: [],
       formsCalls: [],
       controlCounts: [],
       workflowStages: [],
@@ -319,6 +604,7 @@ function extractPythonUiSignals(pyFiles) {
   const eventHandlers = [];
   const functionNames = [];
   const titleSet = new Set();
+  const inlineXamlSources = includeHeavyUi ? extractInlineXamlSources(pyFiles) : [];
   let hasWpfWindowClass = false;
 
   const controlNames = [
@@ -415,6 +701,7 @@ function extractPythonUiSignals(pyFiles) {
     hasPythonUi: hasWpfWindowClass || formsCallSet.size > 0 || rankedControls.length > 0,
     hasWpfWindowClass,
     xamlReferences: Array.from(xamlReferenceSet).sort((a, b) => a.localeCompare(b)),
+    inlineXamlSources,
     formsCalls: Array.from(formsCallSet).sort((a, b) => a.localeCompare(b)),
     controlCounts: rankedControls,
     workflowStages,
@@ -460,6 +747,8 @@ function mergeUiMockup(wpfMockup, pythonUi) {
     hasXaml: wpfMockup.hasXaml,
     hasPythonUi: pythonUi.hasPythonUi,
     hasWpfWindowClass: pythonUi.hasWpfWindowClass,
+    previewTree: wpfMockup.previewTree || null,
+    sourceKinds: wpfMockup.sourceKinds || [],
     xamlLayout: wpfMockup.xamlLayout || { hasLayout: false, tabs: [], panes: [], actionButtons: [] },
     fileNames,
     controlCounts,
@@ -518,6 +807,14 @@ function buildToolPageHtml(tool, generatedAt) {
   const windowTitlesHtml = tool.uiMockup.windowTitles.length
     ? `<ul>${tool.uiMockup.windowTitles.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No explicit __title__ strings detected in script files.</p>";
+
+  const previewTreeHtml = tool.uiMockup.previewTree
+    ? `<div class="ui-preview-canvas">${renderXamlPreviewNode(tool.uiMockup.previewTree)}</div>`
+    : "<p class=\"muted\">No parsed XAML preview is available for this tool yet.</p>";
+
+  const previewSourceHtml = tool.uiMockup.sourceKinds.length
+    ? `<div class="mockup-chip-row">${tool.uiMockup.sourceKinds.map((kind) => `<span class="mockup-chip">${escapeHtml(kind)}</span>`).join("")}</div>`
+    : "<p class=\"muted\">Preview source not detected.</p>";
 
   const xamlTabsHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.tabs.length
     ? `<div class=\"xaml-tab-row\">${tool.uiMockup.xamlLayout.tabs.map((tab, index) => `<span class=\"xaml-tab ${index === 0 ? "is-active" : ""}\">${escapeHtml(tab)}</span>`).join("")}</div>`
@@ -602,10 +899,16 @@ function buildToolPageHtml(tool, generatedAt) {
 
       <section class="card">
         <div class="card-head">
-          <span class="card-title">WPF UI Mockup</span>
+          <span class="card-title">UI Preview</span>
           <span class="card-hint">Parser mode: ${escapeHtml(parserMode)}</span>
         </div>
         <div class="card-body">
+          <h4 class="subhead">Rendered Preview</h4>
+          ${previewTreeHtml}
+
+          <h4 class="subhead">Preview Sources</h4>
+          ${previewSourceHtml}
+
           ${hasXamlWireframe ? `
           <div class="xaml-wireframe">
             <h4 class="subhead">XAML Wireframe</h4>
@@ -816,7 +1119,10 @@ function classifyTab(panelName) {
   return panelName.toLowerCase() === "wip" ? "RBG WIP" : "SJ pyRevit";
 }
 
-function buildCatalog(bundleData) {
+function buildCatalog(bundleData, options = {}) {
+  const includeHeavyUi = Boolean(options.includeHeavyUi);
+  const includeUiSignals = options.includeUiSignals !== false;
+  const showProgress = options.progress !== false;
   const { allPaths, textFiles } = bundleData;
   const pushbuttonDirs = new Set();
 
@@ -833,8 +1139,11 @@ function buildCatalog(bundleData) {
 
   const tools = [];
   const tree = new Map();
+  const dirList = Array.from(pushbuttonDirs).sort((a, b) => a.localeCompare(b));
+  const totalDirs = dirList.length;
+  let processedDirs = 0;
 
-  for (const dirPath of pushbuttonDirs) {
+  for (const dirPath of dirList) {
     const segments = dirPath.split("/");
     if (segments.length < 2) {
       continue;
@@ -869,25 +1178,48 @@ function buildCatalog(bundleData) {
       .filter((p) => p.startsWith(`${dirPath}/`))
       .map((p) => p.slice(dirPath.length + 1));
 
-    const xamlFiles = relatedFiles
-      .filter((name) => name.toLowerCase().endsWith(".xaml"))
-      .map((name) => ({
-        name,
-        content: textFiles.get(`${dirPath}/${name}`) || "",
-      }))
-      .filter((item) => Boolean(item.content));
+    let uiMockup;
+    if (includeUiSignals) {
+      const xamlFiles = relatedFiles
+        .filter((name) => name.toLowerCase().endsWith(".xaml"))
+        .map((name) => ({
+          name,
+          sourceKind: "external-xaml",
+          content: textFiles.get(`${dirPath}/${name}`) || "",
+        }))
+        .filter((item) => Boolean(item.content));
 
-    const pyFiles = relatedFiles
-      .filter((name) => name.toLowerCase().endsWith(".py"))
-      .map((name) => ({
-        name,
-        content: textFiles.get(`${dirPath}/${name}`) || "",
-      }))
-      .filter((item) => Boolean(item.content));
+      const pyFiles = relatedFiles
+        .filter((name) => name.toLowerCase().endsWith(".py"))
+        .map((name) => ({
+          name,
+          content: textFiles.get(`${dirPath}/${name}`) || "",
+        }))
+        .filter((item) => Boolean(item.content));
 
-    const wpfMockup = extractWpfMockup(xamlFiles);
-    const pythonUi = extractPythonUiSignals(pyFiles);
-    const uiMockup = mergeUiMockup(wpfMockup, pythonUi);
+      const pythonUi = extractPythonUiSignals(pyFiles, { includeHeavyUi });
+      const xamlSources = [...xamlFiles, ...(pythonUi.inlineXamlSources || [])];
+      const wpfMockup = extractWpfMockup(xamlSources, { includeHeavyUi });
+      uiMockup = mergeUiMockup(wpfMockup, pythonUi);
+    } else {
+      uiMockup = {
+        sourceType: "none",
+        hasXaml: false,
+        hasPythonUi: false,
+        hasWpfWindowClass: false,
+        previewTree: null,
+        sourceKinds: [],
+        xamlLayout: { hasLayout: false, tabs: [], panes: [], actionButtons: [], gridModel: { rowCount: 1, columnCount: 1, blocks: [] } },
+        fileNames: [],
+        controlCounts: [],
+        namedElements: [],
+        mockRows: [],
+        formsCalls: [],
+        workflowStages: [],
+        keyWorkflowMethods: [],
+        windowTitles: [],
+      };
+    }
 
     const functionText = yamlInfo.tooltip || contextInfo.entryPoints || "See tool context and source files for behavior details.";
     const purposeText = contextInfo.purpose || "Purpose not documented in tool-context.md.";
@@ -943,6 +1275,11 @@ function buildCatalog(bundleData) {
     }
 
     stackMap.get(stackName).push(tool.title);
+
+    processedDirs += 1;
+    if (showProgress && (processedDirs % 10 === 0 || processedDirs === totalDirs)) {
+      process.stdout.write(`Catalog progress: ${processedDirs}/${totalDirs} tools\n`);
+    }
   }
 
   tools.sort((a, b) => {
@@ -1338,14 +1675,39 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 </html>`;
 }
 
+function hasToolPages() {
+  if (!fs.existsSync(toolsPagesDir)) {
+    return false;
+  }
+  return fs.readdirSync(toolsPagesDir).some((name) => name.toLowerCase().endsWith(".html"));
+}
+
 function main() {
+  const options = parseArgs();
   if (!fs.existsSync(bundlePath)) {
     throw new Error("bundle.md not found in repository root.");
   }
 
   const bundleText = readText(bundlePath);
+  const bundleSha1 = sha1Text(bundleText);
+  const cache = readJsonIfExists(generateCachePath);
+  const modeCache = cache && cache.byMode ? cache.byMode[options.mode] : cache;
+
+  if (
+    options.skipIfUnchanged &&
+    modeCache &&
+    modeCache.bundleSha1 === bundleSha1 &&
+    modeCache.mode === options.mode &&
+    fs.existsSync(htmlPath) &&
+    fs.existsSync(diagnosticsPath) &&
+    (options.writeToolPages ? hasToolPages() : true)
+  ) {
+    process.stdout.write(`Skipped generate: bundle unchanged (${options.mode} mode cache hit). Use --force to rebuild.\n`);
+    return;
+  }
+
   const bundleData = parseBundle(bundleText);
-  const catalog = buildCatalog(bundleData);
+  const catalog = buildCatalog(bundleData, options);
 
   const generatedAt = new Date().toISOString();
   const tabCountFromPaths = countTabsFromPaths(bundleData.allPaths);
@@ -1372,12 +1734,28 @@ function main() {
 
   const html = buildHtml(payload, diagnostics, generatedAt, bundleData.allPaths.length);
   writeText(htmlPath, html);
-  writeToolPages(payload.tools, generatedAt);
+  if (options.writeToolPages) {
+    writeToolPages(payload.tools, generatedAt);
+  }
+  const nextCache = {
+    byMode: {
+      ...((cache && cache.byMode) || {}),
+      [options.mode]: {
+        generatedAt,
+        mode: options.mode,
+        bundleSha1,
+        tools: payload.tools.length,
+        filesInBundle: payload.meta.totalFiles,
+      },
+    },
+  };
+  writeJson(generateCachePath, nextCache);
 
   const summary = [
     `Generated ${path.basename(htmlPath)} from ${path.basename(bundlePath)}`,
+    `Mode: ${options.mode}`,
     `Tools: ${payload.tools.length}`,
-    `Tool pages: ${payload.tools.length}`,
+    options.writeToolPages ? `Tool pages: ${payload.tools.length}` : "Tool pages: skipped",
     `Tabs: ${payload.tree.length}`,
     `Files in bundle: ${payload.meta.totalFiles}`,
     `Diagnostics: ${path.relative(repoRoot, diagnosticsPath)}`,
