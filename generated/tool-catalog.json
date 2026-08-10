@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "generatedAt": "2026-08-10T05:22:14.538Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -15,6 +15,9 @@
       "notes": [
         "Keep extension-root and `lib` bootstrap reliable before any coordinate logic runs. Preserve both selection-scoped and model-wide workflows. Report missing parameters or skipped elements explicitly rather than failing silently.",
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-addcoordinates.html",
@@ -37,6 +40,9 @@
         "Preserve existing text outside the managed token pattern. Keep unit handling compatible across older and newer Revit unit APIs. Limit edits to the targeted structural categories unless the workflow is intentionally expanded.",
         "Files in bundle: 5"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-magpiegroup.html",
       "uiKind": "pyrevit-form"
@@ -56,6 +62,9 @@
         "Start implementation with pane lifecycle and state contract, then wire actions one by one. Keep UI handlers thin and route all heavy operations through orchestrator methods. Preserve human-readable status and diagnostics from every helper action.",
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
       "uiKind": "mixed"
@@ -72,6 +81,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 2"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 2,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-paramcopier.html",
@@ -90,6 +102,9 @@
       "notes": [
         "Keep schedule filtering compatible with current Revit API behavior, including keynote schedule exclusions. Preserve user-facing field labels that explain index, heading, and parameter identity. Distinguish existing fields from schedulable fields clearly in the UI flow.",
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html",
@@ -110,6 +125,9 @@
       "notes": [
         "Files in bundle: 18"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 18,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-dashboard.html",
       "uiKind": "mixed"
@@ -127,6 +145,9 @@
       "notes": [
         "Preserve the environment variable contract used by the logger startup flow. Keep readiness checks explicit so the tool fails clearly when startup support is not active. Distinguish full-model logging from targeted-category logging without mutating the underlying capture pipeline unexpectedly.",
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
@@ -146,6 +167,9 @@
         "Grouped elements remain a known limitation and should not be treated as safely editable. Preserve category-specific behavior for walls, framing, and columns. Any future unpin or regroup workflow should stay explicit and reversible.",
         "Files in bundle: 3"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-disallowdetach.html",
       "uiKind": "pyrevit-form"
@@ -163,6 +187,9 @@
       "notes": [
         "Preserve the distinction between core model elements and optional view-specific or annotation elements. Keep grouping and type-name derivation resilient across element classes. Maintain report output as the primary user interaction surface.",
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-selectbylevel.html",
@@ -182,6 +209,9 @@
         "Preserve worksharing and group-member checks before attempting mutation. Keep category scope explicit through the current category map. Treat groups and link instances as special cases rather than ordinary elements.",
         "Files in bundle: 3"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-quickpin.html",
       "uiKind": "pyrevit-form"
@@ -199,6 +229,9 @@
       "notes": [
         "Preserve the revision-to-cloud mapping and scope selection workflow. Keep worksharing and copy/paste safety checks intact before creating detail groups. Maintain style-selection behavior so generated detail linework remains readable.",
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-revclouddetailline.html",
@@ -219,6 +252,9 @@
         "This tool currently embeds a large amount of UI and execution logic in one file; prefer extraction into `lib` for future refactors. If changing splitter interpretation, validate walls, framing, grids, columns, and floor-derived boundaries independently.",
         "Files in bundle: 3"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
       "uiKind": "pyrevit-form"
@@ -236,6 +272,9 @@
       "notes": [
         "This tool only turns crop visibility off; do not broaden behavior accidentally. Preserve the distinction between active-sheet and single-view execution. Keep unsupported view handling explicit in the output rather than crashing the run.",
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-cropview.html",
@@ -258,6 +297,9 @@
         "Only act on grids visible in the active printable view. Keep the current fast-path batch behavior and silent skip pattern for problematic grids unless diagnostics are intentionally added. Minimize regeneration and transaction overhead for large views.",
         "Files in bundle: 7"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 7,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-gridextents.html",
       "uiKind": "pyrevit-form"
@@ -278,6 +320,9 @@
       "notes": [
         "Restrict execution to printable section and elevation views. Preserve the low-overhead batch transaction pattern. Keep failure handling non-fatal per level so one problematic datum does not stop the run.",
         "Files in bundle: 7"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 7,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
@@ -300,6 +345,9 @@
         "Keep the view-type guard limited to section and elevation contexts. Preserve the geometric left/right classification based on the current view orientation. Skip levels safely when visible curves cannot be resolved.",
         "Files in bundle: 5"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html",
       "uiKind": "none"
@@ -316,6 +364,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-linkedviews.html",
@@ -334,6 +385,9 @@
       "notes": [
         "Preserve formatting compatibility across differing Revit unit APIs. Keep comparison output aligned with the actual built-in parameters used for copy behavior. Treat view templates and template-controlled range settings as first-class constraints.",
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-planviewrange.html",
@@ -354,6 +408,9 @@
         "Read the XAML first, then trace event handlers and execution paths in `script.py`. If the workflow grows further, prefer extracting reusable creation logic into `lib` rather than adding more monolithic script code.",
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
       "uiKind": "mixed"
@@ -373,6 +430,9 @@
         "Start in `lib/detailmove_ui.py` for WPF behavior and `lib/detailmove_engine.py` for execution logic. UI changes should continue to surface run summaries without depending on pyRevit console-only output.",
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
       "uiKind": "mixed"
@@ -389,6 +449,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sheetno.html",
@@ -407,6 +470,9 @@
       "notes": [
         "Files in bundle: 5"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
       "uiKind": "mixed"
@@ -423,6 +489,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-copy-state.html",
@@ -441,6 +510,9 @@
       "notes": [
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-mclear.html",
       "uiKind": "none"
@@ -457,6 +529,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-mdeduct.html",
@@ -475,6 +550,9 @@
       "notes": [
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-next.html",
       "uiKind": "none"
@@ -491,6 +569,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-paste-state.html",
@@ -509,6 +590,9 @@
       "notes": [
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-prev.html",
       "uiKind": "none"
@@ -525,6 +609,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Jason Braga"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
@@ -543,6 +630,9 @@
       "notes": [
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-purge-memory-files.html",
       "uiKind": "none"
@@ -560,6 +650,9 @@
       "notes": [
         "Files in bundle: 4"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-save-memory-as-selection.html",
       "uiKind": "none"
@@ -576,6 +669,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-unhideallelements.html",
@@ -596,6 +692,9 @@
       "notes": [
         "Files in bundle: 3"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-sheets-cloudrevisions.html",
       "uiKind": "none"
@@ -615,6 +714,9 @@
       "notes": [
         "Files in bundle: 14"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 14,
       "pagePath": "tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html",
       "uiKind": "mixed"
@@ -631,6 +733,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-selected-viewport.html",
@@ -649,6 +754,9 @@
       "notes": [
         "Files in bundle: 6"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 6,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-viewports.html",
       "uiKind": "mixed"
@@ -666,6 +774,9 @@
       "notes": [
         "Files in bundle: 2"
       ],
+      "authors": [
+        "Unknown"
+      ],
       "fileCount": 2,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool1.html",
       "uiKind": "none"
@@ -682,6 +793,9 @@
       "inputs": [],
       "notes": [
         "Files in bundle: 3"
+      ],
+      "authors": [
+        "Unknown"
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool2.html",

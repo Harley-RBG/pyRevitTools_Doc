@@ -76,6 +76,10 @@
               <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
               <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
+            <div class="sim-tabs" role="tablist" aria-label="Simulator tabs">
+              <button type="button" class="sim-tab is-active" aria-selected="true">Parameters</button>
+              <button type="button" class="sim-tab" aria-selected="false">Results</button>
+            </div>
             <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
             <div class="simulator-output">
               <h4 class="subhead">Simulated Output</h4>
@@ -239,15 +243,17 @@
 
           const form = document.createElement('div');
           form.className = 'sim-form';
+          const actionRow = document.createElement('div');
+          actionRow.className = 'sim-action-row';
 
           SIMULATOR.controls.forEach((control) => {
             if (control.kind === 'button') {
-              form.appendChild(createButton(control));
+              actionRow.appendChild(createButton(control));
               return;
             }
             if (control.kind === 'table') {
               const tableWrap = document.createElement('div');
-              tableWrap.className = 'sim-table-wrap';
+              tableWrap.className = 'sim-table-wrap sim-span-full';
               tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
               form.appendChild(tableWrap);
               return;
@@ -256,7 +262,11 @@
           });
 
           if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
-            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+            actionRow.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          if (actionRow.children.length) {
+            form.appendChild(actionRow);
           }
 
           simulatorRoot.appendChild(form);

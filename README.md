@@ -7,6 +7,12 @@ The runtime output is:
 - `index.html` (includes inline JavaScript + embedded tool data)
 - `styles.css`
 - `tools/*.html` (tool detail pages)
+- `tools/revit-tools-created-by.html` (author index from `__author__` tags)
+
+Purpose and alignment tracker:
+
+- `WORKING_HUB_TRACKER.md`
+- `working-hub.json` (editable data source for Working Hub + Windows/Web app catalog placeholders)
 
 ## How It Works
 
@@ -27,6 +33,13 @@ The updater keeps a local cache at `generated/bundle-cache.json` and reuses unch
 It then rewrites `index.html` with updated catalog data and writes parser diagnostics to `generated/catalog-diagnostics.json`.
 When tool pages are enabled, it performs hash-based incremental updates so unchanged `tools/*.html` files are skipped.
 The generator also skips rewriting `index.html` and diagnostics when only generated timestamp values changed.
+
+The generator now also writes:
+
+- `generated/tool-catalog.json`
+- `generated/ui-manifest.json`
+- `generated/training-data.json`
+- `generated/ui-diagnostics.json`
 
 Tool page cache location:
 
@@ -130,6 +143,7 @@ This file prepends `C:\node` and `C:\nvm` to `PATH` and runs `npm run site:updat
 - Full diagnostics are written to `generated/catalog-diagnostics.json` on each run.
 - `.nojekyll` is included at repo root so GitHub Pages serves this as a static site without Jekyll processing.
 - Incremental tool page write stats are shown in generate output (`written`, `skipped`, `deleted`).
+- Revit tool author index is generated at `tools/revit-tools-created-by.html` using `__author__` and `__authors__` tags from pushbutton Python files.
 - Optional source override for bundle updates:
 
 ```bash
@@ -141,17 +155,19 @@ node scripts/update-bundle.mjs --source="P:\\Production\\Computational\\RBG_pyRe
 Phase 1: Information Architecture (in progress)
 
 - Keep landing page as the catalog + navigation shell.
-- Treat each tool page as a mini wiki article with consistent sections (overview, workflow, UI, implementation, provenance).
+- Treat each tool page as a mini wiki article with consistent sections (overview, workflow, simulator, notes).
 - Prioritize panel-first browsing and tool-level deep links.
 - Implemented: section anchor navigation on generated tool pages for faster in-page scanning.
 - Implemented: sticky right-side page progress rail with active section highlighting.
-- Implemented: related-tools recommendations at the end of each tool page using tab/panel/stack affinity.
+- Implemented: simulator-first tool pages with training-only interactive controls and output.
+- Implemented: Working Hub and non-Revit app catalog placeholders on homepage.
+- Implemented: Created By page for Revit tools based on author tags.
 
-Phase 2: Preview Fidelity Tiers
+Phase 2: Simulator Fidelity Tiers
 
 - Tier 1: Real screenshots (best, when available in source docs).
-- Tier 2: Parsed XAML visual approximation (structured layout + controls).
-- Tier 3: Python/forms inference (workflow and control hints).
+- Tier 2: Structured XAML renderer with layout groups and tool-specific components.
+- Tier 3: Python/forms inference with scenario rules.
 - Tier 4: Technical fallback (control tags, names, source files).
 
 Phase 3: Telemetry Snapshot Ingestion

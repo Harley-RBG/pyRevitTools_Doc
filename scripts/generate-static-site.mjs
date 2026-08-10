@@ -6,10 +6,12 @@ const repoRoot = process.cwd();
 const bundlePath = path.join(repoRoot, "bundle.md");
 const htmlPath = path.join(repoRoot, "index.html");
 const toolsPagesDir = path.join(repoRoot, "tools");
+const authorsPagePath = "tools/revit-tools-created-by.html";
 const diagnosticsDir = path.join(repoRoot, "generated");
 const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
 const generateCachePath = path.join(diagnosticsDir, "generate-cache.json");
 const toolPagesCachePath = path.join(diagnosticsDir, "tool-pages-cache.json");
+const workingHubPath = path.join(repoRoot, "working-hub.json");
 const toolCatalogPath = path.join(diagnosticsDir, "tool-catalog.json");
 const uiManifestPath = path.join(diagnosticsDir, "ui-manifest.json");
 const uiDiagnosticsPath = path.join(diagnosticsDir, "ui-diagnostics.json");
@@ -917,6 +919,10 @@ function buildToolPageHtml(tool, generatedAt) {
               <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
               <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
+            <div class="sim-tabs" role="tablist" aria-label="Simulator tabs">
+              <button type="button" class="sim-tab is-active" aria-selected="true">Parameters</button>
+              <button type="button" class="sim-tab" aria-selected="false">Results</button>
+            </div>
             <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
             <div class="simulator-output">
               <h4 class="subhead">Simulated Output</h4>
@@ -1080,15 +1086,17 @@ function buildToolPageHtml(tool, generatedAt) {
 
           const form = document.createElement('div');
           form.className = 'sim-form';
+          const actionRow = document.createElement('div');
+          actionRow.className = 'sim-action-row';
 
           SIMULATOR.controls.forEach((control) => {
             if (control.kind === 'button') {
-              form.appendChild(createButton(control));
+              actionRow.appendChild(createButton(control));
               return;
             }
             if (control.kind === 'table') {
               const tableWrap = document.createElement('div');
-              tableWrap.className = 'sim-table-wrap';
+              tableWrap.className = 'sim-table-wrap sim-span-full';
               tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
               form.appendChild(tableWrap);
               return;
@@ -1097,7 +1105,11 @@ function buildToolPageHtml(tool, generatedAt) {
           });
 
           if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
-            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+            actionRow.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          if (actionRow.children.length) {
+            form.appendChild(actionRow);
           }
 
           simulatorRoot.appendChild(form);
@@ -1179,6 +1191,22 @@ function writeToolPages(tools, generatedAt, options = {}) {
 
     ensureDir(path.dirname(outputPath));
     writeText(outputPath, html);
+    written += 1;
+  }
+
+  const authorsHtml = buildAuthorsPageHtml(tools, generatedAt);
+  const authorsPageKey = authorsPagePath.replace(/\\/g, "/");
+  expected.add(authorsPageKey);
+  const stableAuthorsHtml = authorsHtml.replace(`Generated: ${generatedAt}`, "Generated: __GENERATED_AT__");
+  const authorsHash = sha1Text(stableAuthorsHtml);
+  nextPages[authorsPageKey] = { hash: authorsHash };
+  const authorsOutputPath = path.join(repoRoot, authorsPagePath);
+  const prevAuthorsHash = previous[authorsPageKey] ? previous[authorsPageKey].hash : null;
+  if (prevAuthorsHash === authorsHash && fs.existsSync(authorsOutputPath)) {
+    skipped += 1;
+  } else {
+    ensureDir(path.dirname(authorsOutputPath));
+    writeText(authorsOutputPath, authorsHtml);
     written += 1;
   }
 
@@ -1518,6 +1546,7 @@ function buildToolCatalogData(payload) {
       purpose: tool.purpose,
       inputs: tool.inputs,
       notes: tool.notes,
+      authors: tool.authors && tool.authors.length ? tool.authors : ["Unknown"],
       fileCount: tool.fileCount,
       pagePath: tool.pagePath,
       uiKind: inferUiKind(tool),
@@ -1606,6 +1635,276 @@ function buildUiDiagnostics(payload, uiManifest) {
   };
 }
 
+function extractAuthorsFromPythonFiles(pyFiles) {
+  const authors = [];
+
+  for (const file of pyFiles) {
+    const content = String(file.content || "");
+    const lineMatches = content.matchAll(/^\s*__(?:author|authors)__\s*=\s*(.+)$/gim);
+    for (const match of lineMatches) {
+      const rhs = String(match[1] || "").trim();
+      const quoted = Array.from(rhs.matchAll(/['"]([^'"]+)['"]/g)).map((m) => m[1].trim()).filter(Boolean);
+      if (quoted.length) {
+        authors.push(...quoted);
+      } else {
+        const cleaned = rhs.replace(/[\[\](){}]/g, "");
+        cleaned
+          .split(/[,;]+/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .forEach((item) => authors.push(item));
+      }
+    }
+  }
+
+  return dedupe(authors);
+}
+
+function defaultWorkingHubData() {
+  return {
+    workingHub: {
+      title: "Internal tools wiki and training hub",
+      summary:
+        "A central, searchable place for training, documentation, and tool discovery across pyRevit, Python, Windows apps, and web helpers.",
+      focusPoints: [
+        "Tool catalogue: list each available tool and what problem it solves.",
+        "Training mode: run through behavior with dummy data before using tools on live projects.",
+        "Project safety: explain whether a tool edits views, sheets, parameters, files, or model data.",
+        "Shared learning: capture fixes, preferred helper functions, and examples for new tools.",
+        "Broader scope: include pyRevit tools, package utilities, verification tools, and desktop apps.",
+      ],
+      sections: [
+        {
+          section: "Tool overview",
+          content: "Purpose, owner, status, Revit version, dependencies, data modified, risk level.",
+        },
+        {
+          section: "How to use",
+          content: "Plain-English workflow, screenshots, expected inputs/outputs, rollback guidance.",
+        },
+        {
+          section: "Training sandbox",
+          content: "Dummy data, example parameters, sample folders, and safe test scenarios.",
+        },
+        {
+          section: "Developer notes",
+          content: "Folder path, file structure, known limitations, error messages, planned improvements.",
+        },
+        {
+          section: "Support links",
+          content: "Internal setup guide, pyRevit docs, Revit API docs, VS Code setup notes, idea portal.",
+        },
+      ],
+    },
+    windowsApps: [
+      {
+        name: "Package Validator",
+        status: "Planned",
+        exePath: "C:/Apps/PackageValidator/PackageValidator.exe",
+        screenshot: "docs/assets/windows/package-validator.png",
+        info: "Validates package metadata and reports dependency or formatting issues.",
+      },
+      {
+        name: "RTV Sync Utility",
+        status: "Draft",
+        exePath: "C:/Apps/RTVSync/RTVSync.exe",
+        screenshot: "docs/assets/windows/rtv-sync.png",
+        info: "Synchronizes model metadata with external records and provides summary logs.",
+      },
+    ],
+    webApps: [
+      {
+        name: "pyRevit Tools Wiki",
+        status: "Active",
+        url: "./index.html",
+        screenshot: "docs/assets/web/pyrevit-tools-wiki.png",
+        info: "Current static documentation and simulator site for internal tools.",
+      },
+      {
+        name: "Issue Package Dashboard",
+        status: "Planned",
+        url: "https://example.internal/issue-dashboard",
+        screenshot: "docs/assets/web/issue-dashboard.png",
+        info: "Web dashboard for package status, QA checks, and trend monitoring.",
+      },
+    ],
+    toolIdeas: [
+      {
+        title: "Model Health Snapshot",
+        category: "Revit Tools",
+        status: "Idea",
+        owner: "TBD",
+        description: "One-click model health summary with parameter completeness and warning trends.",
+      },
+      {
+        title: "View Naming Rules Assistant",
+        category: "Windows Apps",
+        status: "Idea",
+        owner: "TBD",
+        description: "Desktop helper to preview and validate naming patterns before in-model updates.",
+      },
+      {
+        title: "Spec Link Explorer",
+        category: "Web-based Apps",
+        status: "Idea",
+        owner: "TBD",
+        description: "Web app to cross-reference project specs with Revit parameter standards.",
+      },
+    ],
+  };
+}
+
+function loadWorkingHubData() {
+  const defaults = defaultWorkingHubData();
+  if (!fs.existsSync(workingHubPath)) {
+    return defaults;
+  }
+
+  const parsed = readJsonIfExists(workingHubPath);
+  if (!parsed || typeof parsed !== "object") {
+    return defaults;
+  }
+
+  return {
+    workingHub: parsed.workingHub || defaults.workingHub,
+    windowsApps: Array.isArray(parsed.windowsApps) ? parsed.windowsApps : defaults.windowsApps,
+    webApps: Array.isArray(parsed.webApps) ? parsed.webApps : defaults.webApps,
+    toolIdeas: Array.isArray(parsed.toolIdeas) ? parsed.toolIdeas : defaults.toolIdeas,
+  };
+}
+
+function buildAuthorsPageHtml(tools, generatedAt) {
+  const rows = tools.map((tool) => ({
+    title: tool.title,
+    panel: tool.panel,
+    stack: tool.stack,
+    pagePath: tool.pagePath,
+    authors: tool.authors && tool.authors.length ? tool.authors : ["Unknown"],
+  }));
+
+  const flat = [];
+  for (const row of rows) {
+    row.authors.forEach((author) => {
+      flat.push({
+        author,
+        title: row.title,
+        panel: row.panel,
+        stack: row.stack,
+        pagePath: row.pagePath,
+      });
+    });
+  }
+
+  const dataJson = JSON.stringify(flat);
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Revit Tools | Created By</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Revit Tools</span>
+      <span class="topbar-sub">Created by index from __author__ tags</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Authors</span>
+        <span class="part-title">Created By</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Revit Tool Authors</span>
+          <span class="card-hint">Filter and sort by author and tool title</span>
+        </div>
+        <div class="card-body">
+          <a class="back-link" href="../index.html">← Back to catalog</a>
+          <div class="controls" style="margin-top:10px;">
+            <label class="search-wrap">
+              <span>Search author or tool</span>
+              <input id="author-search" type="search" placeholder="Type author, tool, panel..." />
+            </label>
+            <label class="search-wrap">
+              <span>Sort</span>
+              <select id="author-sort" class="sim-field">
+                <option value="author">Author (A-Z)</option>
+                <option value="tool">Tool (A-Z)</option>
+                <option value="panel">Panel (A-Z)</option>
+              </select>
+            </label>
+          </div>
+          <div class="sim-table-wrap" style="margin-top:10px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Author</th>
+                  <th>Tool</th>
+                  <th>Panel</th>
+                  <th>Stack</th>
+                </tr>
+              </thead>
+              <tbody id="author-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>Generated: ${generatedAt}</p>
+        <p>Source: bundle.md (__author__ / __authors__ in script files)</p>
+      </footer>
+    </div>
+
+    <script>
+      const DATA = ${dataJson};
+      const searchInput = document.getElementById('author-search');
+      const sortInput = document.getElementById('author-sort');
+      const tableBody = document.getElementById('author-table-body');
+
+      function includesText(value, query) {
+        return String(value || '').toLowerCase().includes(query.toLowerCase());
+      }
+
+      function render() {
+        const query = searchInput.value || '';
+        const sortBy = sortInput.value || 'author';
+        const filtered = DATA.filter((row) => {
+          if (!query.trim()) {
+            return true;
+          }
+          return includesText(row.author, query) || includesText(row.title, query) || includesText(row.panel, query) || includesText(row.stack, query);
+        });
+
+        filtered.sort((a, b) => {
+          const av = String(a[sortBy] || '').toLowerCase();
+          const bv = String(b[sortBy] || '').toLowerCase();
+          if (av === bv) {
+            return a.title.localeCompare(b.title);
+          }
+          return av.localeCompare(bv);
+        });
+
+        tableBody.innerHTML = filtered
+          .map((row) => '<tr><td>' + row.author + '</td><td><a href="../' + row.pagePath + '">' + row.title + '</a></td><td>' + row.panel + '</td><td>' + row.stack + '</td></tr>')
+          .join('');
+      }
+
+      searchInput.addEventListener('input', render);
+      sortInput.addEventListener('change', render);
+      render();
+    </script>
+  </body>
+</html>`;
+}
+
 function classifyTab(panelName) {
   return panelName.toLowerCase() === "wip" ? "RBG WIP" : "SJ pyRevit";
 }
@@ -1669,6 +1968,16 @@ function buildCatalog(bundleData, options = {}) {
       .filter((p) => p.startsWith(`${dirPath}/`))
       .map((p) => p.slice(dirPath.length + 1));
 
+    const pyFiles = relatedFiles
+      .filter((name) => name.toLowerCase().endsWith(".py"))
+      .map((name) => ({
+        name,
+        content: textFiles.get(`${dirPath}/${name}`) || "",
+      }))
+      .filter((item) => Boolean(item.content));
+
+    const authors = extractAuthorsFromPythonFiles(pyFiles);
+
     let uiMockup;
     if (includeUiSignals) {
       const xamlFiles = relatedFiles
@@ -1676,14 +1985,6 @@ function buildCatalog(bundleData, options = {}) {
         .map((name) => ({
           name,
           sourceKind: "external-xaml",
-          content: textFiles.get(`${dirPath}/${name}`) || "",
-        }))
-        .filter((item) => Boolean(item.content));
-
-      const pyFiles = relatedFiles
-        .filter((name) => name.toLowerCase().endsWith(".py"))
-        .map((name) => ({
-          name,
           content: textFiles.get(`${dirPath}/${name}`) || "",
         }))
         .filter((item) => Boolean(item.content));
@@ -1739,6 +2040,7 @@ function buildCatalog(bundleData, options = {}) {
       fileCount: relatedFiles.length,
       files: relatedFiles,
       pagePath: `tools/${pageSlug}.html`,
+      authors,
       uiMockup,
       sources: {
         hasYaml,
@@ -1866,6 +2168,27 @@ function buildDiagnostics(payload) {
 
 function buildHtml(data, diagnostics, generatedAt, allFileCount) {
   const dataJson = JSON.stringify(data);
+  const hub = data.hub || defaultWorkingHubData();
+
+  const workingFocusHtml = (hub.workingHub.focusPoints || [])
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("");
+
+  const workingSectionsRows = (hub.workingHub.sections || [])
+    .map((item) => `<tr><td>${escapeHtml(item.section || "")}</td><td>${escapeHtml(item.content || "")}</td></tr>`)
+    .join("");
+
+  const windowsRows = (hub.windowsApps || [])
+    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${escapeHtml(app.exePath || "")}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`)
+    .join("");
+
+  const webRows = (hub.webApps || [])
+    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td><a href="${escapeHtml(app.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.url || "")}</a></td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`)
+    .join("");
+
+  const ideaRows = (hub.toolIdeas || [])
+    .map((idea) => `<tr><td>${escapeHtml(idea.title || "")}</td><td>${escapeHtml(idea.category || "")}</td><td>${escapeHtml(idea.status || "")}</td><td>${escapeHtml(idea.owner || "")}</td><td>${escapeHtml(idea.description || "")}</td></tr>`)
+    .join("");
 
   return `<!doctype html>
 <html lang="en">
@@ -1905,8 +2228,8 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
       <section class="card site-header">
         <div class="card-head">
-          <span class="card-title">Tool Catalog + File Tree Overview</span>
-          <span class="card-hint">Search, tab filter, and metadata confidence</span>
+          <span class="card-title">Tool Catalog + Working Hub Overview</span>
+          <span class="card-hint">Revit tools, desktop/web app inventory, and training focus areas</span>
         </div>
         <div class="card-body">
           <p class="kicker">pyRevit extension reference</p>
@@ -1933,7 +2256,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
       <div class="part" id="tree-section">
         <span class="part-num">Part II</span>
-        <span class="part-title">Extension Structure</span>
+        <span class="part-title">Revit Tools Catalog</span>
         <span class="part-rule"></span>
       </div>
 
@@ -1948,12 +2271,74 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
         <section class="catalog card card-block" id="catalog-section">
           <div class="card-head">
-            <span class="card-title">Tool Catalog</span>
-            <span class="card-hint">Cards grouped by panel inside selected tab</span>
+            <span class="card-title">Tool Catalog (Revit Tools)</span>
+            <span class="card-hint">Cards grouped by panel inside selected tab. <a href="./${authorsPagePath}">Created by view</a></span>
           </div>
           <div class="card-body catalog-root" id="catalog-root"></div>
         </section>
       </main>
+
+      <div class="part" id="hub-section">
+        <span class="part-num">Part III</span>
+        <span class="part-title">Working Hub</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">${escapeHtml(hub.workingHub.title || "Internal tools wiki and training hub")}</span>
+          <span class="card-hint">Editable in working-hub.json</span>
+        </div>
+        <div class="card-body">
+          <p class="lede">${escapeHtml(hub.workingHub.summary || "")}</p>
+          <ul>${workingFocusHtml}</ul>
+          <div class="sim-table-wrap" style="margin-top:10px;">
+            <table>
+              <thead><tr><th>Wiki section</th><th>Recommended content</th></tr></thead>
+              <tbody>${workingSectionsRows}</tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Windows Apps Catalog</span>
+          <span class="card-hint">Designed to track .exe paths, screenshots, and app information</span>
+        </div>
+        <div class="card-body sim-table-wrap">
+          <table>
+            <thead><tr><th>App</th><th>Status</th><th>Executable path</th><th>Screenshot</th><th>Information</th></tr></thead>
+            <tbody>${windowsRows}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Web-based Apps Catalog</span>
+          <span class="card-hint">Designed to track links, screenshots, and app information</span>
+        </div>
+        <div class="card-body sim-table-wrap">
+          <table>
+            <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th></tr></thead>
+            <tbody>${webRows}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="card-title">Tool Ideas Backlog</span>
+          <span class="card-hint">Placeholder board for the Working Hub</span>
+        </div>
+        <div class="card-body sim-table-wrap">
+          <table>
+            <thead><tr><th>Idea</th><th>Category</th><th>Status</th><th>Owner</th><th>Description</th></tr></thead>
+            <tbody>${ideaRows}</tbody>
+          </table>
+        </div>
+      </section>
 
       <footer class="site-footer">
         <p>Generated: ${generatedAt}</p>
@@ -1988,12 +2373,18 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
           (sum, tab) => sum + tab.panels.reduce((inner, panel) => inner + panel.stacks.length, 0),
           0
         );
+        const windowsCount = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.length : 0;
+        const webCount = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.length : 0;
+        const ideasCount = DATA.hub && Array.isArray(DATA.hub.toolIdeas) ? DATA.hub.toolIdeas.length : 0;
 
         const stats = [
           ["Tools", DATA.tools.length],
           ["Tabs", DATA.tree.length],
           ["Panels", panelCount],
           ["Stacks", stackCount],
+          ["Windows Apps", windowsCount],
+          ["Web Apps", webCount],
+          ["Hub Ideas", ideasCount],
         ];
 
         summaryStats.innerHTML = stats
@@ -2181,6 +2572,8 @@ function main() {
 
   const bundleText = readText(bundlePath);
   const bundleSha1 = sha1Text(bundleText);
+  const hubData = loadWorkingHubData();
+  const hubSha1 = sha1Text(JSON.stringify(hubData));
   const cache = readJsonIfExists(generateCachePath);
   const modeCache = cache && cache.byMode ? cache.byMode[options.mode] : cache;
 
@@ -2188,6 +2581,7 @@ function main() {
     options.skipIfUnchanged &&
     modeCache &&
     modeCache.bundleSha1 === bundleSha1 &&
+    modeCache.hubSha1 === hubSha1 &&
     modeCache.mode === options.mode &&
     fs.existsSync(htmlPath) &&
     fs.existsSync(diagnosticsPath) &&
@@ -2218,6 +2612,7 @@ function main() {
     },
     tree: catalog.tree,
     tools: catalog.tools,
+    hub: hubData,
   };
 
   const diagnostics = buildDiagnostics(payload);
@@ -2253,6 +2648,7 @@ function main() {
         generatedAt,
         mode: options.mode,
         bundleSha1,
+        hubSha1,
         tools: payload.tools.length,
         filesInBundle: payload.meta.totalFiles,
       },

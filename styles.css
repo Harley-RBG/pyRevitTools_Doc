@@ -671,6 +671,31 @@ body {
   padding: 10px;
 }
 
+.sim-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--outline);
+  margin-bottom: 10px;
+}
+
+.sim-tab {
+  border: 1px solid var(--outline);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  background: var(--surface-container);
+  color: var(--on-surface-var);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+.sim-tab.is-active {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-weight: 600;
+}
+
 .simulator-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -696,6 +721,7 @@ body {
 .sim-form {
   display: grid;
   gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .sim-control {
@@ -746,6 +772,10 @@ select.sim-field[multiple] {
   overflow: auto;
 }
 
+.sim-span-full {
+  grid-column: 1 / -1;
+}
+
 .sim-table-wrap table {
   border-collapse: collapse;
   width: 100%;
@@ -759,6 +789,7 @@ select.sim-field[multiple] {
 
 .simulator-output {
   margin-top: 10px;
+  grid-column: 1 / -1;
 }
 
 .simulator-output pre {
@@ -770,6 +801,15 @@ select.sim-field[multiple] {
   font-family: var(--font-mono);
   font-size: 11px;
   white-space: pre-wrap;
+}
+
+.sim-action-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--outline);
 }
 
 .wiki-toc {
@@ -907,5 +947,17 @@ select.sim-field[multiple] {
   .wiki-toc a {
     width: 100%;
     justify-content: center;
+  }
+
+  .sim-form {
+    grid-template-columns: 1fr;
+  }
+
+  .sim-action-row {
+    justify-content: stretch;
+  }
+
+  .sim-action {
+    width: 100%;
   }
 }
