@@ -10,7 +10,7 @@
     <div class="topbar">
       <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
       <span class="topbar-badge">Tool Detail</span>
-      <span class="topbar-sub">Generated from bundle metadata + WPF structure</span>
+      <span class="topbar-sub">Generated from bundle metadata and static UI extraction</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -63,56 +63,32 @@
         </div>
       </section>
 
-      <section class="card wiki-section" id="ui-preview">
+      <section class="card wiki-section" id="simulator">
         <div class="card-head">
-          <span class="card-title">UI Preview</span>
-          <span class="card-hint">Parser mode: XAML + Python signals</span>
+          <span class="card-title">Simulator</span>
+          <span class="card-hint">Interactive training mode (mixed)</span>
         </div>
         <div class="card-body wiki-body">
-          <h4 class="subhead">Rendered Preview</h4>
-          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
-
-          <h4 class="subhead">Preview Sources</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
-
-          
-          <div class="xaml-wireframe">
-            <h4 class="subhead">XAML Wireframe</h4>
-            <p class="muted">No tab headers detected in XAML.</p>
-            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Capture Mode</h5><p>Stage</p></article><article class="xaml-pane"><h5>Categories</h5><p>Stage</p></article><article class="xaml-pane"><h5>Snapshot Mode</h5><p>Stage</p></article></div>
-            <div class="xaml-action-row"><span class="xaml-action">Cancel</span><span class="xaml-action">Start Logging</span></div>
-            <h4 class="subhead">Grid Layout Approximation</h4>
-            <p class="muted">No positioned grid controls were inferred from XAML.</p>
-          </div>
-
-          <div class="mock-window">
-            <div class="mock-window-bar">
-              <span>Transaction Logger</span>
-              <span>DataStack2</span>
+          <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <div class="simulator-shell">
+            <div class="simulator-toolbar">
+              <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
+              <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
+              <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
-            <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>RowDefinition</span><span>5</span></div><div class="mock-row mock-radiobutton"><span>RadioButton</span><span>4</span></div><div class="mock-row mock-block"><span>GroupBox</span><span>3</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>3</span></div><div class="mock-row mock-button"><span>Button</span><span>2</span></div><div class="mock-row mock-block"><span>Grid</span><span>2</span></div><div class="mock-row mock-listbox"><span>ListBox</span><span>1</span></div>
+            <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
+            <div class="simulator-output">
+              <h4 class="subhead">Simulated Output</h4>
+              <pre id="sim-output">Ready.</pre>
             </div>
           </div>
-
-          <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">RowDefinition <strong>5</strong></span><span class="mockup-chip">RadioButton <strong>4</strong></span><span class="mockup-chip">GroupBox <strong>3</strong></span><span class="mockup-chip">StackPanel <strong>3</strong></span><span class="mockup-chip">Button <strong>2</strong></span><span class="mockup-chip">Grid <strong>2</strong></span><span class="mockup-chip">ListBox <strong>1</strong></span></div>
-
-          <h4 class="subhead">XAML Files</h4>
-          <ul><li><code>launcher.xaml</code></li></ul>
-
-          <h4 class="subhead">Window Titles</h4>
-          <ul><li>Transaction Logger</li></ul>
-
-          <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>rbFull</code></li><li><code>rbTargeted</code></li><li><code>gbCategories</code></li><li><code>lstCategories</code></li><li><code>rbSnapNone</code></li><li><code>rbSnapLazy</code></li><li><code>btnCancel</code></li><li><code>btnStart</code></li><li><code>on_mode_change</code></li><li><code>on_start</code></li><li><code>on_cancel</code></li></ul>
         </div>
       </section>
 
-      <section class="card wiki-section" id="implementation">
+      <section class="card wiki-section" id="notes">
         <div class="card-head">
-          <span class="card-title">Implementation</span>
-          <span class="card-hint">Inputs and bundle file coverage</span>
+          <span class="card-title">Notes</span>
+          <span class="card-hint">Inputs, files, and extracted notes</span>
         </div>
         <div class="card-body tool-detail-grid wiki-body">
           <div>
@@ -123,28 +99,10 @@
             <h4 class="subhead">Files (4)</h4>
             <ul><li><code>icon.png</code></li><li><code>launcher.xaml</code></li><li><code>script.py</code></li><li><code>tool-context.md</code></li></ul>
           </div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="related-tools">
-        <div class="card-head">
-          <span class="card-title">Related Tools</span>
-          <span class="card-hint">Nearby panel and stack affinity</span>
-        </div>
-        <div class="card-body wiki-body">
-          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-paramcopier.html">ParamCopier</a></h5><p>RBG Tools Data / DataStack2</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-addcoordinates.html">Add Coordinates</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-magpiegroup.html">MagpieGroup Data</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-packagecreator.html">PackageCreator Dockable Panel</a></h5><p>RBG Tools Data / DataStack3</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html">Schedule Updater</a></h5><p>RBG Tools Data / DataStack1</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-dashboard.html">Tool Dashboard</a></h5><p>RBG Tools Data / DataStack3</p></article></div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="provenance">
-        <div class="card-head">
-          <span class="card-title">Provenance</span>
-          <span class="card-hint">Build and source traceability</span>
-        </div>
-        <div class="card-body wiki-body">
-          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
-          <p><strong>Source:</strong> bundle.md</p>
-          <p><strong>Page:</strong> tools/sj-pyrevit-rbg-tools-data-transaction-logger.html</p>
+          <div>
+            <h4 class="subhead">Notes</h4>
+            <ul><li>Preserve the environment variable contract used by the logger startup flow. Keep readiness checks explicit so the tool fails clearly when startup support is not active. Distinguish full-model logging from targeted-category logging without mutating the underlying capture pipeline unexpectedly.</li><li>Files in bundle: 4</li></ul>
+          </div>
         </div>
       </section>
         </main>
@@ -154,10 +112,8 @@
           <nav class="wiki-toc" aria-label="Tool article sections">
             <a class="wiki-toc-link" href="#overview">Overview</a>
             <a class="wiki-toc-link" href="#workflow">Workflow</a>
-            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
-            <a class="wiki-toc-link" href="#implementation">Implementation</a>
-            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
-            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+            <a class="wiki-toc-link" href="#simulator">Simulator</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
           </nav>
         </aside>
       </div>
@@ -165,10 +121,148 @@
 
     <script>
       (function () {
+        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["launcher.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"rbfull","name":"rbFull","kind":"block","label":"rbFull","required":false},{"id":"rbtargeted","name":"rbTargeted","kind":"block","label":"rbTargeted","required":false},{"id":"gbcategories","name":"gbCategories","kind":"block","label":"gbCategories","required":false},{"id":"lstcategories","name":"lstCategories","kind":"block","label":"lstCategories","required":false},{"id":"rbsnapnone","name":"rbSnapNone","kind":"block","label":"rbSnapNone","required":false},{"id":"rbsnaplazy","name":"rbSnapLazy","kind":"block","label":"rbSnapLazy","required":false},{"id":"btncancel","name":"btnCancel","kind":"button","label":"btnCancel","required":false},{"id":"btnstart","name":"btnStart","kind":"button","label":"btnStart","required":false},{"id":"on-mode-change","name":"on_mode_change","kind":"block","label":"on_mode_change","required":false},{"id":"on-start","name":"on_start","kind":"block","label":"on_start","required":false},{"id":"on-cancel","name":"on_cancel","kind":"block","label":"on_cancel","required":false},{"id":"radiobutton-11","name":"RadioButton","kind":"radio","label":"RadioButton","required":false},{"id":"button-12","name":"Button","kind":"button","label":"Button","required":false},{"id":"listbox-13","name":"ListBox","kind":"multiselect","label":"ListBox","required":true},{"id":"action-cancel","name":"Cancel","kind":"button","label":"Cancel","required":false},{"id":"action-start-logging","name":"Start Logging","kind":"button","label":"Start Logging","required":false}],"events":[{"controlId":"action-cancel","event":"click","handler":"on_cancel"},{"controlId":"action-start-logging","event":"click","handler":"on_start-logging"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"WPFWindow","message":"Simulated WPFWindow interaction"}],"workflow":[{"step":1,"label":"Results and status stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Results and status stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
           .filter(Boolean);
+        const simulatorRoot = document.getElementById('simulator-root');
+        const simOutput = document.getElementById('sim-output');
+
+        function setText(id, value) {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = String(value);
+          }
+        }
+
+        function createInput(control) {
+          const wrap = document.createElement('label');
+          wrap.className = 'sim-control';
+
+          const title = document.createElement('span');
+          title.className = 'sim-label';
+          title.textContent = control.label + (control.required ? ' *' : '');
+          wrap.appendChild(title);
+
+          let field;
+          if (control.kind === 'text') {
+            field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder = 'Enter ' + control.label;
+          } else if (control.kind === 'select') {
+            field = document.createElement('select');
+            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+              const option = document.createElement('option');
+              option.value = index === 0 ? '' : optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'multiselect') {
+            field = document.createElement('select');
+            field.multiple = true;
+            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+              const option = document.createElement('option');
+              option.value = optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'checkbox') {
+            field = document.createElement('input');
+            field.type = 'checkbox';
+          } else if (control.kind === 'radio') {
+            field = document.createElement('input');
+            field.type = 'radio';
+          } else {
+            field = document.createElement('input');
+            field.type = 'text';
+          }
+
+          field.dataset.controlId = control.id;
+          field.dataset.required = control.required ? 'true' : 'false';
+          field.className = 'sim-field';
+          wrap.appendChild(field);
+          return wrap;
+        }
+
+        function createButton(control) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'sim-action';
+          button.textContent = control.label || 'Run';
+          button.dataset.controlId = control.id;
+          button.addEventListener('click', function () {
+            const requiredFields = Array.from(simulatorRoot.querySelectorAll('[data-required="true"]'));
+            const missing = requiredFields.filter((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              if (field.multiple) {
+                return !Array.from(field.selectedOptions).length;
+              }
+              return !String(field.value || '').trim();
+            });
+
+            if (missing.length) {
+              simOutput.textContent = 'Validation failed. Complete required inputs before running.';
+              return;
+            }
+
+            simOutput.textContent = [
+              'Simulation complete.',
+              'Action: ' + button.textContent,
+              'Controls evaluated: ' + SIMULATOR.controls.length,
+              'Events mapped: ' + SIMULATOR.events.length,
+              'No Revit model changes were made.',
+            ].join('\n');
+          });
+          return button;
+        }
+
+        function renderSimulator() {
+          if (!simulatorRoot) {
+            return;
+          }
+
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          if (!SIMULATOR.controls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured controls were detected. Use workflow and prompts as the training guide.';
+            simulatorRoot.appendChild(fallback);
+            return;
+          }
+
+          const form = document.createElement('div');
+          form.className = 'sim-form';
+
+          SIMULATOR.controls.forEach((control) => {
+            if (control.kind === 'button') {
+              form.appendChild(createButton(control));
+              return;
+            }
+            if (control.kind === 'table') {
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              form.appendChild(tableWrap);
+              return;
+            }
+            form.appendChild(createInput(control));
+          });
+
+          if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
+            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          simulatorRoot.appendChild(form);
+        }
+
+        renderSimulator();
 
         if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
           return;

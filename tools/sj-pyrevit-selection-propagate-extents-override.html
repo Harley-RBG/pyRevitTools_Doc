@@ -10,7 +10,7 @@
     <div class="topbar">
       <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
       <span class="topbar-badge">Tool Detail</span>
-      <span class="topbar-sub">Generated from bundle metadata + WPF structure</span>
+      <span class="topbar-sub">Generated from bundle metadata and static UI extraction</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -63,48 +63,32 @@
         </div>
       </section>
 
-      <section class="card wiki-section" id="ui-preview">
+      <section class="card wiki-section" id="simulator">
         <div class="card-head">
-          <span class="card-title">UI Preview</span>
-          <span class="card-hint">Parser mode: Python UI inference (WPF/forms)</span>
+          <span class="card-title">Simulator</span>
+          <span class="card-hint">Interactive training mode (pyrevit-form)</span>
         </div>
         <div class="card-body wiki-body">
-          <h4 class="subhead">Rendered Preview</h4>
-          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
-
-          <h4 class="subhead">Preview Sources</h4>
-          <p class="muted">Preview source not detected.</p>
-
-          
-
-          <div class="mock-window">
-            <div class="mock-window-bar">
-              <span>Propagate Extents Override</span>
-              <span>Direct</span>
+          <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <div class="simulator-shell">
+            <div class="simulator-toolbar">
+              <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
+              <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
+              <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
-            <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>Grid</span><span>41</span></div><div class="mock-row mock-button"><span>Button</span><span>11</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>11</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>9</span></div><div class="mock-row mock-listbox"><span>ListBox</span><span>4</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>4</span></div><div class="mock-row mock-textbox"><span>TextBox</span><span>4</span></div><div class="mock-row mock-checkbox"><span>CheckBox</span><span>2</span></div>
+            <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
+            <div class="simulator-output">
+              <h4 class="subhead">Simulated Output</h4>
+              <pre id="sim-output">Ready.</pre>
             </div>
           </div>
-
-          <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">Grid <strong>41</strong></span><span class="mockup-chip">Button <strong>11</strong></span><span class="mockup-chip">ColumnDefinition <strong>11</strong></span><span class="mockup-chip">RowDefinition <strong>9</strong></span><span class="mockup-chip">ListBox <strong>4</strong></span><span class="mockup-chip">StackPanel <strong>4</strong></span><span class="mockup-chip">TextBox <strong>4</strong></span><span class="mockup-chip">CheckBox <strong>2</strong></span><span class="mockup-chip">ComboBox <strong>2</strong></span><span class="mockup-chip">TextBlock <strong>2</strong></span></div>
-
-          <h4 class="subhead">XAML Files</h4>
-          <p class="muted">No XAML file found for this tool in bundle data.</p>
-
-          <h4 class="subhead">Window Titles</h4>
-          <p class="muted">No explicit __title__ strings detected in script files.</p>
-
-          <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>on_filter</code></li><li><code>on_selection</code></li><li><code>on_double_click</code></li><li><code>on_ok</code></li><li><code>on_cancel</code></li><li><code>on_list_mouse_down</code></li><li><code>on_check_all</code></li><li><code>on_uncheck_all</code></li><li><code>on_toggle</code></li></ul>
         </div>
       </section>
 
-      <section class="card wiki-section" id="implementation">
+      <section class="card wiki-section" id="notes">
         <div class="card-head">
-          <span class="card-title">Implementation</span>
-          <span class="card-hint">Inputs and bundle file coverage</span>
+          <span class="card-title">Notes</span>
+          <span class="card-hint">Inputs, files, and extracted notes</span>
         </div>
         <div class="card-body tool-detail-grid wiki-body">
           <div>
@@ -115,28 +99,10 @@
             <h4 class="subhead">Files (3)</h4>
             <ul><li><code>bundle.yaml</code></li><li><code>icon.png</code></li><li><code>script.py</code></li></ul>
           </div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="related-tools">
-        <div class="card-head">
-          <span class="card-title">Related Tools</span>
-          <span class="card-hint">Nearby panel and stack affinity</span>
-        </div>
-        <div class="card-body wiki-body">
-          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-categorypicker.html">CategoryPicker</a></h5><p>Selection / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html">Jason Exporter</a></h5><p>Sheets / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-copy-state.html">Copy State</a></h5><p>Selection / memo</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-mclear.html">MClear</a></h5><p>Selection / Memory</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-mdeduct.html">MDeduct</a></h5><p>Selection / Memory</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-next.html">Next</a></h5><p>Selection / Memory</p></article></div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="provenance">
-        <div class="card-head">
-          <span class="card-title">Provenance</span>
-          <span class="card-hint">Build and source traceability</span>
-        </div>
-        <div class="card-body wiki-body">
-          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
-          <p><strong>Source:</strong> bundle.md</p>
-          <p><strong>Page:</strong> tools/sj-pyrevit-selection-propagate-extents-override.html</p>
+          <div>
+            <h4 class="subhead">Notes</h4>
+            <ul><li>Files in bundle: 3</li></ul>
+          </div>
         </div>
       </section>
         </main>
@@ -146,10 +112,8 @@
           <nav class="wiki-toc" aria-label="Tool article sections">
             <a class="wiki-toc-link" href="#overview">Overview</a>
             <a class="wiki-toc-link" href="#workflow">Workflow</a>
-            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
-            <a class="wiki-toc-link" href="#implementation">Implementation</a>
-            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
-            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+            <a class="wiki-toc-link" href="#simulator">Simulator</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
           </nav>
         </aside>
       </div>
@@ -157,10 +121,148 @@
 
     <script>
       (function () {
+        const SIMULATOR = {"toolId":"JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton","uiKind":"pyrevit-form","sourceType":"python","xamlFiles":[],"sourceKinds":[],"controls":[{"id":"on-filter","name":"on_filter","kind":"block","label":"on_filter","required":false},{"id":"on-selection","name":"on_selection","kind":"block","label":"on_selection","required":false},{"id":"on-double-click","name":"on_double_click","kind":"block","label":"on_double_click","required":false},{"id":"on-ok","name":"on_ok","kind":"button","label":"on_ok","required":false},{"id":"on-cancel","name":"on_cancel","kind":"block","label":"on_cancel","required":false},{"id":"on-list-mouse-down","name":"on_list_mouse_down","kind":"block","label":"on_list_mouse_down","required":false},{"id":"on-check-all","name":"on_check_all","kind":"checkbox","label":"on_check_all","required":false},{"id":"on-uncheck-all","name":"on_uncheck_all","kind":"checkbox","label":"on_uncheck_all","required":false},{"id":"on-toggle","name":"on_toggle","kind":"block","label":"on_toggle","required":false},{"id":"button-9","name":"Button","kind":"button","label":"Button","required":false},{"id":"listbox-10","name":"ListBox","kind":"multiselect","label":"ListBox","required":true},{"id":"textbox-11","name":"TextBox","kind":"text","label":"TextBox","required":true},{"id":"checkbox-12","name":"CheckBox","kind":"checkbox","label":"CheckBox","required":false},{"id":"combobox-13","name":"ComboBox","kind":"select","label":"ComboBox","required":true}],"events":[{"controlId":"on-double-click","event":"click","handler":"on_double_click"},{"controlId":"on-ok","event":"click","handler":"on_ok"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"TemplateListItem","message":"Simulated TemplateListItem interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Filter and scope stage"},{"step":3,"label":"Execution stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Filter and scope stage","Execution stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
           .filter(Boolean);
+        const simulatorRoot = document.getElementById('simulator-root');
+        const simOutput = document.getElementById('sim-output');
+
+        function setText(id, value) {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = String(value);
+          }
+        }
+
+        function createInput(control) {
+          const wrap = document.createElement('label');
+          wrap.className = 'sim-control';
+
+          const title = document.createElement('span');
+          title.className = 'sim-label';
+          title.textContent = control.label + (control.required ? ' *' : '');
+          wrap.appendChild(title);
+
+          let field;
+          if (control.kind === 'text') {
+            field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder = 'Enter ' + control.label;
+          } else if (control.kind === 'select') {
+            field = document.createElement('select');
+            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+              const option = document.createElement('option');
+              option.value = index === 0 ? '' : optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'multiselect') {
+            field = document.createElement('select');
+            field.multiple = true;
+            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+              const option = document.createElement('option');
+              option.value = optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'checkbox') {
+            field = document.createElement('input');
+            field.type = 'checkbox';
+          } else if (control.kind === 'radio') {
+            field = document.createElement('input');
+            field.type = 'radio';
+          } else {
+            field = document.createElement('input');
+            field.type = 'text';
+          }
+
+          field.dataset.controlId = control.id;
+          field.dataset.required = control.required ? 'true' : 'false';
+          field.className = 'sim-field';
+          wrap.appendChild(field);
+          return wrap;
+        }
+
+        function createButton(control) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'sim-action';
+          button.textContent = control.label || 'Run';
+          button.dataset.controlId = control.id;
+          button.addEventListener('click', function () {
+            const requiredFields = Array.from(simulatorRoot.querySelectorAll('[data-required="true"]'));
+            const missing = requiredFields.filter((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              if (field.multiple) {
+                return !Array.from(field.selectedOptions).length;
+              }
+              return !String(field.value || '').trim();
+            });
+
+            if (missing.length) {
+              simOutput.textContent = 'Validation failed. Complete required inputs before running.';
+              return;
+            }
+
+            simOutput.textContent = [
+              'Simulation complete.',
+              'Action: ' + button.textContent,
+              'Controls evaluated: ' + SIMULATOR.controls.length,
+              'Events mapped: ' + SIMULATOR.events.length,
+              'No Revit model changes were made.',
+            ].join('\n');
+          });
+          return button;
+        }
+
+        function renderSimulator() {
+          if (!simulatorRoot) {
+            return;
+          }
+
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          if (!SIMULATOR.controls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured controls were detected. Use workflow and prompts as the training guide.';
+            simulatorRoot.appendChild(fallback);
+            return;
+          }
+
+          const form = document.createElement('div');
+          form.className = 'sim-form';
+
+          SIMULATOR.controls.forEach((control) => {
+            if (control.kind === 'button') {
+              form.appendChild(createButton(control));
+              return;
+            }
+            if (control.kind === 'table') {
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              form.appendChild(tableWrap);
+              return;
+            }
+            form.appendChild(createInput(control));
+          });
+
+          if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
+            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          simulatorRoot.appendChild(form);
+        }
+
+        renderSimulator();
 
         if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
           return;

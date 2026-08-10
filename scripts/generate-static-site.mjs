@@ -10,6 +10,10 @@ const diagnosticsDir = path.join(repoRoot, "generated");
 const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
 const generateCachePath = path.join(diagnosticsDir, "generate-cache.json");
 const toolPagesCachePath = path.join(diagnosticsDir, "tool-pages-cache.json");
+const toolCatalogPath = path.join(diagnosticsDir, "tool-catalog.json");
+const uiManifestPath = path.join(diagnosticsDir, "ui-manifest.json");
+const uiDiagnosticsPath = path.join(diagnosticsDir, "ui-diagnostics.json");
+const trainingDataPath = path.join(diagnosticsDir, "training-data.json");
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -803,7 +807,7 @@ function mergeUiMockup(wpfMockup, pythonUi) {
   };
 }
 
-function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
+function buildToolPageHtml(tool, generatedAt) {
   const inputsHtml = tool.inputs.length
     ? `<ul>${tool.inputs.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No explicit click or shift-click input hints were detected.</p>";
@@ -811,28 +815,6 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
   const filesHtml = tool.files.length
     ? `<ul>${tool.files.map((file) => `<li><code>${escapeHtml(file)}</code></li>`).join("")}</ul>`
     : "<p class=\"muted\">No file listing available.</p>";
-
-  const xamlFilesHtml = tool.uiMockup.fileNames.length
-    ? `<ul>${tool.uiMockup.fileNames.map((name) => `<li><code>${escapeHtml(name)}</code></li>`).join("")}</ul>`
-    : "<p class=\"muted\">No XAML file found for this tool in bundle data.</p>";
-
-  const controlsHtml = tool.uiMockup.controlCounts.length
-    ? `<div class=\"mockup-chip-row\">${tool.uiMockup.controlCounts.slice(0, 12).map((item) => `<span class=\"mockup-chip\">${escapeHtml(item.name)} <strong>${item.count}</strong></span>`).join("")}</div>`
-    : "<p class=\"muted\">No control tags detected.</p>";
-
-  const mockRowsHtml = tool.uiMockup.mockRows.length
-    ? tool.uiMockup.mockRows.map((row) => `<div class=\"mock-row mock-${escapeHtml(row.kind.toLowerCase())}\"><span>${escapeHtml(row.label)}</span><span>${row.count}</span></div>`).join("")
-    : `<div class=\"mock-row mock-block\"><span>No WPF layout detected</span><span>0</span></div>`;
-
-  const namedElementsHtml = tool.uiMockup.namedElements.length
-    ? `<ul>${tool.uiMockup.namedElements.map((name) => `<li><code>${escapeHtml(name)}</code></li>`).join("")}</ul>`
-    : "<p class=\"muted\">No x:Name elements detected.</p>";
-
-  const parserMode = tool.uiMockup.sourceType === "xaml"
-    ? "XAML + Python signals"
-    : tool.uiMockup.sourceType === "python"
-      ? "Python UI inference (WPF/forms)"
-      : "No UI artifacts detected";
 
   const workflowStagesHtml = tool.uiMockup.workflowStages.length
     ? `<ul>${tool.uiMockup.workflowStages.map((stage) => `<li>${escapeHtml(stage)}</li>`).join("")}</ul>`
@@ -850,59 +832,12 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
     ? `<ul>${tool.uiMockup.windowTitles.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No explicit __title__ strings detected in script files.</p>";
 
-  const previewTreeHtml = tool.uiMockup.previewTree
-    ? `<div class="ui-preview-canvas">${renderXamlPreviewNode(tool.uiMockup.previewTree)}</div>`
-    : "<p class=\"muted\">No parsed XAML preview is available for this tool yet.</p>";
+  const notesHtml = tool.notes.length
+    ? `<ul>${tool.notes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "<p class=\"muted\">No notes were extracted for this tool.</p>";
 
-  const previewSourceHtml = tool.uiMockup.sourceKinds.length
-    ? `<div class="mockup-chip-row">${tool.uiMockup.sourceKinds.map((kind) => `<span class="mockup-chip">${escapeHtml(kind)}</span>`).join("")}</div>`
-    : "<p class=\"muted\">Preview source not detected.</p>";
-
-  const xamlTabsHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.tabs.length
-    ? `<div class=\"xaml-tab-row\">${tool.uiMockup.xamlLayout.tabs.map((tab, index) => `<span class=\"xaml-tab ${index === 0 ? "is-active" : ""}\">${escapeHtml(tab)}</span>`).join("")}</div>`
-    : "<p class=\"muted\">No tab headers detected in XAML.</p>";
-
-  const xamlPanesHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.panes.length
-    ? `<div class=\"xaml-pane-grid\">${tool.uiMockup.xamlLayout.panes.map((pane) => `<article class=\"xaml-pane\"><h5>${escapeHtml(pane.title)}</h5><p>${escapeHtml(pane.hint)}</p></article>`).join("")}</div>`
-    : "<p class=\"muted\">No pane/group headers detected in XAML.</p>";
-
-  const xamlActionsHtml = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.actionButtons.length
-    ? `<div class=\"xaml-action-row\">${tool.uiMockup.xamlLayout.actionButtons.map((action) => `<span class=\"xaml-action\">${escapeHtml(action)}</span>`).join("")}</div>`
-    : "<p class=\"muted\">No command button labels detected in XAML.</p>";
-
-  const xamlGridModel = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.gridModel
-    ? tool.uiMockup.xamlLayout.gridModel
-    : { rowCount: 1, columnCount: 1, blocks: [] };
-
-  const xamlGridBlocksHtml = xamlGridModel.blocks.length
-    ? xamlGridModel.blocks.map((block) => {
-      const maxRows = clamp(Number(xamlGridModel.rowCount) || 1, 1, 12);
-      const maxCols = clamp(Number(xamlGridModel.columnCount) || 1, 1, 4);
-      const startRow = clamp((Number(block.row) || 0) + 1, 1, maxRows);
-      const startCol = clamp((Number(block.col) || 0) + 1, 1, maxCols);
-      const endRow = clamp(startRow + clamp(Number(block.rowSpan) || 1, 1, maxRows), startRow + 1, maxRows + 1);
-      const endCol = clamp(startCol + clamp(Number(block.colSpan) || 1, 1, maxCols), startCol + 1, maxCols + 1);
-      const blockClass = /button/i.test(block.tag)
-        ? "is-button"
-        : /tab/i.test(block.tag)
-          ? "is-tab"
-          : /groupbox|datagrid|listbox/i.test(block.tag)
-            ? "is-panel"
-            : "";
-
-      return `<article class=\"xaml-grid-item ${blockClass}\" style=\"grid-row:${startRow}/${endRow};grid-column:${startCol}/${endCol};\"><h6>${escapeHtml(block.tag)}</h6><p>${escapeHtml(block.label)}</p></article>`;
-    }).join("")
-    : "<p class=\"muted\">No positioned grid controls were inferred from XAML.</p>";
-
-  const xamlGridHtml = xamlGridModel.blocks.length
-    ? `<div class=\"xaml-grid-model\" style=\"--xaml-cols:${xamlGridModel.columnCount};--xaml-rows:${xamlGridModel.rowCount};\">${xamlGridBlocksHtml}</div>`
-    : xamlGridBlocksHtml;
-
-  const hasXamlWireframe = Boolean(tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.hasLayout);
-
-  const relatedToolsHtml = relatedTools.length
-    ? `<div class="related-tool-grid">${relatedTools.map((item) => `<article class="related-tool-card"><h5><a href="../${escapeHtml(item.pagePath)}">${escapeHtml(item.title)}</a></h5><p>${escapeHtml(item.panel)} / ${escapeHtml(item.stack)}</p></article>`).join("")}</div>`
-    : "<p class=\"muted\">No nearby tools were inferred for this panel yet.</p>";
+  const simulator = buildSimulatorModel(tool);
+  const simulatorJson = JSON.stringify(simulator);
 
   return `<!doctype html>
 <html lang="en">
@@ -916,7 +851,7 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
     <div class="topbar">
       <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
       <span class="topbar-badge">Tool Detail</span>
-      <span class="topbar-sub">Generated from bundle metadata + WPF structure</span>
+      <span class="topbar-sub">Generated from bundle metadata and static UI extraction</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -969,56 +904,32 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
         </div>
       </section>
 
-      <section class="card wiki-section" id="ui-preview">
+      <section class="card wiki-section" id="simulator">
         <div class="card-head">
-          <span class="card-title">UI Preview</span>
-          <span class="card-hint">Parser mode: ${escapeHtml(parserMode)}</span>
+          <span class="card-title">Simulator</span>
+          <span class="card-hint">Interactive training mode (${escapeHtml(simulator.uiKind)})</span>
         </div>
         <div class="card-body wiki-body">
-          <h4 class="subhead">Rendered Preview</h4>
-          ${previewTreeHtml}
-
-          <h4 class="subhead">Preview Sources</h4>
-          ${previewSourceHtml}
-
-          ${hasXamlWireframe ? `
-          <div class="xaml-wireframe">
-            <h4 class="subhead">XAML Wireframe</h4>
-            ${xamlTabsHtml}
-            ${xamlPanesHtml}
-            ${xamlActionsHtml}
-            <h4 class="subhead">Grid Layout Approximation</h4>
-            ${xamlGridHtml}
-          </div>` : ""}
-
-          <div class="mock-window">
-            <div class="mock-window-bar">
-              <span>${escapeHtml(tool.title)}</span>
-              <span>${escapeHtml(tool.stack)}</span>
+          <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <div class="simulator-shell">
+            <div class="simulator-toolbar">
+              <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
+              <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
+              <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
-            <div class="mock-window-body">
-              ${mockRowsHtml}
+            <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
+            <div class="simulator-output">
+              <h4 class="subhead">Simulated Output</h4>
+              <pre id="sim-output">Ready.</pre>
             </div>
           </div>
-
-          <h4 class="subhead">Detected Controls</h4>
-          ${controlsHtml}
-
-          <h4 class="subhead">XAML Files</h4>
-          ${xamlFilesHtml}
-
-          <h4 class="subhead">Window Titles</h4>
-          ${windowTitlesHtml}
-
-          <h4 class="subhead">Named Elements</h4>
-          ${namedElementsHtml}
         </div>
       </section>
 
-      <section class="card wiki-section" id="implementation">
+      <section class="card wiki-section" id="notes">
         <div class="card-head">
-          <span class="card-title">Implementation</span>
-          <span class="card-hint">Inputs and bundle file coverage</span>
+          <span class="card-title">Notes</span>
+          <span class="card-hint">Inputs, files, and extracted notes</span>
         </div>
         <div class="card-body tool-detail-grid wiki-body">
           <div>
@@ -1029,28 +940,10 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
             <h4 class="subhead">Files (${tool.fileCount})</h4>
             ${filesHtml}
           </div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="related-tools">
-        <div class="card-head">
-          <span class="card-title">Related Tools</span>
-          <span class="card-hint">Nearby panel and stack affinity</span>
-        </div>
-        <div class="card-body wiki-body">
-          ${relatedToolsHtml}
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="provenance">
-        <div class="card-head">
-          <span class="card-title">Provenance</span>
-          <span class="card-hint">Build and source traceability</span>
-        </div>
-        <div class="card-body wiki-body">
-          <p><strong>Generated:</strong> ${generatedAt}</p>
-          <p><strong>Source:</strong> bundle.md</p>
-          <p><strong>Page:</strong> ${escapeHtml(tool.pagePath)}</p>
+          <div>
+            <h4 class="subhead">Notes</h4>
+            ${notesHtml}
+          </div>
         </div>
       </section>
         </main>
@@ -1060,10 +953,8 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
           <nav class="wiki-toc" aria-label="Tool article sections">
             <a class="wiki-toc-link" href="#overview">Overview</a>
             <a class="wiki-toc-link" href="#workflow">Workflow</a>
-            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
-            <a class="wiki-toc-link" href="#implementation">Implementation</a>
-            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
-            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+            <a class="wiki-toc-link" href="#simulator">Simulator</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
           </nav>
         </aside>
       </div>
@@ -1071,10 +962,148 @@ function buildToolPageHtml(tool, generatedAt, relatedTools = []) {
 
     <script>
       (function () {
+        const SIMULATOR = ${simulatorJson};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
           .filter(Boolean);
+        const simulatorRoot = document.getElementById('simulator-root');
+        const simOutput = document.getElementById('sim-output');
+
+        function setText(id, value) {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = String(value);
+          }
+        }
+
+        function createInput(control) {
+          const wrap = document.createElement('label');
+          wrap.className = 'sim-control';
+
+          const title = document.createElement('span');
+          title.className = 'sim-label';
+          title.textContent = control.label + (control.required ? ' *' : '');
+          wrap.appendChild(title);
+
+          let field;
+          if (control.kind === 'text') {
+            field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder = 'Enter ' + control.label;
+          } else if (control.kind === 'select') {
+            field = document.createElement('select');
+            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+              const option = document.createElement('option');
+              option.value = index === 0 ? '' : optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'multiselect') {
+            field = document.createElement('select');
+            field.multiple = true;
+            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+              const option = document.createElement('option');
+              option.value = optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'checkbox') {
+            field = document.createElement('input');
+            field.type = 'checkbox';
+          } else if (control.kind === 'radio') {
+            field = document.createElement('input');
+            field.type = 'radio';
+          } else {
+            field = document.createElement('input');
+            field.type = 'text';
+          }
+
+          field.dataset.controlId = control.id;
+          field.dataset.required = control.required ? 'true' : 'false';
+          field.className = 'sim-field';
+          wrap.appendChild(field);
+          return wrap;
+        }
+
+        function createButton(control) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'sim-action';
+          button.textContent = control.label || 'Run';
+          button.dataset.controlId = control.id;
+          button.addEventListener('click', function () {
+            const requiredFields = Array.from(simulatorRoot.querySelectorAll('[data-required="true"]'));
+            const missing = requiredFields.filter((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              if (field.multiple) {
+                return !Array.from(field.selectedOptions).length;
+              }
+              return !String(field.value || '').trim();
+            });
+
+            if (missing.length) {
+              simOutput.textContent = 'Validation failed. Complete required inputs before running.';
+              return;
+            }
+
+            simOutput.textContent = [
+              'Simulation complete.',
+              'Action: ' + button.textContent,
+              'Controls evaluated: ' + SIMULATOR.controls.length,
+              'Events mapped: ' + SIMULATOR.events.length,
+              'No Revit model changes were made.',
+            ].join('\\n');
+          });
+          return button;
+        }
+
+        function renderSimulator() {
+          if (!simulatorRoot) {
+            return;
+          }
+
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          if (!SIMULATOR.controls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured controls were detected. Use workflow and prompts as the training guide.';
+            simulatorRoot.appendChild(fallback);
+            return;
+          }
+
+          const form = document.createElement('div');
+          form.className = 'sim-form';
+
+          SIMULATOR.controls.forEach((control) => {
+            if (control.kind === 'button') {
+              form.appendChild(createButton(control));
+              return;
+            }
+            if (control.kind === 'table') {
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              form.appendChild(tableWrap);
+              return;
+            }
+            form.appendChild(createInput(control));
+          });
+
+          if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
+            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          simulatorRoot.appendChild(form);
+        }
+
+        renderSimulator();
 
         if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
           return;
@@ -1137,28 +1166,8 @@ function writeToolPages(tools, generatedAt, options = {}) {
     const pagePath = tool.pagePath.replace(/\\/g, "/");
     expected.add(pagePath);
 
-    const relatedTools = tools
-      .filter((candidate) => candidate.id !== tool.id)
-      .map((candidate) => {
-        const samePanel = candidate.panel === tool.panel;
-        const sameStack = candidate.stack === tool.stack;
-        const sameTab = candidate.tab === tool.tab;
-        const score = (sameStack ? 3 : 0) + (samePanel ? 2 : 0) + (sameTab ? 1 : 0);
-        return { candidate, score };
-      })
-      .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title))
-      .slice(0, 6)
-      .map((entry) => ({
-        title: entry.candidate.title,
-        pagePath: entry.candidate.pagePath,
-        panel: entry.candidate.panel,
-        stack: entry.candidate.stack,
-      }));
-
-    const html = buildToolPageHtml(tool, generatedAt, relatedTools);
-    const stableHtml = html.replace(`Generated: ${generatedAt}`, "Generated: __GENERATED_AT__");
-    const pageHash = sha1Text(stableHtml);
+    const html = buildToolPageHtml(tool, generatedAt);
+    const pageHash = sha1Text(html);
     nextPages[pagePath] = { hash: pageHash };
 
     const outputPath = path.join(repoRoot, pagePath);
@@ -1325,6 +1334,276 @@ function parseTooltipInputs(tooltip) {
 
 function dedupe(arr) {
   return [...new Set(arr.filter(Boolean))];
+}
+
+function slugifyId(value) {
+  return toSlug(value) || "item";
+}
+
+function toSimulatorControlKind(value) {
+  const key = String(value || "").toLowerCase();
+  if (key.includes("textbox") || key === "textbox") return "text";
+  if (key.includes("combobox") || key === "combobox") return "select";
+  if (key.includes("listbox") || key === "listbox") return "multiselect";
+  if (key.includes("datagrid") || key === "datagrid") return "table";
+  if (key.includes("checkbox") || key === "checkbox") return "checkbox";
+  if (key.includes("radiobutton") || key === "radio") return "radio";
+  if (key.includes("button") || key === "button") return "button";
+  if (key.includes("treeview") || key === "tree") return "tree";
+  if (key.includes("tab") || key === "tabitem" || key === "tabcontrol") return "tabs";
+  return "block";
+}
+
+function inferUiKind(tool) {
+  const hasXaml = Boolean(tool.uiMockup && tool.uiMockup.hasXaml);
+  const hasPyForms = Boolean(tool.uiMockup && tool.uiMockup.hasPythonUi);
+  if (hasXaml && hasPyForms) return "mixed";
+  if (hasXaml) return "wpf";
+  if (hasPyForms) return "pyrevit-form";
+  return "none";
+}
+
+function inferDynamicSources(tool) {
+  const text = [
+    ...(tool.uiMockup.workflowStages || []),
+    ...(tool.uiMockup.keyWorkflowMethods || []),
+    ...(tool.inputs || []),
+    tool.function || "",
+  ].join("\n").toLowerCase();
+
+  const patterns = [
+    "plan views",
+    "levels",
+    "scope boxes",
+    "detail views",
+    "sheets",
+    "titleblocks",
+    "families",
+    "categories",
+    "parameters",
+  ];
+
+  return patterns.filter((name) => text.includes(name));
+}
+
+function buildSimulatorModel(tool) {
+  const uiKind = inferUiKind(tool);
+  const controls = [];
+  const events = [];
+
+  const namedElements = tool.uiMockup.namedElements || [];
+  namedElements.forEach((name) => {
+    const normalized = slugifyId(name);
+    const controlKind = /btn|button|run|apply|ok/i.test(name)
+      ? "button"
+      : /cmb|combo/i.test(name)
+        ? "select"
+        : /txt|text/i.test(name)
+          ? "text"
+          : /chk|check/i.test(name)
+            ? "checkbox"
+            : "block";
+
+    controls.push({
+      id: normalized,
+      name,
+      kind: controlKind,
+      label: name,
+      required: /run|execute|apply|view|scope/i.test(name),
+    });
+
+    if (/click|run|apply|ok|execute/i.test(name)) {
+      events.push({
+        controlId: normalized,
+        event: "click",
+        handler: name,
+      });
+    }
+  });
+
+  (tool.uiMockup.controlCounts || []).forEach((item) => {
+    const kind = toSimulatorControlKind(item.name);
+    const id = slugifyId(`${item.name}-${controls.length}`);
+    const exists = controls.some((control) => control.kind === kind && control.label === item.name);
+    if (!exists && ["text", "select", "multiselect", "table", "checkbox", "radio", "button", "tabs", "tree"].includes(kind)) {
+      controls.push({
+        id,
+        name: item.name,
+        kind,
+        label: item.name,
+        required: ["text", "select", "multiselect"].includes(kind),
+      });
+    }
+  });
+
+  const actionButtons = tool.uiMockup.xamlLayout && tool.uiMockup.xamlLayout.actionButtons
+    ? tool.uiMockup.xamlLayout.actionButtons
+    : [];
+
+  actionButtons.slice(0, 8).forEach((label) => {
+    const id = slugifyId(`action-${label}`);
+    if (!controls.some((control) => control.id === id)) {
+      controls.push({
+        id,
+        name: label,
+        kind: "button",
+        label,
+        required: false,
+      });
+    }
+    if (!events.some((event) => event.controlId === id)) {
+      events.push({
+        controlId: id,
+        event: "click",
+        handler: `on_${slugifyId(label)}`,
+      });
+    }
+  });
+
+  const prompts = (tool.uiMockup.formsCalls || []).map((call) => ({
+    type: call,
+    message: `Simulated ${call} interaction`,
+  }));
+
+  const workflow = (tool.uiMockup.workflowStages || []).map((stage, index) => ({
+    step: index + 1,
+    label: stage,
+  }));
+
+  const scenarios = [
+    {
+      id: "default-training",
+      title: "Default Training Run",
+      steps: workflow.length ? workflow.map((item) => item.label) : ["Review inputs", "Run simulation"],
+      expectedOutput: [
+        "Simulation complete",
+        "Validation checks passed",
+        "No Revit model changes were made",
+      ],
+    },
+  ];
+
+  return {
+    toolId: tool.id,
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls,
+    events,
+    prompts,
+    workflow,
+    dynamicSources: inferDynamicSources(tool),
+    scenarios,
+    confidence: {
+      controls: controls.length > 0 ? "medium" : "low",
+      workflow: workflow.length > 0 ? "high" : "low",
+      prompts: prompts.length > 0 ? "medium" : "low",
+    },
+  };
+}
+
+function buildToolCatalogData(payload) {
+  return {
+    generatedAt: payload.meta.generatedAt,
+    source: payload.meta.source,
+    tools: payload.tools.map((tool) => ({
+      id: tool.id,
+      title: tool.title,
+      tab: tool.tab,
+      panel: tool.panel,
+      stack: tool.stack,
+      location: tool.location,
+      function: tool.function,
+      purpose: tool.purpose,
+      inputs: tool.inputs,
+      notes: tool.notes,
+      fileCount: tool.fileCount,
+      pagePath: tool.pagePath,
+      uiKind: inferUiKind(tool),
+    })),
+  };
+}
+
+function buildUiManifest(payload) {
+  return {
+    generatedAt: payload.meta.generatedAt,
+    source: payload.meta.source,
+    tools: payload.tools.map((tool) => ({
+      id: tool.id,
+      title: tool.title,
+      pagePath: tool.pagePath,
+      simulator: buildSimulatorModel(tool),
+    })),
+  };
+}
+
+function buildTrainingData(payload, uiManifest) {
+  const shared = {
+    levels: ["Level 00", "Level 01", "Level 02"],
+    planViews: ["S-1001 Level 00 Framing Plan", "S-1002 Level 01 Framing Plan"],
+    scopeBoxes: ["SB-A-Core", "SB-B-East Wing", "SB-C-Tower"],
+    detailViews: ["DT-001 Typical Beam", "DT-002 Column Base", "DT-003 Slab Edge"],
+    sheets: ["S100", "S101", "S200"],
+    parameters: ["Mark", "Type Name", "Comments"],
+  };
+
+  const byTool = {};
+  uiManifest.tools.forEach((entry) => {
+    const sourceNames = entry.simulator.dynamicSources || [];
+    byTool[entry.id] = {
+      requiredSources: sourceNames,
+      mock: {
+        levels: sourceNames.includes("levels") ? shared.levels : [],
+        planViews: sourceNames.includes("plan views") ? shared.planViews : [],
+        scopeBoxes: sourceNames.includes("scope boxes") ? shared.scopeBoxes : [],
+        detailViews: sourceNames.includes("detail views") ? shared.detailViews : [],
+        sheets: sourceNames.includes("sheets") ? shared.sheets : [],
+        parameters: sourceNames.includes("parameters") ? shared.parameters : [],
+      },
+    };
+  });
+
+  return {
+    generatedAt: payload.meta.generatedAt,
+    shared,
+    byTool,
+  };
+}
+
+function buildUiDiagnostics(payload, uiManifest) {
+  const supportedKinds = new Set(["text", "select", "multiselect", "table", "checkbox", "radio", "button", "tabs", "tree"]);
+  const details = uiManifest.tools.map((entry) => {
+    const unsupported = entry.simulator.controls
+      .filter((control) => !supportedKinds.has(control.kind))
+      .map((control) => control.kind);
+
+    return {
+      toolId: entry.id,
+      title: entry.title,
+      uiKind: entry.simulator.uiKind,
+      controlCount: entry.simulator.controls.length,
+      eventCount: entry.simulator.events.length,
+      promptCount: entry.simulator.prompts.length,
+      unsupportedKinds: dedupe(unsupported),
+      requiresTrainingData: entry.simulator.dynamicSources.length > 0,
+      confidence: entry.simulator.confidence,
+    };
+  });
+
+  const toolsWithUi = details.filter((item) => item.uiKind !== "none").length;
+  const toolsRequiringTrainingData = details.filter((item) => item.requiresTrainingData).length;
+
+  return {
+    generatedAt: payload.meta.generatedAt,
+    summary: {
+      totalTools: payload.tools.length,
+      toolsWithUi,
+      toolsRequiringTrainingData,
+      toolsWithoutUiSignals: payload.tools.length - toolsWithUi,
+    },
+    details,
+  };
 }
 
 function classifyTab(panelName) {
@@ -1912,6 +2191,10 @@ function main() {
     modeCache.mode === options.mode &&
     fs.existsSync(htmlPath) &&
     fs.existsSync(diagnosticsPath) &&
+    fs.existsSync(toolCatalogPath) &&
+    fs.existsSync(uiManifestPath) &&
+    fs.existsSync(uiDiagnosticsPath) &&
+    fs.existsSync(trainingDataPath) &&
     (options.writeToolPages ? hasToolPages() : true)
   ) {
     process.stdout.write(`Skipped generate: bundle unchanged (${options.mode} mode cache hit). Use --force to rebuild.\n`);
@@ -1938,6 +2221,11 @@ function main() {
   };
 
   const diagnostics = buildDiagnostics(payload);
+  const toolCatalog = buildToolCatalogData(payload);
+  const uiManifest = buildUiManifest(payload);
+  const trainingData = buildTrainingData(payload, uiManifest);
+  const uiDiagnostics = buildUiDiagnostics(payload, uiManifest);
+
   payload.meta.coverage = diagnostics.metadataCoverage;
   payload.meta.duplicateTitles = diagnostics.duplicateTitles.length;
 
@@ -1947,6 +2235,10 @@ function main() {
   ensureDir(diagnosticsDir);
   const diagnosticsText = JSON.stringify(diagnostics, null, 2);
   const diagnosticsWritten = writeTextIfChangedWithTransform(diagnosticsPath, diagnosticsText, normalizeGeneratedAt);
+  const toolCatalogWritten = writeTextIfChangedWithTransform(toolCatalogPath, JSON.stringify(toolCatalog, null, 2), normalizeGeneratedAt);
+  const uiManifestWritten = writeTextIfChangedWithTransform(uiManifestPath, JSON.stringify(uiManifest, null, 2), normalizeGeneratedAt);
+  const trainingDataWritten = writeTextIfChangedWithTransform(trainingDataPath, JSON.stringify(trainingData, null, 2), normalizeGeneratedAt);
+  const uiDiagnosticsWritten = writeTextIfChangedWithTransform(uiDiagnosticsPath, JSON.stringify(uiDiagnostics, null, 2), normalizeGeneratedAt);
 
   const html = buildHtml(payload, diagnostics, generatedAt, bundleData.allPaths.length);
   const indexWritten = writeTextIfChangedWithTransform(htmlPath, html, normalizeGeneratedAt);
@@ -1977,6 +2269,10 @@ function main() {
       : "Tool pages: skipped",
     `Index: ${indexWritten ? "written" : "skipped"}`,
     `Diagnostics file: ${diagnosticsWritten ? "written" : "skipped"}`,
+    `Tool catalog: ${toolCatalogWritten ? "written" : "skipped"}`,
+    `UI manifest: ${uiManifestWritten ? "written" : "skipped"}`,
+    `Training data: ${trainingDataWritten ? "written" : "skipped"}`,
+    `UI diagnostics: ${uiDiagnosticsWritten ? "written" : "skipped"}`,
     `Tabs: ${payload.tree.length}`,
     `Files in bundle: ${payload.meta.totalFiles}`,
     `Diagnostics: ${path.relative(repoRoot, diagnosticsPath)}`,

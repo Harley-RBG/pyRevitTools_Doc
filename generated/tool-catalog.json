@@ -1,0 +1,691 @@
+{
+  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "source": "bundle.md",
+  "tools": [
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
+      "title": "Add Coordinates",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack1.stack > AddCoordinates.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Add or update shared parameters on selected or model-wide elements with project and survey coordinate values.",
+      "inputs": [],
+      "notes": [
+        "Keep extension-root and `lib` bootstrap reliable before any coordinate logic runs. Preserve both selection-scoped and model-wide workflows. Report missing parameters or skipped elements explicitly rather than failing silently.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-addcoordinates.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton",
+      "title": "MagpieGroup Data",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack1.stack > MagpieGroup.pushbutton",
+      "function": "Click: Copy the data from RBG_ConcStrength parameter into RBG_MagpieGroup parameter for all elements.\nShift+Click: Reset all RBG_MagpieGroup parameters to empty.",
+      "purpose": "Copy a chosen source parameter into `RBG_MagpieGroup` using a formatted token while preserving existing text.",
+      "inputs": [
+        "Click: Copy the data from RBG_ConcStrength parameter into RBG_MagpieGroup parameter for all elements.",
+        "Shift+Click: Reset all RBG_MagpieGroup parameters to empty."
+      ],
+      "notes": [
+        "Preserve existing text outside the managed token pattern. Keep unit handling compatible across older and newer Revit unit APIs. Limit edits to the targeted structural categories unless the workflow is intentionally expanded.",
+        "Files in bundle: 5"
+      ],
+      "fileCount": 5,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-magpiegroup.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
+      "title": "PackageCreator Dockable Panel",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack3",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack3.stack > PackageCreator.pushbutton",
+      "function": "script.py startup.py",
+      "purpose": "Deliver a Revit dockable panel that reproduces as much practical functionality as possible from the standalone Issue Package Creator app while remaining native to pyRevit workflows. The panel must stay open while users continue modeling and provide live issue-package context for the active Revit project.",
+      "inputs": [],
+      "notes": [
+        "Keep pushbutton script thin and delegate behavior to reusable library modules. Register and own dockable pane lifecycle centrally, not inside ad hoc UI handlers. Keep long-running or dependency-heavy operations out of WPF click handlers. Preserve audit-style outcomes: clear statuses, counts, warnings, and report paths. Treat CPython-only dependencies as helper-side concerns, not direct IronPython panel logic. Keep panel useful at narrow width and safe while user continues Revit work.",
+        "Start implementation with pane lifecycle and state contract, then wire actions one by one. Keep UI handlers thin and route all heavy operations through orchestrator methods. Preserve human-readable status and diagnostics from every helper action.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
+      "title": "ParamCopier",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack2.stack > ParamCopier.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 2"
+      ],
+      "fileCount": 2,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-paramcopier.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
+      "title": "Schedule Updater",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack1.stack > ScheduleUpdater.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Inspect schedules and help users choose or add fields through a guided selection workflow.",
+      "inputs": [],
+      "notes": [
+        "Keep schedule filtering compatible with current Revit API behavior, including keynote schedule exclusions. Preserve user-facing field labels that explain index, heading, and parameter identity. Distinguish existing fields from schedulable fields clearly in the UI flow.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
+      "title": "Tool Dashboard",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack3",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack3.stack > Dashboard.pushbutton",
+      "function": "Launch the RBG Tool Dashboard",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [
+        "Launch the RBG Tool Dashboard"
+      ],
+      "notes": [
+        "Files in bundle: 18"
+      ],
+      "fileCount": 18,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-dashboard.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
+      "title": "Transaction Logger",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Data",
+      "stack": "DataStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack2.stack > Transaction Logger.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Configure and toggle transaction logging for the active Revit session, either across the full model or targeted categories.",
+      "inputs": [],
+      "notes": [
+        "Preserve the environment variable contract used by the logger startup flow. Keep readiness checks explicit so the tool fails clearly when startup support is not active. Distinguish full-model logging from targeted-category logging without mutating the underlying capture pipeline unexpectedly.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton",
+      "title": "Disallow Detach Elements",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Elements",
+      "stack": "ElementStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Elements.panel > ElementStack1.stack > DisallowDetach.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Convert beam and wall joins to disallowed states and remove column attachments for targeted structural elements.",
+      "inputs": [],
+      "notes": [
+        "Grouped elements remain a known limitation and should not be treated as safely editable. Preserve category-specific behavior for walls, framing, and columns. Any future unpin or regroup workflow should stay explicit and reversible.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-elements-disallowdetach.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
+      "title": "Elements by Level",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Elements",
+      "stack": "ElementStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Elements.panel > ElementStack2.stack > SelectbyLevel.pushbutton",
+      "function": "`script.py`",
+      "purpose": "List elements associated with a selected level, grouped by category and sorted by type, with linkified report output.",
+      "inputs": [],
+      "notes": [
+        "Preserve the distinction between core model elements and optional view-specific or annotation elements. Keep grouping and type-name derivation resilient across element classes. Maintain report output as the primary user interaction surface.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-elements-selectbylevel.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton",
+      "title": "Quick Pin Categories",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Elements",
+      "stack": "ElementStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Elements.panel > ElementStack1.stack > QuickPin.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Pin, unpin, or toggle pin state for selected categories across the model.",
+      "inputs": [],
+      "notes": [
+        "Preserve worksharing and group-member checks before attempting mutation. Keep category scope explicit through the current category map. Treat groups and link instances as special cases rather than ordinary elements.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-elements-quickpin.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton",
+      "title": "RevClouds to Detail Groups",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Elements",
+      "stack": "ElementStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Elements.panel > ElementStack2.stack > RevCloudDetailLine.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Create detail-group equivalents of revision cloud linework for a selected revision and scope.",
+      "inputs": [],
+      "notes": [
+        "Preserve the revision-to-cloud mapping and scope selection workflow. Keep worksharing and copy/paste safety checks intact before creating detail groups. Maintain style-selection behavior so generated detail linework remains readable.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-elements-revclouddetailline.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton",
+      "title": "Slab Splitter",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Elements",
+      "stack": "ElementStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Elements.panel > ElementStack1.stack > SlabSplitter.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Split one or more floors using mixed splitter elements and review or approve resulting parts.",
+      "inputs": [],
+      "notes": [
+        "Preserve geometric tolerances and minimum size thresholds unless the behavior is intentionally recalibrated. Keep selection, geometric analysis, and replacement/approval decisions conceptually separate. Any document mutation path should stay transaction-safe and report failures clearly.",
+        "This tool currently embeds a large amount of UI and execution logic in one file; prefer extraction into `lib` for future refactors. If changing splitter interpretation, validate walls, framing, grids, columns, and floor-derived boundaries independently.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton",
+      "title": "Crop Views Quick Off",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack1.stack > CropView.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Turn crop region visibility off for the active view or for all placed views on the active sheet.",
+      "inputs": [],
+      "notes": [
+        "This tool only turns crop visibility off; do not broaden behavior accidentally. Preserve the distinction between active-sheet and single-view execution. Keep unsupported view handling explicit in the output rather than crashing the run.",
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-cropview.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+      "title": "Grids\n2D / 3D",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ShiftClick1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > GridExtents.pushbutton",
+      "function": "Click: Set visible Grids in Active View to 2D (view-specific) extents.\nShift+Click: Set them to 3D (model) extents.",
+      "purpose": "Set visible grids in the active view to 2D extents quickly.",
+      "inputs": [
+        "Click: Set visible Grids in Active View to 2D (view-specific) extents.",
+        "Shift+Click: Set them to 3D (model) extents."
+      ],
+      "notes": [
+        "Only act on grids visible in the active printable view. Keep the current fast-path batch behavior and silent skip pattern for problematic grids unless diagnostics are intentionally added. Minimize regeneration and transaction overhead for large views.",
+        "Files in bundle: 7"
+      ],
+      "fileCount": 7,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-gridextents.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
+      "title": "Levels\n2D / 3D",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ShiftClick1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > LevelsExtents.pushbutton",
+      "function": "Click: Set visible Levels in Active View to 2D (view-specific) extents.\nShift+Click: Set them to 3D (model) extents.",
+      "purpose": "Set visible levels in the active section or elevation view to 2D extents.",
+      "inputs": [
+        "Click: Set visible Levels in Active View to 2D (view-specific) extents.",
+        "Shift+Click: Set them to 3D (model) extents."
+      ],
+      "notes": [
+        "Restrict execution to printable section and elevation views. Preserve the low-overhead batch transaction pattern. Keep failure handling non-fatal per level so one problematic datum does not stop the run.",
+        "Files in bundle: 7"
+      ],
+      "fileCount": 7,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+      "title": "Levels: Head Switch\nLeft / Right",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ShiftClick1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > LevelHeadSwitcher.pushbutton",
+      "function": "Click: Set visible Levels in Active View to Left Header only.\nShift+Click: Set them to Right Header only.",
+      "purpose": "Show the left level bubble and hide the right bubble for levels visible in section and elevation views.",
+      "inputs": [
+        "Click: Set visible Levels in Active View to Left Header only.",
+        "Shift+Click: Set them to Right Header only."
+      ],
+      "notes": [
+        "Keep the view-type guard limited to section and elevation contexts. Preserve the geometric left/right classification based on the current view orientation. Skip levels safely when visible curves cannot be resolved.",
+        "Files in bundle: 5"
+      ],
+      "fileCount": 5,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
+      "title": "LinkedViews",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack1.stack > LinkedViews.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-linkedviews.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
+      "title": "Plan View Range Tool",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack1",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack1.stack > PlanViewRange.pushbutton",
+      "function": "`script.py`",
+      "purpose": "Compare plan view range settings across multiple views and support controlled copying of those settings.",
+      "inputs": [],
+      "notes": [
+        "Preserve formatting compatibility across differing Revit unit APIs. Keep comparison output aligned with the actual built-in parameters used for copy behavior. Treat view templates and template-controlled range settings as first-class constraints.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-planviewrange.html",
+      "uiKind": "wpf"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
+      "title": "Scope Box View Creation",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack2.stack > ScopeBoxViewCreation.pushbutton",
+      "function": "`script.py` `ViewCreator.xaml`",
+      "purpose": "Create and lay out views on sheets from a scope-box driven workflow with a WPF creator and selector interface.",
+      "inputs": [],
+      "notes": [
+        "Do not mix static `ComboBoxItem` children with dynamic `ItemsSource` population. Keep view collection, preview, and creation/layout logic clearly separated. Protect transaction boundaries around any view or sheet mutation.",
+        "Read the XAML first, then trace event handlers and execution paths in `script.py`. If the workflow grows further, prefer extracting reusable creation logic into `lib` rather than adding more monolithic script code.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
+      "title": "Section Move",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack2.stack > SectionUpdater.pushbutton",
+      "function": "`script.py` `DetailMoveWindow.xaml`",
+      "purpose": "Drive the DetailMove workflow for staging, previewing, and executing section or detail relocation tasks through a dedicated WPF window.",
+      "inputs": [],
+      "notes": [
+        "Keep `script.py` as a thin launcher only. Preserve `StageMapRows` as the single vertical mapping panel model used by the UI. Keep UI-side execution aligned with the current in-window full run pattern and structured result payloads.",
+        "Start in `lib/detailmove_ui.py` for WPF behavior and `lib/detailmove_engine.py` for execution logic. UI changes should continue to surface run summaries without depending on pyRevit console-only output.",
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
+      "title": "SheetNo",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack2",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack2.stack > SheetNo.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-sheetno.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
+      "title": "CategoryPicker",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Direct",
+      "location": "JasonHacksRevit.tab > Selection.panel > CategoryPicker.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 5"
+      ],
+      "fileCount": 5,
+      "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
+      "title": "Copy State",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "memo",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Copy State.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-selection-copy-state.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton",
+      "title": "MClear",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > MClear.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-mclear.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton",
+      "title": "MDeduct",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > MDeduct.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-mdeduct.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton",
+      "title": "Next",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Next.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-next.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton",
+      "title": "Paste State",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "memo",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Paste State.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-selection-paste-state.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton",
+      "title": "Prev",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Prev.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-prev.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
+      "title": "Propagate Extents Override",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Direct",
+      "location": "JasonHacksRevit.tab > Selection.panel > Propagate Extents Override.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton",
+      "title": "Purge Memory Files",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Purge Memory Files.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-purge-memory-files.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton",
+      "title": "Save Memory as Selection",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Memory",
+      "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Save Memory as Selection.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-selection-save-memory-as-selection.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton",
+      "title": "UnhideAllElements",
+      "tab": "SJ pyRevit",
+      "panel": "Selection",
+      "stack": "Unhide",
+      "location": "JasonHacksRevit.tab > Selection.panel > Visibility.stack > Unhide.pulldown > UnhideAllElements.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-selection-unhideallelements.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
+      "title": "Cloud Revisions",
+      "tab": "SJ pyRevit",
+      "panel": "Sheets",
+      "stack": "Sheet Tools",
+      "location": "JasonHacksRevit.tab > Sheets.panel > Sheet Tools.pulldown > CloudRevisions.pushbutton",
+      "function": "Lists revisions that appear on sheets via revision clouds only. Excludes revisions manually ticked in the sheet revision box.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [
+        "Lists revisions that appear on sheets via revision clouds only. Excludes revisions manually ticked in the sheet revision box."
+      ],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-sheets-cloudrevisions.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
+      "title": "Jason Exporter",
+      "tab": "SJ pyRevit",
+      "panel": "Sheets",
+      "stack": "Direct",
+      "location": "JasonHacksRevit.tab > Sheets.panel > Jason Exporter with IFC NWC.pushbutton",
+      "function": "Export sheets to PDF/DWG and 3D views to IFC/NWC from an ordered, filtered sheet list with custom naming formats.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [
+        "Export sheets to PDF/DWG and 3D views to IFC/NWC from an ordered, filtered sheet list with custom naming formats."
+      ],
+      "notes": [
+        "Files in bundle: 14"
+      ],
+      "fileCount": 14,
+      "pagePath": "tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
+      "title": "Reorder Selected Viewport",
+      "tab": "SJ pyRevit",
+      "panel": "Sheets",
+      "stack": "Sheet Tools",
+      "location": "JasonHacksRevit.tab > Sheets.panel > Sheet Tools.pulldown > Reorder Selected Viewport.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 4"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-sheets-reorder-selected-viewport.html",
+      "uiKind": "pyrevit-form"
+    },
+    {
+      "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
+      "title": "Reorder Viewports",
+      "tab": "SJ pyRevit",
+      "panel": "Sheets",
+      "stack": "Sheet Tools",
+      "location": "JasonHacksRevit.tab > Sheets.panel > Sheet Tools.pulldown > Reorder Viewports.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 6"
+      ],
+      "fileCount": 6,
+      "pagePath": "tools/sj-pyrevit-sheets-reorder-viewports.html",
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton",
+      "title": "Tool1",
+      "tab": "SJ pyRevit",
+      "panel": "SYD Prod WIP",
+      "stack": "Josh",
+      "location": "RBG_SYD_Tools.tab > SYD_Prod_WIP.panel > Josh.pulldown > Tool1.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 2"
+      ],
+      "fileCount": 2,
+      "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool1.html",
+      "uiKind": "none"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton",
+      "title": "Tool2",
+      "tab": "SJ pyRevit",
+      "panel": "SYD Prod WIP",
+      "stack": "Josh",
+      "location": "RBG_SYD_Tools.tab > SYD_Prod_WIP.panel > Josh.pulldown > Tool2.pushbutton",
+      "function": "See tool context and source files for behavior details.",
+      "purpose": "Purpose not documented in tool-context.md.",
+      "inputs": [],
+      "notes": [
+        "Files in bundle: 3"
+      ],
+      "fileCount": 3,
+      "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool2.html",
+      "uiKind": "wpf"
+    }
+  ]
+}

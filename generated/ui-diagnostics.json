@@ -1,0 +1,611 @@
+{
+  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "summary": {
+    "totalTools": 38,
+    "toolsWithUi": 27,
+    "toolsRequiringTrainingData": 6,
+    "toolsWithoutUiSignals": 11
+  },
+  "details": [
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
+      "title": "Add Coordinates",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton",
+      "title": "MagpieGroup Data",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
+      "title": "PackageCreator Dockable Panel",
+      "uiKind": "mixed",
+      "controlCount": 24,
+      "eventCount": 8,
+      "promptCount": 1,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
+      "title": "ParamCopier",
+      "uiKind": "pyrevit-form",
+      "controlCount": 14,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
+      "title": "Schedule Updater",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
+      "title": "Tool Dashboard",
+      "uiKind": "mixed",
+      "controlCount": 22,
+      "eventCount": 8,
+      "promptCount": 8,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
+      "title": "Transaction Logger",
+      "uiKind": "mixed",
+      "controlCount": 16,
+      "eventCount": 2,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton",
+      "title": "Disallow Detach Elements",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
+      "title": "Elements by Level",
+      "uiKind": "mixed",
+      "controlCount": 13,
+      "eventCount": 2,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton",
+      "title": "Quick Pin Categories",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton",
+      "title": "RevClouds to Detail Groups",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton",
+      "title": "Slab Splitter",
+      "uiKind": "pyrevit-form",
+      "controlCount": 5,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton",
+      "title": "Crop Views Quick Off",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+      "title": "Grids\n2D / 3D",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
+      "title": "Levels\n2D / 3D",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+      "title": "Levels: Head Switch\nLeft / Right",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
+      "title": "LinkedViews",
+      "uiKind": "mixed",
+      "controlCount": 20,
+      "eventCount": 7,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
+      "title": "Plan View Range Tool",
+      "uiKind": "wpf",
+      "controlCount": 20,
+      "eventCount": 6,
+      "promptCount": 0,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
+      "title": "Scope Box View Creation",
+      "uiKind": "mixed",
+      "controlCount": 32,
+      "eventCount": 8,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
+      "title": "Section Move",
+      "uiKind": "mixed",
+      "controlCount": 7,
+      "eventCount": 0,
+      "promptCount": 1,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "low",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
+      "title": "SheetNo",
+      "uiKind": "mixed",
+      "controlCount": 20,
+      "eventCount": 4,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
+      "title": "CategoryPicker",
+      "uiKind": "mixed",
+      "controlCount": 24,
+      "eventCount": 8,
+      "promptCount": 1,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
+      "title": "Copy State",
+      "uiKind": "pyrevit-form",
+      "controlCount": 12,
+      "eventCount": 1,
+      "promptCount": 1,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton",
+      "title": "MClear",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton",
+      "title": "MDeduct",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton",
+      "title": "Next",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton",
+      "title": "Paste State",
+      "uiKind": "pyrevit-form",
+      "controlCount": 17,
+      "eventCount": 2,
+      "promptCount": 3,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton",
+      "title": "Prev",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
+      "title": "Propagate Extents Override",
+      "uiKind": "pyrevit-form",
+      "controlCount": 14,
+      "eventCount": 2,
+      "promptCount": 2,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton",
+      "title": "Purge Memory Files",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton",
+      "title": "Save Memory as Selection",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton",
+      "title": "UnhideAllElements",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
+      "title": "Cloud Revisions",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
+      "title": "Jason Exporter",
+      "uiKind": "mixed",
+      "controlCount": 32,
+      "eventCount": 9,
+      "promptCount": 9,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": true,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
+      "title": "Reorder Selected Viewport",
+      "uiKind": "pyrevit-form",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 2,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
+      "title": "Reorder Viewports",
+      "uiKind": "mixed",
+      "controlCount": 25,
+      "eventCount": 8,
+      "promptCount": 1,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "medium"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton",
+      "title": "Tool1",
+      "uiKind": "none",
+      "controlCount": 0,
+      "eventCount": 0,
+      "promptCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "low",
+        "workflow": "low",
+        "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton",
+      "title": "Tool2",
+      "uiKind": "wpf",
+      "controlCount": 20,
+      "eventCount": 6,
+      "promptCount": 0,
+      "unsupportedKinds": [
+        "block"
+      ],
+      "requiresTrainingData": false,
+      "confidence": {
+        "controls": "medium",
+        "workflow": "high",
+        "prompts": "low"
+      }
+    }
+  ]
+}

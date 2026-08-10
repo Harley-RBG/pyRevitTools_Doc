@@ -10,7 +10,7 @@
     <div class="topbar">
       <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
       <span class="topbar-badge">Tool Detail</span>
-      <span class="topbar-sub">Generated from bundle metadata + WPF structure</span>
+      <span class="topbar-sub">Generated from bundle metadata and static UI extraction</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -63,56 +63,32 @@
         </div>
       </section>
 
-      <section class="card wiki-section" id="ui-preview">
+      <section class="card wiki-section" id="simulator">
         <div class="card-head">
-          <span class="card-title">UI Preview</span>
-          <span class="card-hint">Parser mode: XAML + Python signals</span>
+          <span class="card-title">Simulator</span>
+          <span class="card-hint">Interactive training mode (mixed)</span>
         </div>
         <div class="card-body wiki-body">
-          <h4 class="subhead">Rendered Preview</h4>
-          <p class="muted">No parsed XAML preview is available for this tool yet.</p>
-
-          <h4 class="subhead">Preview Sources</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">external-xaml</span></div>
-
-          
-          <div class="xaml-wireframe">
-            <h4 class="subhead">XAML Wireframe</h4>
-            <p class="muted">No tab headers detected in XAML.</p>
-            <div class="xaml-pane-grid"><article class="xaml-pane"><h5>Preview of value:</h5><p>Output</p></article><article class="xaml-pane"><h5>{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}</h5><p>Input</p></article><article class="xaml-pane"><h5>Column Filters</h5><p>Input</p></article><article class="xaml-pane"><h5>Filter by column</h5><p>Input</p></article><article class="xaml-pane"><h5>Filter by:</h5><p>Input</p></article></div>
-            <div class="xaml-action-row"><span class="xaml-action">&amp;gt;</span><span class="xaml-action">&amp;lt;</span><span class="xaml-action">&amp;#x2191;</span><span class="xaml-action">&amp;#x2193;</span><span class="xaml-action">Cancel</span><span class="xaml-action">OK</span><span class="xaml-action">Edit Formats</span><span class="xaml-action">Import</span></div>
-            <h4 class="subhead">Grid Layout Approximation</h4>
-            <p class="muted">No positioned grid controls were inferred from XAML.</p>
-          </div>
-
-          <div class="mock-window">
-            <div class="mock-window-bar">
-              <span>Jason Exporter</span>
-              <span>Direct</span>
+          <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <div class="simulator-shell">
+            <div class="simulator-toolbar">
+              <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
+              <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
+              <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
             </div>
-            <div class="mock-window-body">
-              <div class="mock-row mock-block"><span>ComboBoxItem</span><span>204</span></div><div class="mock-row mock-block"><span>Grid</span><span>200</span></div><div class="mock-row mock-block"><span>ColumnDefinition</span><span>159</span></div><div class="mock-row mock-block"><span>TextBlock</span><span>130</span></div><div class="mock-row mock-button"><span>Button</span><span>84</span></div><div class="mock-row mock-combobox"><span>ComboBox</span><span>63</span></div><div class="mock-row mock-block"><span>RowDefinition</span><span>62</span></div><div class="mock-row mock-block"><span>StackPanel</span><span>40</span></div>
+            <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
+            <div class="simulator-output">
+              <h4 class="subhead">Simulated Output</h4>
+              <pre id="sim-output">Ready.</pre>
             </div>
           </div>
-
-          <h4 class="subhead">Detected Controls</h4>
-          <div class="mockup-chip-row"><span class="mockup-chip">ComboBoxItem <strong>204</strong></span><span class="mockup-chip">Grid <strong>200</strong></span><span class="mockup-chip">ColumnDefinition <strong>159</strong></span><span class="mockup-chip">TextBlock <strong>130</strong></span><span class="mockup-chip">Button <strong>84</strong></span><span class="mockup-chip">ComboBox <strong>63</strong></span><span class="mockup-chip">RowDefinition <strong>62</strong></span><span class="mockup-chip">StackPanel <strong>40</strong></span><span class="mockup-chip">DockPanel <strong>30</strong></span><span class="mockup-chip">DataGrid <strong>26</strong></span><span class="mockup-chip">ListBox <strong>25</strong></span><span class="mockup-chip">Border <strong>22</strong></span></div>
-
-          <h4 class="subhead">XAML Files</h4>
-          <ul><li><code>ColumnPicker.xaml</code></li><li><code>DWG3DOptions_ui.xaml</code></li><li><code>EditNamingFormats.xaml</code></li><li><code>FilterEditor_ui.xaml</code></li><li><code>IFCOptions_ui.xaml</code></li><li><code>JasonExporter.xaml</code></li><li><code>NWCOptions_ui.xaml</code></li><li><code>Sorting_ui.xaml</code></li></ul>
-
-          <h4 class="subhead">Window Titles</h4>
-          <ul><li>Jason Exporter</li></ul>
-
-          <h4 class="subhead">Named Elements</h4>
-          <ul><li><code>paramtype_cb</code></li><li><code>search_tb</code></li><li><code>available_lb</code></li><li><code>active_lb</code></li><li><code>dwg3d_use_viewname_rb</code></li><li><code>dwg3d_use_filename_rb</code></li><li><code>dwg3d_use_format_rb</code></li><li><code>dwg3d_format_panel</code></li><li><code>dwg3d_namingformat_cb</code></li><li><code>dwg3d_shared_coords_cb</code></li><li><code>on_key_down</code></li><li><code>on_preview_key</code></li><li><code>on_preview</code></li><li><code>on_ok</code></li></ul>
         </div>
       </section>
 
-      <section class="card wiki-section" id="implementation">
+      <section class="card wiki-section" id="notes">
         <div class="card-head">
-          <span class="card-title">Implementation</span>
-          <span class="card-hint">Inputs and bundle file coverage</span>
+          <span class="card-title">Notes</span>
+          <span class="card-hint">Inputs, files, and extracted notes</span>
         </div>
         <div class="card-body tool-detail-grid wiki-body">
           <div>
@@ -123,28 +99,10 @@
             <h4 class="subhead">Files (14)</h4>
             <ul><li><code>bundle.yaml</code></li><li><code>ColumnPicker.xaml</code></li><li><code>DWG3DOptions_ui.xaml</code></li><li><code>EditNamingFormats.xaml</code></li><li><code>FilterEditor_ui.xaml</code></li><li><code>Hunter_profiles.json</code></li><li><code>icon.dark.png</code></li><li><code>icon.png</code></li><li><code>IFCOptions_ui.xaml</code></li><li><code>jason_exporter_profiles.json</code></li><li><code>JasonExporter.xaml</code></li><li><code>NWCOptions_ui.xaml</code></li><li><code>script.py</code></li><li><code>Sorting_ui.xaml</code></li></ul>
           </div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="related-tools">
-        <div class="card-head">
-          <span class="card-title">Related Tools</span>
-          <span class="card-hint">Nearby panel and stack affinity</span>
-        </div>
-        <div class="card-body wiki-body">
-          <div class="related-tool-grid"><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-categorypicker.html">CategoryPicker</a></h5><p>Selection / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-selection-propagate-extents-override.html">Propagate Extents Override</a></h5><p>Selection / Direct</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-sheets-cloudrevisions.html">Cloud Revisions</a></h5><p>Sheets / Sheet Tools</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-sheets-reorder-selected-viewport.html">Reorder Selected Viewport</a></h5><p>Sheets / Sheet Tools</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-sheets-reorder-viewports.html">Reorder Viewports</a></h5><p>Sheets / Sheet Tools</p></article><article class="related-tool-card"><h5><a href="../tools/sj-pyrevit-rbg-tools-data-addcoordinates.html">Add Coordinates</a></h5><p>RBG Tools Data / DataStack1</p></article></div>
-        </div>
-      </section>
-
-      <section class="card wiki-section" id="provenance">
-        <div class="card-head">
-          <span class="card-title">Provenance</span>
-          <span class="card-hint">Build and source traceability</span>
-        </div>
-        <div class="card-body wiki-body">
-          <p><strong>Generated:</strong> 2026-08-07T06:06:48.986Z</p>
-          <p><strong>Source:</strong> bundle.md</p>
-          <p><strong>Page:</strong> tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html</p>
+          <div>
+            <h4 class="subhead">Notes</h4>
+            <ul><li>Files in bundle: 14</li></ul>
+          </div>
         </div>
       </section>
         </main>
@@ -154,10 +112,8 @@
           <nav class="wiki-toc" aria-label="Tool article sections">
             <a class="wiki-toc-link" href="#overview">Overview</a>
             <a class="wiki-toc-link" href="#workflow">Workflow</a>
-            <a class="wiki-toc-link" href="#ui-preview">UI Preview</a>
-            <a class="wiki-toc-link" href="#implementation">Implementation</a>
-            <a class="wiki-toc-link" href="#related-tools">Related Tools</a>
-            <a class="wiki-toc-link" href="#provenance">Provenance</a>
+            <a class="wiki-toc-link" href="#simulator">Simulator</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
           </nav>
         </aside>
       </div>
@@ -165,10 +121,148 @@
 
     <script>
       (function () {
+        const SIMULATOR = {"toolId":"JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["ColumnPicker.xaml","DWG3DOptions_ui.xaml","EditNamingFormats.xaml","FilterEditor_ui.xaml","IFCOptions_ui.xaml","JasonExporter.xaml","NWCOptions_ui.xaml","Sorting_ui.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"paramtype-cb","name":"paramtype_cb","kind":"block","label":"paramtype_cb","required":false},{"id":"search-tb","name":"search_tb","kind":"block","label":"search_tb","required":false},{"id":"available-lb","name":"available_lb","kind":"block","label":"available_lb","required":false},{"id":"active-lb","name":"active_lb","kind":"block","label":"active_lb","required":false},{"id":"dwg3d-use-viewname-rb","name":"dwg3d_use_viewname_rb","kind":"block","label":"dwg3d_use_viewname_rb","required":true},{"id":"dwg3d-use-filename-rb","name":"dwg3d_use_filename_rb","kind":"block","label":"dwg3d_use_filename_rb","required":false},{"id":"dwg3d-use-format-rb","name":"dwg3d_use_format_rb","kind":"block","label":"dwg3d_use_format_rb","required":false},{"id":"dwg3d-format-panel","name":"dwg3d_format_panel","kind":"block","label":"dwg3d_format_panel","required":false},{"id":"dwg3d-namingformat-cb","name":"dwg3d_namingformat_cb","kind":"block","label":"dwg3d_namingformat_cb","required":false},{"id":"dwg3d-shared-coords-cb","name":"dwg3d_shared_coords_cb","kind":"block","label":"dwg3d_shared_coords_cb","required":false},{"id":"on-key-down","name":"on_key_down","kind":"block","label":"on_key_down","required":false},{"id":"on-preview-key","name":"on_preview_key","kind":"block","label":"on_preview_key","required":true},{"id":"on-preview","name":"on_preview","kind":"block","label":"on_preview","required":true},{"id":"on-ok","name":"on_ok","kind":"button","label":"on_ok","required":false},{"id":"comboboxitem-14","name":"ComboBoxItem","kind":"select","label":"ComboBoxItem","required":true},{"id":"button-15","name":"Button","kind":"button","label":"Button","required":false},{"id":"combobox-16","name":"ComboBox","kind":"select","label":"ComboBox","required":true},{"id":"datagrid-17","name":"DataGrid","kind":"table","label":"DataGrid","required":false},{"id":"listbox-18","name":"ListBox","kind":"multiselect","label":"ListBox","required":true},{"id":"datagridtextcolumn-19","name":"DataGridTextColumn","kind":"table","label":"DataGridTextColumn","required":false},{"id":"textbox-20","name":"TextBox","kind":"text","label":"TextBox","required":true},{"id":"checkbox-21","name":"CheckBox","kind":"checkbox","label":"CheckBox","required":false},{"id":"radiobutton-22","name":"RadioButton","kind":"radio","label":"RadioButton","required":false},{"id":"datagridtemplatecolumn-23","name":"DataGridTemplateColumn","kind":"table","label":"DataGridTemplateColumn","required":false},{"id":"action-gt","name":"&gt;","kind":"button","label":"&gt;","required":false},{"id":"action-lt","name":"&lt;","kind":"button","label":"&lt;","required":false},{"id":"action-x2191","name":"&#x2191;","kind":"button","label":"&#x2191;","required":false},{"id":"action-x2193","name":"&#x2193;","kind":"button","label":"&#x2193;","required":false},{"id":"action-cancel","name":"Cancel","kind":"button","label":"Cancel","required":false},{"id":"action-ok","name":"OK","kind":"button","label":"OK","required":false},{"id":"action-edit-formats","name":"Edit Formats","kind":"button","label":"Edit Formats","required":false},{"id":"action-import","name":"Import","kind":"button","label":"Import","required":false}],"events":[{"controlId":"on-ok","event":"click","handler":"on_ok"},{"controlId":"action-gt","event":"click","handler":"on_gt"},{"controlId":"action-lt","event":"click","handler":"on_lt"},{"controlId":"action-x2191","event":"click","handler":"on_x2191"},{"controlId":"action-x2193","event":"click","handler":"on_x2193"},{"controlId":"action-cancel","event":"click","handler":"on_cancel"},{"controlId":"action-ok","event":"click","handler":"on_ok"},{"controlId":"action-edit-formats","event":"click","handler":"on_edit-formats"},{"controlId":"action-import","event":"click","handler":"on_import"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"ask_for_string","message":"Simulated ask_for_string interaction"},{"type":"check_modeldoc","message":"Simulated check_modeldoc interaction"},{"type":"ProgressBar","message":"Simulated ProgressBar interaction"},{"type":"reactive","message":"Simulated reactive interaction"},{"type":"Reactive","message":"Simulated Reactive interaction"},{"type":"select_open_docs","message":"Simulated select_open_docs interaction"},{"type":"SelectFromList","message":"Simulated SelectFromList interaction"},{"type":"WPFWindow","message":"Simulated WPFWindow interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Load and preparation stage"},{"step":3,"label":"Filter and scope stage"},{"step":4,"label":"Preview and inspection stage"},{"step":5,"label":"Execution stage"}],"dynamicSources":["sheets"],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Load and preparation stage","Filter and scope stage","Preview and inspection stage","Execution stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
           .filter(Boolean);
+        const simulatorRoot = document.getElementById('simulator-root');
+        const simOutput = document.getElementById('sim-output');
+
+        function setText(id, value) {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = String(value);
+          }
+        }
+
+        function createInput(control) {
+          const wrap = document.createElement('label');
+          wrap.className = 'sim-control';
+
+          const title = document.createElement('span');
+          title.className = 'sim-label';
+          title.textContent = control.label + (control.required ? ' *' : '');
+          wrap.appendChild(title);
+
+          let field;
+          if (control.kind === 'text') {
+            field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder = 'Enter ' + control.label;
+          } else if (control.kind === 'select') {
+            field = document.createElement('select');
+            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+              const option = document.createElement('option');
+              option.value = index === 0 ? '' : optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'multiselect') {
+            field = document.createElement('select');
+            field.multiple = true;
+            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+              const option = document.createElement('option');
+              option.value = optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'checkbox') {
+            field = document.createElement('input');
+            field.type = 'checkbox';
+          } else if (control.kind === 'radio') {
+            field = document.createElement('input');
+            field.type = 'radio';
+          } else {
+            field = document.createElement('input');
+            field.type = 'text';
+          }
+
+          field.dataset.controlId = control.id;
+          field.dataset.required = control.required ? 'true' : 'false';
+          field.className = 'sim-field';
+          wrap.appendChild(field);
+          return wrap;
+        }
+
+        function createButton(control) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'sim-action';
+          button.textContent = control.label || 'Run';
+          button.dataset.controlId = control.id;
+          button.addEventListener('click', function () {
+            const requiredFields = Array.from(simulatorRoot.querySelectorAll('[data-required="true"]'));
+            const missing = requiredFields.filter((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              if (field.multiple) {
+                return !Array.from(field.selectedOptions).length;
+              }
+              return !String(field.value || '').trim();
+            });
+
+            if (missing.length) {
+              simOutput.textContent = 'Validation failed. Complete required inputs before running.';
+              return;
+            }
+
+            simOutput.textContent = [
+              'Simulation complete.',
+              'Action: ' + button.textContent,
+              'Controls evaluated: ' + SIMULATOR.controls.length,
+              'Events mapped: ' + SIMULATOR.events.length,
+              'No Revit model changes were made.',
+            ].join('\n');
+          });
+          return button;
+        }
+
+        function renderSimulator() {
+          if (!simulatorRoot) {
+            return;
+          }
+
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          if (!SIMULATOR.controls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured controls were detected. Use workflow and prompts as the training guide.';
+            simulatorRoot.appendChild(fallback);
+            return;
+          }
+
+          const form = document.createElement('div');
+          form.className = 'sim-form';
+
+          SIMULATOR.controls.forEach((control) => {
+            if (control.kind === 'button') {
+              form.appendChild(createButton(control));
+              return;
+            }
+            if (control.kind === 'table') {
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              form.appendChild(tableWrap);
+              return;
+            }
+            form.appendChild(createInput(control));
+          });
+
+          if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
+            form.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          simulatorRoot.appendChild(form);
+        }
+
+        renderSimulator();
 
         if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
           return;

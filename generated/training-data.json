@@ -1,0 +1,490 @@
+{
+  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "shared": {
+    "levels": [
+      "Level 00",
+      "Level 01",
+      "Level 02"
+    ],
+    "planViews": [
+      "S-1001 Level 00 Framing Plan",
+      "S-1002 Level 01 Framing Plan"
+    ],
+    "scopeBoxes": [
+      "SB-A-Core",
+      "SB-B-East Wing",
+      "SB-C-Tower"
+    ],
+    "detailViews": [
+      "DT-001 Typical Beam",
+      "DT-002 Column Base",
+      "DT-003 Slab Edge"
+    ],
+    "sheets": [
+      "S100",
+      "S101",
+      "S200"
+    ],
+    "parameters": [
+      "Mark",
+      "Type Name",
+      "Comments"
+    ]
+  },
+  "byTool": {
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton": {
+      "requiredSources": [
+        "parameters"
+      ],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton": {
+      "requiredSources": [
+        "levels"
+      ],
+      "mock": {
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton": {
+      "requiredSources": [
+        "levels"
+      ],
+      "mock": {
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton": {
+      "requiredSources": [
+        "sheets"
+      ],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton": {
+      "requiredSources": [
+        "sheets"
+      ],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton": {
+      "requiredSources": [
+        "sheets"
+      ],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    }
+  }
+}
