@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "generatedAt": "2026-08-10T08:04:52.790Z",
   "summary": {
     "totalTools": 38,
     "toolsWithUi": 27,
-    "toolsRequiringTrainingData": 6,
+    "toolsRequiringTrainingData": 7,
     "toolsWithoutUiSignals": 11
   },
   "details": [
@@ -16,6 +16,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -31,6 +38,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -48,6 +62,16 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "TextBox",
+          "ComboBox",
+          "CheckBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -65,6 +89,19 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "ListBox",
+          "TextBox",
+          "Button",
+          "ComboBox",
+          "CheckBox"
+        ],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -80,6 +117,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -97,6 +141,15 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ListBox",
+          "TextBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -114,6 +167,15 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "RadioButton",
+          "Button",
+          "ListBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -129,6 +191,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -146,6 +215,13 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -161,6 +237,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -176,6 +259,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -191,6 +281,18 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ComboBox",
+          "CheckBox",
+          "TextBox"
+        ],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -206,6 +308,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -221,6 +330,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -236,6 +352,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -251,6 +374,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -266,6 +396,16 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ComboBox",
+          "CheckBox",
+          "TextBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -283,6 +423,17 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "DataGrid",
+          "ListBox",
+          "TextBox",
+          "CheckBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -300,6 +451,20 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "ComboBox",
+          "Button",
+          "TextBox",
+          "CheckBox",
+          "DataGrid",
+          "ComboBoxItem",
+          "ListBox",
+          "RadioButton"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -310,15 +475,23 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
       "title": "Section Move",
       "uiKind": "mixed",
-      "controlCount": 7,
-      "eventCount": 0,
-      "promptCount": 1,
+      "controlCount": 22,
+      "eventCount": 9,
+      "promptCount": 2,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-layout-mapped"
+      ],
+      "unresolved": {
+        "controls": [],
+        "events": []
+      },
       "confidence": {
-        "controls": "medium",
-        "workflow": "low",
-        "prompts": "medium"
+        "controls": "high",
+        "workflow": "high",
+        "prompts": "high"
       }
     },
     {
@@ -332,6 +505,16 @@
         "block"
       ],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ComboBox",
+          "DataGrid",
+          "TextBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -349,6 +532,16 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "CheckBox",
+          "ComboBox",
+          "TextBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -366,6 +559,16 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "CheckBox",
+          "ListBox",
+          "TextBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -381,6 +584,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -396,6 +606,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -411,6 +628,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -428,6 +652,17 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ListBox",
+          "CheckBox",
+          "TextBox",
+          "ComboBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -443,6 +678,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -460,6 +702,17 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "ListBox",
+          "TextBox",
+          "CheckBox",
+          "ComboBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -475,6 +728,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -490,6 +750,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -505,6 +772,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -520,6 +794,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -537,6 +818,20 @@
         "block"
       ],
       "requiresTrainingData": true,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "ComboBoxItem",
+          "Button",
+          "ComboBox",
+          "DataGrid",
+          "ListBox",
+          "TextBox",
+          "CheckBox",
+          "RadioButton"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -552,6 +847,13 @@
       "promptCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "high",
@@ -569,6 +871,15 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "TextBox",
+          "ListBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",
@@ -584,6 +895,13 @@
       "promptCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [],
+        "events": [
+          "no-events-inferred"
+        ]
+      },
       "confidence": {
         "controls": "low",
         "workflow": "low",
@@ -601,6 +919,17 @@
         "block"
       ],
       "requiresTrainingData": false,
+      "fidelityFlags": [],
+      "unresolved": {
+        "controls": [
+          "Button",
+          "DataGrid",
+          "ListBox",
+          "TextBox",
+          "CheckBox"
+        ],
+        "events": []
+      },
       "confidence": {
         "controls": "medium",
         "workflow": "high",

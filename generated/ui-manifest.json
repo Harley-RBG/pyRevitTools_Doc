@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "generatedAt": "2026-08-10T08:04:52.790Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -2497,6 +2497,7 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
+        "profile": "section-updater-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -2507,83 +2508,271 @@
         ],
         "controls": [
           {
-            "id": "button-0",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "comboboxitem-1",
-            "name": "ComboBoxItem",
-            "kind": "select",
-            "label": "ComboBoxItem",
-            "required": true
-          },
-          {
-            "id": "checkbox-2",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "combobox-3",
-            "name": "ComboBox",
-            "kind": "select",
-            "label": "ComboBox",
-            "required": true
-          },
-          {
-            "id": "textbox-4",
-            "name": "TextBox",
+            "id": "secup-filter",
+            "name": "SectionNameFilter",
             "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "radiobutton-5",
-            "name": "RadioButton",
-            "kind": "radio",
-            "label": "RadioButton",
+            "label": "Name filter",
             "required": false
           },
           {
-            "id": "listbox-6",
-            "name": "ListBox",
+            "id": "secup-sort",
+            "name": "SectionSort",
+            "kind": "select",
+            "label": "Sort",
+            "required": false
+          },
+          {
+            "id": "secup-visible-only",
+            "name": "VisibleInPlanOnly",
+            "kind": "checkbox",
+            "label": "Visible in selected plan only",
+            "required": false
+          },
+          {
+            "id": "secup-sections",
+            "name": "SectionSelection",
             "kind": "multiselect",
-            "label": "ListBox",
+            "label": "Sections",
+            "required": true
+          },
+          {
+            "id": "secup-refresh",
+            "name": "RefreshSelection",
+            "kind": "button",
+            "label": "Refresh",
+            "required": false
+          },
+          {
+            "id": "secup-select-all",
+            "name": "SelectAll",
+            "kind": "button",
+            "label": "Select All",
+            "required": false
+          },
+          {
+            "id": "secup-clear-selection",
+            "name": "SelectNone",
+            "kind": "button",
+            "label": "Select None",
+            "required": false
+          },
+          {
+            "id": "secup-add",
+            "name": "AddToSelection",
+            "kind": "button",
+            "label": "Add to Selection",
+            "required": true
+          },
+          {
+            "id": "secup-clear-added",
+            "name": "ClearAdded",
+            "kind": "button",
+            "label": "Clear Added",
+            "required": false
+          },
+          {
+            "id": "secup-plan-view",
+            "name": "PlanViewSelector",
+            "kind": "select",
+            "label": "Plan view",
+            "required": true
+          },
+          {
+            "id": "secup-scope-box",
+            "name": "ScopeBoxSelector",
+            "kind": "select",
+            "label": "Scope box",
+            "required": true
+          },
+          {
+            "id": "secup-scope-side",
+            "name": "ScopeSide",
+            "kind": "select",
+            "label": "Scope box side",
+            "required": true
+          },
+          {
+            "id": "secup-run-plan",
+            "name": "RunPlanExtents",
+            "kind": "button",
+            "label": "Run Plan + Extents",
+            "required": true
+          },
+          {
+            "id": "secup-crop-mode",
+            "name": "VerticalCropMode",
+            "kind": "radio",
+            "label": "Vertical crop mode",
+            "required": false
+          },
+          {
+            "id": "secup-lower-level",
+            "name": "LowerLevel",
+            "kind": "select",
+            "label": "Lower level",
+            "required": false
+          },
+          {
+            "id": "secup-lower-offset",
+            "name": "LowerOffset",
+            "kind": "text",
+            "label": "Lower offset mm",
+            "required": false
+          },
+          {
+            "id": "secup-upper-level",
+            "name": "UpperLevel",
+            "kind": "select",
+            "label": "Upper level",
+            "required": false
+          },
+          {
+            "id": "secup-upper-offset",
+            "name": "UpperOffset",
+            "kind": "text",
+            "label": "Upper offset mm",
+            "required": false
+          },
+          {
+            "id": "secup-batch",
+            "name": "ApplyBatch",
+            "kind": "button",
+            "label": "Apply Batch To Selected",
+            "required": false
+          },
+          {
+            "id": "secup-rows",
+            "name": "SectionBatchRows",
+            "kind": "table",
+            "label": "Section rows",
+            "required": false
+          },
+          {
+            "id": "secup-run-vertical",
+            "name": "RunVerticalCrop",
+            "kind": "button",
+            "label": "Run Vertical Crop Update",
+            "required": false
+          },
+          {
+            "id": "secup-run-all",
+            "name": "RunAll",
+            "kind": "button",
+            "label": "Run",
             "required": true
           }
         ],
-        "events": [],
+        "events": [
+          {
+            "controlId": "secup-refresh",
+            "event": "click",
+            "handler": "refresh_sections"
+          },
+          {
+            "controlId": "secup-select-all",
+            "event": "click",
+            "handler": "select_all_sections"
+          },
+          {
+            "controlId": "secup-clear-selection",
+            "event": "click",
+            "handler": "select_none_sections"
+          },
+          {
+            "controlId": "secup-add",
+            "event": "click",
+            "handler": "add_staged_sections"
+          },
+          {
+            "controlId": "secup-clear-added",
+            "event": "click",
+            "handler": "clear_staged_sections"
+          },
+          {
+            "controlId": "secup-run-plan",
+            "event": "click",
+            "handler": "run_plan_extents"
+          },
+          {
+            "controlId": "secup-batch",
+            "event": "click",
+            "handler": "apply_batch_values"
+          },
+          {
+            "controlId": "secup-run-vertical",
+            "event": "click",
+            "handler": "run_vertical_crop"
+          },
+          {
+            "controlId": "secup-run-all",
+            "event": "click",
+            "handler": "run_full_update"
+          }
+        ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Stage at least one section before run."
+          },
+          {
+            "type": "alert",
+            "message": "Operation summary generated. No Revit changes were made."
           }
         ],
-        "workflow": [],
-        "dynamicSources": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Filter and stage section/detail targets"
+          },
+          {
+            "step": 2,
+            "label": "Configure plan move and scope alignment"
+          },
+          {
+            "step": 3,
+            "label": "Configure vertical crop levels and offsets"
+          },
+          {
+            "step": 4,
+            "label": "Run plan/extents stage or full update"
+          },
+          {
+            "step": 5,
+            "label": "Review summary output and adjust before rerun"
+          }
+        ],
+        "dynamicSources": [
+          "plan views",
+          "scope boxes",
+          "levels",
+          "detail views"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "section-updater-training",
+            "title": "Section Updater Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Select relevant section/detail views",
+              "Set plan and scope options",
+              "Set lower/upper crop extents",
+              "Run simulation and inspect log"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Selected targets processed in two stages",
+              "Plan move and extents simulated",
+              "Vertical crop extents simulated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-layout-mapped"
+        ],
         "confidence": {
-          "controls": "medium",
-          "workflow": "low",
-          "prompts": "medium"
+          "controls": "high",
+          "workflow": "high",
+          "prompts": "high"
         }
       }
     },

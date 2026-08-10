@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T00:37:35.796Z",
+  "generatedAt": "2026-08-10T08:04:52.790Z",
   "shared": {
     "levels": [
       "Level 00",
@@ -260,12 +260,32 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "plan views",
+        "scope boxes",
+        "levels",
+        "detail views"
+      ],
       "mock": {
-        "levels": [],
-        "planViews": [],
-        "scopeBoxes": [],
-        "detailViews": [],
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
+        "planViews": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan"
+        ],
+        "scopeBoxes": [
+          "SB-A-Core",
+          "SB-B-East Wing",
+          "SB-C-Tower"
+        ],
+        "detailViews": [
+          "DT-001 Typical Beam",
+          "DT-002 Column Base",
+          "DT-003 Slab Edge"
+        ],
         "sheets": [],
         "parameters": []
       }

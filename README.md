@@ -170,6 +170,13 @@ Phase 2: Simulator Fidelity Tiers
 - Tier 3: Python/forms inference with scenario rules.
 - Tier 4: Technical fallback (control tags, names, source files).
 
+Current pilot status:
+
+- Section Move (`SectionUpdater.pushbutton`) now uses a dedicated high-fidelity simulator layout with staged targets, plan/extents controls, and a crop extents batch table.
+- This pilot is training-only and does not execute live Revit transactions.
+- The renderer currently hard-targets the Section Move tool while other tools continue to use the generic simulator pipeline.
+- Fidelity indicators for this tool are emitted in `generated/ui-diagnostics.json` (`high-fidelity-template-applied`, `xaml-layout-mapped`).
+
 Phase 3: Telemetry Snapshot Ingestion
 
 - Generate static telemetry snapshots during build (no runtime network calls).

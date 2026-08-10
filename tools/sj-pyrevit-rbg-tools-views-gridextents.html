@@ -231,6 +231,11 @@ Shift+Click: Set them to 3D (model) extents.</p>
             return;
           }
 
+          if (String(SIMULATOR.toolId || '').includes('SectionUpdater.pushbutton')) {
+            renderSectionUpdaterSimulator();
+            return;
+          }
+
           simulatorRoot.innerHTML = '';
           setText('sim-control-count', SIMULATOR.controls.length);
           setText('sim-event-count', SIMULATOR.events.length);
@@ -273,6 +278,177 @@ Shift+Click: Set them to 3D (model) extents.</p>
           }
 
           simulatorRoot.appendChild(form);
+        }
+
+        function renderSectionUpdaterSimulator() {
+          setText('sim-control-count', 22);
+          setText('sim-event-count', 9);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          const sampleSections = [
+            'TRUSS B - SECTION (L0-1)',
+            'TRUSS B - SECTION (L2-3)',
+            'TRUSS B - SECTION (L3-4)',
+            'TRUSS B - SECTION (L4-5)',
+            'TRUSS B - SECTION (L5-6)',
+            'TRUSS B - SECTION (L6-7)',
+            'TRUSS C - SECTION (L0-1)',
+            'TRUSS C - SECTION (L1-2)',
+            'TRUSS C - SECTION (L2-3)',
+          ];
+
+          const rows = [
+            ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
+            ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
+            ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
+            ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
+            ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
+          ];
+
+          simulatorRoot.innerHTML =
+            '<div class="secup-layout">' +
+              '<section class="secup-pane">' +
+                '<h5>Targets</h5>' +
+                '<p class="muted">Active view: BRACING TRUSS A/B - DETAILS</p>' +
+                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="truss" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Sort</span><select id="secup-sort" class="sim-field"><option>Name A-Z</option><option>Name Z-A</option></select></label>' +
+                '<div class="secup-toggle-row">' +
+                  '<label><input id="secup-visible-only" type="checkbox" /> Visible in selected plan only</label>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-refresh">Refresh</button>' +
+                '</div>' +
+                '<div class="secup-list-wrap"><select id="secup-sections" multiple class="sim-field secup-list"></select></div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-clear-selection">Select None</button>' +
+                '</div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<button type="button" class="sim-action" id="secup-add">Add to Selection</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-clear-added">Clear Added</button>' +
+                '</div>' +
+                '<p><strong>Affected sections: </strong><span id="secup-affected-count">0</span></p>' +
+              '</section>' +
+              '<section class="secup-pane">' +
+                '<h5>Plan + extent stages</h5>' +
+                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field"><option>GA-SS LEVEL 1E</option><option>GA-SS LEVEL 2E</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field"><option>TRUSS B - GA E11/EA-EB</option><option>TRUSS C - GA E12/EA-EB</option></select></label>' +
+                '<div class="secup-toggle-col">' +
+                  '<label><input type="checkbox" /> Move / rotate in plan</label>' +
+                  '<label><input type="checkbox" /> Flip 180 after move</label>' +
+                  '<label><input type="checkbox" /> Match horizontal extents to scope box side</label>' +
+                  '<label><input type="checkbox" /> Assign scope box last</label>' +
+                '</div>' +
+                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field"><option>Top</option><option>Bottom</option><option>Left</option><option>Right</option></select></label>' +
+                '<p><strong>Plan/extents stage ready:</strong> <span id="secup-stage-count">0</span> affected section(s).</p>' +
+                '<button type="button" class="sim-action" id="secup-run-plan">Run Plan + Extents</button>' +
+              '</section>' +
+              '<section class="secup-pane secup-pane-wide">' +
+                '<h5>Crop vertical extents from Levels</h5>' +
+                '<div class="secup-toggle-col">' +
+                  '<label><input type="radio" name="secup-crop-mode" checked /> Keep current vertical extents</label>' +
+                  '<label><input type="radio" name="secup-crop-mode" /> Update vertical crop extents from Levels</label>' +
+                '</div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field"><option>DATUM</option></select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field"><option>NEW ROOF</option></select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-batch">Apply Batch To Selected</button>' +
+                '</div>' +
+                '<div class="sim-table-wrap secup-table-wrap">' +
+                  '<table><thead><tr><th>View</th><th>Current lower</th><th>Cur off mm</th><th>Current upper</th><th>Cur off mm</th><th>Target lower</th><th>New off mm</th><th>Target upper</th></tr></thead><tbody id="secup-rows"></tbody></table>' +
+                '</div>' +
+                '<div class="sim-action-row">' +
+                  '<button type="button" class="sim-action" id="secup-run-vertical">Run Vertical Crop Update</button>' +
+                  '<button type="button" class="sim-action" id="secup-run-all">Run</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const sectionList = document.getElementById('secup-sections');
+          const filterInput = document.getElementById('secup-filter');
+          const affectedCount = document.getElementById('secup-affected-count');
+          const stageCount = document.getElementById('secup-stage-count');
+          const rowsRoot = document.getElementById('secup-rows');
+          const selected = new Set();
+
+          function renderSections() {
+            const q = String(filterInput.value || '').toLowerCase();
+            const visible = sampleSections.filter((name) => name.toLowerCase().includes(q));
+            sectionList.innerHTML = visible.map((name) => '<option value="' + name + '">' + name + '</option>').join('');
+          }
+
+          function renderRows() {
+            rowsRoot.innerHTML = rows.map((row) => '<tr>' + row.map((cell) => '<td>' + cell + '</td>').join('') + '</tr>').join('');
+          }
+
+          function refreshCounters() {
+            const count = selected.size;
+            affectedCount.textContent = String(count);
+            stageCount.textContent = String(count);
+          }
+
+          document.getElementById('secup-refresh').addEventListener('click', function () {
+            renderSections();
+            simOutput.textContent = 'Refreshed visible section list.';
+          });
+
+          filterInput.addEventListener('input', renderSections);
+
+          document.getElementById('secup-select-all').addEventListener('click', function () {
+            Array.from(sectionList.options).forEach((opt) => {
+              opt.selected = true;
+            });
+          });
+
+          document.getElementById('secup-clear-selection').addEventListener('click', function () {
+            Array.from(sectionList.options).forEach((opt) => {
+              opt.selected = false;
+            });
+          });
+
+          document.getElementById('secup-add').addEventListener('click', function () {
+            Array.from(sectionList.selectedOptions).forEach((opt) => selected.add(opt.value));
+            refreshCounters();
+            simOutput.textContent = 'Added sections to staged selection: ' + selected.size;
+          });
+
+          document.getElementById('secup-clear-added').addEventListener('click', function () {
+            selected.clear();
+            refreshCounters();
+            simOutput.textContent = 'Cleared staged section selection.';
+          });
+
+          document.getElementById('secup-run-plan').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Add at least one section before running Plan + Extents.';
+              return;
+            }
+            simOutput.textContent = 'Plan + Extents complete. Sections processed: ' + selected.size + '\nMove/rotate: simulated\nScope alignment: simulated';
+          });
+
+          document.getElementById('secup-run-vertical').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Add at least one section before running Vertical Crop Update.';
+              return;
+            }
+            simOutput.textContent = 'Vertical Crop Update complete. Updated rows: ' + selected.size + '\nLower/upper constraints applied from simulator controls.';
+          });
+
+          document.getElementById('secup-batch').addEventListener('click', function () {
+            simOutput.textContent = 'Batch target values applied to current staged rows (simulated).';
+          });
+
+          document.getElementById('secup-run-all').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Stage selections before full run.';
+              return;
+            }
+            simOutput.textContent = 'Full run complete.\nSelected: ' + selected.size + '\nPlan/Extents: OK\nVertical Crop: OK\nIssues: 0';
+          });
+
+          renderSections();
+          renderRows();
+          refreshCounters();
         }
 
         renderSimulator();

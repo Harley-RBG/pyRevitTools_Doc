@@ -49,6 +49,13 @@ Build and maintain a single internal webpage that contains:
 
 The current simulator is a useful baseline but not yet a high-fidelity UI mirror of complex WPF tools. The attached screenshots (for example Parameter Copier and View Creator/Selector) show a denser and more structured UI than current generic rendering.
 
+High-fidelity pilot now implemented:
+
+- Tool: Section Move (`SectionUpdater.pushbutton`).
+- Dedicated simulator layout: targets panel, plan/extents panel, crop extents table panel, staged run actions, and output summary.
+- Diagnostics include fidelity markers in `generated/ui-diagnostics.json` for this tool.
+- Remaining tools still use generic inferred rendering until migrated.
+
 ## Simulator Alignment Steps
 
 1. Add control-level layout groups from XAML container hierarchy (Grid/GroupBox/TabControl/DockPanel).
@@ -58,6 +65,12 @@ The current simulator is a useful baseline but not yet a high-fidelity UI mirror
 5. Add optional Revit snapshot exports for realistic data populations.
 6. Implement light/dark WPF-like themes and spacing presets for visual parity.
 7. Add per-tool screenshot comparison checks in diagnostics for fidelity tracking.
+
+## Next Fidelity Targets
+
+1. Parameter Copier: dual list-transfer + parameter mapping table behavior.
+2. View Creator/Selector: multi-step scope and template assignment workflow.
+3. SheetNo and related sheet tools: grid-first editing flow with validation states.
 
 ## Update Routine
 
