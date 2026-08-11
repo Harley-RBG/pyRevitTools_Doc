@@ -2496,13 +2496,13 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
     <div class="page">
 
-      <div class="part" id="summary-section">
+      <div class="part" id="summary-section" data-space="extension">
         <span class="part-num">Part I</span>
         <span class="part-title">Catalog Summary</span>
         <span class="part-rule"></span>
       </div>
 
-      <div class="priority-card">
+      <div class="priority-card" data-space="extension">
         <strong>Priority rule.</strong> Bundle metadata is authoritative. Keep
         <code>bundle.yaml</code> and <code>tool-context.md</code> maintained for each pushbutton.
         Current coverage: <strong>${diagnostics.metadataCoverage.withToolContext}/${diagnostics.totals.tools}</strong>
@@ -2510,10 +2510,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         with bundle metadata.
       </div>
 
-      <section class="card site-header">
+      <section class="card site-header" id="extension-overview" data-space="extension">
         <div class="card-head">
           <span class="card-title">Tool Catalog + Working Hub Overview</span>
           <span class="card-hint">Revit tools, desktop/web app inventory, and training focus areas</span>
+          <a class="space-home-link" href="#home">Back to Home Spaces</a>
         </div>
         <div class="card-body">
           <p class="kicker">pyRevit extension reference</p>
@@ -2538,7 +2539,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card" id="spaces-overview">
+      <section class="card" id="spaces-overview" data-space="home">
         <div class="card-head">
           <span class="card-title">Home Spaces</span>
           <span class="card-hint">Single-panel pagination across Extension, Windows Apps, and Web Apps</span>
@@ -2553,13 +2554,13 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <div class="part" id="tree-section">
+      <div class="part" id="tree-section" data-space="extension">
         <span class="part-num">Part II</span>
         <span class="part-title">Revit Tools Catalog</span>
         <span class="part-rule"></span>
       </div>
 
-      <main class="layout">
+      <main class="layout" id="extension-layout" data-space="extension">
         <section class="tree card card-block">
           <div class="card-head">
             <span class="card-title">Extension Tree</span>
@@ -2577,13 +2578,19 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </section>
       </main>
 
-      <div class="part" id="hub-section">
+      <div class="part" id="windows-part" data-space="windows">
         <span class="part-num">Part III</span>
-        <span class="part-title">Working Hub</span>
+        <span class="part-title">Windows Apps</span>
         <span class="part-rule"></span>
       </div>
 
-      <section class="card">
+      <div class="part" id="web-part" data-space="web">
+        <span class="part-num">Part IV</span>
+        <span class="part-title">Web Apps</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <section class="card" data-space="hidden-unused" style="display:none;">
         <div class="card-head">
           <span class="card-title">${escapeHtml(hub.workingHub.title || "Internal tools wiki and training hub")}</span>
           <span class="card-hint">Editable in working-hub.json</span>
@@ -2600,10 +2607,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card" id="windows-apps-section">
+      <section class="card" id="windows-apps-section" data-space="windows">
         <div class="card-head">
           <span class="card-title">Windows Apps Catalog</span>
           <span class="card-hint">Designed to track .exe paths, screenshots, and app information</span>
+          <a class="space-home-link" href="#home">Back to Home Spaces</a>
         </div>
         <div class="card-body sim-table-wrap">
           <table>
@@ -2613,10 +2621,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card" id="web-apps-section">
+      <section class="card" id="web-apps-section" data-space="web">
         <div class="card-head">
           <span class="card-title">Web-based Apps Catalog</span>
           <span class="card-hint">Designed to track links, screenshots, and app information</span>
+          <a class="space-home-link" href="#home">Back to Home Spaces</a>
         </div>
         <div class="card-body sim-table-wrap">
           <table>
@@ -2626,7 +2635,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" data-space="hidden-unused" style="display:none;">
         <div class="card-head">
           <span class="card-title">Tool Ideas Backlog</span>
           <span class="card-hint">Placeholder board for the Working Hub</span>
@@ -2669,6 +2678,12 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const homeState = {
         index: 0,
       };
+
+      const spaceState = {
+        current: "home",
+      };
+
+      const spaceBlocks = Array.from(document.querySelectorAll("[data-space]"));
 
       function textIncludes(haystack, needle) {
         return haystack.toLowerCase().includes(needle.toLowerCase());
@@ -2723,8 +2738,10 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
             metrics: [
               ["Revit tools", DATA.tools.length],
               ["Tabs", DATA.tree.length],
+              ["Panels", DATA.tree.reduce(function (sum, tab) { return sum + tab.panels.length; }, 0)],
+              ["Stacks", DATA.tree.reduce(function (sum, tab) { return sum + tab.panels.reduce(function (inner, panel) { return inner + panel.stacks.length; }, 0); }, 0)],
             ],
-            href: "#catalog-section",
+            href: "#space-extension",
             linkLabel: "Open Extension Space",
           },
           {
@@ -2735,7 +2752,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               ["Tracked apps", windowsCount],
               ["Source", "working-hub.json"],
             ],
-            href: "#windows-apps-section",
+            href: "#space-windows",
             linkLabel: "Open Windows Apps Space",
           },
           {
@@ -2746,10 +2763,31 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               ["Tracked apps", webCount],
               ["Source", "working-hub.json"],
             ],
-            href: "#web-apps-section",
+            href: "#space-web",
             linkLabel: "Open Web Apps Space",
           },
         ];
+      }
+
+      function parseSpaceFromHash() {
+        const hash = String(window.location.hash || "").toLowerCase();
+        if (hash === "#space-extension") return "extension";
+        if (hash === "#space-windows") return "windows";
+        if (hash === "#space-web") return "web";
+        return "home";
+      }
+
+      function applySpaceView(space) {
+        spaceState.current = space;
+        spaceBlocks.forEach(function (block) {
+          const target = block.getAttribute("data-space") || "";
+          if (target === "hidden-unused") {
+            block.hidden = true;
+            return;
+          }
+          block.hidden = target !== space;
+        });
+        window.scrollTo({ top: 0, behavior: "instant" });
       }
 
       function renderHomePager() {
@@ -2971,7 +3009,12 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         }
       });
 
+      window.addEventListener("hashchange", function () {
+        applySpaceView(parseSpaceFromHash());
+      });
+
       render();
+      applySpaceView(parseSpaceFromHash());
     </script>
   </body>
 </html>`;

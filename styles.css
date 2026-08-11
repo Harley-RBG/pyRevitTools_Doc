@@ -69,6 +69,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+[data-space][hidden] {
+  display: none !important;
+}
+
 .topbar {
   background: var(--inverse-surface);
   color: var(--inverse-on-surface);
@@ -195,6 +199,18 @@ body {
 .card-hint {
   font-size: 11px;
   color: var(--on-surface-var);
+}
+
+.space-home-link {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.space-home-link:hover {
+  text-decoration: underline;
 }
 
 .card-body {
