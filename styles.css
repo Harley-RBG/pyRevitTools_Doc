@@ -273,6 +273,120 @@ body {
   gap: 10px;
 }
 
+.home-pager-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.home-pager-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pager-btn {
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--outline);
+  background: var(--surface);
+  color: var(--on-surface);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-family: var(--font);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pager-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.pager-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pager-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--outline);
+  background: var(--surface-container);
+  cursor: pointer;
+}
+
+.pager-dot.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.home-panel {
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f6f8fd);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.home-panel h3 {
+  font-size: 16px;
+  color: var(--on-surface);
+}
+
+.home-panel-summary {
+  font-size: 12px;
+  color: var(--on-surface-var);
+  max-width: 70ch;
+}
+
+.home-panel-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.home-panel-metrics p {
+  margin: 0;
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 8px 10px;
+}
+
+.home-panel-metrics span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--on-surface-var);
+}
+
+.home-panel-metrics strong {
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.home-panel-link {
+  width: fit-content;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-btn);
+  padding: 8px 14px;
+  color: var(--on-primary);
+  background: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.home-panel-link:hover {
+  background: var(--brand-blue-dark);
+  border-color: var(--brand-blue-dark);
+  color: var(--on-primary);
+}
+
 .tab-panel-filters {
   display: grid;
   gap: 8px;
@@ -1043,6 +1157,25 @@ select.sim-field[multiple] {
 
   .sim-action {
     width: 100%;
+  }
+
+  .home-pager-controls {
+    flex-wrap: wrap;
+  }
+
+  .pager-btn {
+    width: calc(50% - 6px);
+  }
+
+  .home-pager-dots {
+    width: 100%;
+    justify-content: center;
+    order: 3;
+  }
+
+  .home-panel-link {
+    width: 100%;
+    text-align: center;
   }
 
   .secup-layout {

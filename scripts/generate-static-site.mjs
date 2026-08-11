@@ -2538,6 +2538,21 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
+      <section class="card" id="spaces-overview">
+        <div class="card-head">
+          <span class="card-title">Home Spaces</span>
+          <span class="card-hint">Single-panel pagination across Extension, Windows Apps, and Web Apps</span>
+        </div>
+        <div class="card-body">
+          <div class="home-pager-controls">
+            <button class="pager-btn" id="home-prev" type="button" aria-label="Previous space">Previous</button>
+            <div class="home-pager-dots" id="home-pager-dots" aria-label="Space pagination"></div>
+            <button class="pager-btn" id="home-next" type="button" aria-label="Next space">Next</button>
+          </div>
+          <div class="home-pager" id="home-pager"></div>
+        </div>
+      </section>
+
       <div class="part" id="tree-section">
         <span class="part-num">Part II</span>
         <span class="part-title">Revit Tools Catalog</span>
@@ -2585,7 +2600,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="windows-apps-section">
         <div class="card-head">
           <span class="card-title">Windows Apps Catalog</span>
           <span class="card-hint">Designed to track .exe paths, screenshots, and app information</span>
@@ -2598,7 +2613,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="web-apps-section">
         <div class="card-head">
           <span class="card-title">Web-based Apps Catalog</span>
           <span class="card-hint">Designed to track links, screenshots, and app information</span>
@@ -2646,6 +2661,14 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const treeRoot = document.getElementById("tree-root");
       const catalogRoot = document.getElementById("catalog-root");
       const searchInput = document.getElementById("search-input");
+      const homePagerRoot = document.getElementById("home-pager");
+      const homePagerDots = document.getElementById("home-pager-dots");
+      const homePrevBtn = document.getElementById("home-prev");
+      const homeNextBtn = document.getElementById("home-next");
+
+      const homeState = {
+        index: 0,
+      };
 
       function textIncludes(haystack, needle) {
         return haystack.toLowerCase().includes(needle.toLowerCase());
@@ -2686,6 +2709,103 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
           '<p><strong>Fallbacks</strong>: title=' + coverage.titleFromPathFallback +
           ', function=' + coverage.functionFallback + ', purpose=' + coverage.purposeFallback +
           '. Duplicate title keys=' + duplicateCount + '.</p>';
+      }
+
+      function getHomePanels() {
+        const windowsCount = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.length : 0;
+        const webCount = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.length : 0;
+
+        return [
+          {
+            key: "extension",
+            title: "Extension Space",
+            summary: "Browse the parsed pyRevit extension tree and jump into tool-level training pages.",
+            metrics: [
+              ["Revit tools", DATA.tools.length],
+              ["Tabs", DATA.tree.length],
+            ],
+            href: "#catalog-section",
+            linkLabel: "Open Extension Space",
+          },
+          {
+            key: "windows",
+            title: "Windows Apps Space",
+            summary: "Track internal desktop helpers, executable locations, and rollout status.",
+            metrics: [
+              ["Tracked apps", windowsCount],
+              ["Source", "working-hub.json"],
+            ],
+            href: "#windows-apps-section",
+            linkLabel: "Open Windows Apps Space",
+          },
+          {
+            key: "web",
+            title: "Web Apps Space",
+            summary: "Track internal web tools, links, and references in one catalog section.",
+            metrics: [
+              ["Tracked apps", webCount],
+              ["Source", "working-hub.json"],
+            ],
+            href: "#web-apps-section",
+            linkLabel: "Open Web Apps Space",
+          },
+        ];
+      }
+
+      function renderHomePager() {
+        if (!homePagerRoot || !homePagerDots || !homePrevBtn || !homeNextBtn) {
+          return;
+        }
+
+        const panels = getHomePanels();
+        if (!panels.length) {
+          homePagerRoot.innerHTML = '<div class="empty-state"><h3>No spaces configured.</h3></div>';
+          homePagerDots.innerHTML = "";
+          return;
+        }
+
+        if (homeState.index < 0) {
+          homeState.index = 0;
+        }
+        if (homeState.index >= panels.length) {
+          homeState.index = panels.length - 1;
+        }
+
+        const active = panels[homeState.index];
+        homePagerRoot.innerHTML =
+          '<article class="home-panel">' +
+            '<header>' +
+              '<p class="kicker">Home Space</p>' +
+              '<h3>' + active.title + '</h3>' +
+            '</header>' +
+            '<p class="home-panel-summary">' + active.summary + '</p>' +
+            '<div class="home-panel-metrics">' +
+              active.metrics.map(function (pair) {
+                return '<p><span>' + pair[0] + '</span><strong>' + pair[1] + '</strong></p>';
+              }).join("") +
+            '</div>' +
+            '<a class="home-panel-link" href="' + active.href + '">' + active.linkLabel + '</a>' +
+          '</article>';
+
+        homePagerDots.innerHTML = panels
+          .map(function (panel, idx) {
+            const activeClass = idx === homeState.index ? "is-active" : "";
+            return '<button class="pager-dot ' + activeClass + '" type="button" data-index="' + idx + '" aria-label="Show ' + panel.title + '"></button>';
+          })
+          .join("");
+
+        homePrevBtn.disabled = homeState.index === 0;
+        homeNextBtn.disabled = homeState.index === panels.length - 1;
+
+        Array.from(homePagerDots.querySelectorAll("button")).forEach(function (button) {
+          button.addEventListener("click", function () {
+            const idx = Number(button.getAttribute("data-index"));
+            if (Number.isFinite(idx)) {
+              homeState.index = idx;
+              renderHomePager();
+            }
+          });
+        });
       }
 
       function renderTabs() {
@@ -2825,6 +2945,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
       function render() {
         renderStats();
+        renderHomePager();
         renderTabs();
         renderTree();
         renderCatalog();
@@ -2833,6 +2954,21 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       searchInput.addEventListener("input", function (event) {
         state.query = event.target.value || "";
         renderCatalog();
+      });
+
+      homePrevBtn.addEventListener("click", function () {
+        if (homeState.index > 0) {
+          homeState.index -= 1;
+          renderHomePager();
+        }
+      });
+
+      homeNextBtn.addEventListener("click", function () {
+        const panels = getHomePanels();
+        if (homeState.index < panels.length - 1) {
+          homeState.index += 1;
+          renderHomePager();
+        }
       });
 
       render();
