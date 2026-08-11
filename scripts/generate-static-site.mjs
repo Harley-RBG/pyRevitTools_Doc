@@ -2542,15 +2542,10 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       <section class="card" id="spaces-overview" data-space="home">
         <div class="card-head">
           <span class="card-title">Home Spaces</span>
-          <span class="card-hint">Single-panel pagination across Extension, Windows Apps, and Web Apps</span>
+          <span class="card-hint">Split summary for Extension, Windows Apps, and Web Apps</span>
         </div>
         <div class="card-body">
-          <div class="home-pager-controls">
-            <button class="pager-btn" id="home-prev" type="button" aria-label="Previous space">Previous</button>
-            <div class="home-pager-dots" id="home-pager-dots" aria-label="Space pagination"></div>
-            <button class="pager-btn" id="home-next" type="button" aria-label="Next space">Next</button>
-          </div>
-          <div class="home-pager" id="home-pager"></div>
+          <div class="home-spaces-grid" id="home-spaces-grid"></div>
         </div>
       </section>
 
@@ -2670,14 +2665,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const treeRoot = document.getElementById("tree-root");
       const catalogRoot = document.getElementById("catalog-root");
       const searchInput = document.getElementById("search-input");
-      const homePagerRoot = document.getElementById("home-pager");
-      const homePagerDots = document.getElementById("home-pager-dots");
-      const homePrevBtn = document.getElementById("home-prev");
-      const homeNextBtn = document.getElementById("home-next");
-
-      const homeState = {
-        index: 0,
-      };
+      const homeSpacesGrid = document.getElementById("home-spaces-grid");
 
       const spaceState = {
         current: "home",
@@ -2729,6 +2717,13 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       function getHomePanels() {
         const windowsCount = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.length : 0;
         const webCount = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.length : 0;
+        const tabNames = DATA.tree.map(function (tab) { return tab.name; }).slice(0, 3);
+        const windowNames = (DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps : [])
+          .map(function (app) { return app.name; })
+          .slice(0, 3);
+        const webNames = (DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps : [])
+          .map(function (app) { return app.name; })
+          .slice(0, 3);
 
         return [
           {
@@ -2741,6 +2736,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               ["Panels", DATA.tree.reduce(function (sum, tab) { return sum + tab.panels.length; }, 0)],
               ["Stacks", DATA.tree.reduce(function (sum, tab) { return sum + tab.panels.reduce(function (inner, panel) { return inner + panel.stacks.length; }, 0); }, 0)],
             ],
+            contents: [
+              "Primary tabs: " + (tabNames.length ? tabNames.join(", ") : "None yet"),
+              "Includes tool cards with purpose, inputs, and file provenance",
+              "Contains extension tree and panel filters",
+            ],
             href: "#space-extension",
             linkLabel: "Open Extension Space",
           },
@@ -2752,6 +2752,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               ["Tracked apps", windowsCount],
               ["Source", "working-hub.json"],
             ],
+            contents: [
+              "Sample apps: " + (windowNames.length ? windowNames.join(", ") : "None listed"),
+              "Status, executable path, screenshot, and notes columns",
+              "Designed for Windows utility inventory",
+            ],
             href: "#space-windows",
             linkLabel: "Open Windows Apps Space",
           },
@@ -2762,6 +2767,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
             metrics: [
               ["Tracked apps", webCount],
               ["Source", "working-hub.json"],
+            ],
+            contents: [
+              "Sample apps: " + (webNames.length ? webNames.join(", ") : "None listed"),
+              "Status, URL, screenshot, and notes columns",
+              "Designed for internal web tool links",
             ],
             href: "#space-web",
             linkLabel: "Open Web Apps Space",
@@ -2790,60 +2800,42 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         window.scrollTo({ top: 0, behavior: "instant" });
       }
 
-      function renderHomePager() {
-        if (!homePagerRoot || !homePagerDots || !homePrevBtn || !homeNextBtn) {
+      function renderHomeSpaces() {
+        if (!homeSpacesGrid) {
           return;
         }
 
         const panels = getHomePanels();
         if (!panels.length) {
-          homePagerRoot.innerHTML = '<div class="empty-state"><h3>No spaces configured.</h3></div>';
-          homePagerDots.innerHTML = "";
+          homeSpacesGrid.innerHTML = '<div class="empty-state"><h3>No spaces configured.</h3></div>';
           return;
         }
 
-        if (homeState.index < 0) {
-          homeState.index = 0;
-        }
-        if (homeState.index >= panels.length) {
-          homeState.index = panels.length - 1;
-        }
-
-        const active = panels[homeState.index];
-        homePagerRoot.innerHTML =
-          '<article class="home-panel">' +
-            '<header>' +
-              '<p class="kicker">Home Space</p>' +
-              '<h3>' + active.title + '</h3>' +
-            '</header>' +
-            '<p class="home-panel-summary">' + active.summary + '</p>' +
-            '<div class="home-panel-metrics">' +
-              active.metrics.map(function (pair) {
+        homeSpacesGrid.innerHTML = panels
+          .map(function (panel) {
+            const metrics = panel.metrics
+              .map(function (pair) {
                 return '<p><span>' + pair[0] + '</span><strong>' + pair[1] + '</strong></p>';
-              }).join("") +
-            '</div>' +
-            '<a class="home-panel-link" href="' + active.href + '">' + active.linkLabel + '</a>' +
-          '</article>';
+              })
+              .join("");
+            const contents = panel.contents
+              .map(function (line) {
+                return '<li>' + line + '</li>';
+              })
+              .join("");
 
-        homePagerDots.innerHTML = panels
-          .map(function (panel, idx) {
-            const activeClass = idx === homeState.index ? "is-active" : "";
-            return '<button class="pager-dot ' + activeClass + '" type="button" data-index="' + idx + '" aria-label="Show ' + panel.title + '"></button>';
+            return '<article class="home-panel">' +
+              '<header>' +
+                '<p class="kicker">Home Space</p>' +
+                '<h3>' + panel.title + '</h3>' +
+              '</header>' +
+              '<p class="home-panel-summary">' + panel.summary + '</p>' +
+              '<div class="home-panel-metrics">' + metrics + '</div>' +
+              '<ul class="home-panel-list">' + contents + '</ul>' +
+              '<a class="home-panel-link" href="' + panel.href + '">' + panel.linkLabel + '</a>' +
+            '</article>';
           })
           .join("");
-
-        homePrevBtn.disabled = homeState.index === 0;
-        homeNextBtn.disabled = homeState.index === panels.length - 1;
-
-        Array.from(homePagerDots.querySelectorAll("button")).forEach(function (button) {
-          button.addEventListener("click", function () {
-            const idx = Number(button.getAttribute("data-index"));
-            if (Number.isFinite(idx)) {
-              homeState.index = idx;
-              renderHomePager();
-            }
-          });
-        });
       }
 
       function renderTabs() {
@@ -2983,7 +2975,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
       function render() {
         renderStats();
-        renderHomePager();
+        renderHomeSpaces();
         renderTabs();
         renderTree();
         renderCatalog();
@@ -2992,21 +2984,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       searchInput.addEventListener("input", function (event) {
         state.query = event.target.value || "";
         renderCatalog();
-      });
-
-      homePrevBtn.addEventListener("click", function () {
-        if (homeState.index > 0) {
-          homeState.index -= 1;
-          renderHomePager();
-        }
-      });
-
-      homeNextBtn.addEventListener("click", function () {
-        const panels = getHomePanels();
-        if (homeState.index < panels.length - 1) {
-          homeState.index += 1;
-          renderHomePager();
-        }
       });
 
       window.addEventListener("hashchange", function () {
