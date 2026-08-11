@@ -2463,7 +2463,17 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
     .join("");
 
   const windowsRows = (hub.windowsApps || [])
-    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${escapeHtml(app.exePath || "")}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`)
+    .map((app) => {
+      const release = String(app.releaseUrl || app.exePath || "").trim();
+      const repo = String(app.repoUrl || "").trim();
+      const releaseCell = /^https?:\/\//i.test(release)
+        ? `<a href="${escapeHtml(release)}" target="_blank" rel="noopener noreferrer">${escapeHtml(release)}</a>`
+        : escapeHtml(release);
+      const repoCell = /^https?:\/\//i.test(repo)
+        ? `<a href="${escapeHtml(repo)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repo)}</a>`
+        : escapeHtml(repo);
+      return `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${releaseCell}</td><td>${repoCell}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`;
+    })
     .join("");
 
   const webRows = (hub.webApps || [])
@@ -2610,7 +2620,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
         <div class="card-body sim-table-wrap">
           <table>
-            <thead><tr><th>App</th><th>Status</th><th>Executable path</th><th>Screenshot</th><th>Information</th></tr></thead>
+            <thead><tr><th>App</th><th>Status</th><th>Release / executable</th><th>Repository</th><th>Screenshot</th><th>Information</th></tr></thead>
             <tbody>${windowsRows}</tbody>
           </table>
         </div>
@@ -2754,7 +2764,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
             ],
             contents: [
               "Sample apps: " + (windowNames.length ? windowNames.join(", ") : "None listed"),
-              "Status, executable path, screenshot, and notes columns",
+              "Release link, repository link, screenshot, and notes columns",
               "Designed for Windows utility inventory",
             ],
             href: "#space-windows",

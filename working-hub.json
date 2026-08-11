@@ -34,21 +34,38 @@
   },
   "windowsApps": [
     {
-      "name": "Package Validator",
-      "status": "Planned",
-      "exePath": "C:/Apps/PackageValidator/PackageValidator.exe",
+      "name": "Issue Package Creator",
+      "status": "Active",
+      "releaseUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Creator/releases",
+      "repoUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Creator",
       "screenshot": "docs/assets/windows/package-validator.png",
-      "info": "Validates package metadata and reports formatting/dependency issues."
+      "info": "Windows desktop app repository. Link points to latest GitHub releases for installers."
     },
     {
-      "name": "RTV Sync Utility",
-      "status": "Draft",
-      "exePath": "C:/Apps/RTVSync/RTVSync.exe",
+      "name": "Issue Package Verifier",
+      "status": "Active",
+      "releaseUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Verifier/releases",
+      "repoUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Verifier",
       "screenshot": "docs/assets/windows/rtv-sync.png",
-      "info": "Synchronizes model metadata with external data sources and provides logs."
+      "info": "Issue package validation utility. Link points to latest GitHub releases."
+    },
+    {
+      "name": "Auto-PDF",
+      "status": "Active",
+      "releaseUrl": "https://github.com/Robert-Bird-Group/Auto-PDF/releases",
+      "repoUrl": "https://github.com/Robert-Bird-Group/Auto-PDF",
+      "screenshot": "docs/assets/windows/auto-pdf.png",
+      "info": "Automated PDF workflow utility. Link points to latest GitHub releases."
     }
   ],
   "webApps": [
+    {
+      "name": "pyRevit Course Library",
+      "status": "Active",
+      "url": "https://robert-bird-group.github.io/SJ-trAIning/index.html",
+      "screenshot": "docs/assets/web/pyrevit-tools-wiki.png",
+      "info": "GitHub Pages site for pyRevit training and course material."
+    },
     {
       "name": "pyRevit Tools Wiki",
       "status": "Active",
