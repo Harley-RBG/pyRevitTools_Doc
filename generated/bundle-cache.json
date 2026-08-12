@@ -311,90 +311,6 @@
     "sha1": "ee26a0fbcaca7e93412e5cf7628864325b055dbd",
     "binary": false
   },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/bundle.yaml": {
-    "size": 165,
-    "mtimeMs": 1781243876715.9883,
-    "sha1": "27be931f8f235e052fce72e879ff63ae674a2ed4",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/ColumnPicker.xaml": {
-    "size": 6141,
-    "mtimeMs": 1781243876732.5735,
-    "sha1": "3b7ecf55c11cc9d0cdb10fdbf5462be918054aa2",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/DWG3DOptions_ui.xaml": {
-    "size": 6113,
-    "mtimeMs": 1781243876749.8982,
-    "sha1": "132a485c6dd2912ad13de8fe4f65431434693587",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/EditNamingFormats.xaml": {
-    "size": 26383,
-    "mtimeMs": 1781243876761.924,
-    "sha1": "1b80ea593689013258bdd4bb827bdb864e3869c9",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/FilterEditor_ui.xaml": {
-    "size": 42769,
-    "mtimeMs": 1781243876777.1272,
-    "sha1": "657c6a422f1f0e723aa83ccc25ba4dd87718aa7d",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Hunter_profiles.json": {
-    "size": 4154,
-    "mtimeMs": 1781243876786.12,
-    "sha1": "760f2b55bd649d562ab8f58c5913b1bb037de7f2",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.dark.png": {
-    "size": 1080,
-    "mtimeMs": 1781243876798.12,
-    "sha1": "aa775292a2e97ed3abc7f4f064ccac4900637703",
-    "binary": true
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.png": {
-    "size": 1017,
-    "mtimeMs": 1781243876810.1255,
-    "sha1": "6c6e9edc013b2638652004fbfe47c139db665b6c",
-    "binary": true
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/IFCOptions_ui.xaml": {
-    "size": 4522,
-    "mtimeMs": 1781243876822.2866,
-    "sha1": "4ca7e9d5397dd5781f1d6d1d8dbd0fce362e3e0e",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/jason_exporter_profiles.json": {
-    "size": 4154,
-    "mtimeMs": 1781243876845.0754,
-    "sha1": "92cd28e6ed8b06a19c13e9149725d91ee02acd39",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/JasonExporter.xaml": {
-    "size": 59963,
-    "mtimeMs": 1781243876835.0742,
-    "sha1": "a1fae7085a2eb1b3700757903c5bc08ae997332e",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/NWCOptions_ui.xaml": {
-    "size": 7116,
-    "mtimeMs": 1781243876859.0789,
-    "sha1": "015d5a386176fb7a2c6c8e13773d026393dcb123",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/script.py": {
-    "size": 337485,
-    "mtimeMs": 1781243876873.928,
-    "sha1": "3d8fd94fb8bac6b23741dfef326d1cb1aee1e43a",
-    "binary": false
-  },
-  "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Sorting_ui.xaml": {
-    "size": 10496,
-    "mtimeMs": 1781243876889.9285,
-    "sha1": "b71cc22989c9956eb9932081cd9a5e7fee5f47b5",
-    "binary": false
-  },
   "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/bundle.yaml": {
     "size": 158,
     "mtimeMs": 1774568252951.639,
@@ -492,9 +408,9 @@
     "binary": false
   },
   "lib/detailmove_ui.py": {
-    "size": 46637,
-    "mtimeMs": 1783309490209.0266,
-    "sha1": "28b3748c1244e35e28182785ef1ef7af96c1a1af",
+    "size": 47117,
+    "mtimeMs": 1785898110731.1082,
+    "sha1": "e677ac178f5fedc8b46ae82616558b196f9cffea",
     "binary": false
   },
   "lib/Diagnostics/__init__.py": {
@@ -594,15 +510,15 @@
     "binary": false
   },
   "lib/GUI/FindReplace.py": {
-    "size": 3486,
-    "mtimeMs": 1739923954074.8083,
-    "sha1": "ba0fcd5e166d1f4872fe57b73af6cc89c064c355",
+    "size": 3523,
+    "mtimeMs": 1785892650354.5688,
+    "sha1": "f02189c9cf9baa32ae98102d92488d64240741fa",
     "binary": false
   },
   "lib/GUI/FindReplace.xaml": {
-    "size": 7729,
-    "mtimeMs": 1739923954075.8171,
-    "sha1": "1e603810318c1a9374f27ac87f740a692aac6d16",
+    "size": 8423,
+    "mtimeMs": 1785899422115.8296,
+    "sha1": "39f7bde7b87732bf4de76baf78d3392c570b07d6",
     "binary": false
   },
   "lib/GUI/forms.py": {
@@ -612,27 +528,39 @@
     "binary": false
   },
   "lib/GUI/RBG_WPF_Styles.xaml": {
-    "size": 21496,
-    "mtimeMs": 1760418836520.4375,
-    "sha1": "d4abc0f77c03647b28839a736fed2fcb3ba74235",
+    "size": 21985,
+    "mtimeMs": 1785899422117.8276,
+    "sha1": "bdc036a74b85b03b132f3fba6179e17ee99b20bf",
+    "binary": false
+  },
+  "lib/GUI/Resources/RBG_StyleGuide_2026.xaml": {
+    "size": 20634,
+    "mtimeMs": 1785899010473.5205,
+    "sha1": "f04c91e7e6529a68d08138426c52e67b4a0edbb0",
     "binary": false
   },
   "lib/GUI/Resources/WPF_styles.xaml": {
-    "size": 27066,
-    "mtimeMs": 1739923954076.818,
-    "sha1": "b1b31f4708427ce3dbad1e977f00140c467cf05a",
+    "size": 27592,
+    "mtimeMs": 1785899422117.8276,
+    "sha1": "db03f525fdc1bf3ada066508636a539530f97be7",
     "binary": false
   },
   "lib/GUI/SelectFromDict.py": {
-    "size": 8110,
-    "mtimeMs": 1739923954078.8164,
-    "sha1": "542ac81871ba3b3d27749e95e28b0bf85fb43d81",
+    "size": 8147,
+    "mtimeMs": 1785892650354.5688,
+    "sha1": "b87b06f2519224381e043f8179d49d989294dd4c",
     "binary": false
   },
   "lib/GUI/SelectFromDict.xaml": {
-    "size": 10877,
-    "mtimeMs": 1739923954079.8174,
-    "sha1": "26c9d32847ed0a40753c44bdee750f833f42cb8f",
+    "size": 10244,
+    "mtimeMs": 1785899422115.8296,
+    "sha1": "a1951ab0512f6cf46d56edfb37c88b263f6e5f2a",
+    "binary": false
+  },
+  "lib/GUI/style_guide_2026.py": {
+    "size": 3698,
+    "mtimeMs": 1785895271061.3523,
+    "sha1": "c0e190b33a861ff23e509d5aee1c04f7ae383a3a",
     "binary": false
   },
   "lib/GUI/Tools/__init__.py": {
@@ -654,15 +582,15 @@
     "binary": false
   },
   "lib/GUI/ui_acc.py": {
-    "size": 6580,
-    "mtimeMs": 1771294189665.532,
-    "sha1": "cb5ead52fe0664d5f9e18a9c467c960ce6172f08",
+    "size": 6618,
+    "mtimeMs": 1785893386909.337,
+    "sha1": "a36c342e508ca132ab9fd5e76b1756ac2cce55e4",
     "binary": false
   },
   "lib/GUI/WPF_Base.py": {
-    "size": 2476,
-    "mtimeMs": 1739923954083.8157,
-    "sha1": "caa2e3d796ba05e6276042d19b7a2cb73b7e682e",
+    "size": 3561,
+    "mtimeMs": 1785898110727.5422,
+    "sha1": "5e6ab45b2f3c9fdf9e3ab4254df28f409755efe7",
     "binary": false
   },
   "lib/Helpers/FloorSplitGeometry.dll": {
@@ -756,9 +684,9 @@
     "binary": false
   },
   "lib/Renaming/GUI_BaseRename.xaml": {
-    "size": 33992,
-    "mtimeMs": 1739923954088.8147,
-    "sha1": "5f9e3fa4cc0e5f546a8d04e8c17586f3aa0f743f",
+    "size": 34140,
+    "mtimeMs": 1785899422116.828,
+    "sha1": "ecadda311d5c6976127015241666e22da127e1f3",
     "binary": false
   },
   "lib/rtv_db_sync_helper.py": {
@@ -1236,9 +1164,9 @@
     "binary": false
   },
   "lib/status.xaml": {
-    "size": 1666,
-    "mtimeMs": 1781511120738.7957,
-    "sha1": "e0041408ff2d24b1eceadd21c0018145e4b8c0a6",
+    "size": 3381,
+    "mtimeMs": 1785900147878.2285,
+    "sha1": "afce2f9fe4de2dd53ba409cc936ced9513380b89",
     "binary": false
   },
   "lib/telemetry.py": {
@@ -1338,9 +1266,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/script.py": {
-    "size": 72237,
-    "mtimeMs": 1784676557235.5073,
-    "sha1": "18189fb2a8af6439dbee6808641a4d78e2e8f8c0",
+    "size": 75491,
+    "mtimeMs": 1785898796119.306,
+    "sha1": "2aa1b43af7f045d4440663d0cb3cbe3215d82eb1",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/icon.png": {
@@ -1350,15 +1278,15 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/launcher.xaml": {
-    "size": 2234,
-    "mtimeMs": 1784758784093.9224,
-    "sha1": "9bf3856e3bd1d24403b8efeeac1cf24950dff5e8",
+    "size": 4072,
+    "mtimeMs": 1785900147877.2214,
+    "sha1": "01e56315923ebec60d629cc70a8aa03795b6721d",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/script.py": {
-    "size": 3720,
-    "mtimeMs": 1784758793851.6719,
-    "sha1": "eef71911052c86a60bac2025aea60172708422af",
+    "size": 5057,
+    "mtimeMs": 1786575950669.588,
+    "sha1": "0a8cda71682e476fe662ef65120ff40aa05128ee",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/tool-context.md": {
@@ -1374,15 +1302,15 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/dashboard.xaml": {
-    "size": 20504,
-    "mtimeMs": 1784720636915.5847,
-    "sha1": "e7e33cf3a761376d8daad50aac2be603c66b3554",
+    "size": 26899,
+    "mtimeMs": 1785900284618.2888,
+    "sha1": "77f985cae53cec86a9de22f779a44af7621f2582",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/data/tool_catalog.json": {
-    "size": 26104,
-    "mtimeMs": 1783597858624.7112,
-    "sha1": "557ae13d2a2021e5fcc5f67b8f48beea613a40d9",
+    "size": 26100,
+    "mtimeMs": 1786575950672.0935,
+    "sha1": "8185dacf1c3c9d2cf65fb55a5cec30c2d658cb21",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/icon.png": {
@@ -1422,9 +1350,9 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_ui.py": {
-    "size": 25650,
-    "mtimeMs": 1785723552627.9763,
-    "sha1": "c0af193013b0f8e7d43d6e162fb7819f2053b681",
+    "size": 26188,
+    "mtimeMs": 1786575950670.588,
+    "sha1": "5d023f8a2db65541a0d66c5553989c7324d70120",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/tools/__init__.py": {
@@ -1464,9 +1392,9 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/panel.xaml": {
-    "size": 19602,
-    "mtimeMs": 1784721261610.8499,
-    "sha1": "73487c0b289716cceb8510ee1f6aacd288de515f",
+    "size": 25889,
+    "mtimeMs": 1785900284618.2888,
+    "sha1": "ce9a862b26b8680114c7b87fe0ad36cb381b6002",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/script.py": {
@@ -1482,9 +1410,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/panel.xaml": {
-    "size": 23237,
-    "mtimeMs": 1784704180431.9077,
-    "sha1": "0dba5cc3e7c6346eb5f59da2b77e3b21a931adf3",
+    "size": 29006,
+    "mtimeMs": 1785900147883.236,
+    "sha1": "6ae71667aaa19b7ce95f0c11c181161861431548",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/script.py": {
@@ -1542,9 +1470,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/script.py": {
-    "size": 84940,
-    "mtimeMs": 1783572518638.9475,
-    "sha1": "e48f4f8ab227f7ce57dd99968fe3cc79f55ddea4",
+    "size": 86163,
+    "mtimeMs": 1786575950679.1013,
+    "sha1": "cbcd1b31a5f124e8c2f401885e00162ebbc2b46a",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/tool-context.md": {
@@ -1578,15 +1506,15 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/script.py": {
-    "size": 18092,
-    "mtimeMs": 1784685213788.9324,
-    "sha1": "f804a7e8352975aff29a1cf17c32d8a1ec9d3f85",
+    "size": 17894,
+    "mtimeMs": 1785899010476.52,
+    "sha1": "bb68602145db9c825f3ac56965f931a842bf9e2a",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/SelectByLevelWindow.xaml": {
-    "size": 9046,
-    "mtimeMs": 1784685213788.9324,
-    "sha1": "0f6d87de375138ab148eb315a255c4b81b305e27",
+    "size": 11021,
+    "mtimeMs": 1785899010476.52,
+    "sha1": "184a6d2b3e457bcddbbb0c5540a96b910b9cd7a6",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/tool-context.md": {
@@ -1728,9 +1656,9 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/BatchLinkViewSetup.xaml": {
-    "size": 3832,
-    "mtimeMs": 1781569404178.12,
-    "sha1": "ae3f7dca8a3ed742b52024db25362f87781ee861",
+    "size": 5451,
+    "mtimeMs": 1785900147877.2214,
+    "sha1": "0188203979345c471bfc7518c53bdd10043874a5",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/icon.png": {
@@ -1740,9 +1668,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/script.py": {
-    "size": 70092,
-    "mtimeMs": 1783578819336.968,
-    "sha1": "f64b209fe458644c37c95008d7ad8807d58cef1b",
+    "size": 72221,
+    "mtimeMs": 1785900836042.992,
+    "sha1": "83d6066b7b86c500ff10881209194e219af3be63",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/icon.png": {
@@ -1752,9 +1680,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/script.py": {
-    "size": 11700,
-    "mtimeMs": 1783572518569.7917,
-    "sha1": "0a0119857025efb91872a11377925123869f45a0",
+    "size": 12171,
+    "mtimeMs": 1785896446306.59,
+    "sha1": "bc8b0373dbf3e3372fa1e4f1db50690d4b12f8b3",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/tool-context.md": {
@@ -1764,9 +1692,9 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/UI.xaml": {
-    "size": 11572,
-    "mtimeMs": 1775792770064.7717,
-    "sha1": "7522cb341d0a19890e4e6a9807e9bf08127d1835",
+    "size": 13478,
+    "mtimeMs": 1785899010476.52,
+    "sha1": "702b02c1cbdd6cbc84701f2eb2fb4884b33f5679",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/icon.png": {
@@ -1776,9 +1704,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/script.py": {
-    "size": 352148,
-    "mtimeMs": 1785724836813.7366,
-    "sha1": "b776c6930f26b49f34c6c8e08aa826fdb3cb7406",
+    "size": 355867,
+    "mtimeMs": 1786575950679.1013,
+    "sha1": "b7e5aad78b0dd7fd403bfebb3a07a22b5a03b3ea",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/tool-context.md": {
@@ -1788,15 +1716,15 @@
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/ViewCreator.xaml": {
-    "size": 109862,
-    "mtimeMs": 1785720558455.1694,
-    "sha1": "801b3e57ff05b36ce9dd5ce1c8568f8e5c9b8f9d",
+    "size": 115371,
+    "mtimeMs": 1785900147887.752,
+    "sha1": "213b402743b7f7b003098e7d1f969a4540e1604e",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/DetailMoveWindow.xaml": {
-    "size": 12618,
-    "mtimeMs": 1785725966525.9133,
-    "sha1": "a11245d0fb5d46abbcb5e619a2605b97df86ff17",
+    "size": 14297,
+    "mtimeMs": 1785900147881.2366,
+    "sha1": "fb7b4eaa7f078e9a17f4b88d52c591648a7695d8",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/icon.png": {
@@ -1806,9 +1734,9 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/script.py": {
-    "size": 921,
-    "mtimeMs": 1784758415931.6812,
-    "sha1": "32f3500a02604382cd038aac776456341e88b8df",
+    "size": 1531,
+    "mtimeMs": 1786575950666.588,
+    "sha1": "fa0071e1de3a1a6517a68b1a3b93dc4028b832fb",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/tool-context.md": {
@@ -1824,15 +1752,15 @@
     "binary": true
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/script.py": {
-    "size": 14818,
-    "mtimeMs": 1785112700528.8438,
-    "sha1": "b29fe1999431171323cc9399fb99453506288cb9",
+    "size": 15359,
+    "mtimeMs": 1786575950669.588,
+    "sha1": "620ead3dfc5bfd1ed0d4fe0c8ed2702f2a89f9a5",
     "binary": false
   },
   "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/SheetNoOfNoWindow.xaml": {
-    "size": 13198,
-    "mtimeMs": 1785113010719.6895,
-    "sha1": "1e36f6c3be74441e32ba1347525aaf6866b576f0",
+    "size": 15555,
+    "mtimeMs": 1785900147879.2358,
+    "sha1": "07997105315cfad8a13c0cbc7ee263a4c461d0a1",
     "binary": false
   },
   "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton/icon.png": {

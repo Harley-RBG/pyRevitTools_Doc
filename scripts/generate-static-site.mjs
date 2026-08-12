@@ -12,10 +12,12 @@ const diagnosticsPath = path.join(diagnosticsDir, "catalog-diagnostics.json");
 const generateCachePath = path.join(diagnosticsDir, "generate-cache.json");
 const toolPagesCachePath = path.join(diagnosticsDir, "tool-pages-cache.json");
 const workingHubPath = path.join(repoRoot, "working-hub.json");
+const toolDatasetsPath = path.join(repoRoot, "tool-datasets.json");
 const toolCatalogPath = path.join(diagnosticsDir, "tool-catalog.json");
 const uiManifestPath = path.join(diagnosticsDir, "ui-manifest.json");
 const uiDiagnosticsPath = path.join(diagnosticsDir, "ui-diagnostics.json");
 const trainingDataPath = path.join(diagnosticsDir, "training-data.json");
+const screenshotManifestPath = path.join(diagnosticsDir, "tool-screenshots-manifest.json");
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -89,6 +91,111 @@ function readJsonIfExists(filePath) {
   } catch {
     return null;
   }
+}
+
+function normalizeLooseName(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/\.[a-z0-9]+$/i, "")
+    .replace(/[^a-z0-9]+/g, "")
+    .replace(/\d+[a-z]?$/i, "");
+}
+
+function loadScreenshotManifest() {
+  const parsed = readJsonIfExists(screenshotManifestPath);
+  if (!parsed || !Array.isArray(parsed.files)) {
+    return [];
+  }
+  return parsed.files
+    .filter((item) => item && item.localPath && item.fileName)
+    .map((item) => ({
+      tabFolder: String(item.tabFolder || ""),
+      fileName: String(item.fileName || ""),
+      localPath: String(item.localPath || ""),
+      normalizedName: normalizeLooseName(item.normalizedName || item.fileName || ""),
+    }));
+}
+
+function buildToolScreenshotAliases(tool, toolSlug) {
+  const normalizeAlias = (value) =>
+    String(value || "")
+      .toLowerCase()
+      .replace(/\.[a-z0-9]+$/i, "")
+      .replace(/[^a-z0-9]+/g, "");
+
+  const aliases = new Set([
+    normalizeAlias(tool.title),
+    normalizeAlias(toolSlug),
+    normalizeAlias((tool.id || "").split("/").slice(-1)[0]),
+  ]);
+
+  const title = String(tool.title || "").toLowerCase();
+  if (title.includes("section move")) {
+    aliases.add("sectiondetailupdater");
+    aliases.add("sectionupdater");
+  }
+  if (title.includes("scope box view creation")) {
+    aliases.add("viewcreatorselector");
+  }
+  if (title.includes("slab splitter")) {
+    aliases.add("floorsplitter");
+  }
+  if (title.includes("packagecreator")) {
+    aliases.add("packagecreator");
+  }
+  if (title.includes("schedule updater")) {
+    aliases.add("scheduleupdater");
+  }
+  if (title.includes("paramcopier")) {
+    aliases.add("paramcopier");
+  }
+
+  return Array.from(aliases).filter(Boolean);
+}
+
+function resolveToolScreenshots(tool, toolSlug, screenshotFiles) {
+  if (!Array.isArray(screenshotFiles) || !screenshotFiles.length) {
+    return [];
+  }
+
+  const aliases = buildToolScreenshotAliases(tool, toolSlug);
+  const matches = [];
+
+  for (const shot of screenshotFiles) {
+    const sn = normalizeLooseName(shot.normalizedName || shot.fileName);
+    let score = 0;
+    for (const alias of aliases) {
+      if (!alias) continue;
+      if (sn === alias) {
+        score = Math.max(score, 4);
+      } else if (sn.startsWith(alias) || alias.startsWith(sn)) {
+        score = Math.max(score, 3);
+      } else if (alias.length >= 4 && (sn.includes(alias) || alias.includes(sn))) {
+        score = Math.max(score, 2);
+      }
+    }
+
+    if (score > 0) {
+      matches.push({
+        score,
+        fileName: shot.fileName,
+        localPath: shot.localPath,
+        tabFolder: shot.tabFolder,
+      });
+    }
+  }
+
+  return matches
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.fileName.localeCompare(b.fileName);
+    })
+    .slice(0, 8)
+    .map((item) => ({
+      fileName: item.fileName,
+      localPath: item.localPath,
+      tabFolder: item.tabFolder,
+    }));
 }
 
 function sha1Text(value) {
@@ -809,7 +916,7 @@ function mergeUiMockup(wpfMockup, pythonUi) {
   };
 }
 
-function buildToolPageHtml(tool, generatedAt) {
+function buildToolPageHtml(tool, generatedAt, toolDatasetsByToolId = {}) {
   const inputsHtml = tool.inputs.length
     ? `<ul>${tool.inputs.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No explicit click or shift-click input hints were detected.</p>";
@@ -838,8 +945,16 @@ function buildToolPageHtml(tool, generatedAt) {
     ? `<ul>${tool.notes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
     : "<p class=\"muted\">No notes were extracted for this tool.</p>";
 
+  const screenshotHelpHtml = tool.screenshots && tool.screenshots.length
+    ? `<div class="sim-shot-grid">${tool.screenshots
+      .map((shot) => `<figure class="sim-shot"><img src="../${escapeHtml(shot.localPath)}" alt="${escapeHtml(tool.title)} screenshot: ${escapeHtml(shot.fileName)}" loading="lazy" /><figcaption>${escapeHtml(shot.fileName)}</figcaption></figure>`)
+      .join("")}</div>`
+    : "<p class=\"muted\">No UI screenshots mapped for this tool yet. Simulator uses inferred controls from code/XAML.</p>";
+
   const simulator = buildSimulatorModel(tool);
   const simulatorJson = JSON.stringify(simulator);
+  const staticDataset = toolDatasetsByToolId[tool.id] || toolDatasetsByToolId[tool.title] || {};
+  const staticDatasetJson = JSON.stringify(staticDataset);
 
   return `<!doctype html>
 <html lang="en">
@@ -913,6 +1028,8 @@ function buildToolPageHtml(tool, generatedAt) {
         </div>
         <div class="card-body wiki-body">
           <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <h4 class="subhead">Screenshot Reference</h4>
+          ${screenshotHelpHtml}
           <div class="simulator-shell">
             <div class="simulator-toolbar">
               <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
@@ -969,6 +1086,7 @@ function buildToolPageHtml(tool, generatedAt) {
     <script>
       (function () {
         const SIMULATOR = ${simulatorJson};
+        const DATASET = ${staticDatasetJson};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
@@ -981,6 +1099,15 @@ function buildToolPageHtml(tool, generatedAt) {
           if (node) {
             node.textContent = String(value);
           }
+        }
+
+        function getControlOptions(control) {
+          const source = DATASET.selectOptions || {};
+          const options = source[control.id] || source[control.name] || source[control.label] || [];
+          if (!Array.isArray(options) || !options.length) {
+            return null;
+          }
+          return options.map((item) => String(item));
         }
 
         function createInput(control) {
@@ -999,7 +1126,8 @@ function buildToolPageHtml(tool, generatedAt) {
             field.placeholder = 'Enter ' + control.label;
           } else if (control.kind === 'select') {
             field = document.createElement('select');
-            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+            const selectOptions = getControlOptions(control) || ['Option A', 'Option B', 'Option C'];
+            ['Select...'].concat(selectOptions).forEach((optionText, index) => {
               const option = document.createElement('option');
               option.value = index === 0 ? '' : optionText;
               option.textContent = optionText;
@@ -1008,7 +1136,8 @@ function buildToolPageHtml(tool, generatedAt) {
           } else if (control.kind === 'multiselect') {
             field = document.createElement('select');
             field.multiple = true;
-            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+            const multiOptions = getControlOptions(control) || ['Sample 1', 'Sample 2', 'Sample 3'];
+            multiOptions.forEach((optionText) => {
               const option = document.createElement('option');
               option.value = optionText;
               option.textContent = optionText;
@@ -1100,9 +1229,18 @@ function buildToolPageHtml(tool, generatedAt) {
               return;
             }
             if (control.kind === 'table') {
+              const datasetRows = Array.isArray(DATASET.sampleTableRows) ? DATASET.sampleTableRows : [];
+              const tableRows = datasetRows.length
+                ? datasetRows.map((row) => {
+                  const cells = Array.isArray(row) ? row : [row];
+                  const left = String(cells[0] || '');
+                  const right = String(cells[1] || 'Ready');
+                  return '<tr><td>' + left + '</td><td>' + right + '</td></tr>';
+                }).join('')
+                : '<tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr>';
               const tableWrap = document.createElement('div');
               tableWrap.className = 'sim-table-wrap sim-span-full';
-              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody>' + tableRows + '</tbody></table>';
               form.appendChild(tableWrap);
               return;
             }
@@ -1125,32 +1263,52 @@ function buildToolPageHtml(tool, generatedAt) {
           setText('sim-event-count', 9);
           setText('sim-prompt-count', SIMULATOR.prompts.length);
 
-          const sampleSections = [
-            'TRUSS B - SECTION (L0-1)',
-            'TRUSS B - SECTION (L2-3)',
-            'TRUSS B - SECTION (L3-4)',
-            'TRUSS B - SECTION (L4-5)',
-            'TRUSS B - SECTION (L5-6)',
-            'TRUSS B - SECTION (L6-7)',
-            'TRUSS C - SECTION (L0-1)',
-            'TRUSS C - SECTION (L1-2)',
-            'TRUSS C - SECTION (L2-3)',
-          ];
+          const secup = DATASET.sectionUpdater || {};
+          const activeView = String(secup.activeView || 'BRACING TRUSS A/B - DETAILS');
+          const defaultFilter = String(secup.defaultFilter || 'truss');
 
-          const rows = [
-            ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
-            ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
-            ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
-            ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
-            ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
-          ];
+          const sampleSections = Array.isArray(secup.sampleSections) && secup.sampleSections.length
+            ? secup.sampleSections.map((item) => String(item))
+            : [
+              'TRUSS B - SECTION (L0-1)',
+              'TRUSS B - SECTION (L2-3)',
+              'TRUSS B - SECTION (L3-4)',
+              'TRUSS B - SECTION (L4-5)',
+              'TRUSS B - SECTION (L5-6)',
+              'TRUSS B - SECTION (L6-7)',
+              'TRUSS C - SECTION (L0-1)',
+              'TRUSS C - SECTION (L1-2)',
+              'TRUSS C - SECTION (L2-3)',
+            ];
+
+          const rows = Array.isArray(secup.rows) && secup.rows.length
+            ? secup.rows
+            : [
+              ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
+              ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
+              ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
+              ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
+              ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
+            ];
+
+          const planViews = Array.isArray(secup.planViews) && secup.planViews.length ? secup.planViews : ['GA-SS LEVEL 1E', 'GA-SS LEVEL 2E'];
+          const scopeBoxes = Array.isArray(secup.scopeBoxes) && secup.scopeBoxes.length ? secup.scopeBoxes : ['TRUSS B - GA E11/EA-EB', 'TRUSS C - GA E12/EA-EB'];
+          const scopeSides = Array.isArray(secup.scopeSides) && secup.scopeSides.length ? secup.scopeSides : ['Top', 'Bottom', 'Left', 'Right'];
+          const lowerLevels = Array.isArray(secup.lowerLevelOptions) && secup.lowerLevelOptions.length ? secup.lowerLevelOptions : ['DATUM'];
+          const upperLevels = Array.isArray(secup.upperLevelOptions) && secup.upperLevelOptions.length ? secup.upperLevelOptions : ['NEW ROOF'];
+          const lowerOffset = String(secup.defaultLowerOffset || '0.0');
+          const upperOffset = String(secup.defaultUpperOffset || '0.0');
+
+          function optionList(values) {
+            return values.map((value) => '<option>' + String(value) + '</option>').join('');
+          }
 
           simulatorRoot.innerHTML =
             '<div class="secup-layout">' +
               '<section class="secup-pane">' +
                 '<h5>Targets</h5>' +
-                '<p class="muted">Active view: BRACING TRUSS A/B - DETAILS</p>' +
-                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="truss" /></label>' +
+                '<p class="muted">Active view: ' + activeView + '</p>' +
+                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="' + defaultFilter + '" /></label>' +
                 '<label class="sim-control"><span class="sim-label">Sort</span><select id="secup-sort" class="sim-field"><option>Name A-Z</option><option>Name Z-A</option></select></label>' +
                 '<div class="secup-toggle-row">' +
                   '<label><input id="secup-visible-only" type="checkbox" /> Visible in selected plan only</label>' +
@@ -1169,15 +1327,15 @@ function buildToolPageHtml(tool, generatedAt) {
               '</section>' +
               '<section class="secup-pane">' +
                 '<h5>Plan + extent stages</h5>' +
-                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field"><option>GA-SS LEVEL 1E</option><option>GA-SS LEVEL 2E</option></select></label>' +
-                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field"><option>TRUSS B - GA E11/EA-EB</option><option>TRUSS C - GA E12/EA-EB</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field">' + optionList(planViews) + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field">' + optionList(scopeBoxes) + '</select></label>' +
                 '<div class="secup-toggle-col">' +
                   '<label><input type="checkbox" /> Move / rotate in plan</label>' +
                   '<label><input type="checkbox" /> Flip 180 after move</label>' +
                   '<label><input type="checkbox" /> Match horizontal extents to scope box side</label>' +
                   '<label><input type="checkbox" /> Assign scope box last</label>' +
                 '</div>' +
-                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field"><option>Top</option><option>Bottom</option><option>Left</option><option>Right</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field">' + optionList(scopeSides) + '</select></label>' +
                 '<p><strong>Plan/extents stage ready:</strong> <span id="secup-stage-count">0</span> affected section(s).</p>' +
                 '<button type="button" class="sim-action" id="secup-run-plan">Run Plan + Extents</button>' +
               '</section>' +
@@ -1188,10 +1346,10 @@ function buildToolPageHtml(tool, generatedAt) {
                   '<label><input type="radio" name="secup-crop-mode" /> Update vertical crop extents from Levels</label>' +
                 '</div>' +
                 '<div class="sim-action-row secup-actions-inline">' +
-                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field"><option>DATUM</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field"><option>NEW ROOF</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field">' + optionList(lowerLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="' + lowerOffset + '" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field">' + optionList(upperLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="' + upperOffset + '" /></label>' +
                   '<button type="button" class="sim-action sim-action-secondary" id="secup-batch">Apply Batch To Selected</button>' +
                 '</div>' +
                 '<div class="sim-table-wrap secup-table-wrap">' +
@@ -1341,6 +1499,7 @@ function writeToolPages(tools, generatedAt, options = {}) {
   ensureDir(toolsPagesDir);
 
   const mode = options.mode || "fast";
+  const toolDatasetsByToolId = options.toolDatasetsByToolId || {};
   const cache = readJsonIfExists(toolPagesCachePath) || {};
   const previous = (cache.byMode && cache.byMode[mode] && cache.byMode[mode].pages) || {};
   const nextPages = {};
@@ -1354,7 +1513,7 @@ function writeToolPages(tools, generatedAt, options = {}) {
     const pagePath = tool.pagePath.replace(/\\/g, "/");
     expected.add(pagePath);
 
-    const html = buildToolPageHtml(tool, generatedAt);
+    const html = buildToolPageHtml(tool, generatedAt, toolDatasetsByToolId);
     const pageHash = sha1Text(html);
     nextPages[pagePath] = { hash: pageHash };
 
@@ -1818,6 +1977,8 @@ function buildToolCatalogData(payload) {
       authors: tool.authors && tool.authors.length ? tool.authors : ["Unknown"],
       fileCount: tool.fileCount,
       pagePath: tool.pagePath,
+      screenshotCount: tool.screenshots ? tool.screenshots.length : 0,
+      screenshotPaths: (tool.screenshots || []).map((shot) => shot.localPath),
       uiKind: inferUiKind(tool),
     })),
   };
@@ -1831,6 +1992,7 @@ function buildUiManifest(payload) {
       id: tool.id,
       title: tool.title,
       pagePath: tool.pagePath,
+      screenshots: tool.screenshots || [],
       simulator: buildSimulatorModel(tool),
     })),
   };
@@ -1896,6 +2058,7 @@ function buildUiDiagnostics(payload, uiManifest) {
       controlCount: entry.simulator.controls.length,
       eventCount: entry.simulator.events.length,
       promptCount: entry.simulator.prompts.length,
+      screenshotCount: Array.isArray(entry.screenshots) ? entry.screenshots.length : 0,
       unsupportedKinds: dedupe(unsupported),
       requiresTrainingData: entry.simulator.dynamicSources.length > 0,
       fidelityFlags: entry.simulator.fidelityFlags || [],
@@ -2057,6 +2220,62 @@ function loadWorkingHubData() {
   };
 }
 
+function defaultToolDatasets() {
+  return {
+    version: 1,
+    tools: {
+      "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton": {
+        sectionUpdater: {
+          activeView: "BRACING TRUSS A/B - DETAILS",
+          defaultFilter: "truss",
+          sampleSections: [
+            "TRUSS B - SECTION (L0-1)",
+            "TRUSS B - SECTION (L2-3)",
+            "TRUSS B - SECTION (L3-4)",
+            "TRUSS B - SECTION (L4-5)",
+            "TRUSS B - SECTION (L5-6)",
+            "TRUSS B - SECTION (L6-7)",
+            "TRUSS C - SECTION (L0-1)",
+            "TRUSS C - SECTION (L1-2)",
+            "TRUSS C - SECTION (L2-3)",
+          ],
+          planViews: ["GA-SS LEVEL 1E", "GA-SS LEVEL 2E"],
+          scopeBoxes: ["TRUSS B - GA E11/EA-EB", "TRUSS C - GA E12/EA-EB"],
+          scopeSides: ["Top", "Bottom", "Left", "Right"],
+          lowerLevelOptions: ["DATUM", "SSL LEVEL 1W", "SSL LEVEL 3W"],
+          upperLevelOptions: ["NEW ROOF", "FFL LEVEL 4E", "SSL LEVEL 8AW"],
+          defaultLowerOffset: "0.0",
+          defaultUpperOffset: "0.0",
+          rows: [
+            ["TRUSS B - SECTION (L2-3)", "SSL LEVEL 1W", "3575.0", "FFL LEVEL 3E", "-200.0", "SSL LEVEL 1W", "3575.0", "FFL LEVEL 3E"],
+            ["TRUSS B - SECTION (L3-4)", "SSL LEVEL 3W", "290.0", "FFL LEVEL 4E", "-200.0", "SSL LEVEL 3W", "290.0", "FFL LEVEL 4E"],
+            ["TRUSS B - SECTION (L4-5)", "SSL LEVEL 4W", "180.0", "SSL LEVEL 6W", "-2040.0", "SSL LEVEL 4W", "180.0", "SSL LEVEL 6W"],
+            ["TRUSS B - SECTION (L5-6)", "SSL LEVEL 5W", "1845.0", "SSL LEVEL 7W", "-300.0", "SSL LEVEL 5W", "1845.0", "SSL LEVEL 7W"],
+            ["TRUSS B - SECTION (L6-7)", "SSL LEVEL 6W", "2310.0", "SSL LEVEL 8AW", "-1115.0", "SSL LEVEL 6W", "2310.0", "SSL LEVEL 8AW"],
+          ],
+        },
+      },
+    },
+  };
+}
+
+function loadToolDatasets() {
+  const defaults = defaultToolDatasets();
+  if (!fs.existsSync(toolDatasetsPath)) {
+    return defaults;
+  }
+
+  const parsed = readJsonIfExists(toolDatasetsPath);
+  if (!parsed || typeof parsed !== "object") {
+    return defaults;
+  }
+
+  return {
+    version: Number(parsed.version || defaults.version || 1),
+    tools: parsed.tools && typeof parsed.tools === "object" ? parsed.tools : defaults.tools,
+  };
+}
+
 function buildAuthorsPageHtml(tools, generatedAt) {
   const rows = tools.map((tool) => ({
     title: tool.title,
@@ -2197,6 +2416,7 @@ function buildCatalog(bundleData, options = {}) {
   const includeHeavyUi = Boolean(options.includeHeavyUi);
   const includeUiSignals = options.includeUiSignals !== false;
   const showProgress = options.progress !== false;
+  const screenshotFiles = Array.isArray(options.screenshotFiles) ? options.screenshotFiles : [];
   const { allPaths, textFiles } = bundleData;
   const pushbuttonDirs = new Set();
 
@@ -2325,6 +2545,7 @@ function buildCatalog(bundleData, options = {}) {
       files: relatedFiles,
       pagePath: `tools/${pageSlug}.html`,
       authors,
+      screenshots: resolveToolScreenshots({ id: dirPath, title: yamlInfo.title || contextInfo.title || toolSlug }, toolSlug, screenshotFiles),
       uiMockup,
       sources: {
         hasYaml,
@@ -3023,7 +3244,11 @@ function main() {
   const bundleText = readText(bundlePath);
   const bundleSha1 = sha1Text(bundleText);
   const hubData = loadWorkingHubData();
+  const screenshotFiles = loadScreenshotManifest();
+  const toolDatasets = loadToolDatasets();
   const hubSha1 = sha1Text(JSON.stringify(hubData));
+  const screenshotSha1 = sha1Text(JSON.stringify(screenshotFiles));
+  const toolDatasetsSha1 = sha1Text(JSON.stringify(toolDatasets));
   const cache = readJsonIfExists(generateCachePath);
   const modeCache = cache && cache.byMode ? cache.byMode[options.mode] : cache;
 
@@ -3032,6 +3257,8 @@ function main() {
     modeCache &&
     modeCache.bundleSha1 === bundleSha1 &&
     modeCache.hubSha1 === hubSha1 &&
+    modeCache.screenshotSha1 === screenshotSha1 &&
+    modeCache.toolDatasetsSha1 === toolDatasetsSha1 &&
     modeCache.mode === options.mode &&
     fs.existsSync(htmlPath) &&
     fs.existsSync(diagnosticsPath) &&
@@ -3046,7 +3273,10 @@ function main() {
   }
 
   const bundleData = parseBundle(bundleText);
-  const catalog = buildCatalog(bundleData, options);
+  const catalog = buildCatalog(bundleData, {
+    ...options,
+    screenshotFiles,
+  });
 
   const generatedAt = new Date().toISOString();
   const tabCountFromPaths = countTabsFromPaths(bundleData.allPaths);
@@ -3089,7 +3319,10 @@ function main() {
   const indexWritten = writeTextIfChangedWithTransform(htmlPath, html, normalizeGeneratedAt);
   let pageStats = null;
   if (options.writeToolPages) {
-    pageStats = writeToolPages(payload.tools, generatedAt, options);
+    pageStats = writeToolPages(payload.tools, generatedAt, {
+      ...options,
+      toolDatasetsByToolId: toolDatasets.tools || {},
+    });
   }
   const nextCache = {
     byMode: {
@@ -3099,6 +3332,8 @@ function main() {
         mode: options.mode,
         bundleSha1,
         hubSha1,
+        screenshotSha1,
+        toolDatasetsSha1,
         tools: payload.tools.length,
         filesInBundle: payload.meta.totalFiles,
       },

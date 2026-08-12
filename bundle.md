@@ -1,7 +1,7 @@
 # AI BUNDLE
-Generated: 2026-08-06T03:50:50.350Z
+Generated: 2026-08-12T23:38:39.662Z
 Root: P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension
-Total Files: 312
+Total Files: 300
 
 ## ENTRY_POINTS: []
 
@@ -10346,11550 +10346,6 @@ if __name__ == '__main__':
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton/script.py
 
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/bundle.yaml
-## META: sha1=27be931f8f235e052fce72e879ff63ae674a2ed4 size=165
-## TYPE: text
-```yaml
-title: Jason Exporter
-tooltip: Export sheets to PDF/DWG and 3D views to IFC/NWC from an ordered, filtered sheet list with custom naming formats.
-author: Jason Braga
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/bundle.yaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/ColumnPicker.xaml
-## META: sha1=3b7ecf55c11cc9d0cdb10fdbf5462be918054aa2 size=6141
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Choose Columns"
-        Width="700" Height="520"
-        MinWidth="500" MinHeight="400"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <Window.Resources>
-        <ControlTemplate x:Key="ColourButtonTemplate" TargetType="Button">
-            <Border Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="3" SnapsToDevicePixels="True">
-                <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Margin="{TemplateBinding Padding}"/>
-            </Border>
-        </ControlTemplate>
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0"
-                   Text="Choose Columns"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A"
-                   Margin="0,0,0,6"/>
-
-        <TextBlock Grid.Row="1"
-                   FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap"
-                   Margin="0,0,0,12">
-            Select parameters to show as extra columns in the sheet list.
-        </TextBlock>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="44"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- LEFT: Available Parameters -->
-            <DockPanel Grid.Column="0">
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Available Parameters"
-                           FontWeight="SemiBold" Foreground="#1A1A1A"
-                           Margin="0,0,0,6"/>
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Parameter Type"
-                           FontSize="10" Foreground="#6B6B6B"
-                           Margin="0,0,0,4"/>
-                <ComboBox DockPanel.Dock="Top"
-                          x:Name="paramtype_cb"
-                          Height="26"
-                          Margin="0,0,0,6"
-                          SelectionChanged="paramtype_changed">
-                    <ComboBoxItem Content="Built-In"/>
-                    <ComboBoxItem Content="Sheet"/>
-                    <ComboBoxItem Content="Title Block"/>
-                    <ComboBoxItem Content="Project Information"/>
-                    <ComboBoxItem Content="Global Parameter"/>
-                    <ComboBoxItem Content="Views"/>
-                </ComboBox>
-                <TextBox DockPanel.Dock="Top"
-                         x:Name="search_tb"
-                         Height="26"
-                         Padding="6,0"
-                         Margin="0,0,0,6"
-                         BorderBrush="#DEDEDE"
-                         BorderThickness="1"
-                         VerticalContentAlignment="Center"
-                         TextChanged="search_changed"/>
-                <ListBox x:Name="available_lb"
-                         Background="#F5F5F5"
-                         BorderBrush="#DEDEDE"
-                         BorderThickness="1"
-                         SelectionMode="Extended"
-                         MouseDoubleClick="add_column"/>
-            </DockPanel>
-
-            <!-- MIDDLE: Arrow buttons -->
-            <StackPanel Grid.Column="1"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                <Button Content="&gt;"
-                        Width="32" Height="32"
-                        Margin="0,0,0,6"
-                        Click="add_column"/>
-                <Button Content="&lt;"
-                        Width="32" Height="32"
-                        Margin="0,0,0,6"
-                        Click="remove_column"/>
-                <Button Content="&#x2191;"
-                        Width="32" Height="32"
-                        Margin="0,0,0,6"
-                        Click="move_up"/>
-                <Button Content="&#x2193;"
-                        Width="32" Height="32"
-                        Click="move_down"/>
-            </StackPanel>
-
-            <!-- RIGHT: Active Columns -->
-            <DockPanel Grid.Column="2">
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Active Columns (In Order)"
-                           FontWeight="SemiBold" Foreground="#1A1A1A"
-                           Margin="0,0,0,6"/>
-                <ListBox x:Name="active_lb"
-                         Background="#F5F5F5"
-                         BorderBrush="#DEDEDE"
-                         BorderThickness="1"
-                         SelectionMode="Extended"
-                         MouseDoubleClick="remove_column"/>
-            </DockPanel>
-        </Grid>
-
-        <!-- Footer -->
-        <StackPanel Grid.Row="3"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Margin="0,12,0,0">
-            <Button Content="Cancel"
-                    Width="90" Height="32"
-                    Margin="0,0,8,0"
-                    Click="cancel_clicked"/>
-            <Button Content="OK"
-                    Width="90" Height="32"
-                    Background="#1A6EBF"
-                    Foreground="#FFFFFF"
-                    FontWeight="SemiBold"
-                    BorderThickness="0"
-                    Template="{StaticResource ColourButtonTemplate}"
-                    Click="ok_clicked"/>
-        </StackPanel>
-
-    </Grid>
-</Window>
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/ColumnPicker.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/DWG3DOptions_ui.xaml
-## META: sha1=132a485c6dd2912ad13de8fe4f65431434693587 size=6113
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="3D DWG Export Options"
-        Width="440" Height="400"
-        MinWidth="380" MinHeight="340"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <Window.Resources>
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SectionLabel" TargetType="TextBlock">
-            <Setter Property="FontSize"   Value="10"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#6B6B6B"/>
-            <Setter Property="Margin"     Value="0,10,0,4"/>
-        </Style>
-        <Style x:Key="StandardCombo" TargetType="ComboBox">
-            <Setter Property="Height"                   Value="26"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush"              Value="#DEDEDE"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Background"               Value="#FFFFFF"/>
-        </Style>
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0" Text="3D DWG Export Options"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,8">
-            Applied to each selected 3D view when exporting DWG.
-        </TextBlock>
-
-        <StackPanel Grid.Row="2">
-
-            <!-- FILE NAMING -->
-            <TextBlock Text="FILE NAMING" Style="{StaticResource SectionLabel}"/>
-            <RadioButton x:Name="dwg3d_use_viewname_rb"
-                         Content="Use View Name"
-                         IsChecked="True"
-                         GroupName="DWG3DNaming"
-                         Margin="0,0,0,6"
-                         Checked="dwg3d_naming_mode_changed"/>
-            <RadioButton x:Name="dwg3d_use_filename_rb"
-                         Content="Use File Name (Model)"
-                         GroupName="DWG3DNaming"
-                         Margin="0,0,0,6"
-                         Checked="dwg3d_naming_mode_changed"/>
-            <RadioButton x:Name="dwg3d_use_format_rb"
-                         Content="Use Naming Format"
-                         GroupName="DWG3DNaming"
-                         Margin="0,0,0,6"
-                         Checked="dwg3d_naming_mode_changed"/>
-            <DockPanel x:Name="dwg3d_format_panel" Height="26"
-                       Margin="0,0,0,0" Visibility="Collapsed">
-                <Button DockPanel.Dock="Right"
-                        Content="Edit Formats"
-                        Width="100" Height="26"
-                        Style="{StaticResource SecondaryButton}"
-                        Click="edit_formats_3d_dwg"/>
-                <ComboBox x:Name="dwg3d_namingformat_cb"
-                          Style="{StaticResource StandardCombo}"
-                          FontFamily="Consolas"
-                          DisplayMemberPath="name"/>
-            </DockPanel>
-
-            <!-- OPTIONS -->
-            <TextBlock Text="OPTIONS" Style="{StaticResource SectionLabel}"/>
-            <CheckBox x:Name="dwg3d_shared_coords_cb" IsChecked="False" Margin="0,0,0,8">Use Shared Coordinates</CheckBox>
-            <CheckBox x:Name="dwg3d_merged_views_cb"  IsChecked="True"  Margin="0,0,0,8">Merge Views into Single File</CheckBox>
-
-        </StackPanel>
-
-        <Grid Grid.Row="3" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    Click="cancel_clicked"/>
-            <Button Grid.Column="3" Content="OK"
-                    Style="{StaticResource PrimaryButton}"
-                    Click="ok_clicked"/>
-        </Grid>
-    </Grid>
-</Window>
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/DWG3DOptions_ui.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/EditNamingFormats.xaml
-## META: sha1=1b80ea593689013258bdd4bb827bdb864e3869c9 size=26383
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Jason Exporter — Naming Rules"
-        Width="1280"
-        Height="740"
-        MinWidth="1100"
-        MinHeight="640"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11"
-        Closing="cancelled">
-
-    <Window.Resources>
-
-        <!-- ═══════════════════════════════════════════════════
-             COLOUR PALETTE  (CLAUDE.md spec)
-             #1A6EBF  primary blue
-             #155A9E  blue hover
-             #F5F5F5  panel / list background
-             #1A1A1A  primary text
-             #6B6B6B  secondary text
-             #DEDEDE  borders
-             #C0392B  error / destructive
-             #A93226  destructive hover
-        ═══════════════════════════════════════════════════ -->
-
-        <!-- ── Shared button template — renders Background correctly in IronPython/WPF ── -->
-        <ControlTemplate x:Key="ColourButtonTemplate" TargetType="Button">
-            <Border x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="3"
-                    SnapsToDevicePixels="True">
-                <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Margin="{TemplateBinding Padding}"/>
-            </Border>
-        </ControlTemplate>
-
-        <!-- ── Primary button — blue, main actions ── -->
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="11"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Secondary button — grey, Cancel / Back / Import / Export ── -->
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="11"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Destructive button — red, Delete ── -->
-        <Style x:Key="DestructiveButton" TargetType="Button">
-            <Setter Property="Background"      Value="#C0392B"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="11"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#A93226"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Small icon arrow button (> < ↑ ↓) ── -->
-        <Style x:Key="ArrowButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="FontFamily"      Value="Segoe UI"/>
-            <Setter Property="FontSize"        Value="13"/>
-            <Setter Property="Width"           Value="32"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="Padding"         Value="0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Section header text ── -->
-        <Style x:Key="SectionHeader" TargetType="TextBlock">
-            <Setter Property="FontFamily"  Value="Segoe UI"/>
-            <Setter Property="FontSize"    Value="11"/>
-            <Setter Property="FontWeight"  Value="SemiBold"/>
-            <Setter Property="Foreground"  Value="#1A1A1A"/>
-            <Setter Property="Margin"      Value="0 0 0 6"/>
-        </Style>
-
-        <!-- ── Field label (sits above inputs) ── -->
-        <Style x:Key="FieldLabel" TargetType="TextBlock">
-            <Setter Property="FontFamily"  Value="Segoe UI"/>
-            <Setter Property="FontSize"    Value="10"/>
-            <Setter Property="Foreground"  Value="#6B6B6B"/>
-            <Setter Property="Margin"      Value="0 0 0 4"/>
-        </Style>
-
-        <!-- ── Standard ListBox ── -->
-        <Style x:Key="StandardListBox" TargetType="ListBox">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding"         Value="0"/>
-            <Setter Property="SelectionMode"   Value="Extended"/>
-        </Style>
-
-        <!-- ── ListBox item container — hover + selected colours ── -->
-        <Style x:Key="StandardListBoxItem" TargetType="ListBoxItem">
-            <Setter Property="Height"   Value="28"/>
-            <Setter Property="Padding"  Value="8 0"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#1A6EBF"/>
-                    <Setter Property="Foreground" Value="#FFFFFF"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Standard TextBox ── -->
-        <Style x:Key="StandardTextBox" TargetType="TextBox">
-            <Setter Property="Background"      Value="#FFFFFF"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding"         Value="6 0"/>
-            <Setter Property="Height"          Value="28"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Style.Triggers>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="#1A6EBF"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Standard ComboBox ── -->
-        <Style x:Key="StandardComboBox" TargetType="ComboBox">
-            <Setter Property="Background"      Value="#FFFFFF"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Height"          Value="28"/>
-            <Setter Property="Padding"         Value="6 0"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-
-    </Window.Resources>
-
-    <!-- ══════════════════════════════════════════════
-         ROOT GRID
-         Row 0 — title + description
-         Row 1 — three-column working area (fills space)
-         Row 2 — footer buttons
-    ══════════════════════════════════════════════ -->
-    <Grid x:Name="namingformat_edit" Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <!-- ── ROW 0 — Title block ── -->
-        <StackPanel Grid.Row="0" Margin="0 0 0 12">
-            <TextBlock Text="Setup Naming Rules"
-                       FontFamily="Segoe UI"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Foreground="#1A1A1A"/>
-            <TextBlock Margin="0 6 0 0"
-                       FontSize="11"
-                       Foreground="#6B6B6B"
-                       TextWrapping="Wrap">
-                Select fields for PDF file name rules. Each PDF file name is generated automatically
-                from the selected parameters in top-to-bottom order, with optional prefix, suffix,
-                and separator values.
-            </TextBlock>
-        </StackPanel>
-
-        <!-- ── ROW 1 — Working area ── -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <!-- Saved rule sets panel -->
-                <ColumnDefinition Width="1.2*"/>
-                <!-- Spacer -->
-                <ColumnDefinition Width="12"/>
-                <!-- Available fields panel -->
-                <ColumnDefinition Width="1.8*"/>
-                <!-- Arrow button column -->
-                <ColumnDefinition Width="44"/>
-                <!-- Name parameters / DataGrid panel -->
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- ════════════════════════════════
-                 COL 0 — Saved Rule Sets
-            ════════════════════════════════ -->
-            <DockPanel Grid.Column="0">
-
-                <!-- Column header -->
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Saved Rule Sets"
-                           Style="{StaticResource SectionHeader}"/>
-
-                <!-- Import / Export buttons at the very bottom -->
-                <Grid DockPanel.Dock="Bottom" Margin="0 6 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0"
-                            Content="Import"
-                            Style="{StaticResource SecondaryButton}"
-                            Click="import_profiles"/>
-                    <Button Grid.Column="2"
-                            Content="Export"
-                            Style="{StaticResource SecondaryButton}"
-                            Click="export_profiles"/>
-                </Grid>
-
-                <!-- Save Rule button -->
-                <Button DockPanel.Dock="Bottom"
-                        Content="Save Rule"
-                        Style="{StaticResource PrimaryButton}"
-                        Margin="0 6 0 0"
-                        Click="save_formats"/>
-
-                <!-- Duplicate + Delete buttons -->
-                <Grid DockPanel.Dock="Bottom" Margin="0 6 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0"
-                            Content="Duplicate"
-                            Style="{StaticResource SecondaryButton}"
-                            Click="duplicate_namingformat"/>
-                    <Button Grid.Column="2"
-                            Content="Delete"
-                            Style="{StaticResource DestructiveButton}"
-                            Click="delete_namingformat"/>
-                </Grid>
-
-                <!-- Set Name field label + TextBox -->
-                <TextBlock DockPanel.Dock="Bottom"
-                           Text="Set Name"
-                           Style="{StaticResource FieldLabel}"
-                           Margin="0 10 0 4"/>
-                <TextBox DockPanel.Dock="Bottom"
-                         x:Name="template_name_tb"
-                         Style="{StaticResource StandardTextBox}"
-                         Text="{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <!-- Rule sets ListBox — fills remaining space -->
-                <ListBox x:Name="formats_lb"
-                         Style="{StaticResource StandardListBox}"
-                         ItemContainerStyle="{StaticResource StandardListBoxItem}"
-                         SelectionChanged="namingformat_changed"
-                         SelectionMode="Single"
-                         SelectedIndex="0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding name}"
-                                       FontSize="11"
-                                       Foreground="{Binding display_color}"
-                                       FontStyle="{Binding display_style}"
-                                       Padding="0 4"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </DockPanel>
-
-            <!-- ════════════════════════════════
-                 COL 2 — Available Fields
-            ════════════════════════════════ -->
-            <DockPanel Grid.Column="2">
-
-                <!-- Column header -->
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Available Fields"
-                           Style="{StaticResource SectionHeader}"/>
-
-                <!-- Parameter Type label + ComboBox -->
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Parameter Type"
-                           Style="{StaticResource FieldLabel}"/>
-                <ComboBox DockPanel.Dock="Top"
-                          x:Name="paramtype_cb"
-                          Style="{StaticResource StandardComboBox}"
-                          Margin="0 0 0 8"
-                          SelectionChanged="paramtype_changed">
-                    <ComboBoxItem Content="Built-In"/>
-                    <ComboBoxItem Content="Sheet"/>
-                    <ComboBoxItem Content="Title Block"/>
-                    <ComboBoxItem Content="Project Information"/>
-                    <ComboBoxItem Content="Global Parameter"/>
-                    <ComboBoxItem Content="Views"/>
-                </ComboBox>
-
-                <!-- Search box -->
-                <TextBox DockPanel.Dock="Top"
-                         x:Name="search_tb"
-                         Style="{StaticResource StandardTextBox}"
-                         Margin="0 0 0 6"
-                         TextChanged="search_fields_changed"/>
-
-                <!-- Available fields ListBox — fills remaining space -->
-                <ListBox x:Name="formatters_wp"
-                         Style="{StaticResource StandardListBox}"
-                         ItemContainerStyle="{StaticResource StandardListBoxItem}"
-                         SelectionMode="Extended">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding name}"
-                                       FontSize="11"
-                                       Foreground="{Binding display_color}"
-                                       FontStyle="{Binding display_style}"
-                                       Padding="0 4"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </DockPanel>
-
-            <!-- ════════════════════════════════
-                 COL 3 — Arrow buttons
-            ════════════════════════════════ -->
-            <StackPanel Grid.Column="3"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                <Button x:Name="add_rule_btn"
-                        Content="&#x276F;"
-                        Style="{StaticResource ArrowButton}"
-                        Margin="0 0 0 6"
-                        Click="add_rule"/>
-                <Button x:Name="remove_rule_btn"
-                        Content="&#x276E;"
-                        Style="{StaticResource ArrowButton}"
-                        Margin="0 0 0 6"
-                        Click="remove_rule"/>
-                <Button x:Name="move_up_btn"
-                        Content="↑"
-                        Style="{StaticResource ArrowButton}"
-                        Margin="0 0 0 6"
-                        Click="move_rule_up"/>
-                <Button x:Name="move_down_btn"
-                        Content="↓"
-                        Style="{StaticResource ArrowButton}"
-                        Click="move_rule_down"/>
-            </StackPanel>
-
-            <!-- ════════════════════════════════
-                 COL 4 — Name Parameters / DataGrid
-            ════════════════════════════════ -->
-            <DockPanel Grid.Column="4">
-
-                <!-- Column header -->
-                <TextBlock DockPanel.Dock="Top"
-                           Text="Name Parameters (In Order)"
-                           Style="{StaticResource SectionHeader}"/>
-
-                <!-- Preview panel — docked to the bottom -->
-                <Border DockPanel.Dock="Bottom"
-                        Margin="0 8 0 0"
-                        Background="#F5F5F5"
-                        BorderBrush="#DEDEDE"
-                        BorderThickness="1"
-                        CornerRadius="4"
-                        Padding="10">
-                    <StackPanel>
-                        <TextBlock Text="Preview of value:"
-                                   FontSize="10"
-                                   FontWeight="SemiBold"
-                                   Foreground="#1A1A1A"/>
-                        <TextBlock x:Name="preview_tb"
-                                   Margin="0 4 0 0"
-                                   FontFamily="Consolas"
-                                   FontSize="11"
-                                   Foreground="#1A1A1A"
-                                   Text=""/>
-                    </StackPanel>
-                </Border>
-
-                <!-- DataGrid — fills remaining space -->
-                <DataGrid x:Name="rules_dg"
-                          AutoGenerateColumns="False"
-                          ColumnWidth="*"
-                          Background="#FFFFFF"
-                          BorderBrush="#DEDEDE"
-                          BorderThickness="1"
-                          RowHeight="28"
-                          HorizontalGridLinesBrush="#DEDEDE"
-                          VerticalGridLinesBrush="#DEDEDE"
-                          GridLinesVisibility="Horizontal"
-                          AlternatingRowBackground="#F5F5F5"
-                          CanUserResizeColumns="True"
-                          CanUserReorderColumns="False"
-                          CanUserSortColumns="False"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
-                          HeadersVisibility="Column"
-                          SelectionMode="Single"
-                          SelectionUnit="FullRow"
-                          RowHeaderWidth="0"
-                          CellEditEnding="rules_changed"
-                          CurrentCellChanged="rules_changed">
-
-                    <!-- Column header style -->
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background"      Value="#F5F5F5"/>
-                            <Setter Property="Foreground"      Value="#1A1A1A"/>
-                            <Setter Property="FontWeight"      Value="SemiBold"/>
-                            <Setter Property="FontSize"        Value="11"/>
-                            <Setter Property="Height"          Value="32"/>
-                            <Setter Property="Padding"         Value="8 0"/>
-                            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-                            <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-
-                    <!-- Row highlight style -->
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#1A6EBF"/>
-                                    <Setter Property="Foreground" Value="#FFFFFF"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#E8F0FB"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name"
-                                            Binding="{Binding name}"
-                                            Width="2*"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Prefix"
-                                            Binding="{Binding prefix, UpdateSourceTrigger=PropertyChanged}"
-                                            Width="*"/>
-                        <DataGridTextColumn Header="Sample Value"
-                                            Binding="{Binding sample}"
-                                            Width="*"
-                                            IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Suffix"
-                                            Binding="{Binding suffix, UpdateSourceTrigger=PropertyChanged}"
-                                            Width="*"/>
-                        <DataGridTextColumn Header="Separator"
-                                            Binding="{Binding separator, UpdateSourceTrigger=PropertyChanged}"
-                                            Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-            </DockPanel>
-        </Grid>
-        <!-- END ROW 1 -->
-
-        <!-- ── ROW 2 — Footer buttons ── -->
-        <!-- Cancel left of primary (OK), 8px gap — per CLAUDE.md button rules -->
-        <Grid Grid.Row="2" Margin="0 12 0 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Left-aligned secondary label -->
-            <TextBlock Grid.Column="0"
-                       VerticalAlignment="Center"
-                       FontSize="10"
-                       Foreground="#6B6B6B"
-                       Text="Jason Exporter naming rules"/>
-
-            <!-- Cancel -->
-            <Button Grid.Column="1"
-                    Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    IsCancel="True"/>
-
-            <!-- OK / Save (primary action) -->
-            <Button Grid.Column="3"
-                    Content="OK"
-                    Style="{StaticResource PrimaryButton}"
-                    Click="save_formats"/>
-        </Grid>
-
-    </Grid>
-</Window>
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/EditNamingFormats.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/FilterEditor_ui.xaml
-## META: sha1=657c6a422f1f0e723aa83ccc25ba4dd87718aa7d size=42769
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Column Filters"
-        Width="700"
-        Height="460"
-        MinWidth="580"
-        MinHeight="360"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <!-- ================================================================
-         Schedule-style filter dialog.
-         Matches Revit's Sheet List Properties > Filter tab (Images 2-4).
-         Each row = one filter condition:
-           [Filter by / And] [column ComboBox] [condition ComboBox] [value TextBox]
-         Up to 6 AND conditions chained together.
-    ================================================================ -->
-
-    <Window.Resources>
-
-        <!-- Primary button: blue -->
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Secondary button: grey -->
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Destructive button: red - Clear All Filters -->
-        <Style x:Key="DestructiveButton" TargetType="Button">
-            <Setter Property="Background"      Value="#C0392B"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#A93226"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Shared ComboBox style for all filter row dropdowns -->
-        <Style x:Key="FilterCombo" TargetType="ComboBox">
-            <Setter Property="Height"                   Value="26"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush"              Value="#DEDEDE"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Background"               Value="#FFFFFF"/>
-        </Style>
-
-        <!-- Shared TextBox style for all filter value inputs -->
-        <Style x:Key="FilterTextBox" TargetType="TextBox">
-            <Setter Property="Height"                   Value="26"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush"              Value="#DEDEDE"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Padding"                  Value="5,0"/>
-            <Style.Triggers>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="#1A6EBF"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Label style for the "Filter by" / "And" prefix labels -->
-        <Style x:Key="FilterLabel" TargetType="TextBlock">
-            <Setter Property="Width"               Value="70"/>
-            <Setter Property="VerticalAlignment"   Value="Center"/>
-            <Setter Property="Foreground"          Value="#1A1A1A"/>
-        </Style>
-
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <!-- Title -->
-            <RowDefinition Height="Auto"/>
-            <!-- Description -->
-            <RowDefinition Height="Auto"/>
-            <!-- AND/OR toggle -->
-            <RowDefinition Height="Auto"/>
-            <!-- Column headers row -->
-            <RowDefinition Height="Auto"/>
-            <!-- Filter rows area (6 rows) -->
-            <RowDefinition Height="*"/>
-            <!-- Filter by sheet checkbox -->
-            <RowDefinition Height="Auto"/>
-            <!-- Footer buttons -->
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <!-- Title -->
-        <TextBlock Grid.Row="0"
-                   Text="Column Filters"
-                   FontSize="14"
-                   FontWeight="Bold"
-                   Foreground="#1A1A1A"
-                   Margin="0,0,0,6"/>
-
-        <!-- Description -->
-        <TextBlock Grid.Row="1"
-                   FontSize="11"
-                   Foreground="#6B6B6B"
-                   TextWrapping="Wrap"
-                   Margin="0,0,0,12">
-            Filter the sheet list using any column you have added. Works the same way as
-            Revit's schedule filter. Chain up to 6 AND conditions together.
-        </TextBlock>
-
-        <!-- AND/OR chain toggle -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBlock Text="Match:"
-                       FontSize="11" FontWeight="SemiBold"
-                       Foreground="#1A1A1A"
-                       VerticalAlignment="Center"
-                       Margin="0,0,10,0"/>
-            <RadioButton x:Name="match_and_rb"
-                         GroupName="FilterMatch"
-                         IsChecked="True"
-                         Margin="0,0,14,0"
-                         VerticalAlignment="Center">
-                AND (All rules must be true)
-            </RadioButton>
-            <RadioButton x:Name="match_or_rb"
-                         GroupName="FilterMatch"
-                         VerticalAlignment="Center">
-                OR (Any rule may be true)
-            </RadioButton>
-        </StackPanel>
-
-        <!-- Column headers: matches Revit schedule filter column widths -->
-        <Grid Grid.Row="3" Margin="0,0,0,4">
-            <Grid.ColumnDefinitions>
-                <!-- Filter by / And label -->
-                <ColumnDefinition Width="76"/>
-                <!-- Column picker -->
-                <ColumnDefinition Width="*"/>
-                <!-- Condition picker -->
-                <ColumnDefinition Width="160"/>
-                <!-- Value input -->
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="" />
-            <TextBlock Grid.Column="1" Text="Filter by column"
-                       FontSize="10" Foreground="#6B6B6B" Margin="4,0,4,0"/>
-            <TextBlock Grid.Column="2" Text="Condition"
-                       FontSize="10" Foreground="#6B6B6B" Margin="4,0,4,0"/>
-            <TextBlock Grid.Column="3" Text="Value"
-                       FontSize="10" Foreground="#6B6B6B" Margin="4,0,0,0"/>
-        </Grid>
-
-        <!-- Filter rows: 6 identical rows, matching Revit's layout (Images 3-4) -->
-        <ScrollViewer Grid.Row="4"
-                      VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="filter_rows_panel">
-
-                <!-- - FILTER ROW 1 - label says "Filter by" - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="Filter by:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <!-- Column ComboBox: populated from currently active columns -->
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_1"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <!-- Condition ComboBox: matches Revit condition list exactly (Image 4) -->
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_1"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <!-- Value TextBox: hidden when condition needs no value (e.g. "has a value") -->
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_1: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_1"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_1: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_1"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 2 - label says "And:" - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_2"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_2"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_2: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_2"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_2: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_2"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 3 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_3"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_3"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_3: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_3"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_3: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_3"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 4 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_4"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_4"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_4: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_4"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_4: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_4"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 5 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_5"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_5"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_5: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_5"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_5: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_5"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 6 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_6"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_6"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <!-- val_cb_6: shown for equals/does not equal -->
-                        <ComboBox x:Name="val_cb_6"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <!-- val_tb_6: shown for all other text conditions -->
-                        <TextBox x:Name="val_tb_6"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-
-                <!-- - FILTER ROW 7 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_7"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_7"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_7"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_7"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 8 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_8"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_8"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_8"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_8"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 9 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_9"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_9"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_9"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_9"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 10 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_10"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_10"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_10"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_10"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 11 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_11"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_11"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_11"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_11"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-
-                <!-- - FILTER ROW 12 - -->
-                <Grid Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="And:"
-                               Style="{StaticResource FilterLabel}"/>
-                    <ComboBox Grid.Column="1"
-                              x:Name="col_cb_12"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0"/>
-                    <ComboBox Grid.Column="2"
-                              x:Name="cond_cb_12"
-                              Style="{StaticResource FilterCombo}"
-                              Margin="0,0,4,0">
-                        <ComboBoxItem Content="(none)"/>
-                        <ComboBoxItem Content="parameter exists"/>
-                        <ComboBoxItem Content="equals"/>
-                        <ComboBoxItem Content="does not equal"/>
-                        <ComboBoxItem Content="is greater than"/>
-                        <ComboBoxItem Content="is greater than or equal to"/>
-                        <ComboBoxItem Content="is less than"/>
-                        <ComboBoxItem Content="is less than or equal to"/>
-                        <ComboBoxItem Content="contains"/>
-                        <ComboBoxItem Content="does not contain"/>
-                        <ComboBoxItem Content="begins with"/>
-                        <ComboBoxItem Content="does not begin with"/>
-                        <ComboBoxItem Content="ends with"/>
-                        <ComboBoxItem Content="does not end with"/>
-                        <ComboBoxItem Content="has a value"/>
-                        <ComboBoxItem Content="has no value"/>
-                    </ComboBox>
-                    <Grid Grid.Column="3">
-                        <ComboBox x:Name="val_cb_12"
-                                  IsEditable="True"
-                                  IsTextSearchEnabled="False"
-                                  Style="{StaticResource FilterCombo}"
-                                  Visibility="Collapsed"/>
-                        <TextBox x:Name="val_tb_12"
-                                 Style="{StaticResource FilterTextBox}"
-                                 Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
-            </StackPanel>
-        </ScrollViewer>
-
-        <!-- Filter by sheet checkbox: matches Revit schedule filter exactly (Images 3-4) -->
-        <CheckBox Grid.Row="5"
-                  x:Name="filter_by_sheet_cb"
-                  Margin="0,8,0,0"
-                  Foreground="#1A1A1A">
-            Filter by sheet
-        </CheckBox>
-
-        <!-- Footer: Clear All (destructive) left, Cancel + OK right -->
-        <Grid Grid.Row="6" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Clear All Filters: destructive, left-aligned -->
-            <Button Grid.Column="0"
-                    x:Name="clear_all_filters"
-                    Content="Clear All Filters"
-                    HorizontalAlignment="Left"
-                    Style="{StaticResource DestructiveButton}"/>
-
-            <!-- Cancel -->
-            <Button Grid.Column="1"
-                    x:Name="cancel_clicked"
-                    Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    IsCancel="True"/>
-
-            <!-- OK -->
-            <Button Grid.Column="3"
-                    x:Name="ok_clicked"
-                    Content="OK"
-                    IsDefault="True"
-                    Style="{StaticResource PrimaryButton}"/>
-
-        </Grid>
-
-    </Grid>
-</Window>
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/FilterEditor_ui.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Hunter_profiles.json
-## META: sha1=760f2b55bd649d562ab8f58c5913b1bb037de7f2 size=4154
-## TYPE: text
-```json
-{
-  "Hunter st - DWG": {
-    "rules": [
-      {
-        "token": "{proj_param:tbProjectContractCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbProjectContractCode", 
-        "prefix": "", 
-        "sample": "SMWSTHST"
-      }, 
-      {
-        "token": "{proj_param:tbAEOSuppCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbAEOSuppCode", 
-        "prefix": "", 
-        "sample": "LLC"
-      }, 
-      {
-        "token": "{proj_param:tbLocationCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbLocationCode", 
-        "prefix": "", 
-        "sample": "SCB-SN101"
-      }, 
-      {
-        "token": "{proj_param:tbAEODisciplineCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbAEODisciplineCode", 
-        "prefix": "", 
-        "sample": "BS"
-      }, 
-      {
-        "token": "{proj_param:tbDocumentType}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbDocumentType", 
-        "prefix": "", 
-        "sample": "DRG"
-      }, 
-      {
-        "token": "{sheet_param:Sheet Number}", 
-        "source": "Sheet", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "Sheet Number", 
-        "prefix": "", 
-        "sample": "STARTING VIEW"
-      }, 
-      {
-        "token": "{sheet_param:Current Revision}", 
-        "source": "Sheet", 
-        "suffix": "]", 
-        "separator": "-DWG", 
-        "name": "Current Revision", 
-        "prefix": "[", 
-        "sample": "Current Revision"
-      }
-    ], 
-    "template": "{proj_param:tbProjectContractCode}-{proj_param:tbAEOSuppCode}-{proj_param:tbLocationCode}-{proj_param:tbAEODisciplineCode}-{proj_param:tbDocumentType}-{sheet_param:Sheet Number}-[{sheet_param:Current Revision}]-DWG.pdf"
-  }, 
-  "Hunter st - PDF": {
-    "rules": [
-      {
-        "token": "{proj_param:tbProjectContractCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbProjectContractCode", 
-        "prefix": "", 
-        "sample": "SMWSTHST"
-      }, 
-      {
-        "token": "{proj_param:tbAEOSuppCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbAEOSuppCode", 
-        "prefix": "", 
-        "sample": "LLC"
-      }, 
-      {
-        "token": "{proj_param:tbLocationCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbLocationCode", 
-        "prefix": "", 
-        "sample": "SCB-SN101"
-      }, 
-      {
-        "token": "{proj_param:tbAEODisciplineCode}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbAEODisciplineCode", 
-        "prefix": "", 
-        "sample": "BS"
-      }, 
-      {
-        "token": "{proj_param:tbDocumentType}", 
-        "source": "Project Information", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "tbDocumentType", 
-        "prefix": "", 
-        "sample": "DRG"
-      }, 
-      {
-        "token": "{sheet_param:Sheet Number}", 
-        "source": "Sheet", 
-        "suffix": "", 
-        "separator": "-", 
-        "name": "Sheet Number", 
-        "prefix": "", 
-        "sample": "STARTING VIEW"
-      }, 
-      {
-        "token": "{sheet_param:Current Revision}", 
-        "source": "Sheet", 
-        "suffix": "]", 
-        "separator": "-PDF", 
-        "name": "Current Revision", 
-        "prefix": "[", 
-        "sample": "Current Revision"
-      }
-    ], 
-    "template": "{proj_param:tbProjectContractCode}-{proj_param:tbAEOSuppCode}-{proj_param:tbLocationCode}-{proj_param:tbAEODisciplineCode}-{proj_param:tbDocumentType}-{sheet_param:Sheet Number}-[{sheet_param:Current Revision}]-PDF.pdf"
-  }
-}
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Hunter_profiles.json
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.dark.png
-## META: sha1=aa775292a2e97ed3abc7f4f064ccac4900637703 size=1080
-## TYPE: binary
-(binary not inlined)
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.dark.png
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.png
-## META: sha1=6c6e9edc013b2638652004fbfe47c139db665b6c size=1017
-## TYPE: binary
-(binary not inlined)
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/icon.png
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/IFCOptions_ui.xaml
-## META: sha1=4ca7e9d5397dd5781f1d6d1d8dbd0fce362e3e0e size=4522
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="IFC Export Options"
-        Width="440"
-        Height="320"
-        MinWidth="380"
-        MinHeight="280"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <Window.Resources>
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SectionLabel" TargetType="TextBlock">
-            <Setter Property="FontSize"   Value="10"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#6B6B6B"/>
-            <Setter Property="Margin"     Value="0,10,0,4"/>
-        </Style>
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0"
-                   Text="IFC Export Options"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1"
-                   FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,8">
-            Applied to each selected 3D view when exporting IFC.
-            Export scope is determined by the IFC version selected.
-        </TextBlock>
-
-        <StackPanel Grid.Row="2">
-
-            <TextBlock Text="IFC VERSION" Style="{StaticResource SectionLabel}"/>
-            <ComboBox x:Name="ifc_version_cb"
-                      Height="26"
-                      VerticalContentAlignment="Center"
-                      BorderBrush="#DEDEDE" BorderThickness="1"
-                      Background="#FFFFFF"/>
-
-            <TextBlock Text="OPTIONS" Style="{StaticResource SectionLabel}"/>
-
-            <CheckBox x:Name="ifc_split_walls_cb"
-                      Margin="0,0,0,8">Split Walls and Columns by Floor</CheckBox>
-
-            <CheckBox x:Name="ifc_base_quantities_cb"
-                      Margin="0,0,0,8">Export Base Quantities</CheckBox>
-
-        </StackPanel>
-
-        <Grid Grid.Row="3" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    Click="cancel_clicked"/>
-            <Button Grid.Column="3" Content="OK"
-                    Style="{StaticResource PrimaryButton}"
-                    Click="ok_clicked"/>
-        </Grid>
-    </Grid>
-</Window>
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/IFCOptions_ui.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/jason_exporter_profiles.json
-## META: sha1=92cd28e6ed8b06a19c13e9149725d91ee02acd39 size=4154
-## TYPE: text
-```json
-{
-  "Hunter st - DWG": {
-    "template": "{proj_param:tbProjectContractCode}-{proj_param:tbAEOSuppCode}-{proj_param:tbLocationCode}-{proj_param:tbAEODisciplineCode}-{proj_param:tbDocumentType}-{sheet_param:Sheet Number}-[{sheet_param:Current Revision}]-DWG.pdf", 
-    "rules": [
-      {
-        "name": "tbProjectContractCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "SMWSTHST", 
-        "token": "{proj_param:tbProjectContractCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbAEOSuppCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "LLC", 
-        "token": "{proj_param:tbAEOSuppCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbLocationCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "SCB-SN101", 
-        "token": "{proj_param:tbLocationCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbAEODisciplineCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "BS", 
-        "token": "{proj_param:tbAEODisciplineCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbDocumentType", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "DRG", 
-        "token": "{proj_param:tbDocumentType}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "Sheet Number", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "STARTING VIEW", 
-        "token": "{sheet_param:Sheet Number}", 
-        "separator": "-", 
-        "source": "Sheet"
-      }, 
-      {
-        "name": "Current Revision", 
-        "prefix": "[", 
-        "suffix": "]", 
-        "sample": "Current Revision", 
-        "token": "{sheet_param:Current Revision}", 
-        "separator": "-DWG", 
-        "source": "Sheet"
-      }
-    ]
-  }, 
-  "Hunter st - PDF": {
-    "template": "{proj_param:tbProjectContractCode}-{proj_param:tbAEOSuppCode}-{proj_param:tbLocationCode}-{proj_param:tbAEODisciplineCode}-{proj_param:tbDocumentType}-{sheet_param:Sheet Number}-[{sheet_param:Current Revision}]-PDF.pdf", 
-    "rules": [
-      {
-        "name": "tbProjectContractCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "SMWSTHST", 
-        "token": "{proj_param:tbProjectContractCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbAEOSuppCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "LLC", 
-        "token": "{proj_param:tbAEOSuppCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbLocationCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "SCB-SN101", 
-        "token": "{proj_param:tbLocationCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbAEODisciplineCode", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "BS", 
-        "token": "{proj_param:tbAEODisciplineCode}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "tbDocumentType", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "DRG", 
-        "token": "{proj_param:tbDocumentType}", 
-        "separator": "-", 
-        "source": "Project Information"
-      }, 
-      {
-        "name": "Sheet Number", 
-        "prefix": "", 
-        "suffix": "", 
-        "sample": "STARTING VIEW", 
-        "token": "{sheet_param:Sheet Number}", 
-        "separator": "-", 
-        "source": "Sheet"
-      }, 
-      {
-        "name": "Current Revision", 
-        "prefix": "[", 
-        "suffix": "]", 
-        "sample": "Current Revision", 
-        "token": "{sheet_param:Current Revision}", 
-        "separator": "-PDF", 
-        "source": "Sheet"
-      }
-    ]
-  }
-}
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/jason_exporter_profiles.json
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/JasonExporter.xaml
-## META: sha1=a1fae7085a2eb1b3700757903c5bc08ae997332e size=59963
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Jason Exporter"
-        Height="800" Width="1500"
-        MinWidth="1100" MinHeight="600"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Closing="window_closing"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="12">
-
-    <!-- ═══════════════════════════════════════════════════
-         FontSize="12" matches Revit/WPF default.
-         All control heights, margins and paddings below are
-         taken verbatim from the original XAML so sizes are
-         identical. Only colours are from CLAUDE.md palette.
-    ═══════════════════════════════════════════════════ -->
-
-    <Window.Resources>
-
-        <!-- ── Shared button template — renders Background correctly ── -->
-        <ControlTemplate x:Key="ColourButtonTemplate" TargetType="Button">
-            <Border x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="3"
-                    SnapsToDevicePixels="True">
-                <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Margin="{TemplateBinding Padding}"/>
-            </Border>
-        </ControlTemplate>
-
-        <!-- ── Primary button: blue ── -->
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#DEDEDE"/>
-                    <Setter Property="Foreground"  Value="#6B6B6B"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Secondary button: grey ── -->
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Destructive button: red, used for Clear/Delete actions -->
-        <Style x:Key="DestructiveButton" TargetType="Button">
-            <Setter Property="Background"      Value="#C0392B"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Setter Property="Template"        Value="{StaticResource ColourButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#A93226"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── DataGrid: index column in primary blue ── -->
-        <Style x:Key="IndexColumnStyle" TargetType="{x:Type DataGridCell}">
-            <Setter Property="Foreground" Value="#1A6EBF"/>
-        </Style>
-
-        <!-- ── DataGrid: default column — tooltip, context menu, grey when not printable ── -->
-        <Style x:Key="DefaultColumnStyle" TargetType="{x:Type DataGridCell}">
-            <Setter Property="ToolTip"     Value="{Binding tooltip}"/>
-            <Setter Property="ContextMenu" Value="{DynamicResource ItemContextMenu}"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding printable}" Value="False">
-                    <Setter Property="Foreground" Value="#DEDEDE"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- ── Revision pill cluster ── -->
-        <DataTemplate x:Key="RevisionCell">
-            <StackPanel x:Name="revinfo" VerticalAlignment="Center" Orientation="Horizontal">
-                <Border Background="#F5F5F5" CornerRadius="3 0 0 3"
-                        MinWidth="16" Margin="2,2,0,2" Padding="5,0,5,0"
-                        BorderBrush="#DEDEDE" BorderThickness="1,1,0,1">
-                    <TextBlock Text="{Binding revision.date}"
-                               Foreground="#1A1A1A" VerticalAlignment="Center"/>
-                </Border>
-                <Border Background="#F5F5F5" MinWidth="16"
-                        Margin="0,2,0,2" Padding="5,0,5,0"
-                        BorderBrush="#DEDEDE" BorderThickness="1,1,0,1">
-                    <TextBlock Text="{Binding revision.number}"
-                               Foreground="#1A1A1A" VerticalAlignment="Center"/>
-                </Border>
-                <Border Background="#F5F5F5" CornerRadius="0 3 3 0"
-                        MinWidth="16" Padding="5,0,5,0"
-                        Margin="0,2,0,2" BorderBrush="#DEDEDE" BorderThickness="1">
-                    <TextBlock Text="{Binding revision.desc}"
-                               Foreground="#1A1A1A" VerticalAlignment="Center"/>
-                </Border>
-            </StackPanel>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding revision.is_set}" Value="False">
-                    <Setter TargetName="revinfo" Property="Visibility" Value="Collapsed"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-
-        <!-- ── Print setting pill ── -->
-        <DataTemplate x:Key="PrintSettingCell">
-            <StackPanel x:Name="psettinginfo" VerticalAlignment="Center" Orientation="Horizontal">
-                <Border Background="#F5F5F5" CornerRadius="3"
-                        Margin="2,2,0,2" Padding="5,0,5,0"
-                        BorderBrush="#DEDEDE" BorderThickness="1">
-                    <TextBlock x:Name="psettingname"
-                               Text="{Binding print_settings.Name}"
-                               Foreground="#1A1A1A" VerticalAlignment="Center"/>
-                </Border>
-            </StackPanel>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding read_only}" Value="True">
-                    <Setter TargetName="psettingname" Property="Foreground" Value="#6B6B6B"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-
-        <!-- ── Print settings ComboBox item ── -->
-        <DataTemplate x:Key="printSettingsItem">
-            <WrapPanel>
-                <TextBlock x:Name="sizeName" Text="{Binding name}" Foreground="#1A1A1A"/>
-                <Border x:Name="incompatibleMarker" Background="#C0392B"
-                        Height="18" Margin="8,0,0,0" CornerRadius="3">
-                    <TextBlock Padding="5,0" Text="Incompatible with printer"
-                               FontSize="10" Foreground="#FFFFFF" VerticalAlignment="Center"/>
-                </Border>
-            </WrapPanel>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding is_compatible}" Value="True">
-                    <Setter TargetName="incompatibleMarker" Property="Visibility" Value="Collapsed"/>
-                    <Setter TargetName="sizeName"           Property="Foreground"  Value="#1A1A1A"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding is_compatible}" Value="False">
-                    <Setter TargetName="incompatibleMarker" Property="Visibility" Value="Visible"/>
-                    <Setter TargetName="sizeName"           Property="Foreground"  Value="#6B6B6B"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-
-        <!-- ── Print icon — Viewbox centres the path correctly inside the button ── -->
-        <Viewbox x:Key="printIcon" Width="28" Height="28" Stretch="Uniform">
-            <Canvas Width="24" Height="24">
-                <Path Data="M18,3H6V7H18M19,12A1,1 0 0,1 18,11A1,1 0 0,1 19,10A1,1 0 0,1 20,11A1,1 0 0,1 19,12M16,19H8V14H16M19,8H5A3,3 0 0,0 2,11V17H6V21H18V17H22V11A3,3 0 0,0 19,8Z"
-                      Fill="#FFFFFF"/>
-            </Canvas>
-        </Viewbox>
-
-    </Window.Resources>
-
-    <DockPanel Background="#FFFFFF">
-
-        <!-- ══════════════════════════════════════════
-             TOP TOOLBAR
-             Margin identical to original: 10,10,10,0
-        ══════════════════════════════════════════ -->
-        <StackPanel DockPanel.Dock="Top" Margin="10,10,10,0">
-
-            <!-- ── Row 1: Model + Sheet Index selectors, Print button ── -->
-            <!-- Original Grid had no explicit margin -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="108"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0">
-
-                    <!-- Model row — original Height="24" -->
-                    <DockPanel Height="24">
-                        <Border DockPanel.Dock="Left" Background="#1A6EBF"
-                                CornerRadius="3" Padding="10,0,10,0" Margin="0,0,10,0"
-                                Width="90" SnapsToDevicePixels="True">
-                            <TextBlock Text="Model" FontWeight="SemiBold"
-                                       Foreground="#FFFFFF" VerticalAlignment="Center"/>
-                        </Border>
-                        <ComboBox x:Name="documents_cb"
-                                  VerticalAlignment="Stretch"
-                                  SelectionChanged="doclist_changed">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <TextBlock x:Name="docname"        Text="{Binding name}"/>
-                                        <TextBlock x:Name="docname_linked" Text="{Binding name, StringFormat=Linked: {0}}" Visibility="Collapsed"/>
-                                    </Grid>
-                                    <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding linked}" Value="True">
-                                            <Setter TargetName="docname"        Property="Visibility" Value="Hidden"/>
-                                            <Setter TargetName="docname_linked" Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </DockPanel>
-
-                    <!-- Sheet Index row — original Height="24" Margin="0,5,0,0" -->
-                    <DockPanel Height="24" Margin="0,5,0,0">
-                        <Border DockPanel.Dock="Left" Background="#1A6EBF"
-                                CornerRadius="3" Padding="10,0,10,0" Margin="0,0,10,0"
-                                Width="90" SnapsToDevicePixels="True">
-                            <TextBlock Text="Sheet Index" FontWeight="SemiBold"
-                                       Foreground="#FFFFFF" VerticalAlignment="Center"/>
-                        </Border>
-                        <ComboBox x:Name="schedules_cb"
-                                  VerticalAlignment="Stretch"
-                                  MaxDropDownHeight="300"
-                                  SelectionChanged="sheetlist_changed">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <TextBlock x:Name="normal_tb"
-                                                   Text="{Binding name}"/>
-                                        <TextBlock x:Name="sep_tb"
-                                                   Text="{Binding name}"
-                                                   Foreground="#1A6EBF"
-                                                   FontWeight="SemiBold"
-                                                   FontSize="10"
-                                                   Margin="0,4,0,0"
-                                                   Visibility="Collapsed"/>
-                                    </Grid>
-                                    <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding is_sep_str}" Value="True">
-                                            <Setter TargetName="normal_tb" Property="Visibility" Value="Collapsed"/>
-                                            <Setter TargetName="sep_tb"    Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </DockPanel>
-
-                    <!-- Toolbar buttons: UniformGrid for equal widths, matching Jason Revisions -->
-                    <UniformGrid Rows="1" Columns="7" Height="24" Margin="0,5,0,0">
-                        <Button x:Name="columns_b"
-                                Content="Choose Columns"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource PrimaryButton}"
-                                Click="show_columns_dialog"/>
-                        <Button Content="Show/Hide Columns"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource DestructiveButton}"
-                                Click="_show_hide_columns"/>
-                        <Button x:Name="sorting_btn"
-                                Content="Sorting"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource PrimaryButton}"
-                                Click="_show_sorting_dialog"/>
-                        <Button Content="Clear Sorting"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource DestructiveButton}"
-                                Click="_clear_sorting"/>
-                        <Button x:Name="edit_order_btn"
-                                Content="Edit Order"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource PrimaryButton}"
-                                Click="_show_edit_order_dialog"/>
-                        <Button Content="Clear Order"
-                                Height="24"
-                                Margin="0,0,4,0"
-                                Style="{StaticResource DestructiveButton}"
-                                Click="_clear_manual_order"/>
-                        <Button Content="Save as Print Set"
-                                Height="24"
-                                Style="{StaticResource PrimaryButton}"
-                                Click="_save_as_print_set"/>
-                    </UniformGrid>
-
-                </StackPanel>
-
-                <!-- Right-side action buttons -->
-                <StackPanel Grid.Column="1" Orientation="Horizontal"
-                            Margin="8,0,0,0" VerticalAlignment="Stretch">
-                    <Button x:Name="export_3d_btn"
-                            Content="3D"
-                            Background="#1A6EBF"
-                            Foreground="#FFFFFF"
-                            FontWeight="SemiBold"
-                            FontSize="11"
-                            BorderThickness="0"
-                            Margin="0,0,4,0"
-                            Width="48"
-                            VerticalAlignment="Stretch"
-                            Cursor="Hand"
-                            ToolTip="Export 3D views (IFC / NWC / DWG) without printing sheets"
-                            Click="_export_3d_only"/>
-                    <Button x:Name="print_b"
-                            Content="{StaticResource printIcon}"
-                            Background="#1A6EBF"
-                            Foreground="#FFFFFF"
-                            BorderThickness="0"
-                            Width="48"
-                            VerticalAlignment="Stretch"
-                            Cursor="Hand"
-                            Click="print_sheets"/>
-                </StackPanel>
-
-            </Grid>
-
-            <!-- ── Row 2: Option panels ── -->
-            <!-- Original used a plain Grid with no extra top margin on the Grid itself;
-                 each GroupBox had Margin="0,10,5,0" Padding="8".
-                 Replaced GroupBox with styled Border using same margin/padding. -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Column Filters panel -->
-                <Border Grid.Column="0"
-                        Background="#F5F5F5"
-                        BorderBrush="#DEDEDE"
-                        BorderThickness="1"
-                        CornerRadius="4"
-                        Margin="0,6,5,0"
-                        Padding="6">
-                    <StackPanel>
-                        <DockPanel Margin="0,0,0,4">
-                            <Button x:Name="filters_toggle_btn"
-                                    DockPanel.Dock="Right"
-                                    Content="v"
-                                    Width="20" Height="20"
-                                    FontSize="10"
-                                    ToolTip="Collapse/Expand"
-                                    Background="#1A6EBF"
-                                    Foreground="#FFFFFF"
-                                    FontWeight="SemiBold"
-                                    BorderThickness="0"
-                                    Padding="0"
-                                    Template="{StaticResource ColourButtonTemplate}"
-                                    Click="toggle_filters_panel"/>
-                            <TextBlock Text="Column Filters"
-                                       FontWeight="SemiBold" Foreground="#1A1A1A"
-                                       VerticalAlignment="Center"/>
-                        </DockPanel>
-
-                        <!-- Collapsible filter content -->
-                        <StackPanel x:Name="filters_content">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          MaxHeight="220">
-                            <StackPanel>
-
-                            <!-- Sheet No. filter -->
-                            <DockPanel Height="24" Margin="0,0,0,5">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Sheet No." Width="80"
-                                           VerticalAlignment="Center"/>
-                                <Button DockPanel.Dock="Right"
-                                        Content="Reset" Width="50"
-                                        Click="rest_sheet_start"/>
-                                <TextBox x:Name="sheetstart_tb"
-                                         Text=""
-                                         Margin="10,0,0,0"
-                                         Padding="5,0,0,0"
-                                         VerticalContentAlignment="Center"
-                                         TextChanged="options_changed"/>
-                            </DockPanel>
-
-                            <!-- Sheet Name filter -->
-                            <DockPanel Height="24" Margin="0,0,0,5">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Sheet Name" Width="80"
-                                           VerticalAlignment="Center"/>
-                                <Button DockPanel.Dock="Right"
-                                        Content="Reset" Width="50"
-                                        Click="rest_name_filter"/>
-                                <TextBox x:Name="namefilter_tb"
-                                         Text=""
-                                         Margin="10,0,0,0"
-                                         Padding="5,0,0,0"
-                                         VerticalContentAlignment="Center"
-                                         TextChanged="options_changed"/>
-                            </DockPanel>
-
-                            <!-- Column Filter: Edit Filters + badge -->
-                            <DockPanel Height="24" Margin="0,0,0,5">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Column Filter" Width="80"
-                                           VerticalAlignment="Center"/>
-                                <Border x:Name="filter_badge"
-                                        DockPanel.Dock="Right"
-                                        Background="#1A6EBF"
-                                        CornerRadius="8"
-                                        MinWidth="18" Height="18"
-                                        Padding="4,0"
-                                        Margin="4,0,0,0"
-                                        VerticalAlignment="Center"
-                                        Visibility="Collapsed">
-                                    <TextBlock x:Name="filter_count_tb"
-                                               Text="0"
-                                               Foreground="#FFFFFF"
-                                               FontSize="10"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"/>
-                                </Border>
-                                <Button Content="Edit Filters"
-                                        Margin="10,0,0,0"
-                                        Click="_show_filter_dialog"/>
-                            </DockPanel>
-
-                            <!-- Reset All Filters -->
-                            <Button Content="Reset All Filters"
-                                    Margin="0,0,0,8"
-                                    Height="24"
-                                    HorizontalAlignment="Stretch"
-                                    Background="#C0392B"
-                                    Foreground="#FFFFFF"
-                                    FontWeight="SemiBold"
-                                    BorderThickness="0"
-                                    Template="{StaticResource ColourButtonTemplate}"
-                                    Click="_reset_all_filters"/>
-
-                            <!-- Filter Profiles -->
-                            <TextBlock Text="Filter Profiles"
-                                       FontWeight="SemiBold" Foreground="#1A1A1A"
-                                       Margin="0,8,0,4"/>
-
-                            <ComboBox x:Name="profile_cb"
-                                      Height="24"
-                                      Margin="0,0,0,4"/>
-
-                            <Grid Margin="0,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="4"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="4"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
-                                        Content="Save"
-                                        Height="24"
-                                        Background="#1A6EBF"
-                                        Foreground="#FFFFFF"
-                                        FontWeight="SemiBold"
-                                        BorderThickness="0"
-                                        Template="{StaticResource ColourButtonTemplate}"
-                                        Click="_save_profile"/>
-                                <Button Grid.Column="2"
-                                        Content="Load"
-                                        Height="24"
-                                        Click="_load_profile"/>
-                                <Button Grid.Column="4"
-                                        Content="Delete"
-                                        Height="24"
-                                        Style="{StaticResource DestructiveButton}"
-                                        Click="_delete_profile"/>
-                            </Grid>
-                            <Button Content="Order Rules"
-                                    Height="24"
-                                    Margin="0,4,0,0"
-                                    Background="#1A6EBF"
-                                    Foreground="#FFFFFF"
-                                    FontWeight="SemiBold"
-                                    BorderThickness="0"
-                                    Template="{StaticResource ColourButtonTemplate}"
-                                    Click="_show_order_rules"/>
-
-                            <!-- Share Profiles row -->
-                            <DockPanel Margin="0,6,0,0">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Share Profiles:"
-                                           FontSize="10"
-                                           Foreground="#6B6B6B"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,6,0"/>
-                                <Button DockPanel.Dock="Right"
-                                        Content="Import"
-                                        Height="22"
-                                        Width="60"
-                                        Padding="0"
-                                        Click="_import_profiles"/>
-                                <Button Content="Export"
-                                        Height="22"
-                                        Width="60"
-                                        Padding="0"
-                                        Margin="0,0,4,0"
-                                        Click="_export_profiles"/>
-                            </DockPanel>
-
-                            <!-- Sheet Ordering section -->
-                            <TextBlock Text="Sheet Ordering"
-                                       FontWeight="SemiBold" Foreground="#1A1A1A"
-                                       Margin="0,10,0,6"/>
-
-                            <!-- Default Sort By -->
-                            <DockPanel Height="24" Margin="0,0,0,5">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Default Sort" Width="90"
-                                           VerticalAlignment="Center"
-                                           Foreground="#1A1A1A"/>
-                                <ComboBox x:Name="default_sort_cb"
-                                          VerticalContentAlignment="Center"
-                                          BorderBrush="#DEDEDE"
-                                          BorderThickness="1"
-                                          Background="#FFFFFF"
-                                          SelectionChanged="_default_sort_changed"/>
-                            </DockPanel>
-
-                            <CheckBox x:Name="reverse_cb"
-                                      IsChecked="False"
-                                      Click="options_changed">Reverse Print Order</CheckBox>
-
-                            <CheckBox x:Name="show_pdf_col_cb"
-                                      IsChecked="True"
-                                      Margin="0,5,0,0"
-                                      Click="options_changed">Show PDF File Name Column</CheckBox>
-
-                            <CheckBox x:Name="show_dwg_col_cb"
-                                      IsChecked="True"
-                                      Margin="0,5,0,0"
-                                      Click="options_changed">Show DWG File Name Column</CheckBox>
-
-                            <DockPanel Height="24" Margin="0,5,0,0">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Index Digits" Width="90"
-                                           VerticalAlignment="Center"/>
-                                <Border DockPanel.Dock="Right" Width="50"/>
-                                <Slider x:Name="index_slider"
-                                        Margin="10,0,0,0"
-                                        Minimum="3" Maximum="6"
-                                        TickPlacement="TopLeft"
-                                        IsSnapToTickEnabled="True"
-                                        IsMoveToPointEnabled="True"
-                                        ValueChanged="options_changed"/>
-                            </DockPanel>
-
-                            <DockPanel Height="24" Margin="0,5,0,0">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="Index Start" Width="90"
-                                           VerticalAlignment="Center"/>
-                                <Button DockPanel.Dock="Right"
-                                        Content="Reset" Width="50"
-                                        Click="rest_index"/>
-                                <TextBox x:Name="indexstart_tb"
-                                         Text="1"
-                                         Margin="10,0,0,0"
-                                         Padding="5,0,0,0"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="validate_index_start"
-                                         TextChanged="options_changed"/>
-                            </DockPanel>
-
-                            </StackPanel>
-                            </ScrollViewer>
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
-
-                <!-- Exporting Options panel -->
-                <Border Grid.Column="1"
-                        Background="#F5F5F5"
-                        BorderBrush="#DEDEDE"
-                        BorderThickness="1"
-                        CornerRadius="4"
-                        Margin="0,6,0,0"
-                        Padding="6">
-                    <DockPanel>
-                        <TextBlock DockPanel.Dock="Top"
-                                   Text="Exporting Options"
-                                   FontWeight="SemiBold" Foreground="#1A1A1A"
-                                   Margin="0,0,0,4"/>
-                        <StackPanel x:Name="exporting_content">
-
-                            <!-- Export checkboxes -->
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                <CheckBox x:Name="combine_cb"
-                                          Margin="0,0,20,0" IsChecked="False"
-                                          Checked="options_changed" Unchecked="options_changed">Combine Into One PDF</CheckBox>
-                                <CheckBox x:Name="export_pdf"
-                                          Margin="0,0,20,0" IsChecked="True"
-                                          Checked="options_changed" Unchecked="options_changed">Individual PDFs</CheckBox>
-                                <CheckBox x:Name="export_dwg"
-                                          Margin="0,0,20,0" IsChecked="False"
-                                          Checked="options_changed" Unchecked="options_changed">Export DWG</CheckBox>
-                                <CheckBox x:Name="export_ifc"
-                                          Margin="0,0,20,0" IsChecked="False"
-                                          Checked="_toggle_3d_panel" Unchecked="_toggle_3d_panel">Export IFC</CheckBox>
-                                <CheckBox x:Name="export_nwc"
-                                          Margin="0,0,20,0" IsChecked="False"
-                                          Checked="_toggle_3d_panel" Unchecked="_toggle_3d_panel">Export NWC</CheckBox>
-                                <CheckBox x:Name="export_3d_dwg"
-                                          IsChecked="False"
-                                          Checked="_toggle_3d_panel" Unchecked="_toggle_3d_panel">Export 3D DWG</CheckBox>
-                            </StackPanel>
-
-                            <!-- PDF Naming — original Height="24" Margin="0,5,0,0" -->
-                            <DockPanel x:Name="namingformat_dp" Height="24" Margin="0,5,0,0">
-                                <TextBlock Text="PDF Naming"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0" Width="90"/>
-                                <!-- original Edit Formats button: Width="100" -->
-                                <Button DockPanel.Dock="Right"
-                                        Content="Edit Formats" Width="100"
-                                        Click="edit_formats"/>
-                                <ComboBox x:Name="namingformat_cb"
-                                          FontFamily="Consolas"
-                                          VerticalContentAlignment="Center"
-                                          SelectionChanged="options_changed">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Border Padding="5,1,5,1">
-                                                    <TextBlock Text="{Binding name}"/>
-                                                </Border>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </DockPanel>
-
-                            <!-- DWG Naming — original Height="24" Margin="0,5,0,0" -->
-                            <DockPanel x:Name="dwg_namingformat_dp"
-                                       Height="24" Margin="0,5,0,0"
-                                       Visibility="Collapsed">
-                                <TextBlock Text="DWG Naming"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0" Width="90"/>
-                                <Button DockPanel.Dock="Right"
-                                        Content="Edit Formats" Width="100"
-                                        Click="edit_formats_dwg"/>
-                                <ComboBox x:Name="dwg_namingformat_cb"
-                                          FontFamily="Consolas"
-                                          VerticalContentAlignment="Center"
-                                          SelectionChanged="options_changed">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Border Padding="5,1,5,1">
-                                                    <TextBlock Text="{Binding name}"/>
-                                                </Border>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </DockPanel>
-
-                            <!-- Printer — original Height="24" Margin="0,5,0,0" -->
-                            <DockPanel Height="24" Margin="0,5,0,0">
-                                <TextBlock Text="Printer"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0" Width="90"/>
-                                <ComboBox x:Name="printers_cb"
-                                          SelectionChanged="printers_changed"/>
-                            </DockPanel>
-
-                            <!-- Page Settings — original Height="24" Margin="0,5,0,0" -->
-                            <DockPanel Height="24" Margin="0,5,0,0">
-                                <TextBlock Text="Page Settings"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0" Width="90"/>
-                                <ComboBox x:Name="printsettings_cb"
-                                          SelectionChanged="sheetlist_changed"
-                                          ItemTemplate="{StaticResource printSettingsItem}"/>
-                            </DockPanel>
-
-                            <!-- Filename preview rows -->
-                            <DockPanel Height="24" Margin="0,8,0,0">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="PDF Example"
-                                           VerticalAlignment="Center"
-                                           Foreground="#1A1A1A"
-                                           Width="90"/>
-                                <TextBlock x:Name="pdf_example_tb"
-                                           VerticalAlignment="Center"
-                                           FontFamily="Consolas"
-                                           Foreground="#1A6EBF"
-                                           Text="---"
-                                           TextTrimming="CharacterEllipsis"/>
-                            </DockPanel>
-
-                            <DockPanel Height="24" Margin="0,2,0,0">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="DWG Example"
-                                           VerticalAlignment="Center"
-                                           Foreground="#1A1A1A"
-                                           Width="90"/>
-                                <TextBlock x:Name="dwg_example_tb"
-                                           VerticalAlignment="Center"
-                                           FontFamily="Consolas"
-                                           Foreground="#1A6EBF"
-                                           Text="---"
-                                           TextTrimming="CharacterEllipsis"/>
-                            </DockPanel>
-
-                        <!-- 3D Export panel (IFC/NWC) - shown when export_ifc or export_nwc checked -->
-                        <Border x:Name="view3d_panel"
-                                Background="#F5F5F5"
-                                BorderBrush="#DEDEDE"
-                                BorderThickness="1"
-                                CornerRadius="3"
-                                Padding="8"
-                                Margin="0,8,0,0"
-                                Visibility="Collapsed">
-                            <StackPanel>
-
-                                <!-- Header row: "3D Export" label + selected view name inline -->
-                                <DockPanel Margin="0,0,0,6">
-                                    <TextBlock DockPanel.Dock="Left"
-                                               Text="3D Export"
-                                               FontWeight="SemiBold"
-                                               Foreground="#1A1A1A"
-                                               VerticalAlignment="Center"
-                                               Margin="0,0,8,0"/>
-                                    <TextBlock x:Name="selected_views_tb"
-                                               Text="No views selected"
-                                               Foreground="#1A6EBF"
-                                               FontFamily="Consolas"
-                                               VerticalAlignment="Center"
-                                               TextTrimming="CharacterEllipsis"/>
-                                </DockPanel>
-
-                                <!-- Select 3D views button + option buttons -->
-                                <DockPanel Height="28">
-                                    <Button x:Name="pick_3d_views_btn"
-                                            Content="Select 3D Views"
-                                            DockPanel.Dock="Left"
-                                            Height="28"
-                                            Padding="10,0"
-                                            Background="#1A6EBF"
-                                            Foreground="#FFFFFF"
-                                            FontWeight="SemiBold"
-                                            BorderThickness="0"
-                                            Cursor="Hand"
-                                            Template="{StaticResource ColourButtonTemplate}"
-                                            Click="_show_3d_view_picker"/>
-                                    <Button x:Name="ifc_options_btn"
-                                            Content="IFC Options"
-                                            DockPanel.Dock="Left"
-                                            Height="28"
-                                            Margin="6,0,0,0"
-                                            Padding="10,0"
-                                            Background="#1A6EBF"
-                                            Foreground="#FFFFFF"
-                                            FontWeight="SemiBold"
-                                            BorderThickness="0"
-                                            Cursor="Hand"
-                                            Template="{StaticResource ColourButtonTemplate}"
-                                            Click="_show_ifc_options"/>
-                                    <Button Content="NWC Options"
-                                            DockPanel.Dock="Left"
-                                            Height="28"
-                                            Margin="6,0,0,0"
-                                            Padding="10,0"
-                                            Background="#1A6EBF"
-                                            Foreground="#FFFFFF"
-                                            FontWeight="SemiBold"
-                                            BorderThickness="0"
-                                            Cursor="Hand"
-                                            Template="{StaticResource ColourButtonTemplate}"
-                                            Click="_show_nwc_options"/>
-                                    <Button x:Name="dwg3d_options_btn"
-                                            Content="3D DWG Options"
-                                            DockPanel.Dock="Left"
-                                            Height="28"
-                                            Margin="6,0,0,0"
-                                            Padding="10,0"
-                                            Background="#1A6EBF"
-                                            Foreground="#FFFFFF"
-                                            FontWeight="SemiBold"
-                                            BorderThickness="0"
-                                            Cursor="Hand"
-                                            Template="{StaticResource ColourButtonTemplate}"
-                                            Click="_show_3d_dwg_options"/>
-                                    <TextBlock DockPanel.Dock="Left"
-                                               VerticalAlignment="Center"
-                                               Margin="10,0,0,0"
-                                               Foreground="#6B6B6B"
-                                               FontSize="10"
-                                               Text="Files exported to same folder as PDF/DWG"/>
-                                </DockPanel>
-
-                            </StackPanel>
-                        </Border>
-
-                        </StackPanel>
-                    </DockPanel>
-                </Border>
-
-            </Grid>
-
-            <!-- ── Row 3: Info strip — original VerticalAlignment="Center" Margin="0,10,0,5" ── -->
-            <StackPanel VerticalAlignment="Center" Margin="0,10,0,5">
-                <TextBlock TextWrapping="WrapWithOverflow">
-                    List of the sheets in selected sheet index
-                </TextBlock>
-
-                <!-- errormsg_block — original Padding="5" Margin="0,5,0,5" -->
-                <Border x:Name="errormsg_block"
-                        Background="#C0392B"
-                        Padding="5" Margin="0,5,0,5"
-                        Visibility="Collapsed">
-                    <TextBlock x:Name="errormsg_tb"
-                               Foreground="#FFFFFF"
-                               VerticalAlignment="Center"/>
-                </Border>
-
-                <!-- varsizeguide — original Padding="5" Margin="0,5,0,5" CornerRadius="3" -->
-                <Border x:Name="varsizeguide"
-                        Background="#1A6EBF"
-                        CornerRadius="3"
-                        Padding="5" Margin="0,5,0,5"
-                        Visibility="Collapsed">
-                    <DockPanel DockPanel.Dock="Right">
-                        <!-- sheetopts_wp — original structure preserved exactly -->
-                        <DockPanel x:Name="sheetopts_wp"
-                                   DockPanel.Dock="Right" IsEnabled="False">
-                            <DockPanel DockPanel.Dock="Bottom">
-                                <Button DockPanel.Dock="Right"
-                                        Height="25" Width="120" Margin="10,0,0,0"
-                                        Content="Set Print Settings"
-                                        Style="{StaticResource PrimaryButton}"
-                                        Click="set_sheet_printsettings"/>
-                                <Button DockPanel.Dock="Left"
-                                        Height="25" Width="120"
-                                        Content="Reset Print Settings"
-                                        Style="{StaticResource SecondaryButton}"
-                                        Click="sheetlist_changed"/>
-                            </DockPanel>
-                            <Grid/>
-                        </DockPanel>
-                        <Expander Header="Guide" Foreground="#FFFFFF" Cursor="Help">
-                            <TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Foreground="#FFFFFF">
-                                Print settings can be set on titleblock types. Create a "Print Setting"
-                                type parameter (of type Text) on a titleblock family, and set the
-                                parameter value to the name of the desired print setting. When using
-                                "Variable Paper Size", this tool will automatically assign the correct
-                                print setting based on the value of this parameter.
-                            </TextBlock>
-                        </Expander>
-                    </DockPanel>
-                </Border>
-            </StackPanel>
-
-        </StackPanel>
-        <!-- END TOP TOOLBAR -->
-
-        <!-- ── STATUS BAR ── -->
-        <StatusBar DockPanel.Dock="Bottom" Height="25" Background="#1A6EBF">
-            <TextBlock Foreground="#FFFFFF" Margin="10,0,0,0" MouseDown="handle_url_click">
-                <Hyperlink NavigateUri="https://github.com/jasito88/Revit-Python-Toolbars/tree/main"
-                           Click="handle_url_click" Foreground="#FFFFFF">
-                    Thanks to Jason Braga — github.com/jasito88
-                </Hyperlink>
-            </TextBlock>
-        </StatusBar>
-
-        <!-- ── SHEET DATA GRID ── -->
-        <!-- Original Margin="10,0,10,10" BorderThickness="1" GridLinesVisibility default=All -->
-        <Grid>
-            <DataGrid x:Name="sheets_lb"
-                  AutoGenerateColumns="False"
-                  Margin="10,0,10,10"
-                  Background="#FFFFFF"
-                  BorderBrush="#DEDEDE"
-                  BorderThickness="1"
-                  RowHeaderWidth="0"
-                  CanUserSortColumns="True"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  HorizontalGridLinesBrush="#DEDEDE"
-                  VerticalGridLinesBrush="#DEDEDE"
-                  EnableColumnVirtualization="True"
-                  EnableRowVirtualization="True"
-                  VirtualizingPanel.IsVirtualizing="True"
-                  VirtualizingPanel.VirtualizationMode="Recycling"
-                  SelectionChanged="sheet_selection_changed"
-                  Sorting="sheet_sorting_changed">
-
-            <DataGrid.Resources>
-                <ContextMenu x:Key="ItemContextMenu">
-                    <MenuItem Header="Copy Sheet File Name(s)" Click="copy_filenames"/>
-                </ContextMenu>
-            </DataGrid.Resources>
-
-            <!-- Row: selected = #1A6EBF / white, hover = light blue -->
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="{Binding row_background}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#1A6EBF"/>
-                            <Setter Property="Foreground" Value="#FFFFFF"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#E8F0FB"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Print Index"
-                                    Binding="{Binding print_index}"
-                                    MinWidth="80" Width="80"
-                                    IsReadOnly="True"
-                                    CellStyle="{StaticResource IndexColumnStyle}"/>
-                <DataGridTextColumn Header="Sheet Number"
-                                    Binding="{Binding number}"
-                                    MinWidth="100" Width="100"
-                                    IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"/>
-                <DataGridTextColumn Header="Sheet Name"
-                                    Binding="{Binding name}"
-                                    MinWidth="400" Width="400"
-                                    IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"/>
-                <DataGridTemplateColumn Header="Sheet Revision (Sort By Date)"
-                                        MinWidth="50" Width="1*" IsReadOnly="True"
-                                        CellTemplate="{StaticResource RevisionCell}"
-                                        SortMemberPath="revision_date_sortable"/>
-                <!-- psettingcol — Visibility toggled by script -->
-                <DataGridTemplateColumn x:Name="psettingcol"
-                                        Header="Print Setting"
-                                        MinWidth="50" Width="*" IsReadOnly="True"
-                                        CellTemplate="{StaticResource PrintSettingCell}"
-                                        Visibility="Collapsed"/>
-                <!-- pfilename — Visibility toggled by script -->
-                <DataGridTextColumn x:Name="pfilename"
-                                    Header="File Name (PDF)"
-                                    FontFamily="Consolas"
-                                    Binding="{Binding print_filename}"
-                                    MinWidth="50" Width="2*" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <!-- pfilename_dwg — Visibility toggled by script -->
-                <DataGridTextColumn x:Name="pfilename_dwg"
-                                    Header="File Name (DWG)"
-                                    FontFamily="Consolas"
-                                    Binding="{Binding dwg_filename}"
-                                    MinWidth="50" Width="2*" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <!-- Extra parameter columns — slots filled by Choose Columns dialog -->
-                <!-- Bound to @forms.reactive properties extra1-extra12 on ViewSheetListItem -->
-                <DataGridTextColumn x:Name="extra_col1" Header="" Binding="{Binding extra1}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col2" Header="" Binding="{Binding extra2}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col3" Header="" Binding="{Binding extra3}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col4" Header="" Binding="{Binding extra4}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col5" Header="" Binding="{Binding extra5}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col6" Header="" Binding="{Binding extra6}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col7" Header="" Binding="{Binding extra7}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col8" Header="" Binding="{Binding extra8}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col9" Header="" Binding="{Binding extra9}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col10" Header="" Binding="{Binding extra10}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col11" Header="" Binding="{Binding extra11}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-                <DataGridTextColumn x:Name="extra_col12" Header="" Binding="{Binding extra12}"
-                                    MinWidth="100" Width="160" IsReadOnly="True"
-                                    CellStyle="{StaticResource DefaultColumnStyle}"
-                                    Visibility="Collapsed"/>
-            </DataGrid.Columns>
-        </DataGrid>
-            <!-- Drop indicator overlay for in-list drag-drop -->
-            <Canvas x:Name="dg_ind_canvas" IsHitTestVisible="False">
-                <Rectangle x:Name="dg_drop_line"
-                           Height="2" Fill="#1A6EBF"
-                           Visibility="Collapsed"
-                           Canvas.Left="0" Canvas.Top="0"/>
-            </Canvas>
-        </Grid>
-
-    </DockPanel>
-</Window>
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/JasonExporter.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/NWCOptions_ui.xaml
-## META: sha1=015d5a386176fb7a2c6c8e13773d026393dcb123 size=7116
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NWC Export Options"
-        Width="440" Height="460"
-        MinWidth="380" MinHeight="400"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <Window.Resources>
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SectionLabel" TargetType="TextBlock">
-            <Setter Property="FontSize"   Value="10"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#6B6B6B"/>
-            <Setter Property="Margin"     Value="0,10,0,4"/>
-        </Style>
-        <Style x:Key="StandardCombo" TargetType="ComboBox">
-            <Setter Property="Height"                   Value="26"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush"              Value="#DEDEDE"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Background"               Value="#FFFFFF"/>
-        </Style>
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0" Text="NWC Export Options"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,8">
-            Settings applied to all selected 3D views when exporting NWC.
-        </TextBlock>
-
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <StackPanel>
-
-                <!-- FILE NAMING -->
-                <TextBlock Text="FILE NAMING" Style="{StaticResource SectionLabel}"/>
-                <RadioButton x:Name="nwc_use_viewname_rb"
-                             Content="Use View Name"
-                             IsChecked="True"
-                             GroupName="NWCNaming"
-                             Margin="0,0,0,6"
-                             Checked="nwc_naming_mode_changed"/>
-                <RadioButton x:Name="nwc_use_filename_rb"
-                             Content="Use File Name (Model)"
-                             GroupName="NWCNaming"
-                             Margin="0,0,0,6"
-                             Checked="nwc_naming_mode_changed"/>
-                <RadioButton x:Name="nwc_use_format_rb"
-                             Content="Use Naming Format"
-                             GroupName="NWCNaming"
-                             Margin="0,0,0,6"
-                             Checked="nwc_naming_mode_changed"/>
-                <DockPanel x:Name="nwc_format_panel" Height="26"
-                           Margin="0,0,0,0" Visibility="Collapsed">
-                    <Button DockPanel.Dock="Right"
-                            Content="Edit Formats"
-                            Width="100" Height="26"
-                            Style="{StaticResource SecondaryButton}"
-                            Click="edit_formats_nwc"/>
-                    <ComboBox x:Name="nwc_namingformat_cb"
-                              Style="{StaticResource StandardCombo}"
-                              FontFamily="Consolas"
-                              DisplayMemberPath="name"/>
-                </DockPanel>
-
-                <!-- COORDINATES -->
-                <TextBlock Text="COORDINATES" Style="{StaticResource SectionLabel}"/>
-                <ComboBox x:Name="nwc_coords_cb" Style="{StaticResource StandardCombo}"/>
-
-                <!-- CLASH TEST -->
-                <TextBlock Text="CLASH TEST TYPE" Style="{StaticResource SectionLabel}"/>
-                <ComboBox x:Name="nwc_clash_cb" Style="{StaticResource StandardCombo}"/>
-
-                <!-- OPTIONS -->
-                <TextBlock Text="OPTIONS" Style="{StaticResource SectionLabel}"/>
-                <CheckBox x:Name="nwc_element_props_cb"     IsChecked="True"  Margin="0,0,0,6">Convert Element Properties</CheckBox>
-                <CheckBox x:Name="nwc_room_geometry_cb"     IsChecked="False" Margin="0,0,0,6">Export Room Geometry</CheckBox>
-                <CheckBox x:Name="nwc_room_as_attribute_cb" IsChecked="True"  Margin="0,0,0,6">Export Room as Attribute</CheckBox>
-                <CheckBox x:Name="nwc_links_cb"             IsChecked="False" Margin="0,0,0,6">Export Links</CheckBox>
-                <CheckBox x:Name="nwc_parts_cb"             IsChecked="False" Margin="0,0,0,6">Export Parts</CheckBox>
-
-            </StackPanel>
-        </ScrollViewer>
-
-        <Grid Grid.Row="3" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    Click="cancel_clicked"/>
-            <Button Grid.Column="3" Content="OK"
-                    Style="{StaticResource PrimaryButton}"
-                    Click="ok_clicked"/>
-        </Grid>
-    </Grid>
-</Window>
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/NWCOptions_ui.xaml
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/script.py
-## META: sha1=3d8fd94fb8bac6b23741dfef326d1cb1aee1e43a size=337485
-## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB.ExtensibleStorage","System","System.IO","System.Windows","System.Windows.Controls","System.Windows.Data","System.Windows.Forms","System.Windows.Input","System.Windows.Interop","System.Windows.Markup","System.Windows.Media","System.Windows.Threading","codecs","collections","datetime","json","locale","os","os.path","pyrevit","pyrevit.compat","pyrevit.framework","re","traceback"]
-## FUNCTIONS: ["__init__","get_doc","get_dir","get_folder","ensure_dir","open_dir","pdf_opts","dwg_opts","export_sheet_pdf","export_sheet_dwg","__init__","name","name","token","token","source","source","prefix","prefix","suffix","suffix","separator","separator","sample","sample","template","template","__init__","display_color","display_style","verify_template","_friendly_name_from_token","name","name","template","template","rebuild_template_from_rules","load_rules_from_template","__init__","revit_sheet","revit_tblock","revit_tblock_type","print_settings","print_settings","print_index","print_index","print_filename","print_filename","dwg_filename","dwg_filename","row_num","row_num","row_background","row_background","extra1","extra1","extra2","extra2","extra3","extra3","extra4","extra4","extra5","extra5","extra6","extra6","extra7","extra7","extra8","extra8","extra9","extra9","extra10","extra10","extra11","extra11","extra12","extra12","__init__","name","print_settings","print_params","paper_size","allows_variable_paper","is_user_defined","__init__","name","allows_variable_paper","__init__","get_builtin_fields","get_default_naming_formats","get_naming_formats","set_naming_formats","naming_formats","selected_naming_format","selected_naming_format","selected_paramtype","_setup_param_types","_sample_sheet","_sample_view","_sample_titleblock","_safe_param_name","_safe_sample_value","_collect_fields_from_element","_collect_titleblock_fields","_collect_global_parameter_fields","_get_fields_for_param_type","reset_formatters","search_fields_changed","reset_naming_formats","paramtype_changed","namingformat_changed","_update_rule_preview","_sync_rules_to_template","add_rule","remove_rule","move_rule_up","move_rule_down","rules_changed","import_profiles","export_profiles","duplicate_namingformat","delete_namingformat","save_formats","cancelled","show_dialog","_naming_escape","__init__","get_sheets","__init__","get_sheets","_get_schedule_text_data","_order_sheets_by_schedule_data","_get_ordered_schedule_sheets","__init__","get_sheets","name","get_sheets","name","get_sheets","name","get_sheets","__init__","_col_escape","_get_extra_column_names","_active_all_items","_active_all_tags","_active_user_names","_active_ordered_names","_rebuild_available","_sample_sheet","_sample_view","_sample_titleblock","_fields_from_elem","_titleblock_fields","_global_fields","_fields_for_type","paramtype_changed","search_changed","_snap_selection","add_column","remove_column","move_up","move_down","ok_clicked","cancel_clicked","_wire_escape_to_close","_on_key_down","__init__","__init__","__init__","_restore_sort_rules","_restore_filter_rules","_restore_filter_profiles","apply_filter_rule","__init__","_ok","_cancel","show","__init__","_on_preview_key","_get_combo_text","_build_col_names","_populate_columns","_prefill_rules","_collect_rules","sort_ok_clicked","sort_cancel_clicked","sort_clear_clicked","sort_show_all_params_clicked","show","__init__","_setup_combos","_restore","dwg3d_naming_mode_changed","_collect","edit_formats_3d_dwg","ok_clicked","cancel_clicked","_key_down","show","__init__","name","view_id","revit_view","__init__","_wire_events","_populate","_ok_clicked","_cancel_clicked","show","__init__","_setup_combos","_restore","nwc_naming_mode_changed","edit_formats_nwc","_collect","ok_clicked","cancel_clicked","_key_down","show","__init__","_restore","_update_scope_atf_buttons","_get_extract_start","_get_extract_end","_get_cell_value","_field_changed","_passes_scope","_live_parent_filter","_apply_rules","token_priority","group_key","_sort_key","_on_preview","_master_sort_items","key_fn","_on_ok","_open_apply_to_filter","_get_atf_ids","_get_matched_ids","_update_yellow","_open_scope_filter","_load_of_profiles_from_config","_save_of_profiles_to_config","_refresh_of_profile_cb","_collect_current_rules","_of_save","_of_load","_of_delete","_on_reset","_on_cancel","_on_window_closing","show","__init__","_ok","_cancel","_select_all","show","__init__","_get_combo_text","_get_val_text","_get_unique_values","_update_value_field","_populate_columns","_populate_val_cb","_prefill_rules","_col_changed","_cond_changed","_collect_rules","_ok","_cancel","_clear_all","show","__init__","_refresh_list","_get_lbi_at","_index_and_y_at","_show_indicator","_hide_indicator","_get_all_selected","_get_lbi_for_point","_on_mouse_down","_on_mouse_up","_on_mouse_move","_on_drag_over","_on_drag_leave","_on_drop","_on_ok","_on_cancel","_on_reset","show","__init__","selected_doc","selected_sheetlist","has_errors","reverse_print","combine_print","show_placeholders","index_digits","index_start","sheet_filter","name_filter","include_placeholders","selected_naming_format","selected_dwg_naming_format","selected_printer","selected_print_setting","has_print_settings","print_settings","sheet_list","sheet_list","selected_sheets","printable_sheets","selected_printable_sheets","_is_sheet_index","_get_sheet_index_list","_get_printmanager","_setup_docs_list","_setup_naming_formats","_setup_printers","_get_psetting_items","_setup_print_settings","_update_combine_option","_setup_sheet_list","_verify_print_filename","_print_combined_sheets_in_order","_print_sheets_in_order","_print_linked_sheets_in_order","_reset_error","_set_error","_update_print_indices","_update_filename_template","_update_print_filename","_resolve_template_project_params","_update_dwg_filename","_update_print_filenames","_find_sheet_tblock","_get_sheet_printsettings","_reset_psettings","_update_index_slider","_save_settings","_restore_settings","doclist_changed","sheetlist_changed","printers_changed","options_changed","set_sheet_printsettings","toggle_exporting_panel","toggle_ordering_panel","toggle_filters_panel","_save_as_print_set","_show_hide_columns","_apply_column_visibility","_update_filename_examples","window_closing","sheet_sorting_changed","_reindex","sheet_selection_changed","validate_index_start","rest_index","rest_sheet_start","rest_name_filter","edit_formats","edit_formats_dwg","copy_filenames","_apply_column_order","_update_extra_columns","_show_edit_order_dialog","_apply_sort","_key","_show_sorting_dialog","_populate_default_sort_cb","_default_sort_changed","_has_active_order","_has_active_sort","_has_active_manual","_apply_default_sort","sort_key","_update_toolbar_lock","_clear_manual_order","_clear_sorting","_get_all_sheet_param_names","_show_filter_dialog","_update_filter_badge","_reset_all_filters","_init_datagrid_drag","_dg_get_row_at","_dg_index_and_y","_dg_show_indicator","_dg_hide_indicator","_dg_column_sorting","on_tick","_dg_mouse_down","_dg_mouse_up","_dg_mouse_move","_is_dg_row_selected","_dg_drag_over","_dg_drag_leave","_dg_drop","_apply_profile_order","_get_active_profile","_show_order_rules","_on_preview_live","_on_reset_live","_on_cancel_live","_on_yellow_live","_y_clr","_live_parent_filter_state","_do_reset","_save_profile","_load_profile","_export_profiles","_import_profiles","_reselect_active_profile","_delete_profile","_populate_profile_combo","show_columns_dialog","_get_all_3d_views","_show_3d_view_picker","_update_3d_view_badge","_get_ifc_setup_names","_find_and_load_ifc_dll","_populate_cfg_map","_get_schema_guid","_read_custom_from_datastorage","_get_ifc_picker_xaml","_show_ifc_options","_ok","_cancel","_update_ifc_btn_label","_show_3d_dwg_options","_update_dwg3d_btn_label","_build_3d_dwg_options","_get_3d_nwc_filename","_get_3d_dwg_filename","_show_nwc_options","_toggle_3d_panel","_build_ifc_options","_build_nwc_options","_apply_preview_order","_clr","_clear_preview_highlight","_export_3d_only","_export_3d_views","print_sheets","cleanup_sheetnumbers"]
-## CLASSES: ["NamingField","PrintUtils","NamingRule","NamingFormat","ViewSheetListItem","PrintSettingListItem","VariablePaperPrintSettingListItem","EditNamingFormatsWindow","SheetSetList","ScheduleSheetList","SeparatorItem","AppearInSheetList","AllSheetsList","UnlistedSheetsList","ColumnPickerDialog","FilterRule","FilterProfile","SortRule","ShowHideColumnsWindow","SortingWindow","DWG3DOptionsWindow","View3DListItem","View3DPickerWindow","NWCOptionsWindow","OrderRulesWindow","ProfileExportPickerWindow","FilterEditorWindow","EditOrderWindow","JasonExporterWindow","_FS","_FakeSheet"]
-```python
-# -*- coding: utf-8 -*-
-# Script:        JasonExporter_script.py
-# Description:   Export Revit sheets to PDF/DWG with ordering, filtering,
-#                sorting, column management and naming format profiles.
-# Author:        Jason Braga
-# Last Updated:  2026-04-14
-# Revit Version: 2022/2023/2024
-#pylint: disable=unused-argument,too-many-lines
-#pylint: disable=missing-function-docstring,missing-class-docstring
-__title__ = 'Jason Exporter'
-"""Print sheets in order from a sheet index.
-
-Note:
-When using the `Combine into one file` option
-in Revit 2022 and earlier,
-the tool adds non-printable character u'\u200e'
-(Left-To-Right Mark) at the start of the sheet names
-to push Revit's interenal printing engine to sort
-the sheets correctly per the drawing index order.
-
-Make sure your drawings indices consider this
-when filtering for sheet numbers.
-
-Shift-Click:
-Shift-Clicking the tool will remove all
-non-printable characters from the sheet numbers,
-in case an error in the tool causes these characters
-to remain.
-"""
-#pylint: disable=import-error,invalid-name,broad-except,superfluous-parens
-import re
-import os.path as op
-import codecs
-import os, datetime, locale, json
-from collections import namedtuple
-
-from pyrevit import HOST_APP
-from pyrevit import framework
-
-# Version-scoped config key -- prevents Revit 2022 and 2024 overwriting
-# each other's settings when both are open simultaneously
-_CONFIG_KEY = "ui_settings_rv%s" % HOST_APP.uiapp.Application.VersionNumber
-from pyrevit.framework import Windows, Drawing, ObjectModel, Forms, List
-from pyrevit.framework import clr
-from pyrevit import coreutils
-from pyrevit import forms
-from pyrevit import revit, DB
-from pyrevit import script
-from pyrevit.compat import get_elementid_value_func
-clr.AddReference('PresentationFramework')
-clr.AddReference('WindowsBase')
-from System.Windows.Data import CollectionViewSource, PropertyGroupDescription
-
-
-get_elementid_value = get_elementid_value_func()
-
-logger = script.get_logger()
-config = script.get_config()
-
-
-# Non Printable Char
-NPC = u'\u200e'
-INDEX_FORMAT = '{{:0{digits}}}'
-
-
-EXPORT_ENCODING = 'utf_16_le'
-if HOST_APP.is_newer_than(2020):
-    EXPORT_ENCODING = 'utf_8'
-
-IS_REVIT_2022_OR_NEWER = HOST_APP.is_newer_than(2021)
-
-
-AvailableDoc = namedtuple('AvailableDoc', ['name', 'hash', 'linked'])
-
-NamingFormatter = namedtuple('NamingFormatter', ['template', 'desc', 'sample'])
-
-SheetRevision = namedtuple('SheetRevision', ['number', 'desc', 'date', 'is_set'])
-UNSET_REVISION = SheetRevision(number=None, desc=None, date=None, is_set=False)
-
-TitleBlockPrintSettings =     namedtuple('TitleBlockPrintSettings', ['psettings', 'set_by_param'])
-
-
-class NamingField(object):
-    def __init__(self, source='', name='', token='', sample=''):
-        self.source = source
-        self.name = name
-        self.token = token
-        self.sample = sample
-
-
-class PrintUtils:
-    """Utility functions for printing and exporting sheets."""
-
-    @staticmethod
-    def get_doc():
-        return revit.doc
-
-    @staticmethod
-    def get_dir():
-        return os.path.join(os.path.expanduser("~"), "Desktop", "pyRevit Print Folder")
-
-    @staticmethod
-    def get_folder(task="_PDF"):
-        dateStamp = datetime.datetime.today().strftime("%y%m%d")
-        timeStamp = datetime.datetime.today().strftime("%H%M%S")
-        return dateStamp + "_" + timeStamp + task
-
-    @staticmethod
-    def ensure_dir(dp):
-        if not os.path.exists(dp):
-            os.makedirs(dp)
-        return dp
-
-    @staticmethod
-    def open_dir(dp):
-        try:
-            os.startfile(dp)
-        except Exception:
-            pass
-        return dp
-
-    @staticmethod
-    def pdf_opts(hcb=True, hsb=True, hrp=True, hvt=True, mcl=True):
-        opts = DB.PDFExportOptions()
-        opts.HideCropBoundaries = hcb
-        opts.HideScopeBoxes = hsb
-        opts.HideReferencePlane = hrp
-        opts.HideUnreferencedViewTags = hvt
-        opts.MaskCoincidentLines = mcl
-        opts.PaperFormat = DB.ExportPaperFormat.Default
-        return opts
-
-    @staticmethod
-    def dwg_opts(sc=False, mv=True):
-        opts = DB.DWGExportOptions()
-        opts.SharedCoords = sc
-        opts.MergedViews = mv
-        return opts
-
-    @staticmethod
-    def export_sheet_pdf(dir_path, sheet, opt, doc, filename):
-        pdf_doc_name = op.splitext(filename)[0]
-        opt.FileName = pdf_doc_name
-        export_sheet = List[DB.ElementId]()
-        export_sheet.Add(sheet.Id)
-        doc.Export(dir_path, export_sheet, opt)
-        return True
-
-    @staticmethod
-    def export_sheet_dwg(dir_path, sheet, opt, doc, filename):
-        base_name = op.splitext(filename)[0]
-        dwg_doc_name = base_name + ".dwg"
-        export_sheet = List[DB.ElementId]()
-        export_sheet.Add(sheet.Id)
-        doc.Export(dir_path, dwg_doc_name, export_sheet, opt)
-        return True
-
-
-class NamingRule(forms.Reactive):
-    """Single naming rule row."""
-
-    def __init__(self, name='', token='', source='', prefix='', suffix='', separator='', sample=''):
-        self._name = name
-        self._token = token
-        self._source = source
-        self._prefix = prefix
-        self._suffix = suffix
-        self._separator = separator
-        self._sample = sample
-
-    @forms.reactive
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        self._name = value
-
-    @forms.reactive
-    def token(self):
-        return self._token
-
-    @token.setter
-    def token(self, value):
-        self._token = value
-
-    @forms.reactive
-    def source(self):
-        return self._source
-
-    @source.setter
-    def source(self, value):
-        self._source = value
-
-    @forms.reactive
-    def prefix(self):
-        return self._prefix
-
-    @prefix.setter
-    def prefix(self, value):
-        self._prefix = value
-
-    @forms.reactive
-    def suffix(self):
-        return self._suffix
-
-    @suffix.setter
-    def suffix(self, value):
-        self._suffix = value
-
-    @forms.reactive
-    def separator(self):
-        return self._separator
-
-    @separator.setter
-    def separator(self, value):
-        self._separator = value
-
-    @forms.reactive
-    def sample(self):
-        return self._sample
-
-    @sample.setter
-    def sample(self, value):
-        self._sample = value
-
-    # compatibility with older code/xaml
-    @forms.reactive
-    def template(self):
-        return self._token
-
-    @template.setter
-    def template(self, value):
-        self._token = value
-
-
-class NamingFormat(forms.Reactive):
-    """Print File Naming Format"""
-
-    def __init__(self, name, template='', builtin=False, rules=None):
-        self._name = name
-        self._template = self.verify_template(template or '')
-        self.builtin = builtin
-        self._is_header = False
-        self.rules = ObjectModel.ObservableCollection[object]()
-        if rules:
-            for rule in rules:
-                self.rules.Add(rule)
-
-    @property
-    def display_color(self):
-        if self._is_header:
-            # Default header = gray, Custom header = black
-            return 'Gray' if self.builtin else 'Black'
-        if self.builtin:
-            return 'Gray'
-        return 'Black'
-
-    @property
-    def display_style(self):
-        if self._is_header:
-            return 'Italic'
-        return 'Normal'
-
-    @staticmethod
-    def verify_template(value):
-        if value and not value.lower().endswith('.pdf'):
-            value += '.pdf'
-        return value
-
-    @staticmethod
-    def _friendly_name_from_token(token):
-        mapping = {
-            '{index}': ('Built-In', 'Print Index', '0001'),
-            '{number}': ('Built-In', 'Sheet Number', 'A1.00'),
-            '{name}': ('Built-In', 'Sheet Name', '1ST FLOOR PLAN'),
-            '{name_dash}': ('Built-In', 'Sheet Name Dash', '1ST-FLOOR-PLAN'),
-            '{name_underline}': ('Built-In', 'Sheet Name Underline', '1ST_FLOOR_PLAN'),
-            '{current_date}': ('Built-In', 'Current Date', '2026-03-09'),
-            '{issue_date}': ('Built-In', 'Sheet Issue Date', '2026-03-09'),
-            '{rev_number}': ('Built-In', 'Revision Number', '01'),
-            '{rev_desc}': ('Built-In', 'Revision Description', 'TENDER'),
-            '{rev_date}': ('Built-In', 'Revision Date', '2026-03-09'),
-            '{proj_name}': ('Built-In', 'Project Name', 'MY_PROJECT'),
-            '{proj_number}': ('Built-In', 'Project Number', 'PR2026.01'),
-            '{proj_building_name}': ('Built-In', 'Project Building Name', 'BLDG01'),
-            '{proj_issue_date}': ('Built-In', 'Project Issue Date', '2026-03-09'),
-            '{proj_org_name}': ('Built-In', 'Project Organization Name', 'MYCOMP'),
-            '{proj_status}': ('Built-In', 'Project Status', 'ISSUED'),
-            '{username}': ('Built-In', 'Username', 'jason.braga'),
-            '{revit_version}': ('Built-In', 'Revit Version', '2025'),
-            '{model_name}':    ('Built-In', 'Model Name', op.splitext(revit.doc.Title or op.basename(revit.doc.PathName or 'MODEL'))[0]),
-        }
-        if token in mapping:
-            return mapping[token]
-        for prefix, source in [('{sheet_param:', 'Sheet'), ('{tblock_param:', 'Title Block'), ('{proj_param:', 'Project Information'), ('{glob_param:', 'Global Parameter'), ('{view_param:', 'Views')]:
-            if token.startswith(prefix) and token.endswith('}'):
-                pname = token[len(prefix):-1]
-                return (source, pname, pname)
-        return ('Built-In', token, token)
-
-    @forms.reactive
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        self._name = value
-
-    @forms.reactive
-    def template(self):
-        return self._template
-
-    @template.setter
-    def template(self, value):
-        self._template = self.verify_template(value)
-
-    def rebuild_template_from_rules(self):
-        parts = []
-        for rule in self.rules:
-            parts.append('{}{}{}{}'.format(rule.prefix or '', rule.token or '', rule.suffix or '', rule.separator or ''))
-        rebuilt = ''.join(parts).rstrip(' -_')
-        self.template = rebuilt + '.pdf' if rebuilt else ''
-
-    def load_rules_from_template(self):
-        self.rules.Clear()
-        if not self.template:
-            return
-        temp = self.template[:-4] if self.template.lower().endswith('.pdf') else self.template
-        token_pattern = r'(\{[^}]+\})'
-        tokens = re.split(token_pattern, temp)
-        i = 0
-        while i < len(tokens):
-            token = tokens[i]
-            if token.startswith('{') and token.endswith('}'):
-                separator = tokens[i + 1] if i + 1 < len(tokens) else ''
-                source, name, sample = self._friendly_name_from_token(token)
-                self.rules.Add(NamingRule(name=name, token=token, source=source, prefix='', suffix='', separator=separator, sample=sample))
-            i += 2
-
-class ViewSheetListItem(forms.Reactive):
-    """Revit Sheet show in Print Window"""
-
-    def __init__(self, view_sheet, view_tblock,
-                 print_settings=None, rev_settings=None):
-        self._sheet = view_sheet
-        self._tblock = view_tblock
-        if self._tblock:
-            self._tblock_type = \
-                view_sheet.Document.GetElement(view_tblock.GetTypeId())
-        else:
-            self._tblock_type = None
-        self.name = self._sheet.Name
-        self.number = self._sheet.SheetNumber if hasattr(self._sheet, 'SheetNumber') else ''
-        self.issue_date = \
-            self._sheet.Parameter[
-                DB.BuiltInParameter.SHEET_ISSUE_DATE].AsString() if self._sheet.Parameter[
-                DB.BuiltInParameter.SHEET_ISSUE_DATE] else ''
-        self.printable = self._sheet.CanBePrinted
-        self.revision_date_sortable = ""
-        self._print_index = 0
-        self._print_filename = ''
-        self._tblock_psettings = print_settings
-        self._print_settings = self._tblock_psettings.psettings
-        self.all_print_settings = self._tblock_psettings.psettings
-        if self.all_print_settings:
-            self._print_settings = self.all_print_settings[0]
-        self.read_only = self._tblock_psettings.set_by_param
-
-        per_sheet_revisions = \
-            rev_settings.RevisionNumbering == DB.RevisionNumbering.PerSheet \
-            if rev_settings else False
-        cur_rev = revit.query.get_current_sheet_revision(self._sheet) if hasattr(self._sheet, 'GetCurrentRevision') else ''
-        self.revision = UNSET_REVISION
-        if cur_rev:
-            on_sheet = self._sheet if per_sheet_revisions else None
-            self.revision = SheetRevision(
-                number=revit.query.get_rev_number(cur_rev, sheet=on_sheet),
-                desc=cur_rev.Description,
-                date=cur_rev.RevisionDate,
-                is_set=True
-            )
-
-        
-
-    @property
-    def revit_sheet(self):
-        """Revit sheet instance"""
-        return self._sheet
-
-    @property
-    def revit_tblock(self):
-        """Revit titleblock instance"""
-        return self._tblock
-
-    @property
-    def revit_tblock_type(self):
-        """Revit titleblock type"""
-        return self._tblock_type
-
-    @forms.reactive
-    def print_settings(self):
-        """Sheet pring settings"""
-        return self._print_settings
-
-    @print_settings.setter
-    def print_settings(self, value):
-        self._print_settings = value
-
-    @forms.reactive
-    def print_index(self):
-        """Sheet print index"""
-        return self._print_index
-
-    @print_index.setter
-    def print_index(self, value):
-        self._print_index = value
-
-    @forms.reactive
-    def print_filename(self):
-        """Sheet print output filename"""
-        return self._print_filename
-
-    @print_filename.setter
-    def print_filename(self, value):
-        self._print_filename = \
-            coreutils.cleanup_filename(value, windows_safe=True)
-
-    @forms.reactive
-    def dwg_filename(self):
-        return getattr(self, '_dwg_filename', '')
-
-    @dwg_filename.setter
-    def dwg_filename(self, value):
-        self._dwg_filename = coreutils.cleanup_filename(value, windows_safe=True)
-
-    @forms.reactive
-    def row_num(self):
-        return getattr(self, '_row_num', '')
-    @row_num.setter
-    def row_num(self, value):
-        self._row_num = str(value)
-
-    @forms.reactive
-    def row_background(self):
-        return getattr(self, '_row_background', None)
-    @row_background.setter
-    def row_background(self, value):
-        self._row_background = value
-
-    # ── Extra parameter columns (extra1-extra12) ──────────────────────────
-    # Fixed @forms.reactive properties -- WPF binds to them reliably.
-    # Populated by _update_extra_columns() when user picks params via dialog.
-
-    @forms.reactive
-    def extra1(self): return getattr(self, '_extra1', '')
-    @extra1.setter
-    def extra1(self, v): self._extra1 = v
-
-    @forms.reactive
-    def extra2(self): return getattr(self, '_extra2', '')
-    @extra2.setter
-    def extra2(self, v): self._extra2 = v
-
-    @forms.reactive
-    def extra3(self): return getattr(self, '_extra3', '')
-    @extra3.setter
-    def extra3(self, v): self._extra3 = v
-
-    @forms.reactive
-    def extra4(self): return getattr(self, '_extra4', '')
-    @extra4.setter
-    def extra4(self, v): self._extra4 = v
-
-    @forms.reactive
-    def extra5(self): return getattr(self, '_extra5', '')
-    @extra5.setter
-    def extra5(self, v): self._extra5 = v
-
-    @forms.reactive
-    def extra6(self): return getattr(self, '_extra6', '')
-    @extra6.setter
-    def extra6(self, v): self._extra6 = v
-
-    @forms.reactive
-    def extra7(self): return getattr(self, '_extra7', '')
-    @extra7.setter
-    def extra7(self, v): self._extra7 = v
-
-    @forms.reactive
-    def extra8(self): return getattr(self, '_extra8', '')
-    @extra8.setter
-    def extra8(self, v): self._extra8 = v
-
-    @forms.reactive
-    def extra9(self): return getattr(self, '_extra9', '')
-    @extra9.setter
-    def extra9(self, v): self._extra9 = v
-
-    @forms.reactive
-    def extra10(self): return getattr(self, '_extra10', '')
-    @extra10.setter
-    def extra10(self, v): self._extra10 = v
-
-    @forms.reactive
-    def extra11(self): return getattr(self, '_extra11', '')
-    @extra11.setter
-    def extra11(self, v): self._extra11 = v
-
-    @forms.reactive
-    def extra12(self): return getattr(self, '_extra12', '')
-    @extra12.setter
-    def extra12(self, v): self._extra12 = v
-
-
-class PrintSettingListItem(object):
-    """Wrapper for a Revit print setting -- used in the print settings ComboBox."""
-
-    def __init__(self, print_setting):
-        self.item          = print_setting
-        self.is_compatible = False
-
-    @property
-    def name(self):
-        if isinstance(self.item, DB.InSessionPrintSetting):
-            return "<In Session>"
-        else:
-            return self.item.Name
-
-    @property
-    def print_settings(self):
-        return self.item
-
-    @property
-    def print_params(self):
-        if self.print_settings:
-            return self.print_settings.PrintParameters
-
-    @property
-    def paper_size(self):
-        try:
-            if self.print_params:
-                return self.print_params.PaperSize
-        except Exception:
-            pass
-
-    @property
-    def allows_variable_paper(self):
-        return False
-
-    @property
-    def is_user_defined(self):
-        return not self.name.startswith('<')
-
-
-class VariablePaperPrintSettingListItem(PrintSettingListItem):
-    def __init__(self):
-        PrintSettingListItem.__init__(self, None)
-        # always compatible
-        self.is_compatible = True
-
-    @property
-    def name(self):
-        return "<Variable Paper Size>"
-
-    @property
-    def allows_variable_paper(self):
-        return True
-
-
-
-class EditNamingFormatsWindow(forms.WPFWindow):
-    def __init__(self, xaml_file_name, start_with=None):
-        forms.WPFWindow.__init__(self, xaml_file_name)
-        self._starting_item = start_with
-        self._saved = False
-        self.reset_naming_formats()
-        self._setup_param_types()
-        self.reset_formatters()
-        self.namingformat_changed(None, None)
-
-    @staticmethod
-    def get_builtin_fields():
-        return [
-            NamingField('Built-In', 'Print Index', '{index}', '0001'),
-            NamingField('Built-In', 'Sheet Number', '{number}', 'A1.00'),
-            NamingField('Built-In', 'Sheet Name', '{name}', '1ST FLOOR PLAN'),
-            NamingField('Built-In', 'Sheet Name Dash', '{name_dash}', '1ST-FLOOR-PLAN'),
-            NamingField('Built-In', 'Sheet Name Underline', '{name_underline}', '1ST_FLOOR_PLAN'),
-            NamingField('Built-In', 'Current Date', '{current_date}', '2026-03-09'),
-            NamingField('Built-In', 'Sheet Issue Date', '{issue_date}', '2026-03-09'),
-            NamingField('Built-In', 'Revision Number', '{rev_number}', '01'),
-            NamingField('Built-In', 'Revision Description', '{rev_desc}', 'TENDER'),
-            NamingField('Built-In', 'Revision Date', '{rev_date}', '2026-03-09'),
-            NamingField('Built-In', 'Project Name', '{proj_name}', 'MY_PROJECT'),
-            NamingField('Built-In', 'Project Number', '{proj_number}', 'PR2026.01'),
-            NamingField('Built-In', 'Project Building Name', '{proj_building_name}', 'BLDG01'),
-            NamingField('Built-In', 'Project Issue Date', '{proj_issue_date}', '2026-03-09'),
-            NamingField('Built-In', 'Project Organization Name', '{proj_org_name}', 'MYCOMP'),
-            NamingField('Built-In', 'Project Status', '{proj_status}', 'ISSUED'),
-            NamingField('Built-In', 'Username', '{username}', HOST_APP.username or 'user'),
-            NamingField('Built-In', 'Revit Version', '{revit_version}', str(HOST_APP.version)),
-            NamingField('Built-In', 'Model Name', '{model_name}',
-                        op.splitext(revit.doc.Title or op.basename(revit.doc.PathName or 'MODEL'))[0]),
-        ]
-
-    @staticmethod
-    def get_default_naming_formats():
-        return [
-            NamingFormat(
-                name='Sheet Number_Rev.pdf',
-                template='{number}_{rev_number}.pdf',
-                builtin=True,
-                rules=[
-                    NamingRule('Print Index', '{index}', 'Built-In', '', '', ' ', '0001'),
-                    NamingRule('Sheet Number', '{number}', 'Built-In', '', '', ' ', 'S.00'),
-                    NamingRule('Current Revision', '{rev_number}', 'Built-In', '', '', '', 'A'),
-                ]
-            ),
-            NamingFormat(
-                name='Sheet Number_[Rev].pdf',
-                template='{number}_[{rev_number}].pdf',
-                builtin=True,
-                rules=[
-                    NamingRule('Print Index', '{index}', 'Built-In', '', '', ' ', '0001'),
-                    NamingRule('Sheet Number', '{number}', 'Built-In', '', '', ' ', 'A1.00'),
-                    NamingRule('Current Revision', '{rev_number}', 'Built-In', '', '', '', '1ST FLOOR PLAN'),
-                ]
-            ),
-            NamingFormat(
-                name='Sheet Number-[Rev].pdf',
-                template='{number}-[{rev_number}].pdf',
-                builtin=True,
-                rules=[
-                    NamingRule('Print Index', '{index}', 'Built-In', '', '', ' ', '0001'),
-                    NamingRule('Sheet Number', '{number}', 'Built-In', '', '', ' ', 'A1.00'),
-                    NamingRule('Current Revision', '{rev_number}', 'Built-In', '', '', '', '1ST FLOOR PLAN'),
-                ]
-            ),
-        ]
-
-    @staticmethod
-    def get_naming_formats():
-        naming_formats = EditNamingFormatsWindow.get_default_naming_formats()
-        naming_formats_data = config.get_option('namingformats', {})
-
-        # Clean up any header separator entries that got saved accidentally
-        SKIP_NAMES = {'— Default —', '— Custom —', '-- Default --', '-- Custom --'}
-
-        for fmt_name, fmt_data in naming_formats_data.items():
-            if fmt_name in SKIP_NAMES:
-                continue
-            if isinstance(fmt_data, dict):
-                template = fmt_data.get('template', '')
-                rules_data = fmt_data.get('rules', [])
-
-                fmt = NamingFormat(
-                    name=fmt_name,
-                    template=template,
-                    builtin=False
-                )
-
-                fmt.rules.Clear()
-                for rule_data in rules_data:
-                    fmt.rules.Add(
-                        NamingRule(
-                            name=rule_data.get('name', ''),
-                            token=rule_data.get('token', ''),
-                            source=rule_data.get('source', ''),
-                            prefix=rule_data.get('prefix', ''),
-                            suffix=rule_data.get('suffix', ''),
-                            separator=rule_data.get('separator', ''),
-                            sample=rule_data.get('sample', '')
-                        )
-                    )
-
-                if fmt.rules.Count == 0 and template:
-                    fmt.load_rules_from_template()
-
-                naming_formats.append(fmt)
-
-            else:
-                # backward compatibility with old template-only saved formats
-                fmt = NamingFormat(name=fmt_name, template=fmt_data, builtin=False)
-                fmt.load_rules_from_template()
-                naming_formats.append(fmt)
-
-        return naming_formats
-
-    @staticmethod
-    def set_naming_formats(naming_formats):
-        naming_formats_dict = {}
-        SKIP_NAMES = {'— Default —', '— Custom —', '-- Default --', '-- Custom --'}
-
-        for fmt in naming_formats:
-            if fmt.builtin:
-                continue
-            if getattr(fmt, '_is_header', False) or fmt.name in SKIP_NAMES:
-                continue
-
-            try:
-                fmt.rebuild_template_from_rules()
-            except Exception:
-                pass
-
-            rules_data = []
-            for rule in fmt.rules:
-                rules_data.append({
-                    'name': getattr(rule, 'name', ''),
-                    'token': getattr(rule, 'token', ''),
-                    'source': getattr(rule, 'source', ''),
-                    'prefix': getattr(rule, 'prefix', ''),
-                    'suffix': getattr(rule, 'suffix', ''),
-                    'separator': getattr(rule, 'separator', ''),
-                    'sample': getattr(rule, 'sample', '')
-                })
-
-            naming_formats_dict[fmt.name] = {
-                'template': fmt.template,
-                'rules': rules_data
-            }
-
-        config.namingformats = naming_formats_dict
-        script.save_config()
-
-    @property
-    def naming_formats(self):
-        return self.formats_lb.ItemsSource
-
-    @property
-    def selected_naming_format(self):
-        return self.formats_lb.SelectedItem
-
-    @selected_naming_format.setter
-    def selected_naming_format(self, value):
-        self.formats_lb.SelectedItem = value
-        try:
-            self.namingformat_edit.DataContext = value
-        except Exception:
-            pass
-
-    @property
-    def selected_paramtype(self):
-        try:
-            item = self.paramtype_cb.SelectedItem
-            return str(item.Content)
-        except Exception:
-            return 'Built-In'
-
-    def _setup_param_types(self):
-        self.paramtype_cb.SelectedIndex = 0
-
-    def _sample_sheet(self):
-        return DB.FilteredElementCollector(revit.doc).OfClass(framework.get_type(DB.ViewSheet)).WhereElementIsNotElementType().FirstElement()
-
-    def _sample_view(self):
-        views = DB.FilteredElementCollector(revit.doc).OfClass(DB.View).WhereElementIsNotElementType().ToElements()
-        for v in views:
-            try:
-                if not v.IsTemplate:
-                    return v
-            except Exception:
-                pass
-        return None
-
-    def _sample_titleblock(self):
-        return DB.FilteredElementCollector(revit.doc).OfCategory(DB.BuiltInCategory.OST_TitleBlocks).WhereElementIsNotElementType().FirstElement()
-
-    def _safe_param_name(self, param):
-        try:
-            if param and param.Definition and param.Definition.Name:
-                return param.Definition.Name
-        except Exception:
-            pass
-        return None
-
-    def _safe_sample_value(self, param):
-        try:
-            val = revit.query.get_param_value(param)
-            if val is None:
-                return ''
-            return str(val)
-        except Exception:
-            return ''
-
-    def _collect_fields_from_element(self, element, source_name, token_prefix):
-        fields = []
-        seen = set()
-        if not element:
-            return fields
-        try:
-            params = list(element.Parameters)
-        except Exception:
-            params = []
-        for param in params:
-            pname = self._safe_param_name(param)
-            if not pname or pname in seen:
-                continue
-            seen.add(pname)
-            fields.append(NamingField(source_name, pname, '{{{}:{}}}'.format(token_prefix, pname), self._safe_sample_value(param) or pname))
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _collect_titleblock_fields(self):
-        fields = []
-        seen = set()
-        tblock = self._sample_titleblock()
-        elems = []
-        if tblock:
-            elems.append(tblock)
-            try:
-                ttype = revit.doc.GetElement(tblock.GetTypeId())
-                if ttype:
-                    elems.append(ttype)
-            except Exception:
-                pass
-        for elem in elems:
-            for field in self._collect_fields_from_element(elem, 'Title Block', 'tblock_param'):
-                if field.name not in seen:
-                    seen.add(field.name)
-                    fields.append(field)
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _collect_global_parameter_fields(self):
-        fields = []
-        gps = DB.FilteredElementCollector(revit.doc).OfClass(DB.GlobalParameter).ToElements()
-        for gp in gps:
-            try:
-                name = gp.Name
-                sample = name
-                fields.append(NamingField('Global Parameter', name, '{glob_param:' + name + '}', sample))
-            except Exception:
-                pass
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _get_fields_for_param_type(self, param_type):
-        if param_type == 'Built-In':
-            return EditNamingFormatsWindow.get_builtin_fields()
-        elif param_type == 'Sheet':
-            return self._collect_fields_from_element(self._sample_sheet(), 'Sheet', 'sheet_param')
-        elif param_type == 'Title Block':
-            return self._collect_titleblock_fields()
-        elif param_type == 'Project Information':
-            return self._collect_fields_from_element(revit.doc.ProjectInformation, 'Project Information', 'proj_param')
-        elif param_type == 'Global Parameter':
-            return self._collect_global_parameter_fields()
-        elif param_type == 'Views':
-            return self._collect_fields_from_element(self._sample_view(), 'Views', 'view_param')
-        return []
-
-    def reset_formatters(self):
-        self._all_fields = self._get_fields_for_param_type(self.selected_paramtype)
-        self.formatters_wp.ItemsSource = ObjectModel.ObservableCollection[object](self._all_fields)
-        try:
-            self.search_tb.Text = ''
-        except Exception:
-            pass
-
-    def search_fields_changed(self, sender, args):
-        try:
-            query = self.search_tb.Text.strip().lower()
-        except Exception:
-            return
-        fields = getattr(self, '_all_fields', [])
-        if query:
-            fields = [f for f in fields if query in f.name.lower()]
-        self.formatters_wp.ItemsSource = ObjectModel.ObservableCollection[object](fields)
-
-    def reset_naming_formats(self):
-        all_formats = EditNamingFormatsWindow.get_naming_formats()
-        builtins = [f for f in all_formats if f.builtin]
-        custom = [f for f in all_formats if not f.builtin]
-        col = ObjectModel.ObservableCollection[object]()
-        # group header marker for builtins
-        header_default = NamingFormat(name='— Default —', builtin=True)
-        header_default._is_header = True
-        col.Add(header_default)
-        for f in builtins:
-            col.Add(f)
-        if custom:
-            header_custom = NamingFormat(name='— Custom —', builtin=False)
-            header_custom._is_header = True
-            col.Add(header_custom)
-            for f in custom:
-                col.Add(f)
-        self.formats_lb.ItemsSource = col
-        # select starting item
-        if isinstance(self._starting_item, NamingFormat):
-            for item in col:
-                if item.name == self._starting_item.name:
-                    self.selected_naming_format = item
-                    break
-        else:
-            # select first non-header
-            for i, item in enumerate(col):
-                if not getattr(item, '_is_header', False):
-                    self.formats_lb.SelectedIndex = i
-                    break
-
-    def paramtype_changed(self, sender, args):
-        try:
-            self.search_tb.Text = ''
-        except Exception:
-            pass
-        self.reset_formatters()
-
-    def namingformat_changed(self, sender, args):
-        naming_format = self.selected_naming_format
-        # skip header separator items
-        if naming_format and getattr(naming_format, '_is_header', False):
-            return
-        try:
-            self.namingformat_edit.DataContext = naming_format
-        except Exception:
-            pass
-        if naming_format:
-            if hasattr(naming_format, 'rules') and naming_format.rules.Count == 0:
-                naming_format.load_rules_from_template()
-            self.rules_dg.ItemsSource = naming_format.rules
-            self._update_rule_preview()
-
-    def _update_rule_preview(self):
-        naming_format = self.selected_naming_format
-        if not naming_format:
-            self.preview_tb.Text = ''
-            return
-        # Try to build preview from the actual first sheet (print index 000)
-        preview = ''
-        try:
-            sheet_list = getattr(self, 'sheet_list', None) or []
-            first_sheet = sheet_list[0] if sheet_list else None
-            if first_sheet:
-                doc = self.selected_doc
-                template = self._resolve_template_project_params(
-                    naming_format.template, doc)
-                self._update_print_filename(template, first_sheet)
-                preview = first_sheet.print_filename
-        except Exception:
-            pass
-        # Fallback to sample values if no sheet available
-        if not preview:
-            for rule in naming_format.rules:
-                preview += '{}{}{}{}'.format(
-                    rule.prefix or '',
-                    rule.sample or rule.name or '',
-                    rule.suffix or '',
-                    rule.separator or '')
-            preview = preview.rstrip(' -_') + '.pdf'
-        self.preview_tb.Text = preview
-
-    def _sync_rules_to_template(self):
-        naming_format = self.selected_naming_format
-        if not naming_format:
-            return
-        naming_format.rebuild_template_from_rules()
-        self._update_rule_preview()
-
-    def add_rule(self, sender, args):
-        naming_format = self.selected_naming_format
-        if not naming_format:
-            return
-        selected = list(self.formatters_wp.SelectedItems)
-        if not selected:
-            return
-        for field in selected:
-            naming_format.rules.Add(NamingRule(field.name, field.token, field.source, '', '', '', field.sample))
-        self.rules_dg.ItemsSource = naming_format.rules
-        self._sync_rules_to_template()
-
-    def remove_rule(self, sender, args):
-        naming_format = self.selected_naming_format
-        rule = self.rules_dg.SelectedItem
-        if not naming_format or not rule:
-            return
-        naming_format.rules.Remove(rule)
-        self._sync_rules_to_template()
-
-    def move_rule_up(self, sender, args):
-        naming_format = self.selected_naming_format
-        rule = self.rules_dg.SelectedItem
-        if not naming_format or not rule:
-            return
-        idx = naming_format.rules.IndexOf(rule)
-        if idx > 0:
-            naming_format.rules.Move(idx, idx - 1)
-            self.rules_dg.SelectedItem = rule
-            self._sync_rules_to_template()
-
-    def move_rule_down(self, sender, args):
-        naming_format = self.selected_naming_format
-        rule = self.rules_dg.SelectedItem
-        if not naming_format or not rule:
-            return
-        idx = naming_format.rules.IndexOf(rule)
-        if idx < naming_format.rules.Count - 1:
-            naming_format.rules.Move(idx, idx + 1)
-            self.rules_dg.SelectedItem = rule
-            self._sync_rules_to_template()
-
-    def rules_changed(self, sender, args):
-        self._sync_rules_to_template()
-
-    def import_profiles(self, sender, args):
-        try:
-            dlg = Forms.OpenFileDialog()
-            dlg.Title = 'Import Naming Profiles'
-            dlg.Filter = 'JSON files (*.json)|*.json|All files (*.*)|*.*'
-            dlg.DefaultExt = 'json'
-            if dlg.ShowDialog() != Forms.DialogResult.OK:
-                return
-            with open(dlg.FileName, 'r') as f:
-                data = json.load(f)
-            if not isinstance(data, dict):
-                forms.alert('Invalid profile file.')
-                return
-            imported = 0
-            # Skip any items that are header separators
-            SKIP_NAMES = {'— Default —', '— Custom —', '-- Default --', '-- Custom --'}
-            for fmt_name, fmt_data in data.items():
-                if fmt_name in SKIP_NAMES:
-                    continue
-                if not isinstance(fmt_data, dict):
-                    continue
-                template = fmt_data.get('template', '')
-                rules_data = fmt_data.get('rules', [])
-                fmt = NamingFormat(name=fmt_name, template=template, builtin=False)
-                fmt.rules.Clear()
-                for rd in rules_data:
-                    fmt.rules.Add(NamingRule(
-                        name=rd.get('name', ''),
-                        token=rd.get('token', ''),
-                        source=rd.get('source', ''),
-                        prefix=rd.get('prefix', ''),
-                        suffix=rd.get('suffix', ''),
-                        separator=rd.get('separator', ''),
-                        sample=rd.get('sample', '')
-                    ))
-                self.naming_formats.Add(fmt)
-                imported += 1
-            forms.alert('Imported {} profile(s).'.format(imported))
-        except Exception as e:
-            forms.alert('Import failed: {}'.format(e))
-
-    def export_profiles(self, sender, args):
-        try:
-            # Let user pick which profiles to export using same window as filter profiles
-            all_formats = [f for f in self.naming_formats
-                          if not getattr(f, '_is_header', False)]
-            if not all_formats:
-                forms.alert("No naming profiles to export.")
-                return
-            picker   = ProfileExportPickerWindow(all_formats)
-            selected = picker.show()
-            if not selected:
-                return
-
-            dlg = Forms.SaveFileDialog()
-            dlg.Title = 'Export Naming Profiles'
-            dlg.Filter = 'JSON files (*.json)|*.json|All files (*.*)|*.*'
-            dlg.DefaultExt = 'json'
-            dlg.FileName = 'jason_exporter_profiles.json'
-            if dlg.ShowDialog() != Forms.DialogResult.OK:
-                return
-            export_data = {}
-            for fmt in selected:
-                rules_data = []
-                for rule in fmt.rules:
-                    rules_data.append({
-                        'name': getattr(rule, 'name', ''),
-                        'token': getattr(rule, 'token', ''),
-                        'source': getattr(rule, 'source', ''),
-                        'prefix': getattr(rule, 'prefix', ''),
-                        'suffix': getattr(rule, 'suffix', ''),
-                        'separator': getattr(rule, 'separator', ''),
-                        'sample': getattr(rule, 'sample', '')
-                    })
-                export_data[fmt.name] = {
-                    'template': fmt.template,
-                    'rules': rules_data
-                }
-            with open(dlg.FileName, 'w') as f:
-                json.dump(export_data, f, indent=2)
-            forms.alert('Exported {} profile(s) to:\n{}'.format(
-                len(export_data), dlg.FileName))
-        except Exception as e:
-            forms.alert('Export failed: {}'.format(e))
-
-    def duplicate_namingformat(self, sender, args):
-        naming_format = self.selected_naming_format
-        new_naming_format = NamingFormat(name='<unnamed>', template=naming_format.template)
-        for rule in naming_format.rules:
-            new_naming_format.rules.Add(NamingRule(rule.name, rule.token, rule.source, rule.prefix, rule.suffix, rule.separator, rule.sample))
-        self.naming_formats.Add(new_naming_format)
-        self.selected_naming_format = new_naming_format
-        self.namingformat_changed(None, None)
-
-    def delete_namingformat(self, sender, args):
-        naming_format = self.selected_naming_format
-        if not naming_format:
-            return
-        if naming_format.builtin or getattr(naming_format, '_is_header', False):
-            return
-        item_index = self.naming_formats.IndexOf(naming_format)
-        self.naming_formats.Remove(naming_format)
-        next_index = min([item_index, self.naming_formats.Count - 1])
-        self.selected_naming_format = self.naming_formats[next_index]
-        self.namingformat_changed(None, None)
-
-    def save_formats(self, sender, args):
-        naming_format = self.selected_naming_format
-
-        if naming_format:
-            try:
-                naming_format.rebuild_template_from_rules()
-            except Exception:
-                pass
-
-            # if editing a built-in format, convert it to custom first
-            if getattr(naming_format, 'builtin', False):
-                new_format = NamingFormat(
-                    name=naming_format.name,
-                    template=naming_format.template,
-                    builtin=False
-                )
-
-                new_format.rules.Clear()
-                for rule in naming_format.rules:
-                    new_format.rules.Add(
-                        NamingRule(
-                            name=getattr(rule, 'name', ''),
-                            token=getattr(rule, 'token', ''),
-                            source=getattr(rule, 'source', ''),
-                            prefix=getattr(rule, 'prefix', ''),
-                            suffix=getattr(rule, 'suffix', ''),
-                            separator=getattr(rule, 'separator', ''),
-                            sample=getattr(rule, 'sample', '')
-                        )
-                    )
-
-                item_index = self.naming_formats.IndexOf(naming_format)
-                self.naming_formats[item_index] = new_format
-                self.selected_naming_format = new_format
-
-        EditNamingFormatsWindow.set_naming_formats(self.naming_formats)
-        self._saved = True
-        self.Close()
-
-    def cancelled(self, sender, args):
-        if not self._saved:
-            self.reset_naming_formats()
-
-    def show_dialog(self):
-        self.namingformat_changed(None, None)
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self)
-            helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        from System.Windows.Input import Key as _Key
-        def _naming_escape(sender, args):
-            if args.Key == _Key.Escape:
-                args.Handled = True
-                self.Close()
-        self.PreviewKeyDown += _naming_escape
-        self.ShowDialog()
-
-class SheetSetList(object):
-    is_separator = False
-    is_sep_str   = 'False'
-    """List of sheets from a named Revit Sheet Set."""
-    def __init__(self, view_sheetset):
-        self.doc = view_sheetset.Document
-        self.name = view_sheetset.Name
-        self.sheetset = view_sheetset
-
-    def get_sheets(self, doc):
-        if doc != self.doc:
-            return []
-        # Use OrderedViewList (Revit 2023+) to respect saved sheet order.
-        # Falls back to unordered Views on older versions.
-        try:
-            ordered = self.sheetset.OrderedViewList
-            if ordered is not None:
-                return list(ordered)
-        except Exception:
-            pass
-        return list(self.sheetset.Views)
-
-class ScheduleSheetList(object):
-    is_separator = False
-    is_sep_str   = 'False'
-    def __init__(self, view_shedule):
-        self.doc = view_shedule.Document
-        self.name = view_shedule.Name
-        self.schedule = view_shedule
-
-    def get_sheets(self, doc):
-        return self._get_ordered_schedule_sheets(doc)
-
-    def _get_schedule_text_data(self, view_shedule):
-        schedule_data_file = \
-            script.get_instance_data_file(str(get_elementid_value(view_shedule.Id)))
-        vseop = DB.ViewScheduleExportOptions()
-        vseop.TextQualifier = coreutils.get_enum_none(DB.ExportTextQualifier)
-        view_shedule.Export(op.dirname(schedule_data_file),
-                             op.basename(schedule_data_file),
-                             vseop)
-
-        sched_data = []
-        try:
-            with codecs.open(schedule_data_file, 'r', EXPORT_ENCODING) \
-                    as sched_data_file:
-                lines = [x.strip() for x in sched_data_file.readlines()]
-                # First line is the schedule header row — skip it
-                return lines[1:] if len(lines) > 1 else []
-        except Exception as open_err:
-            logger.error('Error opening sheet index export: %s | %s',
-                         schedule_data_file, open_err)
-            return sched_data
-
-    def _order_sheets_by_schedule_data(self, view_shedule, sheet_list):
-        sched_data = self._get_schedule_text_data(view_shedule)
-
-        if not sched_data:
-            return sheet_list
-
-        ordered_sheets_dict = {}
-        for sheet in sheet_list:
-            logger.debug('finding index for: %s', sheet.SheetNumber)
-            for line_no, data_line in enumerate(sched_data):
-                match_pattern = r'(^|.*\t){}(\t.*|$)'.format(sheet.SheetNumber)
-                matches_sheet = re.match(match_pattern, data_line)
-                logger.debug('match: %s', matches_sheet)
-                try:
-                    if matches_sheet:
-                        ordered_sheets_dict[line_no] = sheet
-                        break
-                    if not sheet.CanBePrinted:
-                        logger.debug('Sheet %s is not printable.',
-                                     sheet.SheetNumber)
-                except Exception:
-                    continue
-
-        sorted_keys = sorted(ordered_sheets_dict.keys())
-        return [ordered_sheets_dict[x] for x in sorted_keys]
-
-    def _get_ordered_schedule_sheets(self, doc):
-        if doc == self.doc:
-            sheets = DB.FilteredElementCollector(self.doc,
-                                                 self.schedule.Id)\
-                    .OfClass(framework.get_type(DB.ViewSheet))\
-                    .WhereElementIsNotElementType()\
-                    .ToElements()
-
-            return self._order_sheets_by_schedule_data(
-                self.schedule,
-                sheets
-                )
-        return []
-
-
-class SeparatorItem(object):
-    """Non-selectable header separator in the Sheet Index dropdown."""
-    def __init__(self, label):
-        self.name         = label
-        self.is_separator = True
-        self.is_sep_str   = 'True'
-
-    def get_sheets(self, doc):
-        return []
-
-
-class AppearInSheetList(object):
-    """Default -- sheets where SHEET_SCHEDULED=1 (appear in sheet list)."""
-    is_separator = False
-    is_sep_str   = 'False'
-    @property
-    def name(self):
-        return "<Appear in Sheet List>"
-
-    def get_sheets(self, doc):
-        scheduled_param_id = DB.ElementId(DB.BuiltInParameter.SHEET_SCHEDULED)
-        param_prov = DB.ParameterValueProvider(scheduled_param_id)
-        param_equality = DB.FilterNumericEquals()
-        value_rule = DB.FilterIntegerRule(param_prov, param_equality, 1)
-        param_filter = DB.ElementParameterFilter(value_rule)
-        return DB.FilteredElementCollector(doc)\
-                 .OfClass(framework.get_type(DB.ViewSheet))\
-                 .WherePasses(param_filter)\
-                 .WhereElementIsNotElementType()\
-                 .ToElements()
-
-
-class AllSheetsList(object):
-    """All sheets regardless of whether they appear in the sheet list."""
-    is_separator = False
-    is_sep_str   = 'False'
-    @property
-    def name(self):
-        return "<All Sheets>"
-
-    def get_sheets(self, doc):
-        return DB.FilteredElementCollector(doc)\
-                 .OfClass(framework.get_type(DB.ViewSheet))\
-                 .WhereElementIsNotElementType()\
-                 .ToElements()
-
-
-class UnlistedSheetsList(object):
-    """Sheets where SHEET_SCHEDULED=0 (not appearing in sheet list)."""
-    is_separator = False
-    is_sep_str   = 'False'
-    @property
-    def name(self):
-        return "<Unlisted Sheets>"
-
-    def get_sheets(self, doc):
-        scheduled_param_id = DB.ElementId(DB.BuiltInParameter.SHEET_SCHEDULED)
-        param_prov = DB.ParameterValueProvider(scheduled_param_id)
-        param_equality = DB.FilterNumericEquals()
-        value_rule = DB.FilterIntegerRule(param_prov, param_equality, 0)
-        param_filter = DB.ElementParameterFilter(value_rule)
-        return DB.FilteredElementCollector(doc)\
-                 .OfClass(framework.get_type(DB.ViewSheet))\
-                 .WherePasses(param_filter)\
-                 .WhereElementIsNotElementType()\
-                 .ToElements()
-
-
-
-
-# Default columns always shown in the grid — cannot be removed
-LOCKED_COLUMNS = [
-    'Print Index',
-    'Sheet Number',
-    'Sheet Name',
-    'Sheet Revision (Sort By Date)',
-]
-
-
-class ColumnPickerDialog(forms.WPFWindow):
-    """Two-pane column picker.
-    All columns (defaults + user) are moveable freely.
-    Defaults cannot be removed but can be repositioned.
-    Order in active list sets DataGrid DisplayIndex on OK.
-    """
-
-    def __init__(self, xaml_file_name, parent_window):
-        forms.WPFWindow.__init__(self, xaml_file_name)
-        self._parent     = parent_window
-        self._all_fields = []
-        from System.Windows.Input import Key as _Key
-        def _col_escape(sender, args):
-            if args.Key == _Key.Escape:
-                args.Handled = True
-                self.Close()
-        self.PreviewKeyDown += _col_escape
-
-        from System.Windows.Controls import ListBoxItem as _LBI
-
-        # System columns managed separately — never shown in dialog
-        SYSTEM_COLS = {'File Name (PDF)', 'File Name (DWG)', 'Print Setting'}
-
-        # Build active list from current DataGrid column order (by DisplayIndex)
-        existing_user = self._get_extra_column_names()
-
-        # Start with full default list, then append user cols
-        all_active = list(LOCKED_COLUMNS) + [
-            n for n in existing_user
-            if n not in LOCKED_COLUMNS and n not in SYSTEM_COLS]
-
-        for name in all_active:
-            item = _LBI()
-            item.Content  = ('[Default] ' + name
-                             if name in LOCKED_COLUMNS else name)
-            item.Tag      = name
-            # Locked = cannot be removed, but CAN be moved
-            item.IsEnabled = True
-            self.active_lb.Items.Add(item)
-
-        self._last_avail = []
-        self.available_lb.SelectionChanged += self._snap_selection
-        self.paramtype_cb.SelectedIndex = 0
-
-    # ── Helpers ────────────────────────────────────────────────────────────
-
-    def _get_extra_column_names(self):
-        from System.Windows import Visibility
-        SYSTEM_COLS = {'File Name (PDF)', 'File Name (DWG)', 'Print Setting'}
-        names = []
-        for col_name in self._parent.EXTRA_COLS:
-            try:
-                col = self._parent.FindName(col_name)
-                if col is None:
-                    continue
-                if col.Visibility == Visibility.Visible and col.Header:
-                    h = str(col.Header)
-                    if h and h not in SYSTEM_COLS:
-                        names.append(h)
-            except Exception:
-                pass
-        return names
-
-    def _active_all_items(self):
-        return [self.active_lb.Items.GetItemAt(i)
-                for i in range(self.active_lb.Items.Count)]
-
-    def _active_all_tags(self):
-        return [str(item.Tag) for item in self._active_all_items()]
-
-    def _active_user_names(self):
-        return [str(item.Tag) for item in self._active_all_items()
-                if str(item.Tag) not in LOCKED_COLUMNS]
-
-    def _active_ordered_names(self):
-        """All names in current active order — defaults + user combined."""
-        return self._active_all_tags()
-
-    def _rebuild_available(self, query=''):
-        from System.Windows.Controls import ListBoxItem as _LBI
-        active = set(self._active_all_tags())
-        self.available_lb.Items.Clear()
-        for field in self._all_fields:
-            if field.name in active:
-                continue
-            if query and query not in field.name.lower():
-                continue
-            item = _LBI()
-            item.Content = field.name
-            item.Tag     = field.name
-            self.available_lb.Items.Add(item)
-
-    # ── Field collectors ───────────────────────────────────────────────────
-
-    def _sample_sheet(self):
-        return DB.FilteredElementCollector(revit.doc)\
-            .OfClass(framework.get_type(DB.ViewSheet))\
-            .WhereElementIsNotElementType().FirstElement()
-
-    def _sample_view(self):
-        for v in DB.FilteredElementCollector(revit.doc).OfClass(DB.View)\
-                .WhereElementIsNotElementType().ToElements():
-            try:
-                if not v.IsTemplate:
-                    return v
-            except Exception:
-                pass
-        return None
-
-    def _sample_titleblock(self):
-        return DB.FilteredElementCollector(revit.doc)\
-            .OfCategory(DB.BuiltInCategory.OST_TitleBlocks)\
-            .WhereElementIsNotElementType().FirstElement()
-
-    def _fields_from_elem(self, element, source, prefix):
-        fields = []
-        seen   = set()
-        if not element:
-            return fields
-        try:
-            params = list(element.Parameters)
-        except Exception:
-            params = []
-        for param in params:
-            try:
-                pname = param.Definition.Name
-            except Exception:
-                continue
-            if not pname or pname in seen:
-                continue
-            seen.add(pname)
-            try:
-                val    = revit.query.get_param_value(param)
-                sample = str(val) if val else ''
-            except Exception:
-                sample = ''
-            fields.append(NamingField(source, pname,
-                          '{{{}:{}}}'.format(prefix, pname), sample))
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _titleblock_fields(self):
-        fields = []
-        seen   = set()
-        tb     = self._sample_titleblock()
-        elems  = [tb] if tb else []
-        if tb:
-            try:
-                tt = revit.doc.GetElement(tb.GetTypeId())
-                if tt:
-                    elems.append(tt)
-            except Exception:
-                pass
-        for elem in elems:
-            for f in self._fields_from_elem(elem, 'Title Block', 'tblock_param'):
-                if f.name not in seen:
-                    seen.add(f.name)
-                    fields.append(f)
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _global_fields(self):
-        fields = []
-        try:
-            for gp in DB.FilteredElementCollector(revit.doc)\
-                    .OfClass(DB.GlobalParameter).ToElements():
-                fields.append(NamingField('Global Parameter', gp.Name,
-                              '{glob_param:' + gp.Name + '}', gp.Name))
-        except Exception:
-            pass
-        fields.sort(key=lambda x: x.name.lower())
-        return fields
-
-    def _fields_for_type(self, ptype):
-        if ptype == 'Built-In':
-            return EditNamingFormatsWindow.get_builtin_fields()
-        if ptype == 'Sheet':
-            return self._fields_from_elem(
-                self._sample_sheet(), 'Sheet', 'sheet_param')
-        if ptype == 'Title Block':
-            return self._titleblock_fields()
-        if ptype == 'Project Information':
-            return self._fields_from_elem(
-                revit.doc.ProjectInformation, 'Project Information', 'proj_param')
-        if ptype == 'Global Parameter':
-            return self._global_fields()
-        if ptype == 'Views':
-            return self._fields_from_elem(
-                self._sample_view(), 'Views', 'view_param')
-        return []
-
-    # ── Event handlers ─────────────────────────────────────────────────────
-
-    def paramtype_changed(self, sender, args):
-        try:
-            self.search_tb.Text = ''
-        except Exception:
-            pass
-        try:
-            ptype = str(self.paramtype_cb.SelectedItem.Content)
-        except Exception:
-            ptype = 'Built-In'
-        self._all_fields = self._fields_for_type(ptype)
-        self._rebuild_available()
-
-    def search_changed(self, sender, args):
-        try:
-            q = self.search_tb.Text.strip().lower()
-        except Exception:
-            q = ''
-        self._rebuild_available(q)
-
-    def _snap_selection(self, sender, args):
-        self._last_avail = [str(self.available_lb.Items.GetItemAt(i).Tag)
-                            for i in range(self.available_lb.Items.Count)
-                            if self.available_lb.Items.GetItemAt(i).IsSelected]
-
-    def add_column(self, sender, args):
-        from System.Windows.Controls import ListBoxItem as _LBI
-        names = self._last_avail or [
-            str(self.available_lb.Items.GetItemAt(i).Tag)
-            for i in range(self.available_lb.Items.Count)
-            if self.available_lb.Items.GetItemAt(i).IsSelected]
-        active = set(self._active_all_tags())
-        for name in names:
-            if name and name not in active:
-                item = _LBI()
-                item.Content = name
-                item.Tag     = name
-                self.active_lb.Items.Add(item)
-                active.add(name)
-        self._last_avail = []
-        q = ''
-        try:
-            q = self.search_tb.Text.strip().lower()
-        except Exception:
-            pass
-        self._rebuild_available(q)
-        # Live-update DataGrid columns so adds are visible immediately
-        user_params = self._active_user_names()
-        self._parent._update_extra_columns(user_params)
-
-    def remove_column(self, sender, args):
-        # Collect selected non-locked items via SelectedItems (works with Extended mode)
-        try:
-            selected = list(self.active_lb.SelectedItems)
-        except Exception:
-            selected = [self.active_lb.Items.GetItemAt(i)
-                        for i in range(self.active_lb.Items.Count)
-                        if self.active_lb.Items.GetItemAt(i).IsSelected]
-        to_remove = [item for item in selected
-                     if str(item.Tag) not in LOCKED_COLUMNS]
-        for item in to_remove:
-            self.active_lb.Items.Remove(item)
-        q = ''
-        try:
-            q = self.search_tb.Text.strip().lower()
-        except Exception:
-            pass
-        self._rebuild_available(q)
-        # Live-update DataGrid columns so data doesn't go blank --
-        # apply the current active list immediately (same as clicking OK)
-        user_params = self._active_user_names()
-        self._parent._update_extra_columns(user_params)
-
-    def move_up(self, sender, args):
-        idx = self.active_lb.SelectedIndex
-        if idx <= 0:
-            return
-        item = self.active_lb.Items.GetItemAt(idx)
-        self.active_lb.Items.Remove(item)
-        self.active_lb.Items.Insert(idx - 1, item)
-        self.active_lb.SelectedIndex = idx - 1
-
-    def move_down(self, sender, args):
-        idx = self.active_lb.SelectedIndex
-        if idx < 0 or idx >= self.active_lb.Items.Count - 1:
-            return
-        item = self.active_lb.Items.GetItemAt(idx)
-        self.active_lb.Items.Remove(item)
-        self.active_lb.Items.Insert(idx + 1, item)
-        self.active_lb.SelectedIndex = idx + 1
-
-    def ok_clicked(self, sender, args):
-        try:
-            ordered = self._active_ordered_names()
-            self._parent._apply_column_order(ordered)
-        except Exception as e:
-            import traceback
-            forms.alert('Column apply error:\n' + str(e) + '\n\n' + traceback.format_exc())
-        finally:
-            self.Close()
-
-    def cancel_clicked(self, sender, args):
-        self.Close()
-
-
-# ============================================================
-# FILTER SYSTEM -- copied from Jason Revisions
-# ============================================================
-
-def _wire_escape_to_close(win):
-    """Wire Escape key to close a WPF window without closing the parent.
-    Checks IsActive so child dialogs don't bubble Escape to the main window.
-    Copied from Jason Revisions.
-    """
-    try:
-        from System.Windows.Input import Key
-        def _on_key_down(sender, args):
-            try:
-                if args.Key == Key.Escape:
-                    if getattr(sender, 'IsActive', True):
-                        sender.Close()
-            except Exception:
-                pass
-        win.KeyDown += _on_key_down
-    except Exception:
-        pass
-
-
-class FilterRule(object):
-    """One row in the filter editor -- column / condition / value."""
-    def __init__(self):
-        self.column_name = ""
-        self.condition   = "(none)"
-        self.value       = ""
-
-
-class FilterProfile(object):
-    # Named filter profile for quick reuse.
-    def __init__(self, name, rules, match_mode="AND", sheet_no="", sheet_name="",
-                 manual_order=None, order_rules=None):
-        self.name         = name
-        self.rules        = rules
-        self.match_mode   = match_mode
-        self.sheet_no     = sheet_no
-        self.sheet_name   = sheet_name
-        # manual_order: list of ElementId int values (sheet order saved by drag)
-        self.manual_order = manual_order or []
-        # order_rules: dict with 'priority_tokens', 'match_field', 'match_mode'
-        self.order_rules  = order_rules or {}
-
-
-class SortRule(object):
-    """One sort row -- column name + ascending/descending."""
-    def __init__(self):
-        self.column_name = "(none)"
-        self.ascending   = True
-
-
-def _restore_sort_rules(saved_list):
-    rules = []
-    for item in (saved_list or []):
-        r = SortRule()
-        r.column_name = item.get("column_name", "(none)")
-        r.ascending   = item.get("ascending", True)
-        rules.append(r)
-    return rules
-
-
-def _restore_filter_rules(saved_list):
-    rules = []
-    for item in (saved_list or []):
-        r = FilterRule()
-        r.column_name = item.get("column_name", "")
-        r.condition   = item.get("condition",   "(none)")
-        r.value       = item.get("value",       "")
-        rules.append(r)
-    return rules
-
-
-def _restore_filter_profiles(saved_list):
-    profiles = []
-    for item in (saved_list or []):
-        try:
-            rules = _restore_filter_rules(item.get("rules", []))
-            profiles.append(FilterProfile(
-                name         = item.get("name", ""),
-                rules        = rules,
-                match_mode   = item.get("match_mode", "AND"),
-                sheet_no     = item.get("sheet_no",   ""),
-                sheet_name   = item.get("sheet_name", ""),
-                manual_order = item.get("manual_order", []),
-                order_rules  = item.get("order_rules",  {}),
-            ))
-        except Exception:
-            pass
-    return profiles
-
-
-def apply_filter_rule(sheet_item, rule):
-    """Apply a single FilterRule to a ViewSheetListItem.
-    Returns True if the item passes (should be shown).
-    """
-    if not rule.column_name or rule.condition == "(none)":
-        return True
-    col = rule.column_name
-    # Read cell value from the sheet item
-    if col == "Sheet Number":
-        cell_val = sheet_item.number or ""
-    elif col == "Sheet Name":
-        cell_val = sheet_item.name or ""
-    else:
-        # Read directly from the Revit sheet parameter
-        try:
-            param = sheet_item.revit_sheet.LookupParameter(col)
-            if param:
-                cell_val = (param.AsString() or param.AsValueString() or "")
-            else:
-                cell_val = ""
-        except Exception:
-            cell_val = ""
-    cond = rule.condition
-    val  = (rule.value or "").strip().lower()
-    cell = cell_val.strip().lower() if cell_val else ""
-    if cond == "parameter exists":            return True
-    if cond == "equals":                      return cell == val
-    if cond == "does not equal":              return cell != val
-    if cond == "contains":                    return val in cell
-    if cond == "does not contain":            return val not in cell
-    if cond == "begins with":                 return cell.startswith(val)
-    if cond == "does not begin with":         return not cell.startswith(val)
-    if cond == "ends with":                   return cell.endswith(val)
-    if cond == "does not end with":           return not cell.endswith(val)
-    if cond == "has a value":                 return bool(cell_val and cell_val.strip())
-    if cond == "has no value":                return not bool(cell_val and cell_val.strip())
-    if cond in ("is greater than", "is greater than or equal to",
-                "is less than",    "is less than or equal to"):
-        try:
-            fv, fc = float(val), float(cell)
-            if cond == "is greater than":             return fc > fv
-            if cond == "is greater than or equal to": return fc >= fv
-            if cond == "is less than":                return fc < fv
-            if cond == "is less than or equal to":    return fc <= fv
-        except Exception:
-            if cond == "is greater than":             return cell > val
-            if cond == "is greater than or equal to": return cell >= val
-            if cond == "is less than":                return cell < val
-            if cond == "is less than or equal to":    return cell <= val
-    return True
-
-
-class ShowHideColumnsWindow(object):
-    """Checkbox list of active extra columns -- tick=visible, untick=hidden.
-    Returns set of hidden param names on OK, None on Cancel.
-    """
-
-    _XAML = """<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Show/Hide Columns"
-        Width="340" Height="420"
-        MinWidth="260" MinHeight="200"
-        WindowStartupLocation="CenterScreen"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI" FontSize="11">
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Text="Show/Hide Columns"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1"
-                   Text="Tick to show, untick to hide. Fixed columns cannot be hidden."
-                   FontSize="10" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,10"/>
-        <ScrollViewer Grid.Row="2"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled"
-                      Margin="0,0,0,12">
-            <StackPanel x:Name="col_list"/>
-        </ScrollViewer>
-        <StackPanel Grid.Row="3" Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <Button x:Name="cancel_btn" Content="Cancel"
-                    Height="32" MinWidth="90" Padding="12,0"
-                    Margin="0,0,8,0"
-                    Background="#F5F5F5" Foreground="#1A1A1A"
-                    BorderBrush="#DEDEDE" BorderThickness="1"/>
-            <Button x:Name="ok_btn" Content="Apply"
-                    Height="32" MinWidth="90" Padding="12,0"
-                    Background="#1A6EBF" Foreground="#FFFFFF"
-                    BorderThickness="0"/>
-        </StackPanel>
-    </Grid>
-</Window>"""
-
-    def __init__(self, active_col_names, hidden_columns):
-        from System.Windows.Markup import XamlReader as _XR
-        from System.Windows.Controls import CheckBox as _CB
-        import System.Windows as _SW
-
-        self._result = None
-        self._win    = _XR.Parse(self._XAML.strip())
-        col_list     = self._win.FindName("col_list")
-        self._checkboxes = []
-
-        for name in active_col_names:
-            cb           = _CB()
-            cb.Content   = name
-            cb.IsChecked = (name not in hidden_columns)
-            cb.Margin    = _SW.Thickness(0, 0, 0, 6)
-            col_list.Children.Add(cb)
-            self._checkboxes.append((name, cb))
-
-        self._win.FindName("ok_btn").Click     += self._ok
-        self._win.FindName("cancel_btn").Click += self._cancel
-        _wire_escape_to_close(self._win)
-
-    def _ok(self, sender, args):
-        self._result = set(name for name, cb in self._checkboxes
-                           if not cb.IsChecked)
-        self._win.Close()
-
-    def _cancel(self, sender, args):
-        self._result = None
-        self._win.Close()
-
-    def show(self):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self._win)
-            helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        self._win.ShowDialog()
-        return self._result
-
-
-class SortingWindow(forms.WPFWindow):
-    """4-row sorting dialog -- exact copy of Jason Revisions SortingWindow.
-    Active columns shown by default; Show All Parameters expands to all params.
-    """
-
-    _ROW_COUNT = 4
-
-    def __init__(self, active_col_names, existing_rules, all_params=None):
-        forms.WPFWindow.__init__(self, "Sorting_ui.xaml")
-
-        self._col_names   = list(active_col_names)
-        self._rules       = list(existing_rules)
-        self._all_params  = list(all_params or [])
-        self._showing_all = False
-        self.result       = None
-
-        self._rows = []
-        for i in range(1, self._ROW_COUNT + 1):
-            col_cb  = getattr(self, "sort_col_%d"  % i)
-            asc_rb  = getattr(self, "sort_asc_%d"  % i)
-            desc_rb = getattr(self, "sort_desc_%d" % i)
-            self._rows.append((col_cb, asc_rb, desc_rb))
-
-        # Auto show_all if saved rule uses param not in active cols
-        active_names = self._build_col_names(show_all=False)
-        for rule in self._rules:
-            if rule.column_name not in active_names:
-                self._showing_all = True
-                break
-
-        self._populate_columns(show_all=self._showing_all)
-        self._prefill_rules()
-
-        if self._showing_all:
-            try:
-                self.show_all_params_btn.Content = "Show Active Columns Only"
-            except Exception:
-                pass
-
-        from System.Windows.Input import Key as _Key
-        def _on_preview_key(sender, args):
-            if args.Key == _Key.Escape:
-                args.Handled = True
-                self.Close()
-        self.PreviewKeyDown += _on_preview_key
-
-    def _get_combo_text(self, combo):
-        item = combo.SelectedItem
-        if item is None:
-            return "(none)"
-        return item.Content if hasattr(item, "Content") else str(item)
-
-    def _build_col_names(self, show_all=False):
-        core = ["(none)", "Sheet Number", "Sheet Name"]
-        if show_all and self._all_params:
-            extra = [p for p in self._all_params if p not in core]
-        else:
-            extra = [n for n in self._col_names if n not in core]
-        return core + [e for e in extra if e not in core]
-
-    def _populate_columns(self, show_all=False):
-        from System.Windows.Controls import ComboBoxItem as _CBI
-        col_names = self._build_col_names(show_all)
-        current = [self._get_combo_text(cb) for cb, _, _ in self._rows]
-        for idx, (col_cb, asc_rb, desc_rb) in enumerate(self._rows):
-            col_cb.Items.Clear()
-            for name in col_names:
-                item = _CBI()
-                item.Content = name
-                col_cb.Items.Add(item)
-            prev = current[idx] if idx < len(current) else "(none)"
-            col_cb.SelectedIndex = col_names.index(prev) if prev in col_names else 0
-
-    def _prefill_rules(self):
-        col_names = self._build_col_names(self._showing_all)
-        for i, rule in enumerate(self._rules):
-            if i >= self._ROW_COUNT:
-                break
-            col_cb, asc_rb, desc_rb = self._rows[i]
-            if rule.column_name in col_names:
-                col_cb.SelectedIndex = col_names.index(rule.column_name)
-            asc_rb.IsChecked  = bool(rule.ascending)
-            desc_rb.IsChecked = not bool(rule.ascending)
-
-    def _collect_rules(self):
-        rules = []
-        for col_cb, asc_rb, desc_rb in self._rows:
-            col_name = self._get_combo_text(col_cb)
-            if col_name and col_name != "(none)":
-                r = SortRule()
-                r.column_name = col_name
-                r.ascending   = bool(asc_rb.IsChecked)
-                rules.append(r)
-        return rules
-
-    def sort_ok_clicked(self, sender, args):
-        self.result = self._collect_rules()
-        self.Close()
-
-    def sort_cancel_clicked(self, sender, args):
-        self.result = None
-        self.Close()
-
-    def sort_clear_clicked(self, sender, args):
-        for col_cb, asc_rb, desc_rb in self._rows:
-            col_cb.SelectedIndex = 0
-            asc_rb.IsChecked     = True
-            desc_rb.IsChecked    = False
-
-    def sort_show_all_params_clicked(self, sender, args):
-        self._showing_all = not self._showing_all
-        self._populate_columns(show_all=self._showing_all)
-        try:
-            self.show_all_params_btn.Content = (
-                "Show Active Columns Only" if self._showing_all
-                else "Show All Parameters"
-            )
-        except Exception:
-            pass
-
-    def show(self):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self)
-            helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        self.ShowDialog()
-        return self.result
-
-
-
-
-# =============================================================================
-# View3D picker, IFC options, NWC options, 3D DWG options
-# =============================================================================
-
-class DWG3DOptionsWindow(forms.WPFWindow):
-    # 3D DWG export options dialog. Loaded from DWG3DOptions_ui.xaml.
-
-    def __init__(self, xaml_file, naming_formats, saved_opts=None):
-        forms.WPFWindow.__init__(self, xaml_file)
-        self.result     = None
-        self._saved     = saved_opts or {}
-        self._fmt_items = naming_formats
-        self._setup_combos()
-        self._restore()
-        self.PreviewKeyDown += self._key_down
-
-    def _setup_combos(self):
-        self.dwg3d_namingformat_cb.ItemsSource = self._fmt_items
-        if self._fmt_items:
-            self.dwg3d_namingformat_cb.SelectedIndex = 0
-
-    def _restore(self):
-        from System.Windows import Visibility
-        d    = self._saved
-        mode = d.get('naming_mode', 'view')  # 'view', 'file', 'format'
-        self.dwg3d_use_viewname_rb.IsChecked = (mode == 'view')
-        self.dwg3d_use_filename_rb.IsChecked = (mode == 'file')
-        self.dwg3d_use_format_rb.IsChecked   = (mode == 'format')
-        self.dwg3d_format_panel.Visibility   = Visibility.Visible if mode == 'format' else Visibility.Collapsed
-        saved_fmt = d.get('naming_format_name', '')
-        if saved_fmt:
-            for i, fmt in enumerate(self._fmt_items or []):
-                if hasattr(fmt, 'name') and fmt.name == saved_fmt:
-                    self.dwg3d_namingformat_cb.SelectedIndex = i
-                    break
-        self.dwg3d_shared_coords_cb.IsChecked = d.get('shared_coords', False)
-        self.dwg3d_merged_views_cb.IsChecked  = d.get('merged_views',  True)
-
-    def dwg3d_naming_mode_changed(self, sender, args):
-        from System.Windows import Visibility
-        use_fmt = True if self.dwg3d_use_format_rb.IsChecked else False
-        self.dwg3d_format_panel.Visibility = Visibility.Visible if use_fmt else Visibility.Collapsed
-
-    def _collect(self):
-        if self.dwg3d_use_filename_rb.IsChecked:
-            mode = 'file'
-        elif self.dwg3d_use_format_rb.IsChecked:
-            mode = 'format'
-        else:
-            mode = 'view'
-        fmt = self.dwg3d_namingformat_cb.SelectedItem if mode == 'format' else None
-        return {
-            'naming_mode':        mode,
-            'use_naming_format':  mode == 'format',
-            'naming_format_name': fmt.name if fmt and hasattr(fmt, 'name') else '',
-            'naming_format':      fmt,
-            'shared_coords':      True if self.dwg3d_shared_coords_cb.IsChecked else False,
-            'merged_views':       True if self.dwg3d_merged_views_cb.IsChecked  else False,
-        }
-
-    def edit_formats_3d_dwg(self, sender, args):
-        dlg = EditNamingFormatsWindow('EditNamingFormats.xaml')
-        dlg.ShowDialog()
-        # Reload naming formats so any newly added format appears in the combo
-        updated = EditNamingFormatsWindow.get_naming_formats()
-        self.dwg3d_namingformat_cb.ItemsSource = updated
-        if updated:
-            self.dwg3d_namingformat_cb.SelectedIndex = 0
-
-    def ok_clicked(self, sender, args):
-        self.result = self._collect()
-        self.Close()
-
-    def cancel_clicked(self, sender, args):
-        self.result = None
-        self.Close()
-
-    def _key_down(self, sender, args):
-        from System.Windows.Input import Key
-        if args.Key == Key.Escape:
-            args.Handled = True
-            self.Close()
-
-    def show(self):
-        self.ShowDialog()
-        return self.result
-
-class View3DListItem(object):
-    """Wraps a Revit View3D for display in the picker list."""
-    def __init__(self, view3d):
-        self._view = view3d
-
-    @property
-    def name(self):
-        return self._view.Name
-
-    @property
-    def view_id(self):
-        return self._view.Id
-
-    @property
-    def revit_view(self):
-        return self._view
-
-
-class View3DPickerWindow(object):
-    """Modeless-style dialog to pick one or more 3D views.
-    Uses XamlReader.Parse inline XAML + Shift/Ctrl multi-select ListBox.
-    Returns list of View3DListItem or None if cancelled.
-    """
-
-    _XAML = """<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Select 3D Views"
-        Width="420" Height="480"
-        MinWidth="320" MinHeight="300"
-        WindowStartupLocation="CenterScreen"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-        <Grid Margin="16">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Select 3D Views"
-                       FontSize="14" FontWeight="Bold"
-                       Foreground="#1A1A1A" Margin="0,0,0,4"/>
-            <TextBlock Grid.Row="1"
-                       FontSize="11" Foreground="#6B6B6B"
-                       TextWrapping="Wrap" Margin="0,0,0,8">
-                Hold Shift or Ctrl to select multiple views.
-                Selected views will be exported as individual IFC/NWC files.
-            </TextBlock>
-            <ListBox x:Name="views_lb"
-                     Grid.Row="2"
-                     SelectionMode="Extended"
-                     BorderBrush="#DEDEDE" BorderThickness="1"
-                     Background="#FFFFFF"
-                     Margin="0,0,0,0">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Padding"  Value="8,4"/>
-                        <Setter Property="Cursor"   Value="Hand"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#D0E4F7"/>
-                                <Setter Property="Foreground" Value="#1A1A1A"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E8F0FB"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
-            <Grid Grid.Row="3" Margin="0,12,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="8"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="cancel_btn" Grid.Column="1"
-                        Content="Cancel"
-                        Height="32" MinWidth="90" Padding="12,0"
-                        Background="#F5F5F5" Foreground="#1A1A1A"
-                        BorderBrush="#DEDEDE" BorderThickness="1"/>
-                <Button x:Name="ok_btn" Grid.Column="3"
-                        Content="OK"
-                        Height="32" MinWidth="90" Padding="12,0"
-                        Background="#1A6EBF" Foreground="#FFFFFF"
-                        FontWeight="SemiBold" BorderThickness="0"/>
-            </Grid>
-        </Grid>
-    </Window>"""
-
-    def __init__(self, view_items, selected_ids=None):
-        """
-        view_items   -- list of View3DListItem
-        selected_ids -- set of ElementId previously chosen (for restore)
-        """
-        from System.Windows.Markup import XamlReader
-        self.result = None
-        self._items = view_items
-        self._selected_ids = selected_ids or set()
-        # XamlReader.Parse is the correct method for inline XAML strings
-        self._win = XamlReader.Parse(self._XAML.strip())
-        self._wire_events()
-        self._populate()
-
-    def _wire_events(self):
-        from System.Windows.Interop import WindowInteropHelper
-        import System
-        helper = WindowInteropHelper(self._win)
-        helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        self._win.FindName('ok_btn').Click     += self._ok_clicked
-        self._win.FindName('cancel_btn').Click += self._cancel_clicked
-        _wire_escape_to_close(self._win)
-
-    def _populate(self):
-        lb = self._win.FindName('views_lb')
-        from System.Windows.Controls import ListBoxItem
-        for item in self._items:
-            lbi = ListBoxItem()
-            lbi.Content = item.name
-            lbi.Tag     = item
-            try:
-                if int(get_elementid_value(item.view_id)) in self._selected_ids:
-                    lbi.IsSelected = True
-            except Exception:
-                pass
-            lb.Items.Add(lbi)
-
-    def _ok_clicked(self, sender, args):
-        lb = self._win.FindName('views_lb')
-        selected = []
-        for lbi in lb.Items:
-            if lbi.IsSelected:
-                selected.append(lbi.Tag)
-        self.result = selected if selected else None
-        self._win.Close()
-
-    def _cancel_clicked(self, sender, args):
-        self.result = None
-        self._win.Close()
-
-    def show(self):
-        self._win.ShowDialog()
-        return self.result
-
-
-# IFCOptionsWindow removed -- IFC export now uses named Revit export setups.
-# Setup name is stored in self._ifc_setup_name on the main window.
-
-
-class NWCOptionsWindow(forms.WPFWindow):
-    # NWC export options dialog. Loaded from NWCOptions_ui.xaml.
-
-    COORD_OPTIONS = [
-        ('Shared Coordinates', 'Shared'),
-        ('Project Internal',   'Internal'),
-    ]
-    CLASH_OPTIONS = [
-        ('None',      'None'),
-        ('Clash',     'Clash'),
-        ('Clearance', 'Clearance'),
-    ]
-
-    def __init__(self, xaml_file, naming_formats=None, saved_opts=None):
-        forms.WPFWindow.__init__(self, xaml_file)
-        self.result     = None
-        self._saved     = saved_opts or {}
-        self._fmt_items = naming_formats or []
-        self._setup_combos()
-        self._restore()
-        self.PreviewKeyDown += self._key_down
-
-    def _setup_combos(self):
-        self.nwc_coords_cb.ItemsSource       = [c[0] for c in self.COORD_OPTIONS]
-        self.nwc_clash_cb.ItemsSource        = [c[0] for c in self.CLASH_OPTIONS]
-        self.nwc_coords_cb.SelectedIndex     = 0
-        self.nwc_clash_cb.SelectedIndex      = 0
-        self.nwc_namingformat_cb.ItemsSource = self._fmt_items
-        if self._fmt_items:
-            self.nwc_namingformat_cb.SelectedIndex = 0
-
-    def _restore(self):
-        from System.Windows import Visibility
-        d    = self._saved
-        mode = d.get('naming_mode', 'view')  # 'view', 'file', 'format'
-        self.nwc_use_viewname_rb.IsChecked = (mode == 'view')
-        self.nwc_use_filename_rb.IsChecked = (mode == 'file')
-        self.nwc_use_format_rb.IsChecked   = (mode == 'format')
-        self.nwc_format_panel.Visibility   = Visibility.Visible if mode == 'format' else Visibility.Collapsed
-        saved_fmt = d.get('naming_format_name', '')
-        if saved_fmt:
-            for i, fmt in enumerate(self._fmt_items or []):
-                if hasattr(fmt, 'name') and fmt.name == saved_fmt:
-                    self.nwc_namingformat_cb.SelectedIndex = i
-                    break
-        # Coords / clash
-        coord_label = d.get('coords_label', 'Shared Coordinates')
-        if coord_label in list(self.nwc_coords_cb.ItemsSource):
-            self.nwc_coords_cb.SelectedItem = coord_label
-        clash_label = d.get('clash_label', 'None')
-        if clash_label in list(self.nwc_clash_cb.ItemsSource):
-            self.nwc_clash_cb.SelectedItem = clash_label
-        # Checkboxes
-        self.nwc_element_props_cb.IsChecked     = d.get('element_props',    True)
-        self.nwc_room_geometry_cb.IsChecked     = d.get('room_geometry',    False)
-        self.nwc_room_as_attribute_cb.IsChecked = d.get('room_as_attribute', True)
-        self.nwc_links_cb.IsChecked             = d.get('export_links',     False)
-        self.nwc_parts_cb.IsChecked             = d.get('export_parts',     False)
-
-    def nwc_naming_mode_changed(self, sender, args):
-        from System.Windows import Visibility
-        use_fmt = True if self.nwc_use_format_rb.IsChecked else False
-        self.nwc_format_panel.Visibility = Visibility.Visible if use_fmt else Visibility.Collapsed
-
-    def edit_formats_nwc(self, sender, args):
-        dlg = EditNamingFormatsWindow('EditNamingFormats.xaml')
-        dlg.ShowDialog()
-        # Reload naming formats so any newly added format appears in the combo
-        updated = EditNamingFormatsWindow.get_naming_formats()
-        self.nwc_namingformat_cb.ItemsSource = updated
-        if updated:
-            self.nwc_namingformat_cb.SelectedIndex = 0
-
-    def _collect(self):
-        if self.nwc_use_filename_rb.IsChecked:
-            mode = 'file'
-        elif self.nwc_use_format_rb.IsChecked:
-            mode = 'format'
-        else:
-            mode = 'view'
-        fmt         = self.nwc_namingformat_cb.SelectedItem if mode == 'format' else None
-        coord_label = self.nwc_coords_cb.SelectedItem or 'Shared Coordinates'
-        clash_label = self.nwc_clash_cb.SelectedItem  or 'None'
-        return {
-            'naming_mode':        mode,
-            'use_naming_format':  mode == 'format',
-            'naming_format_name': fmt.name if fmt and hasattr(fmt, 'name') else '',
-            'naming_format':      fmt,
-            'coords_label':       coord_label,
-            'coords_enum':        dict(self.COORD_OPTIONS).get(coord_label, 'Shared'),
-            'clash_label':        clash_label,
-            'clash_enum':         dict(self.CLASH_OPTIONS).get(clash_label, 'None'),
-            'element_props':      True if self.nwc_element_props_cb.IsChecked else False,
-            'room_geometry':      True if self.nwc_room_geometry_cb.IsChecked else False,
-            'room_as_attribute':  True if self.nwc_room_as_attribute_cb.IsChecked else False,
-            'export_links':       True if self.nwc_links_cb.IsChecked else False,
-            'export_parts':       True if self.nwc_parts_cb.IsChecked else False,
-        }
-
-    def ok_clicked(self, sender, args):
-        self.result = self._collect()
-        self.Close()
-
-    def cancel_clicked(self, sender, args):
-        self.result = None
-        self.Close()
-
-    def _key_down(self, sender, args):
-        from System.Windows.Input import Key
-        if args.Key == Key.Escape:
-            args.Handled = True
-            self.Close()
-
-    def show(self):
-        self.ShowDialog()
-        return self.result
-
-
-
-
-class OrderRulesWindow(object):
-    # Dialog for defining rule-based sheet ordering.
-    # Lets the user define a priority token list (e.g. B7,B6,B5,B4)
-    # and a match field (Sheet Name / Sheet Number / custom param).
-    # Includes a preview of the resulting order before applying.
-
-    def __init__(self, sheet_items, all_param_names, saved_rules=None, full_sheets=None,
-                 preview_callback=None, reset_callback=None, cancel_callback=None,
-                 yellow_callback=None,
-                 parent_filter_state_getter=None, owner_hwnd=None):
-        from System.Windows.Markup import XamlReader
-        from System.Windows.Interop import WindowInteropHelper
-        import System
-
-        self._owner_hwnd      = owner_hwnd
-        self.result           = None
-        self._items           = list(sheet_items)
-        self._full_sheets     = list(full_sheets or sheet_items)
-        self._preview_callback = preview_callback
-        self._reset_callback   = reset_callback
-        self._cancel_callback  = cancel_callback
-        self._yellow_callback  = yellow_callback
-        # Live accessor for the parent's current Column Filter state, so
-        # filter changes made WHILE the Order Filter window is open are
-        # picked up on the next Preview/Apply (no stale snapshot).
-        self._get_parent_filter_state = parent_filter_state_getter
-        self._params      = ['Sheet Name', 'Sheet Number',
-                              'Sheet Number (extract)'] + [
-            p for p in (all_param_names or [])
-            if p not in ('Sheet Name', 'Sheet Number')
-        ]
-        # Configurable extract positions for "Sheet Number (extract)"
-        self._extract_start = 0   # 0-indexed start char
-        self._extract_end   = 2   # exclusive end char (default: first 2 chars)
-        self._saved       = saved_rules or {}
-
-        ns  = 'xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"'
-        nsx = 'xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"'
-        xaml = (
-            '<Window ' + ns + ' ' + nsx + ' '
-            'Title="Order Filter" '
-            'Width="580" Height="500" MinWidth="480" MinHeight="420" '
-            'WindowStartupLocation="CenterScreen" ShowInTaskbar="False" '
-            'ResizeMode="CanResizeWithGrip" Background="#FFFFFF" '
-            'FontFamily="Segoe UI" FontSize="11">'
-            '<Grid Margin="16">'
-            '<Grid.RowDefinitions>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '</Grid.RowDefinitions>'
-
-            '<TextBlock Grid.Row="0" Text="Order Filter" '
-            'FontSize="14" FontWeight="Bold" Foreground="#1A1A1A" Margin="0,0,0,4"/>'
-            '<TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B" '
-            'TextWrapping="Wrap" Margin="0,0,0,12">'
-            'Define a priority list of keywords to automatically reorder sheets. '
-            'Sheets are grouped by type and reordered within each group.'
-            '</TextBlock>'
-
-            '<Grid Grid.Row="2" Margin="0,0,0,4">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="*"/>'
-            '</Grid.ColumnDefinitions>'
-            '<TextBlock Grid.Column="0" Text="Match Field" '
-            'VerticalAlignment="Center" Foreground="#1A1A1A" Width="90"/>'
-            '<ComboBox x:Name="field_cb" Grid.Column="2" Height="26" '
-            'VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" Background="#FFFFFF"/>'
-            '</Grid>'
-
-            '<StackPanel x:Name="extract_panel" Grid.Row="3" '
-            'Orientation="Horizontal" Margin="0,0,0,4" Visibility="Collapsed">'
-            '<TextBlock Text="Extract chars" Width="90" '
-            'VerticalAlignment="Center" Foreground="#6B6B6B" FontSize="10"/>'
-            '<TextBlock Text="Start:" VerticalAlignment="Center" '
-            'Margin="0,0,4,0" Foreground="#1A1A1A"/>'
-            '<TextBox x:Name="extract_start_tb" Width="36" Height="22" '
-            'Text="0" Padding="4,0" VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1"/>'
-            '<TextBlock Text="End:" VerticalAlignment="Center" '
-            'Margin="8,0,4,0" Foreground="#1A1A1A"/>'
-            '<TextBox x:Name="extract_end_tb" Width="36" Height="22" '
-            'Text="2" Padding="4,0" VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1"/>'
-            '<TextBlock Text="(0-indexed, e.g. start=2 end=4 extracts chars 3-4)" '
-            'VerticalAlignment="Center" Margin="8,0,0,0" '
-            'Foreground="#6B6B6B" FontSize="10"/>'
-            '</StackPanel>'
-
-            '<Grid Grid.Row="4" Margin="0,0,0,8">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="*"/>'
-            '</Grid.ColumnDefinitions>'
-            '<TextBlock Grid.Column="0" Text="Match Mode" '
-            'VerticalAlignment="Center" Foreground="#1A1A1A" Width="90"/>'
-            '<StackPanel Grid.Column="2" Orientation="Horizontal">'
-            '<RadioButton x:Name="match_rb" Content="Match (exact word)" '
-            'GroupName="MatchMode" IsChecked="True" Margin="0,0,16,0" '
-            'VerticalAlignment="Center"/>'
-            '<RadioButton x:Name="contains_rb" Content="Contains" '
-            'GroupName="MatchMode" VerticalAlignment="Center"/>'
-            '</StackPanel>'
-            '</Grid>'
-
-            '<Grid Grid.Row="5" Margin="0,0,0,8">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="*"/>'
-            '</Grid.ColumnDefinitions>'
-            '<TextBlock Grid.Column="0" Text="Priority List" '
-            'VerticalAlignment="Center" Foreground="#1A1A1A" Width="90"/>'
-            '<TextBox x:Name="tokens_tb" Grid.Column="2" Height="26" '
-            'Padding="6,0" VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" '
-            'ToolTip="Comma-separated keywords in priority order e.g. B7,B6,B5,B4,GF"/>'
-            '</Grid>'
-
-            '<Grid Grid.Row="6" Margin="0,0,0,8">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="*"/>'
-            '</Grid.ColumnDefinitions>'
-            '<TextBlock Grid.Column="0" Text="Master Sort" '
-            'VerticalAlignment="Center" Foreground="#1A1A1A" Width="90"/>'
-            '<ComboBox x:Name="master_sort_cb" Grid.Column="2" Height="26" '
-            'VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" Background="#FFFFFF" '
-            'ToolTip="Sort all sheets by this field first, then apply priority rules within groups"/>'
-            '</Grid>'
-
-            '<StackPanel Grid.Row="7" Margin="0,0,0,8">'
-            '<TextBlock Text="SCOPE FILTER" FontSize="10" '
-            'FontWeight="SemiBold" Foreground="#6B6B6B" Margin="0,0,0,4"/>'
-            '<TextBlock FontSize="10" Foreground="#6B6B6B" '
-            'TextWrapping="Wrap" Margin="0,0,0,6">'
-            'Limit which sheets are reordered. '
-            'Scope Filter and Apply only to Filter are mutually exclusive -- '
-            'setting one clears the other.'
-            '</TextBlock>'
-            '<StackPanel Orientation="Horizontal" Margin="0,0,0,4">'
-            '<Button x:Name="scope_filter_btn" Content="Edit Scope Filters" '
-            'Height="26" Padding="12,0" Margin="0,0,8,0" '
-            'Background="#1A6EBF" Foreground="#FFFFFF" '
-            'FontWeight="SemiBold" BorderThickness="0" '
-            'ToolTip="Filter which sheets are eligible for reordering (clears Apply only to Filter)"/>'
-            '<Button x:Name="apply_to_filter_btn" '
-            'Content="Apply only to Filter" '
-            'Height="26" Padding="12,0" '
-            'Background="#F5A623" Foreground="#FFFFFF" '
-            'FontWeight="SemiBold" BorderThickness="0" '
-            'ToolTip="Restrict reorder scope using a column filter (clears Edit Scope Filters)"/>'
-            '</StackPanel>'
-            '<TextBlock x:Name="scope_atf_status_tb" FontSize="10" Foreground="#C0392B" '
-            'Visibility="Collapsed" Margin="0,2,0,0" FontStyle="Italic"/>'
-            '</StackPanel>'
-
-            '<StackPanel Grid.Row="8" Margin="0,0,0,8">'
-            '<TextBlock Text="ORDER FILTER PROFILES" FontSize="10" '
-            'FontWeight="SemiBold" Foreground="#6B6B6B" Margin="0,0,0,4"/>'
-            '<DockPanel Height="24" Margin="0,0,0,4">'
-            '<Button DockPanel.Dock="Right" x:Name="of_delete_btn" '
-            'Content="Delete" Height="24" Padding="8,0" Margin="4,0,0,0" '
-            'Background="#C0392B" Foreground="#FFFFFF" FontWeight="SemiBold" BorderThickness="0"/>'
-            '<Button DockPanel.Dock="Right" x:Name="of_load_btn" '
-            'Content="Load" Height="24" Padding="8,0" Margin="4,0,0,0" '
-            'Background="#F5F5F5" Foreground="#1A1A1A" BorderBrush="#DEDEDE" BorderThickness="1"/>'
-            '<Button DockPanel.Dock="Right" x:Name="of_save_btn" '
-            'Content="Save" Height="24" Padding="8,0" Margin="4,0,0,0" '
-            'Background="#1A6EBF" Foreground="#FFFFFF" FontWeight="SemiBold" BorderThickness="0"/>'
-            '<ComboBox x:Name="of_profile_cb" Height="24" '
-            'VerticalContentAlignment="Center" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" Background="#FFFFFF"/>'
-            '</DockPanel>'
-            '</StackPanel>'
-
-            '<Grid Grid.Row="9" Margin="0,12,0,0">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="*"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '</Grid.ColumnDefinitions>'
-            '<Button x:Name="reset_order_btn" Grid.Column="0" Content="Reset Order" '
-            'Height="32" Padding="12,0" '
-            'Background="#F5F5F5" Foreground="#1A1A1A" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" '
-            'ToolTip="Reset preview back to original main window order"/>'
-            '<Button x:Name="highlight_btn" Grid.Column="2" Content="Highlight" '
-            'Height="32" Padding="12,0" '
-            'Background="#F5A623" Foreground="#FFFFFF" '
-            'FontWeight="SemiBold" BorderThickness="0" '
-            'ToolTip="Highlight sheets matching the current priority tokens in yellow"/>'
-            '<Button x:Name="cancel_btn" Grid.Column="4" Content="Cancel" '
-            'Height="32" MinWidth="90" Padding="12,0" '
-            'Background="#F5F5F5" Foreground="#1A1A1A" '
-            'BorderBrush="#DEDEDE" BorderThickness="1"/>'
-            '<Button x:Name="preview_btn" Grid.Column="6" Content="Preview" '
-            'Height="32" MinWidth="90" Padding="12,0" '
-            'Background="#F5F5F5" Foreground="#1A1A1A" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" '
-            'ToolTip="Preview the new order. Moved sheets turn green, matched-not-moved stay yellow."/>'
-            '<Button x:Name="ok_btn" Grid.Column="8" Content="Apply" '
-            'Height="32" MinWidth="90" Padding="12,0" '
-            'Background="#1A6EBF" Foreground="#FFFFFF" '
-            'FontWeight="SemiBold" BorderThickness="0" '
-            'ToolTip="Commit the previewed order permanently"/>'
-            '</Grid>'
-            '</Grid>'
-            '</Window>'
-        )
-
-        self._win = XamlReader.Parse(xaml.strip())
-        helper = WindowInteropHelper(self._win)
-        try:
-            helper.Owner = (owner_hwnd if owner_hwnd
-                            else System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle)
-        except Exception:
-            pass
-
-        self._field_cb    = self._win.FindName('field_cb')
-        self._tokens_tb   = self._win.FindName('tokens_tb')
-        self._match_rb    = self._win.FindName('match_rb')
-        self._contains_rb = self._win.FindName('contains_rb')
-        # Find all controls BEFORE setting ItemsSource to avoid
-        # SelectionChanged firing before _extract_panel is assigned.
-        self._master_sort_cb   = self._win.FindName('master_sort_cb')
-        self._extract_panel    = self._win.FindName('extract_panel')
-        # Extract TextBoxes may be inside a Collapsed container --
-        # show the panel first so FindName can locate them, then hide.
-        import System.Windows as _SW2
-        if self._extract_panel is not None:
-            self._extract_panel.Visibility = _SW2.Visibility.Visible
-        self._extract_start_tb = self._win.FindName('extract_start_tb')
-        self._extract_end_tb   = self._win.FindName('extract_end_tb')
-        if self._extract_panel is not None:
-            self._extract_panel.Visibility = _SW2.Visibility.Collapsed
-        # Scope/ATF mutual-exclusion button refs (stored before _restore so
-        # _update_scope_atf_buttons can be called from _restore).
-        self._scope_btn          = self._win.FindName('scope_filter_btn')
-        self._atf_btn            = self._win.FindName('apply_to_filter_btn')
-        self._scope_atf_status_tb = self._win.FindName('scope_atf_status_tb')
-        # Wire field_cb change BEFORE setting ItemsSource
-        self._field_cb.SelectionChanged += self._field_changed
-        self._field_cb.ItemsSource   = self._params
-        self._field_cb.SelectedIndex = 0
-        _msort_opts = ['(none)'] + list(self._params)
-        if self._master_sort_cb is not None:
-            self._master_sort_cb.ItemsSource   = _msort_opts
-            self._master_sort_cb.SelectedIndex = 0
-        # scope filter rules -- stored as list of FilterRule objects
-        self._scope_rules      = []
-        self._scope_match_mode = 'AND'
-        self._atf_rules        = []   # Apply-only-to-Filter rules
-        self._atf_match_mode   = 'AND'
-
-        self._restore()
-
-        self._win.FindName('ok_btn').Click      += self._on_ok
-        self._win.FindName('cancel_btn').Click  += self._on_cancel
-        preview_btn = self._win.FindName('preview_btn')
-        if preview_btn is not None:
-            preview_btn.Click += self._on_preview
-        reset_btn = self._win.FindName('reset_order_btn')
-        if reset_btn is not None:
-            reset_btn.Click += self._on_reset
-        highlight_btn = self._win.FindName('highlight_btn')
-        if highlight_btn is not None:
-            highlight_btn.Click += lambda s, e: self._update_yellow()
-        scope_btn = self._win.FindName('scope_filter_btn')
-        if scope_btn is not None:
-            scope_btn.Click += self._open_scope_filter
-        atf_btn = self._win.FindName('apply_to_filter_btn')
-        if atf_btn is not None:
-            atf_btn.Click += self._open_apply_to_filter
-        # Profile controls
-        self._of_profile_cb  = self._win.FindName('of_profile_cb')
-        of_save    = self._win.FindName('of_save_btn')
-        of_load    = self._win.FindName('of_load_btn')
-        of_delete  = self._win.FindName('of_delete_btn')
-        if of_save:   of_save.Click   += self._of_save
-        if of_load:   of_load.Click   += self._of_load
-        if of_delete: of_delete.Click += self._of_delete
-        self._of_profiles = {}  # name -> saved_rules dict
-        self._load_of_profiles_from_config()
-        # Wire window Closing so X-button or Escape triggers cancel cleanup.
-        # _on_ok sets result before calling Close(), so Closing can check it.
-        self._win.Closing += self._on_window_closing
-        _wire_escape_to_close(self._win)
-
-    def _restore(self):
-        d = self._saved
-
-        # Tokens
-        tokens = d.get('priority_tokens', '')
-        if isinstance(tokens, list):
-            tokens = ', '.join(tokens)
-        self._tokens_tb.Text = tokens
-
-        # Match mode radio buttons
-        mode = d.get('match_mode', 'match')
-        self._contains_rb.IsChecked = (mode == 'contains')
-        self._match_rb.IsChecked    = (mode != 'contains')
-
-        # Extract positions -- set BEFORE field selection so panel shows correctly
-        self._extract_start = d.get('extract_start', 0)
-        self._extract_end   = d.get('extract_end',   2)
-        if getattr(self, '_extract_start_tb', None):
-            self._extract_start_tb.Text = str(self._extract_start)
-        if getattr(self, '_extract_end_tb', None):
-            self._extract_end_tb.Text = str(self._extract_end)
-
-        # Match field -- must be set after extract positions so _field_changed
-        # can correctly show/hide the extract panel
-        field = d.get('match_field', 'Sheet Name')
-        try:
-            items = list(self._field_cb.ItemsSource or [])
-            if field in items:
-                self._field_cb.SelectedItem = field
-            else:
-                self._field_cb.SelectedIndex = 0
-        except Exception:
-            pass
-        self._field_changed(None, None)  # show/hide extract panel
-
-        # Master sort
-        ms = d.get('master_sort', '(none)')
-        if self._master_sort_cb is not None:
-            try:
-                ms_items = list(self._master_sort_cb.ItemsSource or [])
-                if ms in ms_items:
-                    self._master_sort_cb.SelectedItem = ms
-            except Exception:
-                pass
-
-        # Scope filter rules
-        self._scope_rules      = _restore_filter_rules(d.get('scope_rules', []))
-        self._scope_match_mode = d.get('scope_match_mode', 'AND')
-        self._atf_rules        = _restore_filter_rules(d.get('atf_rules', []))
-        self._atf_match_mode   = d.get('atf_match_mode', 'AND')
-        # Enforce mutual exclusivity: old profiles may have both set.
-        # Scope takes priority if both have active rules.
-        _s_active = any(r.column_name and r.condition != '(none)'
-                        for r in (self._scope_rules or []))
-        _a_active = any(r.column_name and r.condition != '(none)'
-                        for r in (self._atf_rules or []))
-        if _s_active and _a_active:
-            self._atf_rules = []
-            self._atf_match_mode = 'AND'
-        self._update_scope_atf_buttons()
-
-    def _update_scope_atf_buttons(self):
-        """Enforce mutual exclusivity: disable the other button when one set has active rules.
-        Shows a red status line so the user knows which mode is active.
-        Safe to call before _scope_btn/_atf_btn are assigned (uses getattr).
-        """
-        from System.Windows.Media import SolidColorBrush, Color
-        import System.Windows as _SW
-        _BLUE  = SolidColorBrush(Color.FromRgb(0x1A, 0x6E, 0xBF))
-        _AMBER = SolidColorBrush(Color.FromRgb(0xF5, 0xA6, 0x23))
-        _GREY  = SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA))
-        scope_active = any(r.column_name and r.condition != '(none)'
-                           for r in (self._scope_rules or []))
-        atf_active   = any(r.column_name and r.condition != '(none)'
-                           for r in (self._atf_rules   or []))
-        scope_btn = getattr(self, '_scope_btn', None)
-        atf_btn   = getattr(self, '_atf_btn',   None)
-        status_tb = getattr(self, '_scope_atf_status_tb', None)
-        if scope_btn:
-            scope_btn.IsEnabled  = not atf_active
-            scope_btn.Background = _GREY if atf_active else _BLUE
-        if atf_btn:
-            atf_btn.IsEnabled  = not scope_active
-            atf_btn.Background = _GREY if scope_active else _AMBER
-        if status_tb:
-            if scope_active:
-                status_tb.Text       = 'Scope Filter active -- Apply only to Filter locked out'
-                status_tb.Visibility = _SW.Visibility.Visible
-            elif atf_active:
-                status_tb.Text       = 'Apply only to Filter active -- Scope Filter locked out'
-                status_tb.Visibility = _SW.Visibility.Visible
-            else:
-                status_tb.Visibility = _SW.Visibility.Collapsed
-
-    def _get_extract_start(self):
-        try:
-            if self._extract_start_tb is not None:
-                return int(self._extract_start_tb.Text or '0')
-        except Exception:
-            pass
-        return getattr(self, '_extract_start', 0)
-
-    def _get_extract_end(self):
-        try:
-            if self._extract_end_tb is not None:
-                return int(self._extract_end_tb.Text or '2')
-        except Exception:
-            pass
-        return getattr(self, '_extract_end', 2)
-
-    def _get_cell_value(self, sheet_item, field):
-        if field == 'Sheet Name':
-            return sheet_item.name or ''
-        if field == 'Sheet Number':
-            return sheet_item.number or ''
-        if field == 'Sheet Number (extract)':
-            # Extract chars [start:end] from the sheet number (0-indexed).
-            # e.g. start=2, end=4 on "108700" -> "87"
-            # e.g. start=1, end=3 on "878701" -> "78" vs start=2,end=4 -> "87"
-            num   = (sheet_item.number or '').replace('-', '').replace(' ', '')
-            start = self._extract_start
-            end   = self._extract_end
-            try:
-                start = int(self._extract_start_tb.Text or '0')
-                end   = int(self._extract_end_tb.Text   or '2')
-            except Exception:
-                pass
-            return num[start:end] if len(num) >= end else num
-        try:
-            param = sheet_item.revit_sheet.LookupParameter(field)
-            if param:
-                return param.AsString() or param.AsValueString() or ''
-        except Exception:
-            pass
-        return ''
-
-    def _field_changed(self, sender, args):
-        try:
-            import System.Windows as _SW
-            field = self._field_cb.SelectedItem or ''
-            panel = getattr(self, '_extract_panel', None)
-            if panel:
-                panel.Visibility = (_SW.Visibility.Visible
-                                    if field == 'Sheet Number (extract)'
-                                    else _SW.Visibility.Collapsed)
-        except Exception:
-            pass
-
-    def _passes_scope(self, sheet):
-        # Priority: explicit Scope Filter > ATF (Apply only to Filter) > parent Column Filter.
-        rules = [r for r in (self._scope_rules or [])
-                 if r.column_name and r.condition != '(none)']
-        if rules:
-            if self._scope_match_mode == 'OR':
-                return any(apply_filter_rule(sheet, r) for r in rules)
-            return all(apply_filter_rule(sheet, r) for r in rules)
-        # "Apply only to Filter" restricts WHICH sheets are reordered (not just highlighted).
-        atf = [r for r in (self._atf_rules or [])
-               if r.column_name and r.condition != '(none)']
-        if atf:
-            if self._atf_match_mode == 'OR':
-                return any(apply_filter_rule(sheet, r) for r in atf)
-            return all(apply_filter_rule(sheet, r) for r in atf)
-        parent_rules, parent_mode = self._live_parent_filter()
-        active = [r for r in parent_rules
-                  if r.column_name and r.condition != '(none)']
-        if not active:
-            return True
-        if parent_mode == 'OR':
-            return any(apply_filter_rule(sheet, r) for r in active)
-        return all(apply_filter_rule(sheet, r) for r in active)
-
-    def _live_parent_filter(self):
-        # Returns (rules, match_mode) read live from parent every call.
-        try:
-            if self._get_parent_filter_state:
-                rules, mode = self._get_parent_filter_state()
-                return (list(rules or []), mode or 'AND')
-        except Exception:
-            pass
-        return ([], 'AND')
-
-    def _apply_rules(self, items, tokens, field, use_contains, master_sort_active=False):
-        import re as _re
-        token_list = [t.strip() for t in tokens.split(',') if t.strip()]
-        if not token_list:
-            return (list(items), list(items))
-
-        def token_priority(sheet):
-            # Returns index of first matching token, or len(token_list) if none.
-            val = self._get_cell_value(sheet, field).lower()
-            for i, tok in enumerate(token_list):
-                t = tok.lower()
-                if use_contains:
-                    if t in val:
-                        return i
-                else:
-                    if _re.search(
-                        r'(?<![A-Za-z0-9])' + _re.escape(t) + r'(?![A-Za-z0-9])',
-                        val
-                    ):
-                        return i
-            return len(token_list)
-
-        # SLOT-PRESERVING REORDER (per-group, matched-only):
-        # 1. Group key = the column name used by the first scope filter rule.
-        #    e.g. scope rules on RBG_SheetSeries -> group by RBG_SheetSeries
-        #    Each scope value becomes its own group.
-        # 2. Within each group: find slots holding MATCHED sheets, sort those
-        #    sheets by token priority, drop back into the same slots.
-        # 3. Unmatched in-scope sheets and out-of-scope sheets never move.
-        # Group column: scope filter column takes priority. If no scope
-        # rules are set, fall back to the FIRST main Column Filter column
-        # (the user's mental model is "my main filter defines the groups").
-        active_scope_rules = [r for r in (self._scope_rules or [])
-                              if r.column_name and r.condition != '(none)']
-        if active_scope_rules:
-            group_column = active_scope_rules[0].column_name
-        else:
-            parent_rules, _ = self._live_parent_filter()
-            active_parent_rules = [r for r in parent_rules
-                                   if r.column_name and r.condition != '(none)']
-            group_column = (active_parent_rules[0].column_name
-                            if active_parent_rules else None)
-
-        # Read extract bounds once for use in group_key below.
-        # Mirrors the same read in _get_cell_value so groups align with tokens.
-        _extract_start = self._extract_start
-        _extract_end   = self._extract_end
-        try:
-            _extract_start = int(self._extract_start_tb.Text or '0')
-            _extract_end   = int(self._extract_end_tb.Text   or '2')
-        except Exception:
-            pass
-
-        def group_key(sheet):
-            # Out-of-scope sheets get a sentinel key so they never share a
-            # group with in-scope sheets.
-            if not self._passes_scope(sheet):
-                return ('__OUT_OF_SCOPE__', id(sheet))
-            # When Master Sort is active on Sheet Number (extract), group by
-            # the leading (drawing-type) digits only: num[:_extract_start].
-            # e.g. start=2 on "108700" -> group "10"; "100060" -> group "10"
-            # is intentional -- same drawing type, different level = same group.
-            # "308700" -> group "30" = separate group (different drawing type).
-            if master_sort_active and field == 'Sheet Number (extract)':
-                num = (sheet.number or '').replace('-', '').replace(' ', '')
-                return num[:_extract_start]
-            if group_column is None:
-                return '__ALL_IN_SCOPE__'
-            if group_column == 'Sheet Number':
-                return sheet.number or ''
-            if group_column == 'Sheet Name':
-                return sheet.name or ''
-            try:
-                p = sheet.revit_sheet.LookupParameter(group_column)
-                if p:
-                    return (p.AsString() or p.AsValueString() or '')
-            except Exception:
-                pass
-            return ''
-
-        def _sort_key(s):
-            tp = token_priority(s)
-            if not (master_sort_active and field == 'Sheet Number (extract)'):
-                return (tp, 0)
-            num = (s.number or '').replace('-', '').replace(' ', '')
-            tail = num[_extract_end:]
-            try:
-                return (tp, int(tail))
-            except (ValueError, TypeError):
-                return (tp, 0)
-
-        # Bucket matched slot indices by group key
-        group_slots   = {}   # key -> [slot_idx, ...]
-        group_sheets  = {}   # key -> [sheet, ...]
-        for idx, sheet in enumerate(items):
-            if not self._passes_scope(sheet):
-                continue
-            tp = token_priority(sheet)
-            if tp >= len(token_list):
-                continue   # in-scope but unmatched -- leave in place
-            k = group_key(sheet)
-            group_slots.setdefault(k, []).append(idx)
-            group_sheets.setdefault(k, []).append(sheet)
-
-        # For each group: sort its matched sheets by token priority, then
-        # reassign into that group's slots (slots don't move, contents do).
-        # Unmatched sheets never enter group_sheets so they always retain
-        # their original positions (Master Sort order when master_sort_active).
-        result = list(items)
-        for k, slots in group_slots.items():
-            sorted_group = sorted(group_sheets[k], key=_sort_key)
-            for slot_idx, sheet in zip(slots, sorted_group):
-                result[slot_idx] = sheet
-
-        # in_scope return value (used for green highlight):
-        # the full set of in-scope sheets in their final positions, so the
-        # caller can compare ranks before/after and only green-tint moved ones.
-        in_scope_result = [s for s in result if self._passes_scope(s)]
-
-        return (result, in_scope_result)
-
-    def _on_preview(self, sender, args):
-        tokens       = self._tokens_tb.Text or ''
-        field        = self._field_cb.SelectedItem or 'Sheet Name'
-        use_contains = True if self._contains_rb.IsChecked else False
-        base_items   = list(self._items)
-        master_sort  = (self._master_sort_cb.SelectedItem
-                        if self._master_sort_cb else '(none)')
-        ms_active = bool(master_sort and master_sort != '(none)')
-        if ms_active:
-            base_items = self._master_sort_items(base_items, master_sort)
-        full_result, in_scope_result = self._apply_rules(
-            base_items, tokens, field, use_contains, master_sort_active=ms_active)
-        # Push result live to main DataGrid via callback
-        if self._preview_callback:
-            self._preview_callback(full_result, in_scope_result)
-
-    def _master_sort_items(self, items, sort_field):
-        # Sort a list of sheet items by a given field.
-        import re as _re
-        def key_fn(s):
-            val = self._get_cell_value(s, sort_field)
-            # Natural sort: split into numeric and text parts
-            parts = _re.split(r'([0-9]+)', val or '')
-            return [int(p) if p.isdigit() else p.lower() for p in parts]
-        try:
-            return sorted(items, key=key_fn)
-        except Exception:
-            return list(items)
-
-    def _on_ok(self, sender, args):
-        tokens       = self._tokens_tb.Text or ''
-        field        = self._field_cb.SelectedItem or 'Sheet Name'
-        use_contains = True if self._contains_rb.IsChecked else False
-        token_list   = [t.strip() for t in tokens.split(',') if t.strip()]
-        base_items   = list(self._items)
-        master_sort  = (self._master_sort_cb.SelectedItem
-                        if self._master_sort_cb else '(none)')
-        ms_active = bool(master_sort and master_sort != '(none)')
-        if ms_active:
-            base_items = self._master_sort_items(base_items, master_sort)
-        full_result, in_scope_result = self._apply_rules(
-            base_items, tokens, field, use_contains, master_sort_active=ms_active)
-        # Push live preview to main DataGrid before closing
-        if self._preview_callback:
-            self._preview_callback(full_result, in_scope_result)
-        self.result  = {
-            'ordered':        full_result,
-            'order_rules': {
-                'priority_tokens':  token_list,
-                'match_field':      field,
-                'match_mode':       'contains' if use_contains else 'match',
-                'scope_rules':      [{'column_name': r.column_name,
-                                      'condition':   r.condition,
-                                      'value':       r.value}
-                                     for r in (self._scope_rules or [])],
-                'scope_match_mode': self._scope_match_mode,
-                'master_sort':      (self._master_sort_cb.SelectedItem
-                                     if self._master_sort_cb else '(none)'),
-                'extract_start':    self._get_extract_start(),
-                'extract_end':      self._get_extract_end(),
-            }
-        }
-        self._win.Close()
-
-    def _open_apply_to_filter(self, sender, args):
-        # "Apply only to Filter": defines BOTH the reorder scope AND the yellow highlight.
-        # Mutually exclusive with Scope Filter: saving ATF rules clears scope rules.
-        all_params  = list(self._params)
-        all_sheets  = list(self._items)
-        editor = FilterEditorWindow(all_params, self._atf_rules, all_sheets,
-                                    initial_match_mode=self._atf_match_mode)
-        editor.show(owner_win=self._win)
-        if editor.result is not None:
-            self._atf_rules      = editor.result
-            self._atf_match_mode = editor.match_mode
-            # Clear scope rules -- mutually exclusive with Apply only to Filter
-            self._scope_rules      = []
-            self._scope_match_mode = 'AND'
-            self._update_scope_atf_buttons()
-            # Yellow-highlight the matched sheets immediately
-            if self._yellow_callback:
-                atf_ids = self._get_atf_ids()
-                self._yellow_callback(atf_ids)
-            # Re-run preview so the DataGrid reflects the new scope restriction
-            self._on_preview(None, None)
-
-    def _get_atf_ids(self):
-        # Return set of int IDs for sheets matching Apply-to-Filter rules.
-        rules = [r for r in (self._atf_rules or [])
-                 if r.column_name and r.condition != '(none)']
-        if not rules:
-            return set()
-        result = set()
-        for s in (self._items or []):
-            if self._atf_match_mode == 'OR':
-                match = any(apply_filter_rule(s, r) for r in rules)
-            else:
-                match = all(apply_filter_rule(s, r) for r in rules)
-            if match:
-                result.add(int(get_elementid_value(s.revit_sheet.Id)))
-        return result
-
-    def _get_matched_ids(self):
-        """Return int IDs of sheets matching any priority token (for yellow highlight)."""
-        import re as _re
-        tokens_txt = ''
-        try:
-            tokens_txt = self._tokens_tb.Text or ''
-        except Exception:
-            return set()
-        field = 'Sheet Name'
-        try:
-            field = self._field_cb.SelectedItem or 'Sheet Name'
-        except Exception:
-            pass
-        use_contains = True
-        try:
-            use_contains = True if self._contains_rb.IsChecked else False
-        except Exception:
-            pass
-        token_list = [t.strip() for t in tokens_txt.split(',') if t.strip()]
-        if not token_list:
-            return set()
-        matched = set()
-        for s in (self._items or []):
-            if not self._passes_scope(s):
-                continue
-            val = self._get_cell_value(s, field).lower()
-            for tok in token_list:
-                t = tok.lower()
-                if use_contains:
-                    hit = t in val
-                else:
-                    hit = bool(_re.search(
-                        r'(?<![A-Za-z0-9])' + _re.escape(t) + r'(?![A-Za-z0-9])', val
-                    ))
-                if hit:
-                    matched.add(int(get_elementid_value(s.revit_sheet.Id)))
-                    break
-        return matched
-
-    def _update_yellow(self):
-        """Push yellow IDs to main window: ATF-matched (if set) union token-matched."""
-        if self._yellow_callback:
-            try:
-                ids = self._get_matched_ids()
-                # Also include ATF-matched sheets so the yellow highlight shows
-                # the full set that will be affected (scope + token match).
-                atf = self._get_atf_ids()
-                if atf:
-                    ids = ids | atf
-                self._yellow_callback(ids)
-            except Exception:
-                pass
-
-    def _open_scope_filter(self, sender, args):
-        # Open the full FilterEditorWindow for scope filtering -- same as Column Filters.
-        # Mutually exclusive with Apply only to Filter: saving scope rules clears ATF rules.
-        all_params  = list(self._params)
-        all_sheets  = list(self._items)
-        editor = FilterEditorWindow(all_params, self._scope_rules, all_sheets,
-                                    initial_match_mode=self._scope_match_mode)
-        editor.show(owner_win=self._win)
-        if editor.result is not None:
-            self._scope_rules      = editor.result
-            self._scope_match_mode = editor.match_mode
-            # Clear ATF rules -- mutually exclusive with Scope Filter
-            self._atf_rules      = []
-            self._atf_match_mode = 'AND'
-            self._update_scope_atf_buttons()
-            # Refresh preview immediately after scope filter changes
-            self._on_preview(None, None)
-
-    def _load_of_profiles_from_config(self):
-        _OF_KEY = 'order_filter_profiles_v1'
-        try:
-            raw    = config.get_option(_OF_KEY, '{}')
-            import json as _j
-            if isinstance(raw, str) and raw.strip():
-                parsed = _j.loads(raw)
-            elif isinstance(raw, dict):
-                parsed = raw
-            else:
-                parsed = {}
-            self._of_profiles = parsed if isinstance(parsed, dict) else {}
-        except Exception:
-            self._of_profiles = {}
-        try:
-            self._refresh_of_profile_cb()
-        except Exception:
-            pass
-
-    def _save_of_profiles_to_config(self):
-        _OF_KEY = 'order_filter_profiles_v1'
-        try:
-            import json as _j
-            # Strip non-serialisable keys before saving
-            clean = {}
-            for k, v in self._of_profiles.items():
-                if isinstance(v, dict):
-                    clean[k] = v
-            raw = _j.dumps(clean)
-            setattr(config, _OF_KEY, raw)
-            script.save_config()
-        except Exception:
-            pass
-
-    def _refresh_of_profile_cb(self):
-        if self._of_profile_cb is None:
-            return
-        names = sorted(self._of_profiles.keys())
-        self._of_profile_cb.ItemsSource = names
-        if names:
-            self._of_profile_cb.SelectedIndex = 0
-
-    def _collect_current_rules(self):
-        tokens       = self._tokens_tb.Text or ''
-        field        = self._field_cb.SelectedItem or 'Sheet Name'
-        use_contains = True if self._contains_rb.IsChecked else False
-        token_list   = [t.strip() for t in tokens.split(',') if t.strip()]
-        return {
-            'priority_tokens':  token_list,
-            'match_field':      field,
-            'match_mode':       'contains' if use_contains else 'match',
-            'scope_rules':      [{'column_name': r.column_name,
-                                  'condition':   r.condition,
-                                  'value':       r.value}
-                                 for r in (self._scope_rules or [])],
-            'scope_match_mode': self._scope_match_mode,
-            'master_sort':      (self._master_sort_cb.SelectedItem
-                                 if self._master_sort_cb else '(none)'),
-            'extract_start':    self._get_extract_start(),
-            'extract_end':      self._get_extract_end(),
-            'atf_rules':        [{'column_name': r.column_name,
-                                  'condition':   r.condition,
-                                  'value':       r.value}
-                                 for r in (self._atf_rules or [])],
-            'atf_match_mode':   self._atf_match_mode,
-        }
-
-    def _of_save(self, sender, args):
-        from pyrevit import forms as _pf
-        # Pre-fill with selected profile name so user can overwrite or rename
-        default_name = ''
-        if self._of_profile_cb and self._of_profile_cb.SelectedItem:
-            default_name = str(self._of_profile_cb.SelectedItem)
-        name = _pf.ask_for_string(
-            prompt='Enter a name for this Order Filter profile:',
-            title='Save Order Filter Profile',
-            default=default_name
-        )
-        if not name or not name.strip():
-            return
-        name = name.strip()
-        self._of_profiles[name] = self._collect_current_rules()
-        self._save_of_profiles_to_config()
-        self._refresh_of_profile_cb()
-        if self._of_profile_cb:
-            self._of_profile_cb.SelectedItem = name
-
-    def _of_load(self, sender, args):
-        if not self._of_profile_cb:
-            return
-        name = self._of_profile_cb.SelectedItem
-        if not name or name not in self._of_profiles:
-            return
-        saved = self._of_profiles[name]
-        # Only populate fields -- do NOT apply order to sheet.
-        # _restore enforces mutual exclusivity (scope vs ATF) and calls
-        # _update_scope_atf_buttons so button states reflect the loaded profile.
-        self._saved = saved
-        self._restore()
-        if self._yellow_callback:
-            try:
-                self._yellow_callback(self._get_atf_ids())
-            except Exception:
-                pass
-
-    def _of_delete(self, sender, args):
-        if not self._of_profile_cb:
-            return
-        name = self._of_profile_cb.SelectedItem
-        if not name or name not in self._of_profiles:
-            return
-        del self._of_profiles[name]
-        self._save_of_profiles_to_config()
-        self._refresh_of_profile_cb()
-
-    def _on_reset(self, sender, args):
-        # Reset preview to original order from main window
-        if self._reset_callback:
-            self._reset_callback()
-
-    def _on_cancel(self, sender, args):
-        self.result = None
-        if self._cancel_callback:
-            self._cancel_callback()
-        self._win.Close()
-
-    def _on_window_closing(self, sender, args):
-        # Fires for X-button, Escape, or Close() called from a handler.
-        # _on_ok sets self.result before Close() -- when result is None,
-        # the close was a cancel (X / Escape / Cancel button), so run
-        # cleanup to restore the original order and clear all highlights.
-        # Cancel button path also routes through here but its callback
-        # was already invoked; guard with a flag so cleanup runs once.
-        if getattr(self, '_cleanup_done', False):
-            return
-        self._cleanup_done = True
-        if self.result is None and self._cancel_callback:
-            try:
-                self._cancel_callback()
-            except Exception:
-                pass
-
-    def show(self):
-        # Modeless -- floats over its owner via Win32 Owner chain.
-        # Owner = JasonExporterWindow HWND keeps the dialog above the exporter
-        # while still yielding to other apps and Revit projects.
-        from System.Windows.Threading import DispatcherFrame
-        from System.Windows.Interop import WindowInteropHelper
-        import System
-        helper = WindowInteropHelper(self._win)
-        try:
-            helper.Owner = (self._owner_hwnd if getattr(self, '_owner_hwnd', None)
-                            else System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle)
-        except Exception:
-            pass
-        self._frame = DispatcherFrame()
-        self._win.Closed += lambda s, e: setattr(self._frame, 'Continue', False)
-        self._win.Show()
-        # Show yellow highlight immediately: any sheet matching the current
-        # priority tokens lights up so the user sees what will be affected.
-        try:
-            self._update_yellow()
-        except Exception:
-            pass
-        from System.Windows.Threading import Dispatcher
-        Dispatcher.PushFrame(self._frame)
-        return self.result
-
-
-
-class ProfileExportPickerWindow(object):
-    """Pick profiles to export -- Shift/Ctrl+Click multi-select.
-    Copied from Jason Revisions.
-    """
-
-    _XAML = """<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Export Filter Profiles"
-        Width="420" Height="380"
-        MinWidth="300" MinHeight="250"
-        WindowStartupLocation="CenterScreen"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI" FontSize="11">
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Export Filter Profiles"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,6"/>
-        <TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,10">
-            Select the profiles to export. Use Shift+Click or Ctrl+Click
-            to select multiple profiles.
-        </TextBlock>
-        <ListBox x:Name="profiles_lb"
-                 Grid.Row="2"
-                 SelectionMode="Extended"
-                 Background="#F5F5F5"
-                 BorderBrush="#DEDEDE"
-                 BorderThickness="1"
-                 Margin="0,0,0,12">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Height"  Value="28"/>
-                    <Setter Property="Padding" Value="8,0"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#1A6EBF"/>
-                            <Setter Property="Foreground" Value="#FFFFFF"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#E8F0FB"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
-        <StackPanel Grid.Row="3" Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <Button x:Name="select_all_btn" Content="Select All"
-                    Height="28" MinWidth="80" Padding="12,0"
-                    Background="#F5F5F5" Foreground="#1A1A1A"
-                    BorderBrush="#DEDEDE" BorderThickness="1"
-                    Margin="0,0,8,0"/>
-            <Button x:Name="cancel_btn" Content="Cancel"
-                    Height="28" MinWidth="80" Padding="12,0"
-                    Background="#F5F5F5" Foreground="#1A1A1A"
-                    BorderBrush="#DEDEDE" BorderThickness="1"
-                    Margin="0,0,8,0"/>
-            <Button x:Name="ok_btn" Content="Export Selected"
-                    Height="28" MinWidth="80" Padding="12,0"
-                    Background="#1A6EBF" Foreground="#FFFFFF"
-                    BorderThickness="0"/>
-        </StackPanel>
-    </Grid>
-</Window>"""
-
-    def __init__(self, profiles):
-        from System.Windows.Markup import XamlReader as _XR
-        from System.Windows.Controls import ListBoxItem as _LBI
-        self._profiles = list(profiles)
-        self._selected = None
-        self._win = _XR.Parse(self._XAML.strip())
-        self._lb  = self._win.FindName("profiles_lb")
-        self._win.FindName("ok_btn").Click        += self._ok
-        self._win.FindName("cancel_btn").Click    += self._cancel
-        self._win.FindName("select_all_btn").Click += self._select_all
-        _wire_escape_to_close(self._win)
-        for p in self._profiles:
-            item = _LBI()
-            item.Content = p.name
-            item.Tag     = p
-            self._lb.Items.Add(item)
-
-    def _ok(self, sender, args):
-        selected = [self._lb.Items.GetItemAt(i).Tag
-                    for i in range(self._lb.Items.Count)
-                    if self._lb.Items.GetItemAt(i).IsSelected]
-        if not selected:
-            return
-        self._selected = selected
-        self._win.Close()
-
-    def _cancel(self, sender, args):
-        self._selected = None
-        self._win.Close()
-
-    def _select_all(self, sender, args):
-        self._lb.SelectAll()
-
-    def show(self):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self._win)
-            helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        self._win.ShowDialog()
-        return self._selected
-
-
-class FilterEditorWindow(object):
-    """6-row schedule-style filter dialog -- copied from Jason Revisions.
-    Uses XamlReader + FindName + manual += wiring (same as ManageRevisions).
-    """
-
-    _ROW_COUNT           = 12
-    _DROPDOWN_CONDITIONS = {"equals", "does not equal"}
-    _NO_VALUE_CONDITIONS = {"(none)", "parameter exists", "has a value", "has no value"}
-
-    def __init__(self, active_col_names, existing_rules, all_sheet_rows,
-                 initial_match_mode="AND"):
-        # active_col_names: column headers available for filtering.
-        # existing_rules:   list of FilterRule objects from previous session.
-        # all_sheet_rows:   list of ViewSheetListItem for unique-value dropdowns.
-        # initial_match_mode: "AND" or "OR" to pre-select the radio button.
-        self._col_names  = list(active_col_names)
-        self._rules      = list(existing_rules)
-        self._sheet_rows = all_sheet_rows
-        self._loading    = True
-
-        import System.IO as _SysIO
-        from System.Windows.Markup import XamlReader as _XR
-        import os as _os
-        xaml_path = _os.path.join(_os.path.dirname(__file__), 'FilterEditor_ui.xaml')
-        with _SysIO.FileStream(xaml_path, _SysIO.FileMode.Open,
-                               _SysIO.FileAccess.Read) as fs:
-            self._win = _XR.Load(fs)
-
-        # Each row: (col_cb, cond_cb, val_cb, val_tb)
-        self._rows = []
-        for i in range(1, self._ROW_COUNT + 1):
-            col_cb  = self._win.FindName("col_cb_%d"  % i)
-            cond_cb = self._win.FindName("cond_cb_%d" % i)
-            val_cb  = self._win.FindName("val_cb_%d"  % i)
-            val_tb  = self._win.FindName("val_tb_%d"  % i)
-            self._rows.append((col_cb, cond_cb, val_cb, val_tb))
-
-        self._match_and_rb = self._win.FindName("match_and_rb")
-        self._match_or_rb  = self._win.FindName("match_or_rb")
-
-        # Wire footer buttons
-        self._win.FindName("ok_clicked").Click        += self._ok
-        self._win.FindName("cancel_clicked").Click    += self._cancel
-        self._win.FindName("clear_all_filters").Click += self._clear_all
-        _wire_escape_to_close(self._win)
-
-        # Wire row events
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            cond_cb.SelectionChanged += self._cond_changed
-            col_cb.SelectionChanged  += self._col_changed
-
-        self.result     = None
-        self.match_mode = initial_match_mode or "AND"
-
-        self._populate_columns()
-        self._prefill_rules()
-        self._loading = False
-
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            self._update_value_field(cond_cb, val_cb, val_tb)
-
-        if self._match_or_rb and self.match_mode == "OR":
-            self._match_or_rb.IsChecked = True
-        elif self._match_and_rb:
-            self._match_and_rb.IsChecked = True
-
-    # ── Helpers ────────────────────────────────────────────────────────────
-
-    def _get_combo_text(self, combo):
-        item = combo.SelectedItem
-        if item is None:
-            return "(none)"
-        return item.Content if hasattr(item, "Content") else str(item)
-
-    def _get_val_text(self, val_cb, val_tb):
-        from System.Windows import Visibility as _Vis
-        if val_cb.Visibility == _Vis.Visible:
-            return val_cb.Text.strip() if val_cb.Text else ""
-        return val_tb.Text.strip() if val_tb.Text else ""
-
-    def _get_unique_values(self, col_name):
-        values = set()
-        for row in self._sheet_rows:
-            if col_name == "Sheet Number":
-                v = row.number or ""
-            elif col_name == "Sheet Name":
-                v = row.name or ""
-            else:
-                try:
-                    param = row.revit_sheet.LookupParameter(col_name)
-                    v = (param.AsString() or param.AsValueString() or "") if param else ""
-                except Exception:
-                    v = ""
-            if v and v.strip():
-                values.add(v.strip())
-        return sorted(list(values))
-
-    def _update_value_field(self, cond_cb, val_cb, val_tb):
-        from System.Windows import Visibility as _Vis
-        cond_text = self._get_combo_text(cond_cb)
-        if cond_text in self._NO_VALUE_CONDITIONS:
-            val_cb.Visibility = _Vis.Collapsed
-            val_tb.Visibility = _Vis.Collapsed
-            val_cb.IsEnabled  = False
-            val_tb.IsEnabled  = False
-        elif cond_text in self._DROPDOWN_CONDITIONS:
-            val_cb.Visibility = _Vis.Visible
-            val_tb.Visibility = _Vis.Collapsed
-            val_cb.IsEnabled  = True
-            val_tb.IsEnabled  = False
-        else:
-            val_cb.Visibility = _Vis.Collapsed
-            val_tb.Visibility = _Vis.Visible
-            val_cb.IsEnabled  = False
-            val_tb.IsEnabled  = True
-
-    def _populate_columns(self):
-        from System.Windows.Controls import ComboBoxItem as _CBI
-        col_names = ["(none)"] + self._col_names
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            col_cb.Items.Clear()
-            for name in col_names:
-                item = _CBI()
-                item.Content = name
-                col_cb.Items.Add(item)
-            col_cb.SelectedIndex = 0
-
-    def _populate_val_cb(self, col_cb, val_cb, saved_text=""):
-        val_cb.Items.Clear()
-        col_name = self._get_combo_text(col_cb)
-        if col_name and col_name != "(none)":
-            for v in self._get_unique_values(col_name):
-                val_cb.Items.Add(v)
-        val_cb.Text = saved_text
-
-    def _prefill_rules(self):
-        for i, rule in enumerate(self._rules):
-            if i >= self._ROW_COUNT:
-                break
-            col_cb, cond_cb, val_cb, val_tb = self._rows[i]
-            if rule.column_name and rule.column_name in self._col_names:
-                col_cb.SelectedIndex = self._col_names.index(rule.column_name) + 1
-            for j in range(cond_cb.Items.Count):
-                item = cond_cb.Items[j]
-                text = item.Content if hasattr(item, "Content") else str(item)
-                if text == rule.condition:
-                    cond_cb.SelectedIndex = j
-                    break
-            if rule.condition in self._DROPDOWN_CONDITIONS:
-                self._populate_val_cb(col_cb, val_cb, saved_text=rule.value or "")
-            else:
-                val_tb.Text = rule.value if rule.value else ""
-
-    # ── Events ─────────────────────────────────────────────────────────────
-
-    def _col_changed(self, sender, args):
-        if self._loading:
-            return
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            if col_cb is sender:
-                if self._get_combo_text(cond_cb) in self._DROPDOWN_CONDITIONS:
-                    self._populate_val_cb(col_cb, val_cb, saved_text="")
-                else:
-                    val_tb.Text = ""
-                break
-
-    def _cond_changed(self, sender, args):
-        if self._loading:
-            return
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            if cond_cb is sender:
-                current_val = self._get_val_text(val_cb, val_tb)
-                self._update_value_field(cond_cb, val_cb, val_tb)
-                if self._get_combo_text(cond_cb) in self._DROPDOWN_CONDITIONS:
-                    self._populate_val_cb(col_cb, val_cb, saved_text=current_val)
-                else:
-                    val_tb.Text = current_val
-                break
-
-    def _collect_rules(self):
-        rules = []
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            col_name  = self._get_combo_text(col_cb)
-            cond_text = self._get_combo_text(cond_cb)
-            val_text  = self._get_val_text(val_cb, val_tb)
-            if col_name and col_name != "(none)" and cond_text != "(none)":
-                r = FilterRule()
-                r.column_name = col_name
-                r.condition   = cond_text
-                r.value       = val_text
-                rules.append(r)
-        return rules
-
-    def _ok(self, sender, args):
-        self.result = self._collect_rules()
-        if self._match_or_rb and self._match_or_rb.IsChecked:
-            self.match_mode = "OR"
-        else:
-            self.match_mode = "AND"
-        self._win.Close()
-
-    def _cancel(self, sender, args):
-        self.result = None
-        self._win.Close()
-
-    def _clear_all(self, sender, args):
-        from System.Windows import Visibility as _Vis
-        self._loading = True
-        for col_cb, cond_cb, val_cb, val_tb in self._rows:
-            col_cb.SelectedIndex  = 0
-            cond_cb.SelectedIndex = 0
-            val_cb.Items.Clear()
-            val_cb.Text       = ""
-            val_tb.Text       = ""
-            val_cb.Visibility = _Vis.Collapsed
-            val_tb.Visibility = _Vis.Collapsed
-            val_cb.IsEnabled  = False
-            val_tb.IsEnabled  = False
-        self._loading = False
-
-    def show(self, owner_win=None):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self._win)
-            if owner_win is not None:
-                try:
-                    self._win.Owner = owner_win
-                except Exception:
-                    helper.Owner = WindowInteropHelper(owner_win).Handle
-            else:
-                helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        self._win.ShowDialog()
-        return self.result
-
-
-
-class EditOrderWindow(object):
-    """Drag-and-drop sheet reorder dialog.
-    - Click to select, Shift+Click / Ctrl+Click to multi-select.
-    - Click-and-hold ANY selected row to drag the whole group.
-    - Blue drop-indicator line shows insertion point while dragging.
-    - No need to hold Shift while dragging.
-    Uses XamlReader.Parse + plain ListBoxItem strings (IronPython safe).
-    """
-
-    _XAML = """<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Edit Sheet Order"
-        Width="700" Height="580"
-        MinWidth="500" MinHeight="400"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI" FontSize="11">
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Edit Sheet Order"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,6"/>
-        <TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,10">
-            Click to select rows. Shift+Click or Ctrl+Click to select multiple.
-            Click and drag any selected row to move the whole group.
-        </TextBlock>
-        <Grid Grid.Row="2">
-            <ListBox x:Name="order_lb"
-                     Background="#F5F5F5"
-                     BorderBrush="#DEDEDE"
-                     BorderThickness="1"
-                     SelectionMode="Extended"
-                     AllowDrop="True">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Height" Value="26"/>
-                        <Setter Property="Padding" Value="8,0"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="border"
-                                            Background="Transparent"
-                                            Padding="{TemplateBinding Padding}">
-                                        <ContentPresenter VerticalAlignment="Center"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#D0E4F7"/>
-                                        </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#E8F4FF"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
-            <!-- Drop indicator line overlaid on the ListBox -->
-            <Canvas x:Name="indicator_canvas"
-                    IsHitTestVisible="False">
-                <Rectangle x:Name="drop_line"
-                           Height="2" Fill="#1A6EBF"
-                           Visibility="Collapsed"
-                           Canvas.Left="0" Canvas.Top="0"/>
-            </Canvas>
-        </Grid>
-        <Grid Grid.Row="3" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="reset_btn"
-                    Content="Reset to Original Order"
-                    HorizontalAlignment="Left"
-                    Height="32" Padding="12,0"/>
-            <Button Grid.Column="1" x:Name="cancel_btn"
-                    Content="Cancel" IsCancel="True"
-                    Height="32" MinWidth="90" Padding="12,0"/>
-            <Button Grid.Column="3" x:Name="ok_btn"
-                    Content="OK" Height="32" MinWidth="90" Padding="12,0"
-                    Background="#1A6EBF" Foreground="#FFFFFF" BorderThickness="0"/>
-        </Grid>
-    </Grid>
-</Window>"""
-
-    def __init__(self, sheet_items):
-        from System.Windows.Markup import XamlReader as _XR
-        self._win = _XR.Parse(self._XAML)
-        self._lb  = self._win.FindName('order_lb')
-        self._drop_line    = self._win.FindName('drop_line')
-        self._ind_canvas   = self._win.FindName('indicator_canvas')
-
-        self._original      = list(sheet_items)
-        self._items         = list(sheet_items)
-        self.result         = None
-
-        # Drag state
-        self._drag_start_pt    = None
-        self._dragging         = False
-        self._dragged_sheets   = []
-        self._drop_index       = -1
-        self._last_clicked_idx = -1
-        self._pending_deselect = False
-        self._pre_selected     = []
-
-        # Wire events
-        self._lb.PreviewMouseLeftButtonDown += self._on_mouse_down
-        self._lb.PreviewMouseLeftButtonUp   += self._on_mouse_up
-        self._lb.PreviewMouseMove           += self._on_mouse_move
-        self._lb.DragOver                   += self._on_drag_over
-        self._lb.Drop                       += self._on_drop
-        self._lb.DragLeave                  += self._on_drag_leave
-        self._win.FindName('ok_btn').Click     += self._on_ok
-        self._win.FindName('cancel_btn').Click += self._on_cancel
-        self._win.FindName('reset_btn').Click  += self._on_reset
-        _wire_escape_to_close(self._win)
-
-        self._refresh_list()
-
-    # ── List management ────────────────────────────────────────────────────
-
-    def _refresh_list(self):
-        from System.Windows.Controls import ListBoxItem as _LBI
-        # Remember which sheets were selected
-        selected_sheets = set(id(s) for s in self._dragged_sheets)
-        self._lb.Items.Clear()
-        for i, sheet in enumerate(self._items):
-            item = _LBI()
-            item.Content = u"  {:>4}     {:12}   {}".format(
-                str(i + 1).zfill(3),
-                sheet.number or "",
-                sheet.name   or ""
-            )
-            item.Tag = sheet
-            self._lb.Items.Add(item)
-        # Restore selection
-        for i in range(self._lb.Items.Count):
-            lbi = self._lb.Items.GetItemAt(i)
-            if id(lbi.Tag) in selected_sheets:
-                lbi.IsSelected = True
-
-    def _get_lbi_at(self, point):
-        """Return the ListBoxItem under point, or None."""
-        from System.Windows.Media import VisualTreeHelper
-        hit = self._lb.InputHitTest(point)
-        obj = hit
-        while obj is not None:
-            from System.Windows.Controls import ListBoxItem as _LBI
-            if isinstance(obj, _LBI):
-                return obj
-            try:
-                obj = VisualTreeHelper.GetParent(obj)
-            except Exception:
-                break
-        return None
-
-    def _index_and_y_at(self, drag_point):
-        """Return (insert_index, indicator_y) for a drag position.
-
-        Uses TranslatePoint against each actual ListBoxItem container so
-        the result is correct regardless of scroll position, border
-        thickness, or item padding -- no Y/height arithmetic needed.
-
-        drag_point is in self._lb coordinate space (from GetPosition(self._lb)).
-        indicator_y is in self._ind_canvas coordinate space (for the drop line).
-        """
-        from System.Windows import Point as _Pt
-        count = self._lb.Items.Count
-        if count == 0:
-            return 0, 0.0
-
-        best_idx = 0
-        best_y   = 0.0
-
-        for i in range(count):
-            try:
-                lbi = self._lb.ItemContainerGenerator.ContainerFromIndex(i)
-                if lbi is None:
-                    continue
-                # Convert item's top-left corner into ListBox coordinates
-                item_top_in_lb = lbi.TranslatePoint(_Pt(0, 0), self._lb)
-                item_h         = lbi.ActualHeight
-                item_mid       = item_top_in_lb.Y + item_h * 0.5
-
-                # Convert item top into canvas coordinates for the indicator
-                item_top_in_canvas = lbi.TranslatePoint(_Pt(0, 0), self._ind_canvas)
-
-                if drag_point.Y <= item_mid:
-                    # Drop BEFORE this item
-                    best_idx = i
-                    best_y   = item_top_in_canvas.Y
-                    break
-                else:
-                    # Drop AFTER this item (keep updating until we find better)
-                    best_idx = i + 1
-                    best_y   = item_top_in_canvas.Y + item_h
-            except Exception:
-                continue
-
-        return best_idx, best_y
-
-    def _show_indicator(self, insert_idx, canvas_y):
-        from System.Windows import Visibility
-        from System.Windows.Controls import Canvas as _CV
-        try:
-            w = self._lb.ActualWidth
-            self._drop_line.Width = max(w - 4, 100)
-        except Exception:
-            self._drop_line.Width = 600
-        _CV.SetTop(self._drop_line, canvas_y - 1)
-        _CV.SetLeft(self._drop_line, 2)
-        self._drop_line.Visibility = Visibility.Visible
-
-    def _hide_indicator(self):
-        from System.Windows import Visibility
-        self._drop_line.Visibility = Visibility.Collapsed
-
-    # ── Mouse / drag events ────────────────────────────────────────────────
-
-    def _get_all_selected(self):
-        """Read selected tags directly from item objects."""
-        return [
-            self._lb.Items.GetItemAt(i).Tag
-            for i in range(self._lb.Items.Count)
-            if self._lb.Items.GetItemAt(i).IsSelected
-        ]
-
-    def _get_lbi_for_point(self, point):
-        """Return (ListBoxItem, index) under point, or (None, -1)."""
-        from System.Windows.Controls import ListBoxItem as _LBI
-        from System.Windows.Media import VisualTreeHelper
-        hit = self._lb.InputHitTest(point)
-        obj = hit
-        while obj is not None:
-            if isinstance(obj, _LBI):
-                for i in range(self._lb.Items.Count):
-                    lbi = self._lb.Items.GetItemAt(i)
-                    if lbi is obj:
-                        return lbi, i
-                return obj, -1
-            try:
-                obj = VisualTreeHelper.GetParent(obj)
-            except Exception:
-                break
-        return None, -1
-
-    def _on_mouse_down(self, sender, args):
-        import System.Windows.Input as _SWI
-        self._drag_start_pt  = args.GetPosition(self._lb)
-        self._dragging       = False
-
-        # Find which item was clicked
-        lbi, clicked_idx = self._get_lbi_for_point(self._drag_start_pt)
-
-        # Snapshot current selection BEFORE WPF modifies it
-        current = self._get_all_selected()
-
-        # Check modifier keys
-        ctrl  = _SWI.Keyboard.IsKeyDown(_SWI.Key.LeftCtrl) or                 _SWI.Keyboard.IsKeyDown(_SWI.Key.RightCtrl)
-        shift = _SWI.Keyboard.IsKeyDown(_SWI.Key.LeftShift) or                 _SWI.Keyboard.IsKeyDown(_SWI.Key.RightShift)
-
-        if lbi is None:
-            # Click on empty space -- clear selection
-            for i in range(self._lb.Items.Count):
-                self._lb.Items.GetItemAt(i).IsSelected = False
-            self._pre_selected = []
-            return
-
-        clicked_is_selected = lbi.IsSelected
-
-        if shift and self._last_clicked_idx >= 0:
-            # Shift+Click: extend selection from last click to here
-            lo = min(self._last_clicked_idx, clicked_idx)
-            hi = max(self._last_clicked_idx, clicked_idx)
-            if not ctrl:
-                for i in range(self._lb.Items.Count):
-                    self._lb.Items.GetItemAt(i).IsSelected = False
-            for i in range(lo, hi + 1):
-                self._lb.Items.GetItemAt(i).IsSelected = True
-        elif ctrl:
-            # Ctrl+Click: toggle this item
-            lbi.IsSelected = not clicked_is_selected
-        elif clicked_is_selected:
-            # Click on already-selected item: keep full selection for drag
-            # (don't clear -- let mouse-up handle it if no drag happened)
-            self._pending_deselect = True
-        else:
-            # Click on unselected item: select only this one
-            for i in range(self._lb.Items.Count):
-                self._lb.Items.GetItemAt(i).IsSelected = False
-            lbi.IsSelected = True
-            self._last_clicked_idx = clicked_idx
-            self._pending_deselect = False
-
-        if not shift and not ctrl:
-            self._last_clicked_idx = clicked_idx
-
-        # Snapshot after our manual selection update
-        self._pre_selected = self._get_all_selected()
-
-        # Suppress WPF default selection handling
-        args.Handled = True
-
-    def _on_mouse_up(self, sender, args):
-        # If we suppressed a deselect-on-mousedown (user clicked selected row
-        # but didn't drag), now apply it
-        if getattr(self, '_pending_deselect', False) and not self._dragging:
-            lbi, clicked_idx = self._get_lbi_for_point(
-                args.GetPosition(self._lb))
-            if lbi is not None:
-                for i in range(self._lb.Items.Count):
-                    self._lb.Items.GetItemAt(i).IsSelected = False
-                lbi.IsSelected = True
-                self._last_clicked_idx = clicked_idx
-        self._pending_deselect = False
-        self._drag_start_pt    = None
-        self._dragging         = False
-        self._hide_indicator()
-
-    def _on_mouse_move(self, sender, args):
-        from System.Windows import DragDropEffects, DataObject
-        import System.Windows.Input as _SWI
-        if args.LeftButton != _SWI.MouseButtonState.Pressed:
-            return
-        if self._drag_start_pt is None:
-            return
-        pos = args.GetPosition(self._lb)
-        dx  = pos.X - self._drag_start_pt.X
-        dy  = pos.Y - self._drag_start_pt.Y
-        if (dx * dx + dy * dy) < 36:
-            return
-
-        # Use the pre-selected snapshot -- guaranteed to be multi-selection
-        sheets = list(self._pre_selected)
-        if not sheets:
-            sheets = self._get_all_selected()
-        if not sheets:
-            return
-
-        self._dragging       = True
-        self._pending_deselect = False
-        self._dragged_sheets = sheets
-        import System.Windows as _SW
-        _SW.DragDrop.DoDragDrop(
-            self._lb,
-            DataObject('sheets_drag', sheets),
-            DragDropEffects.Move
-        )
-        self._hide_indicator()
-        self._dragging = False
-
-    def _on_drag_over(self, sender, args):
-        from System.Windows import DragDropEffects
-        args.Effects = DragDropEffects.Move
-        pos = args.GetPosition(self._lb)
-        idx, canvas_y = self._index_and_y_at(pos)
-        self._drop_index = idx
-        self._show_indicator(idx, canvas_y)
-        args.Handled = True
-
-    def _on_drag_leave(self, sender, args):
-        self._hide_indicator()
-
-    def _on_drop(self, sender, args):
-        self._hide_indicator()
-        if not self._dragging and not self._dragged_sheets:
-            return
-        dragged = list(self._dragged_sheets)
-        if not dragged:
-            return
-
-        insert_idx  = self._drop_index
-        dragged_ids = set(id(s) for s in dragged)
-
-        # Sort dragged by their current visual position
-        order = {id(s): i for i, s in enumerate(self._items)}
-        dragged_sorted = sorted(dragged, key=lambda s: order.get(id(s), 0))
-
-        # Count dragged items before insert_idx
-        before = sum(1 for i, s in enumerate(self._items)
-                     if id(s) in dragged_ids and i < insert_idx)
-        insert_adj = max(0, insert_idx - before)
-
-        remaining = [s for s in self._items if id(s) not in dragged_ids]
-        for i, sheet in enumerate(dragged_sorted):
-            pos = min(insert_adj + i, len(remaining))
-            remaining.insert(pos, sheet)
-
-        self._items = remaining
-        self._dragged_sheets = dragged_sorted
-        self._refresh_list()
-        self._dragged_sheets = []
-        args.Handled = True
-
-    # ── Button handlers ────────────────────────────────────────────────────
-
-    def _on_ok(self, sender, args):
-        self.result = list(self._items)
-        self._win.Close()
-
-    def _on_cancel(self, sender, args):
-        self.result = None
-        self._win.Close()
-
-    def _on_reset(self, sender, args):
-        self._items         = list(self._original)
-        self._dragged_sheets = []
-        self._refresh_list()
-
-    def show(self):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            helper = WindowInteropHelper(self._win)
-            helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-        except Exception:
-            pass
-        self._win.ShowDialog()
-        return self.result
-
-
-class JasonExporterWindow(forms.WPFWindow):
-    def __init__(self, xaml_file_name):
-        forms.WPFWindow.__init__(self, xaml_file_name)
-
-        self._init_psettings = None
-        self._scheduled_sheets = []
-        self._restoring = False
-        self._filter_rules        = []
-        self._filter_match_mode   = "AND"
-        self._filter_profiles     = []
-        self._sort_rules          = []
-        self._active_profile_name = None
-        # _hidden_columns restored from saved settings below via _restore_settings
-        self._hidden_columns      = set()
-        self._manual_order        = []   # user-defined sheet order from Edit Order dialog
-        self._order_filter_dlg    = None  # guard against opening 2 Order Filter windows
-        self._applying_preview    = False  # True while Order Filter preview is live
-        self._default_sort_param  = 'Sheet Number'  # default sort when no order active
-        self._selected_3d_views   = []   # list of View3DListItem chosen for IFC/NWC export
-        self._selected_3d_view_ids= []   # int ids persisted to config
-        self._ifc_setup_name      = ''   # name of chosen IFC export setup
-        self._nwc_options         = {}   # NWC export options dict
-        self._dwg3d_options        = {}   # 3D DWG export options dict
-
-        self.project_info = revit.query.get_project_info(doc=revit.doc)
-        self.sheet_cat_id = \
-            revit.query.get_category(DB.BuiltInCategory.OST_Sheets).Id
-
-        self._setup_naming_formats()
-        self._setup_docs_list()
-        self._init_datagrid_drag()
-
-    # doc and schedule
-    @property
-    def selected_doc(self):
-        selected_doc = self.documents_cb.SelectedItem
-        if selected_doc is None:
-            return revit.doc  # fallback to active doc during init
-        for opened_doc in revit.docs:
-            if opened_doc.GetHashCode() == selected_doc.hash:
-                return opened_doc
-
-    @property
-    def selected_sheetlist(self):
-        item = self.schedules_cb.SelectedItem
-        if item is None or getattr(item, 'is_sep_str', 'False') == 'True':
-            return None
-        return item
-
-    # misc
-    @property
-    def has_errors(self):
-        return self.errormsg_tb.Text != ''
-
-    # ordering configs
-    @property
-    def reverse_print(self):
-        return self.reverse_cb.IsChecked
-
-    @property
-    def combine_print(self):
-        return self.combine_cb.IsChecked
-
-    @property
-    def show_placeholders(self):
-        # Checkbox removed -- always show all sheets
-        return True
-
-    @property
-    def index_digits(self):
-        return int(self.index_slider.Value)
-
-    @property
-    def index_start(self):
-        return int(self.indexstart_tb.Text or 1)
-
-    @property
-    def sheet_filter(self):
-        try:
-            return self.sheetstart_tb.Text.strip()
-        except Exception:
-            return ''
-
-    @property
-    def name_filter(self):
-        try:
-            return self.namefilter_tb.Text.strip().lower()
-        except Exception:
-            return ''
-
-    @property
-    def include_placeholders(self):
-        # Checkbox removed -- always include all sheets in indexing
-        return True
-
-    # print settings
-    @property
-    def selected_naming_format(self):
-        item = self.namingformat_cb.SelectedItem
-        # Skip header separator items — they have no real name/template
-        if item and getattr(item, '_is_header', False):
-            return None
-        return item
-
-    @property
-    def selected_dwg_naming_format(self):
-        item = self.dwg_namingformat_cb.SelectedItem
-        if item and getattr(item, '_is_header', False):
-            return None
-        return item
-
-    @property
-    def selected_printer(self):
-        return self.printers_cb.SelectedItem
-
-    @property
-    def selected_print_setting(self):
-        return self.printsettings_cb.SelectedItem
-
-    @property
-    def has_print_settings(self):
-        # self.selected_print_setting implements __nonzero__
-        # manually check None-ness
-        return self.selected_print_setting is not None
-
-    @property
-    def print_settings(self):
-        return self.printsettings_cb.ItemsSource
-
-    # sheet list
-    @property
-    def sheet_list(self):
-        return self.sheets_lb.ItemsSource
-
-    @sheet_list.setter
-    def sheet_list(self, value):
-        self.sheets_lb.ItemsSource = value
-
-    @property
-    def selected_sheets(self):
-        return self.sheets_lb.SelectedItems
-
-    @property
-    def printable_sheets(self):
-        return [x for x in self.sheet_list if x.printable]
-
-    @property
-    def selected_printable_sheets(self):
-        return [x for x in self.selected_sheets if x.printable]
-
-    # private utils
-    def _is_sheet_index(self, schedule_view):
-        return self.sheet_cat_id == schedule_view.Definition.CategoryId \
-               and not schedule_view.IsTemplate
-
-    def _get_sheet_index_list(self):
-        schedules = DB.FilteredElementCollector(self.selected_doc)\
-                      .OfClass(framework.get_type(DB.ViewSchedule))\
-                      .WhereElementIsNotElementType()\
-                      .ToElements()
-
-        return [
-            ScheduleSheetList(s) for s in schedules
-            if self._is_sheet_index(s)
-            ]
-
-    def _get_printmanager(self):
-        try:
-            return self.selected_doc.PrintManager
-        except Exception as printerr:
-            logger.critical('Error getting printer manager from document. '
-                            'Most probably there is not a printer defined '
-                            'on your system. | %s', printerr)
-            script.exit()
-
-    def _setup_docs_list(self):
-        # Only show the active host document -- no linked models.
-        # Jason Revisions uses the same approach: return [doc] only.
-        if not revit.doc.IsFamilyDocument:
-            docs = [AvailableDoc(name=revit.doc.Title,
-                                 hash=revit.doc.GetHashCode(),
-                                 linked=False)]
-            self.documents_cb.ItemsSource = docs
-            self.documents_cb.SelectedIndex = 0
-
-    def _setup_naming_formats(self):
-        naming_formats = EditNamingFormatsWindow.get_naming_formats()
-        # Find first non-header index
-        first_real = 0
-        for i, fmt in enumerate(naming_formats):
-            if not getattr(fmt, '_is_header', False):
-                first_real = i
-                break
-        self._restoring = True
-        try:
-            self.namingformat_cb.ItemsSource = naming_formats
-            self.namingformat_cb.SelectedIndex = first_real
-            self.dwg_namingformat_cb.ItemsSource = naming_formats
-            self.dwg_namingformat_cb.SelectedIndex = first_real
-        finally:
-            self._restoring = False
-
-    def _setup_printers(self):
-        printers = list(Drawing.Printing.PrinterSettings.InstalledPrinters)
-        self.printers_cb.ItemsSource = printers
-        print_mgr = self._get_printmanager()
-        self.printers_cb.SelectedItem = print_mgr.PrinterName
-
-    def _get_psetting_items(self, doc,
-                            psettings=None, include_varsettings=False):
-        if include_varsettings:
-            psetting_items = [VariablePaperPrintSettingListItem()]
-        else:
-            psetting_items = []
-
-        psettings = psettings or revit.query.get_all_print_settings(doc=doc)
-        psetting_items.extend([PrintSettingListItem(x) for x in psettings])
-
-        print_mgr = self._get_printmanager()
-        compatible_sizes = {x.Name for x in print_mgr.PaperSizes}
-        for psetting_item in psetting_items:
-            if isinstance(psetting_item, PrintSettingListItem):
-                if psetting_item.paper_size \
-                        and psetting_item.paper_size.Name in compatible_sizes:
-                    psetting_item.is_compatible = True
-        return psetting_items
-
-    def _setup_print_settings(self):
-        psetting_items = \
-            self._get_psetting_items(
-                doc=self.selected_doc,
-                include_varsettings=not self.selected_doc.IsLinked
-                )
-        self.printsettings_cb.ItemsSource = psetting_items
-
-        print_mgr = self._get_printmanager()
-        if isinstance(print_mgr.PrintSetup.CurrentPrintSetting,
-                      DB.InSessionPrintSetting):
-            in_session = PrintSettingListItem(
-                print_mgr.PrintSetup.CurrentPrintSetting
-                )
-            psetting_items.append(in_session)
-            self.printsettings_cb.SelectedItem = in_session
-        else:
-            self._init_psettings = print_mgr.PrintSetup.CurrentPrintSetting
-            cur_psetting_name = print_mgr.PrintSetup.CurrentPrintSetting.Name
-            for psetting_item in psetting_items:
-                if psetting_item.name == cur_psetting_name:
-                    self.printsettings_cb.SelectedItem = psetting_item
-
-        if self.selected_doc.IsLinked:
-            self.disable_element(self.printsettings_cb)
-        else:
-            self.enable_element(self.printsettings_cb)
-
-        self._update_combine_option()
-
-    def _update_combine_option(self):
-        self.enable_element(self.combine_cb)
-        if self.selected_doc.IsLinked \
-                or ((self.selected_sheetlist and self.has_print_settings)
-                    and self.selected_print_setting.allows_variable_paper):
-            self.disable_element(self.combine_cb)
-            self.combine_cb.IsChecked = False
-
-    def _setup_sheet_list(self):
-        schedules = self._get_sheet_index_list()
-        try:
-            cl = DB.FilteredElementCollector(self.selected_doc)
-            sheetsets = list(cl.OfClass(framework.get_type(DB.ViewSheetSet))
-                             .WhereElementIsNotElementType().ToElements())
-        except Exception as e:
-            logger.warning("Could not load sheet sets: {}".format(e))
-            sheetsets = []
-
-        sheet_indices = []
-
-        # ── Other (Appear / All / Unlisted) first ───────────────────────
-        sheet_indices.append(SeparatorItem(u"—— Other ——"))
-        sheet_indices.append(AppearInSheetList())
-        sheet_indices.append(AllSheetsList())
-        sheet_indices.append(UnlistedSheetsList())
-
-        # ── Sheet Schedules ─────────────────────────────────────────────
-        if schedules:
-            sheet_indices.append(SeparatorItem(u"—— Sheet Schedules ——"))
-            sheet_indices.extend(schedules)
-
-        # ── Print Sets ──────────────────────────────────────────────────
-        if sheetsets:
-            sheet_indices.append(SeparatorItem(u"—— Print Sets ——"))
-            for ss in sheetsets:
-                sheet_indices.append(SheetSetList(ss))
-
-        self.schedules_cb.ItemsSource = sheet_indices
-        # Select first real (non-separator) item so dropdown opens at top
-        first_real = 0
-        for i, item in enumerate(sheet_indices):
-            if getattr(item, 'is_sep_str', 'False') != 'True':
-                first_real = i
-                break
-        self.schedules_cb.SelectedIndex = first_real
-        if self.schedules_cb.ItemsSource:
-            self.enable_element(self.schedules_cb)
-        else:
-            self.disable_element(self.schedules_cb)
-
-    def _verify_print_filename(self, sheet_name, sheet_print_filepath):
-        if op.exists(sheet_print_filepath):
-            logger.warning(
-                "Skipping sheet \"%s\" "
-                "File already exist at %s.",
-                sheet_name, sheet_print_filepath
-                )
-            return False
-        return True
-
-    def _print_combined_sheets_in_order(self, target_sheets):
-        # make sure we can access the print config
-        print_mgr = self._get_printmanager()
-        if not print_mgr:
-            forms.alert(
-                "Error getting print manager for this document",
-                exitscript=True
-                )
-        with revit.TransactionGroup('Print Sheets in Order',
-                                    doc=self.selected_doc):
-            with revit.Transaction('Set Printer Settings',
-                                   doc=self.selected_doc,
-                                   log_errors=False):
-                try:
-                    print_mgr.PrintSetup.CurrentPrintSetting = \
-                        self.selected_print_setting.print_settings
-                    print_mgr.SelectNewPrintDriver(self.selected_printer)
-                    print_mgr.PrintRange = DB.PrintRange.Select
-                except Exception as cpSetEx:
-                    forms.alert(
-                        "Print setting is incompatible with printer.",
-                        expanded=str(cpSetEx)
-                        )
-                    return
-            # The OrderedViewList property was added to the IViewSheetSet
-            # interface in Revit 2023 and makes the non-printable char
-            # technique unnecessary.
-            supports_OrderedViewList = HOST_APP.is_newer_than(2022)
-            if supports_OrderedViewList:
-                sheet_list = List[DB.View]()
-                for sheet in target_sheets:
-                    if sheet.printable:
-                        sheet_list.Add(sheet.revit_sheet)
-            else:
-                # add non-printable char in front of sheet Numbers
-                # to push revit to sort them per user
-                sheet_set = DB.ViewSet()
-                original_sheetnums = []
-                with revit.Transaction('Fix Sheet Numbers',
-                                    doc=self.selected_doc):
-                    for idx, sheet in enumerate(target_sheets):
-                        rvtsheet = sheet.revit_sheet
-                        # removing any NPC from previous failed prints
-                        if NPC in rvtsheet.SheetNumber:
-                            rvtsheet.SheetNumber = \
-                                rvtsheet.SheetNumber.replace(NPC, '')
-                        # create a list of the existing sheet numbers
-                        original_sheetnums.append(rvtsheet.SheetNumber)
-                        # add a prefix (NPC) for sorting purposes
-                        rvtsheet.SheetNumber = \
-                            NPC * (idx + 1) + rvtsheet.SheetNumber
-                        if sheet.printable:
-                            sheet_set.Insert(rvtsheet)
-
-            # Collect existing sheet sets
-            cl = DB.FilteredElementCollector(self.selected_doc)
-            viewsheetsets = cl.OfClass(framework.get_type(DB.ViewSheetSet))\
-                              .WhereElementIsNotElementType()\
-                              .ToElements()
-            all_viewsheetsets = {vss.Name: vss for vss in viewsheetsets}
-
-            sheetsetname = 'OrderedPrintSet'
-
-            with revit.Transaction('Remove Previous Print Set',
-                                   doc=self.selected_doc):
-                # Delete existing matching sheet set
-                if sheetsetname in all_viewsheetsets:
-                    print_mgr.ViewSheetSetting.CurrentViewSheetSet = \
-                        all_viewsheetsets[sheetsetname]
-                    print_mgr.ViewSheetSetting.Delete()
-
-            with revit.Transaction('Update Ordered Print Set',
-                                   doc=self.selected_doc):
-                try:
-                    viewsheet_settings = print_mgr.ViewSheetSetting
-                    if supports_OrderedViewList:
-                        viewsheet_settings.CurrentViewSheetSet.IsAutomatic = False
-                        viewsheet_settings.CurrentViewSheetSet.OrderedViewList = \
-                            sheet_list
-                    else:
-                        viewsheet_settings.CurrentViewSheetSet.Views = \
-                            sheet_set
-                    viewsheet_settings.SaveAs(sheetsetname)
-                except Exception as viewset_err:
-                    sheet_report = ''
-                    for sheet in sheet_set:
-                        sheet_report += '{} {}\n'.format(
-                            sheet.SheetNumber if isinstance(sheet,
-                                                            DB.ViewSheet)
-                            else '---',
-                            type(sheet)
-                            )
-                    logger.critical(
-                        'Error setting sheet set on print mechanism. '
-                        'These items are included in the viewset '
-                        'object:\n%s', sheet_report
-                        )
-                    raise viewset_err
-
-            with revit.Transaction('Reload Keynote File',
-                                   doc=self.selected_doc):
-                DB.KeynoteTable.GetKeynoteTable(self.selected_doc).Reload(None)
-
-        # PrintManager settings, Apply, and SubmitPrint run OUTSIDE the
-        # TransactionGroup — releasing Revit's document write lock before the
-        # combined render starts prevents the UI freeze on large sheet sets.
-        print_mgr.PrintOrderReverse = self.reverse_print
-        try:
-            print_mgr.CombinedFile = True
-        except Exception as e:
-            forms.alert(str(e) +
-                        '\nSet printer correctly in Print settings.')
-            script.exit()
-        print_filepath = op.join('C:', 'Ordered Sheet Set.pdf')
-        print_mgr.PrintToFile = True
-        print_mgr.PrintToFileName = print_filepath
-
-        print_mgr.Apply()
-        sheet_count = len([s for s in target_sheets if s.printable])
-        try:
-            with forms.ProgressBar(
-                    step=1,
-                    title='Exporting Combined PDF ({} sheets)...'.format(sheet_count),
-                    cancellable=False) as pb:
-                pb.update_progress(0, 1)
-                print_mgr.SubmitPrint()
-                pb.update_progress(1, 1)
-        finally:
-            if not supports_OrderedViewList:
-                # restore sheet numbers regardless of whether SubmitPrint succeeded
-                with revit.Transaction('Restore Sheet Numbers',
-                                    doc=self.selected_doc):
-                    for sheet, sheetnum in zip(target_sheets,
-                                            original_sheetnums):
-                        rvtsheet = sheet.revit_sheet
-                        rvtsheet.SheetNumber = sheetnum
-
-        self._reset_psettings()
-
-    def _print_sheets_in_order(self, target_sheets):
-        # make sure we can access the print config
-        print_mgr = self._get_printmanager()
-        print_mgr.PrintToFile = True
-        per_sheet_psettings = self.selected_print_setting.allows_variable_paper
-
-        # make sure you can print, construct print path and make directory
-        dirPath = os.path.join(PrintUtils.get_dir(), PrintUtils.get_folder("_PRINT"))
-        PrintUtils.ensure_dir(dirPath)
-        doc = self.selected_doc
-
-        if IS_REVIT_2022_OR_NEWER or self.export_dwg.IsChecked:
-            PrintUtils.open_dir(dirPath)
-        else:
-            return
-
-
-        with revit.Transaction('Reload Keynote File',
-                               doc=self.selected_doc):
-            DB.KeynoteTable.GetKeynoteTable(self.selected_doc).Reload(None)
-
-        with revit.DryTransaction('Set Printer Settings',
-                                  doc=self.selected_doc):
-            try:
-                if not per_sheet_psettings:
-                    print_mgr.PrintSetup.CurrentPrintSetting = \
-                        self.selected_print_setting.print_settings
-                print_mgr.SelectNewPrintDriver(self.selected_printer)
-                print_mgr.PrintRange = DB.PrintRange.Current
-            except Exception as cpSetEx:
-                forms.alert(
-                    "Print setting is incompatible with printer.",
-                    expanded=str(cpSetEx)
-                    )
-                return
-            if target_sheets:
-                if self.export_dwg.IsChecked:
-                    with forms.ProgressBar(step=1, title='Exporting PDF & DWGs... ' + '{value} of {max_value}', cancellable=True) as pb1:
-                        pbTotal1 = len(target_sheets) * 2
-                        pbCount1 = 1
-                        for sheet in target_sheets:
-                            if pb1.cancelled:
-                                break
-                            else:
-                                if sheet.printable:
-                                    if sheet.print_filename:
-                                        print_filepath = op.join(dirPath, sheet.print_filename)
-                                        print_mgr.PrintToFileName = print_filepath
-
-                                        # set the per-sheet print settings if required
-                                        if per_sheet_psettings:
-                                            print_mgr.PrintSetup.CurrentPrintSetting = \
-                                                sheet.print_settings
-
-                                        if self._verify_print_filename(sheet.name,
-                                                                    print_filepath):
-                                            try:
-                                                pb1.update_progress(pbCount1, pbTotal1)
-                                                pbCount1 += 1
-                                                if self.export_pdf.IsChecked:
-                                                    if IS_REVIT_2022_OR_NEWER:
-                                                        optspdf = PrintUtils.pdf_opts()
-                                                        PrintUtils.export_sheet_pdf(dirPath, sheet.revit_sheet, optspdf, doc, sheet.print_filename)
-                                                    else:
-                                                        print_mgr.SubmitPrint(sheet.revit_sheet)
-                                            except Exception as e:
-                                                logger.error('Failed to export PDF for sheet %s: %s', sheet.number, e)
-
-                                            try:
-                                                pb1.update_progress(pbCount1, pbTotal1)
-                                                pbCount1 += 1
-                                                optsdwg = PrintUtils.dwg_opts()
-                                                dwg_fname = sheet.dwg_filename or sheet.print_filename
-                                                PrintUtils.export_sheet_dwg(dirPath, sheet.revit_sheet, optsdwg, doc, dwg_fname)
-                                            except Exception as e:
-                                                logger.error('Failed to export DWG for sheet %s: %s', sheet.number, e)
-                                            
-                                    else:
-                                        pbCount1 += 2
-                                        logger.debug(
-                                            'Sheet %s does not have a valid file name.',
-                                            sheet.number)
-                                else:
-                                    pbCount1 += 2
-                                    logger.debug('Sheet %s is not printable. Skipping print.',
-                                                sheet.number)
-                else:
-                    with forms.ProgressBar(step=1, title='Exporting PDFs... ' + '{value} of {max_value}', cancellable=True) as pb1:
-                        
-                        pbTotal1 = len(target_sheets)
-                        pbCount1 = 1
-                        for sheet in target_sheets:
-                            if pb1.cancelled:
-                                break
-                            else:
-                                if sheet.printable:
-                                    if sheet.print_filename:
-                                        print_filepath = op.join(dirPath, sheet.print_filename)
-
-                                        print_mgr.PrintToFileName = print_filepath
-
-                                        if per_sheet_psettings:
-                                            print_mgr.PrintSetup.CurrentPrintSetting = \
-                                                sheet.print_settings
-
-                                        if self._verify_print_filename(sheet.name,
-                                                                    print_filepath):
-                                            try:
-                                                pb1.update_progress(pbCount1, pbTotal1)
-                                                pbCount1 += 1
-                                                if IS_REVIT_2022_OR_NEWER:
-                                                    optspdf = PrintUtils.pdf_opts()
-                                                    PrintUtils.export_sheet_pdf(dirPath, sheet.revit_sheet, optspdf, doc, sheet.print_filename)
-                                                else:
-                                                    print_mgr.SubmitPrint(sheet.revit_sheet)
-                                            except Exception as e:
-                                                logger.error('Failed to export PDF for sheet %s: %s', sheet.number, e)
-
-                                    else:
-                                        pbCount1 += 1
-                                        logger.debug(
-                                            'Sheet %s does not have a valid file name.',
-                                            sheet.number)
-                                else:
-                                    pbCount1 += 1
-                                    logger.debug('Sheet %s is not printable. Skipping print.',
-                                                sheet.number)
-
-    def _print_linked_sheets_in_order(self, target_sheets, target_doc):
-        # make sure we can access the print config
-        print_mgr = self._get_printmanager()
-        print_mgr.PrintToFile = True
-        print_mgr.SelectNewPrintDriver(self.selected_printer)
-        print_mgr.PrintRange = DB.PrintRange.Current
-
-
-        dirPath = os.path.join(PrintUtils.get_dir(), PrintUtils.get_folder("_PRINT"))
-        PrintUtils.ensure_dir(dirPath)
-        doc = target_doc
-
-        if IS_REVIT_2022_OR_NEWER:
-            PrintUtils.open_dir(dirPath)
-        else:
-            return
-
-        if target_sheets:
-            with forms.ProgressBar(step=1, title='Exporting Linked PDFs... ' + '{value} of {max_value}', cancellable=True) as pb1:
-                
-                pbTotal1 = len(target_sheets)
-                pbCount1 = 1
-                for sheet in target_sheets:
-                    if pb1.cancelled:
-                        break
-                    else:
-                        if sheet.printable:
-                            if sheet.print_filename:
-                                print_filepath = op.join(dirPath, sheet.print_filename)
-                                print_mgr.PrintToFileName = print_filepath
-
-                                if self._verify_print_filename(sheet.name,
-                                                            print_filepath):
-                                    try:
-                                        pb1.update_progress(pbCount1, pbTotal1)
-                                        pbCount1 += 1
-                                        if IS_REVIT_2022_OR_NEWER:
-                                            optspdf = PrintUtils.pdf_opts()
-                                            PrintUtils.export_sheet_pdf(dirPath, sheet.revit_sheet, optspdf, doc, sheet.print_filename)
-                                        else:
-                                            print_mgr.SubmitPrint(sheet.revit_sheet)
-                                    except Exception as e:
-                                        logger.error('Failed to export PDF for sheet %s: %s', sheet.number, e)
-                            else:
-                                pbCount1 += 1
-                                logger.debug(
-                                    'Sheet %s does not have a valid file name.',
-                                    sheet.number)
-                        else:
-                            pbCount1 += 1
-                            logger.debug('Sheet %s is not printable. Skipping print.',
-                                        sheet.number)
-                                    
-    def _reset_error(self):
-        self.enable_element(self.print_b)
-        self.hide_element(self.errormsg_block)
-        self.errormsg_tb.Text = ''
-
-    def _set_error(self, err_msg):
-        if self.errormsg_tb.Text != err_msg:
-            self.disable_element(self.print_b)
-            self.show_element(self.errormsg_block)
-            self.errormsg_tb.Text = err_msg
-
-    def _update_print_indices(self, sheet_list):
-        start_idx = self.index_start
-        for idx, sheet in enumerate(sheet_list):
-            sheet.print_index = INDEX_FORMAT\
-                .format(digits=self.index_digits)\
-                .format(idx + start_idx)
-
-    def _update_filename_template(self, template, value_type, value_getter):
-        finder_pattern = r'{' + value_type + r':(.*?)}'
-        for param_name in re.findall(finder_pattern, template):
-            param_value = value_getter(param_name)
-            repl_pattern = r'{' + value_type + ':' + param_name + r'}'
-            if param_value:
-                template = re.sub(repl_pattern, str(param_value), template)
-            template = re.sub(repl_pattern, '', template)
-        return template
-
-    def _update_print_filename(self, template, sheet):
-        # resolve sheet-level custom param values
-        ## get titleblock param values
-        template = self._update_filename_template(
-            template=template,
-            value_type='tblock_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                    revit.query.get_param(sheet.revit_tblock, x)
-                ) or revit.query.get_param_value(
-                    revit.query.get_param(sheet.revit_tblock_type, x)
-                )
-        )
-
-        ## get sheet param values
-        template = self._update_filename_template(
-            template=template,
-            value_type='sheet_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                revit.query.get_param(sheet.revit_sheet, x)
-                )
-        )
-
-        ## get date for sortable list
-        rev_date_str = sheet.revision.date or ""
-        sortable_date = ""
-
-        # Try to detect user's locale
-        locale_tuple = locale.getdefaultlocale()
-        user_locale = (locale_tuple[0] if locale_tuple and locale_tuple[0] else "en_GB")
-        dayfirst = not user_locale.startswith("en_US")
-
-        # Try several common patterns
-        date_formats = ["%d.%m.%y", "%m.%d.%y", "%d/%m/%y", "%m/%d/%y"]
-        if not dayfirst:
-            date_formats = ["%m.%d.%y", "%m/%d/%y", "%d.%m.%y", "%d/%m/%y"]
-
-        for fmt in date_formats:
-            try:
-                parsed = datetime.datetime.strptime(rev_date_str, fmt)
-                sortable_date = parsed.strftime("%Y%m%d")
-                break
-            except (ValueError, TypeError):
-                continue
-
-        sheet.revision_date_sortable = sortable_date
-        
-
-        # Resolve fixed format tokens. Pre-strip any unknown {token} so
-        # format() never raises KeyError (IronPython 2.7 has no format_map).
-        known_keys = {
-            'index', 'number', 'name', 'name_dash', 'name_underline',
-            'current_date', 'issue_date', 'rev_number', 'rev_desc', 'rev_date',
-            'proj_name', 'proj_number', 'proj_building_name', 'proj_issue_date',
-            'proj_org_name', 'proj_status', 'username', 'revit_version', 'model_name',
-        }
-        safe_template = re.sub(
-            r'\{([^}:]+)\}',
-            lambda m: ('{' + m.group(1) + '}') if m.group(1) in known_keys else '',
-            template
-        )
-        try:
-            output_fname = safe_template.format(
-                index=sheet.print_index,
-                number=sheet.number,
-                name=sheet.name,
-                name_dash=sheet.name.replace(' ', '-'),
-                name_underline=sheet.name.replace(' ', '_'),
-                current_date=coreutils.current_date(),
-                issue_date=sheet.issue_date,
-                rev_number=sheet.revision.number if sheet.revision else '',
-                rev_desc=sheet.revision.desc if sheet.revision else '',
-                rev_date=sheet.revision.date if sheet.revision else '',
-                proj_name=self.project_info.name,
-                proj_number=self.project_info.number,
-                proj_building_name=self.project_info.building_name,
-                proj_issue_date=self.project_info.issue_date,
-                proj_org_name=self.project_info.org_name,
-                proj_status=self.project_info.status,
-                username=HOST_APP.username,
-                revit_version=HOST_APP.version,
-                model_name=op.splitext(
-                    self.selected_doc.Title or
-                    op.basename(self.selected_doc.PathName or '')
-                )[0],
-            )
-        except Exception:
-            output_fname = ''
-        # and set the sheet file name
-        sheet.print_filename = output_fname
-
-    def _resolve_template_project_params(self, template, doc):
-        template = self._update_filename_template(
-            template=template,
-            value_type='proj_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                doc.ProjectInformation.LookupParameter(x)
-                )
-        )
-        template = self._update_filename_template(
-            template=template,
-            value_type='glob_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                revit.query.get_global_parameter(x, doc=doc)
-                )
-        )
-        return template
-
-    def _update_dwg_filename(self, template, sheet):
-        template = self._update_filename_template(
-            template=template,
-            value_type='tblock_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                    revit.query.get_param(sheet.revit_tblock, x)
-                ) or revit.query.get_param_value(
-                    revit.query.get_param(sheet.revit_tblock_type, x)
-                )
-        )
-        template = self._update_filename_template(
-            template=template,
-            value_type='sheet_param',
-            value_getter=lambda x: revit.query.get_param_value(
-                revit.query.get_param(sheet.revit_sheet, x)
-                )
-        )
-        try:
-            base = template
-            if base.lower().endswith('.pdf'):
-                base = base[:-4]
-            output = base.format(
-                index=sheet.print_index,
-                number=sheet.number,
-                name=sheet.name,
-                name_dash=sheet.name.replace(' ', '-'),
-                name_underline=sheet.name.replace(' ', '_'),
-                current_date=coreutils.current_date(),
-                issue_date=sheet.issue_date,
-                rev_number=sheet.revision.number if sheet.revision else '',
-                rev_desc=sheet.revision.desc if sheet.revision else '',
-                rev_date=sheet.revision.date if sheet.revision else '',
-                proj_name=self.project_info.name,
-                proj_number=self.project_info.number,
-                proj_building_name=self.project_info.building_name,
-                proj_issue_date=self.project_info.issue_date,
-                proj_org_name=self.project_info.org_name,
-                proj_status=self.project_info.status,
-                username=HOST_APP.username,
-                revit_version=HOST_APP.version,
-                model_name=op.splitext(
-                    self.selected_doc.Title or
-                    op.basename(self.selected_doc.PathName or '')
-                )[0],
-            )
-            if not output.lower().endswith('.dwg'):
-                output += '.dwg'
-        except Exception:
-            output = ''
-        sheet.dwg_filename = output
-
-    def _update_print_filenames(self, sheet_list):
-        doc = self.selected_doc
-        naming_fmt = self.selected_naming_format
-        if naming_fmt:
-            template = self._resolve_template_project_params(naming_fmt.template, doc)
-            for sheet in sheet_list:
-                self._update_print_filename(template, sheet)
-        # Always compute DWG filename so the DWG Example label is always populated.
-        # Export DWG checkbox only controls whether files are actually written.
-        dwg_fmt = self.selected_dwg_naming_format
-        if dwg_fmt:
-            dwg_template = self._resolve_template_project_params(dwg_fmt.template, doc)
-            for sheet in sheet_list:
-                self._update_dwg_filename(dwg_template, sheet)
-        else:
-            for sheet in sheet_list:
-                sheet.dwg_filename = sheet.print_filename
-
-    def _find_sheet_tblock(self, revit_sheet, tblocks):
-        for tblock in tblocks:
-            view_sheet = revit_sheet.Document.GetElement(tblock.OwnerViewId)
-            if view_sheet.Id == revit_sheet.Id:
-                return tblock
-
-    def _get_sheet_printsettings(self, tblocks, psettings):
-        tblock_printsettings = {}
-        sheet_printsettings = {}
-        for tblock in tblocks:
-            tblock_psetting = None
-            sheet = self.selected_doc.GetElement(tblock.OwnerViewId)
-            # build a unique id for this tblock
-            tblock_tform = tblock.GetTotalTransform()
-            tblock_tid = get_elementid_value(tblock.GetTypeId())
-            tblock_tid = tblock_tid * 100 \
-                         + tblock_tform.BasisX.X * 10 \
-                         + tblock_tform.BasisX.Y
-            # can not use None as default. see notes below
-            tblock_psetting = tblock_printsettings.get(tblock_tid, None)
-            # if found a tblock print settings, assign that to sheet
-            if tblock_psetting:
-                sheet_printsettings[sheet.SheetNumber] = tblock_psetting
-            # otherwise, analyse the tblock and determine print settings
-            else:
-                # try the type parameter "Print Setting"
-                tblock_type = tblock.Document.GetElement(tblock.GetTypeId())
-                if tblock_type:
-                    psparam = tblock_type.LookupParameter("Print Setting")
-                    if psparam:
-                        psetting_name = psparam.AsString()
-                        psparam_psetting = \
-                            next(
-                                (x for x in psettings
-                                    if x.Name == psetting_name),
-                                None
-                            )
-                        if psparam_psetting:
-                            tblock_psetting = \
-                                TitleBlockPrintSettings(
-                                    psettings=[psparam_psetting],
-                                    set_by_param=True
-                                )
-                # otherwise, try to detect applicable print settings
-                # based on title block geometric properties
-                if not tblock_psetting:
-                    tblock_psetting = \
-                        TitleBlockPrintSettings(
-                            psettings=revit.query.get_titleblock_print_settings(
-                                tblock,
-                                self.selected_printer,
-                                psettings
-                                ),
-                            set_by_param=False
-                        )
-                # the analysis result might be None
-                tblock_printsettings[tblock_tid] = tblock_psetting
-                sheet_printsettings[sheet.SheetNumber] = tblock_psetting
-        return sheet_printsettings
-
-    def _reset_psettings(self):
-        if self._init_psettings:
-            print_mgr = self._get_printmanager()
-            with revit.Transaction("Revert to Original Print Settings"):
-                print_mgr.PrintSetup.CurrentPrintSetting = self._init_psettings
-
-    def _update_index_slider(self):
-        index_digits = \
-            coreutils.get_integer_length(
-                len(self._scheduled_sheets) + self.index_start
-                )
-        self.index_slider.Minimum = max([index_digits, 2])
-        self.index_slider.Maximum = self.index_slider.Minimum + 3
-
-    # Settings persistence
-    def _save_settings(self):
-        if getattr(self, '_restoring', False):
-            return
-        try:
-            data = {}
-            data['export_pdf']    = True if self.export_pdf.IsChecked else False
-            try:
-                pdf_cb = getattr(self, 'show_pdf_col_cb', None)
-                dwg_cb = getattr(self, 'show_dwg_col_cb', None)
-                data['show_pdf_col'] = True if (pdf_cb and pdf_cb.IsChecked) else False
-                data['show_dwg_col'] = True if (dwg_cb and dwg_cb.IsChecked) else False
-            except Exception:
-                pass
-            data['export_dwg_opt']= True if self.export_dwg.IsChecked else False
-            # IFC / NWC export state
-            export_ifc_cb = getattr(self, 'export_ifc', None)
-            export_nwc_cb = getattr(self, 'export_nwc', None)
-            data['export_ifc']          = True if (export_ifc_cb and export_ifc_cb.IsChecked) else False
-            data['export_nwc']          = True if (export_nwc_cb and export_nwc_cb.IsChecked) else False
-            data['selected_3d_view_ids']= list(self._selected_3d_view_ids or [])
-            data['ifc_setup_name']      = self._ifc_setup_name or ''
-            data['nwc_options']         = self._nwc_options or {}
-            data['dwg3d_options']       = {
-                k: v for k, v in (self._dwg3d_options or {}).items()
-                if k != 'naming_format'  # not JSON-serialisable
-            }
-            data['combine_pdf']   = True if self.combine_cb.IsChecked else False
-            data['reverse_print'] = True if self.reverse_cb.IsChecked else False
-            try:
-                data['index_digits'] = int(self.index_slider.Value)
-            except Exception:
-                pass
-            try:
-                data['index_start'] = int(self.indexstart_tb.Text or 1)
-            except Exception:
-                pass
-            try:
-                data['sheet_filter'] = self.sheetstart_tb.Text or ''
-                data['name_filter']  = self.namefilter_tb.Text or ''
-            except Exception:
-                pass
-            # Always save naming format — use project-specific key
-            try:
-                proj_key_pdf = 'pdf_fmt__' + coreutils.cleanup_filename(
-                    self.selected_doc.Title, windows_safe=True)
-                proj_key_dwg = 'dwg_fmt__' + coreutils.cleanup_filename(
-                    self.selected_doc.Title, windows_safe=True)
-            except Exception:
-                proj_key_pdf = 'pdf_fmt'
-                proj_key_dwg = 'dwg_fmt'
-            fmt_pdf = self.selected_naming_format
-            if fmt_pdf and not getattr(fmt_pdf, '_is_header', False):
-                data['pdf_fmt']     = fmt_pdf.name
-                data[proj_key_pdf]  = fmt_pdf.name
-            fmt_dwg = self.selected_dwg_naming_format
-            if fmt_dwg and not getattr(fmt_dwg, '_is_header', False):
-                data['dwg_fmt']     = fmt_dwg.name
-                data[proj_key_dwg]  = fmt_dwg.name
-            if self.selected_printer:
-                data['last_printer'] = str(self.selected_printer)
-            if self.selected_print_setting:
-                try:
-                    data['last_pagesetting'] = str(self.selected_print_setting.name)
-                except Exception:
-                    pass
-            # save sheet index selection
-            try:
-                if self.selected_sheetlist:
-                    data['sheet_index'] = self.selected_sheetlist.name  # '<Appear in Sheet List>', '<All Sheets>', or '<Unlisted Sheets>'
-            except Exception:
-                pass
-            # Save manual order -- cast to int to avoid IronPython Long (8179645L)
-            try:
-                data['manual_order'] = [int(get_elementid_value(eid))
-                                        for eid in self._manual_order]
-                data['default_sort_param'] = self._default_sort_param
-            except Exception:
-                pass
-            # Save last-used Order Filter rules (master sort, tokens, etc.)
-            # so the dialog reopens with the same settings even when no
-            # main-window filter profile is selected.
-            try:
-                last_or = getattr(self, '_last_order_rules', None)
-                if last_or:
-                    data['last_order_rules'] = dict(last_or)
-            except Exception:
-                pass
-            # Save hidden columns (names of hidden extra columns)
-            try:
-                data['hidden_columns'] = list(self._hidden_columns or [])
-            except Exception:
-                pass
-            # Save sort rules
-            try:
-                data['sort_rules'] = [
-                    {'column_name': r.column_name, 'ascending': r.ascending}
-                    for r in self._sort_rules
-                ]
-            except Exception:
-                pass
-            # Save filter rules and profiles
-            try:
-                data['filter_rules'] = [
-                    {'column_name': r.column_name,
-                     'condition':   r.condition,
-                     'value':       r.value}
-                    for r in self._filter_rules
-                ]
-                data['filter_match_mode'] = self._filter_match_mode
-                data['filter_profiles'] = [
-                    {'name':         p.name,
-                     'match_mode':   p.match_mode,
-                     'sheet_no':     p.sheet_no,
-                     'sheet_name':   p.sheet_name,
-                     'manual_order': list(p.manual_order or []),
-                     'order_rules':  dict(p.order_rules  or {}),
-                     'rules': [
-                         {'column_name': r.column_name,
-                          'condition':   r.condition,
-                          'value':       r.value}
-                         for r in p.rules
-                     ]}
-                    for p in self._filter_profiles
-                ]
-            except Exception:
-                pass
-            # Save full column order (defaults + user, in DisplayIndex order)
-            try:
-                from System.Windows import Visibility
-                SKIP = {'File Name (PDF)', 'File Name (DWG)', 'Print Setting', ''}
-                ordered_cols = sorted(
-                    [col for col in self.sheets_lb.Columns
-                     if col.Header and str(col.Header)
-                     and str(col.Header) not in SKIP],
-                    key=lambda c: c.DisplayIndex)
-                # Save ALL extra cols regardless of visibility so hidden cols
-                # are preserved across sessions (Fix 1)
-                data['col_full_order'] = [str(c.Header) for c in ordered_cols]
-                extra_names = [n for n in data['col_full_order']
-                               if n not in LOCKED_COLUMNS]
-                data['extra_cols'] = extra_names
-            except Exception:
-                pass
-            # Save DataGrid column widths and display order (keyed by header name)
-            try:
-                col_widths = {}
-                for col in self.sheets_lb.Columns:
-                    try:
-                        header = str(col.Header) if col.Header else ''
-                        if header:
-                            col_widths[header] = col.ActualWidth
-                    except Exception:
-                        pass
-                if col_widths:
-                    data['col_widths'] = col_widths
-            except Exception:
-                pass
-            setattr(config, _CONFIG_KEY, json.dumps(data))
-            script.save_config()
-            logger.debug('Settings saved: %s', data)
-        except Exception as e:
-            logger.error('_save_settings failed: %s', e)
-
-    def _restore_settings(self):
-        try:
-            raw = config.get_option(_CONFIG_KEY, '{}')
-            try:
-                data = json.loads(raw) if isinstance(raw, str) else raw
-            except Exception:
-                data = {}
-            if not isinstance(data, dict):
-                data = {}
-            logger.debug('Restoring settings: %s', data)
-
-            self.export_pdf.IsChecked     = True if data.get('export_pdf', True) else False
-            try:
-                pdf_cb = getattr(self, 'show_pdf_col_cb', None)
-                dwg_cb = getattr(self, 'show_dwg_col_cb', None)
-                if pdf_cb: pdf_cb.IsChecked = True if data.get('show_pdf_col', True) else False
-                if dwg_cb: dwg_cb.IsChecked = True if data.get('show_dwg_col', True) else False
-            except Exception:
-                pass
-            self.export_dwg.IsChecked     = True if data.get('export_dwg_opt', False) else False
-            self.combine_cb.IsChecked     = True if data.get('combine_pdf', False) else False
-            # IFC / NWC restore
-            export_ifc_cb = getattr(self, 'export_ifc', None)
-            export_nwc_cb = getattr(self, 'export_nwc', None)
-            if export_ifc_cb:
-                export_ifc_cb.IsChecked = True if data.get('export_ifc', False) else False
-            if export_nwc_cb:
-                export_nwc_cb.IsChecked = True if data.get('export_nwc', False) else False
-            self._selected_3d_view_ids = data.get('selected_3d_view_ids', [])
-            self._ifc_setup_name       = data.get('ifc_setup_name', '')
-            self._update_ifc_btn_label()
-            self._nwc_options          = data.get('nwc_options', {})
-            self._dwg3d_options        = data.get('dwg3d_options', {})
-            # Restore 3D view objects from saved ids
-            if self._selected_3d_view_ids:
-                all_views = self._get_all_3d_views()
-                id_set = set(int(i) for i in self._selected_3d_view_ids)
-                self._selected_3d_views = [
-                    v for v in all_views
-                    if int(get_elementid_value(v.view_id)) in id_set
-                ]
-            self._update_3d_view_badge()
-            self._toggle_3d_panel(None, None)
-            self.reverse_cb.IsChecked     = True if data.get('reverse_print', False) else False
-
-            saved_digits = data.get('index_digits', None)
-            if saved_digits is not None:
-                try:
-                    self.index_slider.Value = int(saved_digits)
-                except Exception:
-                    pass
-            saved_start = data.get('index_start', 1)
-            try:
-                saved_start = max(1, int(saved_start))  # never start below 1
-                self.indexstart_tb.Text = str(saved_start)
-            except Exception:
-                self.indexstart_tb.Text = '1' 
-            saved_filter = data.get('sheet_filter', None)
-            if saved_filter is not None:
-                try:
-                    self.sheetstart_tb.Text = str(saved_filter)
-                except Exception:
-                    pass
-            saved_name = data.get('name_filter', None)
-            if saved_name is not None:
-                try:
-                    self.namefilter_tb.Text = str(saved_name)
-                except Exception:
-                    pass
-
-            # PDF naming — project-specific first, then global
-            saved_pdf = None
-            try:
-                proj_key = 'pdf_fmt__' + coreutils.cleanup_filename(
-                    self.selected_doc.Title, windows_safe=True)
-                saved_pdf = data.get(proj_key) or data.get('pdf_fmt')
-            except Exception:
-                saved_pdf = data.get('pdf_fmt')
-            logger.debug('Restoring PDF fmt: %s', saved_pdf)
-            if saved_pdf:
-                match_idx = None
-                items = list(self.namingformat_cb.ItemsSource or [])
-                for i, fmt in enumerate(items):
-                    if not getattr(fmt, '_is_header', False):
-                        if fmt.name == saved_pdf:
-                            match_idx = i
-                            break
-                        elif match_idx is None and saved_pdf.lower() in fmt.name.lower():
-                            match_idx = i
-                if match_idx is not None:
-                    self.namingformat_cb.SelectedIndex = match_idx
-
-            # DWG naming — project-specific first, then global
-            saved_dwg = None
-            try:
-                proj_key = 'dwg_fmt__' + coreutils.cleanup_filename(
-                    self.selected_doc.Title, windows_safe=True)
-                saved_dwg = data.get(proj_key) or data.get('dwg_fmt')
-            except Exception:
-                saved_dwg = data.get('dwg_fmt')
-            logger.debug('Restoring DWG fmt: %s', saved_dwg)
-            if saved_dwg:
-                match_idx = None
-                for i, fmt in enumerate(self.dwg_namingformat_cb.ItemsSource or []):
-                    if not getattr(fmt, '_is_header', False):
-                        if fmt.name == saved_dwg:
-                            match_idx = i
-                            break
-                        elif match_idx is None and saved_dwg.lower() in fmt.name.lower():
-                            match_idx = i
-                if match_idx is not None:
-                    self.dwg_namingformat_cb.SelectedIndex = match_idx
-
-            # Printer
-            saved_printer = data.get('last_printer')
-            if saved_printer:
-                for item in (self.printers_cb.ItemsSource or []):
-                    if str(item) == saved_printer:
-                        self.printers_cb.SelectedItem = item
-                        break
-
-            # Page settings
-            saved_ps = data.get('last_pagesetting')
-            if saved_ps:
-                for item in (self.printsettings_cb.ItemsSource or []):
-                    try:
-                        if str(item.name) == saved_ps:
-                            self.printsettings_cb.SelectedItem = item
-                            break
-                    except Exception:
-                        pass
-
-            # Sheet index
-            saved_index = data.get('sheet_index')
-            if saved_index:
-                for item in (self.schedules_cb.ItemsSource or []):
-                    try:
-                        if getattr(item, 'is_sep_str', 'False') == 'True':
-                            continue
-                        if item.name == saved_index:
-                            self.schedules_cb.SelectedItem = item
-                            break
-                    except Exception:
-                        pass
-
-            # Restore manual order
-            saved_manual = data.get('manual_order', [])
-            if saved_manual:
-                try:
-                    # NOTE: ElementId(int(v)) works for Revit 2022-2024.
-                    # Review for Revit 2026 where ElementId.Value returns long.
-                    self._manual_order = [DB.ElementId(int(v))
-                                          for v in saved_manual]
-                except Exception:
-                    self._manual_order = []
-            self._default_sort_param = data.get('default_sort_param', 'Sheet Number')
-
-            # Restore hidden columns -- always restore even if empty
-            self._hidden_columns = set(data.get('hidden_columns', []))
-
-            # Restore sort rules
-            saved_sort = data.get('sort_rules', [])
-            if saved_sort:
-                self._sort_rules = _restore_sort_rules(saved_sort)
-
-            # Restore filter rules and profiles
-            saved_rules = data.get('filter_rules', [])
-            if saved_rules:
-                self._filter_rules = _restore_filter_rules(saved_rules)
-            self._filter_match_mode = data.get('filter_match_mode', 'AND')
-            saved_profiles = data.get('filter_profiles', [])
-            if saved_profiles:
-                self._filter_profiles = _restore_filter_profiles(saved_profiles)
-
-            # Restore full column order
-            saved_order = data.get('col_full_order', [])
-            saved_extra = data.get('extra_cols', [])
-            if saved_order:
-                self._saved_col_order = saved_order
-            elif saved_extra:
-                self._saved_extra_cols = saved_extra
-
-            # Restore DataGrid column widths only
-            # (DisplayIndex restore is unreliable — WPF requires strict ordering)
-            saved_widths = data.get('col_widths', {})
-            if saved_widths:
-                from System.Windows.Controls import DataGridLength
-                for col in self.sheets_lb.Columns:
-                    try:
-                        header = str(col.Header) if col.Header else ''
-                        if header and header in saved_widths:
-                            col.Width = DataGridLength(float(saved_widths[header]))
-                    except Exception:
-                        pass
-
-            # Restore last-used Order Filter rules
-            last_or = data.get('last_order_rules', {})
-            if last_or:
-                self._last_order_rules = dict(last_or)
-
-            logger.debug('Settings restored OK')
-        except Exception as e:
-            logger.error('_restore_settings failed: %s', e)
-
-    # event handlers
-    def doclist_changed(self, sender, args):
-        self.project_info = revit.query.get_project_info(doc=self.selected_doc)
-        self._restoring = True
-        try:
-            self._setup_printers()
-            self._setup_print_settings()
-            self._setup_sheet_list()
-            self._restore_settings()
-        finally:
-            self._restoring = False
-        # apply visibility after restore completes
-        self.options_changed(None, None)
-
-    def sheetlist_changed(self, sender, args):
-        # Skip separators -- they are not selectable sheet lists
-        if getattr(self.schedules_cb.SelectedItem, 'is_sep_str', 'False') == 'True':
-            return
-        self._save_settings()
-        print_settings = None
-        tblocks = revit.query.get_elements_by_categories(
-            [DB.BuiltInCategory.OST_TitleBlocks],
-            doc=self.selected_doc
-        )
-        if self.selected_sheetlist and self.has_print_settings:
-            rev_cfg = DB.RevisionSettings.GetRevisionSettings(self.selected_doc)
-            if self.selected_print_setting.allows_variable_paper:
-                sheet_printsettings = \
-                    self._get_sheet_printsettings(
-                        tblocks,
-                        revit.query.get_all_print_settings(
-                            doc=self.selected_doc
-                            )
-                        )
-                self.show_element(self.varsizeguide)
-                self.show_element(self.psettingcol)
-                self._scheduled_sheets = [
-                    ViewSheetListItem(
-                        view_sheet=x,
-                        view_tblock=self._find_sheet_tblock(x, tblocks),
-                        print_settings=sheet_printsettings.get(
-                            x.SheetNumber,
-                            None),
-                        rev_settings=rev_cfg)
-                    for x in self.selected_sheetlist.get_sheets(
-                        doc=self.selected_doc
-                        )
-                    ]
-            else:
-                print_settings = self.selected_print_setting.print_settings
-                self.hide_element(self.varsizeguide)
-                self.hide_element(self.psettingcol)
-                self._scheduled_sheets = [
-                    ViewSheetListItem(
-                        view_sheet=x,
-                        view_tblock=self._find_sheet_tblock(x, tblocks),
-                        print_settings=TitleBlockPrintSettings(
-                            psettings=[print_settings],
-                            set_by_param=False
-                        ),
-                        rev_settings=rev_cfg)
-                    for x in self.selected_sheetlist.get_sheets(
-                        doc=self.selected_doc
-                        )
-                    ]
-        self._update_combine_option()
-        # self._update_index_slider()
-        # Apply default sort and populate sort combobox on fresh sheet load
-        self._apply_default_sort()
-        self._populate_default_sort_cb()
-        self.options_changed(None, None)
-        self._save_settings()
-
-    def printers_changed(self, sender, args):
-        print_mgr = self._get_printmanager()
-        print_mgr.SelectNewPrintDriver(self.selected_printer)
-        self._setup_print_settings()
-        self._save_settings()
-
-    def options_changed(self, sender, args):
-        # Guard against being called before docs/sheets are loaded
-        if self.documents_cb.SelectedItem is None:
-            return
-        self._reset_error()
-
-        # update index digit range
-        self._update_index_slider()
-
-        # reverse sheet if reverse is set
-        sheet_list = [x for x in self._scheduled_sheets]
-        if self.reverse_print:
-            sheet_list.reverse()
-
-        if self.combine_cb.IsChecked:
-            order_sp = getattr(self, "order_sp", None)
-            if order_sp: self.hide_element(order_sp)
-            self.hide_element(self.namingformat_dp)
-            self.hide_element(self.pfilename)
-            self.hide_element(self.dwg_namingformat_dp)
-            self.hide_element(self.pfilename_dwg)
-            self.export_dwg.IsChecked = False
-            self.export_dwg.IsEnabled = False
-            self.export_pdf.IsChecked = False
-            self.export_pdf.IsEnabled = False
-        else:
-            order_sp = getattr(self, "order_sp", None)
-            if order_sp: self.show_element(order_sp)
-            self.export_dwg.IsEnabled = True
-            self.export_pdf.IsEnabled = True
-            if self.export_pdf.IsChecked:
-                self.show_element(self.namingformat_dp)
-                show_pdf = getattr(self, 'show_pdf_col_cb', None)
-                if show_pdf is None or show_pdf.IsChecked:
-                    self.show_element(self.pfilename)
-                else:
-                    self.hide_element(self.pfilename)
-            else:
-                self.hide_element(self.namingformat_dp)
-                self.hide_element(self.pfilename)
-            if self.export_dwg.IsChecked:
-                self.show_element(self.dwg_namingformat_dp)
-                show_dwg = getattr(self, 'show_dwg_col_cb', None)
-                if show_dwg is None or show_dwg.IsChecked:
-                    self.show_element(self.pfilename_dwg)
-                else:
-                    self.hide_element(self.pfilename_dwg)
-            else:
-                self.hide_element(self.dwg_namingformat_dp)
-                self.hide_element(self.pfilename_dwg)
-
-        if self.selected_doc.IsLinked:
-            self.export_dwg.IsChecked = False
-            self.export_dwg.IsEnabled = False
-            self.export_pdf.IsEnabled = True
-
-        # All sheets shown and all indexed (checkboxes removed)
-        self._update_print_indices(sheet_list)
-        self.sheet_list = sheet_list
-
-        # apply sheet number filter
-        sheet_filter = self.sheet_filter
-        if sheet_filter:
-            self.sheet_list = [s for s in (self.sheet_list or [])
-                               if s.number and s.number.startswith(sheet_filter)]
-            # re-index so filtered list always starts from Index Start
-            self._update_print_indices(self.sheet_list)
-
-        # apply sheet name filter (contains, case-insensitive)
-        name_filter = self.name_filter
-        if name_filter:
-            self.sheet_list = [s for s in (self.sheet_list or [])
-                               if s.name and name_filter in s.name.lower()]
-            self._update_print_indices(self.sheet_list)
-
-        # apply column filter rules (AND or OR logic)
-        if self._filter_rules:
-            if self._filter_match_mode == "OR":
-                self.sheet_list = [s for s in (self.sheet_list or [])
-                    if any(apply_filter_rule(s, r) for r in self._filter_rules)]
-            else:
-                self.sheet_list = [s for s in (self.sheet_list or [])
-                    if all(apply_filter_rule(s, r) for r in self._filter_rules)]
-            self._update_print_indices(self.sheet_list)
-
-        # apply sort rules (skip during Order Filter preview -- preview order takes priority)
-        if self._sort_rules and not getattr(self, '_applying_preview', False):
-            sorted_list = self._apply_sort(list(self.sheet_list or []))
-            self.sheet_list = sorted_list
-            self._update_print_indices(self.sheet_list)
-
-        # apply manual order if set (overrides sort when active)
-        # Profile manual_order takes priority over global manual_order
-        active_profile = self._get_active_profile()
-        _order_ids = []
-        if active_profile and active_profile.manual_order:
-            try:
-                _order_ids = [DB.ElementId(int(v))
-                              for v in active_profile.manual_order]
-            except Exception:
-                _order_ids = []
-        elif self._manual_order:
-            _order_ids = list(self._manual_order)
-
-        # Skip stored manual order while a live preview is active — the
-        # preview order is already in _scheduled_sheets and sheet_list;
-        # re-applying _manual_order here would undo the preview.
-        if _order_ids and not getattr(self, '_applying_preview', False):
-            # Key by int to avoid ElementId.__eq__ unreliability in IronPython
-            id_to_sheet  = {int(get_elementid_value(s.revit_sheet.Id)): s
-                            for s in (self.sheet_list or [])}
-            order_ints   = [int(get_elementid_value(eid)) for eid in _order_ids]
-            ordered      = [id_to_sheet[i] for i in order_ints
-                            if i in id_to_sheet]
-            ordered_int_set = set(order_ints)
-            for s in (self.sheet_list or []):
-                if int(get_elementid_value(s.revit_sheet.Id)) not in ordered_int_set:
-                    ordered.append(s)
-            # Clear DataGrid SortDescriptions and set flag so
-            # _dg_column_sorting does not capture and overwrite our order.
-            try:
-                self.sheets_lb.Items.SortDescriptions.Clear()
-            except Exception:
-                pass
-            self._setting_order_programmatically = True
-            try:
-                self.sheet_list = ordered
-                self._update_print_indices(self.sheet_list)
-            except Exception:
-                pass
-            # Flag stays True -- reset AFTER options_changed so that
-            # the _dg_column_sorting 150ms timer cannot fire and overwrite.
-            # Caller must reset: self._setting_order_programmatically = False
-
-        # update toolbar lock state
-        self._update_toolbar_lock()
-
-        # update sheet naming formats
-        self._update_print_filenames(sheet_list)
-
-        # Repopulate filter profile combo after restore
-        self._populate_profile_combo()
-        self._update_filter_badge()
-        # Update filename preview examples
-        self._update_filename_examples()
-
-
-        # Restore full column order if saved (one-time on first load)
-        if getattr(self, '_saved_col_order', None):
-            self._apply_column_order(self._saved_col_order)
-            self._saved_col_order = None
-        elif getattr(self, '_saved_extra_cols', None):
-            self._update_extra_columns(self._saved_extra_cols)
-            self._saved_extra_cols = None
-        elif getattr(self, '_active_extra_cols', None):
-            # Extra columns already active -- re-populate values from
-            # the freshly rebuilt sheet list (fixes refresh wiping data)
-            self._update_extra_columns(self._active_extra_cols)
-        else:
-            self._apply_column_visibility()
-        # _save_settings() removed from options_changed -- callers that need
-        # to persist state call _save_settings() explicitly after returning.
-
-    def set_sheet_printsettings(self, sender, args):
-        if self.selected_printable_sheets:
-            # make sure none of the sheets has readonly print setting
-            if any(x.read_only for x in self.selected_printable_sheets):
-                forms.alert("Print settings has been set by titleblock "
-                            "for one or more sheets and can only be changed "
-                            "by modifying the titleblock print setting")
-                return
-
-            all_psettings = \
-                [x for x in self.print_settings if x.is_user_defined]
-            sheet_psettings = \
-                self.selected_printable_sheets[0].all_print_settings
-            if sheet_psettings:
-                options = {
-                    'Matching Print Settings':
-                        self._get_psetting_items(
-                            doc=self.selected_doc,
-                            psettings=sheet_psettings
-                            ),
-                    'All Print Settings':
-                        all_psettings
-                }
-            else:
-                options = all_psettings or []
-
-            if options:
-                psetting_item = forms.SelectFromList.show(
-                    options,
-                    name_attr='name',
-                    group_selector_title='Print Settings:',
-                    default_group='Matching Print Settings',
-                    title='Select Print Setting',
-                    item_container_template=self.Resources["printSettingsItem"],
-                    width=450, height=400
-                    )
-                if psetting_item:
-                    for sheet in self.selected_printable_sheets:
-                        sheet.print_settings = psetting_item
-            else:
-                forms.alert('There are no print settings in this model.')
-
-    def toggle_exporting_panel(self, sender, args):
-        from System.Windows import Visibility
-        panel = getattr(self, 'exporting_content', None)
-        btn   = getattr(self, 'exporting_toggle_btn', None)
-        if panel is None:
-            return
-        if panel.Visibility == Visibility.Visible:
-            panel.Visibility = Visibility.Collapsed
-            if btn: btn.Content = '>'
-        else:
-            panel.Visibility = Visibility.Visible
-            if btn: btn.Content = 'v'
-
-    def toggle_ordering_panel(self, sender, args):
-        # Sheet Ordering collapse toggle -- ordering_content no longer
-        # exists as a named element since Sheet Ordering is inline.
-        # Keep method stub to avoid XAML click-handler errors.
-        from System.Windows import Visibility
-        panel = getattr(self, 'ordering_content', None)
-        btn   = getattr(self, 'ordering_toggle_btn', None)
-        if panel is None:
-            return
-        if panel.Visibility == Visibility.Visible:
-            panel.Visibility = Visibility.Collapsed
-            if btn: btn.Content = ">"
-        else:
-            panel.Visibility = Visibility.Visible
-            if btn: btn.Content = "v"
-
-    def toggle_filters_panel(self, sender, args):
-        """Collapse/expand the Column Filters content panel."""
-        from System.Windows import Visibility
-        panel = getattr(self, 'filters_content', None)
-        btn   = getattr(self, 'filters_toggle_btn', None)
-        if panel is None:
-            return
-        if panel.Visibility == Visibility.Visible:
-            panel.Visibility = Visibility.Collapsed
-            if btn: btn.Content = ">"
-        else:
-            panel.Visibility = Visibility.Visible
-            if btn: btn.Content = "v"
-
-    def _save_as_print_set(self, sender, args):
-        """Save the sheets currently visible in the main grid as a named Revit Print Set.
-
-        Uses self.sheet_list in iteration order — whatever ordering, filtering,
-        and manual dragging the user has applied is already reflected there.
-        """
-        current_sheets = list(self.sheet_list or [])
-        logger.warning(
-            '_save_as_print_set: grid=%d sheets, first 5: %s',
-            len(current_sheets),
-            [s.number for s in current_sheets[:5]])
-        if not current_sheets:
-            forms.alert('No sheets in the current list to save.')
-            return
-
-        name = forms.ask_for_string(
-            prompt='Enter a name for the print set:',
-            title='Save as Print Set',
-            default='My Print Set'
-        )
-        if not name or not name.strip():
-            return
-        name = name.strip()
-
-        try:
-            import traceback as _tb
-            print_mgr    = self._get_printmanager()
-            doc          = self.selected_doc
-            orig_range   = print_mgr.PrintRange
-
-            try:
-                # ViewSheetSetting is only accessible when PrintRange == Select
-                print_mgr.PrintRange = DB.PrintRange.Select
-
-                # Build ViewSet and ordered revit_views list in self.sheet_list order
-                view_set    = DB.ViewSet()
-                revit_views = []
-                for s in current_sheets:
-                    view_set.Insert(s.revit_sheet)
-                    revit_views.append(s.revit_sheet)
-
-                # Collect existing sets to check for name clash
-                cl = DB.FilteredElementCollector(doc)
-                existing = {
-                    vss.Name: vss
-                    for vss in cl.OfClass(framework.get_type(DB.ViewSheetSet))
-                                 .WhereElementIsNotElementType()
-                                 .ToElements()
-                }
-
-                if name in existing:
-                    if not forms.alert(
-                            'A print set named "{}" already exists. Overwrite it?'.format(name),
-                            ok=False, yes=True, no=True):
-                        return
-                    with revit.Transaction('Delete Print Set', doc=doc):
-                        print_mgr.ViewSheetSetting.CurrentViewSheetSet = existing[name]
-                        print_mgr.ViewSheetSetting.Delete()
-
-                vss_setting      = print_mgr.ViewSheetSetting
-                supports_ordered = hasattr(
-                    vss_setting.CurrentViewSheetSet, 'OrderedViewList')
-                logger.warning(
-                    '_save_as_print_set: supports_ordered=%s', supports_ordered)
-
-                with revit.Transaction('Save Print Set', doc=doc):
-                    logger.warning(
-                        '_save_as_print_set: in transaction, doc.IsModifiable=%s',
-                        doc.IsModifiable)
-                    if supports_ordered:
-                        # Revit 2022+: SaveAs first to create the named set,
-                        # then write OrderedViewList so the saved set retains
-                        # the exact user-defined order from self.sheet_list.
-                        vss_setting.CurrentViewSheetSet.IsAutomatic = False
-                        vss_setting.CurrentViewSheetSet.Views = view_set
-                        vss_setting.SaveAs(name)
-                        saved_set = print_mgr.ViewSheetSetting.CurrentViewSheetSet
-                        logger.warning(
-                            '_save_as_print_set: saved_set type=%s id=%s '
-                            'vss_current id=%s has_OVL=%s',
-                            type(saved_set).__name__,
-                            saved_set.Id,
-                            vss_setting.CurrentViewSheetSet.Id,
-                            hasattr(saved_set, 'OrderedViewList'))
-                        saved_set.OrderedViewList = List[DB.View](revit_views)
-                        try:
-                            readback = list(saved_set.OrderedViewList or [])
-                            logger.warning(
-                                '_save_as_print_set: wrote %d, readback %d, '
-                                'first 5: %s',
-                                len(revit_views), len(readback),
-                                [v.SheetNumber for v in readback[:5]])
-                        except Exception:
-                            logger.warning(
-                                '_save_as_print_set: OrderedViewList readback failed')
-                    else:
-                        # Revit < 2022: OrderedViewList not available;
-                        # membership is preserved but Revit controls display order.
-                        logger.warning(
-                            '_save_as_print_set: OrderedViewList not supported on '
-                            'this Revit version -- print set order may not match '
-                            'the grid order.')
-                        vss_setting.CurrentViewSheetSet.Views = view_set
-                        vss_setting.SaveAs(name)
-
-            finally:
-                print_mgr.PrintRange = orig_range
-
-            self._setup_sheet_list()
-            forms.alert(
-                'Print set "{}" saved with {} sheet(s).'.format(
-                    name, len(current_sheets)),
-                title='Print Set Saved'
-            )
-
-        except Exception as e:
-            import traceback
-            forms.alert(
-                'Failed to save print set:\n' + traceback.format_exc(),
-                title='Error'
-            )
-
-    def _show_hide_columns(self, sender, args):
-        """Open Show/Hide Columns dialog for extra parameter columns."""
-        # Get currently active extra column names (visible ones)
-        from System.Windows import Visibility
-        active_names = []
-        for col_name in self.EXTRA_COLS:
-            try:
-                col = getattr(self, col_name)
-                if col.Header and str(col.Header):
-                    active_names.append(str(col.Header))
-            except Exception:
-                pass
-        if not active_names:
-            forms.alert('No extra columns added yet. Use Choose Columns first.')
-            return
-        dlg    = ShowHideColumnsWindow(active_names, self._hidden_columns)
-        result = dlg.show()
-        if result is not None:
-            self._hidden_columns = result
-            self._apply_column_visibility()
-            self._save_settings()
-
-    def _apply_column_visibility(self):
-        """Show or hide extra columns based on _hidden_columns set."""
-        from System.Windows import Visibility
-        for col_name in self.EXTRA_COLS:
-            try:
-                col = self.FindName(col_name)
-                if col is None:
-                    continue
-                if col.Header and str(col.Header):
-                    if str(col.Header) in self._hidden_columns:
-                        col.Visibility = Visibility.Collapsed
-                    else:
-                        col.Visibility = Visibility.Visible
-            except Exception:
-                pass
-
-    def _update_filename_examples(self):
-        """Update PDF/DWG example filename labels using the first sheet
-        in the current list. By this point _update_print_filenames() has
-        already run so print_filename and dwg_filename are fully computed
-        -- read them directly rather than rebuilding from the template.
-        """
-        try:
-            pdf_tb = getattr(self, 'pdf_example_tb', None)
-            dwg_tb = getattr(self, 'dwg_example_tb', None)
-            if not pdf_tb and not dwg_tb:
-                return
-
-            # Find first sheet with a real Revit sheet behind it
-            example_sheet = None
-            for s in (self.sheet_list or []):
-                if s.revit_sheet:
-                    example_sheet = s
-                    break
-
-            if not example_sheet:
-                if pdf_tb: pdf_tb.Text = "---"
-                if dwg_tb: dwg_tb.Text = "---"
-                return
-
-            # print_filename and dwg_filename were already set by
-            # _update_print_filenames() earlier in options_changed
-            if pdf_tb:
-                pdf_tb.Text = getattr(example_sheet, 'print_filename', None) or "---"
-            if dwg_tb:
-                dwg_tb.Text = getattr(example_sheet, 'dwg_filename', None) or "---"
-        except Exception:
-            pass
-
-    def window_closing(self, sender, args):
-        # Save all settings including column widths when window closes
-        self._save_settings()
-        # Close any open Order Filter dialog so it doesn't stay floating
-        # in Revit after the main window disappears.
-        dlg = getattr(self, '_order_filter_dlg', None)
-        if dlg is not None:
-            try:
-                dlg._win.Close()
-            except Exception:
-                pass
-            self._order_filter_dlg = None
-
-    def sheet_sorting_changed(self, sender, args):
-        # Sorting fires BEFORE the sort completes.
-        # Use Dispatcher to reindex after WPF has finished reordering rows.
-        from System.Windows.Threading import Dispatcher, DispatcherPriority
-        from System import Action
-
-        def _reindex():
-            try:
-                # Read the current visual order from the DataGrid items
-                sorted_items = [self.sheets_lb.Items.GetItemAt(i)
-                                for i in range(self.sheets_lb.Items.Count)]
-                self._update_print_indices(sorted_items)
-            except Exception as e:
-                logger.error('sheet_sorting_changed reindex failed: %s', e)
-
-        Dispatcher.CurrentDispatcher.BeginInvoke(
-            DispatcherPriority.Background,
-            Action(_reindex)
-        )
-
-    def sheet_selection_changed(self, sender, args):
-        if self.selected_printable_sheets:
-            return self.enable_element(self.sheetopts_wp)
-        self.disable_element(self.sheetopts_wp)
-
-    def validate_index_start(self, sender, args):
-        args.Handled = re.match(r'[^0-9]+', args.Text)
-
-    def rest_index(self, sender, args):
-        self.indexstart_tb.Text = '1'
-
-    def rest_sheet_start(self, sender, args):
-        self.sheetstart_tb.Text = ''
-
-    def rest_name_filter(self, sender, args):
-        self.namefilter_tb.Text = ''
-
-    def edit_formats(self, sender, args):
-        editfmt_wnd = \
-            EditNamingFormatsWindow(
-                'EditNamingFormats.xaml',
-                start_with=self.selected_naming_format
-                )
-        editfmt_wnd.show_dialog()
-        new_formats = editfmt_wnd.naming_formats
-        cur_dwg = self.selected_dwg_naming_format
-        self.namingformat_cb.ItemsSource = new_formats
-        self.namingformat_cb.SelectedItem = editfmt_wnd.selected_naming_format
-        self.dwg_namingformat_cb.ItemsSource = new_formats
-        if cur_dwg:
-            for fmt in new_formats:
-                if fmt.name == cur_dwg.name:
-                    self.dwg_namingformat_cb.SelectedItem = fmt
-                    break
-
-    def edit_formats_dwg(self, sender, args):
-        editfmt_wnd = \
-            EditNamingFormatsWindow(
-                'EditNamingFormats.xaml',
-                start_with=self.selected_dwg_naming_format
-                )
-        editfmt_wnd.show_dialog()
-        new_formats = editfmt_wnd.naming_formats
-        cur_pdf = self.selected_naming_format
-        self.dwg_namingformat_cb.ItemsSource = new_formats
-        self.dwg_namingformat_cb.SelectedItem = editfmt_wnd.selected_naming_format
-        self.namingformat_cb.ItemsSource = new_formats
-        if cur_pdf:
-            for fmt in new_formats:
-                if fmt.name == cur_pdf.name:
-                    self.namingformat_cb.SelectedItem = fmt
-                    break
-
-    def copy_filenames(self, sender, args):
-        if self.selected_sheets:
-            filenames = [x.print_filename for x in self.selected_sheets]
-            script.clipboard_copy('\n'.join(filenames))
-
-    # ── Column ordering & slot management ────────────────────────────────────
-
-    # Maps default column header names to their x:Name in XAML
-    DEFAULT_COL_NAMES = {
-        'Print Index':                    'print_index_col',
-        'Sheet Number':                   'sheet_number_col',
-        'Sheet Name':                     'sheet_name_col',
-        'Sheet Revision (Sort By Date)':  'sheet_revision_col',
-    }
-
-    def _apply_column_order(self, ordered_names):
-        """Apply full column order (defaults + user params) from dialog.
-        ordered_names: list of all column names in desired display order.
-        Updates extra slot values AND sets DisplayIndex on controllable columns.
-        """
-        from System.Windows import Visibility
-
-        # 1. Get user param names (non-defaults) in order
-        user_params = [n for n in ordered_names if n not in LOCKED_COLUMNS]
-
-        # 2. Update extra column slots with user params
-        self._update_extra_columns(user_params)
-
-        # 3. Only reorder the controllable columns:
-        #    the 4 locked defaults + active extra slots
-        controllable = set(LOCKED_COLUMNS)
-        for col_name in self.EXTRA_COLS:
-            try:
-                col = self.FindName(col_name)
-                if col is None:
-                    continue
-                if col.Visibility == Visibility.Visible and col.Header:
-                    controllable.add(str(col.Header))
-            except Exception:
-                pass
-
-        # Build ordered list of (col_object, desired_position)
-        # Only for controllable columns, in the order specified
-        col_map = {}
-        for col in self.sheets_lb.Columns:
-            try:
-                h = str(col.Header) if col.Header else ''
-                if h in controllable:
-                    col_map[h] = col
-            except Exception:
-                pass
-
-        ordered_visible = [n for n in ordered_names if n in col_map]
-
-        # Two-pass assignment to avoid WPF index conflict errors:
-        # Pass 1 — shift all controllable cols to the end
-        # Pass 2 — set real indices from lowest to highest
-        total = self.sheets_lb.Columns.Count
-        for name in ordered_visible:
-            try:
-                col_map[name].DisplayIndex = total - 1
-            except Exception:
-                pass
-        for i, name in enumerate(ordered_visible):
-            try:
-                col_map[name].DisplayIndex = i
-            except Exception:
-                pass
-
-        # Save the ordering
-        self._save_settings()
-
-    # ── Extra column slot management ─────────────────────────────────────────
-    # _extra_col_names: list of up to 12 param names the user has chosen.
-    # Each slot maps to extra1..extra12 on ViewSheetListItem.
-
-    EXTRA_SLOTS = ['extra1',  'extra2',  'extra3',  'extra4',
-                   'extra5',  'extra6',  'extra7',  'extra8',
-                   'extra9',  'extra10', 'extra11', 'extra12']
-    EXTRA_COLS  = ['extra_col1',  'extra_col2',  'extra_col3',  'extra_col4',
-                   'extra_col5',  'extra_col6',  'extra_col7',  'extra_col8',
-                   'extra_col9',  'extra_col10', 'extra_col11', 'extra_col12']
-
-    def _update_extra_columns(self, param_names):
-        """Populate extra slot columns from a list of param names (max 12).
-        Called after dialog closes. Uses @forms.reactive slots so WPF
-        binding updates automatically — no ItemsSource reset needed.
-        Stores active param list in self._active_extra_cols so that
-        options_changed can re-populate after a sheet list refresh.
-        """
-        # Track active params so refresh re-populates correctly
-        self._active_extra_cols = list(param_names)
-        from System.Windows import Visibility
-
-        # Fill slots — pad with empty strings if fewer than 6 chosen
-        slots = list(param_names) + [''] * 6
-        slots = slots[:6]
-
-        # Update every sheet item's slot values
-        for sheet_item in (self._scheduled_sheets or []):
-            for i, param_name in enumerate(slots):
-                slot = self.EXTRA_SLOTS[i]
-                val = ''
-                if param_name:
-                    try:
-                        p = sheet_item.revit_sheet.LookupParameter(param_name)
-                        val = (p.AsString() or p.AsValueString() or '') if p else ''
-                    except Exception:
-                        val = ''
-                # Set via @forms.reactive setter — WPF sees this immediately
-                setattr(sheet_item, slot, val)
-
-        # Show/hide the DataGrid columns and update their headers.
-        # When collapsing a slot we MUST clear the header too -- otherwise
-        # _apply_column_visibility() below sees the stale header text,
-        # finds it not in _hidden_columns, and flips the column back to
-        # Visible (showing an empty column with the old name).
-        for i, col_name in enumerate(self.EXTRA_COLS):
-            try:
-                col = self.FindName(col_name)
-                if col is None:
-                    continue
-                param_name = slots[i]
-                if param_name:
-                    col.Header = param_name
-                    col.Visibility = Visibility.Visible
-                else:
-                    col.Header = ''
-                    col.Visibility = Visibility.Collapsed
-            except Exception:
-                pass
-
-        # Re-apply hidden column visibility after every column rebuild
-        self._apply_column_visibility()
-
-        # Persist the new column selection immediately
-        self._save_settings()
-
-
-    # ── Manual order ───────────────────────────────────────────────────────
-
-    def _show_edit_order_dialog(self, sender, args):
-        # Always edit the FULL unfiltered sheet list so that manual order
-        # applies correctly regardless of active filters or sort rules.
-        # Filters only hide sheets from view -- they should not affect
-        # where sheets sit in the master order.
-        full_list = list(self._scheduled_sheets or [])
-        if not full_list:
-            forms.alert('No sheets to reorder. Select a sheet index first.')
-            return
-        # If a manual order already exists, show sheets in that order
-        # so the dialog reflects the current saved sequence.
-        if self._manual_order:
-            id_to_sheet = {s.revit_sheet.Id: s for s in full_list}
-            ordered = [id_to_sheet[eid] for eid in self._manual_order
-                       if eid in id_to_sheet]
-            ordered_ids = set(self._manual_order)
-            for s in full_list:
-                if s.revit_sheet.Id not in ordered_ids:
-                    ordered.append(s)
-            full_list = ordered
-        dlg = EditOrderWindow(full_list)
-        result = dlg.show()
-        if result is not None:
-            self._manual_order = [s.revit_sheet.Id for s in result]
-            self.options_changed(None, None)
-            self._save_settings()
-
-    # ── Sort system ────────────────────────────────────────────────────────
-
-    def _apply_sort(self, sheet_list):
-        """Apply sort rules in reverse priority order (last = primary sort).
-        Reads any Revit sheet parameter directly -- same as filter dialog.
-        """
-        for rule in reversed(self._sort_rules):
-            col     = rule.column_name
-            reverse = not rule.ascending
-            def _key(s, c=col):
-                if c == "Sheet Number":
-                    return s.number.lower() if s.number else ""
-                if c == "Sheet Name":
-                    return s.name.lower() if s.name else ""
-                # Read directly from Revit sheet -- any parameter works
-                try:
-                    p = s.revit_sheet.LookupParameter(c)
-                    if p:
-                        v = p.AsString() or p.AsValueString() or ""
-                        return v.lower()
-                except Exception:
-                    pass
-                return ""
-            try:
-                sheet_list = sorted(sheet_list, key=_key, reverse=reverse)
-            except Exception:
-                pass
-        return sheet_list
-
-    def _show_sorting_dialog(self, sender, args):
-        """Open Sorting dialog. Default = active columns (visible + hidden);
-        hidden columns are still active so they should be sortable.
-        """
-        core = ["Sheet Number", "Sheet Name"]
-        # Include ALL extra columns with a header -- visible AND hidden
-        # Hidden columns are still active, just not displayed
-        active_extra = []
-        for col_name in self.EXTRA_COLS:
-            try:
-                col = getattr(self, col_name)
-                if col.Header and str(col.Header) and str(col.Header) not in core:
-                    active_extra.append(str(col.Header))
-            except Exception:
-                pass
-        active_names = core + active_extra
-        # All sheet params for the Show All toggle
-        try:
-            all_param_names = self._get_all_sheet_param_names()
-        except Exception:
-            all_param_names = []
-        SKIP = {'File Name (PDF)', 'File Name (DWG)', 'Print Setting'}
-        all_names = core + [n for n in all_param_names
-                            if n not in core and n not in SKIP]
-        sorter = SortingWindow(active_names, self._sort_rules,
-                               all_params=all_names)
-        result = sorter.show()
-        if result is not None:
-            self._sort_rules = result
-            self.options_changed(None, None)
-            self._save_settings()
-
-    def _populate_default_sort_cb(self):
-        # Fill Default Sort with Sheet Number, Sheet Name, active extra
-        # columns, and all Revit sheet parameters.
-        cb = getattr(self, 'default_sort_cb', None)
-        if cb is None:
-            return
-        extra  = [h for h in (getattr(self, '_extra_col_names', None) or []) if h]
-        params = []
-        try:
-            params = self._get_all_sheet_param_names()
-        except Exception:
-            pass
-        seen    = set(['Sheet Number', 'Sheet Name'] + extra)
-        options = (['Sheet Number', 'Sheet Name'] + extra +
-                   [p for p in params if p not in seen])
-        cb.ItemsSource = options
-        saved = self._default_sort_param or 'Sheet Number'
-        if saved in options:
-            cb.SelectedItem = saved
-        else:
-            cb.SelectedIndex = 0
-
-    def _default_sort_changed(self, sender, args):
-        cb = getattr(self, 'default_sort_cb', None)
-        if cb is None:
-            return
-        self._default_sort_param = cb.SelectedItem or 'Sheet Number'
-        # Only apply if no manual order or sort rules are active
-        if not self._has_active_order():
-            self._apply_default_sort()
-            self.options_changed(None, None)
-        self._save_settings()
-
-    def _has_active_order(self):
-        # True if manual order OR sort rules are currently active
-        if self._sort_rules:
-            return True
-        if self._manual_order:
-            return True
-        active = self._get_active_profile()
-        if active and (active.manual_order or active.order_rules):
-            return True
-        return False
-
-    def _has_active_sort(self):
-        return bool(self._sort_rules)
-
-    def _has_active_manual(self):
-        if self._manual_order:
-            return True
-        active = self._get_active_profile()
-        return bool(active and (active.manual_order or active.order_rules))
-
-    def _apply_default_sort(self):
-        # Sort _scheduled_sheets by the default sort parameter in place.
-        param = self._default_sort_param or 'Sheet Number'
-        def sort_key(s):
-            if param == 'Sheet Number':
-                return (s.number or '').lower()
-            if param == 'Sheet Name':
-                return (s.name or '').lower()
-            try:
-                p = s.revit_sheet.LookupParameter(param)
-                if p:
-                    return (p.AsString() or p.AsValueString() or '').lower()
-            except Exception:
-                pass
-            return ''
-        self._scheduled_sheets = sorted(self._scheduled_sheets or [], key=sort_key)
-
-    def _update_toolbar_lock(self):
-        # Lock Sorting when manual order is active.
-        # Lock Edit Order when sort rules are active.
-        sorting_btn   = getattr(self, 'sorting_btn',   None)
-        edit_order_btn = getattr(self, 'edit_order_btn', None)
-        has_manual = self._has_active_manual()
-        has_sort   = self._has_active_sort()
-        if sorting_btn:
-            sorting_btn.IsEnabled = not has_manual
-            sorting_btn.ToolTip   = ('Clear Order first to use Sorting'
-                                     if has_manual else None)
-        if edit_order_btn:
-            edit_order_btn.IsEnabled = not has_sort
-            edit_order_btn.ToolTip   = ('Clear Sorting first to manually reorder'
-                                        if has_sort else None)
-
-    def _clear_manual_order(self, sender, args):
-        # Clear ALL ordering state: manual order, order rules, sort rules,
-        # and active profile order. Then apply default sort parameter.
-        self._manual_order = []
-        self._sort_rules   = []
-        active = self._get_active_profile()
-        if active:
-            active.manual_order = []
-            active.order_rules  = {}
-        self._apply_default_sort()
-        self.options_changed(None, None)
-        self._save_settings()
-
-    def _clear_sorting(self, sender, args):
-        self._sort_rules = []
-        self.options_changed(None, None)
-        self._save_settings()
-
-    # ── Filter system ──────────────────────────────────────────────────────
-
-    def _get_all_sheet_param_names(self):
-        """Collect all parameter names from the current sheet list for the filter editor."""
-        names = set()
-        SKIP = {'File Name (PDF)', 'File Name (DWG)', 'Print Setting',
-                'Sheet Number', 'Sheet Name'}
-        for slot in self.EXTRA_SLOTS:
-            # Check active extra col headers
-            pass
-        for sheet_item in (self._scheduled_sheets or []):
-            try:
-                for param in sheet_item.revit_sheet.Parameters:
-                    try:
-                        n = param.Definition.Name
-                        if n and n not in SKIP:
-                            names.add(n)
-                    except Exception:
-                        pass
-            except Exception:
-                pass
-            break  # one sheet is enough to get all params
-        return sorted(list(names))
-
-    def _show_filter_dialog(self, sender, args):
-        """Open the column filter editor -- same as Jason Revisions."""
-        core_names = ["Sheet Number", "Sheet Name"]
-        extra_names = self._get_all_sheet_param_names()
-        all_names = core_names + [n for n in extra_names if n not in core_names]
-        current_list = list(self._scheduled_sheets or [])
-        editor = FilterEditorWindow(all_names, self._filter_rules, current_list)
-        editor.match_mode = self._filter_match_mode
-        result = editor.show()
-        if result is not None:
-            self._filter_rules      = result
-            self._filter_match_mode = editor.match_mode
-            self._update_filter_badge()
-            self.options_changed(None, None)
-            self._save_settings()  # persist filter rules immediately
-
-    def _update_filter_badge(self):
-        """Update the filter count badge on the Edit Filters button."""
-        count = len(self._filter_rules)
-        try:
-            filter_badge = getattr(self, 'filter_badge', None)
-            filter_count_tb = getattr(self, 'filter_count_tb', None)
-            from System.Windows import Visibility
-            if filter_count_tb:
-                filter_count_tb.Text = str(count)
-            if filter_badge:
-                filter_badge.Visibility = (Visibility.Visible
-                                           if count > 0 else Visibility.Collapsed)
-        except Exception:
-            pass
-
-    def _reset_all_filters(self, sender, args):
-        """Clear Sheet No, Sheet Name and all column filter rules."""
-        try:
-            self.sheetstart_tb.Text = ''
-        except Exception:
-            pass
-        try:
-            self.namefilter_tb.Text = ''
-        except Exception:
-            pass
-        self._filter_rules      = []
-        self._filter_match_mode = "AND"
-        self._update_filter_badge()
-        self.options_changed(None, None)
-        self._save_settings()
-
-    # ── In-list drag-drop (main DataGrid) ────────────────────────────────
-
-    def _init_datagrid_drag(self):
-        # Wire drag-drop events on the main sheet DataGrid.
-        # Called once after the window is loaded.
-        dg = getattr(self, 'sheets_lb', None)
-        if dg is None:
-            return
-        dg.AllowDrop = True
-        dg.PreviewMouseLeftButtonDown += self._dg_mouse_down
-        dg.PreviewMouseLeftButtonUp   += self._dg_mouse_up
-        dg.PreviewMouseMove           += self._dg_mouse_move
-        dg.DragOver                   += self._dg_drag_over
-        dg.DragLeave                  += self._dg_drag_leave
-        dg.Drop                       += self._dg_drop
-        # Intercept column-header sort: capture sorted order as manual order
-        # so subsequent drag-drop sees the correct row sequence.
-        dg.Sorting                    += self._dg_column_sorting
-
-        self._dg_drag_start   = None
-        self._dg_dragging     = False
-        self._dg_dragged      = []
-        self._dg_drop_index   = -1
-        self._dg_drop_line    = getattr(self, 'dg_drop_line', None)
-        self._dg_ind_canvas   = getattr(self, 'dg_ind_canvas', None)
-
-    def _dg_get_row_at(self, point):
-        from System.Windows.Media import VisualTreeHelper
-        from System.Windows.Controls import DataGridRow
-        dg  = self.sheets_lb
-        hit = dg.InputHitTest(point)
-        obj = hit
-        while obj is not None:
-            if isinstance(obj, DataGridRow):
-                return obj
-            try:
-                obj = VisualTreeHelper.GetParent(obj)
-            except Exception:
-                break
-        return None
-
-    def _dg_index_and_y(self, point):
-        from System.Windows import Point as _Pt
-        from System.Windows.Controls import DataGridRow
-        dg    = self.sheets_lb
-        count = len(self.sheet_list or [])
-        if count == 0:
-            return 0, 0.0
-        canvas = self._dg_ind_canvas
-        best_idx = 0
-        best_y   = 0.0
-        for i in range(count):
-            try:
-                row = dg.ItemContainerGenerator.ContainerFromIndex(i)
-                if row is None:
-                    continue
-                top_in_dg = row.TranslatePoint(_Pt(0, 0), dg)
-                h         = row.ActualHeight
-                mid       = top_in_dg.Y + h * 0.5
-                top_in_cv = row.TranslatePoint(_Pt(0, 0), canvas) if canvas else top_in_dg
-                if point.Y <= mid:
-                    best_idx = i
-                    best_y   = top_in_cv.Y if canvas else top_in_dg.Y
-                    break
-                else:
-                    best_idx = i + 1
-                    best_y   = (top_in_cv.Y if canvas else top_in_dg.Y) + h
-            except Exception:
-                continue
-        return best_idx, best_y
-
-    def _dg_show_indicator(self, canvas_y):
-        from System.Windows import Visibility
-        from System.Windows.Controls import Canvas as _CV
-        line   = self._dg_drop_line
-        canvas = self._dg_ind_canvas
-        if line is None or canvas is None:
-            return
-        try:
-            line.Width = max(self.sheets_lb.ActualWidth - 4, 100)
-        except Exception:
-            line.Width = 800
-        _CV.SetTop(line, canvas_y - 1)
-        _CV.SetLeft(line, 0)
-        line.Visibility = Visibility.Visible
-
-    def _dg_hide_indicator(self):
-        from System.Windows import Visibility
-        if self._dg_drop_line:
-            self._dg_drop_line.Visibility = Visibility.Collapsed
-
-    def _dg_column_sorting(self, sender, args):
-        # Skip if we are programmatically setting ItemsSource
-        if getattr(self, '_setting_order_programmatically', False):
-            return
-        # User clicked a column header to sort.
-        from System.Windows.Threading import DispatcherTimer
-        import System
-        timer = DispatcherTimer()
-        timer.Interval = System.TimeSpan.FromMilliseconds(150)
-        def on_tick(s, e):
-            timer.Stop()
-            # Double-check flag inside callback -- it may have been set
-            # between the event and the timer firing.
-            if getattr(self, '_setting_order_programmatically', False):
-                return
-            try:
-                dg = self.sheets_lb
-                ordered = []
-                for i in range(dg.Items.Count):
-                    item = dg.Items.GetItemAt(i)
-                    if hasattr(item, 'revit_sheet'):
-                        ordered.append(item.revit_sheet.Id)
-                if ordered:
-                    self._apply_profile_order(ordered)
-            except Exception:
-                pass
-        timer.Tick += on_tick
-        timer.Start()
-
-    def _dg_mouse_down(self, sender, args):
-        import System.Windows.Input as _SWI
-        self._dg_drag_start = args.GetPosition(self.sheets_lb)
-        self._dg_dragging   = False
-        row = self._dg_get_row_at(self._dg_drag_start)
-        if row is not None and row.IsSelected:
-            args.Handled = True  # prevent deselect on mousedown
-
-    def _dg_mouse_up(self, sender, args):
-        self._dg_drag_start = None
-        self._dg_dragging   = False
-        self._dg_hide_indicator()
-
-    def _dg_mouse_move(self, sender, args):
-        import System.Windows.Input as _SWI
-        from System.Windows import DragDropEffects, DataObject
-        if args.LeftButton != _SWI.MouseButtonState.Pressed:
-            return
-        if self._dg_drag_start is None:
-            return
-        pos = args.GetPosition(self.sheets_lb)
-        dx  = pos.X - self._dg_drag_start.X
-        dy  = pos.Y - self._dg_drag_start.Y
-        if (dx * dx + dy * dy) < 36:
-            return
-        selected = [item for item in (self.sheet_list or [])
-                    if self._is_dg_row_selected(item)]
-        if not selected:
-            return
-        self._dg_dragging = True
-        self._dg_dragged  = selected
-        DragDropEffects2 = DragDropEffects
-        DataObject2      = DataObject
-        from System.Windows import DragDrop
-        DragDrop.DoDragDrop(
-            self.sheets_lb,
-            DataObject2('dg_sheets', selected),
-            DragDropEffects2.Move
-        )
-        self._dg_hide_indicator()
-        self._dg_dragging = False
-
-    def _is_dg_row_selected(self, sheet_item):
-        dg = self.sheets_lb
-        try:
-            row = dg.ItemContainerGenerator.ContainerFromItem(sheet_item)
-            if row is not None:
-                return row.IsSelected
-        except Exception:
-            pass
-        return False
-
-    def _dg_drag_over(self, sender, args):
-        from System.Windows import DragDropEffects
-        args.Effects = DragDropEffects.Move
-        pos = args.GetPosition(self.sheets_lb)
-        idx, cy = self._dg_index_and_y(pos)
-        self._dg_drop_index = idx
-        self._dg_show_indicator(cy)
-        args.Handled = True
-
-    def _dg_drag_leave(self, sender, args):
-        self._dg_hide_indicator()
-
-    def _dg_drop(self, sender, args):
-        self._dg_hide_indicator()
-        dragged = list(self._dg_dragged)
-        if not dragged:
-            return
-        insert_idx  = self._dg_drop_index
-        dragged_ids = set(id(s) for s in dragged)
-        current     = list(self.sheet_list or [])
-        order_map   = {id(s): i for i, s in enumerate(current)}
-        dragged_sorted = sorted(dragged, key=lambda s: order_map.get(id(s), 0))
-        before     = sum(1 for i, s in enumerate(current)
-                        if id(s) in dragged_ids and i < insert_idx)
-        insert_adj = max(0, insert_idx - before)
-        remaining  = [s for s in current if id(s) not in dragged_ids]
-        for i, sheet in enumerate(dragged_sorted):
-            remaining.insert(min(insert_adj + i, len(remaining)), sheet)
-
-        # Build a full order: dragged result merged back into the full
-        # unfiltered list. Sheets not visible (filtered out) keep their
-        # relative positions around the visible ones.
-        filtered_ids = set(id(s) for s in remaining)
-        full_list    = list(self._scheduled_sheets or [])
-
-        # Map filtered sheet identity to position in remaining
-        remaining_ids_ordered = [s.revit_sheet.Id for s in remaining]
-        remaining_id_set      = set(remaining_ids_ordered)
-
-        # Build merged order: walk full list, replace filtered-in sheets
-        # with their new drag order, leave filtered-out sheets in place
-        merged   = []
-        rem_iter = iter(remaining)
-        for s in full_list:
-            if s.revit_sheet.Id in remaining_id_set:
-                try:
-                    merged.append(next(rem_iter).revit_sheet.Id)
-                except StopIteration:
-                    merged.append(s.revit_sheet.Id)
-            else:
-                merged.append(s.revit_sheet.Id)
-
-        self._sort_rules = []  # clear sort so manual order is authoritative
-        self._apply_profile_order(merged)
-        self._dg_dragged = []
-        args.Handled = True
-
-    def _apply_profile_order(self, ordered_ids):
-        # Save the dragged order into the active filter profile if one is
-        # active, otherwise into self._manual_order (general order).
-        active = self._get_active_profile()
-        if active is not None:
-            active.manual_order = [int(get_elementid_value(eid))
-                                   for eid in ordered_ids]
-        else:
-            self._manual_order = list(ordered_ids)
-        self._save_settings()
-        self.options_changed(None, None)
-
-    def _get_active_profile(self):
-        try:
-            profile_cb = getattr(self, 'profile_cb', None)
-            if not profile_cb or not profile_cb.SelectedItem:
-                return None
-            item = profile_cb.SelectedItem
-            p = item.Tag if hasattr(item, 'Tag') else None
-            if p and hasattr(p, 'manual_order'):
-                return p
-        except Exception:
-            pass
-        return None
-
-    def _show_order_rules(self, sender, args):
-        # Always pass the FULL unfiltered sheet list so the Order Filter
-        # scope filter works against all model sheets -- not just the
-        # currently visible subset. This means the profile captures the
-        # complete plan order regardless of which filter is active in
-        # the main window.
-        # Use currently visible (filtered) sheets as the working set so
-        # the preview matches what the user sees in the main window.
-        visible_sheets = list(self.sheet_list or [])
-        all_sheets     = list(self._scheduled_sheets or [])
-        if not visible_sheets:
-            forms.alert('No sheets loaded. Select a sheet index first.')
-            return
-        all_params  = self._get_all_sheet_param_names()
-        active      = self._get_active_profile()
-        if active is not None:
-            saved_rules = active.order_rules
-        else:
-            # Fall back to the last-used rules so master sort and token
-            # settings survive dialog reopens even without a profile.
-            saved_rules = getattr(self, '_last_order_rules', {})
-        # Snapshot _scheduled_sheets order BEFORE any preview mutation
-        # so Reset can restore it exactly.
-        original_scheduled = list(self._scheduled_sheets or [])
-        original_order = list(visible_sheets)
-
-        def _on_preview_live(full_result, in_scope_result):
-            # Called by OrderRulesWindow.Preview button (and Apply path).
-            # Always restore _scheduled_sheets from the original snapshot
-            # BEFORE applying preview, so multi-click Preview always
-            # measures the new order against the true pre-dialog order
-            # (not the previous preview's order).
-            self._scheduled_sheets = list(original_scheduled)
-            # Clear any previous green/yellow highlights so only this
-            # preview's moved-set lights up.
-            for s in (self._scheduled_sheets or []):
-                s.row_background = None
-            # Highlight in-scope reordered sheets in the DataGrid.
-            in_scope_ids = set(
-                int(get_elementid_value(s.revit_sheet.Id))
-                for s in in_scope_result
-            )
-            # Build merged result to push to DataGrid.
-            # Insert vis_ids as one contiguous block at the position of the
-            # first visible sheet; non-visible sheets keep their original
-            # relative order on either side of the block.  The old
-            # slot-by-slot interleave incorrectly flattened scope reorders
-            # that moved sheets across non-visible-sheet boundaries.
-            vis_ids     = [s.revit_sheet.Id for s in full_result]
-            vis_int_set = set(int(get_elementid_value(i)) for i in vis_ids)
-            merged_ids   = []
-            inserted_vis = False
-            for s in all_sheets:
-                sid = int(get_elementid_value(s.revit_sheet.Id))
-                if sid in vis_int_set:
-                    if not inserted_vis:
-                        merged_ids.extend(vis_ids)
-                        inserted_vis = True
-                    # Skip: already included in the contiguous block above
-                else:
-                    merged_ids.append(s.revit_sheet.Id)
-            if not inserted_vis:
-                merged_ids.extend(vis_ids)
-            # Fetch matched IDs from the open dialog for yellow-on-matched highlighting.
-            dlg_matched = set()
-            try:
-                dlg_matched = self._order_filter_dlg._get_matched_ids()
-            except Exception:
-                pass
-            # Apply to DataGrid: moved sheets = green, matched-not-moved = yellow.
-            self._apply_preview_order(merged_ids, in_scope_ids, yellow_ids=dlg_matched)
-
-        def _on_reset_live():
-            # Restore _scheduled_sheets to pre-preview order, clear all highlights
-            self._scheduled_sheets = list(original_scheduled)
-            self._yellow_highlighted_ids = set()
-            self._clear_preview_highlight()
-            self.options_changed(None, None)
-
-        def _on_cancel_live():
-            # Restore _scheduled_sheets to pre-preview order, clear all highlights
-            self._scheduled_sheets = list(original_scheduled)
-            self._yellow_highlighted_ids = set()
-            self._clear_preview_highlight()
-            self.options_changed(None, None)
-
-        # Prevent opening a second Order Filter window
-        if getattr(self, '_order_filter_dlg', None) is not None:
-            try:
-                self._order_filter_dlg._win.Activate()
-                self._order_filter_dlg._win.Focus()
-            except Exception:
-                pass
-            return
-
-        def _on_yellow_live(atf_ids):
-            # Highlight affected sheets in pastel yellow.
-            from System.Windows.Media import SolidColorBrush, Color
-            _YELLOW = SolidColorBrush(Color.FromRgb(0xFF, 0xF9, 0xC4))
-            self._yellow_highlighted_ids = atf_ids
-            for s in (self._scheduled_sheets or []):
-                sid = int(get_elementid_value(s.revit_sheet.Id))
-                if sid in atf_ids:
-                    s.row_background = _YELLOW
-                elif s.row_background is not None:
-                    # Only clear yellow; don't touch green highlights
-                    try:
-                        from System.Windows.Media import Color as _C
-                        c = s.row_background.Color
-                        if c.R == 0xFF and c.G == 0xF9:
-                            s.row_background = None
-                    except Exception:
-                        s.row_background = None
-            self._setting_order_programmatically = True
-            self.options_changed(None, None)
-            from System.Windows.Threading import DispatcherTimer
-            import System as _Sys
-            _yt = DispatcherTimer()
-            _yt.Interval = _Sys.TimeSpan.FromMilliseconds(500)
-            def _y_clr(s, e):
-                _yt.Stop()
-                self._setting_order_programmatically = False
-            _yt.Tick += _y_clr
-            _yt.Start()
-
-        def _live_parent_filter_state():
-            # Read parent's current Column Filter state on demand so the
-            # Order Filter dialog never uses a stale snapshot.
-            return (list(self._filter_rules or []),
-                    self._filter_match_mode or 'AND')
-
-        # Use the exporter window's own HWND so the Order Filter is owned by
-        # (always above) the exporter, but yields to other apps/projects.
-        from System.Windows.Interop import WindowInteropHelper as _HWIH
-        try:
-            _exporter_hwnd = _HWIH(self).Handle
-        except Exception:
-            _exporter_hwnd = None
-
-        dlg = OrderRulesWindow(visible_sheets, all_params, saved_rules,
-                               full_sheets=all_sheets,
-                               preview_callback=_on_preview_live,
-                               reset_callback=_on_reset_live,
-                               cancel_callback=_on_cancel_live,
-                               yellow_callback=_on_yellow_live,
-                               parent_filter_state_getter=_live_parent_filter_state,
-                               owner_hwnd=_exporter_hwnd)
-        self._order_filter_dlg = dlg
-        try:
-            result = dlg.show()
-        finally:
-            self._order_filter_dlg = None
-        if result is None:
-            return
-        import traceback as _tb
-        try:
-            ordered     = result['ordered']   # reordered visible sheets
-            order_rules = result['order_rules']
-
-            # Merge reordered visible sheets back into the full list.
-            # Out-of-filter sheets keep their current relative positions.
-            visible_ids     = [s.revit_sheet.Id for s in ordered]
-            visible_int_set = set(int(get_elementid_value(i)) for i in visible_ids)
-            vis_iter        = iter(visible_ids)
-            merged          = []
-            for s in all_sheets:
-                sid = int(get_elementid_value(s.revit_sheet.Id))
-                if sid in visible_int_set:
-                    try:
-                        merged.append(next(vis_iter))
-                    except StopIteration:
-                        merged.append(s.revit_sheet.Id)
-                else:
-                    merged.append(s.revit_sheet.Id)
-
-            if active is not None:
-                active.order_rules  = order_rules
-                # Save manual_order using ONLY the currently filtered sheets
-                # (the visible set the user was actually reordering). Storing
-                # the merged full-list here would cause stale unfiltered sheet
-                # IDs to leak back in on the next profile reload, bypassing
-                # the column filter.
-                active.manual_order = [int(get_elementid_value(s.revit_sheet.Id))
-                                       for s in ordered]
-            else:
-                # Global manual_order is persisted across sessions. Storing the
-                # merged full list would mean every subsequent options_changed
-                # call applies an order across ALL sheets, overriding the
-                # current Column Filter. Save only the filtered (visible) IDs.
-                self._manual_order = [DB.ElementId(int(get_elementid_value(s.revit_sheet.Id)))
-                                      for s in ordered]
-            # Always persist the last-used Order Filter rules so the dialog
-            # reopens with the same master sort and tokens even when no
-            # main-window filter profile is selected.
-            self._last_order_rules = dict(order_rules)
-            _dbg = 'visible: {} all: {} merged: {}'.format(
-                len(visible_sheets), len(all_sheets), len(merged))
-            logger.debug('_show_order_rules apply-path reached _clear_preview_highlight, scheduled=%d',
-                         len(self._scheduled_sheets or []))
-            self._clear_preview_highlight()
-            logger.debug('_show_order_rules: %s', _dbg)
-        except Exception as _e:
-            logger.error('_show_order_rules apply-path exception before _clear_preview_highlight: %s\n%s',
-                         str(_e), _tb.format_exc())
-            raise
-        self._save_settings()
-        # Set flag before options_changed so ItemsSource assignment
-        # inside it is protected from _dg_column_sorting capture.
-        self._setting_order_programmatically = True
-        self.options_changed(None, None)
-        # Reset after 500ms -- long enough for the 150ms timer to have fired
-        # and been blocked, but short enough not to block real user column sorts.
-        from System.Windows.Threading import DispatcherTimer
-        import System as _Sys
-        _reset_timer = DispatcherTimer()
-        _reset_timer.Interval = _Sys.TimeSpan.FromMilliseconds(500)
-        def _do_reset(s, e):
-            _reset_timer.Stop()
-            self._setting_order_programmatically = False
-        _reset_timer.Tick += _do_reset
-        _reset_timer.Start()
-
-    def _save_profile(self, sender, args):
-        """Save current filter state as a named profile.
-        Pre-fills the dialog with the currently selected profile name so
-        the user can just click OK to overwrite -- same as Jason Revisions.
-        """
-        # Pre-fill with selected profile name if one is active
-        default_name = "My Filter"
-        try:
-            profile_cb = getattr(self, 'profile_cb', None)
-            if profile_cb and profile_cb.SelectedItem:
-                sel = profile_cb.SelectedItem
-                if hasattr(sel, 'Tag') and sel.Tag:
-                    default_name = sel.Tag.name
-        except Exception:
-            pass
-
-        try:
-            name = forms.ask_for_string(
-                prompt="Enter a name for this filter profile:",
-                title="Save Filter Profile",
-                default=default_name
-            )
-        except Exception:
-            name = None
-
-        if not name or not name.strip():
-            return
-
-        name = name.strip()
-
-        # Capture current sheet order for this profile
-        current_order = [int(get_elementid_value(s.revit_sheet.Id))
-                         for s in (self.sheet_list or [])]
-        # Preserve existing order_rules if overwriting a profile
-        existing = next((p for p in self._filter_profiles if p.name == name), None)
-        existing_order_rules = existing.order_rules if existing else {}
-
-        new_profile = FilterProfile(
-            name         = name,
-            rules        = list(self._filter_rules),
-            match_mode   = self._filter_match_mode,
-            sheet_no     = (self.sheetstart_tb.Text.strip()
-                            if self.sheetstart_tb.Text else ""),
-            sheet_name   = (self.namefilter_tb.Text.strip()
-                            if self.namefilter_tb.Text else ""),
-            manual_order = current_order,
-            order_rules  = existing_order_rules,
-        )
-
-        # Overwrite if name already exists, then re-sort
-        self._filter_profiles = [p for p in self._filter_profiles
-                                  if p.name != name]
-        self._filter_profiles.append(new_profile)
-        self._filter_profiles.sort(key=lambda p: p.name.lower())
-
-        # Repopulate and select the saved profile
-        self._populate_profile_combo()
-        profile_cb = getattr(self, 'profile_cb', None)
-        if profile_cb:
-            for i in range(profile_cb.Items.Count):
-                item = profile_cb.Items.GetItemAt(i)
-                if hasattr(item, 'Tag') and item.Tag.name == name:
-                    profile_cb.SelectedIndex = i
-                    break
-
-        self._active_profile_name = name
-        self._save_settings()
-
-    def _load_profile(self, sender, args):
-        try:
-            profile_cb = getattr(self, 'profile_cb', None)
-            if not profile_cb or not profile_cb.SelectedItem:
-                return
-            item = profile_cb.SelectedItem
-            p = item.Tag if hasattr(item, 'Tag') else None
-            if not p:
-                return
-            # Store name so we can restore selection after options_changed
-            self._active_profile_name = p.name
-            self.sheetstart_tb.Text  = p.sheet_no   or ""
-            self.namefilter_tb.Text  = p.sheet_name or ""
-            self._filter_rules       = list(p.rules)
-            self._filter_match_mode  = p.match_mode or "AND"
-            self._update_filter_badge()
-            self.options_changed(None, None)  # applies p.manual_order via _get_active_profile
-            self._save_settings()
-            # Re-select the profile in the combo after options_changed
-            self._reselect_active_profile()
-        except Exception as e:
-            logger.error('_load_profile failed: %s', e)
-
-    def _export_profiles(self, sender, args):
-        """Export selected filter profiles to a JSON file."""
-        if not self._filter_profiles:
-            forms.alert("No filter profiles to export.")
-            return
-        try:
-            picker   = ProfileExportPickerWindow(self._filter_profiles)
-            selected = picker.show()
-            if not selected:
-                return
-            from System.Windows.Forms import SaveFileDialog, DialogResult
-            dlg = SaveFileDialog()
-            dlg.Title            = "Export Filter Profiles"
-            dlg.Filter           = "JSON files (*.json)|*.json|All files (*.*)|*.*"
-            dlg.DefaultExt       = "json"
-            dlg.FileName         = "JasonExporter_FilterProfiles.json"
-            dlg.InitialDirectory = os.path.expanduser(os.path.join("~", "Documents"))
-            if dlg.ShowDialog() != DialogResult.OK:
-                return
-            import json as _json
-            data = {
-                "jason_exporter_filter_profiles": [
-                    {"name":       p.name,
-                     "match_mode": p.match_mode,
-                     "sheet_no":   p.sheet_no,
-                     "sheet_name": p.sheet_name,
-                     "rules": [{"column_name": r.column_name,
-                                "condition":   r.condition,
-                                "value":       r.value}
-                               for r in p.rules]}
-                    for p in selected
-                ]
-            }
-            with open(dlg.FileName, "w") as f:
-                _json.dump(data, f, indent=2)
-            forms.alert("Exported {} profile(s).".format(len(selected)),
-                        title="Export Complete")
-        except Exception as e:
-            import traceback
-            forms.alert("Export failed:\n" + traceback.format_exc(),
-                        title="Export Error")
-
-    def _import_profiles(self, sender, args):
-        """Import filter profiles from a JSON file."""
-        try:
-            from System.Windows.Forms import OpenFileDialog, DialogResult
-            dlg = OpenFileDialog()
-            dlg.Title            = "Import Filter Profiles"
-            dlg.Filter           = "JSON files (*.json)|*.json|All files (*.*)|*.*"
-            dlg.InitialDirectory = os.path.expanduser(os.path.join("~", "Documents"))
-            if dlg.ShowDialog() != DialogResult.OK:
-                return
-            import json as _json
-            with open(dlg.FileName, "r") as f:
-                data = _json.load(f)
-            raw_list = (data.get("jason_exporter_filter_profiles") or
-                        data.get("jason_revisions_filter_profiles") or
-                        data.get("filter_profiles") or [])
-            if not raw_list:
-                forms.alert("No filter profiles found in that file.")
-                return
-            imported = _restore_filter_profiles(raw_list)
-            if not imported:
-                forms.alert("Could not read any profiles from that file.")
-                return
-            # Merge: overwrite same-name, append new
-            existing = {p.name: i for i, p in enumerate(self._filter_profiles)}
-            added = updated = 0
-            for p in imported:
-                if p.name in existing:
-                    self._filter_profiles[existing[p.name]] = p
-                    updated += 1
-                else:
-                    self._filter_profiles.append(p)
-                    added += 1
-            self._filter_profiles.sort(key=lambda p: p.name.lower())
-            self._populate_profile_combo()
-            self._save_settings()
-            forms.alert("Imported {} profile(s): {} new, {} updated.".format(
-                len(imported), added, updated),
-                title="Import Complete")
-        except Exception as e:
-            import traceback
-            forms.alert("Import failed:\n" + traceback.format_exc(),
-                        title="Import Error")
-
-    def _reselect_active_profile(self):
-        """Re-select the active profile in the combo by name."""
-        try:
-            name = getattr(self, '_active_profile_name', None)
-            if not name:
-                return
-            profile_cb = getattr(self, 'profile_cb', None)
-            if not profile_cb:
-                return
-            for i in range(profile_cb.Items.Count):
-                itm = profile_cb.Items.GetItemAt(i)
-                if hasattr(itm, 'Tag') and itm.Tag.name == name:
-                    profile_cb.SelectedIndex = i
-                    return
-        except Exception:
-            pass
-
-    def _delete_profile(self, sender, args):
-        try:
-            profile_cb = getattr(self, 'profile_cb', None)
-            if not profile_cb or not profile_cb.SelectedItem:
-                return
-            item = profile_cb.SelectedItem
-            p = item.Tag if hasattr(item, 'Tag') else None
-            if not p:
-                return
-            self._filter_profiles = [x for x in self._filter_profiles
-                                      if x.name != p.name]
-            self._populate_profile_combo()
-            self._save_settings()
-        except Exception as e:
-            logger.error('_delete_profile failed: %s', e)
-
-    def _populate_profile_combo(self):
-        try:
-            from System.Windows.Controls import ComboBoxItem as _CBI
-            profile_cb = getattr(self, 'profile_cb', None)
-            if not profile_cb:
-                return
-            # Remember currently selected name before clearing
-            current_name = None
-            if profile_cb.SelectedItem and hasattr(profile_cb.SelectedItem, 'Tag'):
-                current_name = profile_cb.SelectedItem.Tag.name
-            profile_cb.Items.Clear()
-            for p in self._filter_profiles:
-                item = _CBI()
-                item.Content = p.name
-                item.Tag     = p
-                profile_cb.Items.Add(item)
-            # Restore previous selection by name
-            if current_name:
-                for i in range(profile_cb.Items.Count):
-                    itm = profile_cb.Items.GetItemAt(i)
-                    if hasattr(itm, 'Tag') and itm.Tag.name == current_name:
-                        profile_cb.SelectedIndex = i
-                        break
-        except Exception:
-            pass
-
-    def show_columns_dialog(self, sender, args):
-        try:
-            from System.Windows.Interop import WindowInteropHelper
-            import System
-            dlg = ColumnPickerDialog('ColumnPicker.xaml', parent_window=self)
-            try:
-                helper = WindowInteropHelper(dlg)
-                helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-            except Exception:
-                pass
-            dlg.ShowDialog()
-        except Exception as e:
-            import traceback
-            forms.alert('ColumnPickerDialog error:\n' + traceback.format_exc())
-
-    # ── IFC / NWC export ──────────────────────────────────────────────────────
-
-    def _get_all_3d_views(self):
-        """Return list of View3DListItem for all non-template 3D views in doc."""
-        doc = self.selected_doc
-        views = DB.FilteredElementCollector(doc)\
-                  .OfClass(framework.get_type(DB.View3D))\
-                  .WhereElementIsNotElementType()\
-                  .ToElements()
-        items = []
-        for v in views:
-            if not v.IsTemplate:
-                items.append(View3DListItem(v))
-        return sorted(items, key=lambda x: x.name)
-
-    def _show_3d_view_picker(self, sender, args):
-        """Open the 3D view picker dialog and save selection."""
-        all_views = self._get_all_3d_views()
-        if not all_views:
-            forms.alert('No 3D views found in the current model.')
-            return
-        # Restore previously selected view ids
-        # Store as int set -- ElementId equality is unreliable in IronPython
-        selected_ids = set()
-        for eid_int in (self._selected_3d_view_ids or []):
-            try:
-                selected_ids.add(int(eid_int))
-            except Exception:
-                pass
-        picker = View3DPickerWindow(all_views, selected_ids)
-        result = picker.show()
-        if result is not None:
-            # Store as int list for JSON serialisation
-            self._selected_3d_view_ids = [
-                int(get_elementid_value(item.view_id)) for item in result
-            ]
-            self._selected_3d_views = result
-            self._update_3d_view_badge()
-        self._save_settings()
-
-    def _update_3d_view_badge(self):
-        """Update the button label and the selected view names label."""
-        btn      = getattr(self, 'pick_3d_views_btn', None)
-        names_tb = getattr(self, 'selected_views_tb', None)
-        views    = self._selected_3d_views or []
-        count    = len(views)
-        if btn:
-            if count:
-                btn.Content = 'Select 3D Views ({})'.format(count)
-            else:
-                btn.Content = 'Select 3D Views'
-        if names_tb:
-            if views:
-                names_tb.Text = ', '.join(v.name for v in views)
-            else:
-                names_tb.Text = 'No views selected'
-
-    def _get_ifc_setup_names(self):
-        # Read named IFC export setups.
-        # Custom setups live in the Revit project file as DataStorage elements.
-        #
-        # Root cause of "missing custom setups": AddSavedConfigurations() calls
-        # GetOrCreateSchema() internally, which registers the IFC schema via
-        # SchemaBuilder.  But in some sessions the method silently returns without
-        # adding configs to cfg_map (IFC system not yet initialised by Revit).
-        # Fix: after calling AddSavedConfigurations() -- which at minimum registers
-        # the schema -- we do a direct ExtensibleStorage scan using that schema
-        # to read the 'Name' field from every matching DataStorage element.
-        # This catches custom setups that cfg_map.Values misses.
-        import os as _os
-        import System
-
-        doc = self.selected_doc
-
-        # ── Helper: load IFC DLL by name or fallback path ─────────────
-        def _find_and_load_ifc_dll():
-            for name in ('Revit.IFC.Export', 'Revit.IFC.Export.UI', 'Revit.IFC.Common'):
-                try:
-                    clr.AddReference(name)
-                    return True
-                except Exception:
-                    pass
-            app = HOST_APP.uiapp.Application
-            ver = app.VersionNumber
-            prog_files = _os.environ.get('PROGRAMFILES', 'C:\\Program Files')
-            revit_dir = _os.path.join(prog_files, 'Autodesk', 'Revit ' + ver)
-            for dll in ('Revit.IFC.Export.dll', 'Revit.IFC.Export.UI.dll'):
-                full = _os.path.join(revit_dir, dll)
-                if _os.path.exists(full):
-                    try:
-                        clr.AddReference(full)
-                        return True
-                    except Exception:
-                        pass
-            return False
-
-        # ── Helper: call AddBuiltInConfigurations + AddSavedConfigurations ─
-        def _populate_cfg_map(cfg_map, doc):
-            cfg_map.AddBuiltInConfigurations()
-            for mname in ('AddSavedConfigurations', 'AddStoredConfigurations'):
-                try:
-                    getattr(cfg_map, mname)(doc)
-                    break
-                except Exception:
-                    try:
-                        getattr(cfg_map, mname)()
-                        break
-                    except Exception:
-                        pass
-
-        # ── Helper: get IFC schema GUID from cfg_map type via reflection ─
-        def _get_schema_guid(cfg_map_type):
-            flags = (System.Reflection.BindingFlags.NonPublic |
-                     System.Reflection.BindingFlags.Static)
-            for f in cfg_map_type.GetFields(flags):
-                try:
-                    if str(f.FieldType) == 'System.Guid':
-                        return f.GetValue(None)
-                except Exception:
-                    pass
-            return None
-
-        # ── Helper: read custom IFC config names directly from DataStorage ─
-        # Call AFTER _populate_cfg_map() -- that registers the IFC schema via
-        # SchemaBuilder (inside AddSavedConfigurations), making Schema.Lookup()
-        # succeed.  Each custom setup is a DataStorage element whose extensible
-        # storage entity has a 'Name' string field (from the IFC exporter source).
-        def _read_custom_from_datastorage(cfg_map_type, doc):
-            try:
-                from Autodesk.Revit.DB.ExtensibleStorage import (
-                    DataStorage, Schema, ExtensibleStorageFilter)
-
-                # Prefer GUID reflected from the type; fall back to the well-known
-                # GUID from the open-source Revit IFC exporter (revit-ifc on GitHub).
-                guid = None
-                if cfg_map_type is not None:
-                    guid = _get_schema_guid(cfg_map_type)
-                if guid is None:
-                    guid = System.Guid('a2fe7c27-9b44-41d0-97a7-b6c1ec25cf2c')
-
-                schema = Schema.Lookup(guid)
-                if schema is None:
-                    return []
-
-                name_field = schema.GetField('Name')
-                if name_field is None:
-                    return []
-
-                names = []
-                es_filter = ExtensibleStorageFilter(guid)
-                collector = (DB.FilteredElementCollector(doc)
-                             .WherePasses(es_filter)
-                             .OfClass(DataStorage))
-                for ds in collector:
-                    try:
-                        entity = ds.GetEntity(schema)
-                        if not entity.IsValid():
-                            continue
-                        n = entity.Get[System.String](name_field)
-                        if n and n.strip():
-                            names.append(n.strip())
-                    except Exception:
-                        pass
-                return names
-            except Exception:
-                return []
-
-        # ── Strategy 1: walk AppDomain for already-loaded IFC assembly ──
-        try:
-            cfg_map_type = None
-            cfg_map = None
-            type_names = [
-                'BIM.IFC.Export.UI.IFCExportConfigurationsMap',
-                'Autodesk.IFC.Export.UI.IFCExportConfigurationsMap',
-                'Revit.IFC.Export.UI.IFCExportConfigurationsMap',
-            ]
-            for asm in System.AppDomain.CurrentDomain.GetAssemblies():
-                if cfg_map_type is not None:
-                    break
-                for type_name in type_names:
-                    try:
-                        t = asm.GetType(type_name)
-                        if t is not None:
-                            cfg_map_type = t
-                            cfg_map = t.GetConstructor(System.Type.EmptyTypes).Invoke(None)
-                            break
-                    except Exception:
-                        continue
-
-            if cfg_map is not None:
-                _populate_cfg_map(cfg_map, doc)
-                names = []
-                try:
-                    names = [str(v.Name) for v in cfg_map.Values]
-                except Exception:
-                    pass
-
-                # Direct DataStorage read -- catches custom setups that
-                # AddSavedConfigurations() missed due to IFC system not being
-                # fully initialised.  Schema is now registered after the call above.
-                for n in _read_custom_from_datastorage(cfg_map_type, doc):
-                    if n not in names:
-                        names.append(n)
-
-                if names:
-                    return names
-        except Exception:
-            pass
-
-        # ── Strategy 2: force-load IFC DLL via clr.AddReference ─────────
-        try:
-            if _find_and_load_ifc_dll():
-                cfg_map_type = None
-                cfg_map = None
-                for ns in ['Revit.IFC.Export.UI', 'BIM.IFC.Export.UI',
-                           'Autodesk.Revit.DB.IFC', 'Revit.IFC.Export',
-                           'Revit.IFC.Common']:
-                    try:
-                        mod = __import__(ns, fromlist=['IFCExportConfigurationsMap'])
-                        Cls = getattr(mod, 'IFCExportConfigurationsMap')
-                        cfg_map = Cls()
-                        break
-                    except Exception:
-                        continue
-
-                if cfg_map is not None:
-                    _populate_cfg_map(cfg_map, doc)
-                    names = []
-                    try:
-                        names = [str(v.Name) for v in cfg_map.Values]
-                    except Exception:
-                        pass
-
-                    # cfg_map_type is None here (no .NET Type object from __import__)
-                    # so _read_custom_from_datastorage falls back to the known GUID.
-                    for n in _read_custom_from_datastorage(None, doc):
-                        if n not in names:
-                            names.append(n)
-
-                    if names:
-                        return names
-        except Exception:
-            pass
-
-        # ── Static built-in list (last resort) ───────────────────────────
-        return [
-            '<In-Session Setup>',
-            'IFC 2x3 Coordination View 2.0',
-            'IFC 2x3 Coordination View',
-            'IFC 2x3 GSA Concept Design BIM 2010',
-            'IFC 2x3 Basic FM Handover View',
-            'IFC 2x2 Coordination View',
-            'IFC2x3 COBie 2.4 Design Deliverable View',
-            'IFC4 Reference View [Architecture]',
-            'IFC4 Reference View [Structural]',
-            'IFC4 Reference View [BuildingService]',
-            'IFC4 Design Transfer View [Unofficial]',
-            'IFC4x3',
-            'IFC-SG Regulatory Requirements View',
-        ]
-
-    def _get_ifc_picker_xaml(self):
-        # Build IFC picker XAML via string concat (avoids IronPython parser issue)
-        xns  = 'xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"'
-        xnsx = 'xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"'
-        return (
-            '<Window ' + xns + ' ' + xnsx + ' '
-            'Title="Select IFC Export Setup" '
-            'Width="420" Height="500" MinWidth="340" MinHeight="320" '
-            'WindowStartupLocation="CenterScreen" ShowInTaskbar="False" '
-            'ResizeMode="CanResizeWithGrip" Background="#FFFFFF" '
-            'FontFamily="Segoe UI" FontSize="11">'
-            '<Grid Margin="16">'
-            '<Grid.RowDefinitions>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="Auto"/>'
-            '<RowDefinition Height="*"/>'
-            '<RowDefinition Height="Auto"/>'
-            '</Grid.RowDefinitions>'
-            '<TextBlock Grid.Row="0" Text="Select IFC Export Setup" '
-            'FontSize="14" FontWeight="Bold" Foreground="#1A1A1A" Margin="0,0,0,4"/>'
-            '<TextBlock Grid.Row="1" FontSize="11" Foreground="#6B6B6B" '
-            'TextWrapping="Wrap" Margin="0,0,0,8">'
-            'Choose the IFC export setup to use. Custom setups are '
-            'configured in Revit via Manage IFC Export Setups.'
-            '</TextBlock>'
-            '<ListBox x:Name="setup_lb" Grid.Row="2" SelectionMode="Single" '
-            'BorderBrush="#DEDEDE" BorderThickness="1" Background="#FFFFFF">'
-            '<ListBox.ItemContainerStyle>'
-            '<Style TargetType="ListBoxItem">'
-            '<Setter Property="Padding" Value="8,5"/>'
-            '<Setter Property="Cursor" Value="Hand"/>'
-            '<Style.Triggers>'
-            '<Trigger Property="IsSelected" Value="True">'
-            '<Setter Property="Background" Value="#D0E4F7"/>'
-            '<Setter Property="Foreground" Value="#1A1A1A"/>'
-            '</Trigger>'
-            '<Trigger Property="IsMouseOver" Value="True">'
-            '<Setter Property="Background" Value="#E8F0FB"/>'
-            '</Trigger>'
-            '</Style.Triggers>'
-            '</Style>'
-            '</ListBox.ItemContainerStyle>'
-            '</ListBox>'
-            '<Grid Grid.Row="4" Margin="0,12,0,0">'
-            '<Grid.ColumnDefinitions>'
-            '<ColumnDefinition Width="*"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '<ColumnDefinition Width="8"/>'
-            '<ColumnDefinition Width="Auto"/>'
-            '</Grid.ColumnDefinitions>'
-            '<Button x:Name="cancel_btn" Grid.Column="1" Content="Cancel" '
-            'Height="32" MinWidth="90" Padding="12,0" '
-            'Background="#F5F5F5" Foreground="#1A1A1A" '
-            'BorderBrush="#DEDEDE" BorderThickness="1"/>'
-            '<Button x:Name="ok_btn" Grid.Column="3" Content="Select" '
-            'Height="32" MinWidth="90" Padding="12,0" '
-            'Background="#1A6EBF" Foreground="#FFFFFF" '
-            'FontWeight="SemiBold" BorderThickness="0"/>'
-            '</Grid>'
-            '</Grid>'
-            '</Window>'
-        )
-
-    def _show_ifc_options(self, sender, args):
-        # Open IFC setup picker using standard inline XAML dialog style.
-        from System.Windows.Markup import XamlReader
-        from System.Windows.Controls import ListBoxItem
-        from System.Windows.Interop import WindowInteropHelper
-        import System
-
-
-
-
-        setup_names = self._get_ifc_setup_names()
-        win = XamlReader.Parse(self._get_ifc_picker_xaml())
-
-        # Set owner
-        helper = WindowInteropHelper(win)
-        helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-
-        lb = win.FindName('setup_lb')
-        result_holder = [None]
-
-        # Populate list
-        for name in setup_names:
-            lbi = ListBoxItem()
-            lbi.Content = name
-            if name == (self._ifc_setup_name or '<In-Session Setup>'):
-                lbi.IsSelected = True
-            lb.Items.Add(lbi)
-
-        def _ok(s, a):
-            sel = lb.SelectedItem
-            if sel is not None:
-                result_holder[0] = sel.Content
-            win.Close()
-
-        def _cancel(s, a):
-            win.Close()
-
-        win.FindName('ok_btn').Click     += _ok
-        win.FindName('cancel_btn').Click += _cancel
-        _wire_escape_to_close(win)
-
-        win.ShowDialog()
-
-        chosen = result_holder[0]
-        if chosen:
-            self._ifc_setup_name = chosen
-            self._update_ifc_btn_label()
-            self._save_settings()
-
-    def _update_ifc_btn_label(self):
-        # Update IFC Options button to show chosen setup name.
-        btn = getattr(self, 'ifc_options_btn', None)
-        if btn is None:
-            return
-        name = self._ifc_setup_name or ''
-        if name and name != '<In-Session Setup>':
-            # Truncate long names
-            label = name if len(name) <= 20 else name[:18] + '..'
-            btn.Content = 'IFC: ' + label
-        else:
-            btn.Content = 'IFC Options'
-
-    def _show_3d_dwg_options(self, sender, args):
-        # Open 3D DWG export options dialog
-        naming_formats = EditNamingFormatsWindow.get_naming_formats()
-        dlg = DWG3DOptionsWindow('DWG3DOptions_ui.xaml', naming_formats, self._dwg3d_options)
-        result = dlg.show()
-        if result is not None:
-            self._dwg3d_options = result
-            self._update_dwg3d_btn_label()
-            self._save_settings()
-
-    def _update_dwg3d_btn_label(self):
-        # Update 3D DWG Options button label with chosen naming format
-        btn = getattr(self, 'dwg3d_options_btn', None)
-        if btn is None:
-            return
-        name = (self._dwg3d_options or {}).get('naming_format_name', '')
-        if name:
-            label = name if len(name) <= 18 else name[:16] + '..'
-            btn.Content = '3D DWG: ' + label
-        else:
-            btn.Content = '3D DWG Options'
-
-    def _build_3d_dwg_options(self):
-        # Build DWGExportOptions for 3D view export
-        d = self._dwg3d_options or {}
-        opts = DB.DWGExportOptions()
-        opts.SharedCoords  = True if d.get('shared_coords', False) else False
-        opts.MergedViews   = True if d.get('merged_views',  True)  else False
-        return opts
-
-    def _get_3d_nwc_filename(self, view):
-        # Build NWC output filename based on naming_mode
-        d    = self._nwc_options or {}
-        mode = d.get('naming_mode', 'view')
-        safe = re.sub(r'[\/:*?"<>|]', '_', view.Name)
-        if mode == 'file':
-            model = op.splitext(self.selected_doc.Title or op.basename(self.selected_doc.PathName or 'model'))[0]
-            return re.sub(r'[\/:*?"<>|]', '_', model) + '.nwc'
-        if mode != 'format':
-            return safe + '.nwc'
-        fmt = d.get('naming_format', None)
-        if fmt is None:
-            return safe + '.nwc'
-        try:
-            tmpl = self._resolve_template_project_params(fmt.template, self.selected_doc)
-            class _FS(object): pass
-            fs = _FS()
-            fs.print_index = '001'; fs.number = ''; fs.name = view.Name
-            fs.issue_date = ''; fs.revision = None
-            fs.print_filename = safe; fs.dwg_filename = safe
-            fs.revision_date_sortable = ''
-            self._update_print_filename(tmpl, fs)
-            fname = fs.print_filename or safe
-            if not fname.lower().endswith('.nwc'):
-                fname = fname + '.nwc'
-            return fname
-        except Exception:
-            return safe + '.nwc'
-
-    def _get_3d_dwg_filename(self, view):
-        # Build output filename for a 3D DWG export using saved naming format
-        d    = self._dwg3d_options or {}
-        fmt  = d.get('naming_format', None)
-        safe = re.sub(r'[\\/:*?"<>|]', '_', view.Name)
-        mode = d.get('naming_mode', 'view')
-        if mode == 'file':
-            model = op.splitext(self.selected_doc.Title or op.basename(self.selected_doc.PathName or 'model'))[0]
-            return re.sub(r'[\\/:*?"<>|]', '_', model) + '.dwg'
-        if mode != 'format' or fmt is None:
-            return safe + '.dwg'
-        try:
-            tmpl = self._resolve_template_project_params(fmt.template, self.selected_doc)
-            # Use a simple instance so _update_print_filename can set print_filename on it
-            class _FakeSheet(object):
-                pass
-            fs = _FakeSheet()
-            fs.print_index            = '001'
-            fs.number                 = ''
-            fs.name                   = view.Name
-            fs.issue_date             = ''
-            fs.revision               = None
-            fs.print_filename         = safe
-            fs.dwg_filename           = safe
-            fs.revision_date_sortable = ''
-            self._update_print_filename(tmpl, fs)
-            fname = fs.print_filename or safe
-            if not fname.lower().endswith('.dwg'):
-                fname = fname + '.dwg'
-            return fname
-        except Exception:
-            return safe + '.dwg'
-
-    def _show_nwc_options(self, sender, args):
-        # Open NWC export options dialog.
-        naming_formats = EditNamingFormatsWindow.get_naming_formats()
-        dlg = NWCOptionsWindow('NWCOptions_ui.xaml', naming_formats, self._nwc_options)
-        result = dlg.show()
-        if result is not None:
-            self._nwc_options = result
-            self._save_settings()
-
-    def _toggle_3d_panel(self, sender, args):
-        # Show or hide the 3D export controls based on IFC/NWC checkboxes.
-        from System.Windows import Visibility
-        panel = getattr(self, 'view3d_panel', None)
-        if panel is None:
-            return
-        export_ifc = getattr(self, 'export_ifc', None)
-        export_nwc = getattr(self, 'export_nwc', None)
-        export_3d_dwg = getattr(self, 'export_3d_dwg', None)
-        ifc_checked     = export_ifc.IsChecked     if export_ifc     else False
-        nwc_checked     = export_nwc.IsChecked     if export_nwc     else False
-        dwg3d_checked   = export_3d_dwg.IsChecked  if export_3d_dwg  else False
-        if ifc_checked or nwc_checked or dwg3d_checked:
-            panel.Visibility = Visibility.Visible
-        else:
-            panel.Visibility = Visibility.Collapsed
-        self.options_changed(None, None)
-
-    def _build_ifc_options(self, view):
-        # Build IFCExportOptions using the user's chosen named export setup.
-        # Setup name passed via AddOption to load the saved configuration.
-        # FilterViewId scopes the export to the selected 3D view.
-        opts = DB.IFCExportOptions()
-
-        # Pass the chosen setup name to the IFC exporter via AddOption.
-        setup_name = self._ifc_setup_name or ''
-        setup_applied = False
-        if setup_name and setup_name != '<In-Session Setup>':
-            try:
-                opts.AddOption('ExportSettingName', setup_name)
-                setup_applied = True
-            except Exception:
-                try:
-                    opts.AddOption('ExportConfig', setup_name)
-                    setup_applied = True
-                except Exception:
-                    pass
-            if not setup_applied:
-                forms.alert(
-                    'Could not apply IFC setup "' + setup_name + '".\n'
-                    'Export will use the In-Session setup instead.',
-                    title='IFC Export Warning'
-                )
-
-        # Always scope to the selected 3D view
-        opts.FilterViewId       = view.Id
-        opts.SpaceBoundaryLevel = 1
-
-        return opts
-
-    def _build_nwc_options(self):
-        # Build a NavisworksExportOptions object from saved settings.
-        opts = DB.NavisworksExportOptions()
-        d    = self._nwc_options or {}
-
-        # Coordinates
-        coord_enum = d.get('coords_enum', 'Shared')
-        try:
-            if coord_enum == 'Shared':
-                opts.Coordinates = DB.NavisworksCoordinates.Shared
-            else:
-                opts.Coordinates = DB.NavisworksCoordinates.Internal
-        except Exception:
-            pass
-
-        # Clash type
-        clash_enum = d.get('clash_enum', 'None')
-        try:
-            if clash_enum == 'Clash':
-                opts.ClashTest = DB.NavisworksClashType.Clash
-            elif clash_enum == 'Clearance':
-                opts.ClashTest = DB.NavisworksClashType.Clearance
-            else:
-                opts.ClashTest = getattr(DB.NavisworksClashType, 'None', None)
-        except Exception:
-            pass
-
-        opts.ConvertElementProperties = True if d.get('element_props', True) else False
-        opts.ExportRoomGeometry        = True if d.get('room_geometry', False) else False
-        opts.ExportRoomAsAttribute     = True if d.get('room_as_attribute', True) else False
-        opts.ExportLinks               = True if d.get('export_links', False) else False
-        opts.ExportParts               = True if d.get('export_parts', False) else False
-
-        return opts
-
-    def _apply_preview_order(self, merged_ids, in_scope_ids, yellow_ids=None):
-        # Apply preview order to _scheduled_sheets then run options_changed
-        # so active filters are re-applied -- only filtered sheets show.
-        from System.Windows.Media import SolidColorBrush, Color
-        _GREEN  = SolidColorBrush(Color.FromRgb(0xD4, 0xED, 0xDA))
-        _YELLOW = SolidColorBrush(Color.FromRgb(0xFF, 0xF9, 0xC4))
-        id_to_sheet = {int(get_elementid_value(s.revit_sheet.Id)): s
-                       for s in (self._scheduled_sheets or [])}
-        # Snapshot ORIGINAL position of every sheet BEFORE the reorder.
-        # Caller (_on_preview_live) resets _scheduled_sheets to the true
-        # pre-dialog snapshot before this method runs, so positions here
-        # are always relative to the user's starting order -- not the
-        # previous preview.
-        orig_pos = {
-            int(get_elementid_value(s.revit_sheet.Id)): i
-            for i, s in enumerate(self._scheduled_sheets or [])
-        }
-        in_scope_list_orig = [
-            int(get_elementid_value(s.revit_sheet.Id))
-            for s in (self._scheduled_sheets or [])
-            if int(get_elementid_value(s.revit_sheet.Id)) in in_scope_ids
-        ]
-        # Reorder _scheduled_sheets in place to match merged_ids
-        ordered_full = [id_to_sheet[int(get_elementid_value(eid))]
-                        for eid in merged_ids
-                        if int(get_elementid_value(eid)) in id_to_sheet]
-        self._scheduled_sheets = ordered_full
-        # Highlight sheets that actually changed position within the in-scope
-        # set.  Use rank-comparison only: absolute positions in merged_ids are
-        # unreliable because the contiguous-block merge moves non-visible sheets,
-        # giving false positives for in-scope sheets that never changed peers.
-        moved_ids = set()
-        in_scope_list_new = [
-            int(get_elementid_value(eid))
-            for eid in merged_ids
-            if int(get_elementid_value(eid)) in in_scope_ids
-        ]
-        for rank, (orig_sid, new_sid) in enumerate(
-                zip(in_scope_list_orig, in_scope_list_new)):
-            if orig_sid != new_sid:
-                moved_ids.add(orig_sid)
-                moved_ids.add(new_sid)
-        self._preview_highlighted_ids = moved_ids
-        for s in (self._scheduled_sheets or []):
-            sid = int(get_elementid_value(s.revit_sheet.Id))
-            if sid in moved_ids:
-                s.row_background = _GREEN
-            elif yellow_ids and sid in yellow_ids:
-                # Matched by tokens but didn't change position -- stays yellow
-                s.row_background = _YELLOW
-            else:
-                s.row_background = None
-        # Clear any active column-header SortDescriptions so WPF does not
-        # re-sort the DataGrid when ItemsSource is reassigned below.
-        # (The manual-order path clears these, but _applying_preview skips it.)
-        try:
-            self.sheets_lb.Items.SortDescriptions.Clear()
-        except Exception:
-            pass
-        # _applying_preview suppresses _manual_order re-application in
-        # options_changed so the preview order (already in _scheduled_sheets)
-        # is not overridden by the previously committed order.
-        self._applying_preview = True
-        self._setting_order_programmatically = True
-        self.options_changed(None, None)
-        from System.Windows.Threading import DispatcherTimer
-        import System as _Sys
-        _t = DispatcherTimer()
-        _t.Interval = _Sys.TimeSpan.FromMilliseconds(500)
-        def _clr(s, e):
-            _t.Stop()
-            self._setting_order_programmatically = False
-            self._applying_preview = False
-        _t.Tick += _clr
-        _t.Start()
-
-    def _clear_preview_highlight(self):
-        self._preview_highlighted_ids = set()
-        self._yellow_highlighted_ids  = set()
-        for s in (self._scheduled_sheets or []):
-            s.row_background = None
-
-    def _export_3d_only(self, sender, args):
-        # Export 3D views directly without printing any sheets.
-        # Validates that at least one 3D format is checked and views selected.
-        export_ifc_cb    = getattr(self, 'export_ifc',    None)
-        export_nwc_cb    = getattr(self, 'export_nwc',    None)
-        export_3d_dwg_cb = getattr(self, 'export_3d_dwg', None)
-        do_ifc    = export_ifc_cb.IsChecked    if export_ifc_cb    else False
-        do_nwc    = export_nwc_cb.IsChecked    if export_nwc_cb    else False
-        do_3d_dwg = export_3d_dwg_cb.IsChecked if export_3d_dwg_cb else False
-        if not do_ifc and not do_nwc and not do_3d_dwg:
-            forms.alert(
-                'No 3D export format selected.\n'
-                'Tick at least one of: Export IFC, Export NWC, Export 3D DWG.',
-                title='3D Export'
-            )
-            return
-        if not self._selected_3d_views:
-            forms.alert(
-                'No 3D views selected.\n'
-                'Click "Select 3D Views" in the 3D Export panel first.',
-                title='3D Export'
-            )
-            return
-        self.Close()
-        self._export_3d_views()
-
-    def _export_3d_views(self):
-        # Export selected 3D views to IFC and/or NWC.
-        views = self._selected_3d_views or []
-        if not views:
-            forms.alert(
-                'No 3D views selected. Click "Select 3D Views" to choose views to export.',
-                title='3D Export'
-            )
-            return
-
-        export_ifc_cb    = getattr(self, 'export_ifc',    None)
-        export_nwc_cb    = getattr(self, 'export_nwc',    None)
-        export_3d_dwg_cb = getattr(self, 'export_3d_dwg', None)
-        do_ifc    = export_ifc_cb.IsChecked    if export_ifc_cb    else False
-        do_nwc    = export_nwc_cb.IsChecked    if export_nwc_cb    else False
-        do_3d_dwg = export_3d_dwg_cb.IsChecked if export_3d_dwg_cb else False
-
-        if not do_ifc and not do_nwc and not do_3d_dwg:
-            return
-
-        doc      = self.selected_doc
-        dir_path = os.path.join(PrintUtils.get_dir(), PrintUtils.get_folder('_3D'))
-        PrintUtils.ensure_dir(dir_path)
-
-        errors  = []
-        success = 0
-
-        with forms.ProgressBar(
-            step=1,
-            title='Exporting 3D Views... {value} of {max_value}',
-            cancellable=True
-        ) as pb:
-            total = len(views) * (
-                (1 if do_ifc else 0) + (1 if do_nwc else 0) + (1 if do_3d_dwg else 0)
-            )
-            count = 1
-            for view_item in views:
-                if pb.cancelled:
-                    break
-                view = view_item.revit_view
-                safe_name = re.sub(r'[\/:*?"<>|]', '_', view.Name)
-
-                if do_ifc:
-                    pb.update_progress(count, total)
-                    count += 1
-                    try:
-                        ifc_opts = self._build_ifc_options(view)
-                        ifc_file = safe_name + '.ifc'
-                        # IFC export requires an open transaction
-                        t = DB.Transaction(doc, 'Export IFC')
-                        t.Start()
-                        try:
-                            doc.Export(dir_path, ifc_file, ifc_opts)
-                            t.Commit()
-                        except Exception:
-                            t.RollBack()
-                            raise
-                        success += 1
-                    except Exception as e:
-                        errors.append('IFC - {}: {}'.format(view.Name, str(e)))
-
-                if do_nwc:
-                    pb.update_progress(count, total)
-                    count += 1
-                    try:
-                        nwc_opts = self._build_nwc_options()
-                        nwc_opts.ViewId      = view.Id
-                        nwc_opts.ExportScope = DB.NavisworksExportScope.View
-                        nwc_file = self._get_3d_nwc_filename(view)
-                        doc.Export(dir_path, nwc_file, nwc_opts)
-                        success += 1
-                    except Exception as e:
-                        errors.append('NWC - {}: {}'.format(view.Name, str(e)))
-
-                if do_3d_dwg:
-                    pb.update_progress(count, total)
-                    count += 1
-                    try:
-                        dwg_opts = self._build_3d_dwg_options()
-                        dwg_file = self._get_3d_dwg_filename(view)
-                        view_ids = List[DB.ElementId]()
-                        view_ids.Add(view.Id)
-                        doc.Export(dir_path, dwg_file, view_ids, dwg_opts)
-                        success += 1
-                    except Exception as e:
-                        errors.append('3D DWG - {}: {}'.format(view.Name, str(e)))
-
-        PrintUtils.open_dir(dir_path)
-
-        if errors:
-            forms.alert(
-                '{} file(s) exported. {} error(s):\n\n{}'.format(
-                    success, len(errors), '\n'.join(errors)
-                ),
-                title='3D Export Complete'
-            )
-        else:
-            forms.alert(
-                '{} file(s) exported successfully.'.format(success),
-                title='3D Export Complete'
-            )
-
-    def print_sheets(self, sender, args):
-        if self.sheet_list:
-            selected_only = False
-            if self.selected_sheets:
-                opts = forms.alert(
-                    "You have a series of sheets selected. Do you want to "
-                    "print the selected sheets or all sheets?",
-                    options=["Only Selected Sheets", "All Scheduled Sheets"]
-                    )
-                selected_only = opts == "Only Selected Sheets"
-
-            target_sheets = \
-                self.selected_sheets if selected_only else self.sheet_list
-
-            if not self.combine_print:
-                # verify all sheets have print settings
-                if self.selected_print_setting.allows_variable_paper \
-                    and not all(x.print_settings for x in target_sheets):
-                    forms.alert(
-                        'Not all sheets have a print setting assigned to them. '
-                        'Select sheets and assign print settings.')
-                    return
-                # confirm print if a lot of sheets are going to be printed
-                printable_count = len([x for x in target_sheets if x.printable])
-                if printable_count > 5:
-                    # prepare warning message
-                    sheet_count = len(target_sheets)
-                    message = str(printable_count)
-                    if printable_count != sheet_count:
-                        message += ' (out of {} total)'.format(sheet_count)
-
-                    if not forms.alert('Are you sure you want to print {} '
-                                       'sheets individually? The process can '
-                                       'not be cancelled.'.format(message),
-                                       ok=False, yes=True, no=True):
-                        return
-
-            # close window and submit print
-            self.Close()
-            if self.combine_print:
-                self._print_combined_sheets_in_order(target_sheets)
-            else:
-                if self.selected_doc.IsLinked:
-                    self._print_linked_sheets_in_order(target_sheets, self.selected_doc)
-                else:
-                    self._print_sheets_in_order(target_sheets)
-
-
-def cleanup_sheetnumbers(doc):
-    sheets = revit.query.get_sheets(doc=doc)
-    with revit.Transaction('Cleanup Sheet Numbers', doc=doc):
-        for sheet in sheets:
-            sheet.SheetNumber = sheet.SheetNumber.replace(NPC, '')
-
-
-# verify model is printable
-forms.check_modeldoc(exitscript=True)
-# ensure there is nothing selected
-revit.selection.get_selection().clear()
-
-# TODO: add copy filenames to sheet list
-if __shiftclick__:  #pylint: disable=E0602
-    open_docs = forms.select_open_docs(check_more_than_one=False)
-    if open_docs:
-        for open_doc in open_docs:
-            cleanup_sheetnumbers(open_doc)
-else:
-    # Set Revit main window as owner so the tool stays with Revit
-    # and doesn't pop to front when clicking back into Revit
-    import System
-    from System.Windows.Interop import WindowInteropHelper
-    win = JasonExporterWindow('JasonExporter.xaml')
-    try:
-        helper = WindowInteropHelper(win)
-        helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
-    except Exception:
-        pass
-    win.ShowDialog()
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/script.py
-
-## FILE_START: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Sorting_ui.xaml
-## META: sha1=b71cc22989c9956eb9932081cd9a5e7fee5f47b5 size=10496
-## TYPE: text
-```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Sorting"
-        Width="600"
-        Height="400"
-        MinWidth="500"
-        MinHeight="320"
-        ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFFFFF"
-        FontFamily="Segoe UI"
-        FontSize="11">
-
-    <!-- Loaded via forms.WPFWindow. Event attrs resolve to Python methods. -->
-
-    <Window.Resources>
-
-        <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#1A6EBF"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#155A9E"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background"      Value="#F5F5F5"/>
-            <Setter Property="Foreground"      Value="#1A1A1A"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderBrush"     Value="#DEDEDE"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E8F0FB"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="DestructiveButton" TargetType="Button">
-            <Setter Property="Background"      Value="#C0392B"/>
-            <Setter Property="Foreground"      Value="#FFFFFF"/>
-            <Setter Property="FontWeight"      Value="SemiBold"/>
-            <Setter Property="Height"          Value="32"/>
-            <Setter Property="MinWidth"        Value="90"/>
-            <Setter Property="Padding"         Value="12,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor"          Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#A93226"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="SortCombo" TargetType="ComboBox">
-            <Setter Property="Height"                   Value="26"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush"              Value="#DEDEDE"/>
-            <Setter Property="BorderThickness"          Value="1"/>
-            <Setter Property="Background"               Value="#FFFFFF"/>
-        </Style>
-
-    </Window.Resources>
-
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0"
-                   Text="Sorting"
-                   FontSize="14" FontWeight="Bold"
-                   Foreground="#1A1A1A" Margin="0,0,0,6"/>
-
-        <TextBlock Grid.Row="1"
-                   FontSize="11" Foreground="#6B6B6B"
-                   TextWrapping="Wrap" Margin="0,0,0,12">
-            Sort the sheet list by up to 4 columns. Mirrors Revit schedule sorting.
-        </TextBlock>
-
-        <!-- Column headers -->
-        <Grid Grid.Row="2" Margin="0,0,0,6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="105"/>
-                <ColumnDefinition Width="105"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" Text="Sort by column"
-                       FontSize="10" Foreground="#6B6B6B" Margin="0,0,8,0"/>
-            <TextBlock Grid.Column="2" Text="Ascending"
-                       FontSize="10" Foreground="#6B6B6B"/>
-            <TextBlock Grid.Column="3" Text="Descending"
-                       FontSize="10" Foreground="#6B6B6B"/>
-        </Grid>
-
-        <!-- 4 sort rows matching Revit Sorting/Grouping tab -->
-        <StackPanel Grid.Row="3">
-
-            <Grid Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="105"/>
-                    <ColumnDefinition Width="105"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Sort by:"
-                           VerticalAlignment="Center" Foreground="#1A1A1A"/>
-                <ComboBox Grid.Column="1" x:Name="sort_col_1"
-                          Style="{StaticResource SortCombo}" Margin="0,0,8,0"/>
-                <RadioButton Grid.Column="2" x:Name="sort_asc_1"
-                             Content="Ascending" IsChecked="True"
-                             GroupName="SortDir1" VerticalAlignment="Center"/>
-                <RadioButton Grid.Column="3" x:Name="sort_desc_1"
-                             Content="Descending"
-                             GroupName="SortDir1" VerticalAlignment="Center"/>
-            </Grid>
-
-            <Grid Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="105"/>
-                    <ColumnDefinition Width="105"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Then by:"
-                           VerticalAlignment="Center" Foreground="#1A1A1A"/>
-                <ComboBox Grid.Column="1" x:Name="sort_col_2"
-                          Style="{StaticResource SortCombo}" Margin="0,0,8,0"/>
-                <RadioButton Grid.Column="2" x:Name="sort_asc_2"
-                             Content="Ascending" IsChecked="True"
-                             GroupName="SortDir2" VerticalAlignment="Center"/>
-                <RadioButton Grid.Column="3" x:Name="sort_desc_2"
-                             Content="Descending"
-                             GroupName="SortDir2" VerticalAlignment="Center"/>
-            </Grid>
-
-            <Grid Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="105"/>
-                    <ColumnDefinition Width="105"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Then by:"
-                           VerticalAlignment="Center" Foreground="#1A1A1A"/>
-                <ComboBox Grid.Column="1" x:Name="sort_col_3"
-                          Style="{StaticResource SortCombo}" Margin="0,0,8,0"/>
-                <RadioButton Grid.Column="2" x:Name="sort_asc_3"
-                             Content="Ascending" IsChecked="True"
-                             GroupName="SortDir3" VerticalAlignment="Center"/>
-                <RadioButton Grid.Column="3" x:Name="sort_desc_3"
-                             Content="Descending"
-                             GroupName="SortDir3" VerticalAlignment="Center"/>
-            </Grid>
-
-            <Grid Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="105"/>
-                    <ColumnDefinition Width="105"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Then by:"
-                           VerticalAlignment="Center" Foreground="#1A1A1A"/>
-                <ComboBox Grid.Column="1" x:Name="sort_col_4"
-                          Style="{StaticResource SortCombo}" Margin="0,0,8,0"/>
-                <RadioButton Grid.Column="2" x:Name="sort_asc_4"
-                             Content="Ascending" IsChecked="True"
-                             GroupName="SortDir4" VerticalAlignment="Center"/>
-                <RadioButton Grid.Column="3" x:Name="sort_desc_4"
-                             Content="Descending"
-                             GroupName="SortDir4" VerticalAlignment="Center"/>
-            </Grid>
-
-        </StackPanel>
-
-        <!-- Footer -->
-        <Grid Grid.Row="4" Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Content="Clear Sorting"
-                    Style="{StaticResource DestructiveButton}"
-                    Click="sort_clear_clicked"/>
-            <Button Grid.Column="2"
-                    x:Name="show_all_params_btn"
-                    Content="Show All Parameters"
-                    Style="{StaticResource SecondaryButton}"
-                    Click="sort_show_all_params_clicked"/>
-            <Button Grid.Column="4"
-                    Content="Cancel"
-                    Style="{StaticResource SecondaryButton}"
-                    Click="sort_cancel_clicked"/>
-            <Button Grid.Column="6"
-                    Content="OK"
-                    Style="{StaticResource PrimaryButton}"
-                    Click="sort_ok_clicked"/>
-        </Grid>
-
-    </Grid>
-</Window>
-
-```
-## FILE_END: JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton/Sorting_ui.xaml
-
 ## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/bundle.yaml
 ## META: sha1=40a56f964779467e8e15a2397dab1f2e51a9d801 size=158
 ## TYPE: text
@@ -25399,10 +13855,10 @@ def run_detailmove(payload):
 ## FILE_END: lib/detailmove_engine.py
 
 ## FILE_START: lib/detailmove_ui.py
-## META: sha1=28b3748c1244e35e28182785ef1ef7af96c1a1af size=46637
+## META: sha1=e677ac178f5fedc8b46ae82616558b196f9cffea size=47117
 ## TYPE: text
-## IMPORTS: ["System.Windows","System.Windows.Controls","detailmove_engine","pyrevit"]
-## FUNCTIONS: ["safe_float","make_combo_item","__init__","build","get_spec","__init__","write_run_output","_issue_view_ids","_count_success_without_issues","_format_run_output","clear_affected_click","refresh_affected_status","add_to_selection_click","populate_plan_views","get_selected_plan_view","refresh_scope_boxes","populate_batch_level_controls","apply_batch_vertical_click","plan_view_changed","scope_box_changed","show","refresh_summary","refresh_targets","target_filter_changed","apply_target_filters","rebuild_mapping_rows","collect_vertical_specs","get_selected_targets","update_vertical_enable_state","update_stage_enable_state","_selected_view_ids","_staged_view_ids","validate_vertical_selection_alignment","get_selected_side_name","run_vertical_crop_click","run_plan_extent_click","normalize_options","refresh_targets_click","select_all_click","select_none_click","pick_scope_click","targets_changed","stage_toggle_changed","cancel_click","run_click"]
+## IMPORTS: ["GUI.style_guide_2026","System.Windows","System.Windows.Controls","detailmove_engine","pyrevit"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","safe_float","make_combo_item","__init__","build","get_spec","__init__","write_run_output","_issue_view_ids","_count_success_without_issues","_format_run_output","clear_affected_click","refresh_affected_status","add_to_selection_click","populate_plan_views","get_selected_plan_view","refresh_scope_boxes","populate_batch_level_controls","apply_batch_vertical_click","plan_view_changed","scope_box_changed","show","refresh_summary","refresh_targets","target_filter_changed","apply_target_filters","rebuild_mapping_rows","collect_vertical_specs","get_selected_targets","update_vertical_enable_state","update_stage_enable_state","_selected_view_ids","_staged_view_ids","validate_vertical_selection_alignment","get_selected_side_name","run_vertical_crop_click","run_plan_extent_click","normalize_options","refresh_targets_click","select_all_click","select_none_click","pick_scope_click","targets_changed","stage_toggle_changed","cancel_click","run_click"]
 ## CLASSES: ["MappingRow","DetailMoveWindow"]
 ```python
 # -*- coding: utf-8 -*-
@@ -25411,6 +13867,22 @@ from pyrevit import forms
 from System.Windows.Controls import ListBoxItem, Grid, ColumnDefinition, TextBlock, ComboBox, TextBox, ComboBoxItem
 from System.Windows import Thickness
 from System.Windows import GridLength
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
 
 from detailmove_engine import (
     doc,
@@ -25563,6 +14035,9 @@ class MappingRow(object):
 class DetailMoveWindow(forms.WPFWindow):
     def __init__(self, xaml_path):
         forms.WPFWindow.__init__(self, xaml_path)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self.last_applied_vertical_specs = {}
         self.scope_box = None
@@ -33471,7 +21946,7 @@ finally:
 ## FILE_END: lib/GUI/__init__.py
 
 ## FILE_START: lib/GUI/FindReplace.py
-## META: sha1=ba0fcd5e166d1f4872fe57b73af6cc89c064c355 size=3486
+## META: sha1=f02189c9cf9baa32ae98102d92488d64240741fa size=3523
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.Exceptions","GUI.forms","System.Diagnostics.Process","System.Windows.Input","System.Windows.Window","clr","os","pyrevit","sys","wpf"]
 ## FUNCTIONS: ["__init__","find_replace","find","replace","prefix","suffix","button_close","Hyperlink_RequestNavigate","header_drag","button_run"]
@@ -33526,6 +22001,7 @@ class FindReplace(my_WPF):
 
         path_xaml_file = os.path.join(PATH_SCRIPT, 'FindReplace.xaml')
         wpf.LoadComponent(self, path_xaml_file)
+        self.apply_style_contract()
         # self.form = forms.WPFWindow.__init__(self, path_xaml_file)
 
         self.UI_label.Content       = label
@@ -33585,7 +22061,7 @@ class FindReplace(my_WPF):
 ## FILE_END: lib/GUI/FindReplace.py
 
 ## FILE_START: lib/GUI/FindReplace.xaml
-## META: sha1=1e603810318c1a9374f27ac87f740a692aac6d16 size=7729
+## META: sha1=39f7bde7b87732bf4de76baf78d3392c570b07d6 size=8423
 ## TYPE: text
 ```
 <Window
@@ -33598,17 +22074,25 @@ class FindReplace(my_WPF):
     Height="210" Width="350"
     WindowStartupLocation="CenterScreen"
     HorizontalAlignment="Center"
-    ShowInTaskbar="True"
+    ShowInTaskbar="False"
     WindowStyle="None"
-    ResizeMode="NoResize"
-    Background="#181735">
+    ResizeMode="CanResizeWithGrip"
+    FontFamily="Segoe UI"
+    Background="{StaticResource SurfaceBrush}">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DialogCardBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="DialogCardBorderBrush" Color="#FFD8DDE3"/>
+        <SolidColorBrush x:Key="DialogLabelBrush" Color="#FF5E6A75"/>
+        <SolidColorBrush x:Key="DialogTextBrush" Color="#FF1A1A1A"/>
+    </Window.Resources>
 
 
 
     <!--MAIN-->
-    <Grid>
+    <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -33616,52 +22100,34 @@ class FindReplace(my_WPF):
         </Grid.ColumnDefinitions>
 
         <!--HEADER START-->
-        <Grid   MouseDown="header_drag"
-                Background="{StaticResource header_background}"
-                Grid.ColumnSpan="2">
-            <!--HEADER GRID-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="60"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid MouseDown="header_drag">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!--LOGO-->
-            <DockPanel  Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="FR" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock x:Name="main_title"
+                               Text="__title__"
+                               Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Find, replace, prefix, or suffix text before applying the rename." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Content="Close"
+                        Width="72"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="button_close"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Left">
-
-
-                <TextBlock Margin="5,0,0,0">
-                    <Hyperlink  
-                        RequestNavigate="Hyperlink_RequestNavigate" 
-                        NavigateUri="https://erikfrits.com/blog/"
-                        FontSize="14px"
-                        FontWeight="Heavy"
-                        Foreground="{StaticResource text_white}">
-                        EF-Tools
-                    </Hyperlink>
-                </TextBlock>
-            </DockPanel>
-
-            <!--__TITLE__-->
-            <TextBlock x:Name="main_title"
-                Text="__title__"
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Foreground="{StaticResource text_white}"/>
-
-            <!--CLOSE-->
-            <Button Content="Close"
-                    Grid.Column="2"
-                    Width="60" Height="20"
-                    FontSize="10"
-                    Click="button_close"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"/>
-        </Grid>
+                        HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
         <!--HEADER END-->
 
         <StackPanel Grid.Row="1"
@@ -33682,10 +22148,11 @@ class FindReplace(my_WPF):
                     <Label x:Name="UI_label"
                         Content="ViewName"
                            Margin="0, -25,0,0 "
-                           Foreground="{StaticResource text_magenta}"/>
-                    <Border  Height="110"
-                          BorderBrush="{DynamicResource border_magenta}"
-                         BorderThickness="1,1,1,1" CornerRadius="10" HorizontalAlignment="Stretch" Width="Auto">
+                           Foreground="{StaticResource DialogLabelBrush}"/>
+                    <Border  Height="120"
+                          Background="{StaticResource DialogCardBrush}"
+                          BorderBrush="{StaticResource DialogCardBorderBrush}"
+                        BorderThickness="1,1,1,1" CornerRadius="16" HorizontalAlignment="Stretch" Width="Auto">
 
 
 
@@ -33698,15 +22165,16 @@ class FindReplace(my_WPF):
                             <DockPanel  HorizontalAlignment="Left"
                                         Margin="2">
                                 <TextBlock Text="Find:"
-                                            Foreground="{StaticResource text_white}"
+                                        Foreground="{StaticResource DialogLabelBrush}"
                                             Width="60"/>
 
                                 <TextBox x:Name="input_find"
                                          Width="200"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         Background="{StaticResource header_background}"
-                                         Foreground="{StaticResource text_white}"/>
+                                         Background="{StaticResource SurfaceSubtleBrush}"
+                                         Foreground="{StaticResource DialogTextBrush}"
+                                         BorderBrush="{StaticResource DialogCardBorderBrush}"/>
                             </DockPanel>
 
                             <!--REPLACE-->
@@ -33714,45 +22182,48 @@ class FindReplace(my_WPF):
                                        Margin="2">
 
                                 <TextBlock  Text="Replace:"
-                                            Foreground="{StaticResource text_white}"
+                                            Foreground="{StaticResource DialogLabelBrush}"
                                             Width="60"/>
 
                                 <TextBox x:Name="input_replace"
                                             Width="200"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Background="{StaticResource header_background}"
-                                            Foreground="{StaticResource text_white}"/>
+                                            Background="{StaticResource SurfaceSubtleBrush}"
+                                            Foreground="{StaticResource DialogTextBrush}"
+                                            BorderBrush="{StaticResource DialogCardBorderBrush}"/>
                             </DockPanel>
 
                             <!--PREFIX-->
                             <DockPanel HorizontalAlignment="Left"
                                         Margin="2">
                                 <TextBlock Text="Prefix:"
-                                           Foreground="{StaticResource text_white}"
+                                           Foreground="{StaticResource DialogLabelBrush}"
                                            Width="60"/>
 
                                 <TextBox x:Name="input_prefix"
                                          Width="200"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         Background="{StaticResource header_background}"
-                                         Foreground="{StaticResource text_white}"/>
+                                         Background="{StaticResource SurfaceSubtleBrush}"
+                                         Foreground="{StaticResource DialogTextBrush}"
+                                         BorderBrush="{StaticResource DialogCardBorderBrush}"/>
                             </DockPanel>
 
                             <!--SUFFIX-->
                             <DockPanel HorizontalAlignment="Left"
                                         Margin="2">
                                 <TextBlock Text="Suffix:"
-                                           Foreground="{StaticResource text_white}"
+                                           Foreground="{StaticResource DialogLabelBrush}"
                                            Width="60"/>
 
                                 <TextBox x:Name="input_suffix"
                                          Width="200"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         Background="{StaticResource header_background}"
-                                         Foreground="{StaticResource text_white}"/>
+                                         Background="{StaticResource SurfaceSubtleBrush}"
+                                         Foreground="{StaticResource DialogTextBrush}"
+                                         BorderBrush="{StaticResource DialogCardBorderBrush}"/>
                             </DockPanel>
 
                         </StackPanel>
@@ -33761,9 +22232,10 @@ class FindReplace(my_WPF):
                     <Button x:Name="UI_main_button"
                         Click="button_run"
                             Content="Rename"
+                            Style="{StaticResource PrimaryButton}"
                             Margin="0,10,0,0"
-                            Width="75"
-                            Height="25"/>
+                            Width="96"
+                            Height="32"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -33794,7 +22266,7 @@ class ListItem:
 ## FILE_END: lib/GUI/forms.py
 
 ## FILE_START: lib/GUI/RBG_WPF_Styles.xaml
-## META: sha1=d4abc0f77c03647b28839a736fed2fcb3ba74235 size=21496
+## META: sha1=bdc036a74b85b03b132f3fba6179e17ee99b20bf size=21985
 ## TYPE: text
 ```
  <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -33802,27 +22274,27 @@ class ListItem:
                     xmlns:local="clr-namespace:Common.WPF_styles">
 
     <!--Colours-->
-    <SolidColorBrush x:Key="main_background"    Color="#2c2c2c" />
-    <SolidColorBrush x:Key="header_background"  Color="#1c1c1c" />
-    <SolidColorBrush x:Key="text_white"         Color="#E5E4E2" />
-    <SolidColorBrush x:Key="text_gray"          Color="Gray" />
+    <SolidColorBrush x:Key="main_background"    Color="#FFFBFE" />
+    <SolidColorBrush x:Key="header_background"  Color="#FFF9FAFB" />
+    <SolidColorBrush x:Key="text_white"         Color="#FF1A1A1A" />
+    <SolidColorBrush x:Key="text_gray"          Color="#FF5E6A75" />
 
-    <SolidColorBrush x:Key="button_fg_normal"   Color="White" />
-    <SolidColorBrush x:Key="button_bg_normal"   Color="#39385D" />
-    <SolidColorBrush x:Key="button_bg_hover"    Color="#FF4C70" />
+    <SolidColorBrush x:Key="button_fg_normal"   Color="#FF1A1A1A" />
+    <SolidColorBrush x:Key="button_bg_normal"   Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="button_bg_hover"    Color="#FFF0F7FF" />
 
-    <SolidColorBrush x:Key="border_blue"     Color="DodgerBlue" />
+    <SolidColorBrush x:Key="border_blue"        Color="#FFD8DDE3" />
 
-    <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="Gray" />
-    <SolidColorBrush x:Key="checkbox_checked_colour"     Color="#EE82EE" />
+    <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="checkbox_checked_colour"       Color="#FFF0F7FF" />
 
-    <SolidColorBrush x:Key="footer_donate"     Color="#FF4C70" />
+    <SolidColorBrush x:Key="footer_donate"     Color="#FF2D89EF" />
 
     <!--Window Style-->
     <!-- <Style TargetType="Window">
         <Setter Property="Background" Value="{StaticResource header_background}"/>
         <Setter Property="Foreground" Value="{StaticResource text_white}"/>
-        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="AllowsTransparency" Value="True"/>
@@ -33870,9 +22342,11 @@ class ListItem:
     <!--Button-->
     <Style TargetType="Button">
         <!--[BUTTON] STYLES-->
-        <Setter Property="TextElement.FontFamily"   Value="Arial"/>
+        <Setter Property="TextElement.FontFamily"   Value="Segoe UI"/>
         <Setter Property="Background"               Value="{StaticResource button_bg_normal}"/>
         <Setter Property="Foreground"               Value="{StaticResource button_fg_normal}"/>
+        <Setter Property="BorderBrush"              Value="{StaticResource border_blue}"/>
+        <Setter Property="BorderThickness"          Value="1"/>
         <Setter Property="Cursor"                   Value="Hand"/>
 
         <!--[BUTTON] TEMPLATE-->
@@ -33880,7 +22354,9 @@ class ListItem:
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border CornerRadius="8"
-                    Background="{TemplateBinding Background}">
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
 
                         <ContentPresenter  VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>
@@ -33934,21 +22410,18 @@ class ListItem:
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource text_white}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="Border" Width="15" Height="15" CornerRadius="2" BorderThickness="0">
+                            <Border x:Name="Border" Width="15" Height="15" CornerRadius="2" BorderThickness="1" BorderBrush="{StaticResource border_blue}" Background="{StaticResource uncheckbox_checked_colour}">
                                 <Border.Background>
-                                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                                        <GradientStop Color= "#88FC467B" Offset="1" />
-                                        <GradientStop Color= "#993F5EFB" Offset="0" />
-                                    </LinearGradientBrush>
+                                    <SolidColorBrush Color="#FFFFFFFF"/>
                                 </Border.Background>
                                 <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False"
-                                        Stroke="Pink" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
+                                        Stroke="#FF2D89EF" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
                             </Border>
                         </BulletDecorator.Bullet>
                         <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"
@@ -33961,8 +22434,11 @@ class ListItem:
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Setter TargetName="CheckMark" Property="Data" Value="M 0 8 L 8 0" />
                         </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource checkbox_checked_colour}"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="#FF131313" />
+                            <Setter TargetName="Border" Property="Background" Value="#FFEAF3FF" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="CheckMark" Property="Stroke" Value="#FF6C6C6C"/>
@@ -34010,7 +22486,7 @@ class ListItem:
                         FontSize="14px"
                         FontWeight="Heavy"
                         Foreground="{StaticResource text_white}">
-                        EF-Tools
+                        SJ-B+C
             </Hyperlink>
                             </TextBlock>
                         </DockPanel>
@@ -34066,7 +22542,7 @@ class ListItem:
             <!-- MAIN BOX-->
             <Path   x:Name="Arrow"
                     Grid.Column="1"
-                    Fill="White"
+                    Fill="#FF1A1A1A"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
@@ -34087,7 +22563,7 @@ class ListItem:
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="MinWidth" Value="120"/>
         <Setter Property="MinHeight" Value="20"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource text_white}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -34113,8 +22589,8 @@ class ListItem:
                                     VerticalAlignment="Center"
                                     Margin="3,3,23,3"
                                     Focusable="True"
-                                    Background="#FF3F3F3F"
-                                    Foreground="Green"
+                                    Background="#FFF9FAFB"
+                                    Foreground="#FF1A1A1A"
                                     Visibility="Hidden"
                                     IsReadOnly="{TemplateBinding IsReadOnly}"/>
 
@@ -34178,7 +22654,7 @@ class ListItem:
     <!-- SimpleStyles: ComboBoxItem -->
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource text_white}"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -34190,7 +22666,7 @@ class ListItem:
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
+                            <Setter TargetName="Border" Property="Background" Value="#FFF0F7FF"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="#888888"/>
@@ -34258,8 +22734,411 @@ class ListItem:
 ```
 ## FILE_END: lib/GUI/RBG_WPF_Styles.xaml
 
+## FILE_START: lib/GUI/Resources/RBG_StyleGuide_2026.xaml
+## META: sha1=f04c91e7e6529a68d08138426c52e67b4a0edbb0 size=20634
+## TYPE: text
+```
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Core tokens (pyRevit UI Style Guide - Revit 2026) -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+    <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+    <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+    <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+    <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+
+    <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+    <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+    <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+    <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+
+    <SolidColorBrush x:Key="ErrorBrush" Color="#E03C2C" />
+    <SolidColorBrush x:Key="ErrorContainerBrush" Color="#FDECEA" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="#2EA043" />
+    <SolidColorBrush x:Key="SuccessContainerBrush" Color="#EAF5EE" />
+    <SolidColorBrush x:Key="WarningBrush" Color="#E67E22" />
+    <SolidColorBrush x:Key="WarningContainerBrush" Color="#FDF3E9" />
+
+    <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+    <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+
+    <!-- Legacy aliases for incremental migration safety -->
+    <SolidColorBrush x:Key="header_background" Color="#1A1A1A" />
+    <SolidColorBrush x:Key="text_white" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="text_gray" Color="#8A8F98" />
+    <SolidColorBrush x:Key="text_magenta" Color="#1A1A1A" />
+    <SolidColorBrush x:Key="button_fg_normal" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="button_bg_normal" Color="#1F4FD9" />
+    <SolidColorBrush x:Key="button_bg_hover" Color="#1640B0" />
+    <SolidColorBrush x:Key="border_magenta" Color="#DDE1E6" />
+    <SolidColorBrush x:Key="border_blue" Color="#1F4FD9" />
+    <SolidColorBrush x:Key="uncheckbox_checked_colour" Color="#8A8F98" />
+    <SolidColorBrush x:Key="checkbox_checked_colour" Color="#1F4FD9" />
+    <SolidColorBrush x:Key="footer_donate" Color="#1F4FD9" />
+
+    <!-- Shared control defaults -->
+    <Style TargetType="Window">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        <Setter Property="WindowStartupLocation" Value="CenterScreen" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="SectionCardGroupBoxStyle" TargetType="GroupBox">
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="0,0,0,14" />
+        <Setter Property="Padding" Value="20,16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="16"
+                            Padding="{TemplateBinding Padding}">
+                        <DockPanel>
+                            <ContentPresenter DockPanel.Dock="Top"
+                                              ContentSource="Header"
+                                              Margin="0,0,0,10"
+                                              TextElement.FontSize="12"
+                                              TextElement.FontWeight="SemiBold"
+                                              TextElement.Foreground="{StaticResource OnSurfaceBrush}" />
+                            <ContentPresenter />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LegendInfoCardBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="12,8" />
+    </Style>
+
+    <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="24,16" />
+    </Style>
+
+    <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+        <Setter Property="Width" Value="38" />
+        <Setter Property="Height" Value="38" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+        <Setter Property="Opacity" Value="0.7" />
+        <Setter Property="FontSize" Value="11" />
+    </Style>
+
+    <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="10,3" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="WizardTabControlStyle" TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabControl">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TabPanel Grid.Row="0"
+                                  IsItemsHost="True"
+                                  Margin="0,0,0,12"
+                                  Background="Transparent" />
+                        <Border Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="0">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              ContentSource="SelectedContent" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WizardTabItemStyle" TargetType="TabItem">
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="TabBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="14"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          ContentSource="Header" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="TabBorder" Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                            <Setter TargetName="TabBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource OnPrimaryContainerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="TabBorder" Property="Background" Value="{StaticResource SurfaceContainerHighBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WizardContentTabControlStyle" TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabControl">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                        <ContentPresenter x:Name="PART_SelectedContentHost"
+                                          ContentSource="SelectedContent" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WizardStepperContainerStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="24,16" />
+    </Style>
+
+    <Style x:Key="WizardStepButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WizardStepBubblePendingBorderStyle" TargetType="Border">
+        <Setter Property="Width" Value="28" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+    </Style>
+
+    <Style x:Key="WizardStepBubbleActiveBorderStyle" TargetType="Border" BasedOn="{StaticResource WizardStepBubblePendingBorderStyle}">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style x:Key="WizardStepBubbleDoneBorderStyle" TargetType="Border" BasedOn="{StaticResource WizardStepBubblePendingBorderStyle}">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="WizardStepBubblePendingTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="WizardStepBubbleActiveTextStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepBubblePendingTextStyle}">
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <Style x:Key="WizardStepBubbleDoneTextStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepBubblePendingTextStyle}">
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style x:Key="WizardStepLabelPendingStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Margin" Value="0,10,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="WizardStepLabelActiveStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepLabelPendingStyle}">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="WizardStepLabelDoneStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepLabelActiveStyle}" />
+
+    <Style x:Key="WizardStepConnectorPendingStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="Height" Value="2" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="6,13,6,0" />
+    </Style>
+
+    <Style x:Key="WizardStepConnectorDoneStyle" TargetType="Border" BasedOn="{StaticResource WizardStepConnectorPendingStyle}">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+    </Style>
+
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Padding" Value="18,6,18,6" />
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+        <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+    </Style>
+
+    <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="{StaticResource SuccessBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}" />
+    </Style>
+
+    <Style x:Key="DestructiveButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="{StaticResource ErrorBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}" />
+    </Style>
+
+</ResourceDictionary>
+
+```
+## FILE_END: lib/GUI/Resources/RBG_StyleGuide_2026.xaml
+
 ## FILE_START: lib/GUI/Resources/WPF_styles.xaml
-## META: sha1=b1b31f4708427ce3dbad1e977f00140c467cf05a size=27066
+## META: sha1=db03f525fdc1bf3ada066508636a539530f97be7 size=27592
 ## TYPE: text
 ```
  <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -34267,23 +23146,23 @@ class ListItem:
                     xmlns:local="clr-namespace:Common.WPF_styles">
 
             <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[COLOURS]-->
-            <SolidColorBrush x:Key="header_background"  Color="#0f0f2d" />
+            <SolidColorBrush x:Key="header_background"  Color="#FFF9FAFB" />
 
-            <SolidColorBrush x:Key="text_white"         Color="#E5E4E2" />
-            <SolidColorBrush x:Key="text_gray"          Color="Gray" />
-            <SolidColorBrush x:Key="text_magenta"       Color="#EE82EE" />
+            <SolidColorBrush x:Key="text_white"         Color="#FF1A1A1A" />
+            <SolidColorBrush x:Key="text_gray"          Color="#FF5E6A75" />
+            <SolidColorBrush x:Key="text_magenta"       Color="#FF2D89EF" />
 
-            <SolidColorBrush x:Key="button_fg_normal"   Color="White" />
-            <SolidColorBrush x:Key="button_bg_normal"   Color="#39385D" />
-            <SolidColorBrush x:Key="button_bg_hover"    Color="#FF4C70" />
+            <SolidColorBrush x:Key="button_fg_normal"   Color="#FF1A1A1A" />
+            <SolidColorBrush x:Key="button_bg_normal"   Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="button_bg_hover"    Color="#FFF0F7FF" />
 
-            <SolidColorBrush x:Key="border_magenta"     Color="#EE82EE" />
-            <SolidColorBrush x:Key="border_blue"     Color="DodgerBlue" />
+            <SolidColorBrush x:Key="border_magenta"     Color="#FFD8DDE3" />
+            <SolidColorBrush x:Key="border_blue"        Color="#FFD8DDE3" />
 
-            <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="Gray" />
-            <SolidColorBrush x:Key="checkbox_checked_colour"     Color="#EE82EE" />
+            <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="checkbox_checked_colour"       Color="#FFF0F7FF" />
 
-            <SolidColorBrush x:Key="footer_donate"     Color="#FF4C70" />
+            <SolidColorBrush x:Key="footer_donate"     Color="#FF2D89EF" />
 
 
 
@@ -34334,9 +23213,11 @@ class ListItem:
             <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[STYLE] - BUTTON -->
             <Style TargetType="Button">
                 <!--[BUTTON] STYLES-->
-                <Setter Property="TextElement.FontFamily"   Value="Arial"/>
+                <Setter Property="TextElement.FontFamily"   Value="Segoe UI"/>
                 <Setter Property="Background"               Value="{StaticResource button_bg_normal}"/>
                 <Setter Property="Foreground"               Value="{StaticResource button_fg_normal}"/>
+                <Setter Property="BorderBrush"              Value="{StaticResource border_magenta}"/>
+                <Setter Property="BorderThickness"          Value="1"/>
                 <Setter Property="Cursor"                   Value="Hand"/>
 
                 <!--[BUTTON] TEMPLATE-->
@@ -34344,7 +23225,9 @@ class ListItem:
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="8"
-                            Background="{TemplateBinding Background}">
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
 
                                 <ContentPresenter  VerticalAlignment="Center"
                                            HorizontalAlignment="Center"/>
@@ -34371,7 +23254,7 @@ class ListItem:
 
             <Style TargetType="TextBox">
                 <Setter Property="Background" Value="{StaticResource header_background}"/>
-                <Setter Property="Foreground" Value="{StaticResource text_magenta}"/>
+                <Setter Property="Foreground" Value="{StaticResource text_white}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource border_blue}"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
 
@@ -34407,21 +23290,18 @@ class ListItem:
                 <Setter Property="SnapsToDevicePixels" Value="true"/>
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource text_white}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="CheckBox">
                             <BulletDecorator Background="Transparent">
                                 <BulletDecorator.Bullet>
-                                    <Border x:Name="Border" Width="15" Height="15" CornerRadius="2" BorderThickness="0">
+                                    <Border x:Name="Border" Width="15" Height="15" CornerRadius="2" BorderThickness="1" BorderBrush="{StaticResource border_magenta}" Background="{StaticResource uncheckbox_checked_colour}">
                                         <Border.Background>
-                                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                                                <GradientStop Color= "#88FC467B" Offset="1" />
-                                                <GradientStop Color= "#993F5EFB" Offset="0" />
-                                            </LinearGradientBrush>
+                                            <SolidColorBrush Color="#FFFFFFFF"/>
                                         </Border.Background>
                                         <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False"
-                                              Stroke="Pink" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
+                                              Stroke="#FF2D89EF" StrokeThickness="2" Data="M 0 4 L 3 8 8 0" />
                                     </Border>
                                 </BulletDecorator.Bullet>
                                 <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"
@@ -34434,8 +23314,11 @@ class ListItem:
                                 <Trigger Property="IsChecked" Value="{x:Null}">
                                     <Setter TargetName="CheckMark" Property="Data" Value="M 0 8 L 8 0" />
                                 </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource checkbox_checked_colour}"/>
+                                </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="Border" Property="Background" Value="#FF131313" />
+                                    <Setter TargetName="Border" Property="Background" Value="#FFEAF3FF" />
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="CheckMark" Property="Stroke" Value="#FF6C6C6C"/>
@@ -34485,7 +23368,7 @@ class ListItem:
                                 FontSize="14px"
                                 FontWeight="Heavy"
                                 Foreground="{StaticResource text_white}">
-                                EF-Tools
+                                SJ-B+C
                     </Hyperlink>
                                     </TextBlock>
                                 </DockPanel>
@@ -34541,7 +23424,7 @@ class ListItem:
                     <!-- MAIN BOX-->
                     <Path   x:Name="Arrow"
                             Grid.Column="1"
-                            Fill="White"
+                            Fill="#FF1A1A1A"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
@@ -34561,7 +23444,7 @@ class ListItem:
                 <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
                 <Setter Property="MinWidth" Value="120"/>
                 <Setter Property="MinHeight" Value="20"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource text_white}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -34587,8 +23470,8 @@ class ListItem:
                                             VerticalAlignment="Center"
                                             Margin="3,3,23,3"
                                             Focusable="True"
-                                            Background="#FF3F3F3F"
-                                            Foreground="Green"
+                                            Background="#FFF9FAFB"
+                                            Foreground="#FF1A1A1A"
                                             Visibility="Hidden"
                                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
 
@@ -34652,7 +23535,7 @@ class ListItem:
             <!-- SimpleStyles: ComboBoxItem -->
             <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="true"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource text_white}"/>
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -34664,7 +23547,7 @@ class ListItem:
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsHighlighted" Value="true">
-                                    <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
+                                    <Setter TargetName="Border" Property="Background" Value="#FFF0F7FF"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter Property="Foreground" Value="#888888"/>
@@ -34738,7 +23621,7 @@ class ListItem:
 ## FILE_END: lib/GUI/Resources/WPF_styles.xaml
 
 ## FILE_START: lib/GUI/SelectFromDict.py
-## META: sha1=542ac81871ba3b3d27749e95e28b0bf85fb43d81 size=8110
+## META: sha1=b87b06f2519224381e043f8179d49d989294dd4c size=8147
 ## TYPE: text
 ## IMPORTS: ["GUI.forms","System.Collections.Generic","System.Windows","clr","os","pyrevit","wpf"]
 ## FUNCTIONS: ["__init__","__init__","__iter__","generate_list_items","add_wpf_resource","text_filter_updated","UIe_ItemChecked","select_mode","button_select_all","button_select_none","button_select","select_from_dict"]
@@ -34807,6 +23690,7 @@ class SelectFromDict(my_WPF):
         self.add_wpf_resource()
         path_xaml_file = os.path.join(PATH_SCRIPT, 'SelectFromDict.xaml')
         wpf.LoadComponent(self, path_xaml_file )
+        self.apply_style_contract()
 
         # UPDATE GUI ELEMENTS
         self.main_title.Text        = title
@@ -34955,7 +23839,7 @@ def select_from_dict(elements_dict,
 ## FILE_END: lib/GUI/SelectFromDict.py
 
 ## FILE_START: lib/GUI/SelectFromDict.xaml
-## META: sha1=26c9d32847ed0a40753c44bdee750f833f42cb8f size=10877
+## META: sha1=a1951ab0512f6cf46d56edfb37c88b263f6e5f2a size=10244
 ## TYPE: text
 ```
 <Window
@@ -34970,99 +23854,77 @@ def select_from_dict(elements_dict,
     MinHeight="550" MaxHeight="550"
     WindowStartupLocation="CenterScreen"
     HorizontalAlignment="Center"
-    ShowInTaskbar="True"
+    ShowInTaskbar="False"
     WindowStyle="None"
     AllowsTransparency="True"
-    Background="#080326">
+    ResizeMode="CanResizeWithGrip"
+    FontFamily="Segoe UI"
+    Background="{StaticResource SurfaceBrush}">
 
     <!--MAIN-->
-    <Grid>
+    <Grid Margin="12">
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                <GradientStop Color= "#33FC467B" Offset="0" />
-                <GradientStop Color="#333F5EFB" Offset="1" />
-            </LinearGradientBrush>
+            <SolidColorBrush Color="#FFFBFE"/>
         </Grid.Background>
 
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="45"/>
             <RowDefinition/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--HEADER START-->
-        <Grid   MouseDown="header_drag"
-                Background="{StaticResource header_background}"
-                Grid.ColumnSpan="2">
-            <!--HEADER GRID-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="60"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid MouseDown="header_drag">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!--LOGO-->
-            <DockPanel  Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="SD" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock x:Name="main_title"
+                               Text="__title__"
+                               Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Filter the list, pick one or more items, and confirm the selection." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Content="Close"
+                        Width="72"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="button_close"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Left">
-
-
-                <TextBlock Margin="5,0,0,0">
-                    <Hyperlink
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        NavigateUri="https://www.linkedin.com/company/80151029"
-                        FontSize="14px"
-                        FontWeight="Heavy"
-                        Foreground="{StaticResource text_white}">
-                        EF-Tools
-                    </Hyperlink>
-                </TextBlock>
-            </DockPanel>
-
-            <!--__TITLE__-->
-            <TextBlock x:Name="main_title"
-                Text="__title__"
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Foreground="{StaticResource text_white}"
-                />
-
-            <!--CLOSE-->
-            <Button
-                Content="Close"
-                Grid.Column="2"
-                Width="60" Height="20"
-                FontSize="10"
-                Click="button_close"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                    />
-        </Grid>
+                        HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
         <!--HEADER END-->
 
 
 
         <!--FILTER START-->
-        <DockPanel Grid.Row="1">
+        <DockPanel Grid.Row="1" Margin="0,0,0,8">
             <Label  Content="🔍"
                     VerticalAlignment="Top" Height="26"
-                    Foreground="{StaticResource text_magenta}"
+                Foreground="#1F4FD9"
                     Margin="5,5,5,5"/>
 
             <TextBox x:Name="textbox_filter"
                     Text=""
-                     Height="22" VerticalAlignment="Top"
-                     Foreground="{StaticResource text_magenta}" Background="{StaticResource header_background}"
-                     Margin="0,8,10,5" FontSize="14"
-                     BorderBrush="{StaticResource border_magenta}"
+                     Height="28" VerticalAlignment="Top"
+                     Foreground="#FF1A1A1A" Background="#FFF9FAFB"
+                     Margin="0,6,10,5" FontSize="12"
+                     BorderBrush="#FFD8DDE3"
                      TextChanged="text_filter_updated">
 
                 <TextBox.Style>
@@ -35083,25 +23945,25 @@ def select_from_dict(elements_dict,
                     VerticalAlignment="Top"
                     Margin="10,5,10,5">
 
-            <Separator Background="{StaticResource border_magenta}"/>
+            <Separator Background="#FFD8DDE3"/>
 
             <Label x:Name="text_label"  Content="Select Elements:"
-                           Foreground="{StaticResource text_magenta}"/>
+                           Foreground="#FF5E6A75"/>
 
             <ListBox x:Name="main_ListBox"
                          Height="350" Grid.Row="0"
-                         Background="{StaticResource header_background}"
-                         SelectionMode="Single"
+                         Background="#FFFFFFFF"
+                         SelectionMode="Extended"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         BorderBrush="{StaticResource border_magenta}"
+                         BorderBrush="#FFD8DDE3"
                          >
 
                 <ListBox.Resources>
                     <Style TargetType="ScrollBar">
                         <Setter Property="Background" Value="{StaticResource border_magenta}"/>
                         <Setter Property="Foreground" Value="{StaticResource border_magenta}"/>
-                        <Setter Property="BorderBrush" Value="{StaticResource header_background}"/>
+                        <Setter Property="BorderBrush" Value="#FFF9FAFB"/>
                         <Setter Property="Opacity" Value="0.9"/>
                         <Setter Property="Margin" Value="3"/>
 
@@ -35144,7 +24006,7 @@ def select_from_dict(elements_dict,
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox  Background="#EE82EE" Foreground="{StaticResource text_white}" IsChecked="{Binding IsChecked}"  Checked="UIe_ItemChecked" >
+                        <CheckBox Background="#FFFFFFFF" Foreground="#FF1A1A1A" IsChecked="{Binding IsChecked}" Checked="UIe_ItemChecked">
                             <TextBlock Text="{Binding Name}"/>
                         </CheckBox>
                     </DataTemplate>
@@ -35154,18 +24016,20 @@ def select_from_dict(elements_dict,
             </ListBox>
 
             <!--BUTTONS START-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="UI_Buttons_all_none">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="UI_Buttons_all_none" Margin="0,8,0,0">
                 <!--BUTTON_1-->
                 <Button Content="Select All"
                         Click="button_select_all"
-                        Height="20"
+                    Style="{StaticResource SecondaryButton}"
+                    Height="28"
                         Width="100"
                         Margin="5"
                         />
                 <!--BUTTON_2-->
                 <Button Content="Select None"
                         Click="button_select_none"
-                        Height="20"
+                    Style="{StaticResource SecondaryButton}"
+                    Height="28"
                         Width="100"
                         Margin="5"
                         />
@@ -35175,8 +24039,9 @@ def select_from_dict(elements_dict,
             <!--BUTTON_2-->
             <Button x:Name="button_main"
                 Content="Select"
+                        Style="{StaticResource PrimaryButton}"
                         Click="button_select"
-                        Height="30"
+                        Height="32"
                         Width="210"
                         Margin="5"
                         />
@@ -35185,7 +24050,8 @@ def select_from_dict(elements_dict,
         <!--LISTBOX END-->
 
         <!--FOOTER START-->
-        <Grid Grid.Row="3" Background="{StaticResource header_background}">
+        <Border Grid.Row="3" Style="{StaticResource LegendInfoCardBorderStyle}" Margin="0,10,0,0">
+        <Grid Background="{StaticResource SurfaceContainerBrush}">
             <!--FOOTER GRID-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -35194,12 +24060,7 @@ def select_from_dict(elements_dict,
             </Grid.ColumnDefinitions>
 
             <!--IMAGE-->
-            <TextBlock>
-                <Hyperlink  NavigateUri="https://www.learnrevitapi.com" RequestNavigate="Hyperlink_RequestNavigate">
-                               <Image  Height="20"   Margin="1"  HorizontalAlignment="Left"   VerticalAlignment="Top"
-                                   Source="https://www.learnrevitapi.com/static/img_new/logo/logo_learnrevitapi.png" />
-                </Hyperlink>
-            </TextBlock>
+            <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource text_gray}" Text="Shared picker"/>
 
 
 
@@ -35222,15 +24083,161 @@ def select_from_dict(elements_dict,
                   NavigateUri="https://www.ko-fi.com/ErikFrits"
                   FontWeight="Medium"
                   Foreground="{StaticResource button_bg_hover}">
-                  Support EF-Tools
+                  Support
               </Hyperlink>
             </TextBlock>
         </Grid>
+        </Border>
         <!--FOOTER END-->
     </Grid>
 </Window>
 ```
 ## FILE_END: lib/GUI/SelectFromDict.xaml
+
+## FILE_START: lib/GUI/style_guide_2026.py
+## META: sha1=c0e190b33a861ff23e509d5aee1c04f7ae383a3a size=3698
+## TYPE: text
+## IMPORTS: ["System","System.IO","System.Windows","System.Windows.Interop","System.Windows.Markup","os","pyrevit"]
+## FUNCTIONS: ["_get_revit_main_window_handle","apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources"]
+## CLASSES: []
+```python
+# -*- coding: utf-8 -*-
+"""Shared helpers for the pyRevit 2026 UI style contract."""
+
+import os
+
+try:
+    from pyrevit import HOST_APP
+except Exception:
+    HOST_APP = None
+
+try:
+    from System import IntPtr
+    from System.Windows import WindowStartupLocation, ResizeMode
+    from System.Windows.Interop import WindowInteropHelper
+    from System.IO import FileStream, FileMode, FileAccess, FileShare
+    from System.Windows.Markup import XamlReader
+except Exception:
+    IntPtr = None
+    WindowStartupLocation = None
+    ResizeMode = None
+    WindowInteropHelper = None
+    FileStream = None
+    FileMode = None
+    FileAccess = None
+    FileShare = None
+    XamlReader = None
+
+
+def _get_revit_main_window_handle():
+    if HOST_APP is None or IntPtr is None:
+        return None
+
+    try:
+        uiapp = getattr(HOST_APP, "uiapp", None)
+        handle = getattr(uiapp, "MainWindowHandle", None)
+        if handle:
+            return IntPtr(handle)
+    except Exception:
+        pass
+
+    return None
+
+
+def apply_window_contract(window):
+    """Apply non-invasive window shell defaults from the 2026 style guide."""
+    if window is None:
+        return
+
+    try:
+        window.ShowInTaskbar = False
+    except Exception:
+        pass
+
+    if WindowStartupLocation is not None:
+        try:
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen
+        except Exception:
+            pass
+
+    if ResizeMode is not None:
+        try:
+            window.ResizeMode = ResizeMode.CanResizeWithGrip
+        except Exception:
+            pass
+
+
+def apply_topmost_and_parent(window):
+    """Re-parent to the Revit host and avoid sticky topmost windows."""
+    if window is None:
+        return
+
+    if WindowInteropHelper is not None:
+        try:
+            host_handle = _get_revit_main_window_handle()
+            if host_handle is not None:
+                helper = WindowInteropHelper(window)
+                if helper.Owner != host_handle:
+                    helper.Owner = host_handle
+        except Exception:
+            pass
+
+    # Enforce non-topmost behavior per style-guide rule.
+    try:
+        window.Topmost = False
+    except Exception:
+        pass
+
+
+def apply_style_guide_resources(window):
+    """Merge the shared 2026 XAML dictionary into a window when available."""
+    if window is None or XamlReader is None or FileStream is None:
+        return
+
+    try:
+        resources = getattr(window, "Resources", None)
+        merged = getattr(resources, "MergedDictionaries", None)
+        if resources is None or merged is None:
+            return
+    except Exception:
+        return
+
+    # Avoid duplicate merges by detecting known token keys.
+    try:
+        for dictionary in merged:
+            try:
+                if dictionary.Contains("PrimaryBrush") and dictionary.Contains("SurfaceBrush"):
+                    return
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+    dictionary_path = os.path.join(
+        os.path.dirname(__file__),
+        "Resources",
+        "RBG_StyleGuide_2026.xaml",
+    )
+    if not os.path.exists(dictionary_path):
+        return
+
+    stream = None
+    try:
+        stream = FileStream(dictionary_path, FileMode.Open, FileAccess.Read, FileShare.Read)
+        dictionary = XamlReader.Load(stream)
+        if dictionary is not None:
+            merged.Insert(0, dictionary)
+    except Exception:
+        pass
+    finally:
+        try:
+            if stream is not None:
+                stream.Close()
+        except Exception:
+            pass
+
+```
+## FILE_END: lib/GUI/style_guide_2026.py
 
 ## FILE_START: lib/GUI/Tools/__init__.py
 ## META: sha1=da39a3ee5e6b4b0d3255bfef95601890afd80709 size=0
@@ -36178,7 +25185,7 @@ class CreateFromRooms(my_WPF):
 ## FILE_END: lib/GUI/Tools/CreateFromRooms.xaml
 
 ## FILE_START: lib/GUI/ui_acc.py
-## META: sha1=cb5ead52fe0664d5f9e18a9c467c960ce6172f08 size=6580
+## META: sha1=a36c342e508ca132ab9fd5e76b1756ac2cce55e4 size=6618
 ## TYPE: text
 ## IMPORTS: ["System.Net","System.Web","clr"]
 ## FUNCTIONS: ["_to_unicode","_html_encode_impl","_html_encode_impl","_html_encode_impl","html_encode","add_assets","tag","chunk_ids","build_all_links","render_category_block"]
@@ -36229,14 +25236,14 @@ NO_CATEGORY_LABEL = u"<No Category>"
 
 # --- CSS only (no JS needed) --------------------------------------------------
 DEFAULT_CSS = u"""
-.acc      { border:1px solid #444; border-radius:6px; margin:8px 0; background:#161616; }
-.acc .hdr { cursor:pointer; padding:8px 12px; font-weight:600; color:#fff; display:flex; align-items:center; user-select:none; }
-.acc .hdr .arrow { width:0; height:0; border-left:6px solid #bbb; border-top:6px solid transparent; border-bottom:6px solid transparent; margin-right:8px; transform:rotate(90deg); transition:transform .12s ease-out; }
-.acc .hdr .meta  { margin-left:auto; color:#bbb; font-weight:400; }
-.acc .body { display:none; padding:8px 12px 10px; color:#ddd; }
+.acc      { border:1px solid #d8dde3; border-radius:8px; margin:8px 0; background:#ffffff; }
+.acc .hdr { cursor:pointer; padding:8px 12px; font-weight:600; color:#1a1a1a; display:flex; align-items:center; user-select:none; background:#f9fafb; }
+.acc .hdr .arrow { width:0; height:0; border-left:6px solid #5e6a75; border-top:6px solid transparent; border-bottom:6px solid transparent; margin-right:8px; transform:rotate(90deg); transition:transform .12s ease-out; }
+.acc .hdr .meta  { margin-left:auto; color:#5e6a75; font-weight:400; }
+.acc .body { display:none; padding:8px 12px 10px; color:#1a1a1a; }
 .acc.open .body { display:block; }
 .acc.open .hdr .arrow { transform:rotate(0deg); }
-.acc hr.sep { border:none; border-top:1px solid #333; margin:8px 0 12px; }
+.acc hr.sep { border:none; border-top:1px solid #d8dde3; margin:8px 0 12px; }
 .acc ul { margin:6px 0 10px 18px; }
 .acc li { margin:2px 0; }
 """
@@ -36347,10 +25354,10 @@ def render_category_block(output, category_text, instances,
 ## FILE_END: lib/GUI/ui_acc.py
 
 ## FILE_START: lib/GUI/WPF_Base.py
-## META: sha1=caa2e3d796ba05e6276042d19b7a2cb73b7e682e size=2476
+## META: sha1=5e6ab45b2f3c9fdf9e3ab4254df28f409755efe7 size=3561
 ## TYPE: text
-## IMPORTS: ["System","System.Diagnostics.Process","System.Windows","System.Windows.Input","System.Windows.Window","clr","os","pyrevit","sys","wpf"]
-## FUNCTIONS: ["add_wpf_resource","button_close","header_drag","Hyperlink_RequestNavigate"]
+## IMPORTS: ["GUI.style_guide_2026","System","System.Diagnostics.Process","System.Windows","System.Windows.Input","System.Windows.Window","clr","os","pyrevit","sys","wpf"]
+## FUNCTIONS: ["add_wpf_resource","apply_style_contract","button_close","header_drag","Hyperlink_RequestNavigate"]
 ## CLASSES: ["my_WPF"]
 ```python
 # -*- coding: utf-8 -*-
@@ -36375,6 +25382,17 @@ import wpf
 from System.Windows import Application, Window, ResourceDictionary
 from System import Uri
 
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    apply_window_contract = None
+    apply_topmost_and_parent = None
+    apply_style_guide_resources = None
+
 # ╦ ╦╔═╗╔═╗  ╔╦╗╔═╗╔╦╗╔═╗╦  ╔═╗╔╦╗╔═╗
 # ║║║╠═╝╠╣    ║ ║╣ ║║║╠═╝║  ╠═╣ ║ ║╣
 # ╚╩╝╩  ╚     ╩ ╚═╝╩ ╩╩  ╩═╝╩ ╩ ╩ ╚═╝ WPF TEMPLATE
@@ -36387,11 +25405,34 @@ class my_WPF(Window):
     #==================================================
     def add_wpf_resource(self):
         """Function to add WPF resources."""
-        dir_path        = os.path.dirname(__file__)
-        path_styles     = os.path.join(dir_path, 'Resources/WPF_styles.xaml')
-        r               = ResourceDictionary()
-        r.Source        = Uri(path_styles)
-        self.Resources  = r
+        dir_path = os.path.dirname(__file__)
+        style_paths = [
+            os.path.join(dir_path, 'Resources', 'RBG_StyleGuide_2026.xaml'),
+            os.path.join(dir_path, 'Resources', 'WPF_styles.xaml')
+        ]
+
+        merged_resources = ResourceDictionary()
+        for style_path in style_paths:
+            if not os.path.isfile(style_path):
+                continue
+            style_dictionary = ResourceDictionary()
+            style_dictionary.Source = Uri(style_path)
+            merged_resources.MergedDictionaries.Add(style_dictionary)
+
+        self.Resources = merged_resources
+
+        if apply_style_guide_resources:
+            apply_style_guide_resources(self)
+
+        if apply_window_contract:
+            apply_window_contract(self)
+
+    def apply_style_contract(self):
+        """Apply shell defaults and Revit-parenting behavior."""
+        if apply_window_contract:
+            apply_window_contract(self)
+        if apply_topmost_and_parent:
+            apply_topmost_and_parent(self)
 
     # ╔═╗╦ ╦╦  ╔═╗╦  ╦╔═╗╔╗╔╔╦╗╔═╗
     # ║ ╦║ ║║  ║╣ ╚╗╔╝║╣ ║║║ ║ ╚═╗
@@ -40981,7 +30022,7 @@ class BaseRenaming(forms.WPFWindow):
 ## FILE_END: lib/Renaming/BaseClass_FindReplace.py
 
 ## FILE_START: lib/Renaming/GUI_BaseRename.xaml
-## META: sha1=5f9e3fa4cc0e5f546a8d04e8c17586f3aa0f743f size=33992
+## META: sha1=ecadda311d5c6976127015241666e22da127e1f3 size=34140
 ## TYPE: text
 ```
 <Window
@@ -40994,10 +30035,11 @@ class BaseRenaming(forms.WPFWindow):
     Height="235" Width="350"
     WindowStartupLocation="CenterScreen"
     HorizontalAlignment="Center"
-    ShowInTaskbar="True"
+    ShowInTaskbar="False"
     WindowStyle="None"
-    ResizeMode="NoResize"
-    Background="#181735">
+    ResizeMode="CanResizeWithGrip"
+    FontFamily="Segoe UI"
+    Background="{StaticResource SurfaceBrush}">
 
     <Window.Resources>
         <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -41005,23 +30047,23 @@ class BaseRenaming(forms.WPFWindow):
                     xmlns:local="clr-namespace:Common.WPF_styles">
 
             <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[COLOURS]-->
-            <SolidColorBrush x:Key="header_background"  Color="#0f0f2d" />
+            <SolidColorBrush x:Key="header_background"  Color="#FFF9FAFB" />
 
-            <SolidColorBrush x:Key="text_white"         Color="#E5E4E2" />
-            <SolidColorBrush x:Key="text_gray"          Color="Gray" />
-            <SolidColorBrush x:Key="text_magenta"       Color="#EE82EE" />
+            <SolidColorBrush x:Key="text_white"         Color="#FF1A1A1A" />
+            <SolidColorBrush x:Key="text_gray"          Color="#FF5E6A75" />
+            <SolidColorBrush x:Key="text_magenta"       Color="#FF2D89EF" />
 
-            <SolidColorBrush x:Key="button_fg_normal"   Color="White" />
-            <SolidColorBrush x:Key="button_bg_normal"   Color="#39385D" />
-            <SolidColorBrush x:Key="button_bg_hover"    Color="#FF4C70" />
+            <SolidColorBrush x:Key="button_fg_normal"   Color="#FF1A1A1A" />
+            <SolidColorBrush x:Key="button_bg_normal"   Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="button_bg_hover"    Color="#FFF0F7FF" />
 
-            <SolidColorBrush x:Key="border_magenta"     Color="#EE82EE" />
-            <SolidColorBrush x:Key="border_blue"     Color="DodgerBlue" />
+            <SolidColorBrush x:Key="border_magenta"     Color="#FFD8DDE3" />
+            <SolidColorBrush x:Key="border_blue"        Color="#FFD8DDE3" />
 
-            <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="Gray" />
-            <SolidColorBrush x:Key="checkbox_checked_colour"     Color="#EE82EE" />
+            <SolidColorBrush x:Key="uncheckbox_checked_colour"     Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="checkbox_checked_colour"       Color="#FFF0F7FF" />
 
-            <SolidColorBrush x:Key="footer_donate"     Color="#FF4C70" />
+            <SolidColorBrush x:Key="footer_donate"     Color="#FF2D89EF" />
 
 
 
@@ -41072,9 +30114,11 @@ class BaseRenaming(forms.WPFWindow):
             <!-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[STYLE] - BUTTON -->
             <Style TargetType="Button">
                 <!--[BUTTON] STYLES-->
-                <Setter Property="TextElement.FontFamily"   Value="Arial"/>
+                <Setter Property="TextElement.FontFamily"   Value="Segoe UI"/>
                 <Setter Property="Background"               Value="{StaticResource button_bg_normal}"/>
                 <Setter Property="Foreground"               Value="{StaticResource button_fg_normal}"/>
+                <Setter Property="BorderBrush"              Value="{StaticResource border_magenta}"/>
+                <Setter Property="BorderThickness"          Value="1"/>
                 <Setter Property="Cursor"                   Value="Hand"/>
 
                 <!--[BUTTON] TEMPLATE-->
@@ -41082,7 +30126,9 @@ class BaseRenaming(forms.WPFWindow):
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="8"
-                            Background="{TemplateBinding Background}">
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
 
                                 <ContentPresenter  VerticalAlignment="Center"
                                            HorizontalAlignment="Center"/>
@@ -41109,7 +30155,7 @@ class BaseRenaming(forms.WPFWindow):
 
             <Style TargetType="TextBox">
                 <Setter Property="Background" Value="{StaticResource header_background}"/>
-                <Setter Property="Foreground" Value="{StaticResource text_magenta}"/>
+                <Setter Property="Foreground" Value="{StaticResource text_white}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource border_blue}"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
 
@@ -41200,7 +30246,7 @@ class BaseRenaming(forms.WPFWindow):
                                 FontSize="14px"
                                 FontWeight="Heavy"
                                 Foreground="{StaticResource text_white}">
-                                EF-Tools
+                                SJ-B+C
                     </Hyperlink>
                                     </TextBlock>
                                 </DockPanel>
@@ -41452,65 +30498,45 @@ class BaseRenaming(forms.WPFWindow):
     </Window.Resources>
 
     <!--MAIN-->
-    <Grid>
+    <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--HEADER START-->
-        <Grid   MouseDown="header_drag"
-                Background="{StaticResource header_background}"
-                Grid.ColumnSpan="2">
-            <!--HEADER GRID-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="60"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid MouseDown="header_drag">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!--LOGO-->
-            <DockPanel  Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="BR" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock x:Name="main_title"
+                               Text="__title__"
+                               Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Set rename parameters, preview the transformation, and apply the change." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Content="Close"
+                        Width="72"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="button_close"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Left">
-                <Image Width="20" Height="20"
-                      />
-                <!--Source="https://www.erikfrits.com/media/images/LOGO.png"-->
-
-                <TextBlock>
-                    <Hyperlink
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        NavigateUri="https://www.youtube.com/channel/UC1LgjdE6zW3HNWg-IGo2d-Q"
-                        FontSize="14px"
-                        FontWeight="Heavy"
-                        Foreground="{StaticResource text_white}">
-                        EF-Tools
-                    </Hyperlink>
-                </TextBlock>
-            </DockPanel>
-
-            <!--__TITLE__-->
-            <TextBlock x:Name="main_title"
-                Text="__title__"
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Foreground="{StaticResource text_white}"/>
-
-            <!--CLOSE-->
-            <Button Content="Close"
-                    Grid.Column="2"
-                    Width="60" Height="20"
-                    FontSize="10"
-                    Click="button_close"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"/>
         </Grid>
+        </Border>
         <!--HEADER END-->
 
         <StackPanel Grid.Row="1"
@@ -41533,7 +30559,7 @@ class BaseRenaming(forms.WPFWindow):
                            Foreground="{StaticResource text_magenta}"/>
                     <Border  Height="110"
                           BorderBrush="{DynamicResource border_magenta}"
-                         BorderThickness="1,1,1,1" CornerRadius="10" HorizontalAlignment="Stretch" Width="Auto">
+                            BorderThickness="1,1,1,1" CornerRadius="16" HorizontalAlignment="Stretch" Width="Auto">
 
 
 
@@ -41609,9 +30635,10 @@ class BaseRenaming(forms.WPFWindow):
 
                     <Button Click="button_run"
                             Content="Rename"
+                            Style="{StaticResource PrimaryButton}"
                             Margin="0,10,0,0"
-                            Width="75"
-                            Height="25"/>
+                            Width="96"
+                            Height="32"/>
 
 
 
@@ -41630,8 +30657,8 @@ class BaseRenaming(forms.WPFWindow):
 
 
         <!--FOOTER START-->
-        <Grid   Grid.Row="2"
-                Background="{StaticResource header_background}">
+        <Border Grid.Row="2" Style="{StaticResource LegendInfoCardBorderStyle}" Margin="0,10,0,0">
+        <Grid Background="{StaticResource SurfaceContainerBrush}">
             <!--FOOTER GRID-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -41658,12 +30685,13 @@ class BaseRenaming(forms.WPFWindow):
                         NavigateUri="https://www.patreon.com/ErikFrits"
                         FontWeight="Medium"
                         Foreground="{StaticResource footer_donate}">
-                        Donate
+                        Support
                     </Hyperlink>
             </TextBlock>
 
 
         </Grid>
+        </Border>
         <!--FOOTER END-->
 
     </Grid>
@@ -51107,7 +40135,7 @@ main()
 ## FILE_END: lib/Snippets/Community/Super Pin/super_pin.py
 
 ## FILE_START: lib/status.xaml
-## META: sha1=e0041408ff2d24b1eceadd21c0018145e4b8c0a6 size=1666
+## META: sha1=afce2f9fe4de2dd53ba409cc936ced9513380b89 size=3381
 ## TYPE: text
 ```
 <Window
@@ -51116,10 +40144,17 @@ main()
     Title="Transaction Logger"
     Height="240"
     Width="380"
-    ResizeMode="CanMinimize"
+    ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
-    Topmost="True"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI"
     ShowInTaskbar="False">
+    <Window.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </Window.Resources>
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -51131,15 +40166,37 @@ main()
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="txtStatus" Grid.Row="0" FontSize="16" FontWeight="Bold" Text="Logger Inactive" Margin="0,0,0,8"/>
-        <TextBlock x:Name="txtStarted" Grid.Row="1" Text="Started: -" Margin="0,0,0,6"/>
-        <TextBlock x:Name="txtMode" Grid.Row="2" Text="Mode: -" Margin="0,0,0,6"/>
-        <TextBlock x:Name="txtCounts" Grid.Row="3" Text="Events: 0 | Failures: 0" Margin="0,0,0,6"/>
-        <TextBlock x:Name="txtContext" Grid.Row="4" Text="Context: -" TextWrapping="Wrap" Margin="0,0,0,6"/>
-        <TextBox x:Name="txtOutput" Grid.Row="5" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-            <Button x:Name="btnHide" Content="Hide" Width="90" Margin="0,0,8,0"/>
-            <Button x:Name="btnStop" Content="Stop + Save" Width="110"/>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="TL" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Transaction Logger" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Monitor session logging state, output path, and captured event counts." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="live" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <TextBlock x:Name="txtStatus" Grid.Row="1" FontSize="15" FontWeight="Bold" Text="Logger Inactive" Margin="0,0,0,8"/>
+        <TextBlock x:Name="txtStarted" Grid.Row="2" Text="Started: -" Margin="0,0,0,6"/>
+        <TextBlock x:Name="txtMode" Grid.Row="3" Text="Mode: -" Margin="0,0,0,6"/>
+        <TextBlock x:Name="txtCounts" Grid.Row="4" Text="Events: 0 | Failures: 0" Margin="0,0,0,6"/>
+        <TextBlock x:Name="txtContext" Grid.Row="5" Text="Context: -" TextWrapping="Wrap" Margin="0,0,0,6"/>
+        <Border Grid.Row="6" Style="{StaticResource LegendInfoCardBorderStyle}" Padding="12,10">
+            <TextBox x:Name="txtOutput" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        </Border>
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="btnHide" Style="{StaticResource SecondaryButton}" Content="Hide" Width="90" Margin="0,0,8,0"/>
+            <Button x:Name="btnStop" Style="{StaticResource PrimaryButton}" Content="Stop + Save" Width="110"/>
         </StackPanel>
     </Grid>
 </Window>
@@ -53982,10 +43039,10 @@ Inspect schedules and help users choose or add fields through a guided selection
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/script.py
-## META: sha1=18189fb2a8af6439dbee6808641a4d78e2e8f8c0 size=72237
+## META: sha1=2aa1b43af7f045d4440663d0cb3cbe3215d82eb1 size=75491
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","clr","pyrevit","telemetry"]
-## FUNCTIONS: ["_lookup_param","__init__","__str__","_name_from_display","_param_kind","collect_param_names","collect_param_items","_datatype_label","_unit_label","_convert_from_internal","_format_value","_format_as_string","get_param_info","build_preview","_wrap","execute_copy","_cat","_log_skip","_log_error","_log_copy","_safe_elements","_current_selection","_pick_interactively","_all_in_active_view","_is_2d","_all_2d_in_model","_all_3d_in_model","_all_2d_in_active_view","_all_3d_in_active_view","_all_in_model","_choose_elements","__init__","_on_load","_load_scope","_set_list","_set_list","_filter_and_refresh","_on_left_filter","_on_right_filter","_on_format_changed","_on_left_select","_on_right_select","_on_copy","_on_cancel","_build_results","_brush","_tb","_sep","_make_exp","_cat_row","_paint_meta","ctrl","_clear_meta","_refresh_preview","_set_status"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","clr","pyrevit","telemetry"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_lookup_param","__init__","__str__","_name_from_display","_param_kind","collect_param_names","collect_param_items","_datatype_label","_unit_label","_convert_from_internal","_format_value","_format_as_string","get_param_info","build_preview","_wrap","execute_copy","_cat","_log_skip","_log_error","_log_copy","_safe_elements","_current_selection","_pick_interactively","_all_in_active_view","_is_2d","_all_2d_in_model","_all_3d_in_model","_all_2d_in_active_view","_all_3d_in_active_view","_all_in_model","_choose_elements","__init__","_on_load","_load_scope","_set_list","_set_list","_filter_and_refresh","_on_left_filter","_on_right_filter","_on_format_changed","_on_left_select","_on_right_select","_on_copy","_on_cancel","_build_results","_brush","_tb","_sep","_make_exp","_cat_row","_paint_meta","ctrl","_clear_meta","_refresh_preview","_set_status"]
 ## CLASSES: ["ParamListItem","ParamCopierWindow"]
 ```python
 # -*- coding: utf-8 -*-
@@ -54017,6 +43074,20 @@ from Autodesk.Revit.DB import (
 )
 from Autodesk.Revit.UI.Selection import ObjectType
 from pyrevit import forms, script
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+    def apply_topmost_and_parent(window):
+        return
+    def apply_style_guide_resources(window):
+        return
 
 try:
     from Autodesk.Revit.DB import UnitTypeId
@@ -54766,24 +43837,27 @@ WINDOW_XAML = r"""
     Height="840" Width="980"
     MinHeight="640" MinWidth="720"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize"
-    Background="#1E1E1E">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
 
     <Window.Resources>
         <!-- Keyed styles (applied explicitly) -->
         <Style x:Key="SectionHeader" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
             <Setter Property="Margin" Value="0,0,0,6"/>
         </Style>
         <Style x:Key="MetaLabel" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#888"/>
+            <Setter Property="Foreground" Value="#5E6A75"/>
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="Margin" Value="0,4,0,1"/>
         </Style>
         <Style x:Key="MetaValue" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#D4D4D4"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="0,0,0,2"/>
@@ -54791,17 +43865,17 @@ WINDOW_XAML = r"""
 
         <!-- Implicit styles -->
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#2D2D2D"/>
-            <Setter Property="Foreground" Value="#D4D4D4"/>
-            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="Background" Value="#FFF9FAFB"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
             <Setter Property="Padding" Value="5,3"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="ListBox">
-            <Setter Property="Background" Value="#252526"/>
-            <Setter Property="Foreground" Value="#CCCCCC"/>
-            <Setter Property="BorderBrush" Value="#3F3F46"/>
+            <Setter Property="Background" Value="#FFFFFFFF"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         </Style>
@@ -54810,50 +43884,72 @@ WINDOW_XAML = r"""
             <Setter Property="Background" Value="Transparent"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#094771"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#E7EDFB"/>
+                    <Setter Property="Foreground" Value="#1640B0"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2A2D2E"/>
+                    <Setter Property="Background" Value="#FFF4F5F7"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#39385D"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="14,7"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1640B0"/>
+                </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#2D2D2D"/>
-                    <Setter Property="Foreground" Value="#555"/>
+                    <Setter Property="Background" Value="#ECEDF0"/>
+                    <Setter Property="Foreground" Value="#8A8F98"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="Border" x:Key="MetaPanel">
-            <Setter Property="Background" Value="#252526"/>
-            <Setter Property="BorderBrush" Value="#3F3F46"/>
+            <Setter Property="Background" Value="#FFFFFFFF"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="3"/>
-            <Setter Property="Padding" Value="8,6"/>
-            <Setter Property="Margin" Value="0,6,0,0"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="20,16"/>
+            <Setter Property="Margin" Value="0,8,0,0"/>
         </Style>
         <Style TargetType="Border" x:Key="PreviewPanel">
-            <Setter Property="Background" Value="#1F2D1F"/>
-            <Setter Property="BorderBrush" Value="#2D5A27"/>
+            <Setter Property="Background" Value="#EAF5EE"/>
+            <Setter Property="BorderBrush" Value="#C6E7CF"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="3"/>
-            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,8"/>
             <Setter Property="Margin" Value="0,8,0,0"/>
+        </Style>
+        <Style x:Key="SecondaryActionButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E7EDFB"/>
+                    <Setter Property="BorderBrush" Value="#1F4FD9"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#ECEDF0"/>
+                    <Setter Property="Foreground" Value="#8A8F98"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <!-- Dark ComboBox + dropdown popup -->
         <Style TargetType="ComboBox">
-            <Setter Property="Background" Value="#2D2D2D"/>
-            <Setter Property="Foreground" Value="#D4D4D4"/>
-            <Setter Property="BorderBrush" Value="#555"/>
+            <Setter Property="Background" Value="#FFF9FAFB"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="6,3"/>
             <Setter Property="FontSize" Value="12"/>
@@ -54882,14 +43978,14 @@ WINDOW_XAML = r"""
                                             RelativeSource={RelativeSource TemplatedParent}}"
                                         Focusable="False"/>
                                     <Path Grid.Column="1" Data="M 0 0 L 4 4 L 8 0 Z"
-                                          Fill="#888" VerticalAlignment="Center"
+                                        Fill="#5E6A75" VerticalAlignment="Center"
                                           HorizontalAlignment="Center" IsHitTestVisible="False"/>
                                 </Grid>
                             </Border>
                             <Popup x:Name="PART_Popup"
                                    IsOpen="{TemplateBinding IsDropDownOpen}"
                                    Placement="Bottom" AllowsTransparency="True" Focusable="False">
-                                <Border Background="#2D2D2D" BorderBrush="#555" BorderThickness="1"
+                                <Border Background="#FFF9FAFB" BorderBrush="#DDE1E6" BorderThickness="1"
                                         MinWidth="{TemplateBinding ActualWidth}"
                                         MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <ScrollViewer CanContentScroll="True">
@@ -54903,18 +43999,18 @@ WINDOW_XAML = r"""
             </Setter>
         </Style>
         <Style TargetType="ComboBoxItem">
-            <Setter Property="Background" Value="#2D2D2D"/>
-            <Setter Property="Foreground" Value="#D4D4D4"/>
+            <Setter Property="Background" Value="#FFFFFFFF"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
             <Setter Property="Padding" Value="8,5"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Style.Triggers>
                 <Trigger Property="IsHighlighted" Value="True">
-                    <Setter Property="Background" Value="#094771"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#E7EDFB"/>
+                    <Setter Property="Foreground" Value="#1640B0"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#141414"/>
-                    <Setter Property="Foreground" Value="#555"/>
+                    <Setter Property="Background" Value="#FFF9FAFB"/>
+                    <Setter Property="Foreground" Value="#8A8F98"/>
                     <Setter Property="FontSize" Value="10"/>
                     <Setter Property="Padding" Value="6,4"/>
                 </Trigger>
@@ -54923,23 +44019,23 @@ WINDOW_XAML = r"""
 
         <!-- Dark TabControl / TabItem -->
         <Style TargetType="TabControl">
-            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Background" Value="#FFFBFE"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
         <Style TargetType="TabItem">
-            <Setter Property="Background" Value="#252526"/>
-            <Setter Property="Foreground" Value="#999"/>
+            <Setter Property="Background" Value="#FFFFFFFF"/>
+            <Setter Property="Foreground" Value="#5E6A75"/>
             <Setter Property="Padding" Value="14,7"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="12"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#1E1E1E"/>
-                    <Setter Property="Foreground" Value="#E0E0E0"/>
+                    <Setter Property="Background" Value="#FFFBFE"/>
+                    <Setter Property="Foreground" Value="#1A1A1A"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2A2D2E"/>
+                    <Setter Property="Background" Value="#FFF4F5F7"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -54947,27 +44043,48 @@ WINDOW_XAML = r"""
 
     <DockPanel>
 
+        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="10,10,10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
+                    <TextBlock Text="PC" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Parameter Copier" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock Text="Review parameters, preview the copy, and run the transfer." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                </StackPanel>
+                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
+                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
+        </Border>
+
         <!-- Status bar (bottom) -->
-        <Border DockPanel.Dock="Bottom" Background="#141414"
-                BorderBrush="#333" BorderThickness="0,1,0,0" Padding="10,4">
-            <TextBlock x:Name="txtStatus" Foreground="#999" FontSize="11" Text="Ready."/>
+        <Border DockPanel.Dock="Bottom" Background="#FFF9FAFB"
+                BorderBrush="#DDE1E6" BorderThickness="0,1,0,0" Padding="10,4">
+            <TextBlock x:Name="txtStatus" Foreground="#5E6A75" FontSize="11" Text="Ready."/>
         </Border>
 
         <!-- Copy progress bar (bottom, shown during copy run) -->
         <ProgressBar DockPanel.Dock="Bottom" x:Name="pbarCopy"
                      Height="3" IsIndeterminate="True" Visibility="Collapsed"
-                     Background="#1E1E1E" Foreground="#4EC9B0"/>
+                     Background="#FFFBFE" Foreground="#2EA043"/>
 
         <!-- Action buttons (bottom, above progress) -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="10,8,10,8">
             <Button x:Name="btnCopy" Content="Copy Parameters"
                     Width="155" Margin="0,0,8,0" IsEnabled="False"/>
-            <Button x:Name="btnCancel" Content="Close" Width="90"/>
+            <Button x:Name="btnCancel" Content="Close" Width="90" Style="{StaticResource SecondaryActionButton}"/>
         </StackPanel>
 
         <!-- Scope bar (top) -->
-        <Border DockPanel.Dock="Top" Background="#141414" BorderBrush="#3A3A3A"
+        <Border DockPanel.Dock="Top" Background="#FFF9FAFB" BorderBrush="#DDE1E6"
                 BorderThickness="0,0,0,1" Padding="10,7">
             <StackPanel>
                 <Grid>
@@ -54977,17 +44094,17 @@ WINDOW_XAML = r"""
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Scope" Foreground="#777"
+                    <TextBlock Grid.Column="0" Text="Scope" Foreground="#5E6A75"
                                FontSize="11" VerticalAlignment="Center" Margin="0,0,8,0"/>
                     <ComboBox Grid.Column="1" x:Name="cmbScope" Margin="0,0,8,0"/>
                     <Button Grid.Column="2" x:Name="btnLoad"
                             Content="&#x21BA;  Load" Width="82" Padding="8,4"/>
                     <TextBlock Grid.Column="3" x:Name="txtElementCount"
-                               Foreground="#666" FontSize="11"
+                               Foreground="#5E6A75" FontSize="11"
                                VerticalAlignment="Center" HorizontalAlignment="Right"
                                Text="No scope loaded"/>
                 </Grid>
-                <TextBlock Foreground="#454545" FontSize="10" Margin="0,5,0,0"
+                <TextBlock Foreground="#8A8F98" FontSize="10" Margin="0,5,0,0"
                            Text="Tags:  S = Shared  &#x00b7;  P = Project  &#x00b7;  I = Instance  &#x00b7;  T = Type"/>
             </StackPanel>
         </Border>
@@ -55000,8 +44117,8 @@ WINDOW_XAML = r"""
                 <DockPanel Margin="10,8,10,6">
 
                     <!-- Format options (bottom) -->
-                    <Border DockPanel.Dock="Bottom" Background="#1A1A2E" BorderBrush="#2D2D4E"
-                            BorderThickness="1" CornerRadius="3" Padding="10,7" Margin="0,4,0,0">
+                        <Border DockPanel.Dock="Bottom" Background="#FFF9FAFB" BorderBrush="#DDE1E6"
+                            BorderThickness="1" CornerRadius="8" Padding="12,8" Margin="0,4,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -55010,15 +44127,15 @@ WINDOW_XAML = r"""
                                 <ColumnDefinition Width="130"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Prefix" Foreground="#888" FontSize="11"
+                            <TextBlock Grid.Column="0" Text="Prefix" Foreground="#5E6A75" FontSize="11"
                                        VerticalAlignment="Center" Margin="0,0,6,0"/>
                             <TextBox Grid.Column="1" x:Name="txtPrefix" Margin="0,0,16,0"/>
-                            <TextBlock Grid.Column="2" Text="Suffix" Foreground="#888" FontSize="11"
+                            <TextBlock Grid.Column="2" Text="Suffix" Foreground="#5E6A75" FontSize="11"
                                        VerticalAlignment="Center" Margin="0,0,6,0"/>
                             <TextBox Grid.Column="3" x:Name="txtSuffix"/>
                             <CheckBox Grid.Column="4" x:Name="chkIncludeUnit"
                                       Content="Include display unit"
-                                      Foreground="#D4D4D4" FontSize="12"
+                                      Foreground="#1A1A1A" FontSize="12"
                                       VerticalAlignment="Center" IsChecked="True"
                                       HorizontalAlignment="Left" Margin="20,0,0,0"/>
                         </Grid>
@@ -55028,10 +44145,10 @@ WINDOW_XAML = r"""
                     <Border DockPanel.Dock="Bottom" Style="{StaticResource PreviewPanel}">
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionHeader}" Text="Copy Preview"/>
-                            <TextBlock x:Name="txtPreview" Foreground="#B5CEA8" FontSize="12"
+                            <TextBlock x:Name="txtPreview" Foreground="#2EA043" FontSize="12"
                                        TextWrapping="Wrap"
                                        Text="(select both parameters to see preview)"/>
-                            <TextBlock x:Name="txtWarning" Foreground="#CE9178" FontSize="12"
+                            <TextBlock x:Name="txtWarning" Foreground="#B54708" FontSize="12"
                                        TextWrapping="Wrap" Margin="0,6,0,0"
                                        Visibility="Collapsed"/>
                         </StackPanel>
@@ -55049,7 +44166,7 @@ WINDOW_XAML = r"""
                         <DockPanel Grid.Column="0">
                             <TextBlock DockPanel.Dock="Top" Style="{StaticResource SectionHeader}"
                                        Text="Source Parameter (Left — reads from here)"/>
-                            <TextBlock DockPanel.Dock="Top" Foreground="#888" FontSize="11"
+                            <TextBlock DockPanel.Dock="Top" Foreground="#5E6A75" FontSize="11"
                                        Margin="0,0,0,3" Text="Filter"/>
                             <TextBox DockPanel.Dock="Top" x:Name="txtLeftFilter" Margin="0,0,0,6"/>
                             <Border DockPanel.Dock="Bottom" Style="{StaticResource MetaPanel}" MinHeight="148">
@@ -55073,14 +44190,14 @@ WINDOW_XAML = r"""
 
                         <!-- ARROW -->
                         <TextBlock Grid.Column="1" Text="&#x2192;" FontSize="26"
-                                   Foreground="#4EC9B0" HorizontalAlignment="Center"
+                                   Foreground="#1F4FD9" HorizontalAlignment="Center"
                                    VerticalAlignment="Center" FontWeight="Bold"/>
 
                         <!-- RIGHT: Target -->
                         <DockPanel Grid.Column="2">
                             <TextBlock DockPanel.Dock="Top" Style="{StaticResource SectionHeader}"
                                        Text="Target Parameter (Right — writes to here)"/>
-                            <TextBlock DockPanel.Dock="Top" Foreground="#888" FontSize="11"
+                            <TextBlock DockPanel.Dock="Top" Foreground="#5E6A75" FontSize="11"
                                        Margin="0,0,0,3" Text="Filter"/>
                             <TextBox DockPanel.Dock="Top" x:Name="txtRightFilter" Margin="0,0,0,6"/>
                             <Border DockPanel.Dock="Bottom" Style="{StaticResource MetaPanel}" MinHeight="148">
@@ -55108,8 +44225,8 @@ WINDOW_XAML = r"""
             <!-- ═══ RESULTS TAB ══════════════════════════════════════════ -->
             <TabItem Header="  Results  " x:Name="tabResults" IsEnabled="False">
                 <DockPanel Margin="10,8,10,6">
-                    <Border DockPanel.Dock="Top" Background="#1A1A2E" BorderBrush="#2D2D4E"
-                            BorderThickness="1" CornerRadius="3" Padding="12,10" Margin="0,0,0,8">
+                        <Border DockPanel.Dock="Top" Background="#FFF9FAFB" BorderBrush="#DDE1E6"
+                            BorderThickness="1" CornerRadius="8" Padding="12,10" Margin="0,0,0,8">
                         <StackPanel x:Name="pnlSummary"/>
                     </Border>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -55128,6 +44245,9 @@ class ParamCopierWindow(forms.WPFWindow):
 
     def __init__(self):
         forms.WPFWindow.__init__(self, WINDOW_XAML, literal_string=True)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self._elements = []
         self._all_items = []
@@ -55401,7 +44521,7 @@ class ParamCopierWindow(forms.WPFWindow):
             r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
             return SolidColorBrush(WpfColor.FromArgb(255, r, g, b))
 
-        def _tb(text, size=12, color="#D4D4D4", bold=False, margin=(0,0,0,0)):
+        def _tb(text, size=12, color="#1A1A1A", bold=False, margin=(0,0,0,0)):
             t = TextBlock()
             t.Text = text
             t.FontSize = size
@@ -55431,7 +44551,7 @@ class ParamCopierWindow(forms.WPFWindow):
             lbl.FontSize = 12
             cnt = TextBlock()
             cnt.Text = u"  \u2014  {0:,}".format(count)
-            cnt.Foreground = _brush("#555")
+            cnt.Foreground = _brush("#8A8F98")
             cnt.FontSize = 12
             hdr.Children.Add(lbl)
             hdr.Children.Add(cnt)
@@ -55445,7 +44565,7 @@ class ParamCopierWindow(forms.WPFWindow):
             lbl = TextBlock()
             lbl.Text = cat_name
             lbl.Width = 300
-            lbl.Foreground = _brush("#777")
+            lbl.Foreground = _brush("#5E6A75")
             lbl.FontSize = 11
             cnt = TextBlock()
             cnt.Text = u"{0:,}".format(count)
@@ -55465,9 +44585,9 @@ class ParamCopierWindow(forms.WPFWindow):
             _tb(u"{0}  \u2192  {1}".format(src_name, tgt_name),
                 14, "#E0E0E0", True, (0, 0, 0, 10)))
         for label, value, clr in [
-            (u"Total Elements", u"{0:,}".format(total),        "#888"),
-            (u"Copied",         u"{0:,}".format(copied),       "#4EC9B0"),
-            (u"Skipped",        u"{0:,}".format(skipped),      "#CE9178"),
+            (u"Total Elements", u"{0:,}".format(total),        "#5E6A75"),
+            (u"Copied",         u"{0:,}".format(copied),       "#2EA043"),
+            (u"Skipped",        u"{0:,}".format(skipped),      "#B54708"),
             (u"Errors",         u"{0:,}".format(error_count),  "#F44747" if errors else "#444"),
         ]:
             row = StackPanel()
@@ -55476,7 +44596,7 @@ class ParamCopierWindow(forms.WPFWindow):
             lbl_tb = TextBlock()
             lbl_tb.Text = label
             lbl_tb.Width = 110
-            lbl_tb.Foreground = _brush("#666")
+            lbl_tb.Foreground = _brush("#5E6A75")
             lbl_tb.FontSize = 12
             val_tb = TextBlock()
             val_tb.Text = value
@@ -55493,12 +44613,12 @@ class ParamCopierWindow(forms.WPFWindow):
         # COPIED
         if copy_by_cat:
             self.pnlResults.Children.Add(
-                _tb(u"\u2713  Copied", 13, "#4EC9B0", True, (0, 4, 0, 4)))
+                _tb(u"\u2713  Copied", 13, "#2EA043", True, (0, 4, 0, 4)))
             for cat in sorted(copy_by_cat.keys()):
                 entry   = copy_by_cat[cat]
                 count   = entry["count"]
                 samples = entry["samples"]
-                cat_exp = _make_exp(cat, count, "#4EC9B0")
+                cat_exp = _make_exp(cat, count, "#2EA043")
                 content = StackPanel()
                 content.Margin = Thickness(16, 4, 0, 6)
                 for src_val, tgt_val in samples:
@@ -55512,11 +44632,11 @@ class ParamCopierWindow(forms.WPFWindow):
                     s_src.MaxWidth = 240
                     s_arr = TextBlock()
                     s_arr.Text = u"  \u2192  "
-                    s_arr.Foreground = _brush("#4EC9B0")
+                    s_arr.Foreground = _brush("#2EA043")
                     s_arr.FontSize = 11
                     s_tgt = TextBlock()
                     s_tgt.Text = tgt_val
-                    s_tgt.Foreground = _brush("#D4D4D4")
+                    s_tgt.Foreground = _brush("#1A1A1A")
                     s_tgt.FontSize = 11
                     s_tgt.MaxWidth = 240
                     s_row.Children.Add(s_src)
@@ -55534,15 +44654,15 @@ class ParamCopierWindow(forms.WPFWindow):
         # SKIPPED
         if skip_log:
             self.pnlResults.Children.Add(
-                _tb(u"\u26a0  Skipped", 13, "#CE9178", True, (0, 4, 0, 4)))
+                _tb(u"\u26a0  Skipped", 13, "#B54708", True, (0, 4, 0, 4)))
             for reason in sorted(skip_log.keys()):
                 cats    = skip_log[reason]
                 total_r = sum(cats.values())
-                r_exp = _make_exp(reason, total_r, "#CE9178")
+                r_exp = _make_exp(reason, total_r, "#B54708")
                 content = StackPanel()
                 content.Margin = Thickness(0, 4, 0, 6)
                 for cat in sorted(cats.keys()):
-                    content.Children.Add(_cat_row(cat, cats[cat], "#CE9178"))
+                    content.Children.Add(_cat_row(cat, cats[cat], "#B54708"))
                 r_exp.Content = content
                 self.pnlResults.Children.Add(r_exp)
             self.pnlResults.Children.Add(_sep())
@@ -55563,7 +44683,7 @@ class ParamCopierWindow(forms.WPFWindow):
                 self.pnlResults.Children.Add(r_exp)
             for err in errors[:20]:
                 self.pnlResults.Children.Add(
-                    _tb(u"  \u2022  {0}".format(err), 10, "#CE9178", margin=(0, 2, 0, 0)))
+                    _tb(u"  \u2022  {0}".format(err), 10, "#B54708", margin=(0, 2, 0, 0)))
     def _paint_meta(self, side, info):
         def ctrl(suffix):
             return getattr(self, "txt{0}{1}".format(
@@ -55646,7 +44766,7 @@ except Exception as _launch_ex:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/launcher.xaml
-## META: sha1=9bf3856e3bd1d24403b8efeeac1cf24950dff5e8 size=2234
+## META: sha1=01e56315923ebec60d629cc70a8aa03795b6721d size=4072
 ## TYPE: text
 ```
 <Window
@@ -55654,12 +44774,23 @@ except Exception as _launch_ex:
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Transaction Logger"
     Width="360" Height="430"
-    ResizeMode="CanMinimize"
+    ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
-    Topmost="True"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI"
     ShowInTaskbar="False">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Margin="14,12,14,12">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -55667,8 +44798,28 @@ except Exception as _launch_ex:
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="TL" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Transaction Logger" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Configure capture scope and snapshot diffing before starting the logger." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
         <!-- Capture mode -->
-        <GroupBox Grid.Row="0" Header="Capture Mode" Padding="8,4,8,8" Margin="0,0,0,8">
+        <GroupBox Grid.Row="1" Header="Capture Mode" Padding="8,4,8,8" Margin="0,0,0,8">
             <StackPanel>
                 <RadioButton x:Name="rbFull" Content="Full model + annotations" IsChecked="True" Margin="0,4,0,2"/>
                 <RadioButton x:Name="rbTargeted" Content="Targeted categories" Margin="0,2"/>
@@ -55676,14 +44827,14 @@ except Exception as _launch_ex:
         </GroupBox>
 
         <!-- Category list — enabled only in Targeted mode -->
-        <GroupBox x:Name="gbCategories" Grid.Row="1" Header="Categories" IsEnabled="False"
+        <GroupBox x:Name="gbCategories" Grid.Row="2" Header="Categories" IsEnabled="False"
                   Padding="8,4,8,8" Margin="0,0,0,8">
-            <ListBox x:Name="lstCategories" SelectionMode="Multiple" Height="110"
+            <ListBox x:Name="lstCategories" SelectionMode="Extended" Height="110"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         </GroupBox>
 
         <!-- Snapshot mode -->
-        <GroupBox Grid.Row="2" Header="Snapshot Mode" Padding="8,4,8,8" Margin="0,0,0,8">
+        <GroupBox Grid.Row="3" Header="Snapshot Mode" Padding="8,4,8,8" Margin="0,0,0,8">
             <StackPanel>
                 <RadioButton x:Name="rbSnapNone" Content="Off  —  fast, no before/after diff" IsChecked="True" Margin="0,4,0,2"/>
                 <RadioButton x:Name="rbSnapLazy" Content="Lazy  —  capture element state (enables diff)" Margin="0,2"/>
@@ -55691,9 +44842,9 @@ except Exception as _launch_ex:
         </GroupBox>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
-            <Button x:Name="btnCancel" Content="Cancel" Width="80" Margin="0,0,8,0"/>
-            <Button x:Name="btnStart" Content="Start Logging" Width="120"/>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+            <Button x:Name="btnCancel" Style="{StaticResource SecondaryButton}" Content="Cancel" Width="80" Margin="0,0,8,0"/>
+            <Button x:Name="btnStart" Style="{StaticResource PrimaryButton}" Content="Start Logging" Width="120"/>
         </StackPanel>
     </Grid>
 </Window>
@@ -55702,10 +44853,10 @@ except Exception as _launch_ex:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/launcher.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/script.py
-## META: sha1=eef71911052c86a60bac2025aea60172708422af size=3720
+## META: sha1=0a8cda71682e476fe662ef65120ff40aa05128ee size=5057
 ## TYPE: text
-## IMPORTS: ["os","pyrevit","telemetry"]
-## FUNCTIONS: ["default_output_dir","get_category_names","__init__","_on_mode_change","_on_start","_on_cancel"]
+## IMPORTS: ["GUI.style_guide_2026","os","pyrevit","sys","telemetry","txn_logger"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","default_output_dir","get_category_names","_find_extension_root","_ensure_logger_ready","__init__","_on_mode_change","_on_start","_on_cancel"]
 ## CLASSES: ["LauncherWindow"]
 ```python
 # -*- coding: utf-8 -*-
@@ -55719,8 +44870,25 @@ __title__ = 'Transaction Logger'
 __doc__ = 'Log all transactions in the current Revit session to a CSV file.'
 
 import os
+import sys
 
 from pyrevit import forms, script, HOST_APP
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
 
 ENV_ACTIVE = 'TXN_LOGGER_ACTIVE'
 ENV_MODE = 'TXN_LOGGER_MODE'
@@ -55758,9 +44926,46 @@ def get_category_names(doc):
     return sorted(list(set(names)))
 
 
+def _find_extension_root(start_path):
+    current = os.path.abspath(start_path)
+    if os.path.isfile(current):
+        current = os.path.dirname(current)
+    while True:
+        if current.lower().endswith('.extension'):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            return None
+        current = parent
+
+
+def _ensure_logger_ready():
+    if bool(script.get_envvar(ENV_READY)):
+        return True
+
+    ext_root = _find_extension_root(__file__)
+    if not ext_root:
+        return False
+
+    ext_lib = os.path.join(ext_root, 'lib')
+    if ext_lib not in sys.path:
+        sys.path.insert(0, ext_lib)
+
+    try:
+        import txn_logger
+        txn_logger.register()
+    except Exception:
+        return False
+
+    return bool(script.get_envvar(ENV_READY))
+
+
 class LauncherWindow(forms.WPFWindow):
     def __init__(self, xaml_path, doc):
         forms.WPFWindow.__init__(self, xaml_path)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
         self._result = None
 
         self.rbTargeted.Checked += self._on_mode_change
@@ -55798,7 +45003,7 @@ class LauncherWindow(forms.WPFWindow):
 
 # --- Entry point ---
 
-ready = bool(script.get_envvar(ENV_READY))
+ready = _ensure_logger_ready()
 if not ready:
     forms.alert(
         'Logger startup is not active.\nReload pyRevit or restart Revit.',
@@ -55873,7 +45078,7 @@ author: Harley TRAPPITT
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/bundle.yaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/dashboard.xaml
-## META: sha1=e7e33cf3a761376d8daad50aac2be603c66b3554 size=20504
+## META: sha1=77f985cae53cec86a9de22f779a44af7621f2582 size=26899
 ## TYPE: text
 ```
 <Window
@@ -55883,12 +45088,79 @@ author: Harley TRAPPITT
     Height="700"
     Width="1260"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize"
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
     MinHeight="540"
     MinWidth="920"
-    Background="#FFF3F4F6">
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
 
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
+        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
+        <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
+        <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
+        <SolidColorBrush x:Key="RbgTextSecondaryBrush" Color="#FF4D5965"/>
+        <SolidColorBrush x:Key="RbgTextMutedBrush" Color="#FF8C97A3"/>
+        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
+        <SolidColorBrush x:Key="RbgAccentSoftBrush" Color="#FFF0F7FF"/>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+        </Style>
+
+        <Style x:Key="DashboardNeutralButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.92"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DashboardPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DashboardNeutralButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
 
         <!-- Card ListBoxItem: selection/hover highlight applied directly to card border -->
         <Style x:Key="CardItemStyle" TargetType="ListBoxItem">
@@ -55901,9 +45173,9 @@ author: Harley TRAPPITT
                         <Border x:Name="CardBorder"
                                 Width="202"
                                 Height="86"
-                                CornerRadius="8"
-                                Background="White"
-                                BorderBrush="#FFE1E4E8"
+                            CornerRadius="16"
+                            Background="{StaticResource RbgCardBackgroundBrush}"
+                            BorderBrush="{StaticResource RbgCardBorderBrush}"
                                 BorderThickness="1"
                                 Padding="10,8"
                                 Cursor="Hand">
@@ -55911,12 +45183,12 @@ author: Harley TRAPPITT
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="#FFF0F2F5"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#FFBBC3CD"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="#FFF0F7FF"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#FF2D89EF"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgAccentSoftBrush}"/>
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
                                 <Setter TargetName="CardBorder" Property="BorderThickness" Value="2"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -55935,7 +45207,7 @@ author: Harley TRAPPITT
 
                 <Border Width="32"
                         Height="32"
-                        CornerRadius="7"
+                    CornerRadius="12"
                         Background="{Binding accent}"
                         VerticalAlignment="Top"
                         Margin="0,2,0,0">
@@ -55957,7 +45229,7 @@ author: Harley TRAPPITT
                                    Margin="3,0,0,0"/>
                         <Border DockPanel.Dock="Right"
                                 Background="{Binding source_badge_accent}"
-                                CornerRadius="4"
+                            CornerRadius="12"
                                 Padding="4,1"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center">
@@ -55969,16 +45241,16 @@ author: Harley TRAPPITT
                         <TextBlock Text="{Binding title}"
                                    FontWeight="SemiBold"
                                    FontSize="12"
-                                   Foreground="#FF1A1A1A"
+                                   Foreground="{StaticResource RbgTextPrimaryBrush}"
                                    TextTrimming="CharacterEllipsis"/>
                     </DockPanel>
                     <TextBlock Text="{Binding group}"
                                FontSize="10"
-                               Foreground="#FF8C97A3"
+                               Foreground="{StaticResource RbgTextMutedBrush}"
                                Margin="0,2,0,0"/>
                     <TextBlock Text="{Binding short_description}"
                                FontSize="11"
-                               Foreground="#FF4D5965"
+                               Foreground="{StaticResource RbgTextSecondaryBrush}"
                                TextWrapping="Wrap"
                                MaxHeight="28"
                                Margin="0,3,0,0"/>
@@ -55992,13 +45264,13 @@ author: Harley TRAPPITT
                     Height="34"
                     Margin="0,0,6,0"
                     Padding="10,0"
-                    Background="White"
-                    BorderBrush="#FFD0D7DE"
+                    Background="{StaticResource RbgCardBackgroundBrush}"
+                    BorderBrush="{StaticResource RbgCardBorderBrush}"
                     Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
                     <Border Width="20"
                             Height="20"
-                            CornerRadius="5"
+                            CornerRadius="12"
                             Background="{Binding accent}"
                             Margin="0,0,7,0"
                             VerticalAlignment="Center">
@@ -56018,22 +45290,41 @@ author: Harley TRAPPITT
             </Button>
         </DataTemplate>
 
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="TD" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Browse, group, and launch extension tools from a unified catalog." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
         <!-- Row 0: Search and filter bar -->
-        <Border Grid.Row="0"
-                Background="White"
-                BorderBrush="#FFD8DDE3"
-                BorderThickness="1"
-                CornerRadius="8"
+        <Border Grid.Row="1"
+            Style="{StaticResource SectionCardBorderStyle}"
                 Padding="10,7"
                 Margin="0,0,0,8">
             <DockPanel>
@@ -56043,22 +45334,25 @@ author: Harley TRAPPITT
                             Width="50"
                             Height="28"
                             Margin="0,0,4,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_all_click"/>
                     <Button x:Name="FavoritesFilterButton"
                             Content="Starred"
                             Width="62"
                             Height="28"
                             Margin="0,0,4,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_favorites_click"/>
                     <Button x:Name="RecentFilterButton"
                             Content="Recent"
                             Width="62"
                             Height="28"
                             Margin="0,0,14,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_recent_click"/>
                     <TextBlock x:Name="SummaryText"
                                VerticalAlignment="Center"
-                               Foreground="#FF8C97A3"
+                               Foreground="{StaticResource RbgTextMutedBrush}"
                                FontSize="12"/>
                 </StackPanel>
                 <DockPanel>
@@ -56067,14 +45361,15 @@ author: Harley TRAPPITT
                             Width="28"
                             Height="28"
                             Margin="6,0,0,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="clear_search_click"/>
                     <TextBox x:Name="SearchBox"
                              Height="28"
                              VerticalContentAlignment="Center"
                              Padding="6,0"
                              FontSize="13"
-                             Background="#FFF9FAFB"
-                             BorderBrush="#FFD0D7DE"
+                             Background="{StaticResource RbgSurfaceSubtleBrush}"
+                             BorderBrush="{StaticResource RbgCardBorderBrush}"
                              TextChanged="search_changed"/>
                 </DockPanel>
             </DockPanel>
@@ -56082,7 +45377,7 @@ author: Harley TRAPPITT
 
         <!-- Row 1: Favourites quick-launch bar (collapsed when no favourites) -->
         <Border x:Name="FavoritesSection"
-                Grid.Row="1"
+            Grid.Row="2"
                 Background="#FFFEFDF0"
                 BorderBrush="#FFFDE8A0"
                 BorderThickness="1"
@@ -56115,7 +45410,7 @@ author: Harley TRAPPITT
         </Border>
 
         <!-- Row 2: Groups sidebar + card grid + details panel -->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
                 <ColumnDefinition Width="*"/>
@@ -56124,10 +45419,7 @@ author: Harley TRAPPITT
 
             <!-- Groups sidebar -->
             <Border Grid.Column="0"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="8"
                     Margin="0,0,8,0">
                 <DockPanel>
@@ -56141,20 +45433,24 @@ author: Harley TRAPPITT
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="new_group_click"/>
                         <Button Content="Delete Group"
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="delete_group_click"/>
                         <Button Content="Add to Group"
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="add_tool_to_group_click"/>
                         <Button Content="Remove from Group"
                                 Height="26"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="remove_tool_from_group_click"/>
                     </StackPanel>
                     <TreeView x:Name="GroupTree"
@@ -56175,10 +45471,7 @@ author: Harley TRAPPITT
 
             <!-- Card grid -->
             <Border Grid.Column="1"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="6">
                 <ListBox x:Name="CardGrid"
                          SelectionChanged="tool_changed"
@@ -56198,10 +45491,7 @@ author: Harley TRAPPITT
 
             <!-- Details panel -->
             <Border Grid.Column="2"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="12"
                     Margin="8,0,0,0">
                 <Grid>
@@ -56216,13 +45506,13 @@ author: Harley TRAPPITT
                         <Border x:Name="DetailIconBadge"
                                 Width="44"
                                 Height="44"
-                                CornerRadius="10"
+                            CornerRadius="12"
                                 Background="#FF66727D">
                             <TextBlock x:Name="DetailIconText"
                                        Text="&#183;"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="17"
                                        FontWeight="Bold"
                                        Foreground="White"/>
                         </Border>
@@ -56235,7 +45525,7 @@ author: Harley TRAPPITT
                                        MaxWidth="192"/>
                             <TextBlock x:Name="CategoryText"
                                        FontSize="11"
-                                       Foreground="#FF8C97A3"
+                                       Foreground="{StaticResource RbgTextMutedBrush}"
                                        Margin="0,3,0,0"
                                        TextWrapping="Wrap"
                                        MaxWidth="192"/>
@@ -56246,15 +45536,15 @@ author: Harley TRAPPITT
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
                         <TextBlock x:Name="TagsText"
                                    FontSize="11"
-                                   Foreground="#FF8C97A3"
+                                   Foreground="{StaticResource RbgTextMutedBrush}"
                                    TextWrapping="Wrap"/>
                         <TextBlock x:Name="StatusText"
                                    FontSize="11"
-                                   Foreground="#FF8C97A3"
+                                   Foreground="{StaticResource RbgTextMutedBrush}"
                                    Margin="0,3,0,0"/>
                         <TextBlock x:Name="SourceText"
                                    FontSize="10"
-                                   Foreground="#FF6B7280"
+                                   Foreground="{StaticResource RbgTextSecondaryBrush}"
                                    Margin="0,3,0,0"
                                    TextWrapping="Wrap"/>
                     </StackPanel>
@@ -56264,19 +45554,19 @@ author: Harley TRAPPITT
                         <StackPanel>
                             <TextBlock x:Name="DescriptionText"
                                        FontSize="12"
-                                       Foreground="#FF4D5965"
+                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
                                        TextWrapping="Wrap"
                                        Margin="0,0,0,10"/>
                             <TextBlock x:Name="DocstringLabel"
                                        Text="Script Documentation"
                                        FontSize="11"
                                        FontWeight="Bold"
-                                       Foreground="#FF8C97A3"
+                                       Foreground="{StaticResource RbgTextMutedBrush}"
                                        Margin="0,0,0,4"
                                        Visibility="Collapsed"/>
                             <TextBlock x:Name="DocstringText"
                                        FontSize="11"
-                                       Foreground="#FF5E6A75"
+                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
                                        TextWrapping="Wrap"
                                        Visibility="Collapsed"/>
                         </StackPanel>
@@ -56286,11 +45576,8 @@ author: Harley TRAPPITT
         </Grid>
 
         <!-- Row 3: Action buttons footer -->
-        <Border Grid.Row="3"
-                Background="White"
-                BorderBrush="#FFD8DDE3"
-                BorderThickness="1"
-                CornerRadius="8"
+        <Border Grid.Row="4"
+            Style="{StaticResource SectionCardBorderStyle}"
                 Padding="10,7"
                 Margin="0,8,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -56300,16 +45587,19 @@ author: Harley TRAPPITT
                         Height="30"
                         Margin="0,0,6,0"
                         FontSize="15"
+                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         ToolTip="Toggle favourite"
                         Click="toggle_favorite_click"/>
                 <Button Content="Run Tool"
                         Width="90"
                         Height="30"
                         Margin="0,0,6,0"
+                    Style="{StaticResource DashboardPrimaryButtonStyle}"
                         Click="run_selected_click"/>
                 <Button Content="Close"
                         Width="72"
                         Height="30"
+                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         Click="close_click"/>
             </StackPanel>
         </Border>
@@ -56320,7 +45610,7 @@ author: Harley TRAPPITT
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/dashboard.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/data/tool_catalog.json
-## META: sha1=557ae13d2a2021e5fcc5f67b8f48beea613a40d9 size=26104
+## META: sha1=8185dacf1c3c9d2cf65fb55a5cec30c2d658cb21 size=26100
 ## TYPE: text
 ```json
 [
@@ -56387,7 +45677,7 @@ author: Harley TRAPPITT
         "handler": "tools.data.run_transaction_logger",
         "default_order": 40,
         "default_visible": true,
-        "source_path": "RBG_SYD_Tools_Working.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger_Dev.pushbutton/script.py"
+        "source_path": "RBG_SYD_Tools_Working.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/script.py"
     },
 
     {
@@ -58084,7 +47374,7 @@ def save_user_data(data):
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_store.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_ui.py
-## META: sha1=c0af193013b0f8e7d43d6e162fb7819f2053b681 size=25650
+## META: sha1=5d023f8a2db65541a0d66c5553989c7324d70120 size=26188
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.UI","System","System.Windows","System.Windows.Controls","System.Windows.Media","codecs","dashboard_data","dashboard_runner","dashboard_store","os","pyrevit","re","uuid"]
 ## FUNCTIONS: ["_get_brush_conv","_read_script_doc","_compute_panel_id","get_panel_source","get_active_panel","__init__","_tool_source_badge","_initialize_dashboard","refresh_state","_close_surface","_normalize_select_result","_get_personal_groups","_get_favorites","_get_recent_tools","_get_selected_group","_select_group_tag","_get_selected_tool","_save","_load_groups","_refresh_favorites_bar","_apply_view_mode","_build_cards","_set_selected_tool_by_id","_refresh_tools","_get_summary_text","_clear_details","_to_brush","_set_favorite_button_text","_can_post_revit_command","_build_source_line","_update_details","_update_filter_buttons","_add_recent_tool","search_changed","clear_search_click","group_changed","tool_changed","show_all_click","show_favorites_click","show_recent_click","toggle_favorite_click","fav_quick_launch","run_selected_click","tool_double_click","close_click","new_group_click","delete_group_click","add_tool_to_group_click","remove_tool_from_group_click","__init__","__init__","_close_surface"]
@@ -58236,7 +47526,7 @@ class DashboardControllerMixin(object):
 
     def refresh_state(self):
         try:
-            self.tools = load_catalog(self.bundle_dir)
+            self.tools = load_catalog(self.bundle_dir, force_rebuild=True)
             self.tool_map = get_tool_map(self.tools)
             self.user_data = load_user_data(self.tool_map.keys())
 
@@ -58349,20 +47639,30 @@ class DashboardControllerMixin(object):
                 pg_node.Items.Add(child)
             self.GroupTree.Items.Add(pg_node)
 
-        # Tab -> Panel hierarchy
+        # Tab -> Panel hierarchy.
+        # If only one tab is present, flatten to panel roots for faster navigation.
         tab_panel_map = get_tab_panel_map(self.tools)
-        for tab_name in sorted(tab_panel_map.keys()):
-            tab_node = TreeViewItem()
-            tab_node.Header = tab_name
-            tab_node.Tag = (tab_name, '*')
-            tab_node.FontWeight = FontWeights.Bold
-            tab_node.IsExpanded = True
-            for panel_name in sorted(tab_panel_map[tab_name]):
+        tab_names = sorted(tab_panel_map.keys())
+        if len(tab_names) == 1:
+            only_tab = tab_names[0]
+            for panel_name in sorted(tab_panel_map[only_tab]):
                 panel_node = TreeViewItem()
-                panel_node.Header = '    ' + panel_name
-                panel_node.Tag = (tab_name, panel_name)
-                tab_node.Items.Add(panel_node)
-            self.GroupTree.Items.Add(tab_node)
+                panel_node.Header = panel_name
+                panel_node.Tag = (only_tab, panel_name)
+                self.GroupTree.Items.Add(panel_node)
+        else:
+            for tab_name in tab_names:
+                tab_node = TreeViewItem()
+                tab_node.Header = tab_name
+                tab_node.Tag = (tab_name, '*')
+                tab_node.FontWeight = FontWeights.Bold
+                tab_node.IsExpanded = True
+                for panel_name in sorted(tab_panel_map[tab_name]):
+                    panel_node = TreeViewItem()
+                    panel_node.Header = '    ' + panel_name
+                    panel_node.Tag = (tab_name, panel_name)
+                    tab_node.Items.Add(panel_node)
+                self.GroupTree.Items.Add(tab_node)
 
         # Select All Tools by default
         all_node.IsSelected = True
@@ -58995,15 +48295,80 @@ def run_linked_views_setup():
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/tools/views.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/panel.xaml
-## META: sha1=73487c0b289716cceb8510ee1f6aacd288de515f size=19602
+## META: sha1=ce9a862b26b8680114c7b87fe0ad36cb381b6002 size=25889
 ## TYPE: text
 ```
 <Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#FFF3F4F6">
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
 
     <Page.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+
+        <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
+        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
+        <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
+        <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
+        <SolidColorBrush x:Key="RbgTextSecondaryBrush" Color="#FF4D5965"/>
+        <SolidColorBrush x:Key="RbgTextMutedBrush" Color="#FF8C97A3"/>
+        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
+        <SolidColorBrush x:Key="RbgAccentSoftBrush" Color="#FFF0F7FF"/>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+        </Style>
+
+        <Style x:Key="DashboardNeutralButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.92"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DashboardPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DashboardNeutralButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
 
         <Style x:Key="CardItemStyle" TargetType="ListBoxItem">
             <Setter Property="Padding" Value="0"/>
@@ -59015,9 +48380,9 @@ def run_linked_views_setup():
                         <Border x:Name="CardBorder"
                                 Width="202"
                                 Height="86"
-                                CornerRadius="8"
-                                Background="White"
-                                BorderBrush="#FFE1E4E8"
+                            CornerRadius="16"
+                            Background="{StaticResource RbgCardBackgroundBrush}"
+                            BorderBrush="{StaticResource RbgCardBorderBrush}"
                                 BorderThickness="1"
                                 Padding="10,8"
                                 Cursor="Hand">
@@ -59025,12 +48390,12 @@ def run_linked_views_setup():
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="#FFF0F2F5"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#FFBBC3CD"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="#FFF0F7FF"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#FF2D89EF"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgAccentSoftBrush}"/>
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
                                 <Setter TargetName="CardBorder" Property="BorderThickness" Value="2"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -59048,7 +48413,7 @@ def run_linked_views_setup():
 
                 <Border Width="32"
                         Height="32"
-                        CornerRadius="7"
+                    CornerRadius="12"
                         Background="{Binding accent}"
                         VerticalAlignment="Top"
                         Margin="0,2,0,0">
@@ -59070,7 +48435,7 @@ def run_linked_views_setup():
                                    Margin="3,0,0,0"/>
                         <Border DockPanel.Dock="Right"
                                 Background="{Binding source_badge_accent}"
-                                CornerRadius="4"
+                            CornerRadius="12"
                                 Padding="4,1"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center">
@@ -59082,16 +48447,16 @@ def run_linked_views_setup():
                         <TextBlock Text="{Binding title}"
                                    FontWeight="SemiBold"
                                    FontSize="12"
-                                   Foreground="#FF1A1A1A"
+                                   Foreground="{StaticResource RbgTextPrimaryBrush}"
                                    TextTrimming="CharacterEllipsis"/>
                     </DockPanel>
                     <TextBlock Text="{Binding group}"
                                FontSize="10"
-                               Foreground="#FF8C97A3"
+                               Foreground="{StaticResource RbgTextMutedBrush}"
                                Margin="0,2,0,0"/>
                     <TextBlock Text="{Binding short_description}"
                                FontSize="11"
-                               Foreground="#FF4D5965"
+                               Foreground="{StaticResource RbgTextSecondaryBrush}"
                                TextWrapping="Wrap"
                                MaxHeight="28"
                                Margin="0,3,0,0"/>
@@ -59104,13 +48469,13 @@ def run_linked_views_setup():
                     Height="34"
                     Margin="0,0,6,0"
                     Padding="10,0"
-                    Background="White"
-                    BorderBrush="#FFD0D7DE"
+                    Background="{StaticResource RbgCardBackgroundBrush}"
+                    BorderBrush="{StaticResource RbgCardBorderBrush}"
                     Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
                     <Border Width="20"
                             Height="20"
-                            CornerRadius="5"
+                            CornerRadius="12"
                             Background="{Binding accent}"
                             Margin="0,0,7,0"
                             VerticalAlignment="Center">
@@ -59136,15 +48501,33 @@ def run_linked_views_setup():
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0"
-                Background="White"
-                BorderBrush="#FFD8DDE3"
-                BorderThickness="1"
-                CornerRadius="8"
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="TD" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Browse, group, and launch extension tools from a unified catalog." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+            Style="{StaticResource SectionCardBorderStyle}"
                 Padding="10,7"
                 Margin="0,0,0,8">
             <DockPanel>
@@ -59154,22 +48537,25 @@ def run_linked_views_setup():
                             Width="50"
                             Height="28"
                             Margin="0,0,4,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_all_click"/>
                     <Button x:Name="FavoritesFilterButton"
                             Content="Starred"
                             Width="62"
                             Height="28"
                             Margin="0,0,4,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_favorites_click"/>
                     <Button x:Name="RecentFilterButton"
                             Content="Recent"
                             Width="62"
                             Height="28"
                             Margin="0,0,14,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="show_recent_click"/>
                     <TextBlock x:Name="SummaryText"
                                VerticalAlignment="Center"
-                               Foreground="#FF8C97A3"
+                               Foreground="{StaticResource RbgTextMutedBrush}"
                                FontSize="12"/>
                 </StackPanel>
                 <DockPanel>
@@ -59178,21 +48564,22 @@ def run_linked_views_setup():
                             Width="28"
                             Height="28"
                             Margin="6,0,0,0"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                             Click="clear_search_click"/>
                     <TextBox x:Name="SearchBox"
                              Height="28"
                              VerticalContentAlignment="Center"
                              Padding="6,0"
                              FontSize="13"
-                             Background="#FFF9FAFB"
-                             BorderBrush="#FFD0D7DE"
+                             Background="{StaticResource RbgSurfaceSubtleBrush}"
+                             BorderBrush="{StaticResource RbgCardBorderBrush}"
                              TextChanged="search_changed"/>
                 </DockPanel>
             </DockPanel>
         </Border>
 
         <Border x:Name="FavoritesSection"
-                Grid.Row="1"
+            Grid.Row="2"
                 Background="#FFFEFDF0"
                 BorderBrush="#FFFDE8A0"
                 BorderThickness="1"
@@ -59224,7 +48611,7 @@ def run_linked_views_setup():
             </DockPanel>
         </Border>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
                 <ColumnDefinition Width="*"/>
@@ -59232,10 +48619,7 @@ def run_linked_views_setup():
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="8"
                     Margin="0,0,8,0">
                 <DockPanel>
@@ -59249,20 +48633,24 @@ def run_linked_views_setup():
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="new_group_click"/>
                         <Button Content="Delete Group"
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="delete_group_click"/>
                         <Button Content="Add to Group"
                                 Height="26"
                                 Margin="0,0,0,3"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="add_tool_to_group_click"/>
                         <Button Content="Remove from Group"
                                 Height="26"
                                 FontSize="11"
+                            Style="{StaticResource DashboardNeutralButtonStyle}"
                                 Click="remove_tool_from_group_click"/>
                     </StackPanel>
                     <TreeView x:Name="GroupTree"
@@ -59282,10 +48670,7 @@ def run_linked_views_setup():
             </Border>
 
             <Border Grid.Column="1"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="6">
                 <ListBox x:Name="CardGrid"
                          SelectionChanged="tool_changed"
@@ -59304,10 +48689,7 @@ def run_linked_views_setup():
             </Border>
 
             <Border Grid.Column="2"
-                    Background="White"
-                    BorderBrush="#FFD8DDE3"
-                    BorderThickness="1"
-                    CornerRadius="8"
+                    Style="{StaticResource SectionCardBorderStyle}"
                     Padding="12"
                     Margin="8,0,0,0">
                 <Grid>
@@ -59321,13 +48703,13 @@ def run_linked_views_setup():
                         <Border x:Name="DetailIconBadge"
                                 Width="44"
                                 Height="44"
-                                CornerRadius="10"
+                            CornerRadius="12"
                                 Background="#FF66727D">
                             <TextBlock x:Name="DetailIconText"
                                        Text="&#183;"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="17"
                                        FontWeight="Bold"
                                        Foreground="White"/>
                         </Border>
@@ -59340,7 +48722,7 @@ def run_linked_views_setup():
                                        MaxWidth="192"/>
                             <TextBlock x:Name="CategoryText"
                                        FontSize="11"
-                                       Foreground="#FF8C97A3"
+                                       Foreground="{StaticResource RbgTextMutedBrush}"
                                        Margin="0,3,0,0"
                                        TextWrapping="Wrap"
                                        MaxWidth="192"/>
@@ -59350,15 +48732,15 @@ def run_linked_views_setup():
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
                         <TextBlock x:Name="TagsText"
                                    FontSize="11"
-                                   Foreground="#FF8C97A3"
+                                   Foreground="{StaticResource RbgTextMutedBrush}"
                                    TextWrapping="Wrap"/>
                         <TextBlock x:Name="StatusText"
                                    FontSize="11"
-                                   Foreground="#FF8C97A3"
+                                   Foreground="{StaticResource RbgTextMutedBrush}"
                                    Margin="0,3,0,0"/>
                         <TextBlock x:Name="SourceText"
                                    FontSize="10"
-                                   Foreground="#FF6B7280"
+                                   Foreground="{StaticResource RbgTextSecondaryBrush}"
                                    Margin="0,3,0,0"
                                    TextWrapping="Wrap"/>
                     </StackPanel>
@@ -59367,19 +48749,19 @@ def run_linked_views_setup():
                         <StackPanel>
                             <TextBlock x:Name="DescriptionText"
                                        FontSize="12"
-                                       Foreground="#FF4D5965"
+                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
                                        TextWrapping="Wrap"
                                        Margin="0,0,0,10"/>
                             <TextBlock x:Name="DocstringLabel"
                                        Text="Script Documentation"
                                        FontSize="11"
                                        FontWeight="Bold"
-                                       Foreground="#FF8C97A3"
+                                       Foreground="{StaticResource RbgTextMutedBrush}"
                                        Margin="0,0,0,4"
                                        Visibility="Collapsed"/>
                             <TextBlock x:Name="DocstringText"
                                        FontSize="11"
-                                       Foreground="#FF5E6A75"
+                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
                                        TextWrapping="Wrap"
                                        Visibility="Collapsed"/>
                         </StackPanel>
@@ -59388,11 +48770,8 @@ def run_linked_views_setup():
             </Border>
         </Grid>
 
-        <Border Grid.Row="3"
-                Background="White"
-                BorderBrush="#FFD8DDE3"
-                BorderThickness="1"
-                CornerRadius="8"
+        <Border Grid.Row="4"
+            Style="{StaticResource SectionCardBorderStyle}"
                 Padding="10,7"
                 Margin="0,8,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -59402,16 +48781,19 @@ def run_linked_views_setup():
                         Height="30"
                         Margin="0,0,6,0"
                         FontSize="15"
+                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         ToolTip="Toggle favourite"
                         Click="toggle_favorite_click"/>
                 <Button Content="Run Tool"
                         Width="90"
                         Height="30"
                         Margin="0,0,6,0"
+                    Style="{StaticResource DashboardPrimaryButtonStyle}"
                         Click="run_selected_click"/>
                 <Button Content="Close"
                         Width="72"
                         Height="30"
+                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         Click="close_click"/>
             </StackPanel>
         </Border>
@@ -59497,30 +48879,117 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/panel.xaml
-## META: sha1=0dba5cc3e7c6346eb5f59da2b77e3b21a931adf3 size=23237
+## META: sha1=6ae71667aaa19b7ce95f0c11c181161861431548 size=29006
 ## TYPE: text
 ```
 <Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#FFF3F4F6">
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
+
+    <Page.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+        <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
+        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
+        <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
+        <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
+        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
+
+        <Style x:Key="PanelCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <Style x:Key="PanelNeutralButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.92"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PanelPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource PanelNeutralButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Margin="0,0,0,8">
-            <TextBlock Text="Package Creator" FontSize="16" FontWeight="Bold" Foreground="#FF1A1A1A"/>
-            <Button x:Name="BtnRefresh" Content="Refresh" Width="74" Height="24" DockPanel.Dock="Right"/>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="PC" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Package Creator" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Configure naming, export stages, and package actions from the docked workflow." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <DockPanel Grid.Row="1" Margin="0,0,0,8">
+            <TextBlock Text="Package Creator" FontSize="13" FontWeight="SemiBold" Foreground="#FF1A1A1A"/>
+            <Button x:Name="BtnRefresh" Content="Refresh" Width="74" Height="24" DockPanel.Dock="Right" Style="{StaticResource PanelNeutralButtonStyle}"/>
         </DockPanel>
 
-        <TabControl Grid.Row="1">
+        <TabControl Grid.Row="2">
             <TabItem Header="Overview">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="0,0,0,4">
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Overview" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock Text="Model" FontWeight="Bold"/>
@@ -59532,7 +49001,7 @@ if __name__ == '__main__':
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Project Selector" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock Text="ProjectDocs Root" FontWeight="Bold"/>
@@ -59546,7 +49015,7 @@ if __name__ == '__main__':
 
                                 <TextBlock Text="Project Search" FontWeight="Bold"/>
                                 <DockPanel Margin="0,2,0,4">
-                                    <Button x:Name="BtnSearchProjects" Content="Search" Width="58" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0"/>
+                                    <Button x:Name="BtnSearchProjects" Content="Search" Width="58" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                     <TextBox x:Name="InpProjectSearch" Height="22"/>
                                 </DockPanel>
 
@@ -59563,12 +49032,12 @@ if __name__ == '__main__':
                                 <TextBox x:Name="InpDefaultIssueName" Height="22" Margin="0,2,0,6"/>
 
                                 <DockPanel>
-                                    <Button x:Name="BtnApplyProject" Content="Apply Project" Height="24" Width="96" DockPanel.Dock="Right"/>
+                                    <Button x:Name="BtnApplyProject" Content="Apply Project" Height="24" Width="96" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
                                 </DockPanel>
                             </StackPanel>
                         </Border>
 
-                        <Border Background="#FFF9FAFB" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}" Background="{StaticResource RbgSurfaceSubtleBrush}">
                             <StackPanel>
                                 <TextBlock Text="Status" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock x:Name="TxtStatus" TextWrapping="Wrap"/>
@@ -59581,11 +49050,11 @@ if __name__ == '__main__':
             <TabItem Header="Naming">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="0,0,0,4">
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <DockPanel Margin="0,0,0,6">
                                     <TextBlock Text="Naming Rule Setup" FontSize="13" FontWeight="SemiBold"/>
-                                    <Button x:Name="BtnApplyNamingRules" Content="Apply Rules" Height="24" Width="94" DockPanel.Dock="Right"/>
+                                    <Button x:Name="BtnApplyNamingRules" Content="Apply Rules" Height="24" Width="94" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
                                 </DockPanel>
 
                                 <TextBox x:Name="TxtNamingWhatItChecks" Margin="0,0,0,8" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" AcceptsReturn="True" Height="86" IsReadOnly="True"/>
@@ -59616,11 +49085,11 @@ if __name__ == '__main__':
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <DockPanel Margin="0,0,0,6">
                                     <TextBlock Text="Naming Discrepancy" FontSize="13" FontWeight="SemiBold"/>
-                                    <Button x:Name="BtnRunNamingCheck" Content="Run Check" Height="24" Width="82" DockPanel.Dock="Right"/>
+                                    <Button x:Name="BtnRunNamingCheck" Content="Run Check" Height="24" Width="82" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
                                 </DockPanel>
                                 <TextBlock x:Name="TxtNamingSummary" TextWrapping="Wrap" FontWeight="Bold"/>
                                 <TextBox x:Name="TxtNamingDetails" Margin="0,6,0,0" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="360" IsReadOnly="True"/>
@@ -59633,7 +49102,7 @@ if __name__ == '__main__':
             <TabItem Header="Package Setup">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="0,0,0,4">
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Action Group" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock Text="Use this top-to-bottom for clean export production." Margin="0,0,0,6"/>
@@ -59644,17 +49113,17 @@ if __name__ == '__main__':
                                     <CheckBox x:Name="ChkActionCreatePackage" Content="Create Package" IsChecked="True" Margin="0,0,12,4"/>
                                 </WrapPanel>
                                 <DockPanel Margin="0,0,0,6">
-                                    <Button x:Name="BtnActionRunAll" Content="Run Full Flow" Height="24" Width="106" DockPanel.Dock="Right"/>
-                                    <Button x:Name="BtnActionStage5" Content="Stage 5: Create" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnActionStage4" Content="Stage 4: Export" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnActionStage3" Content="Stage 3: Preview/Validate" Height="24" Width="146" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnActionStage2" Content="Stage 2: Setup" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnActionStage1" Content="Stage 1: Project" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0"/>
+                                    <Button x:Name="BtnActionRunAll" Content="Run Full Flow" Height="24" Width="106" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
+                                    <Button x:Name="BtnActionStage5" Content="Stage 5: Create" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnActionStage4" Content="Stage 4: Export" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnActionStage3" Content="Stage 3: Preview/Validate" Height="24" Width="146" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnActionStage2" Content="Stage 2: Setup" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnActionStage1" Content="Stage 1: Project" Height="24" Width="106" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                 </DockPanel>
                             </StackPanel>
                         </Border>
 
-                        <Border Background="#FFF9FAFB" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}" Background="{StaticResource RbgSurfaceSubtleBrush}">
                             <StackPanel>
                                 <TextBlock Text="Recommended Flow" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock Text="1) Apply Project in Overview tab (detect existing pending root)." TextWrapping="Wrap"/>
@@ -59667,7 +49136,7 @@ if __name__ == '__main__':
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Package Actions" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
 
@@ -59684,11 +49153,11 @@ if __name__ == '__main__':
                                 </StackPanel>
 
                                 <DockPanel Margin="0,0,0,6">
-                                    <Button x:Name="BtnCreatePackage" Content="Create Package" Height="24" Width="108" DockPanel.Dock="Right"/>
-                                    <Button x:Name="BtnQuickExportApproval" Content="Export Approval PDF" Height="24" Width="126" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnQuickExportPdf" Content="Quick Export PDF" Height="24" Width="116" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnValidatePdfNames" Content="Validate PDF Names" Height="24" Width="126" DockPanel.Dock="Right" Margin="0,0,6,0"/>
-                                    <Button x:Name="BtnPreviewPackage" Content="Preview" Height="24" Width="74" DockPanel.Dock="Right" Margin="0,0,6,0"/>
+                                    <Button x:Name="BtnCreatePackage" Content="Create Package" Height="24" Width="108" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
+                                    <Button x:Name="BtnQuickExportApproval" Content="Export Approval PDF" Height="24" Width="126" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnQuickExportPdf" Content="Quick Export PDF" Height="24" Width="116" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnValidatePdfNames" Content="Validate PDF Names" Height="24" Width="126" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnPreviewPackage" Content="Preview" Height="24" Width="74" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                 </DockPanel>
 
                                 <TextBlock Text="Preview Target" FontWeight="Bold"/>
@@ -59697,16 +49166,16 @@ if __name__ == '__main__':
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <DockPanel Margin="0,0,0,6">
                                     <TextBlock Text="Package Setup" FontSize="13" FontWeight="SemiBold"/>
-                                    <Button x:Name="BtnRefreshSetup" Content="Refresh Setup" Height="24" Width="94" DockPanel.Dock="Right"/>
+                                    <Button x:Name="BtnRefreshSetup" Content="Refresh Setup" Height="24" Width="94" DockPanel.Dock="Right" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                 </DockPanel>
 
                                 <DockPanel Margin="0,0,0,6">
-                                    <Button x:Name="BtnApplyWorkflow" Content="Apply Workflow" Height="22" Width="98" DockPanel.Dock="Right"/>
-                                    <Button x:Name="BtnSaveWorkflow" Content="Save Workflow" Height="22" Width="94" DockPanel.Dock="Right" Margin="0,0,6,0"/>
+                                    <Button x:Name="BtnApplyWorkflow" Content="Apply Workflow" Height="22" Width="98" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
+                                    <Button x:Name="BtnSaveWorkflow" Content="Save Workflow" Height="22" Width="94" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                     <TextBox x:Name="InpWorkflowName" Height="22" Width="150" DockPanel.Dock="Right" Margin="0,0,6,0"/>
                                     <ComboBox x:Name="CmbWorkflow" Height="22" Margin="0,0,6,0"/>
                                 </DockPanel>
@@ -59714,8 +49183,8 @@ if __name__ == '__main__':
                                 <TextBlock Text="Workflow presets save the current print set, naming rule setup, filename templates, and placeholder preference." Margin="0,0,0,6" TextWrapping="Wrap"/>
 
                                 <DockPanel Margin="0,0,0,6">
-                                    <Button x:Name="BtnApplyNamingTemplates" Content="Apply Templates" Height="22" Width="104" DockPanel.Dock="Right"/>
-                                    <Button x:Name="BtnPreviewTemplates" Content="Preview Templates" Height="22" Width="116" DockPanel.Dock="Right" Margin="0,0,6,0"/>
+                                    <Button x:Name="BtnApplyNamingTemplates" Content="Apply Templates" Height="22" Width="104" DockPanel.Dock="Right" Style="{StaticResource PanelPrimaryButtonStyle}"/>
+                                    <Button x:Name="BtnPreviewTemplates" Content="Preview Templates" Height="22" Width="116" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                     <CheckBox x:Name="ChkCreatePlaceholders" Content="Create placeholder PDFs" DockPanel.Dock="Right" Margin="0,2,8,0"/>
                                 </DockPanel>
 
@@ -59732,7 +49201,7 @@ if __name__ == '__main__':
 
                                 <TextBlock Text="Print Set" FontWeight="Bold"/>
                                 <DockPanel Margin="0,2,0,6">
-                                    <Button x:Name="BtnApplySetup" Content="Apply" Width="56" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0"/>
+                                    <Button x:Name="BtnApplySetup" Content="Apply" Width="56" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0" Style="{StaticResource PanelPrimaryButtonStyle}"/>
                                     <ComboBox x:Name="CmbPrintSet" Height="22"/>
                                 </DockPanel>
 
@@ -59761,21 +49230,21 @@ if __name__ == '__main__':
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Exporter Failures" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBox x:Name="TxtExporterFailures" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="120" IsReadOnly="True"/>
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="PDF Name Validation" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBox x:Name="TxtPdfNameValidation" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="140" IsReadOnly="True"/>
                             </StackPanel>
                         </Border>
 
-                        <Border Background="White" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,0,0,8">
+                        <Border Style="{StaticResource PanelCardBorderStyle}">
                             <StackPanel>
                                 <TextBlock Text="Pending Issue Snapshot" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,6"/>
                                 <TextBlock Text="Latest Issue Folder" FontWeight="Bold"/>
@@ -59784,8 +49253,8 @@ if __name__ == '__main__':
                                 <TextBlock Text="Last Scan" FontWeight="Bold" Margin="0,6,0,0"/>
                                 <TextBlock x:Name="TxtLastScan"/>
                                 <DockPanel Margin="0,6,0,0">
-                                    <Button x:Name="BtnOpenLatestIssue" Content="Open Latest Issue" Height="24" Width="112" DockPanel.Dock="Right"/>
-                                    <Button x:Name="BtnOpenPendingRoot" Content="Open Pending Root" Height="24" Width="112" DockPanel.Dock="Right" Margin="0,0,6,0"/>
+                                    <Button x:Name="BtnOpenLatestIssue" Content="Open Latest Issue" Height="24" Width="112" DockPanel.Dock="Right" Style="{StaticResource PanelNeutralButtonStyle}"/>
+                                    <Button x:Name="BtnOpenPendingRoot" Content="Open Pending Root" Height="24" Width="112" DockPanel.Dock="Right" Margin="0,0,6,0" Style="{StaticResource PanelNeutralButtonStyle}"/>
                                 </DockPanel>
                             </StackPanel>
                         </Border>
@@ -60990,10 +50459,10 @@ Pin, unpin, or toggle pin state for selected categories across the model.
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/script.py
-## META: sha1=e48f4f8ab227f7ce57dd99968fe3cc79f55ddea4 size=84940
+## META: sha1=cbcd1b31a5f124e8c2f401885e00162ebbc2b46a size=86163
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","NetTopologySuite.Geometries","NetTopologySuite.Operation.Polygonize","NetTopologySuite.Operation.Union","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","System.Windows.Shapes","clr","math","os","pyrevit","telemetry","traceback"]
-## FUNCTIONS: ["get_output_window","log","find_extension_root","load_nts","area_to_m2","m2_to_internal","get_element_name","load_user_settings","save_user_settings","AllowElement","AllowReference","AllowElement","AllowReference","__init__","__str__","__init__","kept_count","part_count","replace_ready","__init__","_set_combo_items","_set_combo_value","_get_combo_value","_bind_lists","apply_settings","collect_settings","ok_click","cancel_click","__init__","on_loaded","build_tree","make_group_header","make_part_header","group_text","part_text","refresh_group_row","refresh_all_rows","refresh_summary","on_group_check_changed","on_part_check_changed","on_tree_selected","on_select_all","on_select_none","on_keep_largest","on_invert","redraw_current","on_ok","on_cancel","clear_preview","get_preview_loops_for_part","get_preview_bounds","to_canvas_point","draw_loop","draw_candidate","draw_group","draw_part_focus","ask_preflight_settings","pick_floors","pick_splitters","is_shape_edited","get_floor_sketch","get_sketch_plane","xyz_to_uv","uv_to_xyz","project_point_to_plane","project_dir_to_plane","almost_equal_uv","clean_uv","close_uv","signed_area","normalize_loop","ensure_orientation","uv_distance","polyline_length_uv","loop_perimeter_uv","loop_bbox_short_side_uv","point_segment_distance_uv","polyline_to_segments_uv","min_distance_between_segment_sets","curve_to_uv_polyline","curve_array_to_uv_loop","get_floor_profile_uv","get_location_curve","get_param_by_names","get_param_double_by_names","get_param_int_by_names","get_wall_width","get_symbol_param_double_by_names","get_bbox_projected_width","get_linear_element_width","get_linear_element_offset","extend_uv_polyline","offset_uv_polyline","get_bbox_loop_uv","get_closed_profile_from_location_point","splitter_to_uv","get_floor_boundary_loops_on_target_plane","make_open_splitter","make_closed_splitter","get_linear_splitters_from_element","get_closed_splitters_from_floor","get_closed_splitters_from_bbox_or_point","get_foundation_splitters","get_column_splitters","get_splitter_category_key","get_splitter_modes_from_settings","element_to_splitter_primitives","collect_splitter_primitives","split_primitives_for_partition","is_open_splitter_near_boundary","is_closed_loop_near_boundary","dedupe_open_splitters","dedupe_closed_loops","estimate_part_effective_width","is_sliver_part","filter_splitters_for_source","to_coordinate_array","to_ring_array","to_geometry_array","to_ring_array","to_linestring","ring_to_uv","polygon_to_part","part_key","partition_uv_profile","polygon_from_loop","get_floor_offset","get_floor_structural_flag","build_curve_loop","create_floor_from_candidate","collect_dependents","get_preview_basis","xyz_to_preview_uv","uv_loop_to_preview_uv","prepare_candidates","apply_initial_selection","group_candidates","review_candidates_wpf","get_safe_delete_ids","print_report","main"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","NetTopologySuite.Geometries","NetTopologySuite.Operation.Polygonize","NetTopologySuite.Operation.Union","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","System.Windows.Shapes","clr","math","os","pyrevit","telemetry","traceback"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","get_output_window","log","find_extension_root","load_nts","area_to_m2","m2_to_internal","get_element_name","load_user_settings","save_user_settings","AllowElement","AllowReference","AllowElement","AllowReference","__init__","__str__","__init__","kept_count","part_count","replace_ready","__init__","_set_combo_items","_set_combo_value","_get_combo_value","_bind_lists","apply_settings","collect_settings","ok_click","cancel_click","__init__","on_loaded","build_tree","make_group_header","make_part_header","group_text","part_text","refresh_group_row","refresh_all_rows","refresh_summary","on_group_check_changed","on_part_check_changed","on_tree_selected","on_select_all","on_select_none","on_keep_largest","on_invert","redraw_current","on_ok","on_cancel","clear_preview","get_preview_loops_for_part","get_preview_bounds","to_canvas_point","draw_loop","draw_candidate","draw_group","draw_part_focus","ask_preflight_settings","pick_floors","pick_splitters","is_shape_edited","get_floor_sketch","get_sketch_plane","xyz_to_uv","uv_to_xyz","project_point_to_plane","project_dir_to_plane","almost_equal_uv","clean_uv","close_uv","signed_area","normalize_loop","ensure_orientation","uv_distance","polyline_length_uv","loop_perimeter_uv","loop_bbox_short_side_uv","point_segment_distance_uv","polyline_to_segments_uv","min_distance_between_segment_sets","curve_to_uv_polyline","curve_array_to_uv_loop","get_floor_profile_uv","get_location_curve","get_param_by_names","get_param_double_by_names","get_param_int_by_names","get_wall_width","get_symbol_param_double_by_names","get_bbox_projected_width","get_linear_element_width","get_linear_element_offset","extend_uv_polyline","offset_uv_polyline","get_bbox_loop_uv","get_closed_profile_from_location_point","splitter_to_uv","get_floor_boundary_loops_on_target_plane","make_open_splitter","make_closed_splitter","get_linear_splitters_from_element","get_closed_splitters_from_floor","get_closed_splitters_from_bbox_or_point","get_foundation_splitters","get_column_splitters","get_splitter_category_key","get_splitter_modes_from_settings","element_to_splitter_primitives","collect_splitter_primitives","split_primitives_for_partition","is_open_splitter_near_boundary","is_closed_loop_near_boundary","dedupe_open_splitters","dedupe_closed_loops","estimate_part_effective_width","is_sliver_part","filter_splitters_for_source","to_coordinate_array","to_ring_array","to_geometry_array","to_ring_array","to_linestring","ring_to_uv","polygon_to_part","part_key","partition_uv_profile","polygon_from_loop","get_floor_offset","get_floor_structural_flag","build_curve_loop","create_floor_from_candidate","collect_dependents","get_preview_basis","xyz_to_preview_uv","uv_loop_to_preview_uv","prepare_candidates","apply_initial_selection","group_candidates","review_candidates_wpf","get_safe_delete_ids","print_report","main"]
 ## CLASSES: ["FloorFilter","MixedSplitterFilter","CandidatePart","SourceFloorGroup","SplitSetupWindow","SplitReviewWindow"]
 ```python
 # -*- coding: utf-8 -*-
@@ -61036,12 +50505,39 @@ from System.Collections.Generic import List
 from System.Windows import Thickness, Point
 from System.Windows.Controls import TreeViewItem, StackPanel, TextBlock, CheckBox, Orientation
 from System.Windows.Media import Brushes
+try:
+    from System.Windows.Media import BrushConverter
+except Exception:
+    BrushConverter = None
 from System.Windows.Shapes import Polygon
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
 
 
 doc = revit.doc
 uidoc = revit.uidoc
 _output = None
+_BRUSH_CONVERTER = BrushConverter() if BrushConverter is not None else None
+
+
+def _brush(hex_value):
+    if _BRUSH_CONVERTER is None:
+        return Brushes.Transparent
+    return _BRUSH_CONVERTER.ConvertFromString(hex_value)
 
 
 def get_output_window():
@@ -61115,7 +50611,11 @@ SETUP_XAML = r"""
     Height="620"
     Width="520"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="NoResize">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -61204,7 +50704,11 @@ REVIEW_XAML = r"""
     MinHeight="760"
     MinWidth="1100"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
 
     <Grid Margin="8">
         <Grid.RowDefinitions>
@@ -61227,11 +50731,11 @@ REVIEW_XAML = r"""
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" BorderBrush="#FFBFBFBF" BorderThickness="1" Padding="6">
+            <Border Grid.Column="0" BorderBrush="#DDE1E6" BorderThickness="1" Padding="6" Background="#FFFFFFFF">
                 <TreeView Name="treeCandidates"/>
             </Border>
 
-            <Border Grid.Column="2" BorderBrush="#FFBFBFBF" BorderThickness="1" Padding="6">
+            <Border Grid.Column="2" BorderBrush="#DDE1E6" BorderThickness="1" Padding="6" Background="#FFFFFFFF">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -61247,7 +50751,7 @@ REVIEW_XAML = r"""
 
                     <Canvas Name="previewCanvas"
                             Grid.Row="1"
-                            Background="WhiteSmoke"/>
+                            Background="#FFF9FAFB"/>
                 </Grid>
             </Border>
         </Grid>
@@ -61466,6 +50970,9 @@ class SourceFloorGroup(object):
 class SplitSetupWindow(forms.WPFWindow):
     def __init__(self, settings):
         forms.WPFWindow.__init__(self, SETUP_XAML, literal_string=True)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
         self.result = None
 
         self.btnOk.Click += self.ok_click
@@ -61591,6 +51098,9 @@ class SplitSetupWindow(forms.WPFWindow):
 class SplitReviewWindow(forms.WPFWindow):
     def __init__(self, groups, settings):
         forms.WPFWindow.__init__(self, REVIEW_XAML, literal_string=True)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self.groups = groups
         self.settings = settings
@@ -61702,7 +51212,7 @@ class SplitReviewWindow(forms.WPFWindow):
     def refresh_group_row(self, group):
         if group._label:
             group._label.Text = self.group_text(group)
-            group._label.Foreground = Brushes.DarkRed if group.dependent_count > 0 else Brushes.Black
+            group._label.Foreground = _brush("#E03C2C") if group.dependent_count > 0 else _brush("#1A1A1A")
 
         if group._check:
             self._updating = True
@@ -61922,7 +51432,7 @@ class SplitReviewWindow(forms.WPFWindow):
         shell, holes = self.get_preview_loops_for_part(candidate)
         self.draw_loop(shell, bounds, shell_fill, shell_stroke, 1.6, opacity)
         for hole in holes:
-            self.draw_loop(hole, bounds, Brushes.WhiteSmoke, shell_stroke, 1.0, 1.0)
+            self.draw_loop(hole, bounds, _brush("#FFF9FAFB"), shell_stroke, 1.0, 1.0)
 
     def draw_group(self, group):
         self.clear_preview()
@@ -61934,12 +51444,12 @@ class SplitReviewWindow(forms.WPFWindow):
 
         for part in group.parts:
             if part.keep:
-                fill = Brushes.LightGreen
-                stroke = Brushes.DarkGreen
+                fill = _brush("#EAF5EE")
+                stroke = _brush("#2EA043")
                 opacity = 0.60
             else:
-                fill = Brushes.LightGray
-                stroke = Brushes.Gray
+                fill = _brush("#ECEDF0")
+                stroke = _brush("#8A8F98")
                 opacity = 0.45
             self.draw_candidate(part, bounds, fill, stroke, opacity)
 
@@ -61960,12 +51470,12 @@ class SplitReviewWindow(forms.WPFWindow):
                 opacity = 0.85
             else:
                 if sibling.keep:
-                    fill = Brushes.LightGreen
-                    stroke = Brushes.DarkGreen
+                    fill = _brush("#EAF5EE")
+                    stroke = _brush("#2EA043")
                     opacity = 0.25
                 else:
-                    fill = Brushes.LightGray
-                    stroke = Brushes.Gray
+                    fill = _brush("#ECEDF0")
+                    stroke = _brush("#8A8F98")
                     opacity = 0.20
             self.draw_candidate(sibling, bounds, fill, stroke, opacity)
 
@@ -64046,10 +53556,10 @@ Create detail-group equivalents of revision cloud linework for a selected revisi
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/script.py
-## META: sha1=f804a7e8352975aff29a1cf17c32d8a1ec9d3f85 size=18092
+## META: sha1=bb68602145db9c825f3ac56965f931a842bf9e2a size=17894
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","clr","os","pyrevit","sys","telemetry","wpf"]
-## FUNCTIONS: ["get_all_levels_sorted_by_elevation","extract_wrapped","get_type_name_for_element","is_annotation_category","param_equals_level_id","collect_elements_on_level","build_grouped_dict","__init__","_build_category_block","_build_element_row","_on_select_all","_on_select_category","_on_select_element","_on_close","__init__","__str__"]
+## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","clr","os","pyrevit","sys","telemetry","wpf"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","get_all_levels_sorted_by_elevation","extract_wrapped","get_type_name_for_element","is_annotation_category","param_equals_level_id","collect_elements_on_level","build_grouped_dict","__init__","_build_category_block","_build_element_row","_on_select_all","_on_select_category","_on_select_element","_on_close","__init__","__str__"]
 ## CLASSES: ["SelectByLevelWindow","LevelListItem"]
 ```python
 # -*- coding: utf-8 -*-
@@ -64081,6 +53591,22 @@ from Autodesk.Revit.DB import Transaction, FilteredElementCollector, ElementLeve
 # pyRevit
 from pyrevit import revit, forms
 
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
+
 # .NET Imports
 import clr
 clr.AddReference("System")
@@ -64095,7 +53621,7 @@ from System.Windows.Controls import (
     TextBlock, Button, Expander
 )
 from System.Windows.Controls import Orientation as ControlOrientation
-from System.Windows.Media import Brushes, SolidColorBrush, Color
+from System.Windows.Media import Brushes, SolidColorBrush, Color, BrushConverter
 from System.Windows.Input import MouseButtonState
 import wpf
 
@@ -64107,6 +53633,11 @@ doc   = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 app   = __revit__.Application
 PATH_SCRIPT = os.path.dirname(__file__)
+_BRUSH_CONVERTER = BrushConverter()
+
+
+def _brush(hex_value):
+    return _BRUSH_CONVERTER.ConvertFromString(hex_value)
 
 # Toggle options (extend as needed)
 INCLUDE_VIEW_SPECIFIC = False      # include view-specific elements if True
@@ -64301,6 +53832,9 @@ class SelectByLevelWindow(Window):
         """grouped_data: list of (cat_name, [(elem, type_name), ...]) tuples."""
         path_xaml = os.path.join(PATH_SCRIPT, "SelectByLevelWindow.xaml")
         wpf.LoadComponent(self, path_xaml)
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self.pending_ids = None  # set by selection buttons before Close()
         self._all_ids = []       # flat list of all ElementIds
@@ -64331,8 +53865,8 @@ class SelectByLevelWindow(Window):
         """Return an Expander for one category."""
         expander = Expander()
         expander.IsExpanded = True
-        expander.Margin = Thickness(0, 0, 0, 2)
-        expander.Background = SolidColorBrush(Color.FromRgb(0x28, 0x28, 0x38))
+        expander.Margin = Thickness(0, 0, 0, 10)
+        expander.Background = _brush("#FFFBFE")
 
         # ── Expander header ──
         header = StackPanel()
@@ -64342,14 +53876,14 @@ class SelectByLevelWindow(Window):
         lbl_name = TextBlock()
         lbl_name.Text = cat_name
         lbl_name.FontWeight = System.Windows.FontWeights.Bold
-        lbl_name.Foreground = SolidColorBrush(Color.FromRgb(0xC8, 0xD8, 0xFF))
+        lbl_name.Foreground = _brush("#1A1A1A")
         lbl_name.VerticalAlignment = System.Windows.VerticalAlignment.Center
         lbl_name.Margin = Thickness(0, 0, 8, 0)
         header.Children.Add(lbl_name)
 
         lbl_count = TextBlock()
         lbl_count.Text = u"({} element{})".format(len(rows), "" if len(rows) == 1 else "s")
-        lbl_count.Foreground = SolidColorBrush(Color.FromRgb(0x77, 0x77, 0x77))
+        lbl_count.Foreground = _brush("#8A8F98")
         lbl_count.VerticalAlignment = System.Windows.VerticalAlignment.Center
         lbl_count.Margin = Thickness(0, 0, 12, 0)
         lbl_count.FontSize = 11
@@ -64359,14 +53893,7 @@ class SelectByLevelWindow(Window):
         btn_cat.Content = "Select All"
         btn_cat.Tag = cat_ids
         btn_cat.Click += self._on_select_category
-        # Inline style to match BtnCatSelect from XAML
-        btn_cat.Background = SolidColorBrush(Color.FromRgb(0x39, 0x38, 0x5D))
-        btn_cat.Foreground = SolidColorBrush(Color.FromRgb(0xCC, 0xCC, 0xFF))
-        btn_cat.BorderThickness = Thickness(0)
-        btn_cat.Padding = Thickness(8, 2, 8, 2)
-        btn_cat.Height = 22
-        btn_cat.FontSize = 11
-        btn_cat.Cursor = System.Windows.Input.Cursors.Hand
+        btn_cat.Style = self.FindResource("BtnCatSelect")
         header.Children.Add(btn_cat)
 
         expander.Header = header
@@ -64400,7 +53927,7 @@ class SelectByLevelWindow(Window):
         lbl_type.Text = u"{}".format(type_name)
         lbl_type.VerticalAlignment = System.Windows.VerticalAlignment.Center
         lbl_type.TextTrimming = System.Windows.TextTrimming.CharacterEllipsis
-        lbl_type.Foreground = SolidColorBrush(Color.FromRgb(0xCC, 0xCC, 0xCC))
+        lbl_type.Foreground = _brush("#1A1A1A")
         lbl_type.FontSize = 11
         Grid.SetColumn(lbl_type, 0)
         row.Children.Add(lbl_type)
@@ -64408,7 +53935,7 @@ class SelectByLevelWindow(Window):
         lbl_id = TextBlock()
         lbl_id.Text = u"{}".format(elem.Id.IntegerValue)
         lbl_id.VerticalAlignment = System.Windows.VerticalAlignment.Center
-        lbl_id.Foreground = SolidColorBrush(Color.FromRgb(0x66, 0xAA, 0xFF))
+        lbl_id.Foreground = _brush("#1F4FD9")
         lbl_id.FontSize = 11
         Grid.SetColumn(lbl_id, 1)
         row.Children.Add(lbl_id)
@@ -64417,13 +53944,7 @@ class SelectByLevelWindow(Window):
         btn.Content = "Select"
         btn.Tag = elem.Id
         btn.Click += self._on_select_element
-        btn.Background = SolidColorBrush(Color.FromRgb(0x2A, 0x2A, 0x3A))
-        btn.Foreground = SolidColorBrush(Color.FromRgb(0x8E, 0xC8, 0xFF))
-        btn.BorderThickness = Thickness(0)
-        btn.Padding = Thickness(6, 1, 6, 1)
-        btn.Height = 20
-        btn.FontSize = 11
-        btn.Cursor = System.Windows.Input.Cursors.Hand
+        btn.Style = self.FindResource("BtnElemSelect")
         Grid.SetColumn(btn, 2)
         row.Children.Add(btn)
 
@@ -64526,7 +54047,7 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/SelectByLevelWindow.xaml
-## META: sha1=0f6d87de375138ab148eb315a255c4b81b305e27 size=9046
+## META: sha1=184a6d2b3e457bcddbbb0c5540a96b910b9cd7a6 size=11021
 ## TYPE: text
 ```
 <Window
@@ -64536,21 +54057,25 @@ if __name__ == '__main__':
     MinWidth="660" Width="820"
     MinHeight="380" Height="660"
     WindowStartupLocation="CenterScreen"
-    Background="#1e1e1e"
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
     FontFamily="Segoe UI"
     FontSize="12">
 
     <Window.Resources>
 
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#e0e0e0"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
         </Style>
 
         <!-- Category header button: Select All -->
         <Style x:Key="BtnCatSelect" TargetType="Button">
-            <Setter Property="Background" Value="#39385D"/>
-            <Setter Property="Foreground" Value="#ccccff"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="8,2"/>
             <Setter Property="Height" Value="22"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -64560,13 +54085,16 @@ if __name__ == '__main__':
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="3"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="12"
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF4C70"/>
+                                <Setter Property="Background" Value="#E7EDFB"/>
+                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -64576,9 +54104,10 @@ if __name__ == '__main__':
 
         <!-- Element row button: Select -->
         <Style x:Key="BtnElemSelect" TargetType="Button">
-            <Setter Property="Background" Value="#2a2a3a"/>
-            <Setter Property="Foreground" Value="#8ec8ff"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="6,1"/>
             <Setter Property="Height" Value="20"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -64588,14 +54117,16 @@ if __name__ == '__main__':
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="3"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="12"
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#336699"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#E7EDFB"/>
+                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -64605,7 +54136,7 @@ if __name__ == '__main__':
 
         <!-- Footer action button -->
         <Style x:Key="BtnFooter" TargetType="Button">
-            <Setter Property="Background" Value="#39385D"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="14,4"/>
@@ -64616,18 +54147,25 @@ if __name__ == '__main__':
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="5"
+                                CornerRadius="20"
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF4C70"/>
+                                <Setter Property="Background" Value="#1640B0"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="BtnFooterSecondary" TargetType="Button" BasedOn="{StaticResource BtnFooter}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
 
         <!-- Expander toggle button override for dark theme -->
@@ -64641,7 +54179,7 @@ if __name__ == '__main__':
                         <Border Background="Transparent" Padding="2">
                             <Path x:Name="Arrow"
                                   Data="M0,0 L6,6 L12,0"
-                                  Stroke="#aaaaaa" StrokeThickness="2"
+                                    Stroke="#FF6B7785" StrokeThickness="2"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"/>
                         </Border>
@@ -64650,7 +54188,7 @@ if __name__ == '__main__':
                                 <Setter TargetName="Arrow" Property="Data" Value="M0,6 L6,0 L12,6"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Arrow" Property="Stroke" Value="White"/>
+                                <Setter TargetName="Arrow" Property="Stroke" Value="#FF2D89EF"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -64662,21 +54200,29 @@ if __name__ == '__main__':
 
     <DockPanel LastChildFill="True">
 
-        <!-- ── Title bar ─────────────────────────────── -->
-        <Border DockPanel.Dock="Top" Background="#141414" Padding="16,12">
-            <StackPanel>
-                <TextBlock x:Name="TxtTitle"
-                           FontSize="15" FontWeight="Bold"
-                           Text="Elements by Level"/>
-                <TextBlock x:Name="TxtSummary"
-                           FontSize="11" Foreground="#777"
-                           Margin="0,4,0,0"
-                           Text=""/>
-            </StackPanel>
+        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="12,12,12,0" CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
+                    <TextBlock Text="EL" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock x:Name="TxtTitle" FontSize="16" FontWeight="SemiBold" Foreground="#FFFFFF" Text="Elements by Level"/>
+                    <TextBlock x:Name="TxtSummary" FontSize="11" Foreground="#FFFFFF" Opacity="0.7" Margin="0,4,0,0" Text=""/>
+                </StackPanel>
+                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
+                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
         </Border>
 
         <!-- ── Column header row ─────────────────────── -->
-        <Border DockPanel.Dock="Top" Background="#252535" Padding="14,5,14,5">
+        <Border DockPanel.Dock="Top" Background="#FFF9FAFB" BorderBrush="#FFE1E4E8" BorderThickness="0,0,0,1" Padding="14,5,14,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="24"/>    <!-- arrow spacer -->
@@ -64684,20 +54230,20 @@ if __name__ == '__main__':
                     <ColumnDefinition Width="110"/>   <!-- Element Id -->
                     <ColumnDefinition Width="68"/>    <!-- Select btn -->
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Text="Type Name"  FontSize="11" Foreground="#888" FontWeight="Bold"/>
-                <TextBlock Grid.Column="2" Text="Element Id" FontSize="11" Foreground="#888" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Type Name"  FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="Element Id" FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold"/>
             </Grid>
         </Border>
 
         <!-- ── Footer ────────────────────────────────── -->
-        <Border DockPanel.Dock="Bottom" Background="#141414" Padding="16,8">
-            <StackPanel Orientation="Horizontal">
+        <Border DockPanel.Dock="Bottom" Background="#F4F5F7" Padding="16,8" BorderBrush="#DDE1E6" BorderThickness="1,0,1,1" Margin="12,0,12,12" CornerRadius="0,0,8,8">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnSelectAll"
                         Style="{StaticResource BtnFooter}"
                         Width="180" Margin="0,0,10,0"
                         Content="Select All Elements"/>
                 <Button x:Name="BtnClose"
-                        Style="{StaticResource BtnFooter}"
+                        Style="{StaticResource BtnFooterSecondary}"
                         Width="80"
                         Content="Close"/>
             </StackPanel>
@@ -64706,7 +54252,8 @@ if __name__ == '__main__':
         <!-- ── Category list ─────────────────────────── -->
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Background="#1e1e1e">
+                      Background="#FFFBFE"
+                      Margin="12,0,12,0">
             <StackPanel x:Name="CategoryPanel" Margin="0,2,0,8"/>
         </ScrollViewer>
 
@@ -65426,7 +54973,7 @@ Turn crop region visibility off for the active view or for all placed views on t
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/BatchLinkViewSetup.xaml
-## META: sha1=ae3f7dca8a3ed742b52024db25362f87781ee861 size=3832
+## META: sha1=0188203979345c471bfc7518c53bdd10043874a5 size=5451
 ## TYPE: text
 ```
 <Window
@@ -65436,10 +54983,37 @@ Turn crop region visibility off for the active view or for all placed views on t
     Height="800"
     Width="1120"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
+    <Window.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </Window.Resources>
     <DockPanel Margin="12">
+        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="LV" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Batch Link View Setup" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Match host views to linked views, preview the outcome, and apply the mapping." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
         <StackPanel DockPanel.Dock="Top">
-            <TextBlock Text="Batch Link View Setup" FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
             <Grid Margin="0,0,0,8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -65466,9 +55040,9 @@ Turn crop region visibility off for the active view or for all placed views on t
                 <Button x:Name="btnSelectAll" Content="Select All" Width="90" Margin="0,0,6,0"/>
                 <Button x:Name="btnSelectNone" Content="Select None" Width="90" Margin="0,0,6,0"/>
                 <Button x:Name="btnSelectPlaced" Content="Select Placed" Width="100" Margin="0,0,20,0"/>
-                <Button x:Name="btnPreview" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
-                <Button x:Name="btnApply" Content="Apply" Width="90" Margin="0,0,6,0"/>
-                <Button x:Name="btnClose" Content="Close" Width="90"/>
+                <Button x:Name="btnPreview" Style="{StaticResource PrimaryButton}" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
+                <Button x:Name="btnApply" Style="{StaticResource PrimaryButton}" Content="Apply" Width="90" Margin="0,0,6,0"/>
+                <Button x:Name="btnClose" Style="{StaticResource SecondaryButton}" Content="Close" Width="90"/>
             </WrapPanel>
 
             <Grid Margin="0,0,0,4">
@@ -65491,7 +55065,7 @@ Turn crop region visibility off for the active view or for all placed views on t
                 <TextBlock Grid.Column="6" Text="Result" FontWeight="Bold" Margin="4,0,4,4"/>
             </Grid>
 
-            <TextBlock x:Name="txtSummary" Margin="0,0,0,8" Foreground="DarkSlateBlue"/>
+            <TextBlock x:Name="txtSummary" Margin="0,0,0,8" Foreground="#FF5E6A75"/>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -65509,20 +55083,19 @@ Turn crop region visibility off for the active view or for all placed views on t
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/script.py
-## META: sha1=f64b209fe458644c37c95008d7ad8807d58cef1b size=70092
+## META: sha1=83d6066b7b86c500ff10881209194e219af3be63 size=72221
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","System","System.IO","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","re","telemetry"]
-## FUNCTIONS: ["safe_str","normalize_text","get_element_name","get_debug_log_path","log_line","reset_log","get_view_template_name","get_view_level","get_view_level_name","get_level_elevation","get_scope_box_name","get_viewport_map","is_supported_plan_view","get_property_name","get_enum_value_from_property","try_get_current_linked_view_id","set_linked_view_override","__init__","ToString","__str__","__init__","ToString","__str__","__init__","short_name","ToString","__str__","__init__","ToString","__str__","__init__","ToString","__str__","__init__","host_blob","__init__","collect_level_choices","collect_host_views","collect_link_items","collect_linked_plan_views","linked_matches_filter","find_match","make_host_sort_key","make_linked_sort_key","write_xaml_temp","__init__","_setup","_wire_events","_refresh_single_linked_lists","_refresh_multi_linked_counts","_current_mode","_current_rule_mode","_selected_scope","_selected_template","_selected_level_from","_selected_level_to","_single_link_item","_host_matches_filters","_get_visible_host_items","_get_linked_items_for_link","_get_filtered_sorted_linked_items","_cache_row_state","_refresh_mode_panels","_refresh_rule_panel_visibility","_refresh_window","_refresh_counts","on_single_refresh_linked","on_multi_refresh_rules","on_single_linked_filter_changed","_build_rows","_new_row_grid","_base_row_widgets","on_checkbox_click","_build_single_row","on_combo_changed","_build_multi_row","_clear_host_results","_add_rule","_build_rule_row","on_filter_changed","on_chk","on_link","on_match","on_sort","_remove_rule","_active_multi_rules","_get_rule_linked_items","_preview_single","_apply_single","_preview_multi","_apply_multi","on_mode_changed","on_rule_mode_changed","on_apply_filters","on_clear_filters","on_host_filter_changed","on_single_link_changed","on_single_mode_controls_changed","on_multi_controls_changed","on_single_preview","on_single_apply","on_add_rule","on_remove_rule","on_multi_preview","on_multi_apply","on_select_visible","on_select_none","on_select_placed","on_select_unmatched","on_close"]
+## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","re","telemetry"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","safe_str","normalize_text","get_element_name","get_debug_log_path","log_line","reset_log","get_view_template_name","get_view_level","get_view_level_name","get_level_elevation","get_scope_box_name","get_viewport_map","is_supported_plan_view","get_property_name","get_enum_value_from_property","try_get_current_linked_view_id","set_linked_view_override","__init__","ToString","__str__","__init__","ToString","__str__","__init__","short_name","ToString","__str__","__init__","ToString","__str__","__init__","ToString","__str__","__init__","host_blob","__init__","collect_level_choices","collect_host_views","collect_link_items","collect_linked_plan_views","linked_matches_filter","find_match","make_host_sort_key","make_linked_sort_key","write_xaml_temp","__init__","_setup","_wire_events","_refresh_single_linked_lists","_refresh_multi_linked_counts","_current_mode","_current_rule_mode","_selected_scope","_selected_template","_selected_level_from","_selected_level_to","_single_link_item","_host_matches_filters","_get_visible_host_items","_get_linked_items_for_link","_get_filtered_sorted_linked_items","_cache_row_state","_refresh_mode_panels","_refresh_rule_panel_visibility","_refresh_window","_refresh_counts","on_single_refresh_linked","on_multi_refresh_rules","on_single_linked_filter_changed","_build_rows","_new_row_grid","_base_row_widgets","on_checkbox_click","_build_single_row","on_combo_changed","_build_multi_row","_clear_host_results","_add_rule","_build_rule_row","on_filter_changed","on_chk","on_link","on_match","on_sort","_remove_rule","_active_multi_rules","_get_rule_linked_items","_preview_single","_apply_single","_preview_multi","_apply_multi","on_mode_changed","on_rule_mode_changed","on_apply_filters","on_clear_filters","on_host_filter_changed","on_single_link_changed","on_single_mode_controls_changed","on_multi_controls_changed","on_single_preview","on_single_apply","on_add_rule","on_remove_rule","on_multi_preview","on_multi_apply","on_select_visible","on_select_none","on_select_placed","on_select_unmatched","on_close"]
 ## CLASSES: ["LevelChoice","SimpleChoice","LinkItem","LinkedViewItem","EmptyLinkedViewItem","HostViewItem","MultiRuleItem","BatchLinkViewWindow"]
 ```python
+# -*- coding: utf-8 -*-
+
 try:
     import telemetry
     telemetry.track_tool_click(__file__)
 except Exception:
     pass
-
-
-# -*- coding: utf-8 -*-
 __title__ = "Batch Link View Setup"
 __doc__ = "Single and multi-link Revit Link By Linked View setup."
 
@@ -65543,7 +55116,7 @@ from System.Windows.Controls import (
     Grid, TextBlock, CheckBox, ComboBox, Button, Border, ColumnDefinition,
     TextBox, StackPanel
 )
-from System.Windows.Media import Brushes
+from System.Windows.Media import Brushes, BrushConverter
 
 from Autodesk.Revit.DB import (
     BuiltInParameter,
@@ -65561,9 +55134,30 @@ from Autodesk.Revit.DB import (
 
 from pyrevit import forms, script, UI
 
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
+
 uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document
 output = script.get_output()
+_BRUSH_CONVERTER = BrushConverter()
+
+
+def _brush(hex_value):
+    return _BRUSH_CONVERTER.ConvertFromString(hex_value)
 
 PLAN_VIEW_TYPES = set([
     ViewType.FloorPlan,
@@ -65580,8 +55174,32 @@ XAML = r"""
     Height="940"
     Width="1540"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
     <DockPanel Margin="10">
+        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="0,0,0,10" CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
+                    <TextBlock Text="LV" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Batch Link View Setup" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock Text="Match host views to linked views, preview the outcome, and apply the mapping." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                </StackPanel>
+                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
+                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
+        </Border>
         <StackPanel DockPanel.Dock="Top">
             <Grid Margin="0,0,0,8">
                 <Grid.ColumnDefinitions>
@@ -65654,7 +55272,7 @@ XAML = r"""
                         <TextBlock Grid.Column="4" Text="Host Sort" VerticalAlignment="Center"/>
                         <ComboBox x:Name="cmbHostSort" Grid.Column="5" Margin="4,0,10,0"/>
 
-                        <TextBlock x:Name="txtSummary" Grid.Column="6" VerticalAlignment="Center" Foreground="DarkSlateBlue"/>
+                        <TextBlock x:Name="txtSummary" Grid.Column="6" VerticalAlignment="Center" Foreground="#1F4FD9"/>
                     </Grid>
                 </StackPanel>
             </Border>
@@ -66345,6 +55963,9 @@ class BatchLinkViewWindow(forms.WPFWindow):
 
     def _setup(self):
         self.Title = __title__
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self.cmbMode.ItemsSource = self.mode_items
         self.cmbRuleMode.ItemsSource = self.rule_mode_items
@@ -66664,7 +56285,7 @@ class BatchLinkViewWindow(forms.WPFWindow):
     def _new_row_grid(self):
         border = Border()
         border.BorderThickness = Thickness(0, 0, 0, 1)
-        border.BorderBrush = Brushes.LightGray
+        border.BorderBrush = _brush("#DDE1E6")
         border.Padding = Thickness(0, 2, 0, 2)
         border.Margin = Thickness(0, 0, 0, 2)
 
@@ -66813,7 +56434,7 @@ class BatchLinkViewWindow(forms.WPFWindow):
     def _build_rule_row(self, rule):
         border = Border()
         border.BorderThickness = Thickness(0, 0, 0, 1)
-        border.BorderBrush = Brushes.LightGray
+        border.BorderBrush = _brush("#DDE1E6")
         border.Padding = Thickness(0, 2, 0, 2)
         border.Margin = Thickness(0, 0, 0, 2)
 
@@ -67318,10 +56939,10 @@ window.ShowDialog()
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/script.py
-## META: sha1=0a0119857025efb91872a11377925123869f45a0 size=11700
+## META: sha1=bc8b0373dbf3e3372fa1e4f1db50690d4b12f8b3 size=12171
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","System","System.IO","System.Windows","System.Windows.Markup","clr","pyrevit","telemetry"]
-## FUNCTIONS: ["__init__","fmt_len","safe_elem_name","view_template_info","collect_plans","get_vr_data","set_vr_data","__init__","_load_window","_wire","show","_set_status","refresh","_apply_filters","_restore_selection","_sel_view","_sel_id","_update_infos","_update_compare","_copy_viewrange","_on_filter_changed","_on_selection_changed","_on_refresh","_on_swap","_on_copy_a_to_b","_on_copy_b_to_a","_on_copy_a_to_targets","_on_close"]
+## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Markup","clr","pyrevit","telemetry"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","__init__","fmt_len","safe_elem_name","view_template_info","collect_plans","get_vr_data","set_vr_data","__init__","_load_window","_wire","show","_set_status","refresh","_apply_filters","_restore_selection","_sel_view","_sel_id","_update_infos","_update_compare","_copy_viewrange","_on_filter_changed","_on_selection_changed","_on_refresh","_on_swap","_on_copy_a_to_b","_on_copy_b_to_a","_on_copy_a_to_targets","_on_close"]
 ## CLASSES: ["VRRow","ViewRangeTool"]
 ```python
 # -*- coding: utf-8 -*-
@@ -67349,6 +56970,22 @@ from System import Enum
 from System.IO import StreamReader
 from System.Windows.Markup import XamlReader
 from System.Windows import Window
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(window):
+        return
+
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
 
 doc = revit.doc
 output = script.get_output()
@@ -67492,6 +57129,9 @@ class ViewRangeTool(object):
         xaml_path = script.get_bundle_file("ui.xaml")  # keep your bundle xaml filename
         with StreamReader(xaml_path) as sr:
             w = XamlReader.Load(sr.BaseStream)
+        apply_style_guide_resources(w)
+        apply_window_contract(w)
+        apply_topmost_and_parent(w)
         return w
 
     def _wire(self):
@@ -67719,7 +57359,7 @@ Compare plan view range settings across multiple views and support controlled co
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/UI.xaml
-## META: sha1=7522cb341d0a19890e4e6a9807e9bf08127d1835 size=11572
+## META: sha1=702b02c1cbdd6cbc84701f2eb2fb4884b33f5679 size=13478
 ## TYPE: text
 ```
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -67727,21 +57367,22 @@ Compare plan view range settings across multiple views and support controlled co
         Title="View Range Compare + Copy"
         Height="900" Width="1120"
         WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
         ResizeMode="CanResizeWithGrip"
         Background="{DynamicResource Bg}"
         Foreground="{DynamicResource Fg}"
         FontFamily="Segoe UI">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="Bg" Color="#1E1E1E"/>
-        <SolidColorBrush x:Key="Panel" Color="#252526"/>
-        <SolidColorBrush x:Key="Panel2" Color="#2D2D30"/>
-        <SolidColorBrush x:Key="Border" Color="#3C3C3C"/>
-        <SolidColorBrush x:Key="Fg" Color="#E6E6E6"/>
-        <SolidColorBrush x:Key="Muted" Color="#A9A9A9"/>
-        <SolidColorBrush x:Key="WarnRow" Color="#3A2E00"/>
-        <SolidColorBrush x:Key="InputBg" Color="#2D2D30"/>
-        <SolidColorBrush x:Key="InputBorder" Color="#464646"/>
+        <SolidColorBrush x:Key="Bg" Color="#FFFBFE"/>
+        <SolidColorBrush x:Key="Panel" Color="#F4F5F7"/>
+        <SolidColorBrush x:Key="Panel2" Color="#ECEDF0"/>
+        <SolidColorBrush x:Key="Border" Color="#DDE1E6"/>
+        <SolidColorBrush x:Key="Fg" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="Muted" Color="#8A8F98"/>
+        <SolidColorBrush x:Key="WarnRow" Color="#FDF3E9"/>
+        <SolidColorBrush x:Key="InputBg" Color="#FFFBFE"/>
+        <SolidColorBrush x:Key="InputBorder" Color="#DDE1E6"/>
 
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="{DynamicResource InputBg}"/>
@@ -67766,8 +57407,8 @@ Compare plan view range settings across multiple views and support controlled co
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="Background" Value="{DynamicResource Panel2}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
             <Setter Property="BorderBrush" Value="{DynamicResource Border}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="10,6"/>
@@ -67779,16 +57420,16 @@ Compare plan view range settings across multiple views and support controlled co
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="4">
+                                CornerRadius="20">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#34343A"/>
-                                <Setter Property="BorderBrush" Value="#5A5A5A"/>
+                                <Setter Property="Background" Value="#E7EDFB"/>
+                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#1B1B1F"/>
+                                <Setter Property="Background" Value="#ECEDF0"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.45"/>
@@ -67799,20 +57440,27 @@ Compare plan view range settings across multiple views and support controlled co
             </Setter>
         </Style>
 
+        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#1F4FD9"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="{DynamicResource InputBg}"/>
             <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
             <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="RowBackground" Value="#2B2B2B"/>
-            <Setter Property="AlternatingRowBackground" Value="#262626"/>
+            <Setter Property="RowBackground" Value="#FFFBFE"/>
+            <Setter Property="AlternatingRowBackground" Value="#F4F5F7"/>
             <Setter Property="GridLinesVisibility" Value="Horizontal"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#2D2D30"/>
-            <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="{DynamicResource Border}"/>
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
             <Setter Property="Padding" Value="8,6"/>
@@ -67831,12 +57479,26 @@ Compare plan view range settings across multiple views and support controlled co
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- TOP BAR: refresh only -->
-        <DockPanel Grid.Row="0" LastChildFill="False" Margin="0,0,0,10">
-            <Button Name="btnRefresh" Content="Refresh Views" Width="130" Height="26"/>
-            <TextBlock Text="   (each list has its own filter)" VerticalAlignment="Center"
-                       Foreground="{DynamicResource Muted}" Margin="10,0,0,0"/>
-        </DockPanel>
+        <Border Grid.Row="0" Background="#1A1A1A" CornerRadius="8" Padding="24,16" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
+                    <TextBlock Text="VR" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · View Range Compare + Copy" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock Text="Compare two plans, inspect differences, and copy view range settings to selected targets." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                </StackPanel>
+                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
+                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -67847,8 +57509,14 @@ Compare plan view range settings across multiple views and support controlled co
 
             <!-- LEFT: Plan A / B -->
             <Border Grid.Column="0" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="6" Padding="12">
+                    BorderThickness="1" CornerRadius="16" Padding="20,16">
                 <StackPanel>
+
+                    <DockPanel Margin="0,0,0,12">
+                        <Button Name="btnRefresh" Content="Refresh Views" Width="130" Height="26"/>
+                        <TextBlock Text="Each list has its own filter." VerticalAlignment="Center"
+                                   Foreground="{DynamicResource Muted}" Margin="10,0,0,0"/>
+                    </DockPanel>
 
                     <TextBlock Text="Plan A" FontWeight="SemiBold" FontSize="13"/>
                     <TextBox Name="tbFilterA" Margin="0,6,0,6" ToolTip="Filter Plan A list"/>
@@ -67856,8 +57524,8 @@ Compare plan view range settings across multiple views and support controlled co
                     <TextBlock Name="txtAInfo" Text="Template: -   |   View Range Controlled: -"
                                Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,6,0,10"/>
 
-                    <Button Name="btnCopyAtoB" Content="Copy A → B" Margin="0,0,0,6"/>
-                    <Button Name="btnCopyBtoA" Content="Copy B → A" Margin="0,0,0,16"/>
+                    <Button Name="btnCopyAtoB" Style="{StaticResource PrimaryActionButton}" Content="Copy A → B" Margin="0,0,0,6"/>
+                    <Button Name="btnCopyBtoA" Style="{StaticResource PrimaryActionButton}" Content="Copy B → A" Margin="0,0,0,16"/>
 
                     <Separator Margin="0,0,0,12" Background="{DynamicResource Border}"/>
 
@@ -67874,7 +57542,7 @@ Compare plan view range settings across multiple views and support controlled co
 
             <!-- MIDDLE: comparison -->
             <Border Grid.Column="1" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="6" Padding="12" Margin="12,0,12,0">
+                    BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="12,0,12,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -67915,21 +57583,21 @@ Compare plan view range settings across multiple views and support controlled co
 
             <!-- RIGHT: targets -->
             <Border Grid.Column="2" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="6" Padding="12">
+                    BorderThickness="1" CornerRadius="16" Padding="20,16">
                 <StackPanel>
                     <TextBlock Text="Targets (multi-select)" FontWeight="SemiBold" FontSize="13"/>
                     <TextBox Name="tbFilterT" Margin="0,6,0,6" ToolTip="Filter Targets list"/>
                     <ListBox Name="lbTargets" Margin="0,0,0,10" Height="445"
                              SelectionMode="Extended" DisplayMemberPath="Name"/>
 
-                    <Button Name="btnCopyAToTargets" Content="Copy A → Selected Targets" Height="34"/>
+                    <Button Name="btnCopyAToTargets" Style="{StaticResource PrimaryActionButton}" Content="Copy A → Selected Targets" Height="34"/>
                     <TextBlock Text="Tip: Ctrl/Shift to multi-select." Foreground="{DynamicResource Muted}" Margin="0,8,0,0"/>
                 </StackPanel>
             </Border>
         </Grid>
 
         <Border Grid.Row="2" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}" BorderThickness="1"
-                CornerRadius="6" Padding="8" Margin="0,10,0,0">
+                CornerRadius="8" Padding="12,8" Margin="0,10,0,0">
             <TextBlock Name="txtStatus" Text="Ready." Foreground="{DynamicResource Muted}"/>
         </Border>
     </Grid>
@@ -67944,12 +57612,14 @@ Compare plan view range settings across multiple views and support controlled co
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/script.py
-## META: sha1=b776c6930f26b49f34c6c8e08aa826fdb3cb7406 size=352148
+## META: sha1=b7e5aad78b0dd7fd403bfebb3a07a22b5a03b3ea size=355867
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.Exceptions","Autodesk.Revit.UI.Selection","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","System.Windows.Media.Imaging","System.Windows.Shapes","System.Windows.Threading","clr","detailmove_engine","glob","math","os","pyrevit","sys","telemetry","time","traceback"]
-## FUNCTIONS: ["get_name","mm_to_ft","ft_to_mm","try_parse_positive_int","try_parse_positive_float","try_parse_non_negative_float","try_parse_float","safe_int","add_xyz","sub_xyz","mul_xyz","dot_xyz","cross_xyz","vec_length","normalize","normalize_xy","canonical_xy_direction","combine_warning_text","_append","chunk_list","estimate_layout_capacity","__init__","__str__","__init__","__str__","__init__","__init__","__init__","copy_user_state_from","__init__","copy_user_state_from","__init__","__init__","__str__","__init__","__str__","__init__","validate_scope_frame","_build_section_basis","validate_section_direction","get_view_associated_level_id","view_matches_level","view_supports_associated_level","force_view_associated_level","get_view_range_signature","build_remapped_view_range_signature","apply_view_range_signature","view_range_matches","enforce_associated_level_and_view_range","get_scope_box_param","set_scope_box","get_scope_boxes","get_creator_category_items","_get_param_by_builtin_names","_get_param_by_lookup_names","_get_param","_param_to_text","_param_to_level_name","_param_to_offset_mm_text","_get_type_name","_get_category_id_value","_first_non_empty_param_text","_build_creator_element_row","get_creator_elements_for_categories","get_scope_box_ids_visible_in_active_plan","get_levels","get_plan_type_candidates","get_section_type_candidates","get_plan_template_candidates","get_section_template_candidates","get_titleblock_candidates","get_most_used_titleblock_type_id","get_existing_sheet_candidates","get_viewport_type_candidates","get_post_sectionmove_plan_candidates","build_existing_view_map","build_existing_view_map_for_creator","_consume_views","build_existing_sheet_numbers","build_placed_view_id_set","build_viewport_index_by_view_id","get_view_outline_size_ft","get_existing_selectable_views","make_unique_name","make_unique_sheet_number","_is_reuse_candidate_compatible","get_or_create_view","build_scope_frame","is_scope_box_element","get_levels_in_scope","get_section_top_elevation","create_plan_view","apply_plan_crop_from_frame","build_section_box","create_section_view","activate_symbol_if_needed","create_scope_sheet","can_add_view_to_sheet","get_sheet_rect_bounds","build_grid_positions","build_grid_positions_with_rows","build_vertical_stack_positions","build_plan_top_sections_positions","__init__","pump_ui","begin_progress","update_progress","set_progress_total","end_progress","_set_stage1_inline_status","_record_stage2_diag","_trim_preview_name","plans_enabled","sections_enabled","_set_combo","_select_combo_index","_select_combo_value","_selected_choice","_selected_element","_selected_value","_set_required_control_state","_update_required_field_highlights","_normalize_selected_items","_set_listbox_items_with_preserve","_set_choice_items_with_preserve","_reload_creator_grid","_reload_section_snapshot_grid","_reload_stage1_view_name_grid","_reload_selector_grid","_ensure_selector_cache_loaded","_ensure_sheet_cache_loaded","_ensure_preferred_titleblock_default","_setup_ui","_get_creator_name_filter_text","_get_creator_sort_mode","_get_creator_element_sort_mode","get_creator_source_mode","_is_scope_source_mode","_selected_creator_category_values","_selected_creator_category_ids","_get_creator_type_filter_text","_get_creator_group_filter_field","_get_creator_group_sort_mode","_creator_itemize_instances_enabled","_get_selected_creator_type_names","_refresh_section_create_mode_options","_is_scope_grouped_section_mode","_is_element_grouped_section_mode","_get_element_line_filter_text","_get_element_line_bucket_mm","_get_selected_element_line_keys","_set_element_line_items_with_preserve","_element_line_mark","_element_line_xy_bucket_key","_build_element_line_groups","_get_primary_level_for_element_row","_refresh_element_line_groups","_set_element_grid_headers","_update_creator_element_column_headers","_get_selected_creator_items","apply_creator_category_filters","refresh_creator_elements_from_categories","_rebuild_creator_type_items","apply_creator_type_filters","apply_creator_element_filters","update_creator_source_panels","update_workflow_stage_panels","_creator_visible_only_enabled","apply_creator_scope_filters","creator_scope_filter_changed","update_post_stage_controls","_update_layout_panels","_is_free_form_layout","_make_placement_key","_apply_free_form_overrides","_compute_creator_signature","_invalidate_creator_rows","_ensure_creator_rows_current","get_source_mode","get_effective_source_mode","_is_stage2_snapshot","_is_stage3_sheet_layout","_get_snapshot_temp_dir","_resolve_creator_row_snapshot_views","_build_stage2_snapshot_items","_build_stage1_view_name_items","refresh_stage1_view_name_editor","refresh_stage2_snapshot_list","_find_stage2_snapshot_item_for_row","_get_selected_stage2_row","_select_stage2_row","_sync_stage2_controls_from_selected_row","_export_view_snapshot_path","_set_image_source_from_path","_apply_snapshot_image_rotation","_pick_alignment_vector_xy","_vector_to_angle_deg","_get_stage2_target_rows","stage2_pick_plan_rotation_click","stage2_pick_section_alignment_click","_attach_snapshot_zoom_behavior","_set_snapshot_image_zoom","snapshot_image_mouse_wheel","snapshot_image_mouse_left_button_down","_build_stage2_snapshot_row_card","_build_stage2_plan_schematic","_build_stage2_section_schematic","render_stage2_snapshot_selected","_get_section_offsets_ft","_find_level_by_name","_apply_vertical_mapping_rows","_read_vertical_mapping_into_rows","_prefer_summary_preview_mode","_get_preview_card_limit","_show_stage2_preview_tab","_estimate_stage1_assoc_targets","_estimate_stage1_sectionmove_groups","_estimate_stage1_create_operations","get_create_mode","get_sheet_mode","_default_viewport_type_name","_get_selected_scope_items","_get_selected_level_items","_get_selected_existing_sheet_items","_get_selected_selector_view_items","_get_selected_level_ids","_get_selected_existing_sheet_ids","_get_selected_selector_view_ids","_get_filtered_level_text","_get_filtered_sheet_text","_get_filtered_selector_view_text","_build_level_choice","_rebuild_scope_level_tree","_sync_scope_level_ids_from_tree","scope_level_checkbox_changed","_format_scope_level_status_line","_get_scope_level_map","_get_scope_assigned_level_ids","_get_selected_scope_level_map","_make_creator_key","_make_selector_key","_get_row_section_frame","_compute_creator_warning","_refresh_creator_warnings","_estimate_creator_counts","_rebuild_level_list","_update_level_selection_status","_apply_level_selection_to_selected_scopes","_rebuild_creator_rows","_build_merged_scope_frame","_rebuild_creator_rows_from_elements","_selector_view_matches_filters","refresh_selector_views_only","_rebuild_selector_rows","_rebuild_selector_rows_from_items","_set_stage2_views","refresh_scope_and_levels","refresh_selector_only","get_layout_request","_parse_unequal_row_pattern","get_reserved_offsets_mm","get_usable_sheet_bounds","_get_view_outline_size_ft","_build_viewport_index_by_view_id","_get_preview_sheet_bounds","_get_creator_row_actual_outline_size_ft","_estimate_row_sheet_footprint_ft","_build_weighted_grid_positions","_build_weighted_rows_positions","apply_layout_preset","get_active_rows","_should_keep_scope_groups","get_active_groups","build_layout_for_rows","_layout_existing_placements","_wrap_sheet_overflow_enabled","_layout_within_bounds","_build_wrapped_grid_sheet_layouts","_row_width","_emit_current_sheet","_commit_current_row_or_new_sheet","_pack_placements_to_sheet_layouts","_build_sheet_layouts_for_rows","estimate_total_required_sheets","update_sheet_panel_visibility","update_advanced_mode","mark_preview_dirty","clear_preview","get_selected_existing_sheets","refresh_summary","_refresh_stage1_name_summary","_preview_rect_size","_row_display_name","_count_row_roles","_estimate_group_preview_meta","_compute_preview_signature","_preview_should_use_summary_only","_preview_progress_stride","_build_summary_preview_card","_build_preview_limit_notice_card","_get_default_title_offset_ft","_register_freeform_preview_item","_refresh_freeform_selection_visuals","_select_freeform_key","_persist_freeform_item_from_visual","_align_selected_freeform_views","_align_selected_freeform_titles","_build_preview_card","freeform_rect_mouse_left_button_down","freeform_rect_mouse_move","freeform_rect_mouse_left_button_up","freeform_title_mouse_left_button_down","freeform_title_mouse_move","freeform_title_mouse_left_button_up","_build_preview_jobs_limited","render_preview","validate_before_create","_get_plan_name_pattern","_get_section_name_pattern","_render_view_name_pattern","_get_legacy_plan_base_name","_get_legacy_section_base_name","get_plan_base_name","get_section_base_name","_apply_viewport_type","_apply_viewport_title_position","_apply_viewport_type_only","_apply_viewport_title_only","_build_creator_view_map","_index_progress","_create_plan","_create_section","_build_selector_view_map","_run_stage1_creator","_assoc_progress","_move_progress","_run_stage1_selector","_selected_post_sectionmove_plan","_run_associated_level_stage","_run_post_sectionmove_stage","update_source_mode_panels","update_plan_section_visibility","_place_sheet_plan","create_views_and_optionally_place","apply_bulk_to_creator_rows","apply_bulk_to_selector_rows","auto_plan_order","auto_section_order","auto_selector_order","scope_boxes_changed","level_filter_changed","levels_selection_changed","select_visible_levels_click","clear_visible_levels_click","selector_filter_changed","selector_views_changed","source_mode_changed","creator_source_mode_changed","creator_category_filter_changed","creator_type_filter_changed","creator_types_changed","creator_categories_changed","creator_element_filter_changed","creator_elements_changed","element_line_groups_changed","element_split_mode_changed","element_line_filter_changed","element_line_bucket_changed","workflow_tab_changed","stage2_tab_changed","setup_changed","stage1_name_pattern_changed","toggle_plans","toggle_sections","layout_preset_changed","layout_type_changed","create_mode_changed","toggle_sheets","sheet_mode_changed","sheet_filter_changed","existing_sheets_changed","select_placed_sheets_click","clear_freeform_positions_click","proceed_to_sheet_layout_click","_mark","proceed_to_stage3_click","stage2_refresh_snapshots_click","stage1_refresh_view_names_click","stage1_apply_view_names_click","stage1_view_name_grid_changed","stage2_read_vertical_from_sections_click","section_snapshot_selection_changed","apply_section_snapshot_settings_click","clear_freeform_selection_click","align_selected_views_bottom_click","align_selected_views_left_click","align_selected_titles_bottom_click","align_selected_titles_left_click","advanced_mode_changed","select_creator_rows_click","clear_creator_rows_click","select_selector_rows_click","clear_selector_rows_click","apply_bulk_creator_click","apply_bulk_selector_click","auto_plan_order_click","auto_section_order_click","auto_selector_order_click","assignment_direction_changed","assignment_viewport_changed","selector_assignment_changed","creator_grid_changed","selector_grid_changed","section_snapshot_grid_changed","preview_click","create_click","cancel_click","build_window","run"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.Exceptions","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","System.Windows.Media.Imaging","System.Windows.Shapes","System.Windows.Threading","clr","detailmove_engine","glob","math","os","pyrevit","sys","telemetry","time","traceback"]
+## FUNCTIONS: ["apply_topmost_and_parent","apply_window_contract","apply_style_guide_resources","_brush","get_name","mm_to_ft","ft_to_mm","try_parse_positive_int","try_parse_positive_float","try_parse_non_negative_float","try_parse_float","safe_int","add_xyz","sub_xyz","mul_xyz","dot_xyz","cross_xyz","vec_length","normalize","normalize_xy","canonical_xy_direction","combine_warning_text","_append","chunk_list","estimate_layout_capacity","__init__","__str__","__init__","__str__","__init__","__init__","__init__","copy_user_state_from","__init__","copy_user_state_from","__init__","__init__","__str__","__init__","__str__","__init__","validate_scope_frame","_build_section_basis","validate_section_direction","get_view_associated_level_id","view_matches_level","view_supports_associated_level","force_view_associated_level","get_view_range_signature","build_remapped_view_range_signature","apply_view_range_signature","view_range_matches","enforce_associated_level_and_view_range","get_scope_box_param","set_scope_box","get_scope_boxes","get_creator_category_items","_get_param_by_builtin_names","_get_param_by_lookup_names","_get_param","_param_to_text","_param_to_level_name","_param_to_offset_mm_text","_get_type_name","_get_category_id_value","_first_non_empty_param_text","_build_creator_element_row","get_creator_elements_for_categories","get_scope_box_ids_visible_in_active_plan","get_levels","get_plan_type_candidates","get_section_type_candidates","get_plan_template_candidates","get_section_template_candidates","get_titleblock_candidates","get_most_used_titleblock_type_id","get_existing_sheet_candidates","get_viewport_type_candidates","get_post_sectionmove_plan_candidates","build_existing_view_map","build_existing_view_map_for_creator","_consume_views","build_existing_sheet_numbers","build_placed_view_id_set","build_viewport_index_by_view_id","get_view_outline_size_ft","get_existing_selectable_views","make_unique_name","make_unique_sheet_number","_is_reuse_candidate_compatible","get_or_create_view","build_scope_frame","is_scope_box_element","get_levels_in_scope","get_section_top_elevation","create_plan_view","apply_plan_crop_from_frame","build_section_box","create_section_view","activate_symbol_if_needed","create_scope_sheet","can_add_view_to_sheet","get_sheet_rect_bounds","build_grid_positions","build_grid_positions_with_rows","build_vertical_stack_positions","build_plan_top_sections_positions","__init__","pump_ui","begin_progress","update_progress","set_progress_total","end_progress","_set_stage1_inline_status","_record_stage2_diag","_trim_preview_name","plans_enabled","sections_enabled","_set_combo","_select_combo_index","_select_combo_value","_selected_choice","_selected_element","_selected_value","_set_required_control_state","_update_required_field_highlights","_normalize_selected_items","_set_listbox_items_with_preserve","_set_choice_items_with_preserve","_reload_creator_grid","_reload_section_snapshot_grid","_reload_stage1_view_name_grid","_reload_selector_grid","_ensure_selector_cache_loaded","_ensure_sheet_cache_loaded","_ensure_preferred_titleblock_default","_setup_ui","_get_creator_name_filter_text","_get_creator_sort_mode","_get_creator_element_sort_mode","get_creator_source_mode","_is_scope_source_mode","_selected_creator_category_values","_selected_creator_category_ids","_get_creator_type_filter_text","_get_creator_group_filter_field","_get_creator_group_sort_mode","_creator_itemize_instances_enabled","_get_selected_creator_type_names","_refresh_section_create_mode_options","_is_scope_grouped_section_mode","_is_element_grouped_section_mode","_get_element_line_filter_text","_get_element_line_bucket_mm","_get_selected_element_line_keys","_set_element_line_items_with_preserve","_element_line_mark","_element_line_xy_bucket_key","_build_element_line_groups","_get_primary_level_for_element_row","_refresh_element_line_groups","_set_element_grid_headers","_update_creator_element_column_headers","_get_selected_creator_items","apply_creator_category_filters","refresh_creator_elements_from_categories","_rebuild_creator_type_items","apply_creator_type_filters","apply_creator_element_filters","update_creator_source_panels","update_workflow_stage_panels","_update_workflow_stepper","workflow_step_click","_creator_visible_only_enabled","apply_creator_scope_filters","creator_scope_filter_changed","update_post_stage_controls","_update_layout_panels","_is_free_form_layout","_make_placement_key","_apply_free_form_overrides","_compute_creator_signature","_invalidate_creator_rows","_ensure_creator_rows_current","get_source_mode","get_effective_source_mode","_is_stage2_snapshot","_is_stage3_sheet_layout","_get_snapshot_temp_dir","_resolve_creator_row_snapshot_views","_build_stage2_snapshot_items","_build_stage1_view_name_items","refresh_stage1_view_name_editor","refresh_stage2_snapshot_list","_find_stage2_snapshot_item_for_row","_get_selected_stage2_row","_select_stage2_row","_sync_stage2_controls_from_selected_row","_export_view_snapshot_path","_set_image_source_from_path","_apply_snapshot_image_rotation","_pick_alignment_vector_xy","_vector_to_angle_deg","_get_stage2_target_rows","stage2_pick_plan_rotation_click","stage2_pick_section_alignment_click","_attach_snapshot_zoom_behavior","_set_snapshot_image_zoom","snapshot_image_mouse_wheel","snapshot_image_mouse_left_button_down","_build_stage2_snapshot_row_card","_build_stage2_plan_schematic","_build_stage2_section_schematic","render_stage2_snapshot_selected","_get_section_offsets_ft","_find_level_by_name","_apply_vertical_mapping_rows","_read_vertical_mapping_into_rows","_prefer_summary_preview_mode","_get_preview_card_limit","_show_stage2_preview_tab","_estimate_stage1_assoc_targets","_estimate_stage1_sectionmove_groups","_estimate_stage1_create_operations","get_create_mode","get_sheet_mode","_default_viewport_type_name","_get_selected_scope_items","_get_selected_level_items","_get_selected_existing_sheet_items","_get_selected_selector_view_items","_get_selected_level_ids","_get_selected_existing_sheet_ids","_get_selected_selector_view_ids","_get_filtered_level_text","_get_filtered_sheet_text","_get_filtered_selector_view_text","_build_level_choice","_rebuild_scope_level_tree","_sync_scope_level_ids_from_tree","scope_level_checkbox_changed","_format_scope_level_status_line","_get_scope_level_map","_get_scope_assigned_level_ids","_get_selected_scope_level_map","_make_creator_key","_make_selector_key","_get_row_section_frame","_compute_creator_warning","_refresh_creator_warnings","_estimate_creator_counts","_rebuild_level_list","_update_level_selection_status","_apply_level_selection_to_selected_scopes","_rebuild_creator_rows","_build_merged_scope_frame","_rebuild_creator_rows_from_elements","_selector_view_matches_filters","refresh_selector_views_only","_rebuild_selector_rows","_rebuild_selector_rows_from_items","_set_stage2_views","refresh_scope_and_levels","refresh_selector_only","get_layout_request","_parse_unequal_row_pattern","get_reserved_offsets_mm","get_usable_sheet_bounds","_get_view_outline_size_ft","_build_viewport_index_by_view_id","_get_preview_sheet_bounds","_get_creator_row_actual_outline_size_ft","_estimate_row_sheet_footprint_ft","_build_weighted_grid_positions","_build_weighted_rows_positions","apply_layout_preset","get_active_rows","_should_keep_scope_groups","get_active_groups","build_layout_for_rows","_layout_existing_placements","_wrap_sheet_overflow_enabled","_layout_within_bounds","_build_wrapped_grid_sheet_layouts","_row_width","_emit_current_sheet","_commit_current_row_or_new_sheet","_pack_placements_to_sheet_layouts","_build_sheet_layouts_for_rows","estimate_total_required_sheets","update_sheet_panel_visibility","update_advanced_mode","mark_preview_dirty","clear_preview","get_selected_existing_sheets","refresh_summary","_refresh_stage1_name_summary","_preview_rect_size","_row_display_name","_count_row_roles","_estimate_group_preview_meta","_compute_preview_signature","_preview_should_use_summary_only","_preview_progress_stride","_build_summary_preview_card","_build_preview_limit_notice_card","_get_default_title_offset_ft","_register_freeform_preview_item","_refresh_freeform_selection_visuals","_select_freeform_key","_persist_freeform_item_from_visual","_align_selected_freeform_views","_align_selected_freeform_titles","_build_preview_card","freeform_rect_mouse_left_button_down","freeform_rect_mouse_move","freeform_rect_mouse_left_button_up","freeform_title_mouse_left_button_down","freeform_title_mouse_move","freeform_title_mouse_left_button_up","_build_preview_jobs_limited","render_preview","validate_before_create","_get_plan_name_pattern","_get_section_name_pattern","_render_view_name_pattern","_get_legacy_plan_base_name","_get_legacy_section_base_name","get_plan_base_name","get_section_base_name","_apply_viewport_type","_apply_viewport_title_position","_apply_viewport_type_only","_apply_viewport_title_only","_build_creator_view_map","_index_progress","_create_plan","_create_section","_build_selector_view_map","_run_stage1_creator","_assoc_progress","_move_progress","_run_stage1_selector","_selected_post_sectionmove_plan","_run_associated_level_stage","_run_post_sectionmove_stage","update_source_mode_panels","update_plan_section_visibility","_place_sheet_plan","create_views_and_optionally_place","apply_bulk_to_creator_rows","apply_bulk_to_selector_rows","auto_plan_order","auto_section_order","auto_selector_order","scope_boxes_changed","level_filter_changed","levels_selection_changed","select_visible_levels_click","clear_visible_levels_click","selector_filter_changed","selector_views_changed","source_mode_changed","creator_source_mode_changed","creator_category_filter_changed","creator_type_filter_changed","creator_types_changed","creator_categories_changed","creator_element_filter_changed","creator_elements_changed","element_line_groups_changed","element_split_mode_changed","element_line_filter_changed","element_line_bucket_changed","workflow_tab_changed","stage2_tab_changed","setup_changed","stage1_name_pattern_changed","toggle_plans","toggle_sections","layout_preset_changed","layout_type_changed","create_mode_changed","toggle_sheets","sheet_mode_changed","sheet_filter_changed","existing_sheets_changed","select_placed_sheets_click","clear_freeform_positions_click","proceed_to_sheet_layout_click","_mark","proceed_to_stage3_click","stage2_refresh_snapshots_click","stage1_refresh_view_names_click","stage1_apply_view_names_click","stage1_view_name_grid_changed","stage2_read_vertical_from_sections_click","section_snapshot_selection_changed","apply_section_snapshot_settings_click","clear_freeform_selection_click","align_selected_views_bottom_click","align_selected_views_left_click","align_selected_titles_bottom_click","align_selected_titles_left_click","advanced_mode_changed","select_creator_rows_click","clear_creator_rows_click","select_selector_rows_click","clear_selector_rows_click","apply_bulk_creator_click","apply_bulk_selector_click","auto_plan_order_click","auto_section_order_click","auto_selector_order_click","assignment_direction_changed","assignment_viewport_changed","selector_assignment_changed","creator_grid_changed","selector_grid_changed","section_snapshot_grid_changed","preview_click","create_click","cancel_click","build_window","run"]
 ## CLASSES: ["ChoiceItem","CreatorElementRow","ScopeFrame","LayoutRequest","AssignmentRow","SelectorRow","PlannedPlacement","Stage2SnapshotItem","Stage1ViewNameItem","UiState","ViewCreatorWindow"]
 ```python
+# -*- coding: utf-8 -*-
+
 try:
     import telemetry
     telemetry.track_tool_click(__file__)
@@ -67957,7 +57627,6 @@ except Exception:
     pass
 
 # --- START script.py PART 1/4 ---
-# -*- coding: utf-8 -*-
 
 __title__ = "View Creator / Selector"
 __doc__ = "Create and layout views on sheets from creator or selector"
@@ -67982,6 +57651,10 @@ from System.Windows.Controls import Border, StackPanel, TextBlock, Canvas, Grid,
 from System.Windows.Input import Cursors
 from System.Windows.Input import Keyboard, ModifierKeys
 from System.Windows.Media import Brushes, Stretch, ScaleTransform, RotateTransform
+try:
+    from System.Windows.Media import BrushConverter
+except Exception:
+    BrushConverter = None
 from System.Windows.Media.Imaging import BitmapImage, BitmapCacheOption
 from System.Windows.Shapes import Rectangle
 from System.Windows.Threading import DispatcherPriority
@@ -68039,6 +57712,22 @@ except Exception:
     get_current_vertical_mapping_info = None
     apply_vertical_mapping = None
 
+try:
+    from GUI.style_guide_2026 import (
+        apply_topmost_and_parent,
+        apply_window_contract,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_topmost_and_parent(window):
+        return
+
+    def apply_window_contract(window):
+        return
+
+    def apply_style_guide_resources(window):
+        return
+
 doc = revit.doc
 
 EPS = 1e-6
@@ -68062,6 +57751,14 @@ PREVIEW_NAME_TRIM = 18
 PREVIEW_PROGRESS_UI_INTERVAL_SEC = 0.25
 SUMMARY_REFRESH_MIN_INTERVAL_SEC = 0.35
 PREVIEW_DRAW_LIMIT = 120
+
+_BRUSH_CONVERTER = BrushConverter() if BrushConverter is not None else None
+
+
+def _brush(hex_value):
+    if _BRUSH_CONVERTER is None:
+        return Brushes.Transparent
+    return _BRUSH_CONVERTER.ConvertFromString(hex_value)
 
 SECTION_DIRECTIONS = ["Front", "Back", "Left", "Right", "Aligned"]
 LAYOUT_TYPES = ["Grid", "Grid - Unequal", "Vertical Stack", "Plan Top + Sections Below", "Free Form"]
@@ -70015,6 +59712,7 @@ def build_plan_top_sections_positions(bounds, plan_count, section_count, section
 class ViewCreatorWindow(forms.WPFWindow):
     def __init__(self, xaml_path):
         forms.WPFWindow.__init__(self, xaml_path)
+        apply_style_guide_resources(self)
 
         self.state = UiState()
         self.scope_frames = {}
@@ -70054,6 +59752,8 @@ class ViewCreatorWindow(forms.WPFWindow):
         self._titleblock_default_applied = False
 
         self._setup_ui()
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
 
         self.suspend_events = False
         self.refresh_scope_and_levels()
@@ -70080,7 +59780,8 @@ class ViewCreatorWindow(forms.WPFWindow):
             self.btnPreview.IsEnabled = False
             self.btnCreate.IsEnabled = False
             self.btnCancel.IsEnabled = False
-            self.Topmost = True
+            apply_topmost_and_parent(self)
+            self.Activate()
             self.pump_ui(True)
         except:
             pass
@@ -70111,7 +59812,7 @@ class ViewCreatorWindow(forms.WPFWindow):
             self.btnPreview.IsEnabled = True
             self.btnCreate.IsEnabled = True
             self.btnCancel.IsEnabled = True
-            self.Topmost = False
+            apply_topmost_and_parent(self)
             self.pump_ui(True)
         except:
             pass
@@ -70209,7 +59910,7 @@ class ViewCreatorWindow(forms.WPFWindow):
                 if note:
                     control.ToolTip = note
             else:
-                control.Background = Brushes.White
+                control.Background = _brush("#FFFFFFFF")
                 control.ToolTip = None
         except Exception:
             pass
@@ -71126,6 +60827,68 @@ class ViewCreatorWindow(forms.WPFWindow):
             except Exception:
                 pass
 
+        self._update_workflow_stepper(stage_index)
+
+    def _update_workflow_stepper(self, stage_index=None):
+        if stage_index is None:
+            try:
+                stage_index = int(self.tabWorkflow.SelectedIndex)
+            except Exception:
+                stage_index = 0
+
+        step_keys = [
+            (0, "brdWorkflowStep0Bubble", "txtWorkflowStep0Bubble", "txtWorkflowStep0Label"),
+            (1, "brdWorkflowStep1Bubble", "txtWorkflowStep1Bubble", "txtWorkflowStep1Label"),
+            (2, "brdWorkflowStep2Bubble", "txtWorkflowStep2Bubble", "txtWorkflowStep2Label"),
+        ]
+        conn_keys = [
+            (0, "brdWorkflowConn0"),
+            (1, "brdWorkflowConn1"),
+        ]
+
+        for index_value, bubble_name, bubble_text_name, label_name in step_keys:
+            bubble = getattr(self, bubble_name, None)
+            bubble_text = getattr(self, bubble_text_name, None)
+            label = getattr(self, label_name, None)
+            if not bubble or not bubble_text or not label:
+                continue
+
+            if index_value < stage_index:
+                bubble.Style = self.FindResource("WizardStepBubbleDoneBorderStyle")
+                bubble_text.Style = self.FindResource("WizardStepBubbleDoneTextStyle")
+                label.Style = self.FindResource("WizardStepLabelDoneStyle")
+                bubble_text.Text = u"✓"
+            elif index_value == stage_index:
+                bubble.Style = self.FindResource("WizardStepBubbleActiveBorderStyle")
+                bubble_text.Style = self.FindResource("WizardStepBubbleActiveTextStyle")
+                label.Style = self.FindResource("WizardStepLabelActiveStyle")
+                bubble_text.Text = str(index_value + 1)
+            else:
+                bubble.Style = self.FindResource("WizardStepBubblePendingBorderStyle")
+                bubble_text.Style = self.FindResource("WizardStepBubblePendingTextStyle")
+                label.Style = self.FindResource("WizardStepLabelPendingStyle")
+                bubble_text.Text = str(index_value + 1)
+
+        for index_value, conn_name in conn_keys:
+            connector = getattr(self, conn_name, None)
+            if not connector:
+                continue
+            connector.Style = self.FindResource(
+                "WizardStepConnectorDoneStyle" if index_value < stage_index else "WizardStepConnectorPendingStyle"
+            )
+
+    def workflow_step_click(self, sender, args):
+        if self.suspend_events:
+            return
+        try:
+            stage_index = int(getattr(sender, "Tag", 0))
+        except Exception:
+            return
+        try:
+            self.tabWorkflow.SelectedIndex = stage_index
+        except Exception:
+            return
+
     def _creator_visible_only_enabled(self):
         try:
             return bool(self.ChkVisibleInPlanOnly.IsChecked)
@@ -71837,9 +61600,9 @@ class ViewCreatorWindow(forms.WPFWindow):
 
     def _build_stage2_snapshot_row_card(self, item, is_selected):
         card = Border()
-        card.BorderBrush = Brushes.OrangeRed if is_selected else Brushes.LightGray
+        card.BorderBrush = _brush("#E03C2C") if is_selected else _brush("#DDE1E6")
         card.BorderThickness = Thickness(2 if is_selected else 1)
-        card.Background = Brushes.White
+        card.Background = _brush("#FFFFFFFF")
         card.Padding = Thickness(8)
         card.Margin = Thickness(0, 0, 0, 8)
 
@@ -71854,7 +61617,7 @@ class ViewCreatorWindow(forms.WPFWindow):
         sub = TextBlock()
         sub.Text = "Plan (left) | Section (right)"
         sub.Margin = Thickness(0, 2, 0, 6)
-        sub.Foreground = Brushes.DimGray
+        sub.Foreground = _brush("#5E6A75")
         panel.Children.Add(sub)
 
         grid = Grid()
@@ -71863,17 +61626,17 @@ class ViewCreatorWindow(forms.WPFWindow):
         panel.Children.Add(grid)
 
         plan_border = Border()
-        plan_border.BorderBrush = Brushes.Gainsboro
+        plan_border.BorderBrush = _brush("#DDE1E6")
         plan_border.BorderThickness = Thickness(1)
-        plan_border.Background = Brushes.WhiteSmoke
+        plan_border.Background = _brush("#FFF9FAFB")
         plan_border.Margin = Thickness(0, 0, 4, 0)
         Grid.SetColumn(plan_border, 0)
         grid.Children.Add(plan_border)
 
         section_border = Border()
-        section_border.BorderBrush = Brushes.Gainsboro
+        section_border.BorderBrush = _brush("#DDE1E6")
         section_border.BorderThickness = Thickness(1)
-        section_border.Background = Brushes.WhiteSmoke
+        section_border.Background = _brush("#FFF9FAFB")
         section_border.Margin = Thickness(4, 0, 0, 0)
         Grid.SetColumn(section_border, 1)
         grid.Children.Add(section_border)
@@ -71900,7 +61663,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
             zoom_note = TextBlock()
             zoom_note.Text = "Mouse wheel: zoom | Double-click: reset"
-            zoom_note.Foreground = Brushes.DimGray
+            zoom_note.Foreground = _brush("#5E6A75")
             zoom_note.Margin = Thickness(0, 0, 0, 4)
             plan_panel.Children.Add(zoom_note)
 
@@ -71933,7 +61696,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
             zoom_note = TextBlock()
             zoom_note.Text = "Mouse wheel: zoom | Double-click: reset"
-            zoom_note.Foreground = Brushes.DimGray
+            zoom_note.Foreground = _brush("#5E6A75")
             zoom_note.Margin = Thickness(0, 0, 0, 4)
             section_panel.Children.Add(zoom_note)
 
@@ -71962,13 +61725,13 @@ class ViewCreatorWindow(forms.WPFWindow):
         canvas = Canvas()
         canvas.Width = 360
         canvas.Height = 210
-        canvas.Background = Brushes.WhiteSmoke
+        canvas.Background = _brush("#FFF9FAFB")
 
         outer = Rectangle()
         outer.Width = 300
         outer.Height = 150
-        outer.Stroke = Brushes.SteelBlue
-        outer.Fill = Brushes.White
+        outer.Stroke = _brush("#1F4FD9")
+        outer.Fill = _brush("#FFFFFFFF")
         outer.StrokeThickness = 1.5
         canvas.Children.Add(outer)
         Canvas.SetLeft(outer, 30)
@@ -71981,7 +61744,7 @@ class ViewCreatorWindow(forms.WPFWindow):
             pass
 
         marker = Rectangle()
-        marker.Fill = Brushes.IndianRed
+        marker.Fill = _brush("#E03C2C")
         marker.StrokeThickness = 0
         if side in ["Front", "Back"]:
             marker.Width = 170
@@ -72002,7 +61765,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
         label = TextBlock()
         label.Text = "Plan schematic with section cut marker"
-        label.Foreground = Brushes.DimGray
+        label.Foreground = _brush("#5E6A75")
         label.Margin = Thickness(8, 2, 0, 0)
 
         panel = StackPanel()
@@ -72025,20 +61788,20 @@ class ViewCreatorWindow(forms.WPFWindow):
         upper = getattr(row, "SectionUpperLevelName", "") or lower
         detail = TextBlock()
         detail.Text = "Vertical range: {0} to {1}".format(lower, upper)
-        detail.Foreground = Brushes.DimGray
+        detail.Foreground = _brush("#5E6A75")
         detail.Margin = Thickness(0, 2, 0, 6)
         panel.Children.Add(detail)
 
         canvas = Canvas()
         canvas.Width = 360
         canvas.Height = 210
-        canvas.Background = Brushes.WhiteSmoke
+        canvas.Background = _brush("#FFF9FAFB")
 
         frame = Rectangle()
         frame.Width = 230
         frame.Height = 160
-        frame.Stroke = Brushes.IndianRed
-        frame.Fill = Brushes.White
+        frame.Stroke = _brush("#E03C2C")
+        frame.Fill = _brush("#FFFFFFFF")
         frame.StrokeThickness = 1.5
         canvas.Children.Add(frame)
         Canvas.SetLeft(frame, 60)
@@ -72046,14 +61809,14 @@ class ViewCreatorWindow(forms.WPFWindow):
 
         bottom_text = TextBlock()
         bottom_text.Text = str(getattr(row, "SectionBottomOffsetMm", 0.0)) + " mm"
-        bottom_text.Foreground = Brushes.DimGray
+        bottom_text.Foreground = _brush("#5E6A75")
         canvas.Children.Add(bottom_text)
         Canvas.SetLeft(bottom_text, 8)
         Canvas.SetTop(bottom_text, 170)
 
         top_text = TextBlock()
         top_text.Text = str(getattr(row, "SectionTopOffsetMm", 0.0)) + " mm"
-        top_text.Foreground = Brushes.DimGray
+        top_text.Foreground = _brush("#5E6A75")
         canvas.Children.Add(top_text)
         Canvas.SetLeft(top_text, 8)
         Canvas.SetTop(top_text, 24)
@@ -72063,7 +61826,7 @@ class ViewCreatorWindow(forms.WPFWindow):
         if section_view is None:
             note = TextBlock()
             note.Text = "No section view mapped yet for this row."
-            note.Foreground = Brushes.IndianRed
+            note.Foreground = _brush("#E03C2C")
             note.Margin = Thickness(0, 6, 0, 0)
             panel.Children.Add(note)
 
@@ -74107,7 +63870,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
     def _build_summary_preview_card(self, group_name, group_rows, meta, group_index, total_groups):
         border = Border()
-        border.BorderBrush = Brushes.LightGray
+        border.BorderBrush = _brush("#DDE1E6")
         border.BorderThickness = Thickness(1)
         border.Padding = Thickness(8)
         border.Margin = Thickness(0, 0, 0, 8)
@@ -74205,7 +63968,7 @@ class ViewCreatorWindow(forms.WPFWindow):
                 except:
                     pass
                 try:
-                    title.Foreground = Brushes.DarkGreen if is_selected else Brushes.DimGray
+                    title.Foreground = _brush("#2EA043") if is_selected else _brush("#5E6A75")
                 except:
                     pass
 
@@ -74355,7 +64118,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
     def _build_preview_card(self, group_name, global_sheet_index, local_sheet_index, chunk, total_views, total_sheets, preview_bounds):
         border = Border()
-        border.BorderBrush = Brushes.LightGray
+        border.BorderBrush = _brush("#DDE1E6")
         border.BorderThickness = Thickness(1)
         border.Padding = Thickness(8)
         border.Margin = Thickness(0, 0, 0, 8)
@@ -74378,7 +64141,7 @@ class ViewCreatorWindow(forms.WPFWindow):
             note = TextBlock()
             note.Text = "Free Form: drag view boxes to adjust placement before Create."
             note.Margin = Thickness(0, 4, 0, 0)
-            note.Foreground = Brushes.DimGray
+            note.Foreground = _brush("#5E6A75")
             panel.Children.Add(note)
 
         canvas = Canvas()
@@ -74389,8 +64152,8 @@ class ViewCreatorWindow(forms.WPFWindow):
         sheet_rect = Rectangle()
         sheet_rect.Width = 520
         sheet_rect.Height = 280
-        sheet_rect.Stroke = Brushes.Black
-        sheet_rect.Fill = Brushes.WhiteSmoke
+        sheet_rect.Stroke = _brush("#1A1A1A")
+        sheet_rect.Fill = _brush("#FFF9FAFB")
         sheet_rect.StrokeThickness = 1.2
         canvas.Children.Add(sheet_rect)
         Canvas.SetLeft(sheet_rect, 18)
@@ -74440,10 +64203,10 @@ class ViewCreatorWindow(forms.WPFWindow):
 
             if placement.Role == "Plan":
                 rect.Fill = Brushes.LightSteelBlue
-                rect.Stroke = Brushes.SteelBlue
+                rect.Stroke = _brush("#1F4FD9")
             else:
                 rect.Fill = Brushes.MistyRose
-                rect.Stroke = Brushes.IndianRed
+                rect.Stroke = _brush("#E03C2C")
 
             canvas.Children.Add(rect)
             Canvas.SetLeft(rect, draw_x)
@@ -74454,7 +64217,7 @@ class ViewCreatorWindow(forms.WPFWindow):
                 side_tag.Text = (placement.SourceRow.SectionDirection or "?")[:1].upper()
                 side_tag.FontSize = 8
                 side_tag.FontWeight = FontWeights.Bold
-                side_tag.Foreground = Brushes.IndianRed
+                side_tag.Foreground = _brush("#E03C2C")
                 side_tag.IsHitTestVisible = False
                 canvas.Children.Add(side_tag)
                 Canvas.SetLeft(side_tag, draw_x + max(1.0, box_w - 9.0))
@@ -74469,7 +64232,7 @@ class ViewCreatorWindow(forms.WPFWindow):
 
                 if section_side in SECTION_DIRECTIONS:
                     marker = Rectangle()
-                    marker.Fill = Brushes.IndianRed
+                    marker.Fill = _brush("#E03C2C")
                     marker.StrokeThickness = 0
                     marker.IsHitTestVisible = False
 
@@ -74520,7 +64283,7 @@ class ViewCreatorWindow(forms.WPFWindow):
                 title = TextBlock()
                 title.Text = "Title: {0}".format(row_name)
                 title.FontSize = 9
-                title.Foreground = Brushes.DimGray
+                title.Foreground = _brush("#5E6A75")
                 title.Cursor = Cursors.SizeAll
 
                 est_w_ft = max(EPS, est_w_ft)
@@ -74558,7 +64321,7 @@ class ViewCreatorWindow(forms.WPFWindow):
             notice = TextBlock()
             notice.Text = "+ {0} more views not drawn".format(len(placements) - drawn_count)
             notice.FontSize = 10
-            notice.Foreground = Brushes.DimGray
+            notice.Foreground = _brush("#5E6A75")
             canvas.Children.Add(notice)
             Canvas.SetLeft(notice, 24)
             Canvas.SetTop(notice, 298)
@@ -77067,10 +66830,10 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/ViewCreator.xaml
-## META: sha1=801b3e57ff05b36ce9dd5ce1c8568f8e5c9b8f9d size=109862
+## META: sha1=213b402743b7f7b003098e7d1f969a4540e1604e size=115371
 ## TYPE: text
 ```
-<Window
+﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="View Creator / Selector"
@@ -77079,7 +66842,20 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
     MinHeight="760"
     MinWidth="1500"
     WindowStartupLocation="CenterScreen"
-    ResizeMode="CanResize">
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+        <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource SecondaryButton}"/>
+        <Style x:Key="WorkflowTabControlStyle" TargetType="TabControl" BasedOn="{StaticResource WizardContentTabControlStyle}"/>
+    </Window.Resources>
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
@@ -77088,11 +66864,28 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
-                   Margin="0,0,0,10"
-                   FontSize="16"
-                   FontWeight="Bold"
-                   Text="Create and Layout Views on Sheets from Creator or Selector"/>
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="VC" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · View Creator / Selector" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Create views, review sections, and lay out sheets through the step workflow." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -77112,7 +66905,50 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled">
                     <StackPanel>
-                        <TabControl x:Name="tabWorkflow" SelectionChanged="workflow_tab_changed">
+                        <Border Style="{StaticResource WizardStepperContainerStyle}" Margin="0,0,0,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="btnWorkflowStep0" Grid.Column="0" Tag="0" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
+                                    <StackPanel>
+                                        <Border x:Name="brdWorkflowStep0Bubble" Style="{StaticResource WizardStepBubbleActiveBorderStyle}">
+                                            <TextBlock x:Name="txtWorkflowStep0Bubble" Text="1" Style="{StaticResource WizardStepBubbleActiveTextStyle}"/>
+                                        </Border>
+                                        <TextBlock x:Name="txtWorkflowStep0Label" Text="View Set" Style="{StaticResource WizardStepLabelActiveStyle}"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Border x:Name="brdWorkflowConn0" Grid.Column="1" Style="{StaticResource WizardStepConnectorPendingStyle}"/>
+
+                                <Button x:Name="btnWorkflowStep1" Grid.Column="2" Tag="1" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
+                                    <StackPanel>
+                                        <Border x:Name="brdWorkflowStep1Bubble" Style="{StaticResource WizardStepBubblePendingBorderStyle}">
+                                            <TextBlock x:Name="txtWorkflowStep1Bubble" Text="2" Style="{StaticResource WizardStepBubblePendingTextStyle}"/>
+                                        </Border>
+                                        <TextBlock x:Name="txtWorkflowStep1Label" Text="Section Snapshot" Style="{StaticResource WizardStepLabelPendingStyle}"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Border x:Name="brdWorkflowConn1" Grid.Column="3" Style="{StaticResource WizardStepConnectorPendingStyle}"/>
+
+                                <Button x:Name="btnWorkflowStep2" Grid.Column="4" Tag="2" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
+                                    <StackPanel>
+                                        <Border x:Name="brdWorkflowStep2Bubble" Style="{StaticResource WizardStepBubblePendingBorderStyle}">
+                                            <TextBlock x:Name="txtWorkflowStep2Bubble" Text="3" Style="{StaticResource WizardStepBubblePendingTextStyle}"/>
+                                        </Border>
+                                        <TextBlock x:Name="txtWorkflowStep2Label" Text="Sheet Layout" Style="{StaticResource WizardStepLabelPendingStyle}"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </Border>
+
+                        <TabControl x:Name="tabWorkflow" Style="{StaticResource WorkflowTabControlStyle}" SelectionChanged="workflow_tab_changed">
                             <TabItem x:Name="tabViewSet" Header="1. View Set">
                                 <StackPanel Margin="0,8,0,0">
 
@@ -77288,7 +67124,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <StackPanel Margin="10">
                                         <TextBlock x:Name="txtLevelSelectionStatus"
                                                    Margin="0,0,0,8"
-                                                   Foreground="DimGray"
+                                                   Foreground="#FF5E6A75"
                                                    TextWrapping="Wrap"
                                                    Text="Select one or more scope boxes to assign applicable levels."/>
 
@@ -77400,7 +67236,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtElementLineStatus"
                                                    Margin="0,0,0,8"
-                                                   Foreground="DimGray"
+                                                   Foreground="#FF5E6A75"
                                                    TextWrapping="Wrap"
                                                    Text="Select element rows on the left to derive line groups by number/location."/>
 
@@ -77427,7 +67263,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                     <TextBlock x:Name="txtPlanViewCount"
                                                Margin="0,0,0,4"
-                                               Foreground="DimGray"
+                                               Foreground="#FF5E6A75"
                                                Text="Plan views: 0"/>
 
                                     <StackPanel x:Name="pnlPlanSettings">
@@ -77443,7 +67279,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtPlanNameExample"
                                                    Margin="0,0,0,8"
-                                                   Foreground="DimGray"
+                                                   Foreground="#FF5E6A75"
                                                    TextWrapping="Wrap"
                                                    Text="Plan example: automatic"/>
 
@@ -77492,7 +67328,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                     <TextBlock x:Name="txtSectionViewCount"
                                                Margin="0,0,0,4"
-                                               Foreground="DimGray"
+                                               Foreground="#FF5E6A75"
                                                Text="Section views: 0"/>
 
                                     <StackPanel x:Name="pnlSectionSettings">
@@ -77507,7 +67343,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtSectionNameExample"
                                                    Margin="0,0,0,8"
-                                                   Foreground="DimGray"
+                                                   Foreground="#FF5E6A75"
                                                    TextWrapping="Wrap"
                                                    Text="Section example: automatic"/>
 
@@ -77559,7 +67395,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </StackPanel>
                             </GroupBox>
 
-                            <Button x:Name="btnProceedToSheetStage"
+                                <Button x:Name="btnProceedToSheetStage"
+                                    Style="{StaticResource PrimaryButton}"
                                     Width="240"
                                     Height="30"
                                     HorizontalAlignment="Left"
@@ -77567,16 +67404,14 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     Content="Run Stage 1: Create/Collect Views"
                                     Click="proceed_to_sheet_layout_click"/>
 
-                            <Border x:Name="bdrStage1InlineStatus"
+                                <Border x:Name="bdrStage1InlineStatus"
+                                    Style="{StaticResource LegendInfoCardBorderStyle}"
                                     Margin="0,0,0,10"
-                                    Padding="8"
-                                    Background="#FFF7FAFD"
-                                    BorderBrush="#FFD0DCE8"
-                                    BorderThickness="1">
+                                    Padding="12,8">
                                 <StackPanel>
                                     <TextBlock x:Name="txtStage1InlineStatus"
                                                Margin="0,0,0,6"
-                                               Foreground="DimGray"
+                                               Foreground="#FF5E6A75"
                                                TextWrapping="Wrap"
                                                Text="Stage 1 status: idle."/>
                                     <ProgressBar x:Name="pbStage1InlineProgress"
@@ -77645,7 +67480,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </Grid>
                             </GroupBox>
 
-                            <Button x:Name="btnProceedSelectorStage"
+                                <Button x:Name="btnProceedSelectorStage"
+                                    Style="{StaticResource PrimaryButton}"
                                     Width="260"
                                     Height="30"
                                     HorizontalAlignment="Left"
@@ -77662,7 +67498,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <GroupBox Header="Section Snapshot Controls" Margin="0,0,0,10">
                                         <StackPanel Margin="10">
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="DimGray"
+                                                       Foreground="#FF5E6A75"
                                                        TextWrapping="Wrap"
                                                        Text="Preview plan/section snapshots, then adjust section cut side and level-based vertical offsets before Sheet Layout."/>
 
@@ -77693,7 +67529,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                             </StackPanel>
 
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="DimGray"
+                                                       Foreground="#FF5E6A75"
                                                        TextWrapping="Wrap"
                                                        Text="Pick an edge first (preferred). If cancelled or unavailable, pick two points. Use Section Side = Aligned to apply custom section orientation."/>
 
@@ -77743,6 +67579,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                             <StackPanel Orientation="Horizontal">
                                                 <Button x:Name="btnApplySectionSnapshotSettings"
+                                                    Style="{StaticResource PrimaryButton}"
                                                         Width="220"
                                                         Height="28"
                                                         Margin="0,0,10,0"
@@ -77757,6 +67594,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                                     Click="stage2_read_vertical_from_sections_click"/>
 
                                                 <Button x:Name="btnProceedToStage3"
+                                                    Style="{StaticResource PrimaryButton}"
                                                         Width="220"
                                                         Height="28"
                                                         Content="Proceed to Stage 3: Sheet Layout"
@@ -77764,7 +67602,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                             </StackPanel>
 
                                             <TextBlock Margin="0,8,0,0"
-                                                       Foreground="DimGray"
+                                                       Foreground="#FF5E6A75"
                                                        Text="Tip: select rows below, then Apply. If no rows are selected, Apply targets all section rows."/>
                                         </StackPanel>
                                     </GroupBox>
@@ -77835,7 +67673,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <GroupBox Header="Stage 1 View Name Editor" Margin="0,0,0,10">
                                         <StackPanel Margin="8">
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="DimGray"
+                                                       Foreground="#FF5E6A75"
                                                        TextWrapping="Wrap"
                                                        Text="Review and edit Plan/Section names produced by Stage 1 before continuing to Sheet Layout."/>
 
@@ -78258,7 +68096,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                Text="Stage 2 snapshot: rendered rows with Plan View (left) and Section View (right)."/>
                 </DockPanel>
 
-                <Border Grid.Row="1" BorderBrush="#FFD0D0D0" BorderThickness="1" Background="WhiteSmoke">
+                <Border Grid.Row="1" BorderBrush="#FFD8DDE3" BorderThickness="1" Background="#FFF9FAFB">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                         <StackPanel x:Name="spStage2SnapshotRows" Margin="8"/>
                     </ScrollViewer>
@@ -78279,8 +68117,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                     <Border x:Name="bdrWarnings"
                             Padding="8"
-                            Background="#FFF8E7C2"
-                            BorderBrush="#FFD1A84A"
+                            Background="#FFFFF4E5"
+                            BorderBrush="#FFF5C98A"
                             BorderThickness="1"
                             Visibility="Collapsed">
                         <TextBlock x:Name="txtWarnings" TextWrapping="Wrap"/>
@@ -78336,8 +68174,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <Border Grid.Row="1"
                                 Margin="0,0,0,8"
                                 Padding="8"
-                                Background="#FFF3F3F3"
-                                BorderBrush="#FFD0D0D0"
+                            Background="#FFF9FAFB"
+                            BorderBrush="#FFD8DDE3"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -78359,7 +68197,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                            Text="Apply to Selected"/>
 
                                 <StackPanel Grid.Column="1" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Direction"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Direction"/>
                                     <ComboBox x:Name="cbBulkSectionDirectionCreator">
                                         <ComboBoxItem>Front</ComboBoxItem>
                                         <ComboBoxItem>Back</ComboBoxItem>
@@ -78369,22 +68207,22 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Plan Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Plan Order"/>
                                     <TextBox x:Name="tbBulkPlanOrderCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="3" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Section Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Section Order"/>
                                     <TextBox x:Name="tbBulkSectionOrderCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="4" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Viewport Type"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Viewport Type"/>
                                     <ComboBox x:Name="cbBulkViewportTypeCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="5" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Title Position"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Title Position"/>
                                     <ComboBox x:Name="cbBulkTitlePositionCreator"/>
                                 </StackPanel>
 
@@ -78513,8 +68351,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <Border Grid.Row="1"
                                 Margin="0,0,0,8"
                                 Padding="8"
-                                Background="#FFF3F3F3"
-                                BorderBrush="#FFD0D0D0"
+                            Background="#FFF9FAFB"
+                            BorderBrush="#FFD8DDE3"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -78527,17 +68365,17 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </Grid.ColumnDefinitions>
 
                                 <StackPanel Grid.Column="0" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Order"/>
                                     <TextBox x:Name="tbBulkOrderSelector"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Viewport Type"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Viewport Type"/>
                                     <ComboBox x:Name="cbBulkViewportTypeSelector"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Title Position"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Title Position"/>
                                     <ComboBox x:Name="cbBulkTitlePositionSelector"/>
                                 </StackPanel>
 
@@ -78626,7 +68464,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                             <TextBlock x:Name="txtPreviewHint"
                                        Grid.Column="0"
                                        Margin="0,0,12,0"
-                                       Foreground="DimGray"
+                                       Foreground="#FF5E6A75"
                                        TextWrapping="Wrap"
                                        VerticalAlignment="Center"
                                        Text="Select source data, then click Preview."/>
@@ -78645,7 +68483,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                                                 Margin="0,0,12,0"
                                                                 VerticalAlignment="Center"
                                                                 Orientation="Horizontal">
-                                                            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="DimGray" Text="Sheet Limit"/>
+                                                            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="#FF5E6A75" Text="Sheet Limit"/>
                                                             <ComboBox x:Name="cbPreviewCardLimit" Width="74" SelectionChanged="setup_changed">
                                                                 <ComboBoxItem Content="4"/>
                                                                 <ComboBoxItem Content="8"/>
@@ -78713,7 +68551,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,12,0,0">
-            <Button x:Name="btnCreate"
+                <Button x:Name="btnCreate"
+                    Style="{StaticResource PrimaryButton}"
                     Width="100"
                     Height="28"
                     Margin="0,0,8,0"
@@ -78725,30 +68564,60 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
         </StackPanel>
     </Grid>
 </Window>
+
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/ViewCreator.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/DetailMoveWindow.xaml
-## META: sha1=a11245d0fb5d46abbcb5e619a2605b97df86ff17 size=12618
+## META: sha1=fb7b4eaa7f078e9a17f4b88d52c591648a7695d8 size=14297
 ## TYPE: text
 ```
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Section/Detail Vertical Extension Updater"
         Height="960"
         Width="1360"
     MinHeight="860"
     MinWidth="1180"
-        ResizeMode="CanResize"
+        ShowInTaskbar="False"
+            ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
-    Topmost="False">
+        Background="#FFFBFE"
+        Foreground="#1A1A1A"
+        FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+        <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource SecondaryButton}"/>
+    </Window.Resources>
 
     <DockPanel Margin="12">
 
-        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,10">
-            <TextBlock FontSize="16" FontWeight="Bold" Text="Section/Detail Vertical Extension Updater"/>
-            <TextBlock Margin="0,4,0,0" Text="Stage-based tool with per-view explicit vertical mapping"/>
-        </StackPanel>
+        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="SU" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Section Updater" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Stage-based scope, plan, and vertical extent updates for sections and details." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
 
         <Grid DockPanel.Dock="Top" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
@@ -78791,7 +68660,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         </WrapPanel>
                         <CheckBox Name="ChkSelectionOnly">Selection only / no updates</CheckBox>
                         <TextBlock Name="TxtTargetCount" Margin="0,8,0,4"/>
-                        <TextBlock Name="TxtCatalogCount" Margin="0,0,0,8" Foreground="DimGray" TextWrapping="Wrap"/>
+                        <TextBlock Name="TxtCatalogCount" Margin="0,0,0,8" Foreground="#FF5E6A75" TextWrapping="Wrap"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Margin="0,8,0,0">
@@ -78834,14 +68703,14 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                     <TextBlock Name="TxtPlanNote"
                             TextWrapping="Wrap"
                             Margin="0,0,0,8"
-                            Foreground="DimGray"/>
+                            Foreground="#FF5E6A75"/>
 
                     <TextBlock Margin="0,0,0,4" FontWeight="Bold">Scope box visible in selected plan</TextBlock>
 
                     <ComboBox Name="CmbScopeBox" Width="280" Margin="0,0,0,10"/>
 
                     <CheckBox Name="ChkMovePlan">Move / rotate in plan</CheckBox>
-                    <CheckBox Name="ChkFlipAfter" Margin="0,6,0,0">Flip 180° after move</CheckBox>
+                    <CheckBox Name="ChkFlipAfter" Margin="0,6,0,0">Flip 180 deg after move</CheckBox>
                     <CheckBox Name="ChkMatchHorizontal" Margin="0,6,0,0">Match horizontal extents to scope box side</CheckBox>
                     <CheckBox Name="ChkAssignScopeBox" Margin="0,6,0,0">Assign scope box last</CheckBox>
 
@@ -78858,7 +68727,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                             FontWeight="Bold"
                             Text="Plan/extents stage ready: No affected sections added."/>
 
-                    <Button Name="BtnRunPlanExtent"
+                        <Button Name="BtnRunPlanExtent"
+                            Style="{StaticResource PrimaryButton}"
                             Width="160"
                             Height="30"
                             IsEnabled="False">
@@ -78940,7 +68810,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <StackPanel Name="StageMapRows"/>
                     </ScrollViewer>
 
-                    <Button Name="BtnRunVerticalCrop"
+                        <Button Name="BtnRunVerticalCrop"
+                            Style="{StaticResource PrimaryButton}"
                             Grid.Row="3"
                             Width="180"
                             Height="30"
@@ -78966,12 +68837,13 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
         </GroupBox>
 
         <WrapPanel DockPanel.Dock="Bottom" Margin="0,12,0,0" HorizontalAlignment="Right">
-            <Button Name="BtnRun" Width="120" Height="30" Margin="0,0,8,0">Run</Button>
+            <Button Name="BtnRun" Style="{StaticResource PrimaryButton}" Width="120" Height="30" Margin="0,0,8,0">Run</Button>
             <Button Name="BtnCancel" Width="120" Height="30">Cancel</Button>
         </WrapPanel>
 
     </DockPanel>
 </Window>
+
 
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/DetailMoveWindow.xaml
@@ -78983,13 +68855,13 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/script.py
-## META: sha1=32f3500a02604382cd038aac776456341e88b8df size=921
+## META: sha1=fa0071e1de3a1a6517a68b1a3b93dc4028b832fb size=1531
 ## TYPE: text
-## IMPORTS: ["detailmove_engine","detailmove_ui","os","pyrevit","sys","telemetry"]
-## FUNCTIONS: ["main"]
+## IMPORTS: ["os","pyrevit","sys","telemetry"]
+## FUNCTIONS: ["_find_extension_root","main"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 try:
     import telemetry
@@ -79006,13 +68878,32 @@ import sys
 from pyrevit import forms
 
 bundle_dir = os.path.dirname(__file__)
-lib_dir = os.path.join(bundle_dir, 'lib')
+
+
+def _find_extension_root(start_path):
+    current = os.path.abspath(start_path)
+    if os.path.isfile(current):
+        current = os.path.dirname(current)
+    while True:
+        if current.lower().endswith('.extension'):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            return None
+        current = parent
+
+
+extension_root = _find_extension_root(__file__)
+if extension_root is None:
+    forms.alert('Could not locate extension root from this script path.', exitscript=True)
+
+lib_dir = os.path.join(extension_root, 'lib')
 
 if lib_dir not in sys.path:
-    sys.path.append(lib_dir)
+    sys.path.insert(0, lib_dir)
 
-from detailmove_ui import DetailMoveWindow
-from detailmove_engine import run_detailmove
+DetailMoveWindow = __import__('detailmove_ui').DetailMoveWindow
+run_detailmove = __import__('detailmove_engine').run_detailmove
 
 
 def main():
@@ -79069,10 +68960,10 @@ Drive the DetailMove workflow for staging, previewing, and executing section or 
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/script.py
-## META: sha1=b29fe1999431171323cc9399fb99453506288cb9 size=14818
+## META: sha1=620ead3dfc5bfd1ed0d4fe0c8ed2702f2a89f9a5 size=15359
 ## TYPE: text
-## IMPORTS: ["importlib","os","pyrevit","sys"]
-## FUNCTIONS: ["_find_extension_root","__init__","__init__","__init__","OnSheetSelectionChanged","_status","_scope_changed","_sheet_set_changed","_filter_changed","_param_changed","_select_all_visible_click","_clear_selection_click","_close_click","_scope_value","_current_scope_sheets","_update_scope_controls","_load_scope_rows","_set_selected_rows","_apply_filter_to_rows","_analysis_sheets","_current_param_value","_param_as_text","_selected_sheets","_refresh_analysis_and_params","_resolve_default_param_keys","norm","_selected_param_keys","_refresh_preview","_apply_click","main"]
+## IMPORTS: ["GUI.style_guide_2026","importlib","os","pyrevit","sys"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_find_extension_root","__init__","__init__","__init__","OnSheetSelectionChanged","_status","_scope_changed","_sheet_set_changed","_filter_changed","_param_changed","_select_all_visible_click","_clear_selection_click","_close_click","_scope_value","_current_scope_sheets","_update_scope_controls","_load_scope_rows","_set_selected_rows","_apply_filter_to_rows","_analysis_sheets","_current_param_value","_param_as_text","_selected_sheets","_refresh_analysis_and_params","_resolve_default_param_keys","norm","_selected_param_keys","_refresh_preview","_apply_click","main"]
 ## CLASSES: ["SheetRow","PreviewRow","SheetNoOfNoWindow"]
 ```python
 # -*- coding: utf-8 -*-
@@ -79088,9 +68979,29 @@ __doc__ = "Analyze active titleblock parameters and update Sheet # of # values b
 
 import os
 import sys
-import importlib
+
+try:
+	import importlib
+except Exception:
+	importlib = None
 
 from pyrevit import revit, forms, script
+
+try:
+	from GUI.style_guide_2026 import (
+		apply_window_contract,
+		apply_topmost_and_parent,
+		apply_style_guide_resources,
+	)
+except Exception:
+	def apply_window_contract(window):
+		return
+
+	def apply_topmost_and_parent(window):
+		return
+
+	def apply_style_guide_resources(window):
+		return
 
 
 def _find_extension_root(start_path):
@@ -79115,7 +69026,10 @@ _lib_dir = os.path.join(_ext_root, "lib")
 if _lib_dir not in sys.path:
 	sys.path.insert(0, _lib_dir)
 
-_engine = importlib.import_module("sheet_no_of_no_engine")
+if importlib is not None:
+	_engine = importlib.import_module("sheet_no_of_no_engine")
+else:
+	_engine = __import__("sheet_no_of_no_engine")
 apply_sheet_no_of_no = _engine.apply_sheet_no_of_no
 analyze_titleblock_parameters = _engine.analyze_titleblock_parameters
 filter_sheets = _engine.filter_sheets
@@ -79152,6 +69066,9 @@ class PreviewRow(object):
 class SheetNoOfNoWindow(forms.WPFWindow):
 	def __init__(self, xaml_path):
 		forms.WPFWindow.__init__(self, xaml_path)
+		apply_style_guide_resources(self)
+		apply_window_contract(self)
+		apply_topmost_and_parent(self)
 
 		self._all_sheets = get_all_sheets(doc)
 		self._sheet_sets = get_sheet_set_names(doc)
@@ -79537,7 +69454,7 @@ if __name__ == "__main__":
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/SheetNoOfNoWindow.xaml
-## META: sha1=1e36f6c3be74441e32ba1347525aaf6866b576f0 size=13198
+## META: sha1=07997105315cfad8a13c0cbc7ee263a4c461d0a1 size=15555
 ## TYPE: text
 ```
 <Window
@@ -79547,24 +69464,30 @@ if __name__ == "__main__":
     MinWidth="1600" Width="1660"
     MinHeight="700" Height="760"
     WindowStartupLocation="CenterScreen"
-    Background="#1f1f1f"
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
     FontFamily="Segoe UI"
     FontSize="12">
 
     <Window.Resources>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#e2e2e2"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
         </Style>
 
         <Style TargetType="DataGrid">
-            <Setter Property="Foreground" Value="#ececec"/>
-            <Setter Property="Background" Value="#262626"/>
-            <Setter Property="BorderBrush" Value="#424242"/>
+            <Setter Property="Foreground" Value="#1A1A1A"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#FFD8DDE3"/>
             <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-            <Setter Property="RowBackground" Value="#262626"/>
-            <Setter Property="AlternatingRowBackground" Value="#2c2c2c"/>
-            <Setter Property="HorizontalGridLinesBrush" Value="#3a3a3a"/>
-            <Setter Property="VerticalGridLinesBrush" Value="#3a3a3a"/>
+            <Setter Property="RowBackground" Value="#FFFFFFFF"/>
+            <Setter Property="AlternatingRowBackground" Value="#FFF9FAFB"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FFE1E4E8"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#FFE1E4E8"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="CanUserAddRows" Value="False"/>
             <Setter Property="CanUserDeleteRows" Value="False"/>
@@ -79574,9 +69497,9 @@ if __name__ == "__main__":
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#1f1f1f"/>
-            <Setter Property="Foreground" Value="#d7d7d7"/>
-            <Setter Property="BorderBrush" Value="#3a3a3a"/>
+            <Setter Property="Background" Value="#FFF9FAFB"/>
+            <Setter Property="Foreground" Value="#FF5E6A75"/>
+            <Setter Property="BorderBrush" Value="#FFE1E4E8"/>
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -79584,35 +69507,36 @@ if __name__ == "__main__":
         </Style>
 
         <Style x:Key="CurrentValueText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#f16d6d"/>
+            <Setter Property="Foreground" Value="#FFB42318"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="NewValueText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#66cf89"/>
+            <Setter Property="Foreground" Value="#FF2EA043"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="ActionButton" TargetType="Button">
-            <Setter Property="Background" Value="#3b3f53"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#1F4FD9"/>
             <Setter Property="Padding" Value="14,6"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#58608a"/>
+                                <Setter Property="Background" Value="#1640B0"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.5"/>
@@ -79624,9 +69548,17 @@ if __name__ == "__main__":
         </Style>
 
         <Style x:Key="ApplyButton" TargetType="Button" BasedOn="{StaticResource ActionButton}">
-            <Setter Property="Background" Value="#2f6d44"/>
+            <Setter Property="Background" Value="#2EA043"/>
+            <Setter Property="BorderBrush" Value="#2EA043"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Height" Value="34"/>
+        </Style>
+
+        <Style x:Key="SecondaryActionButton" TargetType="Button" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
     </Window.Resources>
 
@@ -79634,26 +69566,47 @@ if __name__ == "__main__":
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#171717" CornerRadius="6" Padding="12" Margin="0,0,0,10">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="SN" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · Sheet # of #" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Filter sheet scope, preview numbering changes, and apply parameter updates." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <TextBlock FontSize="16" FontWeight="Bold" Text="Sheet # of #"/>
-                    <TextBlock Margin="0,4,0,0" Foreground="#9a9a9a"
+                    <TextBlock FontSize="12" FontWeight="SemiBold" Text="Sheet Scope and Mapping"/>
+                    <TextBlock Margin="0,4,0,0" Foreground="#FF5E6A75"
                                Text="Select sheet scope, filter and select target sheets, then apply default or custom parameter mapping."/>
                 </StackPanel>
-                <TextBlock x:Name="TxtModelSummary" Grid.Column="1" VerticalAlignment="Center" Foreground="#b0b0b0"/>
+                <TextBlock x:Name="TxtModelSummary" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF5E6A75"/>
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Background="#242424" CornerRadius="6" Padding="12" Margin="0,0,0,10">
+        <Border Grid.Row="2" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140"/>
@@ -79675,13 +69628,13 @@ if __name__ == "__main__":
             </Grid>
         </Border>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.05*"/>
                 <ColumnDefinition Width="0.95*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#242424" CornerRadius="6" Padding="10" Margin="0,0,8,0">
+            <Border Grid.Column="0" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,8,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -79714,7 +69667,7 @@ if __name__ == "__main__":
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1" Background="#242424" CornerRadius="6" Padding="10" Margin="8,0,0,0">
+            <Border Grid.Column="1" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="8,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -79770,19 +69723,19 @@ if __name__ == "__main__":
             </Border>
         </Grid>
 
-        <Border Grid.Row="3" Background="#171717" CornerRadius="6" Padding="12" Margin="0,10,0,0">
+        <Border Grid.Row="4" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,10,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" Foreground="#b5b5b5"
+                <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" Foreground="#FF5E6A75"
                            Text="Ready."/>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <Button x:Name="BtnApply" Width="170" Margin="0,0,8,0" Style="{StaticResource ApplyButton}" Content="Apply Updates"/>
-                    <Button x:Name="BtnClose" Width="90" Style="{StaticResource ActionButton}" Content="Close"/>
+                    <Button x:Name="BtnClose" Width="90" Style="{StaticResource SecondaryActionButton}" Content="Close"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -80573,8 +70526,8 @@ _register_dashboard_panel()
 ## FILE_END: startup.py
 
 ## BUNDLE_INTEGRITY
-FILES: 312
-TOTAL_BYTES: 5367741
+FILES: 300
+TOTAL_BYTES: 4934085
 STATUS: COMPLETE
 TRUNCATION: NONE
 ## END_BUNDLE

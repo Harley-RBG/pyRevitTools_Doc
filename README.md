@@ -13,6 +13,7 @@ Purpose and alignment tracker:
 
 - `WORKING_HUB_TRACKER.md`
 - `working-hub.json` (editable data source for Working Hub + Windows/Web app catalog placeholders)
+- `tool-datasets.json` (per-tool static simulator datasets and control options)
 
 ## How It Works
 
@@ -20,6 +21,12 @@ Purpose and alignment tracker:
 Default source path:
 
 `P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension`
+
+It also syncs tool UI screenshots from:
+
+`P:\Production\Computational\RBG_pyRevit\Extension\Tool Screenshots`
+
+Synced files are copied into `generated/tool-screenshots/` and indexed in `generated/tool-screenshots-manifest.json` for simulator mapping.
 
 The updater keeps a local cache at `generated/bundle-cache.json` and reuses unchanged file blocks from the previous bundle when file size and modified time match. On repeated runs, only changed files are re-read and rebuilt.
 
@@ -40,6 +47,11 @@ The generator now also writes:
 - `generated/ui-manifest.json`
 - `generated/training-data.json`
 - `generated/ui-diagnostics.json`
+- `generated/tool-screenshots-manifest.json`
+
+Simulator input data source:
+
+- `tool-datasets.json` (optional, per-tool static datasets keyed by tool id)
 
 Tool page cache location:
 

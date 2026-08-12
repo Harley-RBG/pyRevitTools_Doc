@@ -50,7 +50,7 @@
         </div>
         <div class="card-body wiki-body">
           <h4 class="subhead">Workflow Stages</h4>
-          <ul><li>Selection stage</li><li>Load and preparation stage</li></ul>
+          <ul><li>Selection stage</li><li>Load and preparation stage</li><li>Execution stage</li></ul>
 
           <h4 class="subhead">Key Workflow Methods</h4>
           <ul><li><code>build_grouped_dict()</code></li><li><code>_build_category_block()</code></li><li><code>_build_element_row()</code></li><li><code>_on_select_all()</code></li><li><code>_on_select_category()</code></li><li><code>_on_select_element()</code></li><li><code>_on_close()</code></li></ul>
@@ -70,6 +70,8 @@
         </div>
         <div class="card-body wiki-body">
           <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <h4 class="subhead">Screenshot Reference</h4>
+          <div class="sim-shot-grid"><figure class="sim-shot"><img src="../generated/tool-screenshots/RBG_SYD_Tools/Elements by Level.png" alt="Elements by Level screenshot: Elements by Level.png" loading="lazy" /><figcaption>Elements by Level.png</figcaption></figure></div>
           <div class="simulator-shell">
             <div class="simulator-toolbar">
               <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
@@ -125,7 +127,8 @@
 
     <script>
       (function () {
-        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["SelectByLevelWindow.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"arrow","name":"Arrow","kind":"block","label":"Arrow","required":false},{"id":"txttitle","name":"TxtTitle","kind":"text","label":"TxtTitle","required":false},{"id":"txtsummary","name":"TxtSummary","kind":"text","label":"TxtSummary","required":false},{"id":"btnselectall","name":"BtnSelectAll","kind":"button","label":"BtnSelectAll","required":false},{"id":"btnclose","name":"BtnClose","kind":"button","label":"BtnClose","required":false},{"id":"categorypanel","name":"CategoryPanel","kind":"block","label":"CategoryPanel","required":false},{"id":"on-select-all","name":"on_select_all","kind":"block","label":"on_select_all","required":false},{"id":"on-select-category","name":"on_select_category","kind":"block","label":"on_select_category","required":false},{"id":"on-select-element","name":"on_select_element","kind":"block","label":"on_select_element","required":false},{"id":"on-close","name":"on_close","kind":"block","label":"on_close","required":false},{"id":"button-10","name":"Button","kind":"button","label":"Button","required":false},{"id":"action-select-all-elements","name":"Select All Elements","kind":"button","label":"Select All Elements","required":false},{"id":"action-close","name":"Close","kind":"button","label":"Close","required":false}],"events":[{"controlId":"action-select-all-elements","event":"click","handler":"on_select-all-elements"},{"controlId":"action-close","event":"click","handler":"on_close"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"SelectFromList","message":"Simulated SelectFromList interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Load and preparation stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Load and preparation stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
+        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["SelectByLevelWindow.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"arrow","name":"Arrow","kind":"block","label":"Arrow","required":false},{"id":"txttitle","name":"TxtTitle","kind":"text","label":"TxtTitle","required":false},{"id":"txtsummary","name":"TxtSummary","kind":"text","label":"TxtSummary","required":false},{"id":"btnselectall","name":"BtnSelectAll","kind":"button","label":"BtnSelectAll","required":false},{"id":"btnclose","name":"BtnClose","kind":"button","label":"BtnClose","required":false},{"id":"categorypanel","name":"CategoryPanel","kind":"block","label":"CategoryPanel","required":false},{"id":"on-select-all","name":"on_select_all","kind":"block","label":"on_select_all","required":false},{"id":"on-select-category","name":"on_select_category","kind":"block","label":"on_select_category","required":false},{"id":"on-select-element","name":"on_select_element","kind":"block","label":"on_select_element","required":false},{"id":"on-close","name":"on_close","kind":"block","label":"on_close","required":false},{"id":"button-10","name":"Button","kind":"button","label":"Button","required":false},{"id":"action-select-all-elements","name":"Select All Elements","kind":"button","label":"Select All Elements","required":false},{"id":"action-close","name":"Close","kind":"button","label":"Close","required":false}],"events":[{"controlId":"action-select-all-elements","event":"click","handler":"on_select-all-elements"},{"controlId":"action-close","event":"click","handler":"on_close"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"SelectFromList","message":"Simulated SelectFromList interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Load and preparation stage"},{"step":3,"label":"Execution stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Load and preparation stage","Execution stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
+        const DATASET = {};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
@@ -138,6 +141,15 @@
           if (node) {
             node.textContent = String(value);
           }
+        }
+
+        function getControlOptions(control) {
+          const source = DATASET.selectOptions || {};
+          const options = source[control.id] || source[control.name] || source[control.label] || [];
+          if (!Array.isArray(options) || !options.length) {
+            return null;
+          }
+          return options.map((item) => String(item));
         }
 
         function createInput(control) {
@@ -156,7 +168,8 @@
             field.placeholder = 'Enter ' + control.label;
           } else if (control.kind === 'select') {
             field = document.createElement('select');
-            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+            const selectOptions = getControlOptions(control) || ['Option A', 'Option B', 'Option C'];
+            ['Select...'].concat(selectOptions).forEach((optionText, index) => {
               const option = document.createElement('option');
               option.value = index === 0 ? '' : optionText;
               option.textContent = optionText;
@@ -165,7 +178,8 @@
           } else if (control.kind === 'multiselect') {
             field = document.createElement('select');
             field.multiple = true;
-            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+            const multiOptions = getControlOptions(control) || ['Sample 1', 'Sample 2', 'Sample 3'];
+            multiOptions.forEach((optionText) => {
               const option = document.createElement('option');
               option.value = optionText;
               option.textContent = optionText;
@@ -257,9 +271,18 @@
               return;
             }
             if (control.kind === 'table') {
+              const datasetRows = Array.isArray(DATASET.sampleTableRows) ? DATASET.sampleTableRows : [];
+              const tableRows = datasetRows.length
+                ? datasetRows.map((row) => {
+                  const cells = Array.isArray(row) ? row : [row];
+                  const left = String(cells[0] || '');
+                  const right = String(cells[1] || 'Ready');
+                  return '<tr><td>' + left + '</td><td>' + right + '</td></tr>';
+                }).join('')
+                : '<tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr>';
               const tableWrap = document.createElement('div');
               tableWrap.className = 'sim-table-wrap sim-span-full';
-              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody>' + tableRows + '</tbody></table>';
               form.appendChild(tableWrap);
               return;
             }
@@ -282,32 +305,52 @@
           setText('sim-event-count', 9);
           setText('sim-prompt-count', SIMULATOR.prompts.length);
 
-          const sampleSections = [
-            'TRUSS B - SECTION (L0-1)',
-            'TRUSS B - SECTION (L2-3)',
-            'TRUSS B - SECTION (L3-4)',
-            'TRUSS B - SECTION (L4-5)',
-            'TRUSS B - SECTION (L5-6)',
-            'TRUSS B - SECTION (L6-7)',
-            'TRUSS C - SECTION (L0-1)',
-            'TRUSS C - SECTION (L1-2)',
-            'TRUSS C - SECTION (L2-3)',
-          ];
+          const secup = DATASET.sectionUpdater || {};
+          const activeView = String(secup.activeView || 'BRACING TRUSS A/B - DETAILS');
+          const defaultFilter = String(secup.defaultFilter || 'truss');
 
-          const rows = [
-            ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
-            ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
-            ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
-            ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
-            ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
-          ];
+          const sampleSections = Array.isArray(secup.sampleSections) && secup.sampleSections.length
+            ? secup.sampleSections.map((item) => String(item))
+            : [
+              'TRUSS B - SECTION (L0-1)',
+              'TRUSS B - SECTION (L2-3)',
+              'TRUSS B - SECTION (L3-4)',
+              'TRUSS B - SECTION (L4-5)',
+              'TRUSS B - SECTION (L5-6)',
+              'TRUSS B - SECTION (L6-7)',
+              'TRUSS C - SECTION (L0-1)',
+              'TRUSS C - SECTION (L1-2)',
+              'TRUSS C - SECTION (L2-3)',
+            ];
+
+          const rows = Array.isArray(secup.rows) && secup.rows.length
+            ? secup.rows
+            : [
+              ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
+              ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
+              ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
+              ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
+              ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
+            ];
+
+          const planViews = Array.isArray(secup.planViews) && secup.planViews.length ? secup.planViews : ['GA-SS LEVEL 1E', 'GA-SS LEVEL 2E'];
+          const scopeBoxes = Array.isArray(secup.scopeBoxes) && secup.scopeBoxes.length ? secup.scopeBoxes : ['TRUSS B - GA E11/EA-EB', 'TRUSS C - GA E12/EA-EB'];
+          const scopeSides = Array.isArray(secup.scopeSides) && secup.scopeSides.length ? secup.scopeSides : ['Top', 'Bottom', 'Left', 'Right'];
+          const lowerLevels = Array.isArray(secup.lowerLevelOptions) && secup.lowerLevelOptions.length ? secup.lowerLevelOptions : ['DATUM'];
+          const upperLevels = Array.isArray(secup.upperLevelOptions) && secup.upperLevelOptions.length ? secup.upperLevelOptions : ['NEW ROOF'];
+          const lowerOffset = String(secup.defaultLowerOffset || '0.0');
+          const upperOffset = String(secup.defaultUpperOffset || '0.0');
+
+          function optionList(values) {
+            return values.map((value) => '<option>' + String(value) + '</option>').join('');
+          }
 
           simulatorRoot.innerHTML =
             '<div class="secup-layout">' +
               '<section class="secup-pane">' +
                 '<h5>Targets</h5>' +
-                '<p class="muted">Active view: BRACING TRUSS A/B - DETAILS</p>' +
-                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="truss" /></label>' +
+                '<p class="muted">Active view: ' + activeView + '</p>' +
+                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="' + defaultFilter + '" /></label>' +
                 '<label class="sim-control"><span class="sim-label">Sort</span><select id="secup-sort" class="sim-field"><option>Name A-Z</option><option>Name Z-A</option></select></label>' +
                 '<div class="secup-toggle-row">' +
                   '<label><input id="secup-visible-only" type="checkbox" /> Visible in selected plan only</label>' +
@@ -326,15 +369,15 @@
               '</section>' +
               '<section class="secup-pane">' +
                 '<h5>Plan + extent stages</h5>' +
-                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field"><option>GA-SS LEVEL 1E</option><option>GA-SS LEVEL 2E</option></select></label>' +
-                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field"><option>TRUSS B - GA E11/EA-EB</option><option>TRUSS C - GA E12/EA-EB</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field">' + optionList(planViews) + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field">' + optionList(scopeBoxes) + '</select></label>' +
                 '<div class="secup-toggle-col">' +
                   '<label><input type="checkbox" /> Move / rotate in plan</label>' +
                   '<label><input type="checkbox" /> Flip 180 after move</label>' +
                   '<label><input type="checkbox" /> Match horizontal extents to scope box side</label>' +
                   '<label><input type="checkbox" /> Assign scope box last</label>' +
                 '</div>' +
-                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field"><option>Top</option><option>Bottom</option><option>Left</option><option>Right</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field">' + optionList(scopeSides) + '</select></label>' +
                 '<p><strong>Plan/extents stage ready:</strong> <span id="secup-stage-count">0</span> affected section(s).</p>' +
                 '<button type="button" class="sim-action" id="secup-run-plan">Run Plan + Extents</button>' +
               '</section>' +
@@ -345,10 +388,10 @@
                   '<label><input type="radio" name="secup-crop-mode" /> Update vertical crop extents from Levels</label>' +
                 '</div>' +
                 '<div class="sim-action-row secup-actions-inline">' +
-                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field"><option>DATUM</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field"><option>NEW ROOF</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field">' + optionList(lowerLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="' + lowerOffset + '" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field">' + optionList(upperLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="' + upperOffset + '" /></label>' +
                   '<button type="button" class="sim-action sim-action-secondary" id="secup-batch">Apply Batch To Selected</button>' +
                 '</div>' +
                 '<div class="sim-table-wrap secup-table-wrap">' +

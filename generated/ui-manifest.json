@@ -1,11 +1,18 @@
 {
-  "generatedAt": "2026-08-10T08:04:52.790Z",
+  "generatedAt": "2026-08-12T23:39:35.827Z",
   "source": "bundle.md",
   "tools": [
     {
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
       "title": "Add Coordinates",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-addcoordinates.html",
+      "screenshots": [
+        {
+          "fileName": "Add Coordinates.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Add Coordinates.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
         "uiKind": "pyrevit-form",
@@ -56,6 +63,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton",
       "title": "MagpieGroup Data",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-magpiegroup.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton",
         "uiKind": "pyrevit-form",
@@ -108,6 +116,33 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
       "title": "PackageCreator Dockable Panel",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
+      "screenshots": [
+        {
+          "fileName": "PackageCreator1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator1.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "PackageCreator2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator2.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "PackageCreator3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator3.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "PackageCreator4.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator4.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "PackageCreator5.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator5.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
         "uiKind": "mixed",
@@ -119,6 +154,13 @@
           "external-xaml"
         ],
         "controls": [
+          {
+            "id": "buttonborder",
+            "name": "ButtonBorder",
+            "kind": "button",
+            "label": "ButtonBorder",
+            "required": false
+          },
           {
             "id": "btnrefresh",
             "name": "BtnRefresh",
@@ -180,13 +222,6 @@
             "name": "InpProjectSearch",
             "kind": "block",
             "label": "InpProjectSearch",
-            "required": false
-          },
-          {
-            "id": "cmbproject",
-            "name": "CmbProject",
-            "kind": "select",
-            "label": "CmbProject",
             "required": false
           },
           {
@@ -368,6 +403,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
       "title": "ParamCopier",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-paramcopier.html",
+      "screenshots": [
+        {
+          "fileName": "Param Copier.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Param Copier.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
         "uiKind": "pyrevit-form",
@@ -432,32 +474,32 @@
             "required": false
           },
           {
-            "id": "listbox-8",
+            "id": "button-8",
+            "name": "Button",
+            "kind": "button",
+            "label": "Button",
+            "required": false
+          },
+          {
+            "id": "listbox-9",
             "name": "ListBox",
             "kind": "multiselect",
             "label": "ListBox",
             "required": true
           },
           {
-            "id": "tabcontrol-9",
+            "id": "tabcontrol-10",
             "name": "TabControl",
             "kind": "tabs",
             "label": "TabControl",
             "required": false
           },
           {
-            "id": "textbox-10",
+            "id": "textbox-11",
             "name": "TextBox",
             "kind": "text",
             "label": "TextBox",
             "required": true
-          },
-          {
-            "id": "button-11",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
           },
           {
             "id": "combobox-12",
@@ -542,6 +584,23 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
       "title": "Schedule Updater",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html",
+      "screenshots": [
+        {
+          "fileName": "ScheduleUpdater1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater1.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "ScheduleUpdater2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater2.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "ScheduleUpdater3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater3.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
         "uiKind": "pyrevit-form",
@@ -597,6 +656,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
       "title": "Tool Dashboard",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-dashboard.html",
+      "screenshots": [
+        {
+          "fileName": "Tool Dashboard.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Tool Dashboard.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
         "uiKind": "mixed",
@@ -609,6 +675,13 @@
           "external-xaml"
         ],
         "controls": [
+          {
+            "id": "buttonborder",
+            "name": "ButtonBorder",
+            "kind": "button",
+            "label": "ButtonBorder",
+            "required": false
+          },
           {
             "id": "cardborder",
             "name": "CardBorder",
@@ -670,13 +743,6 @@
             "name": "GroupTree",
             "kind": "block",
             "label": "GroupTree",
-            "required": false
-          },
-          {
-            "id": "cardgrid",
-            "name": "CardGrid",
-            "kind": "block",
-            "label": "CardGrid",
             "required": false
           },
           {
@@ -892,6 +958,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
       "title": "Transaction Logger",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
         "uiKind": "mixed",
@@ -1041,6 +1108,10 @@
         "workflow": [
           {
             "step": 1,
+            "label": "Execution stage"
+          },
+          {
+            "step": 2,
             "label": "Results and status stage"
           }
         ],
@@ -1050,6 +1121,7 @@
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
+              "Execution stage",
               "Results and status stage"
             ],
             "expectedOutput": [
@@ -1070,6 +1142,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton",
       "title": "Disallow Detach Elements",
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-disallowdetach.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1120,6 +1193,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
       "title": "Elements by Level",
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-selectbylevel.html",
+      "screenshots": [
+        {
+          "fileName": "Elements by Level.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Elements by Level.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
         "uiKind": "mixed",
@@ -1253,6 +1333,10 @@
           {
             "step": 2,
             "label": "Load and preparation stage"
+          },
+          {
+            "step": 3,
+            "label": "Execution stage"
           }
         ],
         "dynamicSources": [],
@@ -1262,7 +1346,8 @@
             "title": "Default Training Run",
             "steps": [
               "Selection stage",
-              "Load and preparation stage"
+              "Load and preparation stage",
+              "Execution stage"
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -1282,6 +1367,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton",
       "title": "Quick Pin Categories",
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-quickpin.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1332,6 +1418,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton",
       "title": "RevClouds to Detail Groups",
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-revclouddetailline.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1387,6 +1474,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton",
       "title": "Slab Splitter",
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
+      "screenshots": [
+        {
+          "fileName": "Floor Splitter.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1498,6 +1592,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton",
       "title": "Crop Views Quick Off",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-cropview.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton",
         "uiKind": "none",
@@ -1535,6 +1630,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
       "title": "Grids\n2D / 3D",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-gridextents.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1572,6 +1668,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
       "title": "Levels\n2D / 3D",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
         "uiKind": "pyrevit-form",
@@ -1611,6 +1708,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
       "title": "Levels: Head Switch\nLeft / Right",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
         "uiKind": "none",
@@ -1654,6 +1752,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
       "title": "LinkedViews",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-linkedviews.html",
+      "screenshots": [
+        {
+          "fileName": "LinkedViews.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/LinkedViews.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
         "uiKind": "mixed",
@@ -1911,6 +2016,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
       "title": "Plan View Range Tool",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-planviewrange.html",
+      "screenshots": [
+        {
+          "fileName": "Plan View Range Tool.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Plan View Range Tool.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
         "uiKind": "wpf",
@@ -2150,6 +2262,28 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
       "title": "Scope Box View Creation",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
+      "screenshots": [
+        {
+          "fileName": "View CreatorSelector1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "View CreatorSelector1A.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "View CreatorSelector2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "View CreatorSelector3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
         "uiKind": "mixed",
@@ -2190,46 +2324,46 @@
             "required": false
           },
           {
-            "id": "tabworkflow",
-            "name": "tabWorkflow",
-            "kind": "block",
-            "label": "tabWorkflow",
+            "id": "btnworkflowstep0",
+            "name": "btnWorkflowStep0",
+            "kind": "button",
+            "label": "btnWorkflowStep0",
             "required": false
           },
           {
-            "id": "tabviewset",
-            "name": "tabViewSet",
+            "id": "brdworkflowstep0bubble",
+            "name": "brdWorkflowStep0Bubble",
             "kind": "block",
-            "label": "tabViewSet",
-            "required": true
-          },
-          {
-            "id": "rbsourcecreator",
-            "name": "rbSourceCreator",
-            "kind": "block",
-            "label": "rbSourceCreator",
+            "label": "brdWorkflowStep0Bubble",
             "required": false
           },
           {
-            "id": "rbsourceselector",
-            "name": "rbSourceSelector",
-            "kind": "block",
-            "label": "rbSourceSelector",
+            "id": "txtworkflowstep0bubble",
+            "name": "txtWorkflowStep0Bubble",
+            "kind": "text",
+            "label": "txtWorkflowStep0Bubble",
             "required": false
           },
           {
-            "id": "pnlcreatormode",
-            "name": "pnlCreatorMode",
-            "kind": "block",
-            "label": "pnlCreatorMode",
+            "id": "txtworkflowstep0label",
+            "name": "txtWorkflowStep0Label",
+            "kind": "text",
+            "label": "txtWorkflowStep0Label",
             "required": false
           },
           {
-            "id": "rbcreatorscopeboxes",
-            "name": "rbCreatorScopeBoxes",
+            "id": "brdworkflowconn0",
+            "name": "brdWorkflowConn0",
             "kind": "block",
-            "label": "rbCreatorScopeBoxes",
-            "required": true
+            "label": "brdWorkflowConn0",
+            "required": false
+          },
+          {
+            "id": "btnworkflowstep1",
+            "name": "btnWorkflowStep1",
+            "kind": "button",
+            "label": "btnWorkflowStep1",
+            "required": false
           },
           {
             "id": "combobox-10",
@@ -2239,17 +2373,17 @@
             "required": true
           },
           {
-            "id": "datagridtextcolumn-11",
-            "name": "DataGridTextColumn",
-            "kind": "table",
-            "label": "DataGridTextColumn",
-            "required": false
-          },
-          {
-            "id": "button-12",
+            "id": "button-11",
             "name": "Button",
             "kind": "button",
             "label": "Button",
+            "required": false
+          },
+          {
+            "id": "datagridtextcolumn-12",
+            "name": "DataGridTextColumn",
+            "kind": "table",
+            "label": "DataGridTextColumn",
             "required": false
           },
           {
@@ -2495,6 +2629,13 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
       "title": "Section Move",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
+      "screenshots": [
+        {
+          "fileName": "SectionDetail Updater.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/SectionDetail Updater.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton",
         "profile": "section-updater-high-fidelity",
@@ -2780,6 +2921,7 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
       "title": "SheetNo",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sheetno.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
         "uiKind": "mixed",
@@ -3023,6 +3165,13 @@
       "id": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
       "title": "CategoryPicker",
       "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
+      "screenshots": [
+        {
+          "fileName": "CategoryPicker.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CategoryPicker.png",
+          "tabFolder": "JasonHacksRevit"
+        }
+      ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
         "uiKind": "mixed",
@@ -3303,6 +3452,43 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
       "title": "Copy State",
       "pagePath": "tools/sj-pyrevit-selection-copy-state.html",
+      "screenshots": [
+        {
+          "fileName": "CopyState1.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState1.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState2.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState2.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState3.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState3.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState4.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState4.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState5.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState5.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState6.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState6.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "CopyState7.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState7.png",
+          "tabFolder": "JasonHacksRevit"
+        }
+      ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
         "uiKind": "pyrevit-form",
@@ -3455,6 +3641,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton",
       "title": "MClear",
       "pagePath": "tools/sj-pyrevit-selection-mclear.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton",
         "uiKind": "none",
@@ -3492,6 +3679,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton",
       "title": "MDeduct",
       "pagePath": "tools/sj-pyrevit-selection-mdeduct.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton",
         "uiKind": "none",
@@ -3529,6 +3717,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton",
       "title": "Next",
       "pagePath": "tools/sj-pyrevit-selection-next.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton",
         "uiKind": "none",
@@ -3566,6 +3755,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton",
       "title": "Paste State",
       "pagePath": "tools/sj-pyrevit-selection-paste-state.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton",
         "uiKind": "pyrevit-form",
@@ -3766,6 +3956,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton",
       "title": "Prev",
       "pagePath": "tools/sj-pyrevit-selection-prev.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton",
         "uiKind": "none",
@@ -3803,6 +3994,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
       "title": "Propagate Extents Override",
       "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
         "uiKind": "pyrevit-form",
@@ -3973,6 +4165,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton",
       "title": "Purge Memory Files",
       "pagePath": "tools/sj-pyrevit-selection-purge-memory-files.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton",
         "uiKind": "none",
@@ -4010,6 +4203,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton",
       "title": "Save Memory as Selection",
       "pagePath": "tools/sj-pyrevit-selection-save-memory-as-selection.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton",
         "uiKind": "none",
@@ -4047,6 +4241,7 @@
       "id": "JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton",
       "title": "UnhideAllElements",
       "pagePath": "tools/sj-pyrevit-selection-unhideallelements.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton",
         "uiKind": "none",
@@ -4084,6 +4279,13 @@
       "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
       "title": "Cloud Revisions",
       "pagePath": "tools/sj-pyrevit-sheets-cloudrevisions.html",
+      "screenshots": [
+        {
+          "fileName": "Cloud Revisions.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Cloud Revisions.png",
+          "tabFolder": "JasonHacksRevit"
+        }
+      ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
         "uiKind": "none",
@@ -4120,391 +4322,10 @@
       }
     },
     {
-      "id": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
-      "title": "Jason Exporter",
-      "pagePath": "tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html",
-      "simulator": {
-        "toolId": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
-        "uiKind": "mixed",
-        "sourceType": "xaml",
-        "xamlFiles": [
-          "ColumnPicker.xaml",
-          "DWG3DOptions_ui.xaml",
-          "EditNamingFormats.xaml",
-          "FilterEditor_ui.xaml",
-          "IFCOptions_ui.xaml",
-          "JasonExporter.xaml",
-          "NWCOptions_ui.xaml",
-          "Sorting_ui.xaml"
-        ],
-        "sourceKinds": [
-          "external-xaml"
-        ],
-        "controls": [
-          {
-            "id": "paramtype-cb",
-            "name": "paramtype_cb",
-            "kind": "block",
-            "label": "paramtype_cb",
-            "required": false
-          },
-          {
-            "id": "search-tb",
-            "name": "search_tb",
-            "kind": "block",
-            "label": "search_tb",
-            "required": false
-          },
-          {
-            "id": "available-lb",
-            "name": "available_lb",
-            "kind": "block",
-            "label": "available_lb",
-            "required": false
-          },
-          {
-            "id": "active-lb",
-            "name": "active_lb",
-            "kind": "block",
-            "label": "active_lb",
-            "required": false
-          },
-          {
-            "id": "dwg3d-use-viewname-rb",
-            "name": "dwg3d_use_viewname_rb",
-            "kind": "block",
-            "label": "dwg3d_use_viewname_rb",
-            "required": true
-          },
-          {
-            "id": "dwg3d-use-filename-rb",
-            "name": "dwg3d_use_filename_rb",
-            "kind": "block",
-            "label": "dwg3d_use_filename_rb",
-            "required": false
-          },
-          {
-            "id": "dwg3d-use-format-rb",
-            "name": "dwg3d_use_format_rb",
-            "kind": "block",
-            "label": "dwg3d_use_format_rb",
-            "required": false
-          },
-          {
-            "id": "dwg3d-format-panel",
-            "name": "dwg3d_format_panel",
-            "kind": "block",
-            "label": "dwg3d_format_panel",
-            "required": false
-          },
-          {
-            "id": "dwg3d-namingformat-cb",
-            "name": "dwg3d_namingformat_cb",
-            "kind": "block",
-            "label": "dwg3d_namingformat_cb",
-            "required": false
-          },
-          {
-            "id": "dwg3d-shared-coords-cb",
-            "name": "dwg3d_shared_coords_cb",
-            "kind": "block",
-            "label": "dwg3d_shared_coords_cb",
-            "required": false
-          },
-          {
-            "id": "on-key-down",
-            "name": "on_key_down",
-            "kind": "block",
-            "label": "on_key_down",
-            "required": false
-          },
-          {
-            "id": "on-preview-key",
-            "name": "on_preview_key",
-            "kind": "block",
-            "label": "on_preview_key",
-            "required": true
-          },
-          {
-            "id": "on-preview",
-            "name": "on_preview",
-            "kind": "block",
-            "label": "on_preview",
-            "required": true
-          },
-          {
-            "id": "on-ok",
-            "name": "on_ok",
-            "kind": "button",
-            "label": "on_ok",
-            "required": false
-          },
-          {
-            "id": "comboboxitem-14",
-            "name": "ComboBoxItem",
-            "kind": "select",
-            "label": "ComboBoxItem",
-            "required": true
-          },
-          {
-            "id": "button-15",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "combobox-16",
-            "name": "ComboBox",
-            "kind": "select",
-            "label": "ComboBox",
-            "required": true
-          },
-          {
-            "id": "datagrid-17",
-            "name": "DataGrid",
-            "kind": "table",
-            "label": "DataGrid",
-            "required": false
-          },
-          {
-            "id": "listbox-18",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
-            "required": true
-          },
-          {
-            "id": "datagridtextcolumn-19",
-            "name": "DataGridTextColumn",
-            "kind": "table",
-            "label": "DataGridTextColumn",
-            "required": false
-          },
-          {
-            "id": "textbox-20",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "checkbox-21",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "radiobutton-22",
-            "name": "RadioButton",
-            "kind": "radio",
-            "label": "RadioButton",
-            "required": false
-          },
-          {
-            "id": "datagridtemplatecolumn-23",
-            "name": "DataGridTemplateColumn",
-            "kind": "table",
-            "label": "DataGridTemplateColumn",
-            "required": false
-          },
-          {
-            "id": "action-gt",
-            "name": "&gt;",
-            "kind": "button",
-            "label": "&gt;",
-            "required": false
-          },
-          {
-            "id": "action-lt",
-            "name": "&lt;",
-            "kind": "button",
-            "label": "&lt;",
-            "required": false
-          },
-          {
-            "id": "action-x2191",
-            "name": "&#x2191;",
-            "kind": "button",
-            "label": "&#x2191;",
-            "required": false
-          },
-          {
-            "id": "action-x2193",
-            "name": "&#x2193;",
-            "kind": "button",
-            "label": "&#x2193;",
-            "required": false
-          },
-          {
-            "id": "action-cancel",
-            "name": "Cancel",
-            "kind": "button",
-            "label": "Cancel",
-            "required": false
-          },
-          {
-            "id": "action-ok",
-            "name": "OK",
-            "kind": "button",
-            "label": "OK",
-            "required": false
-          },
-          {
-            "id": "action-edit-formats",
-            "name": "Edit Formats",
-            "kind": "button",
-            "label": "Edit Formats",
-            "required": false
-          },
-          {
-            "id": "action-import",
-            "name": "Import",
-            "kind": "button",
-            "label": "Import",
-            "required": false
-          }
-        ],
-        "events": [
-          {
-            "controlId": "on-ok",
-            "event": "click",
-            "handler": "on_ok"
-          },
-          {
-            "controlId": "action-gt",
-            "event": "click",
-            "handler": "on_gt"
-          },
-          {
-            "controlId": "action-lt",
-            "event": "click",
-            "handler": "on_lt"
-          },
-          {
-            "controlId": "action-x2191",
-            "event": "click",
-            "handler": "on_x2191"
-          },
-          {
-            "controlId": "action-x2193",
-            "event": "click",
-            "handler": "on_x2193"
-          },
-          {
-            "controlId": "action-cancel",
-            "event": "click",
-            "handler": "on_cancel"
-          },
-          {
-            "controlId": "action-ok",
-            "event": "click",
-            "handler": "on_ok"
-          },
-          {
-            "controlId": "action-edit-formats",
-            "event": "click",
-            "handler": "on_edit-formats"
-          },
-          {
-            "controlId": "action-import",
-            "event": "click",
-            "handler": "on_import"
-          }
-        ],
-        "prompts": [
-          {
-            "type": "alert",
-            "message": "Simulated alert interaction"
-          },
-          {
-            "type": "ask_for_string",
-            "message": "Simulated ask_for_string interaction"
-          },
-          {
-            "type": "check_modeldoc",
-            "message": "Simulated check_modeldoc interaction"
-          },
-          {
-            "type": "ProgressBar",
-            "message": "Simulated ProgressBar interaction"
-          },
-          {
-            "type": "reactive",
-            "message": "Simulated reactive interaction"
-          },
-          {
-            "type": "Reactive",
-            "message": "Simulated Reactive interaction"
-          },
-          {
-            "type": "select_open_docs",
-            "message": "Simulated select_open_docs interaction"
-          },
-          {
-            "type": "SelectFromList",
-            "message": "Simulated SelectFromList interaction"
-          },
-          {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
-          }
-        ],
-        "workflow": [
-          {
-            "step": 1,
-            "label": "Selection stage"
-          },
-          {
-            "step": 2,
-            "label": "Load and preparation stage"
-          },
-          {
-            "step": 3,
-            "label": "Filter and scope stage"
-          },
-          {
-            "step": 4,
-            "label": "Preview and inspection stage"
-          },
-          {
-            "step": 5,
-            "label": "Execution stage"
-          }
-        ],
-        "dynamicSources": [
-          "sheets"
-        ],
-        "scenarios": [
-          {
-            "id": "default-training",
-            "title": "Default Training Run",
-            "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Preview and inspection stage",
-              "Execution stage"
-            ],
-            "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
-              "No Revit model changes were made"
-            ]
-          }
-        ],
-        "confidence": {
-          "controls": "medium",
-          "workflow": "high",
-          "prompts": "medium"
-        }
-      }
-    },
-    {
       "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
       "title": "Reorder Selected Viewport",
       "pagePath": "tools/sj-pyrevit-sheets-reorder-selected-viewport.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
         "uiKind": "pyrevit-form",
@@ -4555,6 +4376,18 @@
       "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
       "title": "Reorder Viewports",
       "pagePath": "tools/sj-pyrevit-sheets-reorder-viewports.html",
+      "screenshots": [
+        {
+          "fileName": "Reorder Viewports1.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports1.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "Reorder Viewports2.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports2.png",
+          "tabFolder": "JasonHacksRevit"
+        }
+      ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
         "uiKind": "mixed",
@@ -4844,6 +4677,7 @@
       "id": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton",
       "title": "Tool1",
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool1.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton",
         "uiKind": "none",
@@ -4881,6 +4715,7 @@
       "id": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton",
       "title": "Tool2",
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool2.html",
+      "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton",
         "uiKind": "wpf",

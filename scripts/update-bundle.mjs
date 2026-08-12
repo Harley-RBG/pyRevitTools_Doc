@@ -4,8 +4,11 @@ import crypto from "node:crypto";
 
 const repoRoot = process.cwd();
 const DEFAULT_SOURCE = String.raw`P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension`;
+const DEFAULT_SCREENSHOTS_SOURCE = String.raw`P:\Production\Computational\RBG_pyRevit\Extension\Tool Screenshots`;
 const DEFAULT_OUT = path.join(repoRoot, "bundle.md");
 const CACHE_PATH = path.join(repoRoot, "generated", "bundle-cache.json");
+const SCREENSHOT_OUT_DIR = path.join(repoRoot, "generated", "tool-screenshots");
+const SCREENSHOT_MANIFEST_PATH = path.join(repoRoot, "generated", "tool-screenshots-manifest.json");
 
 const EXCLUDE_DIRS = new Set([
   ".git",
@@ -56,6 +59,7 @@ function parseArgs() {
   const args = process.argv.slice(2);
   const values = {
     source: DEFAULT_SOURCE,
+    screenshotsSource: DEFAULT_SCREENSHOTS_SOURCE,
     out: DEFAULT_OUT,
   };
 
@@ -66,6 +70,10 @@ function parseArgs() {
     }
     if (arg.startsWith("--out=")) {
       values.out = arg.slice("--out=".length);
+      continue;
+    }
+    if (arg.startsWith("--screenshots-source=")) {
+      values.screenshotsSource = arg.slice("--screenshots-source=".length);
     }
   }
 
@@ -74,6 +82,14 @@ function parseArgs() {
 
 function toPosix(relPath) {
   return relPath.split(path.sep).join("/");
+}
+
+function normalizeName(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/\.[a-z0-9]+$/i, "")
+    .replace(/[^a-z0-9]+/g, "")
+    .replace(/\d+[a-z]?$/i, "");
 }
 
 function sha1Buffer(buffer) {
@@ -312,6 +328,170 @@ function collectFiles(rootDir) {
   return results;
 }
 
+function collectScreenshotFiles(rootDir) {
+  const allowExt = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
+  const results = [];
+
+  function walk(currentDir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+
+    for (const entry of entries) {
+      const absPath = path.join(currentDir, entry.name);
+      const relPath = toPosix(path.relative(rootDir, absPath));
+      if (entry.isSymbolicLink()) {
+        continue;
+      }
+      if (entry.isDirectory()) {
+        walk(absPath);
+        continue;
+      }
+
+      const ext = path.extname(entry.name).toLowerCase();
+      if (!allowExt.has(ext)) {
+        continue;
+      }
+
+      let stat;
+      try {
+        stat = fs.statSync(absPath);
+      } catch {
+        continue;
+      }
+
+      results.push({
+        absPath,
+        relPath,
+        size: stat.size,
+        mtimeMs: stat.mtimeMs,
+      });
+    }
+  }
+
+  walk(rootDir);
+  results.sort((a, b) => a.relPath.localeCompare(b.relPath));
+  return results;
+}
+
+function syncScreenshots(screenshotsSourceDir) {
+  if (!fs.existsSync(screenshotsSourceDir) || !fs.statSync(screenshotsSourceDir).isDirectory()) {
+    process.stdout.write(`Screenshots source not found, skipping sync: ${screenshotsSourceDir}\n`);
+    return {
+      total: 0,
+      copied: 0,
+      skipped: 0,
+      deleted: 0,
+      sourceDir: screenshotsSourceDir,
+      outDir: SCREENSHOT_OUT_DIR,
+    };
+  }
+
+  ensureDir(SCREENSHOT_OUT_DIR);
+  const files = collectScreenshotFiles(screenshotsSourceDir);
+  const expected = new Set();
+  const manifest = {
+    generatedAt: new Date().toISOString(),
+    sourceDir: screenshotsSourceDir,
+    outDir: SCREENSHOT_OUT_DIR,
+    total: files.length,
+    files: [],
+  };
+
+  let copied = 0;
+  let skipped = 0;
+
+  for (const file of files) {
+    const outPath = path.join(SCREENSHOT_OUT_DIR, file.relPath);
+    const outDir = path.dirname(outPath);
+    ensureDir(outDir);
+    expected.add(toPosix(path.relative(SCREENSHOT_OUT_DIR, outPath)));
+
+    let shouldCopy = true;
+    if (fs.existsSync(outPath)) {
+      try {
+        const outStat = fs.statSync(outPath);
+        if (outStat.size === file.size && Math.abs(outStat.mtimeMs - file.mtimeMs) < 1) {
+          shouldCopy = false;
+        }
+      } catch {
+        shouldCopy = true;
+      }
+    }
+
+    if (shouldCopy) {
+      fs.copyFileSync(file.absPath, outPath);
+      try {
+        fs.utimesSync(outPath, new Date(file.mtimeMs), new Date(file.mtimeMs));
+      } catch {
+        // Best effort mtime alignment.
+      }
+      copied += 1;
+    } else {
+      skipped += 1;
+    }
+
+    const relParts = file.relPath.split("/");
+    const tabFolder = relParts.length > 1 ? relParts[0] : "root";
+    const fileName = relParts[relParts.length - 1];
+    manifest.files.push({
+      tabFolder,
+      fileName,
+      relPath: file.relPath,
+      normalizedName: normalizeName(fileName),
+      fileSize: file.size,
+      mtimeMs: file.mtimeMs,
+      localPath: `generated/tool-screenshots/${file.relPath}`,
+    });
+  }
+
+  let deleted = 0;
+  function cleanup(dirPath) {
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+    for (const entry of entries) {
+      const abs = path.join(dirPath, entry.name);
+      const rel = toPosix(path.relative(SCREENSHOT_OUT_DIR, abs));
+      if (entry.isDirectory()) {
+        cleanup(abs);
+        const children = fs.readdirSync(abs);
+        if (children.length === 0) {
+          fs.rmdirSync(abs);
+        }
+        continue;
+      }
+
+      if (!expected.has(rel)) {
+        fs.unlinkSync(abs);
+        deleted += 1;
+      }
+    }
+  }
+
+  cleanup(SCREENSHOT_OUT_DIR);
+  writeJson(SCREENSHOT_MANIFEST_PATH, manifest);
+
+  return {
+    total: files.length,
+    copied,
+    skipped,
+    deleted,
+    sourceDir: screenshotsSourceDir,
+    outDir: SCREENSHOT_OUT_DIR,
+  };
+}
+
+function ensureDir(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
+}
+
+function writeJson(filePath, value) {
+  ensureDir(path.dirname(filePath));
+  fs.writeFileSync(filePath, JSON.stringify(value, null, 2) + "\n", "utf8");
+}
+
 function buildBundle({ sourceDir, outFile }) {
   process.stdout.write(`Scanning source: ${sourceDir}\n`);
   const files = collectFiles(sourceDir);
@@ -414,17 +594,22 @@ function buildBundle({ sourceDir, outFile }) {
 }
 
 function main() {
-  const { source, out } = parseArgs();
+  const { source, out, screenshotsSource } = parseArgs();
   const sourceDir = path.resolve(source);
   const outFile = path.resolve(out);
+  const screenshotsSourceDir = path.resolve(screenshotsSource);
 
   if (!fs.existsSync(sourceDir) || !fs.statSync(sourceDir).isDirectory()) {
     throw new Error(`Source directory not found: ${sourceDir}`);
   }
 
   const result = buildBundle({ sourceDir, outFile });
+  const screenshotResult = syncScreenshots(screenshotsSourceDir);
   process.stdout.write(
     `Updated bundle: ${path.basename(result.outFile)} | Source: ${result.sourceDir} | Files: ${result.fileCount} | Reused: ${result.reusedCount} | Rebuilt: ${result.rebuiltCount} | Bytes: ${result.totalBytes}\n`
+  );
+  process.stdout.write(
+    `Screenshots sync: ${screenshotResult.total} discovered | ${screenshotResult.copied} copied | ${screenshotResult.skipped} skipped | ${screenshotResult.deleted} deleted | Manifest: ${path.relative(repoRoot, SCREENSHOT_MANIFEST_PATH)}\n`
   );
 }
 

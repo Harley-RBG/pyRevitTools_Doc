@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "tools": {
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton": {
+      "sectionUpdater": {
+        "activeView": "BRACING TRUSS A/B - DETAILS",
+        "defaultFilter": "truss",
+        "sampleSections": [
+          "TRUSS B - SECTION (L0-1)",
+          "TRUSS B - SECTION (L2-3)",
+          "TRUSS B - SECTION (L3-4)",
+          "TRUSS B - SECTION (L4-5)",
+          "TRUSS B - SECTION (L5-6)",
+          "TRUSS B - SECTION (L6-7)",
+          "TRUSS C - SECTION (L0-1)",
+          "TRUSS C - SECTION (L1-2)",
+          "TRUSS C - SECTION (L2-3)"
+        ],
+        "planViews": [
+          "GA-SS LEVEL 1E",
+          "GA-SS LEVEL 2E",
+          "GA-SS LEVEL 3E"
+        ],
+        "scopeBoxes": [
+          "TRUSS B - GA E11/EA-EB",
+          "TRUSS C - GA E12/EA-EB"
+        ],
+        "scopeSides": [
+          "Top",
+          "Bottom",
+          "Left",
+          "Right"
+        ],
+        "lowerLevelOptions": [
+          "DATUM",
+          "SSL LEVEL 1W",
+          "SSL LEVEL 3W"
+        ],
+        "upperLevelOptions": [
+          "NEW ROOF",
+          "FFL LEVEL 4E",
+          "SSL LEVEL 8AW"
+        ],
+        "defaultLowerOffset": "0.0",
+        "defaultUpperOffset": "0.0",
+        "rows": [
+          [
+            "TRUSS B - SECTION (L2-3)",
+            "SSL LEVEL 1W",
+            "3575.0",
+            "FFL LEVEL 3E",
+            "-200.0",
+            "SSL LEVEL 1W",
+            "3575.0",
+            "FFL LEVEL 3E"
+          ],
+          [
+            "TRUSS B - SECTION (L3-4)",
+            "SSL LEVEL 3W",
+            "290.0",
+            "FFL LEVEL 4E",
+            "-200.0",
+            "SSL LEVEL 3W",
+            "290.0",
+            "FFL LEVEL 4E"
+          ],
+          [
+            "TRUSS B - SECTION (L4-5)",
+            "SSL LEVEL 4W",
+            "180.0",
+            "SSL LEVEL 6W",
+            "-2040.0",
+            "SSL LEVEL 4W",
+            "180.0",
+            "SSL LEVEL 6W"
+          ],
+          [
+            "TRUSS B - SECTION (L5-6)",
+            "SSL LEVEL 5W",
+            "1845.0",
+            "SSL LEVEL 7W",
+            "-300.0",
+            "SSL LEVEL 5W",
+            "1845.0",
+            "SSL LEVEL 7W"
+          ],
+          [
+            "TRUSS B - SECTION (L6-7)",
+            "SSL LEVEL 6W",
+            "2310.0",
+            "SSL LEVEL 8AW",
+            "-1115.0",
+            "SSL LEVEL 6W",
+            "2310.0",
+            "SSL LEVEL 8AW"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton": {
+      "selectOptions": {
+        "cmbscope": [
+          "Active View",
+          "Current Sheet Set",
+          "Selected Sheets"
+        ],
+        "cmbsheetset": [
+          "A-Documentation",
+          "S-Structural",
+          "M-MEP"
+        ],
+        "cmbsheetnoparam": [
+          "Sheet Number",
+          "Custom Parameter - SheetNo",
+          "Comments"
+        ]
+      },
+      "sampleTableRows": [
+        [
+          "A101 | General Notes",
+          "Ready"
+        ],
+        [
+          "S201 | Level 02 Framing",
+          "Ready"
+        ],
+        [
+          "S301 | Typical Sections",
+          "Review"
+        ]
+      ]
+    }
+  }
+}

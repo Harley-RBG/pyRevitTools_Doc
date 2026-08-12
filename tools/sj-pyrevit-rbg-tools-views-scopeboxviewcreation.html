@@ -70,6 +70,8 @@
         </div>
         <div class="card-body wiki-body">
           <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <h4 class="subhead">Screenshot Reference</h4>
+          <div class="sim-shot-grid"><figure class="sim-shot"><img src="../generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png" alt="Scope Box View Creation screenshot: View CreatorSelector1.png" loading="lazy" /><figcaption>View CreatorSelector1.png</figcaption></figure><figure class="sim-shot"><img src="../generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png" alt="Scope Box View Creation screenshot: View CreatorSelector1A.png" loading="lazy" /><figcaption>View CreatorSelector1A.png</figcaption></figure><figure class="sim-shot"><img src="../generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png" alt="Scope Box View Creation screenshot: View CreatorSelector2.png" loading="lazy" /><figcaption>View CreatorSelector2.png</figcaption></figure><figure class="sim-shot"><img src="../generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png" alt="Scope Box View Creation screenshot: View CreatorSelector3.png" loading="lazy" /><figcaption>View CreatorSelector3.png</figcaption></figure></div>
           <div class="simulator-shell">
             <div class="simulator-toolbar">
               <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
@@ -125,7 +127,8 @@
 
     <script>
       (function () {
-        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["ViewCreator.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"colstageleft","name":"colStageLeft","kind":"block","label":"colStageLeft","required":false},{"id":"colstagegap","name":"colStageGap","kind":"block","label":"colStageGap","required":false},{"id":"colstageright","name":"colStageRight","kind":"block","label":"colStageRight","required":false},{"id":"stageinputpane","name":"stageInputPane","kind":"block","label":"stageInputPane","required":false},{"id":"tabworkflow","name":"tabWorkflow","kind":"block","label":"tabWorkflow","required":false},{"id":"tabviewset","name":"tabViewSet","kind":"block","label":"tabViewSet","required":true},{"id":"rbsourcecreator","name":"rbSourceCreator","kind":"block","label":"rbSourceCreator","required":false},{"id":"rbsourceselector","name":"rbSourceSelector","kind":"block","label":"rbSourceSelector","required":false},{"id":"pnlcreatormode","name":"pnlCreatorMode","kind":"block","label":"pnlCreatorMode","required":false},{"id":"rbcreatorscopeboxes","name":"rbCreatorScopeBoxes","kind":"block","label":"rbCreatorScopeBoxes","required":true},{"id":"combobox-10","name":"ComboBox","kind":"select","label":"ComboBox","required":true},{"id":"datagridtextcolumn-11","name":"DataGridTextColumn","kind":"table","label":"DataGridTextColumn","required":false},{"id":"button-12","name":"Button","kind":"button","label":"Button","required":false},{"id":"textbox-13","name":"TextBox","kind":"text","label":"TextBox","required":true},{"id":"datagridtemplatecolumn-14","name":"DataGridTemplateColumn","kind":"table","label":"DataGridTemplateColumn","required":false},{"id":"checkbox-15","name":"CheckBox","kind":"checkbox","label":"CheckBox","required":false},{"id":"datagrid-16","name":"DataGrid","kind":"table","label":"DataGrid","required":false},{"id":"comboboxitem-17","name":"ComboBoxItem","kind":"select","label":"ComboBoxItem","required":true},{"id":"listbox-18","name":"ListBox","kind":"multiselect","label":"ListBox","required":true},{"id":"radiobutton-19","name":"RadioButton","kind":"radio","label":"RadioButton","required":false},{"id":"tabitem-20","name":"TabItem","kind":"tabs","label":"TabItem","required":false},{"id":"datagridcheckboxcolumn-21","name":"DataGridCheckBoxColumn","kind":"table","label":"DataGridCheckBoxColumn","required":false},{"id":"tabcontrol-22","name":"TabControl","kind":"tabs","label":"TabControl","required":false},{"id":"treeview-23","name":"TreeView","kind":"tree","label":"TreeView","required":false},{"id":"action-select-visible","name":"Select Visible","kind":"button","label":"Select Visible","required":false},{"id":"action-clear-visible","name":"Clear Visible","kind":"button","label":"Clear Visible","required":false},{"id":"action-run-stage-1-create-collect-views","name":"Run Stage 1: Create/Collect Views","kind":"button","label":"Run Stage 1: Create/Collect Views","required":false},{"id":"action-run-stage-1-collect-selected-views","name":"Run Stage 1: Collect Selected Views","kind":"button","label":"Run Stage 1: Collect Selected Views","required":false},{"id":"action-pick-plan-rotation","name":"Pick Plan Rotation","kind":"button","label":"Pick Plan Rotation","required":false},{"id":"action-pick-section-alignment-aligned","name":"Pick Section Alignment (Aligned)","kind":"button","label":"Pick Section Alignment (Aligned)","required":false},{"id":"action-apply-to-selected-rows","name":"Apply To Selected Rows","kind":"button","label":"Apply To Selected Rows","required":false},{"id":"action-read-current-extents","name":"Read Current Extents","kind":"button","label":"Read Current Extents","required":false}],"events":[{"controlId":"action-select-visible","event":"click","handler":"on_select-visible"},{"controlId":"action-clear-visible","event":"click","handler":"on_clear-visible"},{"controlId":"action-run-stage-1-create-collect-views","event":"click","handler":"on_run-stage-1-create-collect-views"},{"controlId":"action-run-stage-1-collect-selected-views","event":"click","handler":"on_run-stage-1-collect-selected-views"},{"controlId":"action-pick-plan-rotation","event":"click","handler":"on_pick-plan-rotation"},{"controlId":"action-pick-section-alignment-aligned","event":"click","handler":"on_pick-section-alignment-aligned"},{"controlId":"action-apply-to-selected-rows","event":"click","handler":"on_apply-to-selected-rows"},{"controlId":"action-read-current-extents","event":"click","handler":"on_read-current-extents"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"WPFWindow","message":"Simulated WPFWindow interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Load and preparation stage"},{"step":3,"label":"Filter and scope stage"},{"step":4,"label":"Preview and inspection stage"},{"step":5,"label":"Execution stage"},{"step":6,"label":"Results and status stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Load and preparation stage","Filter and scope stage","Preview and inspection stage","Execution stage","Results and status stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
+        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton","uiKind":"mixed","sourceType":"xaml","xamlFiles":["ViewCreator.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"colstageleft","name":"colStageLeft","kind":"block","label":"colStageLeft","required":false},{"id":"colstagegap","name":"colStageGap","kind":"block","label":"colStageGap","required":false},{"id":"colstageright","name":"colStageRight","kind":"block","label":"colStageRight","required":false},{"id":"stageinputpane","name":"stageInputPane","kind":"block","label":"stageInputPane","required":false},{"id":"btnworkflowstep0","name":"btnWorkflowStep0","kind":"button","label":"btnWorkflowStep0","required":false},{"id":"brdworkflowstep0bubble","name":"brdWorkflowStep0Bubble","kind":"block","label":"brdWorkflowStep0Bubble","required":false},{"id":"txtworkflowstep0bubble","name":"txtWorkflowStep0Bubble","kind":"text","label":"txtWorkflowStep0Bubble","required":false},{"id":"txtworkflowstep0label","name":"txtWorkflowStep0Label","kind":"text","label":"txtWorkflowStep0Label","required":false},{"id":"brdworkflowconn0","name":"brdWorkflowConn0","kind":"block","label":"brdWorkflowConn0","required":false},{"id":"btnworkflowstep1","name":"btnWorkflowStep1","kind":"button","label":"btnWorkflowStep1","required":false},{"id":"combobox-10","name":"ComboBox","kind":"select","label":"ComboBox","required":true},{"id":"button-11","name":"Button","kind":"button","label":"Button","required":false},{"id":"datagridtextcolumn-12","name":"DataGridTextColumn","kind":"table","label":"DataGridTextColumn","required":false},{"id":"textbox-13","name":"TextBox","kind":"text","label":"TextBox","required":true},{"id":"datagridtemplatecolumn-14","name":"DataGridTemplateColumn","kind":"table","label":"DataGridTemplateColumn","required":false},{"id":"checkbox-15","name":"CheckBox","kind":"checkbox","label":"CheckBox","required":false},{"id":"datagrid-16","name":"DataGrid","kind":"table","label":"DataGrid","required":false},{"id":"comboboxitem-17","name":"ComboBoxItem","kind":"select","label":"ComboBoxItem","required":true},{"id":"listbox-18","name":"ListBox","kind":"multiselect","label":"ListBox","required":true},{"id":"radiobutton-19","name":"RadioButton","kind":"radio","label":"RadioButton","required":false},{"id":"tabitem-20","name":"TabItem","kind":"tabs","label":"TabItem","required":false},{"id":"datagridcheckboxcolumn-21","name":"DataGridCheckBoxColumn","kind":"table","label":"DataGridCheckBoxColumn","required":false},{"id":"tabcontrol-22","name":"TabControl","kind":"tabs","label":"TabControl","required":false},{"id":"treeview-23","name":"TreeView","kind":"tree","label":"TreeView","required":false},{"id":"action-select-visible","name":"Select Visible","kind":"button","label":"Select Visible","required":false},{"id":"action-clear-visible","name":"Clear Visible","kind":"button","label":"Clear Visible","required":false},{"id":"action-run-stage-1-create-collect-views","name":"Run Stage 1: Create/Collect Views","kind":"button","label":"Run Stage 1: Create/Collect Views","required":false},{"id":"action-run-stage-1-collect-selected-views","name":"Run Stage 1: Collect Selected Views","kind":"button","label":"Run Stage 1: Collect Selected Views","required":false},{"id":"action-pick-plan-rotation","name":"Pick Plan Rotation","kind":"button","label":"Pick Plan Rotation","required":false},{"id":"action-pick-section-alignment-aligned","name":"Pick Section Alignment (Aligned)","kind":"button","label":"Pick Section Alignment (Aligned)","required":false},{"id":"action-apply-to-selected-rows","name":"Apply To Selected Rows","kind":"button","label":"Apply To Selected Rows","required":false},{"id":"action-read-current-extents","name":"Read Current Extents","kind":"button","label":"Read Current Extents","required":false}],"events":[{"controlId":"action-select-visible","event":"click","handler":"on_select-visible"},{"controlId":"action-clear-visible","event":"click","handler":"on_clear-visible"},{"controlId":"action-run-stage-1-create-collect-views","event":"click","handler":"on_run-stage-1-create-collect-views"},{"controlId":"action-run-stage-1-collect-selected-views","event":"click","handler":"on_run-stage-1-collect-selected-views"},{"controlId":"action-pick-plan-rotation","event":"click","handler":"on_pick-plan-rotation"},{"controlId":"action-pick-section-alignment-aligned","event":"click","handler":"on_pick-section-alignment-aligned"},{"controlId":"action-apply-to-selected-rows","event":"click","handler":"on_apply-to-selected-rows"},{"controlId":"action-read-current-extents","event":"click","handler":"on_read-current-extents"}],"prompts":[{"type":"alert","message":"Simulated alert interaction"},{"type":"WPFWindow","message":"Simulated WPFWindow interaction"}],"workflow":[{"step":1,"label":"Selection stage"},{"step":2,"label":"Load and preparation stage"},{"step":3,"label":"Filter and scope stage"},{"step":4,"label":"Preview and inspection stage"},{"step":5,"label":"Execution stage"},{"step":6,"label":"Results and status stage"}],"dynamicSources":[],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Selection stage","Load and preparation stage","Filter and scope stage","Preview and inspection stage","Execution stage","Results and status stage"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"medium","workflow":"high","prompts":"medium"}};
+        const DATASET = {};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
@@ -138,6 +141,15 @@
           if (node) {
             node.textContent = String(value);
           }
+        }
+
+        function getControlOptions(control) {
+          const source = DATASET.selectOptions || {};
+          const options = source[control.id] || source[control.name] || source[control.label] || [];
+          if (!Array.isArray(options) || !options.length) {
+            return null;
+          }
+          return options.map((item) => String(item));
         }
 
         function createInput(control) {
@@ -156,7 +168,8 @@
             field.placeholder = 'Enter ' + control.label;
           } else if (control.kind === 'select') {
             field = document.createElement('select');
-            ['Select...', 'Option A', 'Option B', 'Option C'].forEach((optionText, index) => {
+            const selectOptions = getControlOptions(control) || ['Option A', 'Option B', 'Option C'];
+            ['Select...'].concat(selectOptions).forEach((optionText, index) => {
               const option = document.createElement('option');
               option.value = index === 0 ? '' : optionText;
               option.textContent = optionText;
@@ -165,7 +178,8 @@
           } else if (control.kind === 'multiselect') {
             field = document.createElement('select');
             field.multiple = true;
-            ['Sample 1', 'Sample 2', 'Sample 3'].forEach((optionText) => {
+            const multiOptions = getControlOptions(control) || ['Sample 1', 'Sample 2', 'Sample 3'];
+            multiOptions.forEach((optionText) => {
               const option = document.createElement('option');
               option.value = optionText;
               option.textContent = optionText;
@@ -257,9 +271,18 @@
               return;
             }
             if (control.kind === 'table') {
+              const datasetRows = Array.isArray(DATASET.sampleTableRows) ? DATASET.sampleTableRows : [];
+              const tableRows = datasetRows.length
+                ? datasetRows.map((row) => {
+                  const cells = Array.isArray(row) ? row : [row];
+                  const left = String(cells[0] || '');
+                  const right = String(cells[1] || 'Ready');
+                  return '<tr><td>' + left + '</td><td>' + right + '</td></tr>';
+                }).join('')
+                : '<tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr>';
               const tableWrap = document.createElement('div');
               tableWrap.className = 'sim-table-wrap sim-span-full';
-              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody><tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr></tbody></table>';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody>' + tableRows + '</tbody></table>';
               form.appendChild(tableWrap);
               return;
             }
@@ -282,32 +305,52 @@
           setText('sim-event-count', 9);
           setText('sim-prompt-count', SIMULATOR.prompts.length);
 
-          const sampleSections = [
-            'TRUSS B - SECTION (L0-1)',
-            'TRUSS B - SECTION (L2-3)',
-            'TRUSS B - SECTION (L3-4)',
-            'TRUSS B - SECTION (L4-5)',
-            'TRUSS B - SECTION (L5-6)',
-            'TRUSS B - SECTION (L6-7)',
-            'TRUSS C - SECTION (L0-1)',
-            'TRUSS C - SECTION (L1-2)',
-            'TRUSS C - SECTION (L2-3)',
-          ];
+          const secup = DATASET.sectionUpdater || {};
+          const activeView = String(secup.activeView || 'BRACING TRUSS A/B - DETAILS');
+          const defaultFilter = String(secup.defaultFilter || 'truss');
 
-          const rows = [
-            ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
-            ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
-            ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
-            ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
-            ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
-          ];
+          const sampleSections = Array.isArray(secup.sampleSections) && secup.sampleSections.length
+            ? secup.sampleSections.map((item) => String(item))
+            : [
+              'TRUSS B - SECTION (L0-1)',
+              'TRUSS B - SECTION (L2-3)',
+              'TRUSS B - SECTION (L3-4)',
+              'TRUSS B - SECTION (L4-5)',
+              'TRUSS B - SECTION (L5-6)',
+              'TRUSS B - SECTION (L6-7)',
+              'TRUSS C - SECTION (L0-1)',
+              'TRUSS C - SECTION (L1-2)',
+              'TRUSS C - SECTION (L2-3)',
+            ];
+
+          const rows = Array.isArray(secup.rows) && secup.rows.length
+            ? secup.rows
+            : [
+              ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
+              ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
+              ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
+              ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
+              ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
+            ];
+
+          const planViews = Array.isArray(secup.planViews) && secup.planViews.length ? secup.planViews : ['GA-SS LEVEL 1E', 'GA-SS LEVEL 2E'];
+          const scopeBoxes = Array.isArray(secup.scopeBoxes) && secup.scopeBoxes.length ? secup.scopeBoxes : ['TRUSS B - GA E11/EA-EB', 'TRUSS C - GA E12/EA-EB'];
+          const scopeSides = Array.isArray(secup.scopeSides) && secup.scopeSides.length ? secup.scopeSides : ['Top', 'Bottom', 'Left', 'Right'];
+          const lowerLevels = Array.isArray(secup.lowerLevelOptions) && secup.lowerLevelOptions.length ? secup.lowerLevelOptions : ['DATUM'];
+          const upperLevels = Array.isArray(secup.upperLevelOptions) && secup.upperLevelOptions.length ? secup.upperLevelOptions : ['NEW ROOF'];
+          const lowerOffset = String(secup.defaultLowerOffset || '0.0');
+          const upperOffset = String(secup.defaultUpperOffset || '0.0');
+
+          function optionList(values) {
+            return values.map((value) => '<option>' + String(value) + '</option>').join('');
+          }
 
           simulatorRoot.innerHTML =
             '<div class="secup-layout">' +
               '<section class="secup-pane">' +
                 '<h5>Targets</h5>' +
-                '<p class="muted">Active view: BRACING TRUSS A/B - DETAILS</p>' +
-                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="truss" /></label>' +
+                '<p class="muted">Active view: ' + activeView + '</p>' +
+                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="' + defaultFilter + '" /></label>' +
                 '<label class="sim-control"><span class="sim-label">Sort</span><select id="secup-sort" class="sim-field"><option>Name A-Z</option><option>Name Z-A</option></select></label>' +
                 '<div class="secup-toggle-row">' +
                   '<label><input id="secup-visible-only" type="checkbox" /> Visible in selected plan only</label>' +
@@ -326,15 +369,15 @@
               '</section>' +
               '<section class="secup-pane">' +
                 '<h5>Plan + extent stages</h5>' +
-                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field"><option>GA-SS LEVEL 1E</option><option>GA-SS LEVEL 2E</option></select></label>' +
-                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field"><option>TRUSS B - GA E11/EA-EB</option><option>TRUSS C - GA E12/EA-EB</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field">' + optionList(planViews) + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field">' + optionList(scopeBoxes) + '</select></label>' +
                 '<div class="secup-toggle-col">' +
                   '<label><input type="checkbox" /> Move / rotate in plan</label>' +
                   '<label><input type="checkbox" /> Flip 180 after move</label>' +
                   '<label><input type="checkbox" /> Match horizontal extents to scope box side</label>' +
                   '<label><input type="checkbox" /> Assign scope box last</label>' +
                 '</div>' +
-                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field"><option>Top</option><option>Bottom</option><option>Left</option><option>Right</option></select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field">' + optionList(scopeSides) + '</select></label>' +
                 '<p><strong>Plan/extents stage ready:</strong> <span id="secup-stage-count">0</span> affected section(s).</p>' +
                 '<button type="button" class="sim-action" id="secup-run-plan">Run Plan + Extents</button>' +
               '</section>' +
@@ -345,10 +388,10 @@
                   '<label><input type="radio" name="secup-crop-mode" /> Update vertical crop extents from Levels</label>' +
                 '</div>' +
                 '<div class="sim-action-row secup-actions-inline">' +
-                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field"><option>DATUM</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field"><option>NEW ROOF</option></select></label>' +
-                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="0.0" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field">' + optionList(lowerLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="' + lowerOffset + '" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field">' + optionList(upperLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="' + upperOffset + '" /></label>' +
                   '<button type="button" class="sim-action sim-action-secondary" id="secup-batch">Apply Batch To Selected</button>' +
                 '</div>' +
                 '<div class="sim-table-wrap secup-table-wrap">' +

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-10T08:04:52.790Z",
+  "generatedAt": "2026-08-12T23:39:35.827Z",
   "summary": {
-    "totalTools": 38,
-    "toolsWithUi": 27,
-    "toolsRequiringTrainingData": 7,
+    "totalTools": 37,
+    "toolsWithUi": 26,
+    "toolsRequiringTrainingData": 6,
     "toolsWithoutUiSignals": 11
   },
   "details": [
@@ -14,6 +14,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -36,6 +37,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [],
@@ -58,6 +60,7 @@
       "controlCount": 24,
       "eventCount": 8,
       "promptCount": 1,
+      "screenshotCount": 5,
       "unsupportedKinds": [
         "block"
       ],
@@ -85,6 +88,7 @@
       "controlCount": 14,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [
         "block"
       ],
@@ -92,9 +96,9 @@
       "fidelityFlags": [],
       "unresolved": {
         "controls": [
+          "Button",
           "ListBox",
           "TextBox",
-          "Button",
           "ComboBox",
           "CheckBox"
         ],
@@ -115,6 +119,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 3,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -137,6 +142,7 @@
       "controlCount": 22,
       "eventCount": 8,
       "promptCount": 8,
+      "screenshotCount": 1,
       "unsupportedKinds": [
         "block"
       ],
@@ -163,6 +169,7 @@
       "controlCount": 16,
       "eventCount": 2,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [
         "block"
       ],
@@ -189,6 +196,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -211,6 +219,7 @@
       "controlCount": 13,
       "eventCount": 2,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [
         "block"
       ],
@@ -235,6 +244,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -257,6 +267,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -279,6 +290,7 @@
       "controlCount": 5,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -306,6 +318,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -328,6 +341,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -350,6 +364,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [],
@@ -372,6 +387,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [],
@@ -394,6 +410,7 @@
       "controlCount": 20,
       "eventCount": 7,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -419,6 +436,7 @@
       "controlCount": 20,
       "eventCount": 6,
       "promptCount": 0,
+      "screenshotCount": 1,
       "unsupportedKinds": [
         "block"
       ],
@@ -447,6 +465,7 @@
       "controlCount": 32,
       "eventCount": 8,
       "promptCount": 2,
+      "screenshotCount": 4,
       "unsupportedKinds": [
         "block"
       ],
@@ -478,6 +497,7 @@
       "controlCount": 22,
       "eventCount": 9,
       "promptCount": 2,
+      "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [
@@ -501,6 +521,7 @@
       "controlCount": 20,
       "eventCount": 4,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [
         "block"
       ],
@@ -528,6 +549,7 @@
       "controlCount": 24,
       "eventCount": 8,
       "promptCount": 1,
+      "screenshotCount": 1,
       "unsupportedKinds": [
         "block"
       ],
@@ -555,6 +577,7 @@
       "controlCount": 12,
       "eventCount": 1,
       "promptCount": 1,
+      "screenshotCount": 7,
       "unsupportedKinds": [
         "block"
       ],
@@ -582,6 +605,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -604,6 +628,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -626,6 +651,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -648,6 +674,7 @@
       "controlCount": 17,
       "eventCount": 2,
       "promptCount": 3,
+      "screenshotCount": 0,
       "unsupportedKinds": [
         "block"
       ],
@@ -676,6 +703,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -698,6 +726,7 @@
       "controlCount": 14,
       "eventCount": 2,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [
         "block"
       ],
@@ -726,6 +755,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -748,6 +778,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -770,6 +801,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -792,6 +824,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [],
@@ -808,43 +841,13 @@
       }
     },
     {
-      "toolId": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
-      "title": "Jason Exporter",
-      "uiKind": "mixed",
-      "controlCount": 32,
-      "eventCount": 9,
-      "promptCount": 9,
-      "unsupportedKinds": [
-        "block"
-      ],
-      "requiresTrainingData": true,
-      "fidelityFlags": [],
-      "unresolved": {
-        "controls": [
-          "ComboBoxItem",
-          "Button",
-          "ComboBox",
-          "DataGrid",
-          "ListBox",
-          "TextBox",
-          "CheckBox",
-          "RadioButton"
-        ],
-        "events": []
-      },
-      "confidence": {
-        "controls": "medium",
-        "workflow": "high",
-        "prompts": "medium"
-      }
-    },
-    {
       "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
       "title": "Reorder Selected Viewport",
       "uiKind": "pyrevit-form",
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 2,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -867,6 +870,7 @@
       "controlCount": 25,
       "eventCount": 8,
       "promptCount": 1,
+      "screenshotCount": 2,
       "unsupportedKinds": [
         "block"
       ],
@@ -893,6 +897,7 @@
       "controlCount": 0,
       "eventCount": 0,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -915,6 +920,7 @@
       "controlCount": 20,
       "eventCount": 6,
       "promptCount": 0,
+      "screenshotCount": 0,
       "unsupportedKinds": [
         "block"
       ],

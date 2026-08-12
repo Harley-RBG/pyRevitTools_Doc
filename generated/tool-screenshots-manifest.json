@@ -1,0 +1,350 @@
+{
+  "generatedAt": "2026-08-12T23:38:50.013Z",
+  "sourceDir": "P:\\Production\\Computational\\RBG_pyRevit\\Extension\\Tool Screenshots",
+  "outDir": "C:\\Users\\harley.trappitt\\Documents\\GitHub\\pyRevitToolsDoc\\generated\\tool-screenshots",
+  "total": 38,
+  "files": [
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CategoryPicker.png",
+      "relPath": "JasonHacksRevit/CategoryPicker.png",
+      "normalizedName": "categorypicker",
+      "fileSize": 84099,
+      "mtimeMs": 1786577219551.898,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CategoryPicker.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Cloud Revisions.png",
+      "relPath": "JasonHacksRevit/Cloud Revisions.png",
+      "normalizedName": "cloudrevisions",
+      "fileSize": 53908,
+      "mtimeMs": 1786577387108.3054,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Cloud Revisions.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState1.png",
+      "relPath": "JasonHacksRevit/CopyState1.png",
+      "normalizedName": "copystate",
+      "fileSize": 24273,
+      "mtimeMs": 1786577237902.8887,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState1.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState2.png",
+      "relPath": "JasonHacksRevit/CopyState2.png",
+      "normalizedName": "copystate",
+      "fileSize": 21113,
+      "mtimeMs": 1786577252132.832,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState2.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState3.png",
+      "relPath": "JasonHacksRevit/CopyState3.png",
+      "normalizedName": "copystate",
+      "fileSize": 22410,
+      "mtimeMs": 1786577263313.901,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState3.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState4.png",
+      "relPath": "JasonHacksRevit/CopyState4.png",
+      "normalizedName": "copystate",
+      "fileSize": 12547,
+      "mtimeMs": 1786577271536.7578,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState4.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState5.png",
+      "relPath": "JasonHacksRevit/CopyState5.png",
+      "normalizedName": "copystate",
+      "fileSize": 41429,
+      "mtimeMs": 1786577278872.1438,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState5.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState6.png",
+      "relPath": "JasonHacksRevit/CopyState6.png",
+      "normalizedName": "copystate",
+      "fileSize": 9912,
+      "mtimeMs": 1786577284908.4702,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState6.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "CopyState7.png",
+      "relPath": "JasonHacksRevit/CopyState7.png",
+      "normalizedName": "copystate",
+      "fileSize": 9760,
+      "mtimeMs": 1786577291017.629,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/CopyState7.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Export1.png",
+      "relPath": "JasonHacksRevit/Export1.png",
+      "normalizedName": "export",
+      "fileSize": 190133,
+      "mtimeMs": 1784703710968.6133,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Export1.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Export2.png",
+      "relPath": "JasonHacksRevit/Export2.png",
+      "normalizedName": "export",
+      "fileSize": 79694,
+      "mtimeMs": 1784675966201.0173,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Export2.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Propogate Extents Override1.png",
+      "relPath": "JasonHacksRevit/Propogate Extents Override1.png",
+      "normalizedName": "propogateextentsoverride",
+      "fileSize": 58940,
+      "mtimeMs": 1786577319734.255,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override1.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Propogate Extents Override2.png",
+      "relPath": "JasonHacksRevit/Propogate Extents Override2.png",
+      "normalizedName": "propogateextentsoverride",
+      "fileSize": 65954,
+      "mtimeMs": 1786577330444.1611,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override2.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Propogate Extents Override3.png",
+      "relPath": "JasonHacksRevit/Propogate Extents Override3.png",
+      "normalizedName": "propogateextentsoverride",
+      "fileSize": 14508,
+      "mtimeMs": 1786577349658.9082,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override3.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Propogate Extents Override4.png",
+      "relPath": "JasonHacksRevit/Propogate Extents Override4.png",
+      "normalizedName": "propogateextentsoverride",
+      "fileSize": 77478,
+      "mtimeMs": 1786577370657.989,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override4.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Reorder Viewports1.png",
+      "relPath": "JasonHacksRevit/Reorder Viewports1.png",
+      "normalizedName": "reorderviewports",
+      "fileSize": 59775,
+      "mtimeMs": 1786577427066.829,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports1.png"
+    },
+    {
+      "tabFolder": "JasonHacksRevit",
+      "fileName": "Reorder Viewports2.png",
+      "relPath": "JasonHacksRevit/Reorder Viewports2.png",
+      "normalizedName": "reorderviewports",
+      "fileSize": 36676,
+      "mtimeMs": 1786577435254.2688,
+      "localPath": "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports2.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Add Coordinates.png",
+      "relPath": "RBG_SYD_Tools/Add Coordinates.png",
+      "normalizedName": "addcoordinates",
+      "fileSize": 12497,
+      "mtimeMs": 1786514985560.599,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Add Coordinates.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Elements by Level.png",
+      "relPath": "RBG_SYD_Tools/Elements by Level.png",
+      "normalizedName": "elementsbylevel",
+      "fileSize": 64948,
+      "mtimeMs": 1786575554072.1235,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Elements by Level.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Floor Splitter.png",
+      "relPath": "RBG_SYD_Tools/Floor Splitter.png",
+      "normalizedName": "floorsplitter",
+      "fileSize": 35178,
+      "mtimeMs": 1786575432987.0225,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "LinkedViews.png",
+      "relPath": "RBG_SYD_Tools/LinkedViews.png",
+      "normalizedName": "linkedviews",
+      "fileSize": 134343,
+      "mtimeMs": 1786575271826.2793,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/LinkedViews.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "PackageCreator1.png",
+      "relPath": "RBG_SYD_Tools/PackageCreator1.png",
+      "normalizedName": "packagecreator",
+      "fileSize": 63874,
+      "mtimeMs": 1786575167982.1797,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator1.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "PackageCreator2.png",
+      "relPath": "RBG_SYD_Tools/PackageCreator2.png",
+      "normalizedName": "packagecreator",
+      "fileSize": 133077,
+      "mtimeMs": 1786575179608.1865,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator2.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "PackageCreator3.png",
+      "relPath": "RBG_SYD_Tools/PackageCreator3.png",
+      "normalizedName": "packagecreator",
+      "fileSize": 135141,
+      "mtimeMs": 1786575185882.8696,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator3.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "PackageCreator4.png",
+      "relPath": "RBG_SYD_Tools/PackageCreator4.png",
+      "normalizedName": "packagecreator",
+      "fileSize": 137433,
+      "mtimeMs": 1786575206557.6565,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator4.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "PackageCreator5.png",
+      "relPath": "RBG_SYD_Tools/PackageCreator5.png",
+      "normalizedName": "packagecreator",
+      "fileSize": 129901,
+      "mtimeMs": 1786575212935.3408,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator5.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Param Copier.png",
+      "relPath": "RBG_SYD_Tools/Param Copier.png",
+      "normalizedName": "paramcopier",
+      "fileSize": 74762,
+      "mtimeMs": 1786518116336.416,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Param Copier.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Plan View Range Tool.png",
+      "relPath": "RBG_SYD_Tools/Plan View Range Tool.png",
+      "normalizedName": "planviewrangetool",
+      "fileSize": 141988,
+      "mtimeMs": 1786575322707.3665,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Plan View Range Tool.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "RBG_SYD_Tools Ribbon.png",
+      "relPath": "RBG_SYD_Tools/RBG_SYD_Tools Ribbon.png",
+      "normalizedName": "rbgsydtoolsribbon",
+      "fileSize": 17291,
+      "mtimeMs": 1786076086400.4731,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/RBG_SYD_Tools Ribbon.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "ScheduleUpdater1.png",
+      "relPath": "RBG_SYD_Tools/ScheduleUpdater1.png",
+      "normalizedName": "scheduleupdater",
+      "fileSize": 33898,
+      "mtimeMs": 1786515016070.2295,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater1.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "ScheduleUpdater2.png",
+      "relPath": "RBG_SYD_Tools/ScheduleUpdater2.png",
+      "normalizedName": "scheduleupdater",
+      "fileSize": 16404,
+      "mtimeMs": 1786515025443.2761,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater2.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "ScheduleUpdater3.png",
+      "relPath": "RBG_SYD_Tools/ScheduleUpdater3.png",
+      "normalizedName": "scheduleupdater",
+      "fileSize": 26934,
+      "mtimeMs": 1786515044766.9763,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater3.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "SectionDetail Updater.png",
+      "relPath": "RBG_SYD_Tools/SectionDetail Updater.png",
+      "normalizedName": "sectiondetailupdater",
+      "fileSize": 115140,
+      "mtimeMs": 1785725561985.286,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/SectionDetail Updater.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "Tool Dashboard.png",
+      "relPath": "RBG_SYD_Tools/Tool Dashboard.png",
+      "normalizedName": "tooldashboard",
+      "fileSize": 182591,
+      "mtimeMs": 1784722206468.264,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Tool Dashboard.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "View CreatorSelector1.png",
+      "relPath": "RBG_SYD_Tools/View CreatorSelector1.png",
+      "normalizedName": "viewcreatorselector",
+      "fileSize": 149030,
+      "mtimeMs": 1785725114511.8435,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "View CreatorSelector1A.png",
+      "relPath": "RBG_SYD_Tools/View CreatorSelector1A.png",
+      "normalizedName": "viewcreatorselector",
+      "fileSize": 76672,
+      "mtimeMs": 1785720269376.2507,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "View CreatorSelector2.png",
+      "relPath": "RBG_SYD_Tools/View CreatorSelector2.png",
+      "normalizedName": "viewcreatorselector",
+      "fileSize": 157187,
+      "mtimeMs": 1785725234191.1902,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png"
+    },
+    {
+      "tabFolder": "RBG_SYD_Tools",
+      "fileName": "View CreatorSelector3.png",
+      "relPath": "RBG_SYD_Tools/View CreatorSelector3.png",
+      "normalizedName": "viewcreatorselector",
+      "fileSize": 104391,
+      "mtimeMs": 1785725263224.9175,
+      "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png"
+    }
+  ]
+}

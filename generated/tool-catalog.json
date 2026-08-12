@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T05:22:14.538Z",
+  "generatedAt": "2026-08-12T23:39:35.827Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -21,6 +21,10 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-addcoordinates.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Add Coordinates.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -45,6 +49,8 @@
       ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-magpiegroup.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -67,6 +73,14 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
+      "screenshotCount": 5,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator3.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator4.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator5.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -87,6 +101,10 @@
       ],
       "fileCount": 2,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-paramcopier.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Param Copier.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -108,6 +126,12 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html",
+      "screenshotCount": 3,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/ScheduleUpdater3.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -130,6 +154,10 @@
       ],
       "fileCount": 18,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-dashboard.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Tool Dashboard.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -151,6 +179,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "mixed"
     },
     {
@@ -172,6 +202,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-disallowdetach.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -193,6 +225,10 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-selectbylevel.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Elements by Level.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -214,6 +250,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-quickpin.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -235,6 +273,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-revclouddetailline.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -257,6 +297,10 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -278,6 +322,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-cropview.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -302,6 +348,8 @@
       ],
       "fileCount": 7,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-gridextents.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -326,6 +374,8 @@
       ],
       "fileCount": 7,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -350,6 +400,8 @@
       ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -370,6 +422,10 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-linkedviews.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/LinkedViews.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -391,6 +447,10 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-planviewrange.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Plan View Range Tool.png"
+      ],
       "uiKind": "wpf"
     },
     {
@@ -413,6 +473,13 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
+      "screenshotCount": 4,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -435,6 +502,10 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/SectionDetail Updater.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -455,6 +526,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sheetno.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "mixed"
     },
     {
@@ -475,6 +548,10 @@
       ],
       "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/JasonHacksRevit/CategoryPicker.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -495,6 +572,16 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-copy-state.html",
+      "screenshotCount": 7,
+      "screenshotPaths": [
+        "generated/tool-screenshots/JasonHacksRevit/CopyState1.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState2.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState3.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState4.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState5.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState6.png",
+        "generated/tool-screenshots/JasonHacksRevit/CopyState7.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -515,6 +602,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-mclear.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -535,6 +624,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-mdeduct.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -555,6 +646,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-next.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -575,6 +668,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-paste-state.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -595,6 +690,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-prev.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -615,6 +712,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -635,6 +734,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-purge-memory-files.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -655,6 +756,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-save-memory-as-selection.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -675,6 +778,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-selection-unhideallelements.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -697,29 +802,11 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-sheets-cloudrevisions.html",
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/JasonHacksRevit/Cloud Revisions.png"
+      ],
       "uiKind": "none"
-    },
-    {
-      "id": "JasonHacksRevit.tab/Sheets.panel/Jason Exporter with IFC NWC.pushbutton",
-      "title": "Jason Exporter",
-      "tab": "SJ pyRevit",
-      "panel": "Sheets",
-      "stack": "Direct",
-      "location": "JasonHacksRevit.tab > Sheets.panel > Jason Exporter with IFC NWC.pushbutton",
-      "function": "Export sheets to PDF/DWG and 3D views to IFC/NWC from an ordered, filtered sheet list with custom naming formats.",
-      "purpose": "Purpose not documented in tool-context.md.",
-      "inputs": [
-        "Export sheets to PDF/DWG and 3D views to IFC/NWC from an ordered, filtered sheet list with custom naming formats."
-      ],
-      "notes": [
-        "Files in bundle: 14"
-      ],
-      "authors": [
-        "Unknown"
-      ],
-      "fileCount": 14,
-      "pagePath": "tools/sj-pyrevit-sheets-jason-exporter-with-ifc-nwc.html",
-      "uiKind": "mixed"
     },
     {
       "id": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton",
@@ -739,6 +826,8 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-selected-viewport.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "pyrevit-form"
     },
     {
@@ -759,6 +848,11 @@
       ],
       "fileCount": 6,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-viewports.html",
+      "screenshotCount": 2,
+      "screenshotPaths": [
+        "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports1.png",
+        "generated/tool-screenshots/JasonHacksRevit/Reorder Viewports2.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -779,6 +873,8 @@
       ],
       "fileCount": 2,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool1.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "none"
     },
     {
@@ -799,6 +895,8 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool2.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
       "uiKind": "wpf"
     }
   ]
