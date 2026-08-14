@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Issue Package Creator | Windows App Wiki</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .wiki-workflow-steps { counter-reset: step; list-style: none; padding: 0; }
+      .wiki-workflow-steps li { counter-increment: step; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--outline-variant); }
+      .wiki-workflow-steps li:last-child { border-bottom: none; }
+      .wiki-workflow-steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 8px; }
+      .feature-card { background: var(--surface-container); border: 1px solid var(--outline-variant); border-radius: 10px; padding: 14px 16px; }
+      .feature-card strong { display: block; color: var(--on-primary-cont); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+      .feature-card p { font-size: 0.88rem; color: var(--on-surface); margin: 0; }
+      .tab-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .tab-pill { background: var(--primary-container); color: var(--on-primary-cont); border-radius: var(--radius-btn); padding: 5px 14px; font-size: 0.82rem; font-weight: 600; }
+      .dep-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+      .dep-table th, .dep-table td { text-align: left; padding: 8px 12px; border: 1px solid var(--outline); }
+      .dep-table th { background: var(--surface-cont-high); font-weight: 600; }
+      .dep-table tr:nth-child(even) td { background: var(--surface-container); }
+      .badge-active { background: var(--success-container); color: var(--success); border-radius: 20px; padding: 2px 10px; font-size: 0.76rem; font-weight: 700; }
+      .app-meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; }
+      .app-meta-item { font-size: 0.85rem; color: var(--on-surface-var); }
+      .app-meta-item strong { color: var(--on-surface); }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Windows App Wiki</span>
+      <span class="topbar-sub">Issue Package Creator — Desktop App Documentation</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Windows App</span>
+        <span class="part-title">Issue Package Creator</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>App type:</strong> Windows desktop application (PySide6 / PyInstaller .exe) &nbsp;·&nbsp;
+        <strong>Category:</strong> Drawing Issue Workflow &nbsp;·&nbsp;
+        <span class="badge-active">Active</span>
+      </div>
+
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+
+          <!-- OVERVIEW -->
+          <section class="card wiki-section" id="overview">
+            <div class="card-head">
+              <span class="card-title">Overview</span>
+              <span class="card-hint">What this app does and who it's for</span>
+            </div>
+            <div class="card-body wiki-body">
+              <a class="back-link" href="../index.html#windows">← Back to Windows Apps</a>
+              <div class="app-meta-row">
+                <span class="app-meta-item"><strong>Repository:</strong> <a href="https://github.com/Robert-Bird-Group/Issue-Package-Creator" target="_blank" rel="noopener noreferrer">Robert-Bird-Group/Issue-Package-Creator</a></span>
+                <span class="app-meta-item"><strong>Releases:</strong> <a href="https://github.com/Robert-Bird-Group/Issue-Package-Creator/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></span>
+              </div>
+              <p class="lede">Issue Package Creator is a drawing and document issue workflow automation tool for engineering teams. It handles the <strong>full lifecycle of a formal drawing issue package</strong> — from organising exported files into a standardised folder structure, through generating an internal approval binder PDF, to drafting the outgoing Outlook email with fully populated placeholders.</p>
+              <p style="margin-top:10px;">The app eliminates manual steps that are error-prone and time-consuming: renaming folders, sorting files, merging PDFs, and composing emails. Instead, a project context is configured once (paths, contacts, email templates) and the creation process runs with a single click.</p>
+            </div>
+          </section>
+
+          <!-- WORKFLOW -->
+          <section class="card wiki-section" id="workflow">
+            <div class="card-head">
+              <span class="card-title">Workflow</span>
+              <span class="card-hint">Step-by-step issue package creation process</span>
+            </div>
+            <div class="card-body wiki-body">
+              <ol class="wiki-workflow-steps">
+                <li>
+                  <div>
+                    <strong>Set up project context</strong><br />
+                    Select or load a saved project link — project name, project code, export folder path, principal, and designer. Saved links can be favourited for quick access.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Preview the package</strong><br />
+                    The app scans the export folder and maps each file to its correct destination sub-folder: <code>Drawings/PDF</code>, <code>Drawings/DWG</code>, or <code>Internal Approvals</code>. The mapping is shown in a table before any files are moved.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Run discrepancy check</strong><br />
+                    Compares drawing numbers found in the <strong>RevisionHistory .xlsx</strong> against the exported <code>.pdf</code> / <code>.dwg</code> / <code>.dxf</code> filenames. Missing, extra, and duplicate files are flagged in a colour-coded table. Double-click any row to open the file in Explorer.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Set package title &amp; date</strong><br />
+                    Choose from saved package titles (e.g. <em>Issued for Construction</em>, <em>Issued for Tender</em>) and pick an issue date via the custom calendar picker widget.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Generate Binder Set PDF</strong><br />
+                    Merges all package PDFs into a single <code>Internal Approvals/&lt;Binder Name&gt;.pdf</code>, respecting a saved page order that can be customised via drag-and-drop.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Create the issue package</strong><br />
+                    Creates the dated destination folder in <code>yyMMdd – Description</code> format, then copies or moves all valid files into their correct sub-folder destinations in one operation.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Draft the Outlook email</strong><br />
+                    Uses a Hybrid / HTML / OFT template with full placeholder substitution (project name, drawing numbers, issue date, contacts, etc.) to create a ready-to-review Classic Outlook draft complete with attachments.
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- FEATURES -->
+          <section class="card wiki-section" id="features">
+            <div class="card-head">
+              <span class="card-title">Key Features</span>
+              <span class="card-hint">Capabilities and modules</span>
+            </div>
+            <div class="card-body wiki-body">
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <strong>Package Folder Naming</strong>
+                  <p>Dated folder structure uses the <code>yyMMdd – Description</code> format, consistent with standard engineering issue conventions.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Automatic File Routing</strong>
+                  <p><code>.pdf</code> → <code>Drawings/PDF</code>, <code>.dwg</code>/<code>.dxf</code> → <code>Drawings/DWG</code>, RevisionHistory → root, binder → <code>Internal Approvals</code>.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Discrepancy Detection</strong>
+                  <p>Flags missing, extra, and duplicate files by comparing RevisionHistory rows against exported filenames before any changes are made.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Binder Set PDF</strong>
+                  <p>Merges package PDFs into a single internal approval binder. Page order is configurable via drag-and-drop and is saved per project folder.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Saved Project Links</strong>
+                  <p>Reusable project context including folder paths, principal/designer names, and email metadata. Supports favouriting and quick selection.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Address Book</strong>
+                  <p>Manage multiple address books with contact autocomplete for To/CC fields. Supports direct import from Outlook contacts.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Email Templates</strong>
+                  <p>Hybrid, HTML, and OFT template modes with rich placeholder substitution. Templates are edited in a built-in template editor tab.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Titleblock OCR</strong>
+                  <p>PyMuPDF vector-text extraction with Tesseract fallback for ordering pages by drawing number. A portable Tesseract runtime is bundled with the EXE.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Dark / Light Theme</strong>
+                  <p>Theme preference is toggled in-app and persisted per-user via <code>ui_settings.json</code> in AppData.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Telemetry</strong>
+                  <p>Non-blocking local JSON event log and optional network telemetry for usage tracking and diagnostics.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- UI TABS -->
+          <section class="card wiki-section" id="ui">
+            <div class="card-head">
+              <span class="card-title">User Interface</span>
+              <span class="card-hint">Tabs, panels, and key controls</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Application Tabs</h4>
+              <div class="tab-pill-row">
+                <span class="tab-pill">Issue Package Creator</span>
+                <span class="tab-pill">Projects</span>
+                <span class="tab-pill">Address Book</span>
+                <span class="tab-pill">Email Template</span>
+              </div>
+
+              <h4 class="subhead" style="margin-top:18px;">Issue Package Creator Tab (Main)</h4>
+              <p>This is the primary working area. Key controls include:</p>
+              <ul style="margin-top:8px;">
+                <li><strong>Project combo</strong> — select a saved project / export folder path</li>
+                <li><strong>Package title combo</strong> — e.g. <em>Issued for Construction</em>, <em>Issued for Tender</em>, <em>Issued for Review</em></li>
+                <li><strong>Status combo</strong> — WIP, IFC, IFA, IFR, IFT, etc.</li>
+                <li><strong>Date picker</strong> — custom calendar popup widget for selecting the issue date</li>
+                <li><strong>Preview button</strong> — builds the file mapping table without making any changes</li>
+                <li><strong>Discrepancy panel</strong> — comparison table; double-click rows to reveal the file in Explorer</li>
+                <li><strong>Create Issue Package</strong> — runs the full copy/move operation to create the dated folder</li>
+                <li><strong>Generate Binder Set</strong> — merges PDFs into the internal approval binder</li>
+                <li><strong>Outlook Draft</strong> — creates a ready-to-send Outlook email draft from the active template</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:18px;">Projects Tab</h4>
+              <p>Manage saved project links: add, edit, delete, and favourite projects. Each entry stores export folder path, project name, project code, principal, designer, and email metadata.</p>
+
+              <h4 class="subhead" style="margin-top:18px;">Address Book Tab</h4>
+              <p>Organise contacts into multiple named books. Supports importing contacts directly from Outlook, with deduplication logic to prevent double entries.</p>
+
+              <h4 class="subhead" style="margin-top:18px;">Email Template Tab</h4>
+              <p>Rich template editor (lazy-loaded on first visit to avoid WebEngine startup cost). Supports Hybrid, HTML, and OFT template types with a full set of available placeholder tokens.</p>
+            </div>
+          </section>
+
+          <!-- DEVELOPER NOTES -->
+          <section class="card wiki-section" id="developer">
+            <div class="card-head">
+              <span class="card-title">Developer Notes</span>
+              <span class="card-hint">Architecture, file structure, and dependencies</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Architecture</h4>
+              <p>The app uses a <strong>PySide6 QMainWindow</strong> with a custom pill-style tab bar. UI is split into <code>ui/tabs/</code>, <code>ui/dialogs/</code>, and <code>ui/widgets/</code>. Backend logic lives in <code>backend/</code> modules with clear separation from UI. The app is packaged as a standalone <code>.exe</code> via PyInstaller with a bundled Tesseract runtime in <code>third_party/</code>.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">User Data Location</h4>
+              <p><code>%APPDATA%\IssuePackageCreator\users\&lt;username&gt;\</code> — stores saved links, address books, email templates, PDF order files, region settings, and UI preferences.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">Key Backend Modules</h4>
+              <ul>
+                <li><code>backend/issue_package.py</code> — core package creation and file routing logic</li>
+                <li><code>backend/issue_package_naming_check.py</code> — discrepancy detection (RevisionHistory vs exports)</li>
+                <li><code>backend/email_templates.py</code> — template rendering with placeholder substitution</li>
+                <li><code>backend/outlook_email.py</code> — Outlook COM draft creation via <code>pywin32</code></li>
+                <li><code>backend/region_ocr.py</code> — PDF region extraction using PyMuPDF + Tesseract</li>
+                <li><code>backend/address_book.py</code> — CRUD + deduplication for contact management</li>
+                <li><code>backend/saved_links.py</code> — project context presets persistence</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">Dependencies</h4>
+              <table class="dep-table">
+                <thead><tr><th>Package</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>PySide6 &gt;= 6.8.1</code></td><td>Qt UI framework</td></tr>
+                  <tr><td><code>pypdf &gt;= 4.0</code></td><td>PDF merging / Binder Set generation</td></tr>
+                  <tr><td><code>pywin32 &gt;= 305</code></td><td>Classic Outlook COM (drafts, contacts, OFT)</td></tr>
+                  <tr><td><code>openpyxl &gt;= 3.1</code></td><td>RevisionHistory <code>.xlsx</code> parsing</td></tr>
+                  <tr><td><code>PyMuPDF &gt;= 1.23</code></td><td>PDF region text extraction</td></tr>
+                  <tr><td><code>Pillow &gt;= 10.0</code></td><td>Image processing for OCR pipeline</td></tr>
+                  <tr><td><code>pytesseract &gt;= 0.3.10</code></td><td>OCR fallback via bundled Tesseract</td></tr>
+                  <tr><td><code>pyinstaller &gt;= 6.0</code></td><td>Executable packaging</td></tr>
+                </tbody>
+              </table>
+
+              <h4 class="subhead" style="margin-top:16px;">Related Apps</h4>
+              <ul>
+                <li><a href="./windows-issue-package-verifier.html">Issue Package Verifier</a> — QA verification tool for checking consistency of issued packages against drawing registers</li>
+                <li><a href="./windows-auto-pdf.html">Auto-PDF</a> — Standalone PDF ordering and merging utility (shares the PDF ordering engine with this app)</li>
+              </ul>
+            </div>
+          </section>
+
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page contents">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Wiki article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#features">Key Features</a>
+            <a class="wiki-toc-link" href="#ui">User Interface</a>
+            <a class="wiki-toc-link" href="#developer">Developer Notes</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            const link = links.find(l => l.getAttribute('href') === '#' + e.target.id);
+            if (link) link.classList.toggle('is-active', e.isIntersecting);
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => obs.observe(s));
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auto-PDF | Windows App Wiki</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .wiki-workflow-steps { counter-reset: step; list-style: none; padding: 0; }
+      .wiki-workflow-steps li { counter-increment: step; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--outline-variant); }
+      .wiki-workflow-steps li:last-child { border-bottom: none; }
+      .wiki-workflow-steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 8px; }
+      .feature-card { background: var(--surface-container); border: 1px solid var(--outline-variant); border-radius: 10px; padding: 14px 16px; }
+      .feature-card strong { display: block; color: var(--on-primary-cont); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+      .feature-card p { font-size: 0.88rem; color: var(--on-surface); margin: 0; }
+      .dep-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+      .dep-table th, .dep-table td { text-align: left; padding: 8px 12px; border: 1px solid var(--outline); }
+      .dep-table th { background: var(--surface-cont-high); font-weight: 600; }
+      .dep-table tr:nth-child(even) td { background: var(--surface-container); }
+      .badge-active { background: var(--success-container); color: var(--success); border-radius: 20px; padding: 2px 10px; font-size: 0.76rem; font-weight: 700; }
+      .app-meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; }
+      .app-meta-item { font-size: 0.85rem; color: var(--on-surface-var); }
+      .app-meta-item strong { color: var(--on-surface); }
+      .source-modes { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+      .source-mode-card { border: 1px solid var(--outline-variant); border-radius: 10px; padding: 12px 14px; background: var(--surface-container); }
+      .source-mode-card strong { display: block; font-size: 0.85rem; color: var(--on-surface); margin-bottom: 3px; }
+      .source-mode-card span { font-size: 0.82rem; color: var(--on-surface-var); }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Windows App Wiki</span>
+      <span class="topbar-sub">Auto-PDF — Desktop App Documentation</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Windows App</span>
+        <span class="part-title">Auto-PDF</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>App type:</strong> Windows desktop application (PySide6 / PyInstaller .exe) &nbsp;·&nbsp;
+        <strong>Category:</strong> PDF Ordering &amp; Merging &nbsp;·&nbsp;
+        <span class="badge-active">Active</span>
+      </div>
+
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+
+          <!-- OVERVIEW -->
+          <section class="card wiki-section" id="overview">
+            <div class="card-head">
+              <span class="card-title">Overview</span>
+              <span class="card-hint">What this app does and who it's for</span>
+            </div>
+            <div class="card-body wiki-body">
+              <a class="back-link" href="../index.html#windows">← Back to Windows Apps</a>
+              <div class="app-meta-row">
+                <span class="app-meta-item"><strong>Repository:</strong> <a href="https://github.com/Robert-Bird-Group/Auto-PDF" target="_blank" rel="noopener noreferrer">Robert-Bird-Group/Auto-PDF</a></span>
+                <span class="app-meta-item"><strong>Releases:</strong> <a href="https://github.com/Robert-Bird-Group/Auto-PDF/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></span>
+              </div>
+              <p class="lede">Auto-PDF is a <strong>focused, standalone PDF ordering and merging utility</strong> for engineering drawing sets. It takes a folder of PDFs, a multi-page PDF, or individually selected files and lets you reorder the pages — manually via drag-and-drop, or automatically by extracting drawing numbers directly from a defined region of the PDF titleblock — then exports the result as a single merged PDF.</p>
+              <p style="margin-top:10px;">Auto-PDF is the standalone version of the PDF-ordering engine that is also embedded within <a href="./windows-issue-package-creator.html">Issue Package Creator</a>. It is designed to be lightweight, single-purpose, and fully self-contained — the Tesseract OCR runtime is bundled with the EXE so no separate installation is required.</p>
+            </div>
+          </section>
+
+          <!-- WORKFLOW -->
+          <section class="card wiki-section" id="workflow">
+            <div class="card-head">
+              <span class="card-title">Workflow</span>
+              <span class="card-hint">Step-by-step PDF ordering and merging process</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Source Modes</h4>
+              <div class="source-modes">
+                <div class="source-mode-card">
+                  <strong>📄 Multi-page PDF</strong>
+                  <span>A single PDF file — each page becomes a row in the order table.</span>
+                </div>
+                <div class="source-mode-card">
+                  <strong>📁 Folder of PDFs</strong>
+                  <span>A folder of individual PDF files — each file becomes a row.</span>
+                </div>
+                <div class="source-mode-card">
+                  <strong>🗂️ Individual Files</strong>
+                  <span>Manually select specific PDF files to include.</span>
+                </div>
+                <div class="source-mode-card">
+                  <strong>↕️ Drag &amp; Drop</strong>
+                  <span>Drag PDFs or a folder directly onto the table to add or replace the current set.</span>
+                </div>
+              </div>
+
+              <ol class="wiki-workflow-steps" style="margin-top:18px;">
+                <li>
+                  <div>
+                    <strong>Load PDFs</strong><br />
+                    Use one of the source mode buttons (Pick PDF, Pick Folder, Pick Files) or drag-and-drop files or a folder onto the table. All pages or files appear as rows in the ordering table with their filename or page number.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>View and manually reorder</strong><br />
+                    Drag rows in the table to reorder them, or use the <strong>Move Up / Move Down</strong> buttons. The current order is automatically saved per source folder/file and restored on next load.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Pick a region for auto-sort (optional)</strong><br />
+                    Click <strong>Pick Region…</strong> to open the <strong>Region Picker Dialog</strong>. A zoomable PDF preview is shown — drag to draw a rectangle over the drawing number area of the titleblock. Optionally enter a regex to isolate just the number from surrounding text. Click <strong>Confirm</strong> to save the region.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Sort by drawing number</strong><br />
+                    Click <strong>Sort Pages by Region</strong>. The app extracts the drawing number from the defined region for every page/file using <strong>PyMuPDF vector-text extraction first</strong>, falling back to <strong>Tesseract OCR</strong> only when no selectable text is found. Rows are then sorted by the extracted value.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Apply a saved titleblock profile (optional)</strong><br />
+                    If a named titleblock profile already exists for your drawing set, select it from the <strong>Profile combo</strong> to load its region settings rather than picking manually.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Export merged PDF</strong><br />
+                    Click <strong>Export PDF</strong>. The app merges all pages/files in the current order into a single output PDF using <code>pypdf</code>. Choose the output path in the save dialog.
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- FEATURES -->
+          <section class="card wiki-section" id="features">
+            <div class="card-head">
+              <span class="card-title">Key Features</span>
+              <span class="card-hint">Capabilities and modules</span>
+            </div>
+            <div class="card-body wiki-body">
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <strong>Three Source Modes</strong>
+                  <p>Load from a multi-page PDF, a folder of PDFs, or individually selected files. All modes support drag-and-drop onto the table.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Drag-and-Drop Reordering</strong>
+                  <p>Rows in the table are drag-and-drop enabled. Move Up / Move Down buttons also available for precise single-step reordering.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Interactive Region Picker</strong>
+                  <p>Zoomable PDF preview with drag-to-draw rectangle selection. Choose the page to pick from using a page spin box.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Vector-Text-First OCR</strong>
+                  <p>PyMuPDF extracts selectable text from the defined region first. Tesseract is only invoked as a fallback, keeping the process fast and accurate.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Regex Filtering</strong>
+                  <p>An optional regex field isolates just the drawing number from any surrounding text extracted from the region, improving sort accuracy.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Saved Page Order</strong>
+                  <p>The current order is persisted per source (folder or file) in <code>pdf_order.json</code>. Automatically restored when the same source is loaded again.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Saved Region Settings</strong>
+                  <p>Region definitions (rectangle coordinates + regex) are persisted per project in <code>region_settings.json</code>.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Titleblock Profiles</strong>
+                  <p>Reusable named region profiles (shared or per-user) mean you only define a region once per titleblock type.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Portable Tesseract</strong>
+                  <p>A portable Tesseract runtime is bundled in <code>third_party/tesseract/win64/</code>, making the EXE fully self-contained. No separate Tesseract installation needed.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Single-Window Design</strong>
+                  <p>No tabs — the entire app is a single focused workflow window. Minimal setup, immediate productivity.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- UI -->
+          <section class="card wiki-section" id="ui">
+            <div class="card-head">
+              <span class="card-title">User Interface</span>
+              <span class="card-hint">Controls and dialogs</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Main Window Controls</h4>
+              <p>The app is a single window. All controls are in the main <code>PdfOrderWidget</code>:</p>
+              <ul style="margin-top:8px;">
+                <li><strong>Pick PDF</strong> — load a single multi-page PDF (each page = one row)</li>
+                <li><strong>Pick Folder</strong> — load all PDFs from a folder (each file = one row)</li>
+                <li><strong>Pick Files</strong> — manually select individual PDF files</li>
+                <li><strong>PdfOrderTableView</strong> — drag-drop enabled table; columns include filename/page number and extracted drawing number</li>
+                <li><strong>Move Up / Move Down</strong> — single-step manual row reordering</li>
+                <li><strong>Delete / Clear</strong> — remove selected rows or clear the entire table</li>
+                <li><strong>Pick Region…</strong> — opens the Region Picker Dialog to define the titleblock extraction zone</li>
+                <li><strong>Regex field</strong> — optional pattern to filter extraction text</li>
+                <li><strong>Titleblock profile combo</strong> — load a named profile's saved region settings</li>
+                <li><strong>Sort Pages by Region</strong> — triggers OCR-based auto-sort using the defined region</li>
+                <li><strong>Export PDF</strong> — writes the reordered pages/files into a single merged output PDF</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:18px;">Region Picker Dialog</h4>
+              <ul style="margin-top:8px;">
+                <li><strong>ZoomablePickView</strong> — scroll-wheel zoom on the PDF page preview; drag to draw the selection rectangle</li>
+                <li><strong>Page spin box</strong> — choose which PDF page to use as the template for region picking</li>
+                <li><strong>Preview text display</strong> — shows a live extraction result from the selected region as you draw</li>
+                <li><strong>Confirm / Cancel buttons</strong></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- DEVELOPER NOTES -->
+          <section class="card wiki-section" id="developer">
+            <div class="card-head">
+              <span class="card-title">Developer Notes</span>
+              <span class="card-hint">Architecture, file structure, and dependencies</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Architecture</h4>
+              <p>Auto-PDF is a <strong>single-window PySide6 application</strong>. The main window hosts a single <code>PdfOrderTab</code> widget which composes the <code>PdfOrderWidget</code>. The table is backed by a <code>PdfOrderTableModel</code> (Qt item model). Packaged as a standalone <code>.exe</code> via PyInstaller with a bundled Tesseract runtime at <code>third_party/tesseract/win64/</code>.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">Key Source Files</h4>
+              <ul>
+                <li><code>main.py</code> — app entry point + telemetry setup</li>
+                <li><code>ui/tabs/pdf_order_tab.py</code> — main tab widget</li>
+                <li><code>ui/models/pdf_order_model.py</code> — Qt table model for PDF/page ordering</li>
+                <li><code>ui/dialogs/region_picker_dialog.py</code> — interactive region picker with zoomable PDF view</li>
+                <li><code>backend/region_ocr.py</code> — PDF region extraction (vector-text + Tesseract fallback)</li>
+                <li><code>backend/pdf_order_store.py</code> — save/load/delete page order per source</li>
+                <li><code>backend/region_settings.py</code> — region definition persistence per project</li>
+                <li><code>backend/titleblock_registry.py</code> — named profile discovery</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">User Data Location</h4>
+              <ul>
+                <li><code>%APPDATA%\Auto-PDF\users\&lt;username&gt;\pdf_order.json</code> — saved page order per source</li>
+                <li><code>%APPDATA%\Auto-PDF\users\&lt;username&gt;\region_settings.json</code> — saved region definitions</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">Dependencies</h4>
+              <table class="dep-table">
+                <thead><tr><th>Package</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>PySide6 &gt;= 6.8.1</code></td><td>Qt UI framework</td></tr>
+                  <tr><td><code>pypdf &gt;= 4.0</code></td><td>PDF reading and merging</td></tr>
+                  <tr><td><code>pymupdf &gt;= 1.27.2</code></td><td>PDF rendering and text extraction</td></tr>
+                  <tr><td><code>pytesseract &gt;= 0.3.10</code></td><td>OCR via bundled Tesseract runtime</td></tr>
+                  <tr><td><code>Pillow &gt;= 10.0</code></td><td>Image processing for OCR pipeline</td></tr>
+                </tbody>
+              </table>
+
+              <h4 class="subhead" style="margin-top:16px;">Related Apps</h4>
+              <ul>
+                <li><a href="./windows-issue-package-creator.html">Issue Package Creator</a> — embeds the same PDF ordering engine; Auto-PDF is the standalone version of that module</li>
+                <li><a href="./windows-issue-package-verifier.html">Issue Package Verifier</a> — QA verification tool from the same app family</li>
+              </ul>
+            </div>
+          </section>
+
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page contents">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Wiki article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#features">Key Features</a>
+            <a class="wiki-toc-link" href="#ui">User Interface</a>
+            <a class="wiki-toc-link" href="#developer">Developer Notes</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            const link = links.find(l => l.getAttribute('href') === '#' + e.target.id);
+            if (link) link.classList.toggle('is-active', e.isIntersecting);
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => obs.observe(s));
+      })();
+    </script>
+  </body>
+</html>

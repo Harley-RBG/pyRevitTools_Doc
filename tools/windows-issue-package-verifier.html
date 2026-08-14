@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Issue Package Verifier | Windows App Wiki</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .wiki-workflow-steps { counter-reset: step; list-style: none; padding: 0; }
+      .wiki-workflow-steps li { counter-increment: step; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--outline-variant); }
+      .wiki-workflow-steps li:last-child { border-bottom: none; }
+      .wiki-workflow-steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 8px; }
+      .feature-card { background: var(--surface-container); border: 1px solid var(--outline-variant); border-radius: 10px; padding: 14px 16px; }
+      .feature-card strong { display: block; color: var(--on-primary-cont); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+      .feature-card p { font-size: 0.88rem; color: var(--on-surface); margin: 0; }
+      .tab-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .tab-pill { background: var(--primary-container); color: var(--on-primary-cont); border-radius: var(--radius-btn); padding: 5px 14px; font-size: 0.82rem; font-weight: 600; }
+      .dep-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+      .dep-table th, .dep-table td { text-align: left; padding: 8px 12px; border: 1px solid var(--outline); }
+      .dep-table th { background: var(--surface-cont-high); font-weight: 600; }
+      .dep-table tr:nth-child(even) td { background: var(--surface-container); }
+      .badge-active { background: var(--success-container); color: var(--success); border-radius: 20px; padding: 2px 10px; font-size: 0.76rem; font-weight: 700; }
+      .app-meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; }
+      .app-meta-item { font-size: 0.85rem; color: var(--on-surface-var); }
+      .app-meta-item strong { color: var(--on-surface); }
+      .severity-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+      .sev-chip { border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; font-weight: 600; }
+      .sev-ok { background: var(--success-container); color: var(--success); }
+      .sev-warn { background: var(--warning-container); color: var(--warning); }
+      .sev-err { background: var(--error-container); color: var(--error); }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-badge">Windows App Wiki</span>
+      <span class="topbar-sub">Issue Package Verifier — Desktop App Documentation</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Windows App</span>
+        <span class="part-title">Issue Package Verifier</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>App type:</strong> Windows desktop application (PySide6 / PyInstaller .exe) &nbsp;·&nbsp;
+        <strong>Category:</strong> Drawing Package QA &amp; Verification &nbsp;·&nbsp;
+        <span class="badge-active">Active</span>
+      </div>
+
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+
+          <!-- OVERVIEW -->
+          <section class="card wiki-section" id="overview">
+            <div class="card-head">
+              <span class="card-title">Overview</span>
+              <span class="card-hint">What this app does and who it's for</span>
+            </div>
+            <div class="card-body wiki-body">
+              <a class="back-link" href="../index.html#windows">← Back to Windows Apps</a>
+              <div class="app-meta-row">
+                <span class="app-meta-item"><strong>Repository:</strong> <a href="https://github.com/Robert-Bird-Group/Issue-Package-Verifier" target="_blank" rel="noopener noreferrer">Robert-Bird-Group/Issue-Package-Verifier</a></span>
+                <span class="app-meta-item"><strong>Releases:</strong> <a href="https://github.com/Robert-Bird-Group/Issue-Package-Verifier/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></span>
+              </div>
+              <p class="lede">Issue Package Verifier is an <strong>engineering drawing package quality-assurance tool</strong>. Given an Excel drawing register and a set of PDFs — from a local folder, individual files, a multi-page PDF, or cloud files from Autodesk Construction Cloud (ACC) — it validates that every drawing is present in both sources, and that drawing numbers, sheet names, and revisions are consistent across the register and the physical PDFs.</p>
+              <p style="margin-top:10px;">The app uses a <strong>configurable authority order</strong> to resolve conflicts between sources (Excel register, OCR from PDF titleblock, filename, revision table). Results are presented as a colour-coded comparison table and can be exported as an Excel or PDF verification report.</p>
+            </div>
+          </section>
+
+          <!-- WORKFLOW -->
+          <section class="card wiki-section" id="workflow">
+            <div class="card-head">
+              <span class="card-title">Workflow</span>
+              <span class="card-hint">Step-by-step verification process</span>
+            </div>
+            <div class="card-body wiki-body">
+              <ol class="wiki-workflow-steps">
+                <li>
+                  <div>
+                    <strong>Load the Excel drawing register</strong><br />
+                    Select an <code>.xlsx</code> drawing register. The <strong>Excel Mapping Dialog</strong> lets you map spreadsheet columns to fields (drawing number, revision, date, sheet name, status). All rows are read into structured <code>ExcelRow</code> objects.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Load PDFs</strong><br />
+                    Use the <strong>Load PDF Wizard</strong> to choose a source: a <em>folder</em> of individual PDFs, a single <em>multi-page PDF</em>, manually <em>selected files</em>, or browse an <strong>Autodesk Construction Cloud project</strong> via an in-app OAuth2 browser login. Each PDF is parsed into <code>FileEntry</code> objects with drawing number and revision extracted from the filename.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Select a titleblock profile</strong><br />
+                    Choose a JSON titleblock profile that defines the regions on the PDF page to extract: sheet number box, revision box, revision table, etc. Profiles can be managed and created in the <strong>Titleblocks</strong> tab.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Run OCR (optional)</strong><br />
+                    A background <code>OcrWorker</code> thread processes each PDF's titleblock regions using <strong>PyMuPDF vector-text first</strong>, falling back to <strong>Tesseract</strong> if no selectable text is found. OCR results improve pairing accuracy for drawings where the filename alone is ambiguous.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Analysis engine runs</strong><br />
+                    <code>analysis_engine.py</code> compares each Excel row against its paired PDF(s). For each field (<code>sheet_no</code>, <code>sheet_name</code>, <code>revision</code>, <code>revision_date</code>) the configurable <strong>authority order</strong> determines which source is trusted. Issues are classified by severity.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Review results table</strong><br />
+                    The <strong>Results Tab</strong> shows a filterable matrix with per-row status indicators, inline OCR thumbnail previews, and an issue inspector panel with fix suggestions for every flagged item.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Export verification report</strong><br />
+                    Export the full results as an <code>.xlsx</code> workbook or a formatted <code>.pdf</code> report via <code>reportlab</code>, ready to attach to project correspondence.
+                  </div>
+                </li>
+              </ol>
+
+              <h4 class="subhead" style="margin-top:18px;">Result Severity Levels</h4>
+              <div class="severity-row">
+                <span class="sev-chip sev-ok">✅ OK — all sources match</span>
+                <span class="sev-chip sev-warn">⚠️ Warning — minor discrepancy</span>
+                <span class="sev-chip sev-err">❌ Error — critical mismatch</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- FEATURES -->
+          <section class="card wiki-section" id="features">
+            <div class="card-head">
+              <span class="card-title">Key Features</span>
+              <span class="card-hint">Capabilities and modules</span>
+            </div>
+            <div class="card-body wiki-body">
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <strong>Multi-Source PDF Loading</strong>
+                  <p>Local folder, individual files, multi-page PDF, or Autodesk Construction Cloud (ACC) via OAuth2 PKCE browser flow.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Excel Register Ingestion</strong>
+                  <p>Configurable column mapping, full revision history support. Also reads TIDP drawing registers.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>OCR Pipeline</strong>
+                  <p>Per-region vector-text extraction via PyMuPDF, with Tesseract fallback and per-region confidence scoring.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Revision Table OCR</strong>
+                  <p>Extracts the full revision history table from the titleblock and compares it (not just the latest revision).</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Configurable Authority Order</strong>
+                  <p>Per-project settings define which data source wins for each field: <em>Excel &gt; Revision Table &gt; Filename &gt; OCR</em> (fully adjustable).</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Relationship Manager</strong>
+                  <p>GUI editor to define which Excel columns map to which PDF titleblock fields.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Fix Suggestions</strong>
+                  <p>Automated explanations and corrective suggestions for every issue type, shown in the issue inspector panel.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>ACC / BIM360 Integration</strong>
+                  <p>Browse Autodesk hubs → projects → folders → files. Full OAuth2 PKCE flow with an in-app browser login.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Titleblock Profile Editor</strong>
+                  <p>Create and edit named JSON region profiles visually via a <strong>RegionPickerDialog</strong> with zoomable PDF preview.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Export Reports</strong>
+                  <p>Full verification report export to <code>.xlsx</code> (via openpyxl) or <code>.pdf</code> (via reportlab).</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Tutorial / Demo Mode</strong>
+                  <p>Bundled sample data with an interactive walkthrough tutorial dialog for onboarding new users.</p>
+                </div>
+                <div class="feature-card">
+                  <strong>Dark / Light Theme</strong>
+                  <p>Moon/Sun toggle in the app header; preference persisted per-user.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- UI -->
+          <section class="card wiki-section" id="ui">
+            <div class="card-head">
+              <span class="card-title">User Interface</span>
+              <span class="card-hint">Tabs, dialogs, and key controls</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Menu Bar</h4>
+              <ul>
+                <li><strong>Tools → Excel Mapping…</strong> — opens the column mapping dialog</li>
+                <li><strong>Tools → Relationships…</strong> — field relationship manager</li>
+                <li><strong>View → Dark Mode / Light Mode</strong> — theme toggle</li>
+                <li><strong>Help → Workflow Tutorial…</strong> — opens the interactive tutorial</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">Application Tabs</h4>
+              <div class="tab-pill-row">
+                <span class="tab-pill">Issue Package Verifier</span>
+                <span class="tab-pill">Titleblocks</span>
+                <span class="tab-pill">Settings</span>
+              </div>
+
+              <h4 class="subhead" style="margin-top:18px;">Verifier Tab — Inputs Panel</h4>
+              <ul style="margin-top:8px;">
+                <li><strong>Load Excel</strong> — file picker → Excel Mapping Dialog to configure column assignments</li>
+                <li><strong>Load PDFs / Load PDF Wizard</strong> — source selection: folder, multipage PDF, individual files</li>
+                <li><strong>ACC Cloud button</strong> — opens ACC Project Browser with OAuth2 login</li>
+                <li><strong>Titleblock profile combo</strong> — selects the active region profile for OCR</li>
+                <li><strong>Run OCR / Cancel OCR buttons</strong> — triggers/stops the background OCR worker thread</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">Verifier Tab — Results Panel</h4>
+              <ul style="margin-top:8px;">
+                <li><strong>Filterable comparison table</strong> — per-row status (OK / Warning / Error), with inline OCR thumbnail previews via a custom <code>OcrImageDelegate</code></li>
+                <li><strong>Issue inspector</strong> — click any flagged row to see detailed issue description and fix suggestion</li>
+                <li><strong>Scorecard</strong> — summary statistics across the result set</li>
+                <li><strong>Export Excel / Export PDF</strong> — generate the verification report</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">Titleblocks Tab</h4>
+              <p>View, create, and edit named titleblock region profiles. Each profile defines pixel regions on the PDF page for sheet number, revision, revision date, title, etc.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">Settings Tab</h4>
+              <p>Per-project configuration for authority order and parser mode. Authority order controls which source wins in a conflict for each field (Excel, revision table, filename, OCR).</p>
+            </div>
+          </section>
+
+          <!-- DEVELOPER NOTES -->
+          <section class="card wiki-section" id="developer">
+            <div class="card-head">
+              <span class="card-title">Developer Notes</span>
+              <span class="card-hint">Architecture, file structure, and dependencies</span>
+            </div>
+            <div class="card-body wiki-body">
+              <h4 class="subhead">Architecture</h4>
+              <p>The app uses a <strong>PySide6 QMainWindow</strong> with a custom pill tab bar, reactive shared state via <code>ui/app_state.py</code> (Qt Signals/Slots), and a clear separation between UI (<code>ui/</code>) and backend (<code>backend/</code>). The OCR pipeline runs in a dedicated <code>QThread</code> (<code>ui/workers/ocr_worker.py</code>) to keep the UI responsive. Packaged as a standalone <code>.exe</code> via PyInstaller.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">Key Backend Modules</h4>
+              <ul>
+                <li><code>backend/analysis_engine.py</code> — core comparison and validation logic (<code>analyze_row()</code>)</li>
+                <li><code>backend/models.py</code> — <code>ExcelRow</code>, <code>FileEntry</code>, <code>RevisionEntry</code> dataclasses</li>
+                <li><code>backend/normalize.py</code> — sheet/revision canonicalisation for comparison</li>
+                <li><code>backend/pdf_reader.py</code> — fast PDF loading + OCR orchestration</li>
+                <li><code>backend/ocr/</code> — OCR sub-modules: sheet OCR, revision OCR, revision table OCR, confidence scoring</li>
+                <li><code>backend/aps_client.py</code> — Autodesk Platform Services OAuth2 PKCE client</li>
+                <li><code>backend/fix_suggestions.py</code> — auto-fix suggestion engine</li>
+                <li><code>backend/titleblock_registry.py</code> — profile discovery and management</li>
+              </ul>
+
+              <h4 class="subhead" style="margin-top:16px;">User Data Location</h4>
+              <p>AppData-based paths managed via <code>backend/app_paths.py</code>. Stores titleblock profiles, project settings, and cached ACC data.</p>
+
+              <h4 class="subhead" style="margin-top:16px;">Dependencies</h4>
+              <table class="dep-table">
+                <thead><tr><th>Package</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>PySide6 &gt;= 6.8.1</code></td><td>Qt UI framework</td></tr>
+                  <tr><td><code>pymupdf &gt;= 1.27.3</code></td><td>PDF text extraction and rendering</td></tr>
+                  <tr><td><code>openpyxl &gt;= 3.1</code></td><td>Excel register reading and report export</td></tr>
+                  <tr><td><code>pytesseract &gt;= 0.3.10</code></td><td>OCR via Tesseract (fallback)</td></tr>
+                  <tr><td><code>Pillow &gt;= 10.0</code></td><td>Image processing for OCR pipeline</td></tr>
+                  <tr><td><code>requests &gt;= 2.31</code></td><td>ACC REST API calls</td></tr>
+                  <tr><td><code>reportlab &gt;= 4.2</code></td><td>PDF verification report export</td></tr>
+                  <tr><td><code>pypdf &gt;= 4.0</code></td><td>PDF utilities</td></tr>
+                </tbody>
+              </table>
+
+              <h4 class="subhead" style="margin-top:16px;">Related Apps</h4>
+              <ul>
+                <li><a href="./windows-issue-package-creator.html">Issue Package Creator</a> — the upstream tool that creates the issue packages this app verifies</li>
+                <li><a href="./windows-auto-pdf.html">Auto-PDF</a> — standalone PDF ordering utility from the same tool family</li>
+              </ul>
+            </div>
+          </section>
+
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page contents">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Wiki article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#features">Key Features</a>
+            <a class="wiki-toc-link" href="#ui">User Interface</a>
+            <a class="wiki-toc-link" href="#developer">Developer Notes</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            const link = links.find(l => l.getAttribute('href') === '#' + e.target.id);
+            if (link) link.classList.toggle('is-active', e.isIntersecting);
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => obs.observe(s));
+      })();
+    </script>
+  </body>
+</html>
