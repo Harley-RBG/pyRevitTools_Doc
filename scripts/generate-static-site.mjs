@@ -961,14 +961,13 @@ function buildToolPageHtml(tool, generatedAt, toolDatasetsByToolId = {}) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${escapeHtml(tool.title)} | pyRevit Tool</title>
+    <title>${escapeHtml(tool.title)} | Comp Design Wiki</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <div class="topbar">
-      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-title">Comp Design Wiki</span>
       <span class="topbar-badge">Tool Detail</span>
-      <span class="topbar-sub">Generated from bundle metadata and static UI extraction</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -1502,6 +1501,11 @@ function writeToolPages(tools, generatedAt, options = {}) {
   const toolDatasetsByToolId = options.toolDatasetsByToolId || {};
   const cache = readJsonIfExists(toolPagesCachePath) || {};
   const previous = (cache.byMode && cache.byMode[mode] && cache.byMode[mode].pages) || {};
+  // Pages this generator has written in any mode. Used for stale cleanup so that
+  // switching modes does not orphan pages a different mode produced.
+  const generatedEver = new Set(
+    Object.values((cache && cache.byMode) || {}).flatMap((entry) => Object.keys((entry && entry.pages) || {}))
+  );
   const nextPages = {};
   const expected = new Set();
 
@@ -1545,9 +1549,12 @@ function writeToolPages(tools, generatedAt, options = {}) {
     written += 1;
   }
 
+  // Only remove pages this generator wrote on a previous run. Hand-authored pages in
+  // tools/ (for example the Windows app wiki pages) were never in the cache, so they
+  // are left alone instead of being treated as stale output.
   for (const fileName of listHtmlFiles(toolsPagesDir)) {
     const rel = `tools/${fileName}`;
-    if (expected.has(rel)) {
+    if (expected.has(rel) || !generatedEver.has(rel)) {
       continue;
     }
     fs.unlinkSync(path.join(toolsPagesDir, fileName));
@@ -2305,14 +2312,13 @@ function buildAuthorsPageHtml(tools, generatedAt) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Revit Tools | Created By</title>
+    <title>Created By | Comp Design Wiki</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <div class="topbar">
-      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-title">Comp Design Wiki</span>
       <span class="topbar-badge">Revit Tools</span>
-      <span class="topbar-sub">Created by index from __author__ tags</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -2359,11 +2365,6 @@ function buildAuthorsPageHtml(tools, generatedAt) {
           </div>
         </div>
       </section>
-
-      <footer class="site-footer">
-        <p>Generated: ${generatedAt}</p>
-        <p>Source: bundle.md (__author__ / __authors__ in script files)</p>
-      </footer>
     </div>
 
     <script>
@@ -2671,6 +2672,14 @@ function buildDiagnostics(payload) {
   };
 }
 
+function docLinkCell(docUrl) {
+  const href = String(docUrl || "").trim();
+  if (!href) {
+    return "";
+  }
+  return `<a href="${escapeHtml(href)}">View Wiki →</a>`;
+}
+
 function buildHtml(data, diagnostics, generatedAt, allFileCount) {
   const dataJson = JSON.stringify(data);
   const hub = data.hub || defaultWorkingHubData();
@@ -2683,6 +2692,9 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
     .map((item) => `<tr><td>${escapeHtml(item.section || "")}</td><td>${escapeHtml(item.content || "")}</td></tr>`)
     .join("");
 
+  const windowsHasDocs = (hub.windowsApps || []).some((app) => String(app.docUrl || "").trim());
+  const webHasDocs = (hub.webApps || []).some((app) => String(app.docUrl || "").trim());
+
   const windowsRows = (hub.windowsApps || [])
     .map((app) => {
       const release = String(app.releaseUrl || app.exePath || "").trim();
@@ -2693,12 +2705,12 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const repoCell = /^https?:\/\//i.test(repo)
         ? `<a href="${escapeHtml(repo)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repo)}</a>`
         : escapeHtml(repo);
-      return `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${releaseCell}</td><td>${repoCell}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`;
+      return `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${releaseCell}</td><td>${repoCell}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td>${windowsHasDocs ? `<td>${docLinkCell(app.docUrl)}</td>` : ""}</tr>`;
     })
     .join("");
 
   const webRows = (hub.webApps || [])
-    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td><a href="${escapeHtml(app.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.url || "")}</a></td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td></tr>`)
+    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td><a href="${escapeHtml(app.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.url || "")}</a></td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td>${webHasDocs ? `<td>${docLinkCell(app.docUrl)}</td>` : ""}</tr>`)
     .join("");
 
   const ideaRows = (hub.toolIdeas || [])
@@ -2710,18 +2722,17 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>pyRevit Tool Catalog</title>
+    <title>Comp Design Wiki</title>
     <meta
       name="description"
-      content="Generated pyRevit tool catalog and extension tree overview from bundle.md"
+      content="Comp Design Wiki: pyRevit extension tools, Windows apps, and web apps reference"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="topbar">
-      <span class="topbar-title">SJ-B+C pyRevit Catalog</span>
+      <span class="topbar-title">Comp Design Wiki</span>
       <span class="topbar-badge">Business Standard</span>
-      <span class="topbar-sub">Generated from extension bundle metadata</span>
       <span class="topbar-tag">v1</span>
     </div>
 
@@ -2733,26 +2744,14 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         <span class="part-rule"></span>
       </div>
 
-      <div class="priority-card" data-space="extension">
-        <strong>Priority rule.</strong> Bundle metadata is authoritative. Keep
-        <code>bundle.yaml</code> and <code>tool-context.md</code> maintained for each pushbutton.
-        Current coverage: <strong>${diagnostics.metadataCoverage.withToolContext}/${diagnostics.totals.tools}</strong>
-        with tool-context docs, <strong>${diagnostics.metadataCoverage.withBundleYaml}/${diagnostics.totals.tools}</strong>
-        with bundle metadata.
-      </div>
-
       <section class="card site-header" id="extension-overview" data-space="extension">
         <div class="card-head">
           <span class="card-title">Tool Catalog + Working Hub Overview</span>
           <span class="card-hint">Revit tools, desktop/web app inventory, and training focus areas</span>
-          <a class="space-home-link" href="#home">Back to Home Spaces</a>
+          <a class="space-home-link" href="#home">Back to Home</a>
         </div>
         <div class="card-body">
           <p class="kicker">pyRevit extension reference</p>
-          <p class="lede">
-            Generated from <strong>bundle.md</strong>. Update your extension, regenerate the bundle,
-            then run the catalog generator to refresh this page.
-          </p>
 
           <div class="stats" id="summary-stats"></div>
           <div class="diagnostics" id="coverage-summary"></div>
@@ -2771,10 +2770,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       </section>
 
       <section class="card" id="spaces-overview" data-space="home">
-        <div class="card-head">
-          <span class="card-title">Home Spaces</span>
-          <span class="card-hint">Split summary for Extension, Windows Apps, and Web Apps</span>
-        </div>
         <div class="card-body">
           <div class="home-spaces-grid" id="home-spaces-grid"></div>
         </div>
@@ -2837,11 +2832,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         <div class="card-head">
           <span class="card-title">Windows Apps Catalog</span>
           <span class="card-hint">Designed to track .exe paths, screenshots, and app information</span>
-          <a class="space-home-link" href="#home">Back to Home Spaces</a>
+          <a class="space-home-link" href="#home">Back to Home</a>
         </div>
         <div class="card-body sim-table-wrap">
           <table>
-            <thead><tr><th>App</th><th>Status</th><th>Release / executable</th><th>Repository</th><th>Screenshot</th><th>Information</th></tr></thead>
+            <thead><tr><th>App</th><th>Status</th><th>Release / executable</th><th>Repository</th><th>Screenshot</th><th>Information</th>${windowsHasDocs ? "<th>Wiki</th>" : ""}</tr></thead>
             <tbody>${windowsRows}</tbody>
           </table>
         </div>
@@ -2851,11 +2846,11 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         <div class="card-head">
           <span class="card-title">Web-based Apps Catalog</span>
           <span class="card-hint">Designed to track links, screenshots, and app information</span>
-          <a class="space-home-link" href="#home">Back to Home Spaces</a>
+          <a class="space-home-link" href="#home">Back to Home</a>
         </div>
         <div class="card-body sim-table-wrap">
           <table>
-            <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th></tr></thead>
+            <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th>${webHasDocs ? "<th>Wiki</th>" : ""}</tr></thead>
             <tbody>${webRows}</tbody>
           </table>
         </div>
@@ -2874,10 +2869,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         </div>
       </section>
 
-      <footer class="site-footer">
-        <p>Generated: ${generatedAt}</p>
-        <p>Total files in bundle: ${allFileCount}</p>
-      </footer>
     </div>
 
     <script>
@@ -2959,7 +2950,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         return [
           {
             key: "extension",
-            title: "Extension Space",
+            title: "pyRevit Extensions",
             summary: "Browse the parsed pyRevit extension tree and jump into tool-level training pages.",
             metrics: [
               ["Revit tools", DATA.tools.length],
@@ -2973,15 +2964,14 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               "Contains extension tree and panel filters",
             ],
             href: "#space-extension",
-            linkLabel: "Open Extension Space",
+            linkLabel: "Open pyRevit Extensions",
           },
           {
             key: "windows",
-            title: "Windows Apps Space",
+            title: "Windows Apps",
             summary: "Track internal desktop helpers, executable locations, and rollout status.",
             metrics: [
               ["Tracked apps", windowsCount],
-              ["Source", "working-hub.json"],
             ],
             contents: [
               "Sample apps: " + (windowNames.length ? windowNames.join(", ") : "None listed"),
@@ -2989,15 +2979,14 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               "Designed for Windows utility inventory",
             ],
             href: "#space-windows",
-            linkLabel: "Open Windows Apps Space",
+            linkLabel: "Open Windows Apps",
           },
           {
             key: "web",
-            title: "Web Apps Space",
+            title: "Web Apps",
             summary: "Track internal web tools, links, and references in one catalog section.",
             metrics: [
               ["Tracked apps", webCount],
-              ["Source", "working-hub.json"],
             ],
             contents: [
               "Sample apps: " + (webNames.length ? webNames.join(", ") : "None listed"),
@@ -3005,7 +2994,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
               "Designed for internal web tool links",
             ],
             href: "#space-web",
-            linkLabel: "Open Web Apps Space",
+            linkLabel: "Open Web Apps",
           },
         ];
       }
@@ -3038,7 +3027,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
         const panels = getHomePanels();
         if (!panels.length) {
-          homeSpacesGrid.innerHTML = '<div class="empty-state"><h3>No spaces configured.</h3></div>';
+          homeSpacesGrid.innerHTML = '<div class="empty-state"><h3>No sections configured.</h3></div>';
           return;
         }
 
@@ -3057,7 +3046,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
 
             return '<article class="home-panel">' +
               '<header>' +
-                '<p class="kicker">Home Space</p>' +
                 '<h3>' + panel.title + '</h3>' +
               '</header>' +
               '<p class="home-panel-summary">' + panel.summary + '</p>' +

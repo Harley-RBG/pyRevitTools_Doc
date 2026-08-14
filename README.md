@@ -1,5 +1,5 @@
 
-# pyRevit Tool Catalog (Single HTML + CSS)
+# Comp Design Wiki (Single HTML + CSS)
 
 This workspace now builds a static documentation page from `bundle.md`.
 The runtime output is:

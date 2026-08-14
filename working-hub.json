@@ -39,7 +39,8 @@
       "releaseUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Creator/releases",
       "repoUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Creator",
       "screenshot": "docs/assets/windows/package-validator.png",
-      "info": "Windows desktop app repository. Link points to latest GitHub releases for installers."
+      "docUrl": "./tools/windows-issue-package-creator.html",
+      "info": "Windows desktop app for drawing issue package creation. Organises exports, generates binder PDFs, and drafts Outlook emails."
     },
     {
       "name": "Issue Package Verifier",
@@ -47,7 +48,8 @@
       "releaseUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Verifier/releases",
       "repoUrl": "https://github.com/Robert-Bird-Group/Issue-Package-Verifier",
       "screenshot": "docs/assets/windows/rtv-sync.png",
-      "info": "Issue package validation utility. Link points to latest GitHub releases."
+      "docUrl": "./tools/windows-issue-package-verifier.html",
+      "info": "Drawing package QA tool. Validates drawing numbers, revisions, and sheet names across Excel registers and PDFs (including ACC cloud)."
     },
     {
       "name": "Auto-PDF",
@@ -55,7 +57,8 @@
       "releaseUrl": "https://github.com/Robert-Bird-Group/Auto-PDF/releases",
       "repoUrl": "https://github.com/Robert-Bird-Group/Auto-PDF",
       "screenshot": "docs/assets/windows/auto-pdf.png",
-      "info": "Automated PDF workflow utility. Link points to latest GitHub releases."
+      "docUrl": "./tools/windows-auto-pdf.html",
+      "info": "Standalone PDF ordering and merging utility. Reorders pages by drawing number via titleblock OCR and exports a merged PDF."
     }
   ],
   "webApps": [
