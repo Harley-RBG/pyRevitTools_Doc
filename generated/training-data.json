@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T23:44:41.542Z",
+  "generatedAt": "2026-08-17T23:49:51.888Z",
   "shared": {
     "levels": [
       "Level 00",
@@ -156,9 +156,16 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "levels",
+        "categories"
+      ],
       "mock": {
-        "levels": [],
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
@@ -365,7 +372,10 @@
       }
     },
     "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "views",
+        "filters"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
@@ -431,10 +441,20 @@
       }
     },
     "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "plan views",
+        "levels"
+      ],
       "mock": {
-        "levels": [],
-        "planViews": [],
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
+        "planViews": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan"
+        ],
         "scopeBoxes": [],
         "detailViews": [],
         "sheets": [],

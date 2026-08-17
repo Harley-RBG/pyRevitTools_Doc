@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T23:44:41.542Z",
+  "generatedAt": "2026-08-17T23:49:51.888Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -1265,6 +1265,7 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
+        "profile": "elementsbylevel-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -1275,154 +1276,126 @@
         ],
         "controls": [
           {
-            "id": "arrow",
-            "name": "Arrow",
-            "kind": "block",
-            "label": "Arrow",
-            "required": false
+            "id": "ebl-level",
+            "name": "LevelSelector",
+            "kind": "select",
+            "label": "Level",
+            "required": true
           },
           {
-            "id": "txttitle",
-            "name": "TxtTitle",
+            "id": "ebl-search",
+            "name": "CategorySearch",
             "kind": "text",
-            "label": "TxtTitle",
+            "label": "Category search",
             "required": false
           },
           {
-            "id": "txtsummary",
-            "name": "TxtSummary",
-            "kind": "text",
-            "label": "TxtSummary",
+            "id": "ebl-categories",
+            "name": "CategorySelection",
+            "kind": "multiselect",
+            "label": "Categories",
+            "required": true
+          },
+          {
+            "id": "ebl-include-view-specific",
+            "name": "IncludeViewSpecific",
+            "kind": "checkbox",
+            "label": "Include view-specific elements",
             "required": false
           },
           {
-            "id": "btnselectall",
-            "name": "BtnSelectAll",
-            "kind": "button",
-            "label": "BtnSelectAll",
+            "id": "ebl-include-annotation",
+            "name": "IncludeAnnotation",
+            "kind": "checkbox",
+            "label": "Include annotation categories",
             "required": false
           },
           {
-            "id": "btnclose",
-            "name": "BtnClose",
-            "kind": "button",
-            "label": "BtnClose",
+            "id": "ebl-table",
+            "name": "ElementReportRows",
+            "kind": "table",
+            "label": "Element report rows",
             "required": false
           },
           {
-            "id": "categorypanel",
-            "name": "CategoryPanel",
-            "kind": "block",
-            "label": "CategoryPanel",
-            "required": false
-          },
-          {
-            "id": "on-select-all",
-            "name": "on_select_all",
-            "kind": "block",
-            "label": "on_select_all",
-            "required": false
-          },
-          {
-            "id": "on-select-category",
-            "name": "on_select_category",
-            "kind": "block",
-            "label": "on_select_category",
-            "required": false
-          },
-          {
-            "id": "on-select-element",
-            "name": "on_select_element",
-            "kind": "block",
-            "label": "on_select_element",
-            "required": false
-          },
-          {
-            "id": "on-close",
-            "name": "on_close",
-            "kind": "block",
-            "label": "on_close",
-            "required": false
-          },
-          {
-            "id": "button-10",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "action-select-all-elements",
-            "name": "Select All Elements",
+            "id": "ebl-select-all",
+            "name": "SelectAllElements",
             "kind": "button",
             "label": "Select All Elements",
             "required": false
           },
           {
-            "id": "action-close",
-            "name": "Close",
+            "id": "ebl-list",
+            "name": "ListElements",
             "kind": "button",
-            "label": "Close",
-            "required": false
+            "label": "List Elements by Level",
+            "required": true
           }
         ],
         "events": [
           {
-            "controlId": "action-select-all-elements",
+            "controlId": "ebl-select-all",
             "event": "click",
-            "handler": "on_select-all-elements"
+            "handler": "select_all_categories"
           },
           {
-            "controlId": "action-close",
+            "controlId": "ebl-list",
             "event": "click",
-            "handler": "on_close"
+            "handler": "list_elements_for_level"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select at least one category before listing elements."
           },
           {
-            "type": "SelectFromList",
-            "message": "Simulated SelectFromList interaction"
+            "type": "alert",
+            "message": "Elements listed (simulated). No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Choose level and category filters"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Apply optional include-view-specific/annotation toggles"
           },
           {
             "step": 3,
-            "label": "Execution stage"
+            "label": "Generate grouped element report"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "levels",
+          "categories"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "elements-by-level-training",
+            "title": "Elements by Level Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Execution stage"
+              "Choose level",
+              "Select categories",
+              "Run list report"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Elements grouped by category",
+              "Type names listed",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -3206,149 +3179,136 @@
       ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
+        "profile": "copystate-high-fidelity",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
         "sourceKinds": [],
         "controls": [
           {
-            "id": "on-mouse-down",
-            "name": "on_mouse_down",
-            "kind": "block",
-            "label": "on_mouse_down",
+            "id": "cs-search",
+            "name": "ActionSearch",
+            "kind": "text",
+            "label": "Search actions",
             "required": false
           },
           {
-            "id": "on-select-all",
-            "name": "on_select_all",
-            "kind": "block",
-            "label": "on_select_all",
-            "required": false
-          },
-          {
-            "id": "on-clear-all",
-            "name": "on_clear_all",
-            "kind": "block",
-            "label": "on_clear_all",
-            "required": false
-          },
-          {
-            "id": "on-ok",
-            "name": "on_ok",
-            "kind": "button",
-            "label": "on_ok",
-            "required": false
-          },
-          {
-            "id": "on-cancel",
-            "name": "on_cancel",
-            "kind": "block",
-            "label": "on_cancel",
-            "required": false
-          },
-          {
-            "id": "on-loaded",
-            "name": "on_loaded",
-            "kind": "block",
-            "label": "on_loaded",
-            "required": false
-          },
-          {
-            "id": "on-search-changed",
-            "name": "on_search_changed",
-            "kind": "block",
-            "label": "on_search_changed",
-            "required": false
-          },
-          {
-            "id": "on-selection-changed",
-            "name": "on_selection_changed",
-            "kind": "block",
-            "label": "on_selection_changed",
-            "required": false
-          },
-          {
-            "id": "button-8",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "checkbox-9",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "listbox-10",
-            "name": "ListBox",
+            "id": "cs-actions",
+            "name": "ActionList",
             "kind": "multiselect",
-            "label": "ListBox",
+            "label": "Actions to copy",
             "required": true
           },
           {
-            "id": "textbox-11",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
+            "id": "cs-select-all",
+            "name": "SelectAll",
+            "kind": "button",
+            "label": "Select All",
+            "required": false
+          },
+          {
+            "id": "cs-clear-all",
+            "name": "ClearAll",
+            "kind": "button",
+            "label": "Clear All",
+            "required": false
+          },
+          {
+            "id": "cs-memory",
+            "name": "MemorySlots",
+            "kind": "table",
+            "label": "Memory slots",
+            "required": false
+          },
+          {
+            "id": "cs-preview",
+            "name": "PreviewPayload",
+            "kind": "button",
+            "label": "Preview Memory Payload",
+            "required": false
+          },
+          {
+            "id": "cs-copy",
+            "name": "CopyToMemory",
+            "kind": "button",
+            "label": "Copy to Memory",
             "required": true
           }
         ],
         "events": [
           {
-            "controlId": "on-ok",
+            "controlId": "cs-select-all",
             "event": "click",
-            "handler": "on_ok"
+            "handler": "select_all_actions"
+          },
+          {
+            "controlId": "cs-clear-all",
+            "event": "click",
+            "handler": "clear_all_actions"
+          },
+          {
+            "controlId": "cs-preview",
+            "event": "click",
+            "handler": "preview_memory_payload"
+          },
+          {
+            "controlId": "cs-copy",
+            "event": "click",
+            "handler": "copy_state_to_memory"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select at least one state action."
+          },
+          {
+            "type": "alert",
+            "message": "State copied to memory (simulated). No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Select one or more copy actions"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Review memory slot payload"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
-          },
-          {
-            "step": 4,
-            "label": "Execution stage"
+            "label": "Run copy-to-memory simulation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "views",
+          "filters"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "copystate-training",
+            "title": "Copy State Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Execution stage"
+              "Pick copy actions",
+              "Preview payload",
+              "Copy to memory"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Action memory stored",
+              "Slot status updated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -3712,167 +3672,169 @@
       "screenshots": [],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
+        "profile": "propagateextentsoverride-high-fidelity",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
         "sourceKinds": [],
         "controls": [
           {
-            "id": "on-filter",
-            "name": "on_filter",
-            "kind": "block",
-            "label": "on_filter",
-            "required": false
-          },
-          {
-            "id": "on-selection",
-            "name": "on_selection",
-            "kind": "block",
-            "label": "on_selection",
-            "required": false
-          },
-          {
-            "id": "on-double-click",
-            "name": "on_double_click",
-            "kind": "block",
-            "label": "on_double_click",
-            "required": false
-          },
-          {
-            "id": "on-ok",
-            "name": "on_ok",
-            "kind": "button",
-            "label": "on_ok",
-            "required": false
-          },
-          {
-            "id": "on-cancel",
-            "name": "on_cancel",
-            "kind": "block",
-            "label": "on_cancel",
-            "required": false
-          },
-          {
-            "id": "on-list-mouse-down",
-            "name": "on_list_mouse_down",
-            "kind": "block",
-            "label": "on_list_mouse_down",
-            "required": false
-          },
-          {
-            "id": "on-check-all",
-            "name": "on_check_all",
-            "kind": "checkbox",
-            "label": "on_check_all",
-            "required": false
-          },
-          {
-            "id": "on-uncheck-all",
-            "name": "on_uncheck_all",
-            "kind": "checkbox",
-            "label": "on_uncheck_all",
-            "required": false
-          },
-          {
-            "id": "on-toggle",
-            "name": "on_toggle",
-            "kind": "block",
-            "label": "on_toggle",
-            "required": false
-          },
-          {
-            "id": "button-9",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "listbox-10",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
-            "required": true
-          },
-          {
-            "id": "textbox-11",
-            "name": "TextBox",
+            "id": "pe-host-search",
+            "name": "HostSearch",
             "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "checkbox-12",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
+            "label": "Search host view",
             "required": false
           },
           {
-            "id": "combobox-13",
-            "name": "ComboBox",
+            "id": "pe-host-type",
+            "name": "HostViewType",
             "kind": "select",
-            "label": "ComboBox",
+            "label": "Host view type",
+            "required": false
+          },
+          {
+            "id": "pe-host-view",
+            "name": "HostView",
+            "kind": "select",
+            "label": "Host view",
+            "required": true
+          },
+          {
+            "id": "pe-use-host",
+            "name": "UseHost",
+            "kind": "button",
+            "label": "Use Selected Host View",
+            "required": false
+          },
+          {
+            "id": "pe-target-search",
+            "name": "TargetSearch",
+            "kind": "text",
+            "label": "Search target views",
+            "required": false
+          },
+          {
+            "id": "pe-target-type",
+            "name": "TargetViewType",
+            "kind": "select",
+            "label": "Target view type",
+            "required": false
+          },
+          {
+            "id": "pe-target-views",
+            "name": "TargetViews",
+            "kind": "multiselect",
+            "label": "Target views",
+            "required": true
+          },
+          {
+            "id": "pe-check-all",
+            "name": "CheckAll",
+            "kind": "button",
+            "label": "Check All",
+            "required": false
+          },
+          {
+            "id": "pe-uncheck-all",
+            "name": "UncheckAll",
+            "kind": "button",
+            "label": "Uncheck All",
+            "required": false
+          },
+          {
+            "id": "pe-toggle-all",
+            "name": "ToggleAll",
+            "kind": "button",
+            "label": "Toggle All",
+            "required": false
+          },
+          {
+            "id": "pe-run",
+            "name": "RunPropagation",
+            "kind": "button",
+            "label": "Propagate Grid + Level Extents",
             "required": true
           }
         ],
         "events": [
           {
-            "controlId": "on-double-click",
+            "controlId": "pe-use-host",
             "event": "click",
-            "handler": "on_double_click"
+            "handler": "select_host_view"
           },
           {
-            "controlId": "on-ok",
+            "controlId": "pe-check-all",
             "event": "click",
-            "handler": "on_ok"
+            "handler": "check_all_targets"
+          },
+          {
+            "controlId": "pe-uncheck-all",
+            "event": "click",
+            "handler": "uncheck_all_targets"
+          },
+          {
+            "controlId": "pe-toggle-all",
+            "event": "click",
+            "handler": "toggle_targets"
+          },
+          {
+            "controlId": "pe-run",
+            "event": "click",
+            "handler": "propagate_grid_and_level_extents"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select a host view and one or more target views."
           },
           {
-            "type": "TemplateListItem",
-            "message": "Simulated TemplateListItem interaction"
+            "type": "alert",
+            "message": "Propagation simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Choose host view with search + view-type filters"
           },
           {
             "step": 2,
-            "label": "Filter and scope stage"
+            "label": "Select target views and bulk-check selections"
           },
           {
             "step": 3,
-            "label": "Execution stage"
+            "label": "Run extent propagation simulation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "plan views",
+          "levels"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "propagate-extents-training",
+            "title": "Propagate Extents Override Training Run",
             "steps": [
-              "Selection stage",
-              "Filter and scope stage",
-              "Execution stage"
+              "Select host",
+              "Select targets",
+              "Run propagation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Target crop override simulated",
+              "Grid/level extents propagated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -4003,36 +3965,114 @@
       ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
+        "profile": "cloudrevisions-high-fidelity",
         "uiKind": "none",
         "sourceType": "none",
         "xamlFiles": [],
         "sourceKinds": [],
-        "controls": [],
-        "events": [],
-        "prompts": [],
-        "workflow": [],
+        "controls": [
+          {
+            "id": "cr-sheet-filter",
+            "name": "SheetFilter",
+            "kind": "text",
+            "label": "Sheet filter",
+            "required": false
+          },
+          {
+            "id": "cr-cloud-only",
+            "name": "CloudOnlyList",
+            "kind": "table",
+            "label": "Cloud-only list",
+            "required": false
+          },
+          {
+            "id": "cr-both",
+            "name": "CloudAndManualList",
+            "kind": "table",
+            "label": "Cloud and manual list",
+            "required": false
+          },
+          {
+            "id": "cr-manual-only",
+            "name": "ManualOnlyList",
+            "kind": "table",
+            "label": "Manual-only list",
+            "required": false
+          },
+          {
+            "id": "cr-refresh",
+            "name": "RefreshRevisions",
+            "kind": "button",
+            "label": "Refresh Revisions",
+            "required": false
+          },
+          {
+            "id": "cr-report",
+            "name": "GenerateReport",
+            "kind": "button",
+            "label": "Generate Classification Report",
+            "required": true
+          }
+        ],
+        "events": [
+          {
+            "controlId": "cr-refresh",
+            "event": "click",
+            "handler": "refresh_revision_sets"
+          },
+          {
+            "controlId": "cr-report",
+            "event": "click",
+            "handler": "generate_revision_report"
+          }
+        ],
+        "prompts": [
+          {
+            "type": "alert",
+            "message": "Revision report generated (simulated)."
+          }
+        ],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Collect revision clouds and sheet revision ids"
+          },
+          {
+            "step": 2,
+            "label": "Classify each sheet/revision pair into 3 lists"
+          },
+          {
+            "step": 3,
+            "label": "Generate and review report output"
+          }
+        ],
         "dynamicSources": [
           "sheets"
         ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "cloudrevisions-training",
+            "title": "Cloud Revisions Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Refresh revision data",
+              "Generate report",
+              "Review list buckets"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
-              "No Revit model changes were made"
+              "Cloud-only bucket listed",
+              "Cloud+manual bucket listed",
+              "Manual-only bucket listed"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "low",
-          "workflow": "low",
-          "prompts": "low"
+          "controls": "high",
+          "workflow": "high",
+          "prompts": "medium"
         }
       }
     },

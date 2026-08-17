@@ -327,6 +327,140 @@
           ]
         ]
       }
+    },
+    "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton": {
+      "copyState": {
+        "actions": [
+          "Filter Overrides",
+          "Scope Box",
+          "Annotations",
+          "Propagate Extents",
+          "Viewport Title",
+          "Revit Links",
+          "DWG Links"
+        ],
+        "memoryRows": [
+          [
+            "Filter Overrides",
+            "Ready"
+          ],
+          [
+            "Scope Box",
+            "Ready"
+          ],
+          [
+            "Viewport Title",
+            "Pending"
+          ],
+          [
+            "Revit Links",
+            "Pending"
+          ]
+        ],
+        "stagedRows": [
+          [
+            "Source View",
+            "S101 - General Arrangement"
+          ],
+          [
+            "Selected Actions",
+            "Filter Overrides, Scope Box"
+          ]
+        ]
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton": {
+      "propagateExtentsOverride": {
+        "viewTypes": [
+          "FloorPlan",
+          "Section",
+          "Elevation"
+        ],
+        "hostViews": [
+          "S-STR L01 Host Grid",
+          "S-STR L02 Host Grid",
+          "S-STR L03 Host Grid"
+        ],
+        "targetViews": [
+          "S-STR L01 Match Extents",
+          "S-STR L02 Match Extents",
+          "S-STR L03 Match Extents",
+          "S-STR L04 Match Extents"
+        ]
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton": {
+      "cloudRevisions": {
+        "cloudOnlyRows": [
+          [
+            "S101",
+            "Ground Floor Plan",
+            "A",
+            "Tender",
+            "DIRECT"
+          ],
+          [
+            "S201",
+            "Level 02 Plan",
+            "B",
+            "Issued for Coordination",
+            "VIA VIEW"
+          ]
+        ],
+        "bothRows": [
+          [
+            "S301",
+            "Typical Sections",
+            "C",
+            "Issued for Construction",
+            "DIRECT"
+          ]
+        ],
+        "manualOnlyRows": [
+          [
+            "A401",
+            "Elevations",
+            "D",
+            "For Information",
+            "MANUAL"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton": {
+      "elementsByLevel": {
+        "levels": [
+          "Level 01",
+          "Level 02",
+          "Level 03",
+          "Roof"
+        ],
+        "categories": [
+          "Structural Framing",
+          "Structural Columns",
+          "Floors",
+          "Walls",
+          "Rooms"
+        ],
+        "elementRows": [
+          [
+            "W310x97",
+            "734921"
+          ],
+          [
+            "300UC52",
+            "734922"
+          ],
+          [
+            "Concrete Slab 200",
+            "734923"
+          ],
+          [
+            "Basic Wall - 200",
+            "734924"
+          ]
+        ]
+      }
     }
   }
 }

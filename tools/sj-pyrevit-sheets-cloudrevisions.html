@@ -126,8 +126,8 @@
 
     <script>
       (function () {
-        const SIMULATOR = {"toolId":"JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton","uiKind":"none","sourceType":"none","xamlFiles":[],"sourceKinds":[],"controls":[],"events":[],"prompts":[],"workflow":[],"dynamicSources":["sheets"],"scenarios":[{"id":"default-training","title":"Default Training Run","steps":["Review inputs","Run simulation"],"expectedOutput":["Simulation complete","Validation checks passed","No Revit model changes were made"]}],"confidence":{"controls":"low","workflow":"low","prompts":"low"}};
-        const DATASET = {};
+        const SIMULATOR = {"toolId":"JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton","profile":"cloudrevisions-high-fidelity","uiKind":"none","sourceType":"none","xamlFiles":[],"sourceKinds":[],"controls":[{"id":"cr-sheet-filter","name":"SheetFilter","kind":"text","label":"Sheet filter","required":false},{"id":"cr-cloud-only","name":"CloudOnlyList","kind":"table","label":"Cloud-only list","required":false},{"id":"cr-both","name":"CloudAndManualList","kind":"table","label":"Cloud and manual list","required":false},{"id":"cr-manual-only","name":"ManualOnlyList","kind":"table","label":"Manual-only list","required":false},{"id":"cr-refresh","name":"RefreshRevisions","kind":"button","label":"Refresh Revisions","required":false},{"id":"cr-report","name":"GenerateReport","kind":"button","label":"Generate Classification Report","required":true}],"events":[{"controlId":"cr-refresh","event":"click","handler":"refresh_revision_sets"},{"controlId":"cr-report","event":"click","handler":"generate_revision_report"}],"prompts":[{"type":"alert","message":"Revision report generated (simulated)."}],"workflow":[{"step":1,"label":"Collect revision clouds and sheet revision ids"},{"step":2,"label":"Classify each sheet/revision pair into 3 lists"},{"step":3,"label":"Generate and review report output"}],"dynamicSources":["sheets"],"scenarios":[{"id":"cloudrevisions-training","title":"Cloud Revisions Training Run","steps":["Refresh revision data","Generate report","Review list buckets"],"expectedOutput":["Cloud-only bucket listed","Cloud+manual bucket listed","Manual-only bucket listed"]}],"fidelityFlags":["high-fidelity-template-applied","screenshot-guided-layout"],"confidence":{"controls":"high","workflow":"high","prompts":"medium"}};
+        const DATASET = {"cloudRevisions":{"cloudOnlyRows":[["S101","Ground Floor Plan","A","Tender","DIRECT"],["S201","Level 02 Plan","B","Issued for Coordination","VIA VIEW"]],"bothRows":[["S301","Typical Sections","C","Issued for Construction","DIRECT"]],"manualOnlyRows":[["A401","Elevations","D","For Information","MANUAL"]]}};
         const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
         const sections = links
           .map((link) => document.querySelector(link.getAttribute('href')))
@@ -271,6 +271,22 @@
           }
           if (String(SIMULATOR.profile || '') === 'reorderviewports-high-fidelity') {
             renderReorderViewportsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'copystate-high-fidelity') {
+            renderCopyStateSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'propagateextentsoverride-high-fidelity') {
+            renderPropagateExtentsOverrideSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'cloudrevisions-high-fidelity') {
+            renderCloudRevisionsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'elementsbylevel-high-fidelity') {
+            renderElementsByLevelSimulator();
             return;
           }
 
@@ -695,6 +711,239 @@
           });
 
           renderRows();
+        }
+
+        function renderCopyStateSimulator() {
+          const dataset = DATASET.copyState || {};
+          const actions = Array.isArray(dataset.actions) && dataset.actions.length
+            ? dataset.actions
+            : ['Filter Overrides', 'Scope Box', 'Annotations', 'Propagate Extents', 'Viewport Title', 'Revit Links', 'DWG Links'];
+          const memoryRows = Array.isArray(dataset.memoryRows) && dataset.memoryRows.length
+            ? dataset.memoryRows
+            : [['Filter Overrides', 'Empty'], ['Scope Box', 'Empty'], ['Viewport Title', 'Empty'], ['Revit Links', 'Empty']];
+          const stagedRows = Array.isArray(dataset.stagedRows) && dataset.stagedRows.length
+            ? dataset.stagedRows
+            : [['Active View', 'S101 - General Arrangement'], ['Selections', '0 actions selected']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Action Picker</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search actions</span><input id="cs-search" class="sim-field" type="text" placeholder="Filter actions..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Actions to copy *</span><select id="cs-actions" class="sim-field" multiple>' + actions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-clear-all">Clear All</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Memory Slots</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Slot</th><th>Status</th></tr></thead><tbody>' + memoryRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<h5 style="margin-top:1rem;">Current Selection Context</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody>' + stagedRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-preview">Preview Memory Payload</button>' +
+                  '<button type="button" class="sim-action" id="cs-copy">Copy to Memory</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const actionList = document.getElementById('cs-actions');
+          document.getElementById('cs-select-all').addEventListener('click', function () {
+            Array.from(actionList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All copy actions selected (simulated).';
+          });
+          document.getElementById('cs-clear-all').addEventListener('click', function () {
+            Array.from(actionList.options).forEach((option) => { option.selected = false; });
+            simOutput.textContent = 'Copy action selection cleared (simulated).';
+          });
+          document.getElementById('cs-preview').addEventListener('click', function () {
+            const count = Array.from(actionList.selectedOptions).length;
+            simOutput.textContent = 'CopyState preview generated.\nActions staged: ' + count + '\nMemory payload ready (simulated).';
+          });
+          document.getElementById('cs-copy').addEventListener('click', function () {
+            const selected = Array.from(actionList.selectedOptions).map((item) => item.value).filter(Boolean);
+            if (!selected.length) {
+              simOutput.textContent = 'Validation failed. Select at least one action to copy.';
+              return;
+            }
+            simOutput.textContent = 'CopyState simulation complete.\nActions copied: ' + selected.join(', ') + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderPropagateExtentsOverrideSimulator() {
+          const dataset = DATASET.propagateExtentsOverride || {};
+          const hostViews = Array.isArray(dataset.hostViews) && dataset.hostViews.length
+            ? dataset.hostViews
+            : ['L01 - Structural Plan', 'L02 - Structural Plan', 'L03 - Roof Plan'];
+          const targetViews = Array.isArray(dataset.targetViews) && dataset.targetViews.length
+            ? dataset.targetViews
+            : ['L01 - General Arrangement', 'L02 - General Arrangement', 'L03 - General Arrangement'];
+          const viewTypes = Array.isArray(dataset.viewTypes) && dataset.viewTypes.length
+            ? dataset.viewTypes
+            : ['FloorPlan', 'CeilingPlan', 'Section'];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Host View</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search host view</span><input id="pe-host-search" class="sim-field" type="text" placeholder="Filter host views..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Host view type</span><select id="pe-host-type" class="sim-field">' + ['-- Show all --'].concat(viewTypes).map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Host view *</span><select id="pe-host-view" class="sim-field">' + hostViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-use-host">Use Selected Host View</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Target Views</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search target views</span><input id="pe-target-search" class="sim-field" type="text" placeholder="Filter target views..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Target view type</span><select id="pe-target-type" class="sim-field">' + ['-- Show all --'].concat(viewTypes).map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target views *</span><select id="pe-target-views" class="sim-field" multiple>' + targetViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-check-all">Check All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-uncheck-all">Uncheck All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-toggle-all">Toggle All</button>' +
+                  '<button type="button" class="sim-action" id="pe-run">Propagate Grid + Level Extents</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const targetList = document.getElementById('pe-target-views');
+          document.getElementById('pe-use-host').addEventListener('click', function () {
+            simOutput.textContent = 'Host view staged for propagation (simulated).';
+          });
+          document.getElementById('pe-check-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All target views checked (simulated).';
+          });
+          document.getElementById('pe-uncheck-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = false; });
+            simOutput.textContent = 'All target views unchecked (simulated).';
+          });
+          document.getElementById('pe-toggle-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = !option.selected; });
+            simOutput.textContent = 'Target view selection toggled (simulated).';
+          });
+          document.getElementById('pe-run').addEventListener('click', function () {
+            const host = String(document.getElementById('pe-host-view').value || '').trim();
+            const targetCount = Array.from(targetList.selectedOptions).length;
+            if (!host || !targetCount) {
+              simOutput.textContent = 'Validation failed. Select one host view and one or more target views.';
+              return;
+            }
+            simOutput.textContent = 'Propagate Extents Override simulation complete.\nHost: ' + host + '\nTargets: ' + targetCount + '\nGrid/level propagation and crop override simulated.\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderCloudRevisionsSimulator() {
+          const dataset = DATASET.cloudRevisions || {};
+          const cloudOnly = Array.isArray(dataset.cloudOnlyRows) && dataset.cloudOnlyRows.length
+            ? dataset.cloudOnlyRows
+            : [['S101', 'General Notes', 'A', 'Tender', 'DIRECT']];
+          const both = Array.isArray(dataset.bothRows) && dataset.bothRows.length
+            ? dataset.bothRows
+            : [['S201', 'Level 02 Framing', 'B', 'For Construction', 'VIA VIEW']];
+          const manualOnly = Array.isArray(dataset.manualOnlyRows) && dataset.manualOnlyRows.length
+            ? dataset.manualOnlyRows
+            : [['A301', 'Elevations', 'C', 'Issued for Coordination', 'MANUAL']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          function renderRows(rows) {
+            return rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || '') + '</td><td>' + String(row[3] || '') + '</td><td>' + String(row[4] || '') + '</td></tr>').join('');
+          }
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid">' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Revision Cloud Classifier</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet filter</span><input id="cr-sheet-filter" class="sim-field" type="text" placeholder="e.g. S101" /></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cr-refresh">Refresh Revisions</button>' +
+                  '<button type="button" class="sim-action" id="cr-report">Generate Classification Report</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 1: Cloud Only</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(cloudOnly) + '</tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 2: Cloud + Manual</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(both) + '</tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 3: Manual Only</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(manualOnly) + '</tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('cr-refresh').addEventListener('click', function () {
+            simOutput.textContent = 'Revision clouds and sheet revision ids reloaded (simulated).';
+          });
+          document.getElementById('cr-report').addEventListener('click', function () {
+            const total = cloudOnly.length + both.length + manualOnly.length;
+            simOutput.textContent = 'Cloud Revisions report generated (simulated).\nCloud only: ' + cloudOnly.length + '\nCloud + manual: ' + both.length + '\nManual only: ' + manualOnly.length + '\nTotal classified pairs: ' + total + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderElementsByLevelSimulator() {
+          const dataset = DATASET.elementsByLevel || {};
+          const levels = Array.isArray(dataset.levels) && dataset.levels.length ? dataset.levels : ['Level 01', 'Level 02', 'Roof'];
+          const categories = Array.isArray(dataset.categories) && dataset.categories.length
+            ? dataset.categories
+            : ['Structural Framing', 'Structural Columns', 'Walls', 'Floors', 'Rooms'];
+          const rows = Array.isArray(dataset.elementRows) && dataset.elementRows.length
+            ? dataset.elementRows
+            : [['W310x97', '734921'], ['300UC52', '734922'], ['Concrete Slab 200', '734923']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Level Selection + Filters</h5>' +
+                '<label class="sim-control"><span class="sim-label">Level *</span><select id="ebl-level" class="sim-field">' + levels.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Category search</span><input id="ebl-search" class="sim-field" type="text" placeholder="Filter categories..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Categories *</span><select id="ebl-categories" class="sim-field" multiple>' + categories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="ebl-include-view-specific" type="checkbox" /> Include view-specific elements</label>' +
+                '<label><input id="ebl-include-annotation" type="checkbox" /> Include annotation categories</label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="ebl-select-all">Select All Elements</button>' +
+                  '<button type="button" class="sim-action" id="ebl-list">List Elements by Level</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Element Report Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Type Name</th><th>Element Id</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<p class="muted">Report output is the primary interaction surface for this tool.</p>' +
+              '</section>' +
+            '</div>';
+
+          const categoryList = document.getElementById('ebl-categories');
+          document.getElementById('ebl-select-all').addEventListener('click', function () {
+            Array.from(categoryList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All categories selected for level listing (simulated).';
+          });
+          document.getElementById('ebl-list').addEventListener('click', function () {
+            const selectedCategories = Array.from(categoryList.selectedOptions).length;
+            if (!selectedCategories) {
+              simOutput.textContent = 'Validation failed. Select at least one category.';
+              return;
+            }
+            simOutput.textContent = 'Elements by Level simulation complete.\nCategories scanned: ' + selectedCategories + '\nRows listed: ' + rows.length + '\nNo Revit model changes were made.';
+          });
         }
 
         function renderSectionUpdaterSimulator() {

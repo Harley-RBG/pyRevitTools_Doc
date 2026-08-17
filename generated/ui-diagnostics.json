@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-17T23:44:41.542Z",
+  "generatedAt": "2026-08-17T23:49:51.888Z",
   "summary": {
     "totalTools": 37,
     "toolsWithUi": 26,
-    "toolsRequiringTrainingData": 12,
+    "toolsRequiringTrainingData": 15,
     "toolsWithoutUiSignals": 11
   },
   "details": [
@@ -206,25 +206,24 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton",
       "title": "Elements by Level",
       "uiKind": "mixed",
-      "controlCount": 13,
+      "controlCount": 8,
       "eventCount": 2,
       "promptCount": 2,
       "screenshotCount": 1,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -554,28 +553,24 @@
       "toolId": "JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton",
       "title": "Copy State",
       "uiKind": "pyrevit-form",
-      "controlCount": 12,
-      "eventCount": 1,
-      "promptCount": 1,
+      "controlCount": 7,
+      "eventCount": 4,
+      "promptCount": 2,
       "screenshotCount": 7,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "CheckBox",
-          "ListBox",
-          "TextBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -703,29 +698,24 @@
       "toolId": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
       "title": "Propagate Extents Override",
       "uiKind": "pyrevit-form",
-      "controlCount": 14,
-      "eventCount": 2,
+      "controlCount": 11,
+      "eventCount": 5,
       "promptCount": 2,
       "screenshotCount": 0,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "ListBox",
-          "TextBox",
-          "CheckBox",
-          "ComboBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -801,23 +791,24 @@
       "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton",
       "title": "Cloud Revisions",
       "uiKind": "none",
-      "controlCount": 0,
-      "eventCount": 0,
-      "promptCount": 0,
+      "controlCount": 6,
+      "eventCount": 2,
+      "promptCount": 1,
       "screenshotCount": 1,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
-      "fidelityFlags": [],
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
+      ],
       "unresolved": {
         "controls": [],
-        "events": [
-          "no-events-inferred"
-        ]
+        "events": []
       },
       "confidence": {
-        "controls": "low",
-        "workflow": "low",
-        "prompts": "low"
+        "controls": "high",
+        "workflow": "high",
+        "prompts": "medium"
       }
     },
     {

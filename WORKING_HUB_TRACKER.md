@@ -83,6 +83,11 @@ High-fidelity pilot now implemented:
   - LinkedViews
   - CategoryPicker
   - Reorder Viewports
+- Added additional high-fidelity simulator profiles:
+  - Copy State
+  - Propagate Extents Override
+  - Cloud Revisions
+  - Elements by Level
 - Added screenshot-guided controls, staged action rows, and richer simulated outputs for these tools.
 - Next pass: continue profile rollout for remaining screenshot-backed tools and improve per-tool event realism.
 
