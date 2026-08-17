@@ -1,12 +1,12 @@
 {
   "byMode": {
     "fast": {
-      "generatedAt": "2026-08-14T09:57:47.702Z",
+      "generatedAt": "2026-08-17T23:44:41.542Z",
       "mode": "fast",
       "bundleSha1": "ca90a8744eb069545932bddf66bbb9c73ac9ee68",
-      "hubSha1": "4b5f29996e0cadf83681cfa57ddda9312421a3a6",
+      "hubSha1": "43481d277bf8731ccd16dd5c117760083859f77d",
       "screenshotSha1": "7046c9383f0c5bc3b70ee6765485fe0f63c2382d",
-      "toolDatasetsSha1": "6fc673fbe96f803871295b0051a28567b4a8ae03",
+      "toolDatasetsSha1": "4caf7956da2fc02efe21a3f078b99e05bc6b67f7",
       "tools": 37,
       "filesInBundle": 300
     },
@@ -18,11 +18,14 @@
       "filesInBundle": 312
     },
     "quick": {
-      "generatedAt": "2026-08-07T05:28:34.021Z",
+      "generatedAt": "2026-08-17T23:37:12.383Z",
       "mode": "quick",
-      "bundleSha1": "ed1af0df623313eb6a0fd9acc3168f8c1e2f6193",
-      "tools": 38,
-      "filesInBundle": 312
+      "bundleSha1": "ca90a8744eb069545932bddf66bbb9c73ac9ee68",
+      "hubSha1": "43481d277bf8731ccd16dd5c117760083859f77d",
+      "screenshotSha1": "7046c9383f0c5bc3b70ee6765485fe0f63c2382d",
+      "toolDatasetsSha1": "9f63ec6fec6420cfe91ff9c5fa1edf2e1926bca5",
+      "tools": 37,
+      "filesInBundle": 300
     }
   }
 }

@@ -129,6 +129,204 @@
           "Review"
         ]
       ]
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton": {
+      "packageCreator": {
+        "officeOptions": [
+          "SYD",
+          "MEL",
+          "BNE",
+          "AKL"
+        ],
+        "yearOptions": [
+          "2026",
+          "2025",
+          "2024"
+        ],
+        "projectDocsRoot": "P:/Projects/1234 - Demo Project/02_Documents",
+        "modelKey": "1234-STR-REVIT",
+        "sheetNumberParam": "Sheet Number",
+        "revisionParam": "Current Revision",
+        "stageRows": [
+          [
+            "Project Link",
+            "Ready"
+          ],
+          [
+            "Naming Rules",
+            "Ready"
+          ],
+          [
+            "Run Check",
+            "Pending"
+          ],
+          [
+            "Stage 4: Export",
+            "Pending"
+          ],
+          [
+            "Stage 5: Create",
+            "Pending"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton": {
+      "paramCopier": {
+        "sourceCategories": [
+          "Structural Framing",
+          "Structural Columns",
+          "Floors"
+        ],
+        "sourceParameters": [
+          "Comments",
+          "Mark",
+          "Type Name"
+        ],
+        "targetCategories": [
+          "Structural Framing",
+          "Structural Columns",
+          "Floors"
+        ],
+        "targetParameters": [
+          "RBG_MagpieGroup",
+          "RBG_Comments",
+          "RBG_ModelCode"
+        ],
+        "copyModes": [
+          "Overwrite target",
+          "Fill empty target only",
+          "Skip when source is blank"
+        ],
+        "previewRows": [
+          [
+            "B-101",
+            "C350/45",
+            "Ready"
+          ],
+          [
+            "B-102",
+            "C350/50",
+            "Ready"
+          ],
+          [
+            "C-201",
+            "C400/60",
+            "Review"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton": {
+      "scheduleUpdater": {
+        "schedules": [
+          "S-CONC - Reinforcement",
+          "S-STEEL - Framing",
+          "A-DOOR - Door Schedule"
+        ],
+        "existingFields": [
+          "Mark",
+          "Type",
+          "Comments"
+        ],
+        "availableFields": [
+          "RBG_Stage",
+          "RBG_Discipline",
+          "RBG_Approval",
+          "RBG_Workset"
+        ],
+        "previewRows": [
+          [
+            "RBG_Stage",
+            "Add"
+          ],
+          [
+            "RBG_Discipline",
+            "Add"
+          ],
+          [
+            "Comments",
+            "Keep"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton": {
+      "linkedViews": {
+        "linkInstances": [
+          "ARC-CoreModel.rvt",
+          "STR-GlobalModel.rvt"
+        ],
+        "sourceViews": [
+          "ARC L01 General Arrangement",
+          "ARC L02 General Arrangement"
+        ],
+        "targetViews": [
+          "STR L01 Host Plan",
+          "STR L02 Host Plan"
+        ],
+        "modes": [
+          "Overlay",
+          "By shared coordinates",
+          "By project north"
+        ],
+        "previewRows": [
+          [
+            "ARC L01 General Arrangement",
+            "STR L01 Host Plan",
+            "Ready"
+          ],
+          [
+            "ARC L02 General Arrangement",
+            "STR L02 Host Plan",
+            "Ready"
+          ]
+        ]
+      }
+    },
+    "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton": {
+      "categoryPicker": {
+        "disciplineFilters": [
+          "All",
+          "Architecture",
+          "Structure",
+          "MEP"
+        ],
+        "categories": [
+          "Walls",
+          "Floors",
+          "Doors",
+          "Windows",
+          "Structural Framing",
+          "Structural Columns"
+        ]
+      }
+    },
+    "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton": {
+      "reorderViewports": {
+        "sheets": [
+          "S101 - Ground Floor Plan",
+          "S201 - Level 2 Plan"
+        ],
+        "viewportRows": [
+          [
+            "01",
+            "General Notes"
+          ],
+          [
+            "02",
+            "Plan View"
+          ],
+          [
+            "03",
+            "Typical Section"
+          ],
+          [
+            "04",
+            "Detail View"
+          ]
+        ]
+      }
     }
   }
 }

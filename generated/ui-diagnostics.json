@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-12T23:39:35.827Z",
+  "generatedAt": "2026-08-17T23:44:41.542Z",
   "summary": {
     "totalTools": 37,
     "toolsWithUi": 26,
-    "toolsRequiringTrainingData": 6,
+    "toolsRequiringTrainingData": 12,
     "toolsWithoutUiSignals": 11
   },
   "details": [
@@ -57,82 +57,72 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
       "title": "PackageCreator Dockable Panel",
       "uiKind": "mixed",
-      "controlCount": 24,
+      "controlCount": 16,
       "eventCount": 8,
-      "promptCount": 1,
+      "promptCount": 2,
       "screenshotCount": 5,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "TextBox",
-          "ComboBox",
-          "CheckBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
       "title": "ParamCopier",
       "uiKind": "pyrevit-form",
-      "controlCount": 14,
-      "eventCount": 0,
+      "controlCount": 10,
+      "eventCount": 3,
       "promptCount": 2,
       "screenshotCount": 1,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "ListBox",
-          "TextBox",
-          "ComboBox",
-          "CheckBox"
-        ],
-        "events": [
-          "no-events-inferred"
-        ]
+        "controls": [],
+        "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
       "title": "Schedule Updater",
       "uiKind": "pyrevit-form",
-      "controlCount": 0,
-      "eventCount": 0,
+      "controlCount": 9,
+      "eventCount": 4,
       "promptCount": 2,
       "screenshotCount": 3,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
+      ],
       "unresolved": {
         "controls": [],
-        "events": [
-          "no-events-inferred"
-        ]
+        "events": []
       },
       "confidence": {
-        "controls": "low",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -407,26 +397,24 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
       "title": "LinkedViews",
       "uiKind": "mixed",
-      "controlCount": 20,
-      "eventCount": 7,
+      "controlCount": 9,
+      "eventCount": 3,
       "promptCount": 2,
       "screenshotCount": 1,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
+      ],
       "unresolved": {
-        "controls": [
-          "Button",
-          "ComboBox",
-          "CheckBox",
-          "TextBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -518,56 +506,48 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
       "title": "SheetNo",
       "uiKind": "mixed",
-      "controlCount": 20,
-      "eventCount": 4,
+      "controlCount": 8,
+      "eventCount": 2,
       "promptCount": 2,
       "screenshotCount": 0,
-      "unsupportedKinds": [
-        "block"
-      ],
+      "unsupportedKinds": [],
       "requiresTrainingData": true,
-      "fidelityFlags": [],
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
+      ],
       "unresolved": {
-        "controls": [
-          "Button",
-          "ComboBox",
-          "DataGrid",
-          "TextBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
       "toolId": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
       "title": "CategoryPicker",
       "uiKind": "mixed",
-      "controlCount": 24,
-      "eventCount": 8,
-      "promptCount": 1,
+      "controlCount": 6,
+      "eventCount": 3,
+      "promptCount": 2,
       "screenshotCount": 1,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "CheckBox",
-          "ComboBox",
-          "TextBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -867,27 +847,24 @@
       "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
       "title": "Reorder Viewports",
       "uiKind": "mixed",
-      "controlCount": 25,
-      "eventCount": 8,
-      "promptCount": 1,
+      "controlCount": 6,
+      "eventCount": 4,
+      "promptCount": 2,
       "screenshotCount": 2,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "screenshot-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "TextBox",
-          "ListBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {

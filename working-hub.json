@@ -67,6 +67,7 @@
       "status": "Active",
       "url": "https://robert-bird-group.github.io/SJ-trAIning/index.html",
       "screenshot": "docs/assets/web/pyrevit-tools-wiki.png",
+      "docUrl": "./tools/web-pyrevit-course-library.html",
       "info": "GitHub Pages site for pyRevit training and course material."
     },
     {
@@ -74,6 +75,7 @@
       "status": "Active",
       "url": "./index.html",
       "screenshot": "docs/assets/web/pyrevit-tools-wiki.png",
+      "docUrl": "./tools/web-pyrevit-tools-wiki.html",
       "info": "Current static documentation and simulator site for internal tools."
     },
     {
@@ -81,6 +83,7 @@
       "status": "Planned",
       "url": "https://example.internal/issue-dashboard",
       "screenshot": "docs/assets/web/issue-dashboard.png",
+      "docUrl": "./tools/web-issue-package-dashboard.html",
       "info": "Web dashboard for package QA checks and trend monitoring."
     }
   ],

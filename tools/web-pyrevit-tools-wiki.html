@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pyRevit Tools Wiki | Web App Wiki</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">Comp Design Wiki</span>
+      <span class="topbar-badge">Web App Wiki</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Web App</span>
+        <span class="part-title">pyRevit Tools Wiki</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>Status:</strong> Active · <strong>Type:</strong> Documentation & Training Platform ·
+        <strong>URL:</strong>
+        <a href="../index.html" target="_blank" rel="noopener noreferrer">../index.html</a>
+      </div>
+
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+          <section class="card wiki-section" id="overview">
+            <div class="card-head">
+              <span class="card-title">Overview</span>
+            </div>
+            <div class="card-body wiki-body">
+              <a class="back-link" href="../index.html#space-web">← Back to Web Apps</a>
+              <p class="lede">The pyRevit Tools Wiki is the central web portal for internal tool discovery and training. It unifies Revit tool catalog data, Windows/Web app inventories, and simulator experiences into one searchable experience.</p>
+            </div>
+          </section>
+
+          <section class="card wiki-section" id="workflow">
+            <div class="card-head">
+              <span class="card-title">How It Works</span>
+            </div>
+            <div class="card-body wiki-body">
+              <ul>
+                <li><strong>Home Spaces:</strong> users choose Extension, Windows Apps, or Web Apps.</li>
+                <li><strong>Extension Space:</strong> browse parsed tool cards with metadata, purpose, and files.</li>
+                <li><strong>Wiki Pages:</strong> open dedicated app/tool pages for workflows and developer notes.</li>
+                <li><strong>Training Simulator:</strong> run safe mock interactions for selected tools.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="card wiki-section" id="functions">
+            <div class="card-head">
+              <span class="card-title">Core Functions</span>
+            </div>
+            <div class="card-body wiki-body">
+              <ul>
+                <li>Tool catalog generated from extension metadata.</li>
+                <li>Working hub sections for ideas, standards, and ongoing implementation notes.</li>
+                <li>Windows/Web app catalogs with links, status, and wiki pages.</li>
+                <li>User add-app wizard support (local browser persistence).</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="card wiki-section" id="notes">
+            <div class="card-head">
+              <span class="card-title">Notes</span>
+            </div>
+            <div class="card-body wiki-body">
+              <p>This app is the anchor point for all companion wiki pages in the <code>tools/</code> folder and should stay aligned with updates in <code>working-hub.json</code>.</p>
+            </div>
+          </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">How It Works</a>
+            <a class="wiki-toc-link" href="#functions">Core Functions</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const links = Array.from(document.querySelectorAll(".wiki-toc-link"));
+        const sections = links.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            const active = links.find(function (link) { return link.getAttribute("href") === "#" + entry.target.id; });
+            if (active) active.classList.toggle("is-active", entry.isIntersecting);
+          });
+        }, { rootMargin: "-20% 0px -70% 0px" });
+        sections.forEach(function (section) { observer.observe(section); });
+      })();
+    </script>
+  </body>
+</html>

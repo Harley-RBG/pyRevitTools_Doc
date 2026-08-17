@@ -72,6 +72,20 @@ High-fidelity pilot now implemented:
 2. View Creator/Selector: multi-step scope and template assignment workflow.
 3. SheetNo and related sheet tools: grid-first editing flow with validation states.
 
+## Fidelity Rollout Progress
+
+- Added first high-fidelity simulator profiles beyond Section Move:
+  - PackageCreator Dockable Panel
+  - ParamCopier
+  - SheetNo
+- Added next high-fidelity simulator profiles:
+  - Schedule Updater
+  - LinkedViews
+  - CategoryPicker
+  - Reorder Viewports
+- Added screenshot-guided controls, staged action rows, and richer simulated outputs for these tools.
+- Next pass: continue profile rollout for remaining screenshot-backed tools and improve per-tool event realism.
+
 ## Update Routine
 
 1. Update extension files and run bundle/update generation.

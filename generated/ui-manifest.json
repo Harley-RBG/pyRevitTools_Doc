@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T23:39:35.827Z",
+  "generatedAt": "2026-08-17T23:44:41.542Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -145,6 +145,7 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton",
+        "profile": "packagecreator-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -155,247 +156,221 @@
         ],
         "controls": [
           {
-            "id": "buttonborder",
-            "name": "ButtonBorder",
-            "kind": "button",
-            "label": "ButtonBorder",
-            "required": false
-          },
-          {
-            "id": "btnrefresh",
-            "name": "BtnRefresh",
-            "kind": "button",
-            "label": "BtnRefresh",
-            "required": false
-          },
-          {
-            "id": "txtmodel",
-            "name": "TxtModel",
+            "id": "pc-project-search",
+            "name": "ProjectSearch",
             "kind": "text",
-            "label": "TxtModel",
+            "label": "Project search",
             "required": false
           },
           {
-            "id": "txtproject",
-            "name": "TxtProject",
-            "kind": "text",
-            "label": "TxtProject",
-            "required": false
-          },
-          {
-            "id": "txtmodelkey",
-            "name": "TxtModelKey",
-            "kind": "text",
-            "label": "TxtModelKey",
-            "required": false
-          },
-          {
-            "id": "txtprojectdocsroot",
-            "name": "TxtProjectDocsRoot",
-            "kind": "text",
-            "label": "TxtProjectDocsRoot",
-            "required": false
-          },
-          {
-            "id": "cmboffice",
-            "name": "CmbOffice",
+            "id": "pc-office",
+            "name": "Office",
             "kind": "select",
-            "label": "CmbOffice",
-            "required": false
-          },
-          {
-            "id": "cmbyearfolder",
-            "name": "CmbYearFolder",
-            "kind": "select",
-            "label": "CmbYearFolder",
-            "required": false
-          },
-          {
-            "id": "btnsearchprojects",
-            "name": "BtnSearchProjects",
-            "kind": "button",
-            "label": "BtnSearchProjects",
-            "required": false
-          },
-          {
-            "id": "inpprojectsearch",
-            "name": "InpProjectSearch",
-            "kind": "block",
-            "label": "InpProjectSearch",
-            "required": false
-          },
-          {
-            "id": "button-10",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "textbox-11",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
+            "label": "Office",
             "required": true
           },
           {
-            "id": "combobox-12",
-            "name": "ComboBox",
+            "id": "pc-year-folder",
+            "name": "YearFolder",
             "kind": "select",
-            "label": "ComboBox",
+            "label": "Year folder",
             "required": true
           },
           {
-            "id": "checkbox-13",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
+            "id": "pc-docs-root",
+            "name": "ProjectDocsRoot",
+            "kind": "text",
+            "label": "Project docs root",
+            "required": true
+          },
+          {
+            "id": "pc-model-key",
+            "name": "ModelKey",
+            "kind": "text",
+            "label": "Model key",
+            "required": true
+          },
+          {
+            "id": "pc-sheet-number-param",
+            "name": "SheetNumberSource",
+            "kind": "text",
+            "label": "Sheet number source parameter",
             "required": false
           },
           {
-            "id": "tabitem-14",
-            "name": "TabItem",
-            "kind": "tabs",
-            "label": "TabItem",
+            "id": "pc-revision-param",
+            "name": "RevisionSource",
+            "kind": "text",
+            "label": "Revision source parameter",
             "required": false
           },
           {
-            "id": "tabcontrol-15",
-            "name": "TabControl",
-            "kind": "tabs",
-            "label": "TabControl",
+            "id": "pc-status-table",
+            "name": "StatusTable",
+            "kind": "table",
+            "label": "Stage status",
             "required": false
           },
           {
-            "id": "action-refresh",
+            "id": "pc-refresh",
             "name": "Refresh",
             "kind": "button",
             "label": "Refresh",
             "required": false
           },
           {
-            "id": "action-search",
+            "id": "pc-search",
             "name": "Search",
             "kind": "button",
             "label": "Search",
             "required": false
           },
           {
-            "id": "action-apply-project",
-            "name": "Apply Project",
+            "id": "pc-apply-project",
+            "name": "ApplyProject",
             "kind": "button",
             "label": "Apply Project",
             "required": false
           },
           {
-            "id": "action-apply-rules",
-            "name": "Apply Rules",
+            "id": "pc-apply-rules",
+            "name": "ApplyRules",
             "kind": "button",
             "label": "Apply Rules",
             "required": false
           },
           {
-            "id": "action-run-check",
-            "name": "Run Check",
+            "id": "pc-run-check",
+            "name": "RunCheck",
             "kind": "button",
             "label": "Run Check",
             "required": false
           },
           {
-            "id": "action-run-full-flow",
-            "name": "Run Full Flow",
+            "id": "pc-run-full-flow",
+            "name": "RunFullFlow",
             "kind": "button",
             "label": "Run Full Flow",
-            "required": false
+            "required": true
           },
           {
-            "id": "action-stage-5-create",
-            "name": "Stage 5: Create",
-            "kind": "button",
-            "label": "Stage 5: Create",
-            "required": false
-          },
-          {
-            "id": "action-stage-4-export",
-            "name": "Stage 4: Export",
+            "id": "pc-stage-export",
+            "name": "StageExport",
             "kind": "button",
             "label": "Stage 4: Export",
+            "required": false
+          },
+          {
+            "id": "pc-stage-create",
+            "name": "StageCreate",
+            "kind": "button",
+            "label": "Stage 5: Create",
             "required": false
           }
         ],
         "events": [
           {
-            "controlId": "action-refresh",
+            "controlId": "pc-refresh",
             "event": "click",
-            "handler": "on_refresh"
+            "handler": "refresh"
           },
           {
-            "controlId": "action-search",
+            "controlId": "pc-search",
             "event": "click",
-            "handler": "on_search"
+            "handler": "search_projects"
           },
           {
-            "controlId": "action-apply-project",
+            "controlId": "pc-apply-project",
             "event": "click",
-            "handler": "on_apply-project"
+            "handler": "apply_project"
           },
           {
-            "controlId": "action-apply-rules",
+            "controlId": "pc-apply-rules",
             "event": "click",
-            "handler": "on_apply-rules"
+            "handler": "apply_rules"
           },
           {
-            "controlId": "action-run-check",
+            "controlId": "pc-run-check",
             "event": "click",
-            "handler": "on_run-check"
+            "handler": "run_check"
           },
           {
-            "controlId": "action-run-full-flow",
+            "controlId": "pc-run-full-flow",
             "event": "click",
-            "handler": "on_run-full-flow"
+            "handler": "run_full_flow"
           },
           {
-            "controlId": "action-stage-5-create",
+            "controlId": "pc-stage-export",
             "event": "click",
-            "handler": "on_stage-5-create"
+            "handler": "run_stage_export"
           },
           {
-            "controlId": "action-stage-4-export",
+            "controlId": "pc-stage-create",
             "event": "click",
-            "handler": "on_stage-4-export"
+            "handler": "run_stage_create"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Project settings must be complete before full flow run."
+          },
+          {
+            "type": "alert",
+            "message": "Simulation complete. No live package creation was performed."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Load and preparation stage"
+            "label": "Refresh and locate project context"
+          },
+          {
+            "step": 2,
+            "label": "Apply project details and naming rules"
+          },
+          {
+            "step": 3,
+            "label": "Run package checks and review status table"
+          },
+          {
+            "step": 4,
+            "label": "Run export and create stages"
+          },
+          {
+            "step": 5,
+            "label": "Run full flow and validate outcomes"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "sheets",
+          "parameters"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "packagecreator-training",
+            "title": "PackageCreator Training Run",
             "steps": [
-              "Load and preparation stage"
+              "Configure project metadata",
+              "Apply rules",
+              "Run checks",
+              "Run full flow simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Checks complete",
+              "Stage status updated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -412,171 +387,156 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton",
+        "profile": "paramcopier-high-fidelity",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
         "sourceKinds": [],
         "controls": [
           {
-            "id": "on-load",
-            "name": "on_load",
-            "kind": "block",
-            "label": "on_load",
-            "required": false
-          },
-          {
-            "id": "on-left-filter",
-            "name": "on_left_filter",
-            "kind": "block",
-            "label": "on_left_filter",
-            "required": false
-          },
-          {
-            "id": "on-right-filter",
-            "name": "on_right_filter",
-            "kind": "block",
-            "label": "on_right_filter",
-            "required": false
-          },
-          {
-            "id": "on-format-changed",
-            "name": "on_format_changed",
-            "kind": "block",
-            "label": "on_format_changed",
-            "required": false
-          },
-          {
-            "id": "on-left-select",
-            "name": "on_left_select",
-            "kind": "block",
-            "label": "on_left_select",
-            "required": false
-          },
-          {
-            "id": "on-right-select",
-            "name": "on_right_select",
-            "kind": "block",
-            "label": "on_right_select",
-            "required": false
-          },
-          {
-            "id": "on-copy",
-            "name": "on_copy",
-            "kind": "block",
-            "label": "on_copy",
-            "required": false
-          },
-          {
-            "id": "on-cancel",
-            "name": "on_cancel",
-            "kind": "block",
-            "label": "on_cancel",
-            "required": false
-          },
-          {
-            "id": "button-8",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "listbox-9",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
-            "required": true
-          },
-          {
-            "id": "tabcontrol-10",
-            "name": "TabControl",
-            "kind": "tabs",
-            "label": "TabControl",
-            "required": false
-          },
-          {
-            "id": "textbox-11",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "combobox-12",
-            "name": "ComboBox",
+            "id": "pm-source-category",
+            "name": "SourceCategory",
             "kind": "select",
-            "label": "ComboBox",
+            "label": "Source category",
             "required": true
           },
           {
-            "id": "checkbox-13",
-            "name": "CheckBox",
+            "id": "pm-source-param",
+            "name": "SourceParameter",
+            "kind": "select",
+            "label": "Source parameter",
+            "required": true
+          },
+          {
+            "id": "pm-target-category",
+            "name": "TargetCategory",
+            "kind": "select",
+            "label": "Target category",
+            "required": true
+          },
+          {
+            "id": "pm-target-param",
+            "name": "TargetParameter",
+            "kind": "select",
+            "label": "Target parameter",
+            "required": true
+          },
+          {
+            "id": "pm-copy-mode",
+            "name": "CopyMode",
+            "kind": "select",
+            "label": "Copy mode",
+            "required": true
+          },
+          {
+            "id": "pm-only-selected",
+            "name": "OnlySelected",
             "kind": "checkbox",
-            "label": "CheckBox",
+            "label": "Only selected elements",
+            "required": false
+          },
+          {
+            "id": "pm-preview-table",
+            "name": "PreviewTable",
+            "kind": "table",
+            "label": "Preview mappings",
+            "required": false
+          },
+          {
+            "id": "pm-preview",
+            "name": "Preview",
+            "kind": "button",
+            "label": "Preview",
+            "required": false
+          },
+          {
+            "id": "pm-copy",
+            "name": "RunCopy",
+            "kind": "button",
+            "label": "Copy Parameters",
+            "required": true
+          },
+          {
+            "id": "pm-reset",
+            "name": "Reset",
+            "kind": "button",
+            "label": "Reset",
             "required": false
           }
         ],
-        "events": [],
+        "events": [
+          {
+            "controlId": "pm-preview",
+            "event": "click",
+            "handler": "preview_mappings"
+          },
+          {
+            "controlId": "pm-copy",
+            "event": "click",
+            "handler": "run_copy"
+          },
+          {
+            "controlId": "pm-reset",
+            "event": "click",
+            "handler": "reset_form"
+          }
+        ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select source and target parameter mappings first."
           },
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "Copy simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Select source category and parameter"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Select target category and parameter"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Preview mapping values"
           },
           {
             "step": 4,
-            "label": "Preview and inspection stage"
-          },
-          {
-            "step": 5,
-            "label": "Execution stage"
-          },
-          {
-            "step": 6,
-            "label": "Results and status stage"
+            "label": "Run copy simulation and inspect output"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "categories",
+          "parameters"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "paramcopier-training",
+            "title": "ParamCopier Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Preview and inspection stage",
-              "Execution stage",
-              "Results and status stage"
+              "Select source/target pairs",
+              "Preview values",
+              "Run copy"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Rows evaluated",
+              "Mappings complete",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -603,52 +563,155 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton",
+        "profile": "scheduleupdater-high-fidelity",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
         "sourceKinds": [],
-        "controls": [],
-        "events": [],
+        "controls": [
+          {
+            "id": "su-schedule",
+            "name": "ScheduleSelector",
+            "kind": "select",
+            "label": "Schedule",
+            "required": true
+          },
+          {
+            "id": "su-field-search",
+            "name": "FieldSearch",
+            "kind": "text",
+            "label": "Field search",
+            "required": false
+          },
+          {
+            "id": "su-existing-fields",
+            "name": "ExistingFields",
+            "kind": "multiselect",
+            "label": "Existing fields",
+            "required": false
+          },
+          {
+            "id": "su-available-fields",
+            "name": "AvailableFields",
+            "kind": "multiselect",
+            "label": "Available fields",
+            "required": false
+          },
+          {
+            "id": "su-preview",
+            "name": "Preview",
+            "kind": "table",
+            "label": "Field updates preview",
+            "required": false
+          },
+          {
+            "id": "su-refresh",
+            "name": "RefreshSchedules",
+            "kind": "button",
+            "label": "Refresh",
+            "required": false
+          },
+          {
+            "id": "su-add-fields",
+            "name": "AddFields",
+            "kind": "button",
+            "label": "Add Selected Fields",
+            "required": true
+          },
+          {
+            "id": "su-remove-fields",
+            "name": "RemoveFields",
+            "kind": "button",
+            "label": "Remove Selected Fields",
+            "required": false
+          },
+          {
+            "id": "su-apply",
+            "name": "ApplyScheduleFields",
+            "kind": "button",
+            "label": "Apply Updates",
+            "required": true
+          }
+        ],
+        "events": [
+          {
+            "controlId": "su-refresh",
+            "event": "click",
+            "handler": "refresh_schedules"
+          },
+          {
+            "controlId": "su-add-fields",
+            "event": "click",
+            "handler": "add_fields"
+          },
+          {
+            "controlId": "su-remove-fields",
+            "event": "click",
+            "handler": "remove_fields"
+          },
+          {
+            "controlId": "su-apply",
+            "event": "click",
+            "handler": "apply_updates"
+          }
+        ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select schedule and at least one field to add."
           },
           {
-            "type": "SelectFromList",
-            "message": "Simulated SelectFromList interaction"
+            "type": "alert",
+            "message": "Schedule update simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Select schedule and review current fields"
           },
           {
             "step": 2,
-            "label": "Execution stage"
+            "label": "Search and stage additional schedulable fields"
+          },
+          {
+            "step": 3,
+            "label": "Preview resulting field layout"
+          },
+          {
+            "step": 4,
+            "label": "Apply updates and verify summary"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "sheets",
+          "parameters"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "scheduleupdater-training",
+            "title": "Schedule Updater Training Run",
             "steps": [
-              "Selection stage",
-              "Execution stage"
+              "Pick schedule",
+              "Stage fields",
+              "Preview",
+              "Apply simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Field updates prepared",
+              "Schedule check complete",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "low",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -1761,6 +1824,7 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton",
+        "profile": "linkedviews-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -1772,243 +1836,143 @@
         ],
         "controls": [
           {
-            "id": "cmblink",
-            "name": "cmbLink",
+            "id": "lv-link-instance",
+            "name": "LinkInstance",
             "kind": "select",
-            "label": "cmbLink",
-            "required": false
+            "label": "Revit link instance",
+            "required": true
           },
           {
-            "id": "cmbmatchmode",
-            "name": "cmbMatchMode",
+            "id": "lv-source-view",
+            "name": "SourceView",
             "kind": "select",
-            "label": "cmbMatchMode",
-            "required": false
+            "label": "Linked source view",
+            "required": true
           },
           {
-            "id": "chkplacedonly",
-            "name": "chkPlacedOnly",
+            "id": "lv-target-view",
+            "name": "TargetView",
+            "kind": "select",
+            "label": "Host target view",
+            "required": true
+          },
+          {
+            "id": "lv-mode",
+            "name": "PlacementMode",
+            "kind": "select",
+            "label": "Placement mode",
+            "required": true
+          },
+          {
+            "id": "lv-align-crop",
+            "name": "AlignCrop",
             "kind": "checkbox",
-            "label": "chkPlacedOnly",
+            "label": "Align crop to linked view extents",
             "required": false
           },
           {
-            "id": "txtlinkedcount",
-            "name": "txtLinkedCount",
-            "kind": "text",
-            "label": "txtLinkedCount",
+            "id": "lv-preview",
+            "name": "Preview",
+            "kind": "table",
+            "label": "Linked view preview",
             "required": false
           },
           {
-            "id": "txtrowcount",
-            "name": "txtRowCount",
-            "kind": "text",
-            "label": "txtRowCount",
-            "required": false
-          },
-          {
-            "id": "btnselectall",
-            "name": "btnSelectAll",
+            "id": "lv-load",
+            "name": "LoadViews",
             "kind": "button",
-            "label": "btnSelectAll",
+            "label": "Load Linked Views",
             "required": false
           },
           {
-            "id": "btnselectnone",
-            "name": "btnSelectNone",
+            "id": "lv-preview-btn",
+            "name": "PreviewPlacement",
             "kind": "button",
-            "label": "btnSelectNone",
+            "label": "Preview Placement",
             "required": false
           },
           {
-            "id": "btnselectplaced",
-            "name": "btnSelectPlaced",
+            "id": "lv-create",
+            "name": "CreateLinkedView",
             "kind": "button",
-            "label": "btnSelectPlaced",
-            "required": false
-          },
-          {
-            "id": "btnpreview",
-            "name": "btnPreview",
-            "kind": "button",
-            "label": "btnPreview",
+            "label": "Create / Update",
             "required": true
-          },
-          {
-            "id": "btnapply",
-            "name": "btnApply",
-            "kind": "button",
-            "label": "btnApply",
-            "required": true
-          },
-          {
-            "id": "button-10",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "combobox-11",
-            "name": "ComboBox",
-            "kind": "select",
-            "label": "ComboBox",
-            "required": true
-          },
-          {
-            "id": "checkbox-12",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "textbox-13",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "action-select-all",
-            "name": "Select All",
-            "kind": "button",
-            "label": "Select All",
-            "required": false
-          },
-          {
-            "id": "action-select-none",
-            "name": "Select None",
-            "kind": "button",
-            "label": "Select None",
-            "required": false
-          },
-          {
-            "id": "action-select-placed",
-            "name": "Select Placed",
-            "kind": "button",
-            "label": "Select Placed",
-            "required": false
-          },
-          {
-            "id": "action-preview-matches",
-            "name": "Preview Matches",
-            "kind": "button",
-            "label": "Preview Matches",
-            "required": false
-          },
-          {
-            "id": "action-apply",
-            "name": "Apply",
-            "kind": "button",
-            "label": "Apply",
-            "required": false
-          },
-          {
-            "id": "action-close",
-            "name": "Close",
-            "kind": "button",
-            "label": "Close",
-            "required": false
           }
         ],
         "events": [
           {
-            "controlId": "btnapply",
+            "controlId": "lv-load",
             "event": "click",
-            "handler": "btnApply"
+            "handler": "load_link_views"
           },
           {
-            "controlId": "action-select-all",
+            "controlId": "lv-preview-btn",
             "event": "click",
-            "handler": "on_select-all"
+            "handler": "preview_link_placement"
           },
           {
-            "controlId": "action-select-none",
+            "controlId": "lv-create",
             "event": "click",
-            "handler": "on_select-none"
-          },
-          {
-            "controlId": "action-select-placed",
-            "event": "click",
-            "handler": "on_select-placed"
-          },
-          {
-            "controlId": "action-preview-matches",
-            "event": "click",
-            "handler": "on_preview-matches"
-          },
-          {
-            "controlId": "action-apply",
-            "event": "click",
-            "handler": "on_apply"
-          },
-          {
-            "controlId": "action-close",
-            "event": "click",
-            "handler": "on_close"
+            "handler": "create_or_update_linked_view"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select link, source view, and target view first."
           },
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "Linked view simulation complete. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Select link instance and load eligible linked views"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Select source and host target views"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Preview placement and alignment mode"
           },
           {
             "step": 4,
-            "label": "Preview and inspection stage"
-          },
-          {
-            "step": 5,
-            "label": "Execution stage"
-          },
-          {
-            "step": 6,
-            "label": "Results and status stage"
+            "label": "Create/update linked view representation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "plan views",
+          "scope boxes"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "linkedviews-training",
+            "title": "LinkedViews Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Preview and inspection stage",
-              "Execution stage",
-              "Results and status stage"
+              "Load linked views",
+              "Set mapping",
+              "Preview placement",
+              "Create/update simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Link mapping complete",
+              "Placement preview generated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -2924,6 +2888,7 @@
       "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton",
+        "profile": "sheetno-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -2934,230 +2899,130 @@
         ],
         "controls": [
           {
-            "id": "txtmodelsummary",
-            "name": "TxtModelSummary",
-            "kind": "text",
-            "label": "TxtModelSummary",
-            "required": false
-          },
-          {
-            "id": "cmbscope",
-            "name": "CmbScope",
+            "id": "sn-scope",
+            "name": "Scope",
             "kind": "select",
-            "label": "CmbScope",
+            "label": "Scope",
             "required": true
           },
           {
-            "id": "txtsheetsetlabel",
-            "name": "TxtSheetSetLabel",
-            "kind": "text",
-            "label": "TxtSheetSetLabel",
-            "required": false
-          },
-          {
-            "id": "cmbsheetset",
-            "name": "CmbSheetSet",
+            "id": "sn-sheetset",
+            "name": "SheetSet",
             "kind": "select",
-            "label": "CmbSheetSet",
+            "label": "Sheet set",
             "required": false
           },
           {
-            "id": "cmbsheetnoparam",
-            "name": "CmbSheetNoParam",
+            "id": "sn-param",
+            "name": "SheetNumberParam",
             "kind": "select",
-            "label": "CmbSheetNoParam",
-            "required": false
-          },
-          {
-            "id": "txtfilter",
-            "name": "TxtFilter",
-            "kind": "text",
-            "label": "TxtFilter",
-            "required": false
-          },
-          {
-            "id": "btnselectallvisible",
-            "name": "BtnSelectAllVisible",
-            "kind": "button",
-            "label": "BtnSelectAllVisible",
-            "required": false
-          },
-          {
-            "id": "btnclearselection",
-            "name": "BtnClearSelection",
-            "kind": "button",
-            "label": "BtnClearSelection",
-            "required": false
-          },
-          {
-            "id": "gridsheets",
-            "name": "GridSheets",
-            "kind": "block",
-            "label": "GridSheets",
-            "required": false
-          },
-          {
-            "id": "txtselectionsummary",
-            "name": "TxtSelectionSummary",
-            "kind": "text",
-            "label": "TxtSelectionSummary",
-            "required": false
-          },
-          {
-            "id": "datagridtemplatecolumn-10",
-            "name": "DataGridTemplateColumn",
-            "kind": "table",
-            "label": "DataGridTemplateColumn",
-            "required": false
-          },
-          {
-            "id": "button-11",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "combobox-12",
-            "name": "ComboBox",
-            "kind": "select",
-            "label": "ComboBox",
+            "label": "Sheet number parameter",
             "required": true
           },
           {
-            "id": "datagrid-13",
-            "name": "DataGrid",
-            "kind": "table",
-            "label": "DataGrid",
-            "required": false
-          },
-          {
-            "id": "datagridtextcolumn-14",
-            "name": "DataGridTextColumn",
-            "kind": "table",
-            "label": "DataGridTextColumn",
-            "required": false
-          },
-          {
-            "id": "textbox-15",
-            "name": "TextBox",
+            "id": "sn-prefix",
+            "name": "Prefix",
             "kind": "text",
-            "label": "TextBox",
+            "label": "Prefix",
+            "required": false
+          },
+          {
+            "id": "sn-suffix",
+            "name": "Suffix",
+            "kind": "text",
+            "label": "Suffix",
+            "required": false
+          },
+          {
+            "id": "sn-table",
+            "name": "SheetPreview",
+            "kind": "table",
+            "label": "Sheet preview",
+            "required": false
+          },
+          {
+            "id": "sn-preview",
+            "name": "Preview",
+            "kind": "button",
+            "label": "Preview Changes",
+            "required": false
+          },
+          {
+            "id": "sn-apply",
+            "name": "Apply",
+            "kind": "button",
+            "label": "Apply Sheet Numbers",
             "required": true
-          },
-          {
-            "id": "action-select-all-visible",
-            "name": "Select All Visible",
-            "kind": "button",
-            "label": "Select All Visible",
-            "required": false
-          },
-          {
-            "id": "action-clear-selection",
-            "name": "Clear Selection",
-            "kind": "button",
-            "label": "Clear Selection",
-            "required": false
-          },
-          {
-            "id": "action-apply-updates",
-            "name": "Apply Updates",
-            "kind": "button",
-            "label": "Apply Updates",
-            "required": false
-          },
-          {
-            "id": "action-close",
-            "name": "Close",
-            "kind": "button",
-            "label": "Close",
-            "required": false
           }
         ],
         "events": [
           {
-            "controlId": "action-select-all-visible",
+            "controlId": "sn-preview",
             "event": "click",
-            "handler": "on_select-all-visible"
+            "handler": "preview_sheet_numbers"
           },
           {
-            "controlId": "action-clear-selection",
+            "controlId": "sn-apply",
             "event": "click",
-            "handler": "on_clear-selection"
-          },
-          {
-            "controlId": "action-apply-updates",
-            "event": "click",
-            "handler": "on_apply-updates"
-          },
-          {
-            "controlId": "action-close",
-            "event": "click",
-            "handler": "on_close"
+            "handler": "apply_sheet_numbers"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select scope and sheet number parameter."
           },
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "Sheet numbers simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Pick scope and sheet set"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Select target sheet parameter"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Preview resulting values"
           },
           {
             "step": 4,
-            "label": "Preview and inspection stage"
-          },
-          {
-            "step": 5,
-            "label": "Execution stage"
-          },
-          {
-            "step": 6,
-            "label": "Results and status stage"
+            "label": "Apply simulation and review summary"
           }
         ],
         "dynamicSources": [
-          "sheets"
+          "sheets",
+          "parameters"
         ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "sheetno-training",
+            "title": "SheetNo Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Preview and inspection stage",
-              "Execution stage",
-              "Results and status stage"
+              "Configure scope and parameter",
+              "Preview table",
+              "Apply simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Sheet rows evaluated",
+              "Formatting rules applied",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -3174,6 +3039,7 @@
       ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
+        "profile": "categorypicker-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -3184,267 +3050,116 @@
         ],
         "controls": [
           {
-            "id": "scope-combo",
-            "name": "scope_combo",
-            "kind": "select",
-            "label": "scope_combo",
-            "required": true
-          },
-          {
-            "id": "btn-refresh",
-            "name": "btn_refresh",
-            "kind": "button",
-            "label": "btn_refresh",
-            "required": false
-          },
-          {
-            "id": "sort-combo",
-            "name": "sort_combo",
-            "kind": "select",
-            "label": "sort_combo",
-            "required": false
-          },
-          {
-            "id": "search-box",
-            "name": "search_box",
-            "kind": "block",
-            "label": "search_box",
-            "required": false
-          },
-          {
-            "id": "btn-clear",
-            "name": "btn_clear",
-            "kind": "button",
-            "label": "btn_clear",
-            "required": false
-          },
-          {
-            "id": "status-label",
-            "name": "status_label",
-            "kind": "block",
-            "label": "status_label",
-            "required": false
-          },
-          {
-            "id": "btn-all",
-            "name": "btn_all",
-            "kind": "button",
-            "label": "btn_all",
-            "required": false
-          },
-          {
-            "id": "btn-none",
-            "name": "btn_none",
-            "kind": "button",
-            "label": "btn_none",
-            "required": false
-          },
-          {
-            "id": "btn-reset",
-            "name": "btn_reset",
-            "kind": "button",
-            "label": "btn_reset",
-            "required": false
-          },
-          {
-            "id": "btn-close",
-            "name": "btn_close",
-            "kind": "button",
-            "label": "btn_close",
-            "required": false
-          },
-          {
-            "id": "on-timer-tick",
-            "name": "on_timer_tick",
-            "kind": "block",
-            "label": "on_timer_tick",
-            "required": false
-          },
-          {
-            "id": "on-cat-cb-click",
-            "name": "on_cat_cb_click",
-            "kind": "block",
-            "label": "on_cat_cb_click",
-            "required": false
-          },
-          {
-            "id": "on-tg-cb-click",
-            "name": "on_tg_cb_click",
-            "kind": "block",
-            "label": "on_tg_cb_click",
-            "required": false
-          },
-          {
-            "id": "on-el-cb-click",
-            "name": "on_el_cb_click",
-            "kind": "block",
-            "label": "on_el_cb_click",
-            "required": false
-          },
-          {
-            "id": "button-14",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "checkbox-15",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "treeview-16",
-            "name": "TreeView",
-            "kind": "tree",
-            "label": "TreeView",
-            "required": false
-          },
-          {
-            "id": "combobox-17",
-            "name": "ComboBox",
-            "kind": "select",
-            "label": "ComboBox",
-            "required": true
-          },
-          {
-            "id": "textbox-18",
-            "name": "TextBox",
+            "id": "cp-search",
+            "name": "CategorySearch",
             "kind": "text",
-            "label": "TextBox",
+            "label": "Search categories",
+            "required": false
+          },
+          {
+            "id": "cp-discipline",
+            "name": "DisciplineFilter",
+            "kind": "select",
+            "label": "Discipline filter",
+            "required": false
+          },
+          {
+            "id": "cp-categories",
+            "name": "CategoryList",
+            "kind": "multiselect",
+            "label": "Categories",
             "required": true
           },
           {
-            "id": "action",
-            "name": "⟳",
+            "id": "cp-select-all",
+            "name": "SelectAll",
             "kind": "button",
-            "label": "⟳",
+            "label": "Select All",
             "required": false
           },
           {
-            "id": "action-all",
-            "name": "All",
+            "id": "cp-clear",
+            "name": "ClearSelection",
             "kind": "button",
-            "label": "All",
+            "label": "Clear",
             "required": false
           },
           {
-            "id": "action-none",
-            "name": "None",
+            "id": "cp-apply",
+            "name": "ApplySelection",
             "kind": "button",
-            "label": "None",
-            "required": false
-          },
-          {
-            "id": "action-reset",
-            "name": "Reset",
-            "kind": "button",
-            "label": "Reset",
-            "required": false
-          },
-          {
-            "id": "action-close",
-            "name": "Close",
-            "kind": "button",
-            "label": "Close",
-            "required": false
+            "label": "Select Elements",
+            "required": true
           }
         ],
         "events": [
           {
-            "controlId": "on-cat-cb-click",
+            "controlId": "cp-select-all",
             "event": "click",
-            "handler": "on_cat_cb_click"
+            "handler": "select_all_categories"
           },
           {
-            "controlId": "on-tg-cb-click",
+            "controlId": "cp-clear",
             "event": "click",
-            "handler": "on_tg_cb_click"
+            "handler": "clear_category_selection"
           },
           {
-            "controlId": "on-el-cb-click",
+            "controlId": "cp-apply",
             "event": "click",
-            "handler": "on_el_cb_click"
-          },
-          {
-            "controlId": "action",
-            "event": "click",
-            "handler": "on_item"
-          },
-          {
-            "controlId": "action-all",
-            "event": "click",
-            "handler": "on_all"
-          },
-          {
-            "controlId": "action-none",
-            "event": "click",
-            "handler": "on_none"
-          },
-          {
-            "controlId": "action-reset",
-            "event": "click",
-            "handler": "on_reset"
-          },
-          {
-            "controlId": "action-close",
-            "event": "click",
-            "handler": "on_close"
+            "handler": "apply_category_selection"
           }
         ],
         "prompts": [
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "Validation failed. Select at least one category."
+          },
+          {
+            "type": "alert",
+            "message": "Category selection simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Search and filter categories"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Select one or more categories"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
-          },
-          {
-            "step": 4,
-            "label": "Execution stage"
-          },
-          {
-            "step": 5,
-            "label": "Results and status stage"
+            "label": "Run selection simulation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "categories"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "categorypicker-training",
+            "title": "CategoryPicker Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Execution stage",
-              "Results and status stage"
+              "Filter categories",
+              "Select categories",
+              "Apply simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Category set resolved",
+              "Selection summary generated",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -4390,6 +4105,7 @@
       ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton",
+        "profile": "reorderviewports-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -4402,274 +4118,121 @@
         ],
         "controls": [
           {
-            "id": "currentsheetbtn",
-            "name": "CurrentSheetBtn",
-            "kind": "button",
-            "label": "CurrentSheetBtn",
-            "required": false
-          },
-          {
-            "id": "multiplesheetsbtn",
-            "name": "MultipleSheetsBtn",
-            "kind": "button",
-            "label": "MultipleSheetsBtn",
-            "required": false
-          },
-          {
-            "id": "cancelbtn",
-            "name": "CancelBtn",
-            "kind": "button",
-            "label": "CancelBtn",
-            "required": false
-          },
-          {
-            "id": "resetnumberbtn",
-            "name": "ResetNumberBtn",
-            "kind": "button",
-            "label": "ResetNumberBtn",
-            "required": false
-          },
-          {
-            "id": "filternumber",
-            "name": "FilterNumber",
-            "kind": "block",
-            "label": "FilterNumber",
-            "required": false
-          },
-          {
-            "id": "resetnamebtn",
-            "name": "ResetNameBtn",
-            "kind": "button",
-            "label": "ResetNameBtn",
-            "required": false
-          },
-          {
-            "id": "filtername",
-            "name": "FilterName",
-            "kind": "block",
-            "label": "FilterName",
-            "required": false
-          },
-          {
-            "id": "allsheetslist",
-            "name": "AllSheetsList",
-            "kind": "block",
-            "label": "AllSheetsList",
-            "required": false
-          },
-          {
-            "id": "addbtn",
-            "name": "AddBtn",
-            "kind": "button",
-            "label": "AddBtn",
-            "required": false
-          },
-          {
-            "id": "addallbtn",
-            "name": "AddAllBtn",
-            "kind": "button",
-            "label": "AddAllBtn",
-            "required": false
-          },
-          {
-            "id": "on-current",
-            "name": "on_current",
-            "kind": "block",
-            "label": "on_current",
-            "required": false
-          },
-          {
-            "id": "on-multiple",
-            "name": "on_multiple",
-            "kind": "block",
-            "label": "on_multiple",
-            "required": false
-          },
-          {
-            "id": "on-cancel",
-            "name": "on_cancel",
-            "kind": "block",
-            "label": "on_cancel",
-            "required": false
-          },
-          {
-            "id": "on-filter-changed",
-            "name": "on_filter_changed",
-            "kind": "block",
-            "label": "on_filter_changed",
-            "required": false
-          },
-          {
-            "id": "button-14",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "textbox-15",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
+            "id": "rv-sheet",
+            "name": "SheetSelector",
+            "kind": "select",
+            "label": "Sheet",
             "required": true
           },
           {
-            "id": "listbox-16",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
+            "id": "rv-list",
+            "name": "ViewportList",
+            "kind": "table",
+            "label": "Viewport order",
+            "required": false
+          },
+          {
+            "id": "rv-up",
+            "name": "MoveUp",
+            "kind": "button",
+            "label": "Move Up",
+            "required": false
+          },
+          {
+            "id": "rv-down",
+            "name": "MoveDown",
+            "kind": "button",
+            "label": "Move Down",
+            "required": false
+          },
+          {
+            "id": "rv-auto",
+            "name": "AutoSort",
+            "kind": "button",
+            "label": "Auto Sort",
+            "required": false
+          },
+          {
+            "id": "rv-apply",
+            "name": "ApplyOrder",
+            "kind": "button",
+            "label": "Apply Viewport Order",
             "required": true
-          },
-          {
-            "id": "action-cancel",
-            "name": "Cancel",
-            "kind": "button",
-            "label": "Cancel",
-            "required": false
-          },
-          {
-            "id": "action-reset",
-            "name": "Reset",
-            "kind": "button",
-            "label": "Reset",
-            "required": false
-          },
-          {
-            "id": "action-x276f",
-            "name": "&#x276F;",
-            "kind": "button",
-            "label": "&#x276F;",
-            "required": false
-          },
-          {
-            "id": "action-x226b",
-            "name": "&#x226B;",
-            "kind": "button",
-            "label": "&#x226B;",
-            "required": false
-          },
-          {
-            "id": "action-x276e",
-            "name": "&#x276E;",
-            "kind": "button",
-            "label": "&#x276E;",
-            "required": false
-          },
-          {
-            "id": "action-x226a",
-            "name": "&#x226A;",
-            "kind": "button",
-            "label": "&#x226A;",
-            "required": false
-          },
-          {
-            "id": "action-back",
-            "name": "Back",
-            "kind": "button",
-            "label": "Back",
-            "required": false
-          },
-          {
-            "id": "action-next",
-            "name": "Next",
-            "kind": "button",
-            "label": "Next",
-            "required": false
           }
         ],
         "events": [
           {
-            "controlId": "action-cancel",
+            "controlId": "rv-up",
             "event": "click",
-            "handler": "on_cancel"
+            "handler": "move_viewport_up"
           },
           {
-            "controlId": "action-reset",
+            "controlId": "rv-down",
             "event": "click",
-            "handler": "on_reset"
+            "handler": "move_viewport_down"
           },
           {
-            "controlId": "action-x276f",
+            "controlId": "rv-auto",
             "event": "click",
-            "handler": "on_x276f"
+            "handler": "auto_sort_viewports"
           },
           {
-            "controlId": "action-x226b",
+            "controlId": "rv-apply",
             "event": "click",
-            "handler": "on_x226b"
-          },
-          {
-            "controlId": "action-x276e",
-            "event": "click",
-            "handler": "on_x276e"
-          },
-          {
-            "controlId": "action-x226a",
-            "event": "click",
-            "handler": "on_x226a"
-          },
-          {
-            "controlId": "action-back",
-            "event": "click",
-            "handler": "on_back"
-          },
-          {
-            "controlId": "action-next",
-            "event": "click",
-            "handler": "on_next"
+            "handler": "apply_viewport_order"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Validation failed. Select a sheet and one or more viewport rows."
+          },
+          {
+            "type": "alert",
+            "message": "Viewport reorder simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Select sheet and load viewport list"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Reorder rows manually or by auto-sort"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
-          },
-          {
-            "step": 4,
-            "label": "Execution stage"
-          },
-          {
-            "step": 5,
-            "label": "Results and status stage"
+            "label": "Apply viewport order simulation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "sheets"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "reorderviewports-training",
+            "title": "Reorder Viewports Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Execution stage",
-              "Results and status stage"
+              "Select sheet",
+              "Reorder viewports",
+              "Apply simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Viewport order recalculated",
+              "Placement order applied",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },

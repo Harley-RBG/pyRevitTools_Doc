@@ -1199,8 +1199,36 @@ function buildToolPageHtml(tool, generatedAt, toolDatasetsByToolId = {}) {
             return;
           }
 
-          if (String(SIMULATOR.toolId || '').includes('SectionUpdater.pushbutton')) {
+          if (String(SIMULATOR.profile || '') === 'section-updater-high-fidelity') {
             renderSectionUpdaterSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'packagecreator-high-fidelity') {
+            renderPackageCreatorSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'paramcopier-high-fidelity') {
+            renderParamCopierSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'sheetno-high-fidelity') {
+            renderSheetNoSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'scheduleupdater-high-fidelity') {
+            renderScheduleUpdaterSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'linkedviews-high-fidelity') {
+            renderLinkedViewsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'categorypicker-high-fidelity') {
+            renderCategoryPickerSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'reorderviewports-high-fidelity') {
+            renderReorderViewportsSimulator();
             return;
           }
 
@@ -1255,6 +1283,376 @@ function buildToolPageHtml(tool, generatedAt, toolDatasetsByToolId = {}) {
           }
 
           simulatorRoot.appendChild(form);
+        }
+
+        function renderPackageCreatorSimulator() {
+          const dataset = DATASET.packageCreator || {};
+          const officeOptions = Array.isArray(dataset.officeOptions) && dataset.officeOptions.length ? dataset.officeOptions : ['SYD', 'MEL', 'BNE'];
+          const yearOptions = Array.isArray(dataset.yearOptions) && dataset.yearOptions.length ? dataset.yearOptions : ['2026', '2025', '2024'];
+          const stageRows = Array.isArray(dataset.stageRows) && dataset.stageRows.length
+            ? dataset.stageRows
+            : [['Project Link', 'Pending'], ['Rules', 'Pending'], ['Checks', 'Pending'], ['Export', 'Pending'], ['Create', 'Pending']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid">' +
+              '<section class="hf-pane">' +
+                '<h5>Project Setup</h5>' +
+                '<label class="sim-control"><span class="sim-label">Project search</span><input id="pc-project-search" class="sim-field" type="text" placeholder="Search project..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Office</span><select id="pc-office" class="sim-field">' + officeOptions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Year folder</span><select id="pc-year-folder" class="sim-field">' + yearOptions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Project docs root *</span><input id="pc-docs-root" class="sim-field" type="text" value="' + String(dataset.projectDocsRoot || '') + '" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Model key *</span><input id="pc-model-key" class="sim-field" type="text" value="' + String(dataset.modelKey || '') + '" /></label>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Naming Inputs</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet number source parameter</span><input id="pc-sheet-number-param" class="sim-field" type="text" value="' + String(dataset.sheetNumberParam || '') + '" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Revision source parameter</span><input id="pc-revision-param" class="sim-field" type="text" value="' + String(dataset.revisionParam || '') + '" /></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-refresh">Refresh</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-search">Search</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-apply-project">Apply Project</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-apply-rules">Apply Rules</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Stage Status</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Stage</th><th>Status</th></tr></thead><tbody>' + stageRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-run-check">Run Check</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-stage-export">Stage 4: Export</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-stage-create">Stage 5: Create</button>' +
+                  '<button type="button" class="sim-action" id="pc-run-full-flow">Run Full Flow</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('pc-run-full-flow').addEventListener('click', function () {
+            const docsRoot = String(document.getElementById('pc-docs-root').value || '').trim();
+            const modelKey = String(document.getElementById('pc-model-key').value || '').trim();
+            if (!docsRoot || !modelKey) {
+              simOutput.textContent = 'Validation failed. Project docs root and model key are required.';
+              return;
+            }
+            simOutput.textContent = 'PackageCreator full flow simulation complete.\\nChecks: OK\\nExport stage: simulated\\nCreate stage: simulated\\nNo Revit model changes were made.';
+          });
+          document.getElementById('pc-run-check').addEventListener('click', function () {
+            simOutput.textContent = 'Validation checks complete (simulated).\\nIssues found: 0';
+          });
+        }
+
+        function renderParamCopierSimulator() {
+          const dataset = DATASET.paramCopier || {};
+          const sourceCategories = Array.isArray(dataset.sourceCategories) && dataset.sourceCategories.length ? dataset.sourceCategories : ['Walls', 'Floors', 'Structural Framing'];
+          const targetCategories = Array.isArray(dataset.targetCategories) && dataset.targetCategories.length ? dataset.targetCategories : sourceCategories;
+          const sourceParams = Array.isArray(dataset.sourceParameters) && dataset.sourceParameters.length ? dataset.sourceParameters : ['Comments', 'Mark', 'Type Name'];
+          const targetParams = Array.isArray(dataset.targetParameters) && dataset.targetParameters.length ? dataset.targetParameters : ['RBG_Comments', 'RBG_Mark', 'RBG_TypeName'];
+          const copyModes = Array.isArray(dataset.copyModes) && dataset.copyModes.length ? dataset.copyModes : ['Overwrite target', 'Fill empty target only'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['W-101', 'Beam A', 'Copied'], ['W-102', 'Beam B', 'Copied']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Mapping Setup</h5>' +
+                '<label class="sim-control"><span class="sim-label">Source category *</span><select id="pm-source-category" class="sim-field">' + sourceCategories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Source parameter *</span><select id="pm-source-param" class="sim-field">' + sourceParams.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target category *</span><select id="pm-target-category" class="sim-field">' + targetCategories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target parameter *</span><select id="pm-target-param" class="sim-field">' + targetParams.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Copy mode *</span><select id="pm-copy-mode" class="sim-field">' + copyModes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="pm-only-selected" type="checkbox" /> Only selected elements</label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Preview Mappings</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Element</th><th>Mapped Value</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pm-preview">Preview</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pm-reset">Reset</button>' +
+                  '<button type="button" class="sim-action" id="pm-copy">Copy Parameters</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('pm-preview').addEventListener('click', function () {
+            simOutput.textContent = 'Preview generated for ' + rows.length + ' rows (simulated).';
+          });
+          document.getElementById('pm-copy').addEventListener('click', function () {
+            simOutput.textContent = 'ParamCopier simulation complete.\\nRows updated: ' + rows.length + '\\nNo Revit model changes were made.';
+          });
+          document.getElementById('pm-reset').addEventListener('click', function () {
+            simOutput.textContent = 'Mapping controls reset (simulated).';
+          });
+        }
+
+        function renderSheetNoSimulator() {
+          const source = DATASET.selectOptions || {};
+          const scopes = source.cmbscope || ['Active View', 'Current Sheet Set', 'Selected Sheets'];
+          const sheetSets = source.cmbsheetset || ['A-Documentation', 'S-Structural'];
+          const params = source.cmbsheetnoparam || ['Sheet Number'];
+          const rows = Array.isArray(DATASET.sampleTableRows) && DATASET.sampleTableRows.length
+            ? DATASET.sampleTableRows
+            : [['S101 | Level 01', 'Ready'], ['S201 | Level 02', 'Review']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Selection and Formatting</h5>' +
+                '<label class="sim-control"><span class="sim-label">Scope *</span><select id="sn-scope" class="sim-field">' + scopes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Sheet set</span><select id="sn-sheetset" class="sim-field">' + sheetSets.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Sheet number parameter *</span><select id="sn-param" class="sim-field">' + params.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Prefix</span><input id="sn-prefix" class="sim-field" type="text" placeholder="e.g. GA-" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Suffix</span><input id="sn-suffix" class="sim-field" type="text" placeholder="e.g. -IFC" /></label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="sn-preview">Preview Changes</button>' +
+                  '<button type="button" class="sim-action" id="sn-apply">Apply Sheet Numbers</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('sn-preview').addEventListener('click', function () {
+            simOutput.textContent = 'Sheet numbering preview generated for ' + rows.length + ' rows (simulated).';
+          });
+          document.getElementById('sn-apply').addEventListener('click', function () {
+            simOutput.textContent = 'SheetNo simulation complete.\\nUpdated rows: ' + rows.length + '\\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderScheduleUpdaterSimulator() {
+          const dataset = DATASET.scheduleUpdater || {};
+          const schedules = Array.isArray(dataset.schedules) && dataset.schedules.length ? dataset.schedules : ['S-Concrete Reinforcement', 'S-Steel Framing'];
+          const existing = Array.isArray(dataset.existingFields) && dataset.existingFields.length ? dataset.existingFields : ['Mark', 'Type', 'Comments'];
+          const available = Array.isArray(dataset.availableFields) && dataset.availableFields.length ? dataset.availableFields : ['RBG_Stage', 'RBG_Discipline', 'RBG_Approval'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['RBG_Stage', 'Add'], ['RBG_Discipline', 'Add']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Schedule + Field Selection</h5>' +
+                '<label class="sim-control"><span class="sim-label">Schedule *</span><select id="su-schedule" class="sim-field">' + schedules.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Field search</span><input id="su-field-search" class="sim-field" type="text" placeholder="Filter available fields..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Existing fields</span><select id="su-existing-fields" class="sim-field" multiple>' + existing.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Available fields</span><select id="su-available-fields" class="sim-field" multiple>' + available.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="su-refresh">Refresh</button>' +
+                  '<button type="button" class="sim-action" id="su-add-fields">Add Selected Fields</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="su-remove-fields">Remove Selected Fields</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Field Updates Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Field</th><th>Action</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || 'Add') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action" id="su-apply">Apply Updates</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('su-refresh').addEventListener('click', function () {
+            simOutput.textContent = 'Schedules refreshed (simulated).';
+          });
+          document.getElementById('su-add-fields').addEventListener('click', function () {
+            simOutput.textContent = 'Selected fields staged for add (simulated).';
+          });
+          document.getElementById('su-remove-fields').addEventListener('click', function () {
+            simOutput.textContent = 'Selected fields staged for removal (simulated).';
+          });
+          document.getElementById('su-apply').addEventListener('click', function () {
+            simOutput.textContent = 'Schedule Updater simulation complete.\\nUpdated fields: ' + rows.length + '\\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderLinkedViewsSimulator() {
+          const dataset = DATASET.linkedViews || {};
+          const links = Array.isArray(dataset.linkInstances) && dataset.linkInstances.length ? dataset.linkInstances : ['ARC-Model.rvt', 'STR-Reference.rvt'];
+          const sourceViews = Array.isArray(dataset.sourceViews) && dataset.sourceViews.length ? dataset.sourceViews : ['L01 - Structural Plan', 'L02 - Structural Plan'];
+          const targetViews = Array.isArray(dataset.targetViews) && dataset.targetViews.length ? dataset.targetViews : ['Host L01 Plan', 'Host L02 Plan'];
+          const modes = Array.isArray(dataset.modes) && dataset.modes.length ? dataset.modes : ['Overlay', 'By shared coordinates'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['L01 - Structural Plan', 'Host L01 Plan', 'Ready']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Linked View Mapping</h5>' +
+                '<label class="sim-control"><span class="sim-label">Revit link instance *</span><select id="lv-link-instance" class="sim-field">' + links.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Linked source view *</span><select id="lv-source-view" class="sim-field">' + sourceViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Host target view *</span><select id="lv-target-view" class="sim-field">' + targetViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Placement mode *</span><select id="lv-mode" class="sim-field">' + modes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="lv-align-crop" type="checkbox" checked /> Align crop to linked view extents</label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="lv-load">Load Linked Views</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="lv-preview-btn">Preview Placement</button>' +
+                  '<button type="button" class="sim-action" id="lv-create">Create / Update</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Placement Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Linked View</th><th>Host View</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('lv-load').addEventListener('click', function () {
+            simOutput.textContent = 'Linked views loaded from selected link (simulated).';
+          });
+          document.getElementById('lv-preview-btn').addEventListener('click', function () {
+            simOutput.textContent = 'Placement preview generated (simulated).';
+          });
+          document.getElementById('lv-create').addEventListener('click', function () {
+            simOutput.textContent = 'LinkedViews simulation complete.\\nMapped rows: ' + rows.length + '\\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderCategoryPickerSimulator() {
+          const dataset = DATASET.categoryPicker || {};
+          const discipline = Array.isArray(dataset.disciplineFilters) && dataset.disciplineFilters.length ? dataset.disciplineFilters : ['All', 'Architecture', 'Structure', 'MEP'];
+          const categories = Array.isArray(dataset.categories) && dataset.categories.length ? dataset.categories : ['Walls', 'Floors', 'Doors', 'Structural Framing', 'Columns'];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Category Selection</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search categories</span><input id="cp-search" class="sim-field" type="text" placeholder="Type to filter..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Discipline filter</span><select id="cp-discipline" class="sim-field">' + discipline.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Categories *</span><select id="cp-categories" class="sim-field" multiple>' + categories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cp-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cp-clear">Clear</button>' +
+                  '<button type="button" class="sim-action" id="cp-apply">Select Elements</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Selection Summary</h5>' +
+                '<p class="muted">Selected category count: <strong id="cp-count">0</strong></p>' +
+                '<p class="muted">Use multi-select to stage category picks before applying.</p>' +
+              '</section>' +
+            '</div>';
+
+          const list = document.getElementById('cp-categories');
+          const countNode = document.getElementById('cp-count');
+          function updateCount() {
+            countNode.textContent = String(Array.from(list.selectedOptions).length);
+          }
+          list.addEventListener('change', updateCount);
+          updateCount();
+
+          document.getElementById('cp-select-all').addEventListener('click', function () {
+            Array.from(list.options).forEach((option) => { option.selected = true; });
+            updateCount();
+            simOutput.textContent = 'All categories selected (simulated).';
+          });
+          document.getElementById('cp-clear').addEventListener('click', function () {
+            Array.from(list.options).forEach((option) => { option.selected = false; });
+            updateCount();
+            simOutput.textContent = 'Category selection cleared (simulated).';
+          });
+          document.getElementById('cp-apply').addEventListener('click', function () {
+            const count = Array.from(list.selectedOptions).length;
+            if (!count) {
+              simOutput.textContent = 'Validation failed. Select at least one category.';
+              return;
+            }
+            simOutput.textContent = 'CategoryPicker simulation complete.\\nCategories selected: ' + count + '\\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderReorderViewportsSimulator() {
+          const dataset = DATASET.reorderViewports || {};
+          const sheets = Array.isArray(dataset.sheets) && dataset.sheets.length ? dataset.sheets : ['S101 - Plan', 'S201 - Sections'];
+          const rows = Array.isArray(dataset.viewportRows) && dataset.viewportRows.length ? dataset.viewportRows : [['01', 'General Notes'], ['02', 'Plan View'], ['03', 'Typical Section']];
+          const workingRows = rows.map((row) => [String(row[0] || ''), String(row[1] || '')]);
+          let activeIndex = workingRows.length ? 0 : -1;
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Sheet + Ordering</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet *</span><select id="rv-sheet" class="sim-field">' + sheets.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-up">Move Up</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-down">Move Down</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-auto">Auto Sort</button>' +
+                  '<button type="button" class="sim-action" id="rv-apply">Apply Viewport Order</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Viewport Order</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Order</th><th>Viewport</th></tr></thead><tbody id="rv-rows"></tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          const tbody = document.getElementById('rv-rows');
+          function renderRows() {
+            tbody.innerHTML = workingRows.map((row, index) => '<tr data-idx="' + index + '"' + (index === activeIndex ? ' class="is-active"' : '') + '><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>').join('');
+            Array.from(tbody.querySelectorAll('tr')).forEach((tr) => {
+              tr.addEventListener('click', function () {
+                activeIndex = Number(tr.getAttribute('data-idx'));
+                renderRows();
+              });
+            });
+          }
+
+          function swapRows(a, b) {
+            const tmp = workingRows[a];
+            workingRows[a] = workingRows[b];
+            workingRows[b] = tmp;
+            activeIndex = b;
+            renderRows();
+          }
+
+          document.getElementById('rv-up').addEventListener('click', function () {
+            if (activeIndex <= 0) return;
+            swapRows(activeIndex, activeIndex - 1);
+            simOutput.textContent = 'Viewport moved up (simulated).';
+          });
+          document.getElementById('rv-down').addEventListener('click', function () {
+            if (activeIndex < 0 || activeIndex >= workingRows.length - 1) return;
+            swapRows(activeIndex, activeIndex + 1);
+            simOutput.textContent = 'Viewport moved down (simulated).';
+          });
+          document.getElementById('rv-auto').addEventListener('click', function () {
+            workingRows.sort((a, b) => a[1].localeCompare(b[1]));
+            activeIndex = workingRows.length ? 0 : -1;
+            renderRows();
+            simOutput.textContent = 'Auto sort applied alphabetically (simulated).';
+          });
+          document.getElementById('rv-apply').addEventListener('click', function () {
+            if (!workingRows.length) {
+              simOutput.textContent = 'Validation failed. No viewport rows available.';
+              return;
+            }
+            simOutput.textContent = 'Reorder Viewports simulation complete.\\nRows applied: ' + workingRows.length + '\\nNo Revit model changes were made.';
+          });
+
+          renderRows();
         }
 
         function renderSectionUpdaterSimulator() {
@@ -1762,6 +2160,48 @@ function isSectionUpdaterTool(tool) {
   return id.includes("SectionUpdater.pushbutton") || /section\s*move/i.test(title);
 }
 
+function isPackageCreatorTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("PackageCreator.pushbutton") || /packagecreator/i.test(title);
+}
+
+function isParamCopierTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("ParamCopier.pushbutton") || /param\s*copier|paramcopier/i.test(title);
+}
+
+function isSheetNoTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("SheetNo.pushbutton") || /^sheetno$/i.test(title);
+}
+
+function isScheduleUpdaterTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("ScheduleUpdater.pushbutton") || /schedule\s*updater/i.test(title);
+}
+
+function isLinkedViewsTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("LinkedViews.pushbutton") || /linkedviews/i.test(title);
+}
+
+function isCategoryPickerTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("CategoryPicker.pushbutton") || /categorypicker/i.test(title);
+}
+
+function isReorderViewportsTool(tool) {
+  const id = String((tool && tool.id) || "");
+  const title = String((tool && tool.title) || "");
+  return id.includes("Reorder Viewports.pushbutton") || /reorder\s*viewports/i.test(title);
+}
+
 function buildSectionUpdaterSimulatorModel(tool, uiKind) {
   return {
     toolId: tool.id,
@@ -1844,11 +2284,402 @@ function buildSectionUpdaterSimulatorModel(tool, uiKind) {
   };
 }
 
+function buildPackageCreatorSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "packagecreator-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "pc-project-search", name: "ProjectSearch", kind: "text", label: "Project search", required: false },
+      { id: "pc-office", name: "Office", kind: "select", label: "Office", required: true },
+      { id: "pc-year-folder", name: "YearFolder", kind: "select", label: "Year folder", required: true },
+      { id: "pc-docs-root", name: "ProjectDocsRoot", kind: "text", label: "Project docs root", required: true },
+      { id: "pc-model-key", name: "ModelKey", kind: "text", label: "Model key", required: true },
+      { id: "pc-sheet-number-param", name: "SheetNumberSource", kind: "text", label: "Sheet number source parameter", required: false },
+      { id: "pc-revision-param", name: "RevisionSource", kind: "text", label: "Revision source parameter", required: false },
+      { id: "pc-status-table", name: "StatusTable", kind: "table", label: "Stage status", required: false },
+      { id: "pc-refresh", name: "Refresh", kind: "button", label: "Refresh", required: false },
+      { id: "pc-search", name: "Search", kind: "button", label: "Search", required: false },
+      { id: "pc-apply-project", name: "ApplyProject", kind: "button", label: "Apply Project", required: false },
+      { id: "pc-apply-rules", name: "ApplyRules", kind: "button", label: "Apply Rules", required: false },
+      { id: "pc-run-check", name: "RunCheck", kind: "button", label: "Run Check", required: false },
+      { id: "pc-run-full-flow", name: "RunFullFlow", kind: "button", label: "Run Full Flow", required: true },
+      { id: "pc-stage-export", name: "StageExport", kind: "button", label: "Stage 4: Export", required: false },
+      { id: "pc-stage-create", name: "StageCreate", kind: "button", label: "Stage 5: Create", required: false },
+    ],
+    events: [
+      { controlId: "pc-refresh", event: "click", handler: "refresh" },
+      { controlId: "pc-search", event: "click", handler: "search_projects" },
+      { controlId: "pc-apply-project", event: "click", handler: "apply_project" },
+      { controlId: "pc-apply-rules", event: "click", handler: "apply_rules" },
+      { controlId: "pc-run-check", event: "click", handler: "run_check" },
+      { controlId: "pc-run-full-flow", event: "click", handler: "run_full_flow" },
+      { controlId: "pc-stage-export", event: "click", handler: "run_stage_export" },
+      { controlId: "pc-stage-create", event: "click", handler: "run_stage_create" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Project settings must be complete before full flow run." },
+      { type: "alert", message: "Simulation complete. No live package creation was performed." },
+    ],
+    workflow: [
+      { step: 1, label: "Refresh and locate project context" },
+      { step: 2, label: "Apply project details and naming rules" },
+      { step: 3, label: "Run package checks and review status table" },
+      { step: 4, label: "Run export and create stages" },
+      { step: 5, label: "Run full flow and validate outcomes" },
+    ],
+    dynamicSources: ["sheets", "parameters"],
+    scenarios: [
+      {
+        id: "packagecreator-training",
+        title: "PackageCreator Training Run",
+        steps: ["Configure project metadata", "Apply rules", "Run checks", "Run full flow simulation"],
+        expectedOutput: ["Checks complete", "Stage status updated", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildParamCopierSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "paramcopier-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "pm-source-category", name: "SourceCategory", kind: "select", label: "Source category", required: true },
+      { id: "pm-source-param", name: "SourceParameter", kind: "select", label: "Source parameter", required: true },
+      { id: "pm-target-category", name: "TargetCategory", kind: "select", label: "Target category", required: true },
+      { id: "pm-target-param", name: "TargetParameter", kind: "select", label: "Target parameter", required: true },
+      { id: "pm-copy-mode", name: "CopyMode", kind: "select", label: "Copy mode", required: true },
+      { id: "pm-only-selected", name: "OnlySelected", kind: "checkbox", label: "Only selected elements", required: false },
+      { id: "pm-preview-table", name: "PreviewTable", kind: "table", label: "Preview mappings", required: false },
+      { id: "pm-preview", name: "Preview", kind: "button", label: "Preview", required: false },
+      { id: "pm-copy", name: "RunCopy", kind: "button", label: "Copy Parameters", required: true },
+      { id: "pm-reset", name: "Reset", kind: "button", label: "Reset", required: false },
+    ],
+    events: [
+      { controlId: "pm-preview", event: "click", handler: "preview_mappings" },
+      { controlId: "pm-copy", event: "click", handler: "run_copy" },
+      { controlId: "pm-reset", event: "click", handler: "reset_form" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select source and target parameter mappings first." },
+      { type: "alert", message: "Copy simulated. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Select source category and parameter" },
+      { step: 2, label: "Select target category and parameter" },
+      { step: 3, label: "Preview mapping values" },
+      { step: 4, label: "Run copy simulation and inspect output" },
+    ],
+    dynamicSources: ["categories", "parameters"],
+    scenarios: [
+      {
+        id: "paramcopier-training",
+        title: "ParamCopier Training Run",
+        steps: ["Select source/target pairs", "Preview values", "Run copy"],
+        expectedOutput: ["Rows evaluated", "Mappings complete", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildSheetNoSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "sheetno-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "sn-scope", name: "Scope", kind: "select", label: "Scope", required: true },
+      { id: "sn-sheetset", name: "SheetSet", kind: "select", label: "Sheet set", required: false },
+      { id: "sn-param", name: "SheetNumberParam", kind: "select", label: "Sheet number parameter", required: true },
+      { id: "sn-prefix", name: "Prefix", kind: "text", label: "Prefix", required: false },
+      { id: "sn-suffix", name: "Suffix", kind: "text", label: "Suffix", required: false },
+      { id: "sn-table", name: "SheetPreview", kind: "table", label: "Sheet preview", required: false },
+      { id: "sn-preview", name: "Preview", kind: "button", label: "Preview Changes", required: false },
+      { id: "sn-apply", name: "Apply", kind: "button", label: "Apply Sheet Numbers", required: true },
+    ],
+    events: [
+      { controlId: "sn-preview", event: "click", handler: "preview_sheet_numbers" },
+      { controlId: "sn-apply", event: "click", handler: "apply_sheet_numbers" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select scope and sheet number parameter." },
+      { type: "alert", message: "Sheet numbers simulated. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Pick scope and sheet set" },
+      { step: 2, label: "Select target sheet parameter" },
+      { step: 3, label: "Preview resulting values" },
+      { step: 4, label: "Apply simulation and review summary" },
+    ],
+    dynamicSources: ["sheets", "parameters"],
+    scenarios: [
+      {
+        id: "sheetno-training",
+        title: "SheetNo Training Run",
+        steps: ["Configure scope and parameter", "Preview table", "Apply simulation"],
+        expectedOutput: ["Sheet rows evaluated", "Formatting rules applied", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildScheduleUpdaterSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "scheduleupdater-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "su-schedule", name: "ScheduleSelector", kind: "select", label: "Schedule", required: true },
+      { id: "su-field-search", name: "FieldSearch", kind: "text", label: "Field search", required: false },
+      { id: "su-existing-fields", name: "ExistingFields", kind: "multiselect", label: "Existing fields", required: false },
+      { id: "su-available-fields", name: "AvailableFields", kind: "multiselect", label: "Available fields", required: false },
+      { id: "su-preview", name: "Preview", kind: "table", label: "Field updates preview", required: false },
+      { id: "su-refresh", name: "RefreshSchedules", kind: "button", label: "Refresh", required: false },
+      { id: "su-add-fields", name: "AddFields", kind: "button", label: "Add Selected Fields", required: true },
+      { id: "su-remove-fields", name: "RemoveFields", kind: "button", label: "Remove Selected Fields", required: false },
+      { id: "su-apply", name: "ApplyScheduleFields", kind: "button", label: "Apply Updates", required: true },
+    ],
+    events: [
+      { controlId: "su-refresh", event: "click", handler: "refresh_schedules" },
+      { controlId: "su-add-fields", event: "click", handler: "add_fields" },
+      { controlId: "su-remove-fields", event: "click", handler: "remove_fields" },
+      { controlId: "su-apply", event: "click", handler: "apply_updates" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select schedule and at least one field to add." },
+      { type: "alert", message: "Schedule update simulated. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Select schedule and review current fields" },
+      { step: 2, label: "Search and stage additional schedulable fields" },
+      { step: 3, label: "Preview resulting field layout" },
+      { step: 4, label: "Apply updates and verify summary" },
+    ],
+    dynamicSources: ["sheets", "parameters"],
+    scenarios: [
+      {
+        id: "scheduleupdater-training",
+        title: "Schedule Updater Training Run",
+        steps: ["Pick schedule", "Stage fields", "Preview", "Apply simulation"],
+        expectedOutput: ["Field updates prepared", "Schedule check complete", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildLinkedViewsSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "linkedviews-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "lv-link-instance", name: "LinkInstance", kind: "select", label: "Revit link instance", required: true },
+      { id: "lv-source-view", name: "SourceView", kind: "select", label: "Linked source view", required: true },
+      { id: "lv-target-view", name: "TargetView", kind: "select", label: "Host target view", required: true },
+      { id: "lv-mode", name: "PlacementMode", kind: "select", label: "Placement mode", required: true },
+      { id: "lv-align-crop", name: "AlignCrop", kind: "checkbox", label: "Align crop to linked view extents", required: false },
+      { id: "lv-preview", name: "Preview", kind: "table", label: "Linked view preview", required: false },
+      { id: "lv-load", name: "LoadViews", kind: "button", label: "Load Linked Views", required: false },
+      { id: "lv-preview-btn", name: "PreviewPlacement", kind: "button", label: "Preview Placement", required: false },
+      { id: "lv-create", name: "CreateLinkedView", kind: "button", label: "Create / Update", required: true },
+    ],
+    events: [
+      { controlId: "lv-load", event: "click", handler: "load_link_views" },
+      { controlId: "lv-preview-btn", event: "click", handler: "preview_link_placement" },
+      { controlId: "lv-create", event: "click", handler: "create_or_update_linked_view" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select link, source view, and target view first." },
+      { type: "alert", message: "Linked view simulation complete. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Select link instance and load eligible linked views" },
+      { step: 2, label: "Select source and host target views" },
+      { step: 3, label: "Preview placement and alignment mode" },
+      { step: 4, label: "Create/update linked view representation" },
+    ],
+    dynamicSources: ["plan views", "scope boxes"],
+    scenarios: [
+      {
+        id: "linkedviews-training",
+        title: "LinkedViews Training Run",
+        steps: ["Load linked views", "Set mapping", "Preview placement", "Create/update simulation"],
+        expectedOutput: ["Link mapping complete", "Placement preview generated", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildCategoryPickerSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "categorypicker-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "cp-search", name: "CategorySearch", kind: "text", label: "Search categories", required: false },
+      { id: "cp-discipline", name: "DisciplineFilter", kind: "select", label: "Discipline filter", required: false },
+      { id: "cp-categories", name: "CategoryList", kind: "multiselect", label: "Categories", required: true },
+      { id: "cp-select-all", name: "SelectAll", kind: "button", label: "Select All", required: false },
+      { id: "cp-clear", name: "ClearSelection", kind: "button", label: "Clear", required: false },
+      { id: "cp-apply", name: "ApplySelection", kind: "button", label: "Select Elements", required: true },
+    ],
+    events: [
+      { controlId: "cp-select-all", event: "click", handler: "select_all_categories" },
+      { controlId: "cp-clear", event: "click", handler: "clear_category_selection" },
+      { controlId: "cp-apply", event: "click", handler: "apply_category_selection" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select at least one category." },
+      { type: "alert", message: "Category selection simulated. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Search and filter categories" },
+      { step: 2, label: "Select one or more categories" },
+      { step: 3, label: "Run selection simulation" },
+    ],
+    dynamicSources: ["categories"],
+    scenarios: [
+      {
+        id: "categorypicker-training",
+        title: "CategoryPicker Training Run",
+        steps: ["Filter categories", "Select categories", "Apply simulation"],
+        expectedOutput: ["Category set resolved", "Selection summary generated", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
+function buildReorderViewportsSimulatorModel(tool, uiKind) {
+  return {
+    toolId: tool.id,
+    profile: "reorderviewports-high-fidelity",
+    uiKind,
+    sourceType: tool.uiMockup.sourceType,
+    xamlFiles: tool.uiMockup.fileNames || [],
+    sourceKinds: tool.uiMockup.sourceKinds || [],
+    controls: [
+      { id: "rv-sheet", name: "SheetSelector", kind: "select", label: "Sheet", required: true },
+      { id: "rv-list", name: "ViewportList", kind: "table", label: "Viewport order", required: false },
+      { id: "rv-up", name: "MoveUp", kind: "button", label: "Move Up", required: false },
+      { id: "rv-down", name: "MoveDown", kind: "button", label: "Move Down", required: false },
+      { id: "rv-auto", name: "AutoSort", kind: "button", label: "Auto Sort", required: false },
+      { id: "rv-apply", name: "ApplyOrder", kind: "button", label: "Apply Viewport Order", required: true },
+    ],
+    events: [
+      { controlId: "rv-up", event: "click", handler: "move_viewport_up" },
+      { controlId: "rv-down", event: "click", handler: "move_viewport_down" },
+      { controlId: "rv-auto", event: "click", handler: "auto_sort_viewports" },
+      { controlId: "rv-apply", event: "click", handler: "apply_viewport_order" },
+    ],
+    prompts: [
+      { type: "alert", message: "Validation failed. Select a sheet and one or more viewport rows." },
+      { type: "alert", message: "Viewport reorder simulated. No Revit model changes were made." },
+    ],
+    workflow: [
+      { step: 1, label: "Select sheet and load viewport list" },
+      { step: 2, label: "Reorder rows manually or by auto-sort" },
+      { step: 3, label: "Apply viewport order simulation" },
+    ],
+    dynamicSources: ["sheets"],
+    scenarios: [
+      {
+        id: "reorderviewports-training",
+        title: "Reorder Viewports Training Run",
+        steps: ["Select sheet", "Reorder viewports", "Apply simulation"],
+        expectedOutput: ["Viewport order recalculated", "Placement order applied", "No Revit model changes were made"],
+      },
+    ],
+    fidelityFlags: ["high-fidelity-template-applied", "screenshot-guided-layout"],
+    confidence: {
+      controls: "high",
+      workflow: "high",
+      prompts: "high",
+    },
+  };
+}
+
 function buildSimulatorModel(tool) {
   const uiKind = inferUiKind(tool);
 
   if (isSectionUpdaterTool(tool)) {
     return buildSectionUpdaterSimulatorModel(tool, uiKind);
+  }
+  if (isPackageCreatorTool(tool)) {
+    return buildPackageCreatorSimulatorModel(tool, uiKind);
+  }
+  if (isParamCopierTool(tool)) {
+    return buildParamCopierSimulatorModel(tool, uiKind);
+  }
+  if (isSheetNoTool(tool)) {
+    return buildSheetNoSimulatorModel(tool, uiKind);
+  }
+  if (isScheduleUpdaterTool(tool)) {
+    return buildScheduleUpdaterSimulatorModel(tool, uiKind);
+  }
+  if (isLinkedViewsTool(tool)) {
+    return buildLinkedViewsSimulatorModel(tool, uiKind);
+  }
+  if (isCategoryPickerTool(tool)) {
+    return buildCategoryPickerSimulatorModel(tool, uiKind);
+  }
+  if (isReorderViewportsTool(tool)) {
+    return buildReorderViewportsSimulatorModel(tool, uiKind);
   }
 
   const controls = [];
@@ -2168,10 +2999,19 @@ function defaultWorkingHubData() {
     ],
     webApps: [
       {
+        name: "pyRevit Course Library",
+        status: "Active",
+        url: "https://robert-bird-group.github.io/SJ-trAIning/index.html",
+        screenshot: "docs/assets/web/pyrevit-tools-wiki.png",
+        docUrl: "./tools/web-pyrevit-course-library.html",
+        info: "GitHub Pages site for pyRevit training and course material.",
+      },
+      {
         name: "pyRevit Tools Wiki",
         status: "Active",
         url: "./index.html",
         screenshot: "docs/assets/web/pyrevit-tools-wiki.png",
+        docUrl: "./tools/web-pyrevit-tools-wiki.html",
         info: "Current static documentation and simulator site for internal tools.",
       },
       {
@@ -2179,6 +3019,7 @@ function defaultWorkingHubData() {
         status: "Planned",
         url: "https://example.internal/issue-dashboard",
         screenshot: "docs/assets/web/issue-dashboard.png",
+        docUrl: "./tools/web-issue-package-dashboard.html",
         info: "Web dashboard for package status, QA checks, and trend monitoring.",
       },
     ],
@@ -2692,9 +3533,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
     .map((item) => `<tr><td>${escapeHtml(item.section || "")}</td><td>${escapeHtml(item.content || "")}</td></tr>`)
     .join("");
 
-  const windowsHasDocs = (hub.windowsApps || []).some((app) => String(app.docUrl || "").trim());
-  const webHasDocs = (hub.webApps || []).some((app) => String(app.docUrl || "").trim());
-
   const windowsRows = (hub.windowsApps || [])
     .map((app) => {
       const release = String(app.releaseUrl || app.exePath || "").trim();
@@ -2705,12 +3543,12 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const repoCell = /^https?:\/\//i.test(repo)
         ? `<a href="${escapeHtml(repo)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repo)}</a>`
         : escapeHtml(repo);
-      return `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${releaseCell}</td><td>${repoCell}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td>${windowsHasDocs ? `<td>${docLinkCell(app.docUrl)}</td>` : ""}</tr>`;
+      return `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td>${releaseCell}</td><td>${repoCell}</td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td><td>${docLinkCell(app.docUrl || app.wikiUrl)}</td></tr>`;
     })
     .join("");
 
   const webRows = (hub.webApps || [])
-    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td><a href="${escapeHtml(app.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.url || "")}</a></td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td>${webHasDocs ? `<td>${docLinkCell(app.docUrl)}</td>` : ""}</tr>`)
+    .map((app) => `<tr><td>${escapeHtml(app.name || "")}</td><td>${escapeHtml(app.status || "")}</td><td><a href="${escapeHtml(app.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.url || "")}</a></td><td>${escapeHtml(app.screenshot || "")}</td><td>${escapeHtml(app.info || "")}</td><td>${docLinkCell(app.docUrl || app.wikiUrl)}</td></tr>`)
     .join("");
 
   const ideaRows = (hub.toolIdeas || [])
@@ -2831,13 +3669,17 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       <section class="card" id="windows-apps-section" data-space="windows">
         <div class="card-head">
           <span class="card-title">Windows Apps Catalog</span>
-          <span class="card-hint">Designed to track .exe paths, screenshots, and app information</span>
+          <span class="card-hint">Track desktop helpers, plus user-added apps via wizard</span>
           <a class="space-home-link" href="#home">Back to Home</a>
         </div>
         <div class="card-body sim-table-wrap">
+          <div class="hub-actions">
+            <button type="button" class="hub-action-btn" id="add-windows-app-btn">Add Windows App</button>
+            <button type="button" class="hub-action-btn hub-action-btn-secondary" id="clear-windows-custom-btn">Reset Custom Windows Apps</button>
+          </div>
           <table>
-            <thead><tr><th>App</th><th>Status</th><th>Release / executable</th><th>Repository</th><th>Screenshot</th><th>Information</th>${windowsHasDocs ? "<th>Wiki</th>" : ""}</tr></thead>
-            <tbody>${windowsRows}</tbody>
+            <thead><tr><th>App</th><th>Status</th><th>Release / executable</th><th>Repository</th><th>Screenshot</th><th>Information</th><th>Wiki</th></tr></thead>
+            <tbody id="windows-apps-body">${windowsRows}</tbody>
           </table>
         </div>
       </section>
@@ -2845,16 +3687,87 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       <section class="card" id="web-apps-section" data-space="web">
         <div class="card-head">
           <span class="card-title">Web-based Apps Catalog</span>
-          <span class="card-hint">Designed to track links, screenshots, and app information</span>
+          <span class="card-hint">Track web tools, plus user-added apps via wizard</span>
           <a class="space-home-link" href="#home">Back to Home</a>
         </div>
         <div class="card-body sim-table-wrap">
+          <div class="hub-actions">
+            <button type="button" class="hub-action-btn" id="add-web-app-btn">Add Web App</button>
+            <button type="button" class="hub-action-btn hub-action-btn-secondary" id="clear-web-custom-btn">Reset Custom Web Apps</button>
+          </div>
           <table>
-            <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th>${webHasDocs ? "<th>Wiki</th>" : ""}</tr></thead>
-            <tbody>${webRows}</tbody>
+            <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th><th>Wiki</th></tr></thead>
+            <tbody id="web-apps-body">${webRows}</tbody>
           </table>
         </div>
       </section>
+
+      <div class="wizard-backdrop" id="app-wizard-modal" hidden>
+        <div class="wizard-dialog" role="dialog" aria-modal="true" aria-labelledby="app-wizard-title">
+          <div class="wizard-head">
+            <h3 id="app-wizard-title">Add App (Wizard)</h3>
+            <button type="button" class="wizard-close" id="app-wizard-close" aria-label="Close wizard">×</button>
+          </div>
+          <form id="app-wizard-form" class="wizard-form">
+            <p class="wizard-step">Step 1 · Select app type and metadata</p>
+            <label class="wizard-field">
+              <span>App Type</span>
+              <select id="wizard-app-type" required>
+                <option value="windows">Windows App</option>
+                <option value="web">Web App</option>
+              </select>
+            </label>
+            <label class="wizard-field">
+              <span>App Name</span>
+              <input id="wizard-name" type="text" required maxlength="120" placeholder="e.g. Drawing QA Assistant" />
+            </label>
+            <label class="wizard-field">
+              <span>Status</span>
+              <select id="wizard-status" required>
+                <option value="Active">Active</option>
+                <option value="Planned">Planned</option>
+                <option value="Draft">Draft</option>
+                <option value="Archived">Archived</option>
+              </select>
+            </label>
+            <label class="wizard-field wizard-span-full">
+              <span>Screenshot Path (optional)</span>
+              <input id="wizard-screenshot" type="text" maxlength="240" placeholder="docs/assets/windows/example.png" />
+            </label>
+            <label class="wizard-field wizard-span-full">
+              <span>Information</span>
+              <textarea id="wizard-info" required rows="3" maxlength="500" placeholder="Short summary of what this app does and who should use it."></textarea>
+            </label>
+            <div id="wizard-windows-fields" class="wizard-subgrid wizard-span-full">
+              <label class="wizard-field">
+                <span>Release / Executable URL or Path</span>
+                <input id="wizard-release" type="text" maxlength="240" placeholder="https://... or C:/Apps/Tool/Tool.exe" />
+              </label>
+              <label class="wizard-field">
+                <span>Repository URL</span>
+                <input id="wizard-repo" type="url" maxlength="240" placeholder="https://github.com/org/repo" />
+              </label>
+            </div>
+            <div id="wizard-web-fields" class="wizard-subgrid wizard-span-full">
+              <label class="wizard-field wizard-span-full">
+                <span>App URL</span>
+                <input id="wizard-url" type="url" maxlength="240" placeholder="https://example.com/app" />
+              </label>
+            </div>
+            <label class="wizard-field wizard-span-full">
+              <span>Wiki URL (optional)</span>
+              <input id="wizard-doc" type="text" maxlength="240" placeholder="./tools/custom-app-wiki.html" />
+            </label>
+            <label class="wizard-field wizard-span-full wizard-check">
+              <span><input id="wizard-generate-template" type="checkbox" checked /> Generate wiki template (.html download)</span>
+            </label>
+            <div class="wizard-actions wizard-span-full">
+              <button type="button" class="wizard-btn wizard-btn-secondary" id="app-wizard-cancel">Cancel</button>
+              <button type="submit" class="wizard-btn">Save App</button>
+            </div>
+          </form>
+        </div>
+      </div>
 
       <section class="card" data-space="hidden-unused" style="display:none;">
         <div class="card-head">
@@ -2888,6 +3801,33 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const catalogRoot = document.getElementById("catalog-root");
       const searchInput = document.getElementById("search-input");
       const homeSpacesGrid = document.getElementById("home-spaces-grid");
+      const windowsAppsBody = document.getElementById("windows-apps-body");
+      const webAppsBody = document.getElementById("web-apps-body");
+      const addWindowsAppBtn = document.getElementById("add-windows-app-btn");
+      const addWebAppBtn = document.getElementById("add-web-app-btn");
+      const clearWindowsCustomBtn = document.getElementById("clear-windows-custom-btn");
+      const clearWebCustomBtn = document.getElementById("clear-web-custom-btn");
+      const appWizardModal = document.getElementById("app-wizard-modal");
+      const appWizardClose = document.getElementById("app-wizard-close");
+      const appWizardCancel = document.getElementById("app-wizard-cancel");
+      const appWizardForm = document.getElementById("app-wizard-form");
+      const wizardType = document.getElementById("wizard-app-type");
+      const wizardWindowsFields = document.getElementById("wizard-windows-fields");
+      const wizardWebFields = document.getElementById("wizard-web-fields");
+      const wizardName = document.getElementById("wizard-name");
+      const wizardStatus = document.getElementById("wizard-status");
+      const wizardScreenshot = document.getElementById("wizard-screenshot");
+      const wizardInfo = document.getElementById("wizard-info");
+      const wizardRelease = document.getElementById("wizard-release");
+      const wizardRepo = document.getElementById("wizard-repo");
+      const wizardUrl = document.getElementById("wizard-url");
+      const wizardDoc = document.getElementById("wizard-doc");
+      const wizardGenerateTemplate = document.getElementById("wizard-generate-template");
+
+      const CUSTOM_APPS_KEY = "comp-design-wiki.custom-apps.v1";
+      const baseWindowsApps = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.slice() : [];
+      const baseWebApps = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.slice() : [];
+      const customApps = loadCustomApps();
 
       const spaceState = {
         current: "home",
@@ -2899,14 +3839,339 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         return haystack.toLowerCase().includes(needle.toLowerCase());
       }
 
+      function escapeHtmlText(value) {
+        return String(value || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      function isHttpUrl(value) {
+        const normalized = String(value || "").trim().toLowerCase();
+        return normalized.startsWith("http://") || normalized.startsWith("https://");
+      }
+
+      function slugifyName(value) {
+        return String(value || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .replace(/-{2,}/g, "-")
+          .slice(0, 80);
+      }
+
+      function buildWikiTemplateHtml(appType, appData) {
+        const appTypeLabel = appType === "windows" ? "Windows App" : "Web App";
+        const hrefLabel = appType === "windows" ? "Release / Executable" : "App URL";
+        const hrefValue = appType === "windows" ? String(appData.releaseUrl || "").trim() : String(appData.url || "").trim();
+        const lines = [
+          '<!doctype html>',
+          '<html lang="en">',
+          '  <head>',
+          '    <meta charset="UTF-8" />',
+          '    <meta name="viewport" content="width=device-width, initial-scale=1" />',
+          '    <title>' + escapeHtmlText(appData.name) + ' | ' + appTypeLabel + ' Wiki</title>',
+          '    <link rel="stylesheet" href="../styles.css" />',
+          '  </head>',
+          '  <body>',
+          '    <div class="topbar">',
+          '      <span class="topbar-title">Comp Design Wiki</span>',
+          '      <span class="topbar-badge">' + appTypeLabel + ' Wiki</span>',
+          '      <span class="topbar-tag">v1</span>',
+          '    </div>',
+          '',
+          '    <div class="page">',
+          '      <div class="part">',
+          '        <span class="part-num">' + appTypeLabel + '</span>',
+          '        <span class="part-title">' + escapeHtmlText(appData.name) + '</span>',
+          '        <span class="part-rule"></span>',
+          '      </div>',
+          '',
+          '      <div class="priority-card">',
+          '        <strong>Status:</strong> ' + escapeHtmlText(appData.status || 'Active') + ' · <strong>Type:</strong> ' + appTypeLabel + ' ·',
+          '        <strong>' + hrefLabel + ':</strong> ' + (hrefValue ? '<a href="' + escapeHtmlText(hrefValue) + '" target="_blank" rel="noopener noreferrer">' + escapeHtmlText(hrefValue) + '</a>' : 'TBD'),
+          '      </div>',
+          '',
+          '      <div class="wiki-article-layout">',
+          '        <main class="wiki-article-main">',
+          '          <section class="card wiki-section" id="overview">',
+          '            <div class="card-head"><span class="card-title">Overview</span></div>',
+          '            <div class="card-body wiki-body">',
+          '              <a class="back-link" href="../index.html#space-' + (appType === 'windows' ? 'windows' : 'web') + '">← Back to ' + (appType === 'windows' ? 'Windows Apps' : 'Web Apps') + '</a>',
+          '              <p class="lede">' + escapeHtmlText(appData.info || 'Add app summary.') + '</p>',
+          '            </div>',
+          '          </section>',
+          '          <section class="card wiki-section" id="workflow">',
+          '            <div class="card-head"><span class="card-title">Workflow</span></div>',
+          '            <div class="card-body wiki-body"><p>Describe how users run this app step-by-step.</p></div>',
+          '          </section>',
+          '          <section class="card wiki-section" id="functions">',
+          '            <div class="card-head"><span class="card-title">Key Functions</span></div>',
+          '            <div class="card-body wiki-body"><p>List the core features and behaviors.</p></div>',
+          '          </section>',
+          '          <section class="card wiki-section" id="notes">',
+          '            <div class="card-head"><span class="card-title">Notes</span></div>',
+          '            <div class="card-body wiki-body"><p>Add dependencies, known limitations, and support links.</p></div>',
+          '          </section>',
+          '        </main>',
+          '',
+          '        <aside class="wiki-rail" aria-label="Page progress">',
+          '          <h3>On This Page</h3>',
+          '          <nav class="wiki-toc">',
+          '            <a class="wiki-toc-link" href="#overview">Overview</a>',
+          '            <a class="wiki-toc-link" href="#workflow">Workflow</a>',
+          '            <a class="wiki-toc-link" href="#functions">Key Functions</a>',
+          '            <a class="wiki-toc-link" href="#notes">Notes</a>',
+          '          </nav>',
+          '        </aside>',
+          '      </div>',
+          '    </div>',
+          '  </body>',
+          '</html>',
+          '',
+        ];
+        return lines.join("\\n");
+      }
+
+      function triggerTemplateDownload(fileName, content) {
+        const blob = new Blob([content], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+      function loadCustomApps() {
+        const initial = { windows: [], web: [] };
+        try {
+          const raw = window.localStorage.getItem(CUSTOM_APPS_KEY);
+          if (!raw) return initial;
+          const parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== "object") return initial;
+          return {
+            windows: Array.isArray(parsed.windows) ? parsed.windows : [],
+            web: Array.isArray(parsed.web) ? parsed.web : [],
+          };
+        } catch (error) {
+          console.warn("Unable to load custom apps from localStorage.", error);
+          return initial;
+        }
+      }
+
+      function persistCustomApps() {
+        try {
+          window.localStorage.setItem(CUSTOM_APPS_KEY, JSON.stringify(customApps));
+        } catch (error) {
+          console.warn("Unable to persist custom apps to localStorage.", error);
+        }
+      }
+
+      function getWindowsApps() {
+        return baseWindowsApps.concat(customApps.windows);
+      }
+
+      function getWebApps() {
+        return baseWebApps.concat(customApps.web);
+      }
+
+      function linkCell(value) {
+        const text = String(value || "").trim();
+        if (!text) return "";
+        if (isHttpUrl(text)) {
+          return '<a href="' + escapeHtmlText(text) + '" target="_blank" rel="noopener noreferrer">' + escapeHtmlText(text) + "</a>";
+        }
+        return escapeHtmlText(text);
+      }
+
+      function docCell(value) {
+        const text = String(value || "").trim();
+        if (!text) {
+          return '<span class="muted">—</span>';
+        }
+        return '<a href="' + escapeHtmlText(text) + '">View Wiki →</a>';
+      }
+
+      function renderWindowsAppsTable() {
+        if (!windowsAppsBody) {
+          return;
+        }
+
+        const rows = getWindowsApps()
+          .map(function (app) {
+            const release = String(app.releaseUrl || app.exePath || "").trim();
+            const repo = String(app.repoUrl || "").trim();
+            const wiki = String(app.docUrl || app.wikiUrl || "").trim();
+            return "<tr>" +
+              "<td>" + escapeHtmlText(app.name || "") + "</td>" +
+              "<td>" + escapeHtmlText(app.status || "") + "</td>" +
+              "<td>" + linkCell(release) + "</td>" +
+              "<td>" + linkCell(repo) + "</td>" +
+              "<td>" + escapeHtmlText(app.screenshot || "") + "</td>" +
+              "<td>" + escapeHtmlText(app.info || "") + "</td>" +
+              "<td>" + docCell(wiki) + "</td>" +
+              "</tr>";
+          })
+          .join("");
+
+        windowsAppsBody.innerHTML = rows;
+      }
+
+      function renderWebAppsTable() {
+        if (!webAppsBody) {
+          return;
+        }
+
+        const rows = getWebApps()
+          .map(function (app) {
+            const url = String(app.url || "").trim();
+            const wiki = String(app.docUrl || app.wikiUrl || "").trim();
+            const urlCell = url
+              ? '<a href="' + escapeHtmlText(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtmlText(url) + "</a>"
+              : '<span class="muted">—</span>';
+            return "<tr>" +
+              "<td>" + escapeHtmlText(app.name || "") + "</td>" +
+              "<td>" + escapeHtmlText(app.status || "") + "</td>" +
+              "<td>" + urlCell + "</td>" +
+              "<td>" + escapeHtmlText(app.screenshot || "") + "</td>" +
+              "<td>" + escapeHtmlText(app.info || "") + "</td>" +
+              "<td>" + docCell(wiki) + "</td>" +
+              "</tr>";
+          })
+          .join("");
+
+        webAppsBody.innerHTML = rows;
+      }
+
+      function renderHubAppTables() {
+        renderWindowsAppsTable();
+        renderWebAppsTable();
+      }
+
+      function updateWizardTypeView() {
+        const selectedType = String(wizardType.value || "windows").toLowerCase();
+        wizardWindowsFields.hidden = selectedType !== "windows";
+        wizardWebFields.hidden = selectedType !== "web";
+        wizardRelease.required = selectedType === "windows";
+        wizardRepo.required = false;
+        wizardUrl.required = selectedType === "web";
+      }
+
+      function openWizard(type) {
+        if (!appWizardModal) {
+          return;
+        }
+        wizardType.value = type === "web" ? "web" : "windows";
+        updateWizardTypeView();
+        appWizardModal.hidden = false;
+        wizardName.focus();
+      }
+
+      function closeWizard() {
+        if (!appWizardModal) {
+          return;
+        }
+        appWizardModal.hidden = true;
+        appWizardForm.reset();
+        wizardStatus.value = "Active";
+        updateWizardTypeView();
+      }
+
+      function setupAppWizard() {
+        if (!appWizardModal || !appWizardForm) {
+          return;
+        }
+
+        updateWizardTypeView();
+        wizardType.addEventListener("change", updateWizardTypeView);
+        addWindowsAppBtn.addEventListener("click", function () { openWizard("windows"); });
+        addWebAppBtn.addEventListener("click", function () { openWizard("web"); });
+        appWizardClose.addEventListener("click", closeWizard);
+        appWizardCancel.addEventListener("click", closeWizard);
+        appWizardModal.addEventListener("click", function (event) {
+          if (event.target === appWizardModal) {
+            closeWizard();
+          }
+        });
+
+        clearWindowsCustomBtn.addEventListener("click", function () {
+          if (!customApps.windows.length || !window.confirm("Remove all custom Windows apps?")) {
+            return;
+          }
+          customApps.windows = [];
+          persistCustomApps();
+          renderStats();
+          renderHomeSpaces();
+          renderHubAppTables();
+        });
+
+        clearWebCustomBtn.addEventListener("click", function () {
+          if (!customApps.web.length || !window.confirm("Remove all custom Web apps?")) {
+            return;
+          }
+          customApps.web = [];
+          persistCustomApps();
+          renderStats();
+          renderHomeSpaces();
+          renderHubAppTables();
+        });
+
+        appWizardForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const selectedType = String(wizardType.value || "windows").toLowerCase();
+          const appData = {
+            name: String(wizardName.value || "").trim(),
+            status: String(wizardStatus.value || "Active").trim(),
+            screenshot: String(wizardScreenshot.value || "").trim(),
+            info: String(wizardInfo.value || "").trim(),
+            docUrl: String(wizardDoc.value || "").trim(),
+          };
+
+          if (!appData.name || !appData.info) {
+            return;
+          }
+
+          if (selectedType === "windows") {
+            appData.releaseUrl = String(wizardRelease.value || "").trim();
+            appData.repoUrl = String(wizardRepo.value || "").trim();
+            customApps.windows.push(appData);
+          } else {
+            appData.url = String(wizardUrl.value || "").trim();
+            customApps.web.push(appData);
+          }
+
+          if (wizardGenerateTemplate && wizardGenerateTemplate.checked) {
+            const slug = slugifyName(appData.name) || "custom-app";
+            if (!appData.docUrl) {
+              appData.docUrl = "./tools/" + selectedType + "-" + slug + ".html";
+            }
+            const fileName = (selectedType + "-" + slug + ".html").toLowerCase();
+            const templateHtml = buildWikiTemplateHtml(selectedType, appData);
+            triggerTemplateDownload(fileName, templateHtml);
+          }
+
+          persistCustomApps();
+          renderStats();
+          renderHomeSpaces();
+          renderHubAppTables();
+          closeWizard();
+        });
+      }
+
       function renderStats() {
         const panelCount = DATA.tree.reduce((sum, tab) => sum + tab.panels.length, 0);
         const stackCount = DATA.tree.reduce(
           (sum, tab) => sum + tab.panels.reduce((inner, panel) => inner + panel.stacks.length, 0),
           0
         );
-        const windowsCount = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.length : 0;
-        const webCount = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.length : 0;
+        const windowsCount = getWindowsApps().length;
+        const webCount = getWebApps().length;
         const ideasCount = DATA.hub && Array.isArray(DATA.hub.toolIdeas) ? DATA.hub.toolIdeas.length : 0;
 
         const stats = [
@@ -2937,13 +4202,13 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       }
 
       function getHomePanels() {
-        const windowsCount = DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps.length : 0;
-        const webCount = DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps.length : 0;
+        const windowsCount = getWindowsApps().length;
+        const webCount = getWebApps().length;
         const tabNames = DATA.tree.map(function (tab) { return tab.name; }).slice(0, 3);
-        const windowNames = (DATA.hub && Array.isArray(DATA.hub.windowsApps) ? DATA.hub.windowsApps : [])
+        const windowNames = getWindowsApps()
           .map(function (app) { return app.name; })
           .slice(0, 3);
-        const webNames = (DATA.hub && Array.isArray(DATA.hub.webApps) ? DATA.hub.webApps : [])
+        const webNames = getWebApps()
           .map(function (app) { return app.name; })
           .slice(0, 3);
 
@@ -3017,7 +4282,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
           }
           block.hidden = target !== space;
         });
-        window.scrollTo({ top: 0, behavior: "instant" });
+        window.scrollTo({ top: 0, behavior: "auto" });
       }
 
       function renderHomeSpaces() {
@@ -3195,6 +4460,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       function render() {
         renderStats();
         renderHomeSpaces();
+        renderHubAppTables();
         renderTabs();
         renderTree();
         renderCatalog();
@@ -3209,6 +4475,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         applySpaceView(parseSpaceFromHash());
       });
 
+      setupAppWizard();
       render();
       applySpaceView(parseSpaceFromHash());
     </script>

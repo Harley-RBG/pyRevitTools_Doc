@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T23:38:58.632Z",
+  "generatedAt": "2026-08-17T23:44:41.542Z",
   "shared": {
     "levels": [
       "Level 00",
@@ -61,36 +61,65 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "sheets",
+        "parameters"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
-        "sheets": [],
-        "parameters": []
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "categories",
+        "parameters"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
         "sheets": [],
-        "parameters": []
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "sheets",
+        "parameters"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
-        "sheets": [],
-        "parameters": []
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton": {
@@ -227,11 +256,21 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "plan views",
+        "scope boxes"
+      ],
       "mock": {
         "levels": [],
-        "planViews": [],
-        "scopeBoxes": [],
+        "planViews": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan"
+        ],
+        "scopeBoxes": [
+          "SB-A-Core",
+          "SB-B-East Wing",
+          "SB-C-Tower"
+        ],
         "detailViews": [],
         "sheets": [],
         "parameters": []
@@ -292,7 +331,8 @@
     },
     "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton": {
       "requiredSources": [
-        "sheets"
+        "sheets",
+        "parameters"
       ],
       "mock": {
         "levels": [],
@@ -304,11 +344,17 @@
           "S101",
           "S200"
         ],
-        "parameters": []
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
       }
     },
     "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "categories"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
@@ -457,13 +503,19 @@
       }
     },
     "JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "sheets"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
-        "sheets": [],
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
         "parameters": []
       }
     },

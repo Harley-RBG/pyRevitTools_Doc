@@ -907,6 +907,215 @@ select.sim-field[multiple] {
   overflow: auto;
 }
 
+.hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hub-action-btn {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+.hub-action-btn:hover {
+  background: var(--brand-blue-dark);
+  border-color: var(--brand-blue-dark);
+}
+
+.hub-action-btn-secondary {
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border-color: var(--outline);
+}
+
+.hub-action-btn-secondary:hover {
+  background: var(--surface-cont-high);
+  border-color: var(--outline);
+}
+
+.wizard-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  display: grid;
+  place-items: center;
+  z-index: 120;
+  padding: 14px;
+}
+
+.wizard-backdrop[hidden] {
+  display: none !important;
+}
+
+.wizard-dialog {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+  border: 1px solid var(--outline);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.wizard-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--outline);
+  background: var(--surface-container);
+}
+
+.wizard-head h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.wizard-close {
+  border: 1px solid var(--outline);
+  background: var(--surface);
+  color: var(--on-surface);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.wizard-form {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 16px;
+}
+
+.wizard-step {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 11px;
+  color: var(--on-surface-var);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.wizard-field {
+  display: grid;
+  gap: 5px;
+}
+
+.wizard-field span {
+  font-size: 11px;
+  color: var(--on-surface-var);
+}
+
+.wizard-check span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--on-surface);
+}
+
+.wizard-field input,
+.wizard-field select,
+.wizard-field textarea {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font);
+  font-size: 12px;
+}
+
+.wizard-field textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.wizard-subgrid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wizard-span-full {
+  grid-column: 1 / -1;
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid var(--outline);
+  padding-top: 10px;
+}
+
+.wizard-btn {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wizard-btn-secondary {
+  background: var(--surface-container);
+  border-color: var(--outline);
+  color: var(--on-surface);
+}
+
+.hf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hf-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hf-pane {
+  border: 1px solid var(--outline);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--surface);
+  display: grid;
+  gap: 8px;
+}
+
+.hf-pane h5 {
+  margin: 0;
+  font-size: 12px;
+  color: var(--on-surface);
+}
+
+.hf-pane-wide {
+  min-height: 280px;
+}
+
+.hf-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border-top: none;
+  padding-top: 0;
+}
+
 .sim-span-full {
   grid-column: 1 / -1;
 }
@@ -920,6 +1129,11 @@ select.sim-field[multiple] {
 .sim-table-wrap th,
 .sim-table-wrap td {
   padding: 6px 8px;
+}
+
+.sim-table-wrap tr.is-active td {
+  background: var(--primary-container);
+  color: var(--on-primary-cont);
 }
 
 .simulator-output {
@@ -1158,6 +1372,16 @@ select.sim-field[multiple] {
   }
 
   .sim-form {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-form,
+  .wizard-subgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hf-grid,
+  .hf-grid-two {
     grid-template-columns: 1fr;
   }
 
