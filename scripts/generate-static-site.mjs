@@ -4178,7 +4178,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
         <div class="card-body sim-table-wrap">
           <div class="hub-actions">
             <button type="button" class="hub-action-btn" id="add-web-app-btn">Add Web App</button>
-            <button type="button" class="hub-action-btn hub-action-btn-secondary" id="clear-web-custom-btn">Reset Custom Web Apps</button>
           </div>
           <table>
             <thead><tr><th>App</th><th>Status</th><th>Hyperlink</th><th>Screenshot</th><th>Information</th><th>Wiki</th></tr></thead>
@@ -4190,11 +4189,15 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       <div class="wizard-backdrop" id="app-wizard-modal" hidden>
         <div class="wizard-dialog" role="dialog" aria-modal="true" aria-labelledby="app-wizard-title">
           <div class="wizard-head">
-            <h3 id="app-wizard-title">Add App (Wizard)</h3>
+            <div class="wizard-head-copy">
+              <p class="wizard-kicker">Catalog Editor</p>
+              <h3 id="app-wizard-title">Add App</h3>
+              <p class="wizard-intro">Add a Windows App or Web App using the same design language as the wiki catalog.</p>
+            </div>
             <button type="button" class="wizard-close" id="app-wizard-close" aria-label="Close wizard">×</button>
           </div>
           <form id="app-wizard-form" class="wizard-form">
-            <p class="wizard-step">Step 1 · Select app type and metadata</p>
+            <p class="wizard-step">Step 1 · App metadata</p>
             <label class="wizard-field">
               <span>App Type</span>
               <select id="wizard-app-type" required>
@@ -4246,6 +4249,7 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
             <label class="wizard-field wizard-span-full wizard-check">
               <span><input id="wizard-generate-template" type="checkbox" checked /> Generate wiki template (.html download)</span>
             </label>
+            <p class="wizard-note wizard-span-full">Saved apps are stored in this browser only and appear immediately in the catalog tables.</p>
             <div class="wizard-actions wizard-span-full">
               <button type="button" class="wizard-btn wizard-btn-secondary" id="app-wizard-cancel">Cancel</button>
               <button type="submit" class="wizard-btn">Save App</button>
@@ -4291,7 +4295,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
       const addWindowsAppBtn = document.getElementById("add-windows-app-btn");
       const addWebAppBtn = document.getElementById("add-web-app-btn");
       const clearWindowsCustomBtn = document.getElementById("clear-windows-custom-btn");
-      const clearWebCustomBtn = document.getElementById("clear-web-custom-btn");
       const appWizardModal = document.getElementById("app-wizard-modal");
       const appWizardClose = document.getElementById("app-wizard-close");
       const appWizardCancel = document.getElementById("app-wizard-cancel");
@@ -4589,17 +4592,6 @@ function buildHtml(data, diagnostics, generatedAt, allFileCount) {
             return;
           }
           customApps.windows = [];
-          persistCustomApps();
-          renderStats();
-          renderHomeSpaces();
-          renderHubAppTables();
-        });
-
-        clearWebCustomBtn.addEventListener("click", function () {
-          if (!customApps.web.length || !window.confirm("Remove all custom Web apps?")) {
-            return;
-          }
-          customApps.web = [];
           persistCustomApps();
           renderStats();
           renderHomeSpaces();

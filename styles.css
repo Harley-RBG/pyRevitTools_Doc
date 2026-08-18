@@ -945,11 +945,12 @@ select.sim-field[multiple] {
 .wizard-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.38);
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(2px);
   display: grid;
   place-items: center;
   z-index: 120;
-  padding: 14px;
+  padding: 18px;
 }
 
 .wizard-backdrop[hidden] {
@@ -957,66 +958,99 @@ select.sim-field[multiple] {
 }
 
 .wizard-dialog {
-  width: min(760px, 100%);
+  width: min(860px, 100%);
   max-height: calc(100vh - 28px);
   overflow: auto;
   border: 1px solid var(--outline);
-  border-radius: 14px;
+  border-radius: var(--radius-card);
   background: var(--surface);
+  box-shadow: 0 22px 60px rgba(17, 24, 39, 0.24);
 }
 
 .wizard-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 14px;
+  padding: 16px 18px 14px;
   border-bottom: 1px solid var(--outline);
-  background: var(--surface-container);
+  background: linear-gradient(145deg, #ffffff, #f6f8fd);
+}
+
+.wizard-head-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.wizard-kicker {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: var(--primary);
+  text-transform: uppercase;
 }
 
 .wizard-head h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.wizard-intro {
+  margin: 0;
+  font-size: 12px;
+  color: var(--on-surface-var);
 }
 
 .wizard-close {
   border: 1px solid var(--outline);
   background: var(--surface);
   color: var(--on-surface);
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
   cursor: pointer;
+  transition: background 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.wizard-close:hover {
+  background: var(--surface-container);
+  border-color: var(--brand-grey-2);
 }
 
 .wizard-form {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding: 16px;
+  padding: 18px;
 }
 
 .wizard-step {
   grid-column: 1 / -1;
   margin: 0;
   font-size: 11px;
-  color: var(--on-surface-var);
+  color: var(--on-primary-cont);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
+  background: var(--primary-container);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 7px 10px;
 }
 
 .wizard-field {
   display: grid;
-  gap: 5px;
+  gap: 6px;
 }
 
 .wizard-field span {
   font-size: 11px;
-  color: var(--on-surface-var);
+  color: var(--on-surface);
+  font-weight: 600;
 }
 
 .wizard-check span {
@@ -1024,24 +1058,35 @@ select.sim-field[multiple] {
   align-items: center;
   gap: 8px;
   color: var(--on-surface);
+  font-weight: 500;
 }
 
 .wizard-field input,
 .wizard-field select,
 .wizard-field textarea {
   width: 100%;
-  min-height: 34px;
+  min-height: 38px;
   border: 1px solid var(--outline);
   border-radius: 8px;
-  padding: 7px 10px;
+  padding: 8px 11px;
   background: var(--surface);
   color: var(--on-surface);
   font-family: var(--font);
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease), background 160ms var(--ease);
+}
+
+.wizard-field input:focus,
+.wizard-field select:focus,
+.wizard-field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(31, 79, 217, 0.14);
+  outline: none;
 }
 
 .wizard-field textarea {
-  min-height: 70px;
+  min-height: 92px;
   resize: vertical;
 }
 
@@ -1060,7 +1105,8 @@ select.sim-field[multiple] {
   justify-content: flex-end;
   gap: 8px;
   border-top: 1px solid var(--outline);
-  padding-top: 10px;
+  padding-top: 12px;
+  margin-top: 2px;
 }
 
 .wizard-btn {
@@ -1068,16 +1114,33 @@ select.sim-field[multiple] {
   background: var(--primary);
   color: var(--on-primary);
   border-radius: 999px;
-  padding: 7px 14px;
+  padding: 8px 16px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.wizard-btn:hover {
+  background: var(--brand-blue-dark);
+  border-color: var(--brand-blue-dark);
 }
 
 .wizard-btn-secondary {
   background: var(--surface-container);
   border-color: var(--outline);
   color: var(--on-surface);
+}
+
+.wizard-btn-secondary:hover {
+  background: var(--surface-cont-high);
+  border-color: var(--outline);
+}
+
+.wizard-note {
+  margin: 0;
+  font-size: 11px;
+  color: var(--on-surface-var);
 }
 
 .hf-grid {
