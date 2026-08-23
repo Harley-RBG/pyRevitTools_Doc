@@ -10,6 +10,7 @@
     "generate:quick": "node scripts/generate-static-site.mjs --index-only",
     "generate:full": "node scripts/generate-static-site.mjs --full-ui",
     "generate:force": "node scripts/generate-static-site.mjs --force",
+    "tool-context:sync-workflows": "node scripts/sync-tool-context-workflows.mjs",
     "site:update": "npm run bundle:update && npm run generate",
     "site:update:quick": "npm run bundle:update && npm run generate:quick",
     "preview": "npx --yes serve . -l 4173"

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-17T23:49:51.888Z",
+  "generatedAt": "2026-08-23T01:37:26.826Z",
   "summary": {
-    "totalTools": 37,
-    "toolsWithUi": 26,
-    "toolsRequiringTrainingData": 15,
+    "totalTools": 39,
+    "toolsWithUi": 28,
+    "toolsRequiringTrainingData": 21,
     "toolsWithoutUiSignals": 11
   },
   "details": [
@@ -11,23 +11,24 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
       "title": "Add Coordinates",
       "uiKind": "pyrevit-form",
-      "controlCount": 0,
-      "eventCount": 0,
+      "controlCount": 5,
+      "eventCount": 3,
       "promptCount": 2,
       "screenshotCount": 1,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "dialog-guided-layout",
+        "screenshot-guided-layout"
+      ],
       "unresolved": {
         "controls": [],
-        "events": [
-          "no-events-inferred"
-        ]
+        "events": []
       },
       "confidence": {
-        "controls": "low",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -60,7 +61,7 @@
       "controlCount": 16,
       "eventCount": 8,
       "promptCount": 2,
-      "screenshotCount": 5,
+      "screenshotCount": 4,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [
@@ -129,25 +130,22 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
       "title": "Tool Dashboard",
       "uiKind": "mixed",
-      "controlCount": 22,
-      "eventCount": 8,
-      "promptCount": 8,
+      "controlCount": 8,
+      "eventCount": 5,
+      "promptCount": 1,
       "screenshotCount": 1,
-      "unsupportedKinds": [
-        "block"
-      ],
+      "unsupportedKinds": [],
       "requiresTrainingData": false,
-      "fidelityFlags": [],
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
+      ],
       "unresolved": {
-        "controls": [
-          "Button",
-          "ListBox",
-          "TextBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
         "prompts": "medium"
       }
@@ -156,27 +154,24 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
       "title": "Transaction Logger",
       "uiKind": "mixed",
-      "controlCount": 16,
-      "eventCount": 2,
+      "controlCount": 7,
+      "eventCount": 3,
       "promptCount": 2,
-      "screenshotCount": 0,
-      "unsupportedKinds": [
-        "block"
+      "screenshotCount": 1,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "RadioButton",
-          "Button",
-          "ListBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -235,7 +230,7 @@
       "promptCount": 2,
       "screenshotCount": 0,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
+      "requiresTrainingData": true,
       "fidelityFlags": [],
       "unresolved": {
         "controls": [],
@@ -279,7 +274,7 @@
       "controlCount": 5,
       "eventCount": 0,
       "promptCount": 2,
-      "screenshotCount": 1,
+      "screenshotCount": 2,
       "unsupportedKinds": [],
       "requiresTrainingData": false,
       "fidelityFlags": [],
@@ -319,12 +314,12 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
     {
-      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton",
       "title": "Grids\n2D / 3D",
       "uiKind": "pyrevit-form",
       "controlCount": 0,
@@ -332,7 +327,7 @@
       "promptCount": 0,
       "screenshotCount": 0,
       "unsupportedKinds": [],
-      "requiresTrainingData": false,
+      "requiresTrainingData": true,
       "fidelityFlags": [],
       "unresolved": {
         "controls": [],
@@ -342,12 +337,12 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
     {
-      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton",
       "title": "Levels\n2D / 3D",
       "uiKind": "pyrevit-form",
       "controlCount": 0,
@@ -365,12 +360,12 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
     {
-      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton",
       "title": "Levels: Head Switch\nLeft / Right",
       "uiKind": "none",
       "controlCount": 0,
@@ -420,61 +415,48 @@
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
       "title": "Plan View Range Tool",
       "uiKind": "wpf",
-      "controlCount": 20,
-      "eventCount": 6,
-      "promptCount": 0,
+      "controlCount": 8,
+      "eventCount": 3,
+      "promptCount": 1,
       "screenshotCount": 1,
-      "unsupportedKinds": [
-        "block"
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "Button",
-          "DataGrid",
-          "ListBox",
-          "TextBox",
-          "CheckBox"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "low"
+        "prompts": "high"
       }
     },
     {
       "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
       "title": "Scope Box View Creation",
       "uiKind": "mixed",
-      "controlCount": 32,
-      "eventCount": 8,
+      "controlCount": 9,
+      "eventCount": 3,
       "promptCount": 2,
-      "screenshotCount": 4,
-      "unsupportedKinds": [
-        "block"
+      "screenshotCount": 3,
+      "unsupportedKinds": [],
+      "requiresTrainingData": true,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
       ],
-      "requiresTrainingData": false,
-      "fidelityFlags": [],
       "unresolved": {
-        "controls": [
-          "ComboBox",
-          "Button",
-          "TextBox",
-          "CheckBox",
-          "DataGrid",
-          "ComboBoxItem",
-          "ListBox",
-          "RadioButton"
-        ],
+        "controls": [],
         "events": []
       },
       "confidence": {
-        "controls": "medium",
+        "controls": "high",
         "workflow": "high",
-        "prompts": "medium"
+        "prompts": "high"
       }
     },
     {
@@ -514,6 +496,30 @@
       "fidelityFlags": [
         "high-fidelity-template-applied",
         "screenshot-guided-layout"
+      ],
+      "unresolved": {
+        "controls": [],
+        "events": []
+      },
+      "confidence": {
+        "controls": "high",
+        "workflow": "high",
+        "prompts": "high"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton",
+      "title": "View Filter Editor",
+      "uiKind": "mixed",
+      "controlCount": 10,
+      "eventCount": 3,
+      "promptCount": 2,
+      "screenshotCount": 0,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
       ],
       "unresolved": {
         "controls": [],
@@ -592,7 +598,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -615,7 +621,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -638,7 +644,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -690,7 +696,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -701,7 +707,7 @@
       "controlCount": 11,
       "eventCount": 5,
       "promptCount": 2,
-      "screenshotCount": 0,
+      "screenshotCount": 4,
       "unsupportedKinds": [],
       "requiresTrainingData": true,
       "fidelityFlags": [
@@ -737,7 +743,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -760,7 +766,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -783,7 +789,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -877,7 +883,7 @@
       },
       "confidence": {
         "controls": "low",
-        "workflow": "low",
+        "workflow": "high",
         "prompts": "low"
       }
     },
@@ -908,6 +914,30 @@
         "controls": "medium",
         "workflow": "high",
         "prompts": "low"
+      }
+    },
+    {
+      "toolId": "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton",
+      "title": "WPF UI Template",
+      "uiKind": "mixed",
+      "controlCount": 4,
+      "eventCount": 2,
+      "promptCount": 1,
+      "screenshotCount": 4,
+      "unsupportedKinds": [],
+      "requiresTrainingData": false,
+      "fidelityFlags": [
+        "high-fidelity-template-applied",
+        "xaml-guided-layout"
+      ],
+      "unresolved": {
+        "controls": [],
+        "events": []
+      },
+      "confidence": {
+        "controls": "high",
+        "workflow": "high",
+        "prompts": "medium"
       }
     }
   ]

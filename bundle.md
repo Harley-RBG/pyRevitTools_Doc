@@ -1,7 +1,7 @@
 # AI BUNDLE
-Generated: 2026-08-12T23:38:39.662Z
+Generated: 2026-08-23T01:31:18.283Z
 Root: P:\Production\Computational\RBG_pyRevit\Extension\RBG_SYD.extension
-Total Files: 300
+Total Files: 335
 
 ## ENTRY_POINTS: []
 
@@ -1518,6 +1518,26 @@ main(doc, uidoc)
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton/tool-context.md
+## META: sha1=a0b902db8ba865968a40d2e3644360a5c2278778 size=250
+## TYPE: text
+```markdown
+# CategoryPicker
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Search and filter categories
+- Select one or more categories
+- Run selection simulation
+
+## Entry Points
+- `CategoryPicker.py`
+- `CategoryPicker.xaml`
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/bundle.yaml
 ## META: sha1=c3c502fca10d4c6eb07cb42eed0fe4b2f0192fa0 size=52
@@ -3389,6 +3409,24 @@ else:
 (binary not inlined)
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton/icon.png
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton/tool-context.md
+## META: sha1=e5513ace38130dd172317522e430a7c44d1898c4 size=215
+## TYPE: text
+```markdown
+# Copy State
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Select one or more copy actions
+- Review memory slot payload
+- Run copy-to-memory simulation
+
+## Entry Points
+- `CopyState_script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Copy State.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/lib/copypastestate/__init__.py
 ## META: sha1=8b0c34fda4c152578df63a41021d616cf0030dce size=465
 ## TYPE: text
@@ -4481,6 +4519,24 @@ f.close()
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton/script.py
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton/tool-context.md
+## META: sha1=eb8a7321961deb90be31305a21536d76b3601869 size=334
+## TYPE: text
+```markdown
+# MClear
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the tool purpose and prerequisites: Purpose not documented in tool-context.md.
+- Run MClear using the required model scope, options, or inputs.
+- Review the outcome and confirm the tool completed the intended workflow.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MClear.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton/bundle.yaml
 ## META: sha1=10a7247cab9cb2f3e3a18809fb840485f4b77c59 size=1424
 ## TYPE: text
@@ -4563,6 +4619,24 @@ except Exception:
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton/script.py
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton/tool-context.md
+## META: sha1=39cf94c218c60e382f06f96d0c0525904f1cb37b size=336
+## TYPE: text
+```markdown
+# MDeduct
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the tool purpose and prerequisites: Purpose not documented in tool-context.md.
+- Run MDeduct using the required model scope, options, or inputs.
+- Review the outcome and confirm the tool completed the intended workflow.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/MDeduct.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton/bundle.yaml
 ## META: sha1=8b435a6fd8de8bf27259927ea0a7eb705f28afb9 size=658
 ## TYPE: text
@@ -4632,6 +4706,24 @@ iter_selection.iterate('+', 10 if __shiftclick__ else 1)
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton/tool-context.md
+## META: sha1=1e8ed5fd04d7a8b746f9a81f48216c57b47968da size=343
+## TYPE: text
+```markdown
+# Next
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the saved memory state or selection context that this action will affect.
+- Run Next to move, save, clear, or purge the stored memory state.
+- Confirm the active selection or stored memory data reflects the expected state change.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Next.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton/bundle.yaml
 ## META: sha1=4dce396bb90fba5812684b66366660df711c6cca size=678
@@ -4705,6 +4797,24 @@ iter_selection.iterate('-', 10 if __shiftclick__ else 1)
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton/script.py
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton/tool-context.md
+## META: sha1=5357018f529940b582cc110f3595aad551fbca09 size=343
+## TYPE: text
+```markdown
+# Prev
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the saved memory state or selection context that this action will affect.
+- Run Prev to move, save, clear, or purge the stored memory state.
+- Confirm the active selection or stored memory data reflects the expected state change.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Prev.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton/bundle.yaml
 ## META: sha1=12b54c6552dbb08e4e37ca35335b3dae8970bc5d size=670
 ## TYPE: text
@@ -4757,6 +4867,24 @@ for pymemfile in appdata.list_data_files('.pym'):
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton/tool-context.md
+## META: sha1=fee9f29d746323f1fc15b91604011a8e2957ba1b size=371
+## TYPE: text
+```markdown
+# Purge Memory Files
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the saved memory state or selection context that this action will affect.
+- Run Purge Memory Files to move, save, clear, or purge the stored memory state.
+- Confirm the active selection or stored memory data reflects the expected state change.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Purge Memory Files.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton/bundle.yaml
 ## META: sha1=ab63d65d86abbb1d3407fc936229cd8d1c71437d size=585
@@ -4832,6 +4960,24 @@ if op.exists(data_file):
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton/tool-context.md
+## META: sha1=9def0207600a1b43ff97f7cba3e9a7e4d23ee2e9 size=383
+## TYPE: text
+```markdown
+# Save Memory as Selection
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Review the saved memory state or selection context that this action will affect.
+- Run Save Memory as Selection to move, save, clear, or purge the stored memory state.
+- Confirm the active selection or stored memory data reflects the expected state change.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Memory.pulldown/Save Memory as Selection.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton/bundle.yaml
 ## META: sha1=b77b528e999bd70e11cb2a58f3d69e2fa9bc2822 size=301
@@ -9194,6 +9340,25 @@ else:
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton/PasteState_script.py
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton/tool-context.md
+## META: sha1=b05194786949944a67faf084a486aa47e6eaca2f size=212
+## TYPE: text
+```markdown
+# Paste State
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Execution stage
+
+## Entry Points
+- `PasteState_script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/memo.stack/Paste State.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton/bundle.yaml
 ## META: sha1=9d240cc396472e71cf126d255787a350d782c1c2 size=221
 ## TYPE: text
@@ -10163,6 +10328,24 @@ forms.alert(
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton/script.py
 
+## FILE_START: JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton/tool-context.md
+## META: sha1=fca5c56be046faac18bab33d871beb903785a1c7 size=261
+## TYPE: text
+```markdown
+# Propagate Extents Override
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Choose host view with search + view-type filters
+- Select target views and bulk-check selections
+- Run extent propagation simulation
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Selection.panel/README.md
 ## META: sha1=13effcdc6a2d7e265662fa56bd8ffa4be207d81f size=3900
 ## TYPE: text
@@ -10345,6 +10528,24 @@ if __name__ == '__main__':
         t.Commit()
 ```
 ## FILE_END: JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton/tool-context.md
+## META: sha1=5d00543412a61c70a6a784a834ed5a1583fc9f19 size=317
+## TYPE: text
+```markdown
+# UnhideAllElements
+## Purpose
+Unhide all Elements in the active view
+## Workflow
+- Open the view where hidden elements need to be restored.
+- Run UnhideAllElements on the current view or chosen scope.
+- Confirm the previously hidden elements are visible again and the view is correct.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Selection.panel/Visibility.stack/Unhide.pulldown/UnhideAllElements.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/bundle.yaml
 ## META: sha1=40a56f964779467e8e15a2397dab1f2e51a9d801 size=158
@@ -10607,6 +10808,24 @@ except Exception as e:
 (binary not inlined)
 ## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/Icon.png
 
+## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/tool-context.md
+## META: sha1=aa0b7eacb51083d19e74ff9300d4ef6b5beb8638 size=264
+## TYPE: text
+```markdown
+# Cloud Revisions
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Collect revision clouds and sheet revision ids
+- Classify each sheet/revision pair into 3 lists
+- Generate and review report output
+
+## Entry Points
+- `CloudRevisions_script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/CloudRevisions.pushbutton/tool-context.md
+
 ## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/icon.png
 ## META: sha1=0ae10eebd975879d0d295b81ad9b46812a2151f9 size=1402
 ## TYPE: binary
@@ -10723,6 +10942,22 @@ else:
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton/script.py
+
+## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton/tool-context.md
+## META: sha1=161aa0d27e79b4ec1452eb0ab3606227310db01a size=143
+## TYPE: text
+```markdown
+# Reorder Selected Viewport
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Selection stage
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Selected Viewport.pushbutton/tool-context.md
 
 ## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton/bundle.yaml
 ## META: sha1=f3f7aed087c85261e737b659dc97dee528988963 size=396
@@ -12424,6 +12659,27 @@ except Exception as e:
 
 ```
 ## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton/ReorderViewports_ui.xaml
+
+## FILE_START: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton/tool-context.md
+## META: sha1=870580296a22a718f18182efd049724a82fd17f4 size=345
+## TYPE: text
+```markdown
+# Reorder Viewports
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Select sheet and load viewport list
+- Reorder rows manually or by auto-sort
+- Apply viewport order simulation
+
+## Entry Points
+- `ReorderViewports_mode_ui.xaml`
+- `ReorderViewports_script.py`
+- `ReorderViewports_sheets_ui.xaml`
+- `ReorderViewports_ui.xaml`
+
+```
+## FILE_END: JasonHacksRevit.tab/Sheets.panel/Sheet Tools.pulldown/Reorder Viewports.pushbutton/tool-context.md
 
 ## FILE_START: lib/__init__.py
 ## META: sha1=da39a3ee5e6b4b0d3255bfef95601890afd80709 size=0
@@ -22734,8 +22990,716 @@ class ListItem:
 ```
 ## FILE_END: lib/GUI/RBG_WPF_Styles.xaml
 
+## FILE_START: lib/GUI/Resources/pyRevit_UI_Style_Guide (1).html
+## META: sha1=40309a0a179da9334913eae0e95cea9aafcef645 size=44803
+## TYPE: text
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>pyRevit UI Style Guide — Revit 2026</title>
+<style>
+:root{
+  --primary:#1F4FD9;--on-primary:#FFFFFF;
+  --primary-container:#E7EDFB;--on-primary-cont:#1640B0;
+  --surface:#FFFBFE;--surface-container:#F4F5F7;--surface-cont-high:#ECEDF0;
+  --on-surface:#1A1A1A;--on-surface-var:#8A8F98;
+  --outline:#DDE1E6;--outline-var:#E8E9EC;
+  --error:#E03C2C;--error-container:#FDECEA;
+  --green:#2EA043;--success:#2EA043;--success-container:#EAF5EE;
+  --warning:#E67E22;--warning-container:#FDF3E9;
+  --inverse-surface:#1A1A1A;--inverse-on-surface:#FFFFFF;
+  --font:'Segoe UI Variable','Segoe UI',-apple-system,Arial,sans-serif;
+  --radius-btn:20px;--radius-card:16px;
+  --bg:#FFFBFE;--bg-page:#F0F1F4;--text:#1A1A1A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg-page);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;max-width:1100px;margin:0 auto;padding:20px 24px 60px;}
+
+/* HEADER */
+.page-header{background:var(--inverse-surface);color:var(--inverse-on-surface);border-radius:var(--radius-card);padding:28px 32px;margin-bottom:24px;display:flex;align-items:center;gap:16px;}
+.header-icon{background:var(--primary);border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#fff;flex-shrink:0;}
+.header-text h1{font-size:20px;font-weight:600;margin-bottom:2px;}
+.header-text p{font-size:12px;opacity:.7;}
+.header-badge{margin-left:auto;background:var(--primary);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.5px;}
+
+/* CARDS */
+.card{background:var(--bg);border:1px solid var(--outline);border-radius:var(--radius-card);margin-bottom:16px;overflow:hidden;}
+.card-head{padding:16px 20px;border-bottom:1px solid var(--outline-var);display:flex;align-items:baseline;gap:10px;}
+.card-title{font-weight:700;font-size:14px;}
+.card-hint{font-size:11px;color:var(--on-surface-var);}
+.card-body{padding:20px;}
+
+/* BUTTONS */
+.m3btn{display:inline-block;font-family:var(--font);border-radius:var(--radius-btn);cursor:pointer;transition:all .15s ease;text-align:center;line-height:1;}
+.btn-filled{background:var(--primary);color:var(--on-primary);font-size:14px;font-weight:600;padding:12px 24px;border:none;}
+.btn-filled:hover{background:var(--on-primary-cont);}
+.btn-outlined{background:transparent;color:var(--primary);font-size:13px;font-weight:600;padding:10px 20px;border:1.5px solid var(--outline);}
+.btn-outlined:hover{background:var(--primary-container);border-color:var(--primary);}
+.btn-ghost{background:transparent;color:var(--on-surface-var);font-size:13px;padding:10px 12px;border:1px solid var(--outline);}
+.btn-ghost:hover{background:var(--surface-container);color:var(--on-surface);border-color:var(--primary);}
+.btn-tonal{background:var(--primary-container);color:var(--on-primary-cont);font-size:14px;font-weight:600;padding:12px 24px;border:none;}
+.btn-tonal:hover{background:var(--surface-cont-high);}
+.btn-success{background:var(--green);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border:none;}
+.btn-success:hover{background:#268A3A;}
+.btn-destructive{background:var(--error);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border:none;}
+.btn-destructive:hover{background:#B1301F;}
+.btn-icon{background:var(--primary-container);color:var(--on-primary-cont);width:32px;height:32px;border-radius:16px;font-size:14px;border:none;display:inline-flex;align-items:center;justify-content:center;}
+.btn-icon:hover{background:var(--surface-cont-high);}
+.btn-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.btn-label{font-size:11px;color:var(--on-surface-var);min-width:130px;}
+
+/* FORM CONTROLS */
+.demo-field{margin-bottom:12px;max-width:320px;}
+.demo-label{font-size:11px;color:var(--on-surface-var);margin-bottom:4px;}
+.demo-input{width:100%;height:28px;padding:0 8px;font-size:12px;font-family:var(--font);border:1px solid var(--outline);border-radius:8px;background:var(--bg);color:var(--text);outline:none;}
+.demo-input:focus{border-color:var(--primary);}
+.demo-listbox{width:100%;border:1px solid var(--outline);border-radius:8px;background:var(--bg);padding:0;list-style:none;font-size:12px;max-height:120px;overflow-y:auto;}
+.demo-listbox li{padding:6px 10px;cursor:pointer;}
+.demo-listbox li:hover{background:var(--surface-cont-high);}
+.demo-listbox li.selected{background:var(--primary-container);color:var(--on-primary-cont);}
+
+/* TOPBAR DEMO */
+.topbar-demo{background:var(--inverse-surface);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.topbar-icon{background:var(--primary);border-radius:12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0;}
+.topbar-title{font-size:16px;font-weight:600;color:var(--inverse-on-surface);}
+.topbar-sub{font-size:11px;color:var(--inverse-on-surface);opacity:.7;}
+.topbar-version{margin-left:auto;font-size:12px;color:var(--on-surface-var);}
+
+/* TABLE DEMO */
+.table-demo{width:100%;border-collapse:collapse;font-size:12px;}
+.table-demo th{background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:8px 10px;text-align:center;text-transform:uppercase;letter-spacing:.5px;}
+.table-demo td{padding:8px 10px;border-bottom:1px solid var(--outline);color:var(--text);}
+
+/* CONSISTENCY RULES */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:700px){.rules-grid{grid-template-columns:1fr;}}
+.rule-col h3{font-size:13px;font-weight:700;letter-spacing:.5px;margin-bottom:8px;}
+.rule-col.never h3{color:var(--error);}
+.rule-col.always h3{color:var(--green);}
+.rule-item{font-size:12px;padding:5px 0;border-bottom:1px solid var(--outline-var);display:flex;gap:6px;}
+.rule-mark{flex-shrink:0;width:16px;color:var(--on-surface-var);}
+
+/* WINDOW DEMO */
+.window-demo{border:1px solid var(--outline);border-radius:12px;overflow:hidden;background:var(--bg);}
+.window-content{padding:24px;min-height:120px;font-size:12px;color:var(--on-surface-var);display:flex;align-items:center;justify-content:center;}
+.window-footer{padding:12px 24px;border-top:1px solid var(--outline-var);display:flex;justify-content:flex-end;gap:8px;}
+
+/* CODE */
+pre{background:var(--surface-container);border:1px solid var(--outline);border-radius:8px;padding:14px 16px;font-size:12px;font-family:'Cascadia Code','Fira Code',monospace;overflow-x:auto;line-height:1.5;white-space:pre;}
+code{font-family:'Cascadia Code','Fira Code',monospace;font-size:12px;background:var(--surface-container);padding:2px 5px;border-radius:4px;}
+
+/* TOC */
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-bottom:20px;}
+.toc a{display:block;padding:8px 12px;font-size:12px;color:var(--primary);text-decoration:none;background:var(--bg);border:1px solid var(--outline-var);border-radius:8px;transition:background .15s;}
+.toc a:hover{background:var(--primary-container);}
+
+/* SECTION NOTE */
+.note{background:var(--primary-container);border:1px solid var(--primary);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--on-primary-cont);margin-bottom:16px;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-icon">SJ</div>
+  <div class="header-text">
+    <h1>pyRevit UI Style Guide</h1>
+    <p>Revit 2026 implementation of the <a href="UI_Style_Guide.html" style="color:var(--primary-container);text-decoration:underline;">SJ-B+C Business Standard</a></p>
+    <p style="margin-top:2px;">IronPython 2.7 · WPF · pyRevit 4.x · Copy-paste-ready XAML &amp; Python</p>
+  </div>
+  <span class="header-badge">REVIT 2026</span>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <a href="#s1">1 · Window Shell</a>
+  <a href="#s2">2 · Colour Tokens</a>
+  <a href="#s3">3 · Typography</a>
+  <a href="#s4">4 · Buttons (7)</a>
+  <a href="#s5">5 · Form Controls</a>
+  <a href="#s6">6 · Top App Bar</a>
+  <a href="#s7">7 · Tables</a>
+  <a href="#s8">8 · Row Highlights</a>
+  <a href="#s9">9 · Chips &amp; Badges</a>
+  <a href="#s10">10 · Notifications</a>
+  <a href="#s11">11 · shared.py</a>
+  <a href="#s12">12 · ExternalEvent</a>
+  <a href="#s13" style="color:var(--error);">13 · Consistency Rules</a>
+  <a href="#s14">14 · Naming</a>
+  <a href="#s15">∎ Complete Template</a>
+</div>
+
+<!-- 1. WINDOW SHELL -->
+<div class="card" id="s1">
+  <div class="card-head">
+    <span class="card-title">1 · Window Shell</span>
+    <span class="card-hint">Required attributes on every &lt;Window&gt; element</span>
+  </div>
+  <div class="card-body">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;width:240px;">WindowStartupLocation</td><td style="padding:6px 0;">"CenterScreen"</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">ShowInTaskbar</td><td style="padding:6px 0;">"False"</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">ResizeMode</td><td style="padding:6px 0;">"CanResizeWithGrip"</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Background</td><td style="padding:6px 0;">#FFFBFE (Surface)</td></tr>
+      <tr><td style="padding:6px 0;font-weight:600;">FontFamily</td><td style="padding:6px 0;">"Segoe UI Variable, Segoe UI"</td></tr>
+    </table>
+    <div class="note" style="margin-top:14px;">
+      <strong>Never</strong> set <code>Topmost="True"</code>. Use <code>_apply_topmost_and_parent(window)</code> in Python — re-parents to Revit without stealing focus.
+    </div>
+    <!-- Live demo: mock window -->
+    <div class="window-demo" style="margin-top:16px;">
+      <div class="topbar-demo" style="border-radius:12px 12px 0 0;margin-bottom:0;">
+        <div class="topbar-icon">SJ</div>
+        <div>
+          <div class="topbar-title">SJ-B+C · My Tool</div>
+          <div class="topbar-sub">Step 1 of 3 — Setup</div>
+        </div>
+        <div class="topbar-version">v0.1</div>
+      </div>
+      <div class="window-content">Your content area (row 1)</div>
+      <div class="window-footer">
+        <button class="m3btn btn-ghost">Cancel</button>
+        <button class="m3btn btn-filled">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. COLOUR TOKENS -->
+<div class="card" id="s2">
+  <div class="card-head">
+    <span class="card-title">2 · Colour Tokens</span>
+    <span class="card-hint">config.py → XAML &lt;Window.Resources&gt;</span>
+  </div>
+  <div class="card-body">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;">
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#1F4FD9;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Primary</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#1F4FD9</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#1640B0;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">OnPrimaryContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#1640B0</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#E7EDFB;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">PrimaryContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#E7EDFB</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#FFFBFE;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Surface</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#FFFBFE</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#F4F5F7;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">SurfaceContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#F4F5F7</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#1A1A1A;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">OnSurface</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#1A1A1A</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#8A8F98;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">OnSurfaceVariant</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#8A8F98</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#DDE1E6;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Outline</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#DDE1E6</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#E03C2C;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Error</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#E03C2C</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#FDECEA;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">ErrorContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#FDECEA</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#2EA043;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Success</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#2EA043</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#EAF5EE;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">SuccessContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#EAF5EE</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#E67E22;border-radius:8px;margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">Warning</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#E67E22</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:100%;height:48px;background:#FDF3E9;border-radius:8px;border:1px solid var(--outline);margin-bottom:4px;"></div>
+        <div style="font-size:11px;font-weight:600;">WarningContainer</div>
+        <div style="font-size:10px;color:var(--on-surface-var);">#FDF3E9</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. TYPOGRAPHY -->
+<div class="card" id="s3">
+  <div class="card-head">
+    <span class="card-title">3 · Typography</span>
+    <span class="card-hint">Segoe UI · Approved sizes: 9, 10, 11, 12, 13, 14, 15, 17pt only</span>
+  </div>
+  <div class="card-body" style="padding:0;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;width:200px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Dialog Title</div><div style="font-size:10px;color:var(--on-surface-var);">14pt Bold #1A1A1A</div></td>
+        <td style="padding:12px 16px;font-size:14pt;font-weight:700;color:#1A1A1A;">Tool Name</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Wizard Heading</div><div style="font-size:10px;color:var(--on-surface-var);">17pt Light #1A1A1A</div></td>
+        <td style="padding:12px 16px;font-size:17pt;font-weight:300;color:#1A1A1A;">Select Your Options</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Wizard Card Title</div><div style="font-size:10px;color:var(--on-surface-var);">15pt SemiBold Primary</div></td>
+        <td style="padding:12px 16px;font-size:15pt;font-weight:600;color:var(--primary);">Export Settings</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Panel Heading</div><div style="font-size:10px;color:var(--on-surface-var);">13pt SemiBold Primary</div></td>
+        <td style="padding:12px 16px;font-size:13pt;font-weight:600;color:var(--primary);">Naming Convention</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Section Header</div><div style="font-size:10px;color:var(--on-surface-var);">12pt SemiBold #1A1A1A</div></td>
+        <td style="padding:12px 16px;font-size:12pt;font-weight:600;color:#1A1A1A;">Project Sheets</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Body / Radio / ComboBox</div><div style="font-size:10px;color:var(--on-surface-var);">12pt Normal #1A1A1A</div></td>
+        <td style="padding:12px 16px;font-size:12pt;font-weight:400;color:#1A1A1A;">Standard body text and control labels</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Primary Button</div><div style="font-size:10px;color:var(--on-surface-var);">12pt SemiBold #FFFFFF</div></td>
+        <td style="padding:12px 16px;"><span style="background:var(--primary);color:#fff;font-size:12pt;font-weight:600;padding:6px 18px;border-radius:20px;display:inline-block;">Apply Changes</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Field Label</div><div style="font-size:10px;color:var(--on-surface-var);">11pt Normal #6B6B6B</div></td>
+        <td style="padding:12px 16px;font-size:11pt;font-weight:400;color:#6B6B6B;">Sheet Number</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Subtitle / Count / Tip</div><div style="font-size:10px;color:var(--on-surface-var);">11pt Normal #6B6B6B</div></td>
+        <td style="padding:12px 16px;font-size:11pt;font-weight:400;color:#6B6B6B;">24 sheets found · Shift+Click for multi-select</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">DataGrid Column Header</div><div style="font-size:10px;color:var(--on-surface-var);">10pt SemiBold ALL CAPS</div></td>
+        <td style="padding:12px 16px;font-size:10pt;font-weight:600;color:#1A1A1A;text-transform:uppercase;letter-spacing:.5px;">SHEET NUMBER</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Badge / Pill</div><div style="font-size:10px;color:var(--on-surface-var);">10pt SemiBold #FFFFFF</div></td>
+        <td style="padding:12px 16px;"><span style="background:var(--primary);color:#fff;font-size:10pt;font-weight:600;padding:3px 10px;border-radius:12px;display:inline-block;">A3</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--outline-var);">
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Helper / Hint</div><div style="font-size:10px;color:var(--on-surface-var);">10pt Normal #6B6B6B</div></td>
+        <td style="padding:12px 16px;font-size:10pt;font-weight:400;color:#6B6B6B;">Values separated by semicolon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;vertical-align:top;"><div style="font-weight:700;color:var(--primary);font-size:12px;">Arrow Group Label</div><div style="font-size:10px;color:var(--on-surface-var);">9pt Normal #6B6B6B</div></td>
+        <td style="padding:12px 16px;font-size:9pt;font-weight:400;color:#6B6B6B;">MOVE TO SELECTED</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 4. BUTTONS -->
+<div class="card" id="s4">
+  <div class="card-head">
+    <span class="card-title">4 · Buttons — 7 Variants</span>
+    <span class="card-hint">All CornerRadius=20 · Segoe UI Variable · Border-based ControlTemplate</span>
+  </div>
+  <div class="card-body">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="btn-row"><span class="btn-label">PrimaryButton</span> <button class="m3btn btn-filled">Run</button> <button class="m3btn btn-filled">Apply</button> <button class="m3btn btn-filled">Next</button></div>
+      <div class="btn-row"><span class="btn-label">SecondaryButton</span> <button class="m3btn btn-outlined">Cancel</button> <button class="m3btn btn-outlined">Back</button> <button class="m3btn btn-outlined">Reset</button></div>
+      <div class="btn-row"><span class="btn-label">GhostButton</span> <button class="m3btn btn-ghost">Skip</button> <button class="m3btn btn-ghost">More info</button> <button class="m3btn btn-ghost">Dismiss</button></div>
+      <div class="btn-row"><span class="btn-label">TonalButton</span> <button class="m3btn btn-tonal">Filter</button> <button class="m3btn btn-tonal">Options</button></div>
+      <div class="btn-row"><span class="btn-label">SuccessButton</span> <button class="m3btn btn-success">Confirm</button> <button class="m3btn btn-success">Finish</button></div>
+      <div class="btn-row"><span class="btn-label">DestructiveButton</span> <button class="m3btn btn-destructive">Delete</button> <button class="m3btn btn-destructive">Remove All</button></div>
+      <div class="btn-row"><span class="btn-label">IconButton</span> <button class="m3btn btn-icon">‹</button> <button class="m3btn btn-icon">›</button> <button class="m3btn btn-icon">↑</button> <button class="m3btn btn-icon">↓</button></div>
+    </div>
+    <div class="note" style="margin-top:16px;">
+      <strong>IsDefault="True"</strong> on OK/Apply · <strong>IsCancel="True"</strong> on Cancel — lets Enter and Esc work as expected.
+    </div>
+  </div>
+</div>
+
+<!-- 5. FORM CONTROLS -->
+<div class="card" id="s5">
+  <div class="card-head">
+    <span class="card-title">5 · Form Controls</span>
+    <span class="card-hint">Labels above · Height 28 · CornerRadius 8 · Focus → Primary border</span>
+  </div>
+  <div class="card-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div>
+        <div class="demo-field">
+          <div class="demo-label">Sheet Number</div>
+          <input class="demo-input" type="text" value="A-101" />
+        </div>
+        <div class="demo-field">
+          <div class="demo-label">Export Format</div>
+          <select class="demo-input" style="padding:0 8px;">
+            <option>PDF</option>
+            <option selected>DWG</option>
+            <option>IFC</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="demo-label">Select Sheets</div>
+        <ul class="demo-listbox">
+          <li>A-100 — Ground Floor</li>
+          <li class="selected">A-101 — Level 1</li>
+          <li class="selected">A-102 — Level 2</li>
+          <li>A-103 — Level 3</li>
+          <li>A-200 — Roof Plan</li>
+        </ul>
+        <div style="font-size:10px;color:var(--on-surface-var);margin-top:4px;">SelectionMode="Extended" · Shift+Click for range</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. TOP APP BAR -->
+<div class="card" id="s6">
+  <div class="card-head">
+    <span class="card-title">6 · Top App Bar</span>
+    <span class="card-hint">InverseSurface bg · 38×38 icon tile · row 0 of outer Grid</span>
+  </div>
+  <div class="card-body">
+    <div class="topbar-demo">
+      <div class="topbar-icon">SJ</div>
+      <div>
+        <div class="topbar-title">SJ-B+C · Reo Tonnage</div>
+        <div class="topbar-sub">Step 2 of 4 — Options</div>
+      </div>
+      <div class="topbar-version">v2.1</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. TABLES -->
+<div class="card" id="s7">
+  <div class="card-head">
+    <span class="card-title">7 · Tables</span>
+    <span class="card-hint">_table_cell factory · _auto() + _star() columns · Primary header infill</span>
+  </div>
+  <div class="card-body">
+    <table class="table-demo">
+      <thead>
+        <tr>
+          <th>CATEGORY</th>
+          <th>SIZE</th>
+          <th style="text-align:right;">COUNT</th>
+          <th style="text-align:right;">LENGTH (m)</th>
+          <th style="text-align:right;">MASS (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Slab</td><td>N16</td><td style="text-align:right;">1,240</td><td style="text-align:right;">4,960.0</td><td style="text-align:right;">7,813.6</td></tr>
+        <tr><td>Beam</td><td>N20</td><td style="text-align:right;">860</td><td style="text-align:right;">3,440.0</td><td style="text-align:right;">8,466.4</td></tr>
+        <tr><td>Column</td><td>N28</td><td style="text-align:right;">320</td><td style="text-align:right;">1,280.0</td><td style="text-align:right;">6,189.6</td></tr>
+        <tr style="background:var(--primary);color:#fff;font-weight:700;">
+          <td>TOTAL</td><td></td>
+          <td style="text-align:right;">2,420</td>
+          <td style="text-align:right;">9,680.0</td>
+          <td style="text-align:right;">22,469.6</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 8. ROW HIGHLIGHT STATES -->
+<div class="card" id="s8">
+  <div class="card-head">
+    <span class="card-title">8 · Row Highlight States</span>
+    <span class="card-hint">3px left border + tinted bg · one state per row at a time</span>
+  </div>
+  <div class="card-body">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px;">
+      <tr style="border-left:3px solid #1F4FD9;background:#E7EDFB;">
+        <td style="padding:8px 12px;font-weight:600;color:#1640B0;">Selected</td>
+        <td style="padding:8px 12px;">PrimaryContainer bg · Primary edge</td>
+        <td style="padding:8px 12px;text-align:right;">—</td>
+      </tr>
+      <tr style="border-left:3px solid #1F4FD9;background:#E7EDFB;">
+        <td style="padding:8px 12px;font-weight:600;color:#1640B0;">Update / Running</td>
+        <td style="padding:8px 12px;">PrimaryContainer + pulse animation</td>
+        <td style="padding:8px 12px;text-align:right;">↻</td>
+      </tr>
+      <tr style="border-left:3px solid #E67E22;background:#FDF3E9;">
+        <td style="padding:8px 12px;font-weight:600;color:#E67E22;">Warning</td>
+        <td style="padding:8px 12px;">Non-blocking issue</td>
+        <td style="padding:8px 12px;text-align:right;">⚠</td>
+      </tr>
+      <tr style="border-left:3px solid #E03C2C;background:#FDECEA;">
+        <td style="padding:8px 12px;font-weight:600;color:#E03C2C;">Error</td>
+        <td style="padding:8px 12px;">Blocking issue</td>
+        <td style="padding:8px 12px;text-align:right;">✕</td>
+      </tr>
+      <tr style="border-left:3px solid #2EA043;background:#EAF5EE;">
+        <td style="padding:8px 12px;font-weight:600;color:#2EA043;">Success / Done</td>
+        <td style="padding:8px 12px;">Finished OK</td>
+        <td style="padding:8px 12px;text-align:right;">✓</td>
+      </tr>
+      <tr style="border-left:3px solid transparent;background:var(--bg);">
+        <td style="padding:8px 12px;font-weight:600;color:var(--on-surface-var);">Idle (default)</td>
+        <td style="padding:8px 12px;">Surface bg · no border</td>
+        <td style="padding:8px 12px;text-align:right;">—</td>
+      </tr>
+    </table>
+    <div class="note">
+      <strong>Anatomy:</strong> <code>&lt;Border BorderThickness="3,0,0,0"&gt;</code> — left edge only. Never full-width border. Trailing glyph in right-most cell.
+    </div>
+  </div>
+</div>
+
+<!-- 9. CHIPS & BADGES -->
+<div class="card" id="s9">
+  <div class="card-head">
+    <span class="card-title">9 · Chips &amp; Badges</span>
+    <span class="card-hint">CornerRadius=4 (NOT 20) · 10pt · Padding 8,3</span>
+  </div>
+  <div class="card-body">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+      <!-- Solid chips -->
+      <span style="display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;">Active</span>
+      <span style="display:inline-block;background:var(--green);color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;">Complete</span>
+      <span style="display:inline-block;background:#E67E22;color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;">Pending</span>
+      <span style="display:inline-block;background:var(--error);color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;">Failed</span>
+      <!-- Outlined chips -->
+      <span style="display:inline-block;background:var(--surface-container);color:var(--on-surface-var);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--outline);">A-100</span>
+      <span style="display:inline-block;background:var(--surface-container);color:var(--on-surface-var);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--outline);">Level 2</span>
+      <!-- Paired chip -->
+      <span style="display:inline-flex;">
+        <span style="display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px 0 0 4px;">Sheet</span>
+        <span style="display:inline-block;background:var(--surface-container);color:var(--on-surface-var);font-size:10px;padding:3px 8px;border-radius:0 4px 4px 0;border:1px solid var(--outline);border-left:0;">A-100</span>
+      </span>
+      <!-- Badge -->
+      <span style="display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:600;padding:2px 6px;border-radius:12px;min-width:20px;text-align:center;">3</span>
+      <span style="display:inline-block;background:var(--error);color:#fff;font-size:10px;font-weight:600;padding:2px 6px;border-radius:12px;min-width:20px;text-align:center;">!</span>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;width:160px;">Solid chip</td><td style="padding:6px 0;">bg = semantic colour · fg = White · 10pt SemiBold</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Outlined chip</td><td style="padding:6px 0;">bg = SurfaceContainer · border = Outline · 10pt Normal</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Paired (key·value)</td><td style="padding:6px 0;">Left CornerRadius 4,0,0,4 · Right 0,4,4,0</td></tr>
+      <tr><td style="padding:6px 0;font-weight:600;">Badge</td><td style="padding:6px 0;">Padding 6,2 · CornerRadius 12 · min-width for single digit</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 10. NOTIFICATION BARS -->
+<div class="card" id="s10">
+  <div class="card-head">
+    <span class="card-title">10 · Notification Bars</span>
+    <span class="card-hint">Status bar (persistent, bottom) · Inline notification (dismissible, above content)</span>
+  </div>
+  <div class="card-body">
+    <!-- Status bar demo -->
+    <div style="background:var(--primary);padding:8px 12px;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;">
+      <span style="color:#fff;font-size:11px;">24 sheets exported to C:\Output\</span>
+    </div>
+    <!-- Notification demos -->
+    <div style="background:var(--error);padding:8px 12px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+      <span style="color:#fff;font-size:14px;">⚠</span>
+      <span style="color:#fff;font-size:12px;flex:1;">3 elements failed to export — check log for details</span>
+      <span style="color:#fff;font-size:12px;cursor:pointer;opacity:.7;">✕</span>
+    </div>
+    <div style="background:#E67E22;padding:8px 12px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+      <span style="color:#fff;font-size:14px;">!</span>
+      <span style="color:#fff;font-size:12px;flex:1;">Some sheets have non-standard naming</span>
+      <span style="color:#fff;font-size:12px;cursor:pointer;opacity:.7;">✕</span>
+    </div>
+    <div style="background:var(--green);padding:8px 12px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+      <span style="color:#fff;font-size:14px;">✓</span>
+      <span style="color:#fff;font-size:12px;flex:1;">All parameters updated successfully</span>
+      <span style="color:#fff;font-size:12px;cursor:pointer;opacity:.7;">✕</span>
+    </div>
+    <div style="background:var(--primary);padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:10px;">
+      <span style="color:#fff;font-size:14px;">i</span>
+      <span style="color:#fff;font-size:12px;flex:1;">Shift+Click to multi-select rows</span>
+      <span style="color:#fff;font-size:12px;cursor:pointer;opacity:.7;">✕</span>
+    </div>
+  </div>
+</div>
+
+<!-- 11. shared.py -->
+<div class="card" id="s11">
+  <div class="card-head">
+    <span class="card-title">11 · shared.py Utilities</span>
+    <span class="card-hint">_brush · BR_* · _px · _star · _auto · _v</span>
+  </div>
+  <div class="card-body">
+    <pre>from &lt;your_package&gt;.ui.shared import (
+    _brush, BR_BLUE, BR_BLUE_DARK, BR_BLUE_LIGHT,
+    BR_RED, BR_BLACK, BR_GREY_1, BR_GREY_2, BR_GREY_3, BR_WHITE,
+    _px, _star, _auto, _v,
+)</pre>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:12px;">
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;width:140px;"><code>_brush("#hex")</code></td><td style="padding:6px 0;">SolidColorBrush from hex string</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;"><code>BR_BLUE</code> etc.</td><td style="padding:6px 0;">Pre-built brand brushes</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;"><code>_px(n)</code></td><td style="padding:6px 0;">Fixed-pixel GridLength</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;"><code>_star(w)</code></td><td style="padding:6px 0;">Star GridLength (fills remaining)</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;"><code>_auto()</code></td><td style="padding:6px 0;">Auto GridLength (sizes to content)</td></tr>
+      <tr><td style="padding:6px 0;font-weight:600;"><code>_v(bool)</code></td><td style="padding:6px 0;">Visibility.Visible / Collapsed</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 12. EXTERNAL EVENT -->
+<div class="card" id="s12">
+  <div class="card-head">
+    <span class="card-title">12 · Modeless + ExternalEvent</span>
+    <span class="card-hint">Never call Revit API from WPF button click — route through _run_in_revit()</span>
+  </div>
+  <div class="card-body">
+    <pre>class _RevitHandler(IExternalEventHandler):
+    def __init__(self):
+        self.action = None
+    def Execute(self, app):
+        if self.action:
+            try: self.action()
+            finally: self.action = None
+    def GetName(self):
+        return "MyExtHandler"
+
+# In LauncherWindow.__init__:
+self._handler = _RevitHandler()
+self._event   = ExternalEvent.Create(self._handler)
+
+# From any WPF button click:
+def on_run_clicked(self, sender, args):
+    self._run_in_revit(self._do_work)
+
+def _run_in_revit(self, callback):
+    self._handler.action = callback
+    self._event.Raise()</pre>
+    <div class="note" style="margin-top:12px;">
+      <strong>Flow:</strong> WPF Button → <code>_run_in_revit(cb)</code> → sets <code>handler.action</code> → <code>event.Raise()</code> → Revit thread runs <code>Execute()</code>
+    </div>
+  </div>
+</div>
+
+<!-- 13. CONSISTENCY RULES -->
+<div class="card" id="s13">
+  <div class="card-head">
+    <span class="card-title">13 · Consistency Rules</span>
+    <span class="card-hint">Most common review findings</span>
+  </div>
+  <div class="card-body">
+    <div class="rules-grid">
+      <div class="rule-col never">
+        <h3>NEVER</h3>
+        <div class="rule-item"><span class="rule-mark">✕</span> Hardcode colours — always reference the palette</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Use font size outside: 9, 10, 11, 12, 13, 14, 15, 17pt</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Place buttons at top or middle of window</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Use red outside destructive buttons and error bars — Error (#E03C2C) only</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Use SelectionMode="Single" on a picker ListBox</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Use Primary as selected/hover bg on ListBox — Selected = PrimaryContainer, Hover = SurfaceContainerHigh</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Mix SecondaryButton variants within one tool</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Use Topmost="True" — use _apply_topmost_and_parent()</div>
+        <div class="rule-item"><span class="rule-mark">✕</span> Inline colours or styles — use named resources</div>
+      </div>
+      <div class="rule-col always">
+        <h3>ALWAYS</h3>
+        <div class="rule-item"><span class="rule-mark">✓</span> ResizeMode="CanResizeWithGrip"</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> ShowInTaskbar="False" + CenterScreen</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> IsCancel on Cancel / IsDefault on OK</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> OK/Apply/Save/Next → PrimaryButton</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> Cancel/Back (solid) → SecondaryButton</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> Cancel/Back (ghost) → GhostButton</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> Confirm positive → SuccessButton</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> Delete/Remove → DestructiveButton</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> Both RowStyle AND CellStyle on DataGrids</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> SelectionMode="Extended" on picker ListBoxes</div>
+        <div class="rule-item"><span class="rule-mark">✓</span> _apply_topmost_and_parent(window) on all tools</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 14. NAMING -->
+<div class="card" id="s14">
+  <div class="card-head">
+    <span class="card-title">14 · Naming Conventions</span>
+  </div>
+  <div class="card-body">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;width:200px;">XAML control names</td><td style="padding:6px 0;"><code>camelCase</code></td><td style="padding:6px 0;color:var(--on-surface-var);">resultsGrid, methodTitle</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Brush constants</td><td style="padding:6px 0;"><code>BR_&lt;NAME&gt;</code></td><td style="padding:6px 0;color:var(--on-surface-var);">BR_BLUE, BR_GREY_2</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Grid helpers</td><td style="padding:6px 0;"><code>_px / _star / _auto</code></td><td style="padding:6px 0;color:var(--on-surface-var);">leading underscore</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Cell factories</td><td style="padding:6px 0;"><code>_table_cell</code></td><td style="padding:6px 0;color:var(--on-surface-var);">leading underscore</td></tr>
+      <tr style="border-bottom:1px solid var(--outline-var);"><td style="padding:6px 0;font-weight:600;">Config hex codes</td><td style="padding:6px 0;"><code>BRAND_&lt;NAME&gt;</code></td><td style="padding:6px 0;color:var(--on-surface-var);">BRAND_BLUE</td></tr>
+      <tr><td style="padding:6px 0;font-weight:600;">XAML event handlers</td><td style="padding:6px 0;"><code>on_&lt;verb&gt;_&lt;noun&gt;</code></td><td style="padding:6px 0;color:var(--on-surface-var);">on_run_clicked</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 15. COMPLETE TEMPLATE -->
+<div class="card" id="s15">
+  <div class="card-head">
+    <span class="card-title">∎ Complete Window Template</span>
+    <span class="card-hint">Copy as starting point for any new tool</span>
+  </div>
+  <div class="card-body">
+    <div class="window-demo">
+      <div class="topbar-demo" style="border-radius:12px 12px 0 0;margin-bottom:0;">
+        <div class="topbar-icon">SJ</div>
+        <div>
+          <div class="topbar-title">SJ-B+C · New Tool</div>
+          <div class="topbar-sub"></div>
+        </div>
+        <div class="topbar-version">v0.1</div>
+      </div>
+      <div style="padding:24px;">
+        <div style="border:1px solid var(--outline);border-radius:16px;padding:20px 16px;background:var(--bg);">
+          <div style="font-weight:700;font-size:14px;margin-bottom:10px;">Section Title</div>
+          <div class="demo-field">
+            <div class="demo-label">Field Label</div>
+            <input class="demo-input" type="text" placeholder="Enter value..." />
+          </div>
+          <div class="demo-field">
+            <div class="demo-label">Select Option</div>
+            <select class="demo-input" style="padding:0 8px;">
+              <option>Option A</option>
+              <option selected>Option B</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="window-footer">
+        <button class="m3btn btn-ghost">Cancel</button>
+        <button class="m3btn btn-filled">Apply</button>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px;">
+      See the <a href="UI_Style_Guide.html" style="color:var(--primary);">SJ-B+C Business Standard</a> for the full design system: advanced component specs, MUI alignment, dark-mode tokens, wizard stepper, and design rationale.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+```
+## FILE_END: lib/GUI/Resources/pyRevit_UI_Style_Guide (1).html
+
 ## FILE_START: lib/GUI/Resources/RBG_StyleGuide_2026.xaml
-## META: sha1=f04c91e7e6529a68d08138426c52e67b4a0edbb0 size=20634
+## META: sha1=38a019df326e7e99e023eb39c38bdd64cb944d42 size=24685
 ## TYPE: text
 ```
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -22782,7 +23746,7 @@ class ListItem:
 
     <!-- Shared control defaults -->
     <Style TargetType="Window">
-        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontFamily" Value="Segoe UI Variable, Segoe UI" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
         <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
@@ -23081,19 +24045,22 @@ class ListItem:
 
     <Style x:Key="PrimaryButton" TargetType="Button">
         <Setter Property="Height" Value="32" />
+        <Setter Property="MinWidth" Value="64" />
         <Setter Property="Padding" Value="18,6,18,6" />
         <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="20">
+                            CornerRadius="20"
+                            Padding="{TemplateBinding Padding}">
                         <ContentPresenter HorizontalAlignment="Center"
                                           VerticalAlignment="Center" />
                     </Border>
@@ -23111,25 +24078,102 @@ class ListItem:
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+    <Style x:Key="SecondaryButton" TargetType="Button">
+        <Setter Property="Height" Value="32" />
+        <Setter Property="MinWidth" Value="64" />
+        <Setter Property="Padding" Value="18,6,18,6" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+    <Style x:Key="GhostButton" TargetType="Button">
+        <Setter Property="Height" Value="32" />
+        <Setter Property="MinWidth" Value="64" />
+        <Setter Property="Padding" Value="18,6,18,6" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
         <Setter Property="Background" Value="{StaticResource SuccessBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#268A3A" />
+                <Setter Property="BorderBrush" Value="#268A3A" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="DestructiveButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
         <Setter Property="Background" Value="{StaticResource ErrorBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#B1301F" />
+                <Setter Property="BorderBrush" Value="#B1301F" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
@@ -25878,6 +26922,2876 @@ def inject_search_script(output):
 ```
 ## FILE_END: lib/Helpers/toolsearch_common.py
 
+## FILE_START: lib/linked_model_monitor_engine.py
+## META: sha1=b17abd6e2fc97831f8f487262d959ea5fbfbd45d size=71536
+## TYPE: text
+## IMPORTS: ["Autodesk.Revit.DB","datetime","hashlib","io","json","math","os","re","time","uuid"]
+## FUNCTIONS: ["_load_json","_json_safe_value","_write_json","_get_snapshot_metadata_path","_build_snapshot_metadata","_write_snapshot_metadata_file","_load_snapshot_metadata_from_snapshot_file","_load_snapshot_metadata","_safe_file_modified_timestamp","_sanitise_folder_name","_get_snapshots_root","_get_guid_storage_folder_name","_get_legacy_storage_folder_name","_make_unique_path","_archive_snapshot_data","_merge_current_snapshot_file","_merge_storage_folders","_resolve_storage_folder","_get_fallback_storage_root","_iter_storage_roots","_count_snapshot_files","_load_latest_snapshot_from_folder","_floats_differ","_elementid_value","_elementid_is_valid","_normalise_detail_limit","_normalise_snapshot_mode","_get_parameter_profile_for_mode","_normalise_parameter_name","_merge_parameter_names","_get_category_parameter_pack","_build_parameter_capture_plan","_snapshot_has_parameter_payload","get_snapshot_mode","get_snapshot_parameter_profile","get_snapshot_compare_compatibility","_build_exclude_set","_get_exclude_cats","_get_workset_name","_get_elem_name_by_id","_get_family_and_type","_get_location","_get_transform_rotation_z","_transform_xyz","_transform_bounding_box","_get_link_transform_record","_get_bounding_box","_record_parameters","_read","_element_change_hash","_r","_record_element","get_loaded_links","list_history_targets","collect_linked_model_elements","report_progress","build_snapshot","resolve_storage_root","save_snapshot","list_snapshots","get_snapshot_status","load_snapshot","compare_snapshots","_build_compare_rollups","ensure_category","ensure_change_type","_diff_element","push","_diff_parameters"]
+## CLASSES: []
+```python
+# -*- coding: utf-8 -*-
+"""
+Linked Model Monitor Engine
+============================
+Snapshot, persist, and compare 3D elements from Revit linked models.
+No Revit UI imports. IronPython 2.7 compatible.
+
+Storage layout per linked model:
+    <storage_root>/lmm_snapshots/<linked_guid>/
+        current.json
+        <YYYYMMDDTHHMMSS>_previous.json   (up to MAX_HISTORY)
+
+Legacy title-derived folders are migrated into the GUID-owned folder on access.
+"""
+
+import os
+import io
+import json
+import hashlib
+import datetime
+import re
+import time
+import math
+
+try:
+    string_types = (basestring,)
+except NameError:
+    string_types = (str,)
+
+SCHEMA_VERSION = 2
+MAX_HISTORY    = 10
+LOC_TOL_FT     = 0.003    # ~1 mm  position tolerance
+ROT_TOL        = 0.0001   # radians
+BB_TOL_FT      = 0.003    # bounding box tolerance
+FLOAT_TOL      = 0.001    # generic float tolerance
+MAX_PARAMS     = 80       # max parameters captured per element
+DEFAULT_MAX_ERROR_DETAILS = 25
+SNAPSHOT_METADATA_SCAN_CHARS = 262144
+SNAPSHOT_MODE_FAST = "fast"
+SNAPSHOT_MODE_FULL = "full"
+COMPARE_REASON_MODE_MISMATCH = "SNAPSHOT_MODE_MISMATCH"
+PARAMETER_PROFILE_NONE = "none"
+PARAMETER_PROFILE_CURATED_V1 = "curated-v1"
+
+CHANGE_LOCATION  = "LOCATION_MOVED"
+CHANGE_ROTATION  = "ROTATION_CHANGED"
+CHANGE_SIZE      = "SIZE_CHANGED"
+CHANGE_TYPE      = "TYPE_CHANGED"
+CHANGE_WORKSET   = "WORKSET_CHANGED"
+CHANGE_LEVEL     = "LEVEL_CHANGED"
+CHANGE_PHASE     = "PHASE_CHANGED"
+CHANGE_PARAMETER = "PARAMETER_CHANGED"
+
+COMMON_INSTANCE_PARAMETER_NAMES = (
+    "Mark",
+    "Comments",
+    "Type Comments",
+    "Reference Level",
+    "Base Level",
+    "Base Offset",
+    "Top Level",
+    "Top Offset",
+    "Sill Height",
+    "Head Height",
+    "Offset",
+    "Elevation from Level",
+    "Room Bounding",
+)
+
+COMMON_TYPE_PARAMETER_NAMES = (
+    "Type Mark",
+    "Description",
+    "Assembly Code",
+    "Assembly Description",
+    "Fire Rating",
+    "Keynote",
+    "Model",
+    "Manufacturer",
+)
+
+COMMON_DIMENSION_PARAMETER_NAMES = (
+    "Length",
+    "Area",
+    "Volume",
+    "Width",
+    "Height",
+    "Thickness",
+    "Depth",
+    "Diameter",
+)
+
+CATEGORY_PARAMETER_PACKS = {
+    "Walls": {
+        "instance": ("Base Constraint", "Top Constraint", "Unconnected Height", "Location Line"),
+        "type": ("Function", "Structural", "Wrapping at Ends", "Wrapping at Inserts"),
+    },
+    "Floors": {
+        "instance": ("Height Offset From Level", "Structural",),
+        "type": ("Function", "Thickness",),
+    },
+    "Roofs": {
+        "instance": ("Base Level", "Base Offset From Level",),
+        "type": ("Thickness",),
+    },
+    "Doors": {
+        "instance": ("From Room", "To Room", "Sill Height", "Head Height"),
+        "type": ("Operation", "Fire Rating", "Function"),
+    },
+    "Windows": {
+        "instance": ("Sill Height", "Head Height",),
+        "type": ("Operation", "Fire Rating", "Function"),
+    },
+    "Structural Columns": {
+        "instance": ("Base Level", "Base Offset", "Top Level", "Top Offset"),
+        "type": ("Material for Model Behavior", "b", "h"),
+    },
+    "Structural Framing": {
+        "instance": ("Start Level Offset", "End Level Offset", "Structural Usage"),
+        "type": ("Cut Length", "Structural Material"),
+    },
+    "Pipe Curves": {
+        "instance": ("Reference Level", "Offset", "Diameter", "Length"),
+        "type": ("System Classification", "Roughness"),
+    },
+    "Duct Curves": {
+        "instance": ("Reference Level", "Offset", "Width", "Height", "Length"),
+        "type": ("System Classification", "Loss Method"),
+    },
+    "Cable Trays": {
+        "instance": ("Offset", "Width", "Height", "Length"),
+        "type": ("Service Type",),
+    },
+    "Conduits": {
+        "instance": ("Offset", "Diameter", "Length"),
+        "type": ("Conduit Material",),
+    },
+}
+
+
+# ---------------------------------------------------------------------------
+# I/O helpers
+# ---------------------------------------------------------------------------
+
+def _load_json(path):
+    try:
+        with io.open(path, 'r', encoding='utf-8') as fh:
+            return json.load(fh)
+    except Exception:
+        return None
+
+
+def _json_safe_value(value):
+    if value is None:
+        return None
+    if isinstance(value, (bool, int, float) + string_types):
+        return value
+    if isinstance(value, dict):
+        return dict((_json_safe_value(k), _json_safe_value(v)) for k, v in value.items())
+    if isinstance(value, (list, tuple, set)):
+        return [_json_safe_value(v) for v in value]
+    if hasattr(value, "ToString"):
+        try:
+            return str(value)
+        except Exception:
+            pass
+    try:
+        return int(value)
+    except Exception:
+        pass
+    try:
+        return float(value)
+    except Exception:
+        pass
+    return str(value)
+
+
+def _write_json(path, data):
+    folder = os.path.dirname(path)
+    if folder and not os.path.isdir(folder):
+        os.makedirs(folder)
+    with io.open(path, 'w', encoding='utf-8') as fh:
+        json.dump(_json_safe_value(data), fh, indent=2, ensure_ascii=False)
+
+
+def _get_snapshot_metadata_path(snapshot_path):
+    folder = os.path.dirname(snapshot_path)
+    stem, _ext = os.path.splitext(os.path.basename(snapshot_path))
+    return os.path.join(folder, "{0}.meta.json".format(stem))
+
+
+def _build_snapshot_metadata(snapshot):
+    if snapshot is None:
+        return None
+    return {
+        "schema_version": snapshot.get("schema_version"),
+        "snapshot_id": snapshot.get("snapshot_id", ""),
+        "timestamp": snapshot.get("timestamp", ""),
+        "timestamp_sort": snapshot.get("timestamp_sort", ""),
+        "linked_model_guid": snapshot.get("linked_model_guid", ""),
+        "storage_key": snapshot.get("storage_key", ""),
+        "linked_model_title": snapshot.get("linked_model_title", ""),
+        "linked_model_path": snapshot.get("linked_model_path", ""),
+        "host_model_path": snapshot.get("host_model_path", ""),
+        "host_revit_version": snapshot.get("host_revit_version", ""),
+        "element_count": snapshot.get("element_count", 0),
+        "skipped_count": snapshot.get("skipped_count", 0),
+        "error_count": snapshot.get("error_count", 0),
+        "capture_error_details": bool(snapshot.get("capture_error_details")),
+        "error_detail_limit": snapshot.get("error_detail_limit", 0),
+        "snapshot_mode": get_snapshot_mode(snapshot),
+        "parameter_profile": get_snapshot_parameter_profile(snapshot),
+        "snapshot_duration_seconds": snapshot.get("snapshot_duration_seconds"),
+    }
+
+
+def _write_snapshot_metadata_file(snapshot_path, snapshot):
+    metadata = _build_snapshot_metadata(snapshot)
+    if metadata is None:
+        return
+    _write_json(_get_snapshot_metadata_path(snapshot_path), metadata)
+
+
+def _load_snapshot_metadata_from_snapshot_file(snapshot_path):
+    if not snapshot_path or not os.path.isfile(snapshot_path):
+        return None
+    marker = re.compile(r',\s*"elements"\s*:', re.MULTILINE)
+    try:
+        with io.open(snapshot_path, 'r', encoding='utf-8') as fh:
+            buffer = u""
+            while len(buffer) < SNAPSHOT_METADATA_SCAN_CHARS:
+                chunk = fh.read(8192)
+                if not chunk:
+                    break
+                buffer += chunk
+                match = marker.search(buffer)
+                if match is None:
+                    continue
+                metadata_text = buffer[:match.start()].rstrip()
+                if not metadata_text:
+                    return None
+                metadata = json.loads(metadata_text + u"\n}")
+                return _build_snapshot_metadata(metadata)
+    except Exception:
+        return None
+    return None
+
+
+def _load_snapshot_metadata(snapshot_path):
+    metadata_path = _get_snapshot_metadata_path(snapshot_path)
+    metadata = _load_json(metadata_path)
+    if metadata:
+        return metadata
+    metadata = _load_snapshot_metadata_from_snapshot_file(snapshot_path)
+    if metadata:
+        try:
+            _write_json(metadata_path, metadata)
+        except Exception:
+            pass
+    return metadata
+
+
+def _safe_file_modified_timestamp(path):
+    try:
+        return datetime.datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%dT%H:%M:%S")
+    except Exception:
+        return ""
+
+
+def _sanitise_folder_name(text):
+    text = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '_', text or 'unknown')
+    text = re.sub(r'_+', '_', text).strip('_')
+    return text[:80] or 'unknown'
+
+
+def _get_snapshots_root(storage_root, create=False):
+    path = os.path.join(storage_root, "lmm_snapshots")
+    if create and not os.path.isdir(path):
+        os.makedirs(path)
+    if not create and not os.path.isdir(path):
+        return None
+    return path
+
+
+def _get_guid_storage_folder_name(linked_guid):
+    return _sanitise_folder_name(linked_guid)
+
+
+def _get_legacy_storage_folder_name(linked_guid, linked_title):
+    safe_title = _sanitise_folder_name(linked_title)
+    safe_guid_prefix = _sanitise_folder_name((linked_guid or "unknown")[:8])
+    return "{0}_{1}".format(safe_title, safe_guid_prefix)
+
+
+def _make_unique_path(path):
+    if not os.path.exists(path):
+        return path
+    folder = os.path.dirname(path)
+    stem, ext = os.path.splitext(os.path.basename(path))
+    index = 1
+    while True:
+        candidate = os.path.join(folder, "{0}_{1}{2}".format(stem, index, ext))
+        if not os.path.exists(candidate):
+            return candidate
+        index += 1
+
+
+def _archive_snapshot_data(folder, snapshot, fallback_stem):
+    if snapshot is None:
+        return None
+    timestamp_sort = snapshot.get("timestamp_sort") or fallback_stem
+    archive_path = os.path.join(folder, "{0}_previous.json".format(timestamp_sort))
+    archive_path = _make_unique_path(archive_path)
+    _write_json(archive_path, snapshot)
+    try:
+        _write_snapshot_metadata_file(archive_path, snapshot)
+    except Exception:
+        pass
+    return archive_path
+
+
+def _merge_current_snapshot_file(source_path, target_path, target_folder):
+    if not os.path.isfile(source_path):
+        return
+    if not os.path.isfile(target_path):
+        os.rename(source_path, target_path)
+        return
+
+    source_snapshot = _load_json(source_path)
+    target_snapshot = _load_json(target_path)
+    source_ts = ""
+    target_ts = ""
+    if source_snapshot:
+        source_ts = source_snapshot.get("timestamp_sort", "")
+    if target_snapshot:
+        target_ts = target_snapshot.get("timestamp_sort", "")
+
+    if source_ts > target_ts:
+        if target_snapshot:
+            _archive_snapshot_data(target_folder, target_snapshot, "current_legacy_target")
+        os.remove(target_path)
+        os.rename(source_path, target_path)
+        return
+
+    if source_snapshot:
+        _archive_snapshot_data(target_folder, source_snapshot, "current_legacy_source")
+    os.remove(source_path)
+
+
+def _merge_storage_folders(primary_folder, legacy_folder):
+    if not legacy_folder or primary_folder == legacy_folder:
+        return
+    if not os.path.isdir(legacy_folder):
+        return
+    if not os.path.isdir(primary_folder):
+        os.rename(legacy_folder, primary_folder)
+        return
+
+    for fname in os.listdir(legacy_folder):
+        source_path = os.path.join(legacy_folder, fname)
+        if not os.path.isfile(source_path):
+            continue
+        target_path = os.path.join(primary_folder, fname)
+        if fname == "current.json":
+            _merge_current_snapshot_file(source_path, target_path, primary_folder)
+            continue
+        if os.path.exists(target_path):
+            target_path = _make_unique_path(target_path)
+        os.rename(source_path, target_path)
+
+    if not os.listdir(legacy_folder):
+        os.rmdir(legacy_folder)
+
+
+def _resolve_storage_folder(linked_guid, linked_title, storage_root, create=True):
+    snapshots_root = _get_snapshots_root(storage_root, create=create)
+    if snapshots_root is None:
+        return None
+
+    primary_path = os.path.join(
+        snapshots_root,
+        _get_guid_storage_folder_name(linked_guid),
+    )
+    legacy_path = os.path.join(
+        snapshots_root,
+        _get_legacy_storage_folder_name(linked_guid, linked_title),
+    )
+
+    if os.path.isdir(legacy_path):
+        _merge_storage_folders(primary_path, legacy_path)
+
+    if os.path.isdir(primary_path):
+        return primary_path
+    if os.path.isdir(legacy_path):
+        return legacy_path
+    if create:
+        os.makedirs(primary_path)
+        return primary_path
+    return None
+
+
+def _get_fallback_storage_root():
+    appdata = os.environ.get("APPDATA", os.path.expanduser("~"))
+    return os.path.join(appdata, "pyRevit", "LMM")
+
+
+def _iter_storage_roots(storage_root):
+    roots = []
+    for candidate in (storage_root, _get_fallback_storage_root()):
+        if candidate and candidate not in roots:
+            roots.append(candidate)
+    return roots
+
+
+def _count_snapshot_files(folder):
+    if not folder or not os.path.isdir(folder):
+        return 0
+    count = 0
+    current_path = os.path.join(folder, "current.json")
+    if os.path.isfile(current_path):
+        count += 1
+    count += len([
+        fname for fname in os.listdir(folder)
+        if fname.endswith("_previous.json")
+    ])
+    return count
+
+
+def _load_latest_snapshot_from_folder(folder):
+    if not folder or not os.path.isdir(folder):
+        return None
+
+    current_path = os.path.join(folder, "current.json")
+    if os.path.isfile(current_path):
+        current = _load_snapshot_metadata(current_path)
+        if current:
+            return current
+
+    previous_paths = sorted(
+        [
+            os.path.join(folder, fname)
+            for fname in os.listdir(folder)
+            if fname.endswith("_previous.json")
+        ],
+        reverse=True,
+    )
+    for path in previous_paths:
+        snap = _load_snapshot_metadata(path)
+        if snap:
+            return snap
+    return None
+
+
+def _floats_differ(a, b, tol):
+    if a is None and b is None:
+        return False
+    if a is None or b is None:
+        return True
+    try:
+        return abs(float(a) - float(b)) > tol
+    except (TypeError, ValueError):
+        return a != b
+
+
+def _elementid_value(eid):
+    """Return ElementId numeric value across Revit versions."""
+    if eid is None:
+        return None
+    if hasattr(eid, "Value"):
+        return int(eid.Value)
+    return int(eid.IntegerValue)
+
+
+def _elementid_is_valid(eid):
+    """True when eid resolves to a non-negative value."""
+    value = _elementid_value(eid)
+    return value is not None and value >= 0
+
+
+def _normalise_detail_limit(value):
+    try:
+        return max(int(value), 0)
+    except Exception:
+        return DEFAULT_MAX_ERROR_DETAILS
+
+
+def _normalise_snapshot_mode(value):
+    mode = (value or SNAPSHOT_MODE_FULL).strip().lower()
+    if mode not in (SNAPSHOT_MODE_FAST, SNAPSHOT_MODE_FULL):
+        return SNAPSHOT_MODE_FULL
+    return mode
+
+
+def _get_parameter_profile_for_mode(snapshot_mode):
+    snapshot_mode = _normalise_snapshot_mode(snapshot_mode)
+    if snapshot_mode == SNAPSHOT_MODE_FAST:
+        return PARAMETER_PROFILE_NONE
+    return PARAMETER_PROFILE_CURATED_V1
+
+
+def _normalise_parameter_name(name):
+    return (name or "").strip().lower()
+
+
+def _merge_parameter_names(*name_sets):
+    ordered = []
+    seen = set()
+    for name_set in name_sets:
+        for name in name_set or ():
+            norm = _normalise_parameter_name(name)
+            if not norm or norm in seen:
+                continue
+            seen.add(norm)
+            ordered.append(name)
+    return tuple(ordered)
+
+
+def _get_category_parameter_pack(category_name):
+    if not category_name:
+        return {"instance": (), "type": ()}
+    pack = CATEGORY_PARAMETER_PACKS.get(category_name)
+    if pack is not None:
+        return pack
+    return {"instance": (), "type": ()}
+
+
+def _build_parameter_capture_plan(elem, snapshot_mode):
+    profile = _get_parameter_profile_for_mode(snapshot_mode)
+    if profile == PARAMETER_PROFILE_NONE:
+        return {
+            "profile": profile,
+            "instance_names": (),
+            "type_names": (),
+        }
+
+    category_name = None
+    try:
+        if elem is not None and elem.Category is not None:
+            category_name = elem.Category.Name
+    except Exception:
+        category_name = None
+
+    pack = _get_category_parameter_pack(category_name)
+    return {
+        "profile": profile,
+        "instance_names": _merge_parameter_names(
+            COMMON_INSTANCE_PARAMETER_NAMES,
+            COMMON_DIMENSION_PARAMETER_NAMES,
+            pack.get("instance"),
+        ),
+        "type_names": _merge_parameter_names(
+            COMMON_TYPE_PARAMETER_NAMES,
+            COMMON_DIMENSION_PARAMETER_NAMES,
+            pack.get("type"),
+        ),
+    }
+
+
+def _snapshot_has_parameter_payload(snapshot):
+    elements = snapshot.get("elements", {})
+    for record in elements.values():
+        params = record.get("parameters", {})
+        if params:
+            names = [name for name in params.keys() if name != "__params_truncated__"]
+            if names:
+                return True
+    return False
+
+
+def get_snapshot_mode(snapshot):
+    if snapshot is None:
+        return SNAPSHOT_MODE_FULL
+    mode = snapshot.get("snapshot_mode")
+    if mode:
+        return _normalise_snapshot_mode(mode)
+    if _snapshot_has_parameter_payload(snapshot):
+        return SNAPSHOT_MODE_FULL
+    return SNAPSHOT_MODE_FAST
+
+
+def get_snapshot_parameter_profile(snapshot):
+    if snapshot is None:
+        return PARAMETER_PROFILE_CURATED_V1
+    profile = snapshot.get("parameter_profile")
+    if profile:
+        return profile
+    return _get_parameter_profile_for_mode(get_snapshot_mode(snapshot))
+
+
+def get_snapshot_compare_compatibility(snap_old, snap_new):
+    old_mode = get_snapshot_mode(snap_old)
+    new_mode = get_snapshot_mode(snap_new)
+    old_profile = get_snapshot_parameter_profile(snap_old)
+    new_profile = get_snapshot_parameter_profile(snap_new)
+    old_has_parameters = _snapshot_has_parameter_payload(snap_old)
+    new_has_parameters = _snapshot_has_parameter_payload(snap_new)
+
+    result = {
+        "compatible": True,
+        "reason": None,
+        "message": "",
+        "old_mode": old_mode,
+        "new_mode": new_mode,
+        "old_profile": old_profile,
+        "new_profile": new_profile,
+        "old_has_parameters": old_has_parameters,
+        "new_has_parameters": new_has_parameters,
+    }
+
+    if (
+        old_mode != new_mode or
+        old_profile != new_profile or
+        old_has_parameters != new_has_parameters
+    ):
+        result["compatible"] = False
+        result["reason"] = COMPARE_REASON_MODE_MISMATCH
+        result["message"] = (
+            "Cannot compare snapshots captured with different data modes. "
+            "Baseline is '{0}' ({1}) and current is '{2}' ({3}). Capture both snapshots "
+            "in the same mode/profile so parameter coverage is consistent."
+        ).format(old_mode, old_profile, new_mode, new_profile)
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Category exclusion list (lazily initialised — avoids import at module level)
+# ---------------------------------------------------------------------------
+
+_EXCLUDE_CATS = None
+
+
+def _build_exclude_set():
+    from Autodesk.Revit.DB import BuiltInCategory as BIC
+    names = [
+        "OST_Views", "OST_Sheets", "OST_Grids", "OST_Levels",
+        "OST_RoomSeparationLines", "OST_AreaBoundary",
+        "OST_Dimensions", "OST_GenericAnnotation",
+        "OST_TextNotes", "OST_SketchLines", "OST_Lines",
+        "OST_CropRegion", "OST_SectionBox", "OST_Viewers",
+        "OST_CamerasFrustum", "OST_ScheduleGraphics",
+        "OST_IOS_GeoLocations", "OST_ReferencePoints",
+        "OST_ModelGroupLeader", "OST_SitePropertyLineSegment",
+    ]
+    result = set()
+    for name in names:
+        try:
+            val = getattr(BIC, name, None)
+            if val is not None:
+                result.add(int(val))
+        except Exception:
+            pass
+    return result
+
+
+def _get_exclude_cats():
+    global _EXCLUDE_CATS
+    if _EXCLUDE_CATS is None:
+        _EXCLUDE_CATS = _build_exclude_set()
+    return _EXCLUDE_CATS
+
+
+# ---------------------------------------------------------------------------
+# Attribute extractors
+# ---------------------------------------------------------------------------
+
+def _get_workset_name(elem, link_doc, caches=None):
+    try:
+        wsid  = elem.WorksetId
+        wsid_value = _elementid_value(wsid)
+        if caches is not None:
+            cached_name = caches["workset_names"].get(wsid_value)
+            if cached_name is not None:
+                return cached_name
+        table = link_doc.GetWorksetTable()
+        ws    = table.GetWorkset(wsid)
+        ws_name = ws.Name if ws else str(wsid_value)
+        if caches is not None:
+            caches["workset_names"][wsid_value] = ws_name
+        return ws_name
+    except Exception:
+        return None
+
+
+def _get_elem_name_by_id(elem_id, link_doc, caches=None):
+    try:
+        if not _elementid_is_valid(elem_id):
+            return None
+        elem_id_value = _elementid_value(elem_id)
+        if caches is not None:
+            cached_name = caches["element_names"].get(elem_id_value)
+            if elem_id_value in caches["element_names"]:
+                return cached_name
+        e = link_doc.GetElement(elem_id)
+        element_name = e.Name if e else None
+        if caches is not None:
+            caches["element_names"][elem_id_value] = element_name
+        return element_name
+    except Exception:
+        return None
+
+
+def _get_family_and_type(elem, caches=None):
+    family_name = type_name = None
+    type_id_value = None
+    try:
+        type_id_value = _elementid_value(elem.GetTypeId())
+    except Exception:
+        type_id_value = None
+    if caches is not None and type_id_value is not None:
+        cached_value = caches["family_type_names"].get(type_id_value)
+        if cached_value is not None:
+            return cached_value
+    try:
+        sym = getattr(elem, 'Symbol', None)
+        if sym is not None:
+            family_name = sym.FamilyName
+            type_name   = sym.Name
+        elif hasattr(elem, 'Name'):
+            type_name = elem.Name
+    except Exception:
+        pass
+    if type_name is None:
+        try:
+            tid = elem.GetTypeId()
+            if _elementid_is_valid(tid):
+                te = elem.Document.GetElement(tid)
+                if te:
+                    type_name = te.Name
+        except Exception:
+            pass
+    if caches is not None and type_id_value is not None:
+        caches["family_type_names"][type_id_value] = (family_name, type_name)
+    return family_name, type_name
+
+
+def _get_location(elem):
+    """Returns (loc_type, x, y, z, rotation). loc_type in {'point','curve_mid','none'}."""
+    try:
+        from Autodesk.Revit.DB import LocationPoint, LocationCurve
+        loc = elem.Location
+        if loc is None:
+            return 'none', None, None, None, None
+        if isinstance(loc, LocationPoint):
+            pt = loc.Point
+            try:
+                rot = loc.Rotation
+            except Exception:
+                rot = None
+            return 'point', pt.X, pt.Y, pt.Z, rot
+        if isinstance(loc, LocationCurve):
+            c = loc.Curve
+            if c is not None:
+                mid = c.Evaluate(0.5, True)
+                return 'curve_mid', mid.X, mid.Y, mid.Z, None
+    except Exception:
+        pass
+    return 'none', None, None, None, None
+
+
+def _get_transform_rotation_z(transform):
+    if transform is None:
+        return None
+    try:
+        basis_x = transform.BasisX
+        return math.atan2(basis_x.Y, basis_x.X)
+    except Exception:
+        return None
+
+
+def _transform_xyz(x, y, z, transform):
+    if transform is None or x is None or y is None or z is None:
+        return None, None, None
+    try:
+        origin = transform.Origin
+        basis_x = transform.BasisX
+        basis_y = transform.BasisY
+        basis_z = transform.BasisZ
+        return (
+            origin.X + (x * basis_x.X) + (y * basis_y.X) + (z * basis_z.X),
+            origin.Y + (x * basis_x.Y) + (y * basis_y.Y) + (z * basis_z.Y),
+            origin.Z + (x * basis_x.Z) + (y * basis_y.Z) + (z * basis_z.Z),
+        )
+    except Exception:
+        return None, None, None
+
+
+def _transform_bounding_box(bb_values, transform):
+    if transform is None:
+        return bb_values
+    if bb_values is None:
+        return None, None, None, None, None, None
+    min_x, min_y, min_z, max_x, max_y, max_z = bb_values
+    corners = [
+        (min_x, min_y, min_z),
+        (min_x, min_y, max_z),
+        (min_x, max_y, min_z),
+        (min_x, max_y, max_z),
+        (max_x, min_y, min_z),
+        (max_x, min_y, max_z),
+        (max_x, max_y, min_z),
+        (max_x, max_y, max_z),
+    ]
+    transformed = []
+    for corner in corners:
+        tx, ty, tz = _transform_xyz(corner[0], corner[1], corner[2], transform)
+        if tx is None or ty is None or tz is None:
+            return None, None, None, None, None, None
+        transformed.append((tx, ty, tz))
+    xs = [pt[0] for pt in transformed]
+    ys = [pt[1] for pt in transformed]
+    zs = [pt[2] for pt in transformed]
+    return min(xs), min(ys), min(zs), max(xs), max(ys), max(zs)
+
+
+def _get_link_transform_record(link_instance):
+    try:
+        transform = link_instance.GetTransform()
+    except Exception:
+        transform = None
+
+    if transform is None:
+        return None, {
+            "link_transform_origin_x": None,
+            "link_transform_origin_y": None,
+            "link_transform_origin_z": None,
+            "link_transform_basis_xx": None,
+            "link_transform_basis_xy": None,
+            "link_transform_basis_xz": None,
+            "link_transform_basis_yx": None,
+            "link_transform_basis_yy": None,
+            "link_transform_basis_yz": None,
+            "link_transform_basis_zx": None,
+            "link_transform_basis_zy": None,
+            "link_transform_basis_zz": None,
+            "link_transform_rotation_z": None,
+        }
+
+    try:
+        origin = transform.Origin
+        basis_x = transform.BasisX
+        basis_y = transform.BasisY
+        basis_z = transform.BasisZ
+        data = {
+            "link_transform_origin_x": origin.X,
+            "link_transform_origin_y": origin.Y,
+            "link_transform_origin_z": origin.Z,
+            "link_transform_basis_xx": basis_x.X,
+            "link_transform_basis_xy": basis_x.Y,
+            "link_transform_basis_xz": basis_x.Z,
+            "link_transform_basis_yx": basis_y.X,
+            "link_transform_basis_yy": basis_y.Y,
+            "link_transform_basis_yz": basis_y.Z,
+            "link_transform_basis_zx": basis_z.X,
+            "link_transform_basis_zy": basis_z.Y,
+            "link_transform_basis_zz": basis_z.Z,
+            "link_transform_rotation_z": _get_transform_rotation_z(transform),
+        }
+        return transform, data
+    except Exception:
+        return None, {
+            "link_transform_origin_x": None,
+            "link_transform_origin_y": None,
+            "link_transform_origin_z": None,
+            "link_transform_basis_xx": None,
+            "link_transform_basis_xy": None,
+            "link_transform_basis_xz": None,
+            "link_transform_basis_yx": None,
+            "link_transform_basis_yy": None,
+            "link_transform_basis_yz": None,
+            "link_transform_basis_zx": None,
+            "link_transform_basis_zy": None,
+            "link_transform_basis_zz": None,
+            "link_transform_rotation_z": None,
+        }
+
+
+def _get_bounding_box(elem):
+    """Returns (min_x,min_y,min_z,max_x,max_y,max_z) or 6×None."""
+    try:
+        bb = elem.get_BoundingBox(None)
+        if bb is None:
+            return None, None, None, None, None, None
+        return bb.Min.X, bb.Min.Y, bb.Min.Z, bb.Max.X, bb.Max.Y, bb.Max.Z
+    except Exception:
+        return None, None, None, None, None, None
+
+
+def _record_parameters(elem, snapshot_mode, caches=None):
+    """
+    Capture curated instance + type parameters for the active snapshot profile.
+    Returns {name: {value, storage_type, is_type_param}}.
+    """
+    from Autodesk.Revit.DB import StorageType
+
+    def _read(p, is_type):
+        if p is None or p.Definition is None:
+            return None, None
+        name = p.Definition.Name
+        if not name:
+            return None, None
+        st = p.StorageType
+        try:
+            if st == StorageType.String:
+                val = p.AsString()
+            elif st == StorageType.Integer:
+                val = p.AsInteger()
+            elif st == StorageType.Double:
+                val = round(p.AsDouble(), 8)
+            elif st == StorageType.ElementId:
+                eid = p.AsElementId()
+                val = _elementid_value(eid)
+            else:
+                return None, None
+        except Exception:
+            return None, None
+        return name, {"value": val, "storage_type": str(st), "is_type_param": is_type}
+
+    plan = _build_parameter_capture_plan(elem, snapshot_mode)
+    if plan["profile"] == PARAMETER_PROFILE_NONE:
+        return {}
+
+    instance_targets = dict(
+        (_normalise_parameter_name(name), name)
+        for name in plan["instance_names"]
+    )
+    type_targets = dict(
+        (_normalise_parameter_name(name), name)
+        for name in plan["type_names"]
+    )
+
+    result = {}
+
+    for p in elem.Parameters:
+        n, entry = _read(p, False)
+        norm = _normalise_parameter_name(n)
+        if n and norm in instance_targets and n not in result:
+            result[n] = entry
+
+    try:
+        tid = elem.GetTypeId()
+        if _elementid_is_valid(tid):
+            tid_value = _elementid_value(tid)
+            cache_key = (tid_value, plan["profile"])
+            cached_type_params = None
+            if caches is not None:
+                cached_type_params = caches["type_parameters"].get(cache_key)
+            if cached_type_params is None:
+                cached_type_params = {}
+                te = elem.Document.GetElement(tid)
+                if te:
+                    for p in te.Parameters:
+                        n, entry = _read(p, True)
+                        norm = _normalise_parameter_name(n)
+                        if n and norm in type_targets and n not in cached_type_params:
+                            cached_type_params[n] = entry
+                if caches is not None:
+                    caches["type_parameters"][cache_key] = cached_type_params
+            for n in sorted(cached_type_params.keys()):
+                if n not in result:
+                    result[n] = cached_type_params[n]
+    except Exception:
+        pass
+    return result
+
+
+def _element_change_hash(rec):
+    """
+    Lightweight MD5 over geometry+identity fields for fast equality screening.
+    Parameters are excluded from the hash and checked separately.
+    """
+    def _r(v, digits):
+        return round(v, digits) if v is not None else None
+
+    key = json.dumps({
+        "type":    rec.get("type_name"),
+        "family":  rec.get("family_name"),
+        "lt":      rec.get("location_type"),
+        "x":       _r(rec.get("location_x"),       4),
+        "y":       _r(rec.get("location_y"),       4),
+        "z":       _r(rec.get("location_z"),       4),
+        "rot":     _r(rec.get("location_rotation"), 6),
+        "hx":      _r(rec.get("host_location_x"), 4),
+        "hy":      _r(rec.get("host_location_y"), 4),
+        "hz":      _r(rec.get("host_location_z"), 4),
+        "hrot":    _r(rec.get("host_location_rotation"), 6),
+        "bb_min":  [_r(rec.get("bb_min_x"), 4), _r(rec.get("bb_min_y"), 4), _r(rec.get("bb_min_z"), 4)],
+        "bb_max":  [_r(rec.get("bb_max_x"), 4), _r(rec.get("bb_max_y"), 4), _r(rec.get("bb_max_z"), 4)],
+        "hbb_min": [_r(rec.get("host_bb_min_x"), 4), _r(rec.get("host_bb_min_y"), 4), _r(rec.get("host_bb_min_z"), 4)],
+        "hbb_max": [_r(rec.get("host_bb_max_x"), 4), _r(rec.get("host_bb_max_y"), 4), _r(rec.get("host_bb_max_z"), 4)],
+        "tx":      _r(rec.get("link_transform_origin_x"), 4),
+        "ty":      _r(rec.get("link_transform_origin_y"), 4),
+        "tz":      _r(rec.get("link_transform_origin_z"), 4),
+        "trot":    _r(rec.get("link_transform_rotation_z"), 6),
+        "tbx":     [_r(rec.get("link_transform_basis_xx"), 6), _r(rec.get("link_transform_basis_xy"), 6), _r(rec.get("link_transform_basis_xz"), 6)],
+        "tby":     [_r(rec.get("link_transform_basis_yx"), 6), _r(rec.get("link_transform_basis_yy"), 6), _r(rec.get("link_transform_basis_yz"), 6)],
+        "tbz":     [_r(rec.get("link_transform_basis_zx"), 6), _r(rec.get("link_transform_basis_zy"), 6), _r(rec.get("link_transform_basis_zz"), 6)],
+        "ws":      rec.get("workset_id"),
+        "lv":      rec.get("level_id"),
+        "ph_cr":   rec.get("phase_created_id"),
+        "ph_dm":   rec.get("phase_demolished_id"),
+    }, sort_keys=True)
+    return hashlib.md5(key.encode('utf-8')).hexdigest()
+
+
+def _record_element(elem, link_doc, caches=None, include_parameters=True, snapshot_mode=SNAPSHOT_MODE_FULL, link_transform=None, link_transform_data=None):
+    """Build a full serialisable record for one element. Returns None if not recordable."""
+    cat = elem.Category
+    if cat is None:
+        return None
+    try:
+        from Autodesk.Revit.DB import CategoryType
+        if cat.CategoryType != CategoryType.Model:
+            return None
+    except Exception:
+        pass
+    try:
+        if elem.ViewSpecific:
+            return None
+    except Exception:
+        pass
+
+    cat_id = _elementid_value(cat.Id)
+    if cat_id is None:
+        return None
+    if cat_id in _get_exclude_cats():
+        return None
+
+    family_name, type_name = _get_family_and_type(elem, caches=caches)
+    loc_type, lx, ly, lz, lrot = _get_location(elem)
+    bb_min_x, bb_min_y, bb_min_z, bb_max_x, bb_max_y, bb_max_z = _get_bounding_box(elem)
+    host_lx, host_ly, host_lz = _transform_xyz(lx, ly, lz, link_transform)
+    link_rotation_z = None
+    if link_transform_data is not None:
+        link_rotation_z = link_transform_data.get("link_transform_rotation_z")
+    host_rotation = None
+    if lrot is not None:
+        host_rotation = lrot + (link_rotation_z or 0.0)
+    host_bb_min_x, host_bb_min_y, host_bb_min_z, host_bb_max_x, host_bb_max_y, host_bb_max_z = _transform_bounding_box(
+        (bb_min_x, bb_min_y, bb_min_z, bb_max_x, bb_max_y, bb_max_z),
+        link_transform,
+    )
+
+    wsid = wsname = None
+    try:
+        wsid = _elementid_value(elem.WorksetId)
+        wsname = _get_workset_name(elem, link_doc, caches=caches)
+    except Exception:
+        pass
+
+    level_id = level_name = None
+    try:
+        lid = elem.LevelId
+        if _elementid_is_valid(lid):
+            level_id = _elementid_value(lid)
+            level_name = _get_elem_name_by_id(lid, link_doc, caches=caches)
+    except Exception:
+        pass
+
+    phase_created_id = phase_created_name = None
+    phase_demo_id = phase_demo_name = None
+    try:
+        pcid = elem.CreatedPhaseId
+        if _elementid_is_valid(pcid):
+            phase_created_id = _elementid_value(pcid)
+            phase_created_name = _get_elem_name_by_id(pcid, link_doc, caches=caches)
+    except Exception:
+        pass
+    try:
+        pdid = elem.DemolishedPhaseId
+        if _elementid_is_valid(pdid):
+            phase_demo_id = _elementid_value(pdid)
+            phase_demo_name = _get_elem_name_by_id(pdid, link_doc, caches=caches)
+    except Exception:
+        pass
+
+    design_option = None
+    try:
+        dopt = elem.DesignOption
+        if dopt is not None:
+            design_option = dopt.Name
+    except Exception:
+        pass
+
+    params = _record_parameters(elem, snapshot_mode, caches=caches) if include_parameters else {}
+
+    rec = {
+        "unique_id":             elem.UniqueId,
+        "element_id":            _elementid_value(elem.Id),
+        "category_id":           cat_id,
+        "category_name":         cat.Name,
+        "family_name":           family_name,
+        "type_name":             type_name,
+        "workset_id":            wsid,
+        "workset_name":          wsname,
+        "level_id":              level_id,
+        "level_name":            level_name,
+        "design_option":         design_option,
+        "location_type":         loc_type,
+        "location_x":            lx,
+        "location_y":            ly,
+        "location_z":            lz,
+        "location_rotation":     lrot,
+        "host_location_x":       host_lx,
+        "host_location_y":       host_ly,
+        "host_location_z":       host_lz,
+        "host_location_rotation": host_rotation,
+        "bb_min_x":              bb_min_x,
+        "bb_min_y":              bb_min_y,
+        "bb_min_z":              bb_min_z,
+        "bb_max_x":              bb_max_x,
+        "bb_max_y":              bb_max_y,
+        "bb_max_z":              bb_max_z,
+        "host_bb_min_x":         host_bb_min_x,
+        "host_bb_min_y":         host_bb_min_y,
+        "host_bb_min_z":         host_bb_min_z,
+        "host_bb_max_x":         host_bb_max_x,
+        "host_bb_max_y":         host_bb_max_y,
+        "host_bb_max_z":         host_bb_max_z,
+        "phase_created_id":      phase_created_id,
+        "phase_created_name":    phase_created_name,
+        "phase_demolished_id":   phase_demo_id,
+        "phase_demolished_name": phase_demo_name,
+        "parameters":            params,
+    }
+    if link_transform_data:
+        rec.update(link_transform_data)
+    rec["change_hash"] = _element_change_hash(rec)
+    return rec
+
+
+# ---------------------------------------------------------------------------
+# Public: linked model discovery
+# ---------------------------------------------------------------------------
+
+def get_loaded_links(host_doc):
+    """
+    Return list of dicts for all RevitLinkInstances in host_doc.
+    Each: {instance, title, guid, is_loaded}
+    """
+    result = []
+    if host_doc is None:
+        return result
+    try:
+        from Autodesk.Revit.DB import FilteredElementCollector, RevitLinkInstance
+        for inst in FilteredElementCollector(host_doc).OfClass(RevitLinkInstance):
+            try:
+                link_doc  = inst.GetLinkDocument()
+                is_loaded = link_doc is not None
+                title     = link_doc.Title if is_loaded else (inst.Name or "Unloaded Link")
+                guid      = link_doc.ProjectInformation.UniqueId if is_loaded else None
+                result.append({
+                    "instance":  inst,
+                    "title":     title,
+                    "guid":      guid,
+                    "is_loaded": is_loaded,
+                })
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return result
+
+
+def list_history_targets(host_doc, storage_root, loaded_links=None):
+    """
+    Return logical history rows for the History tab.
+    Includes currently loaded links and history-only snapshot roots from disk.
+    """
+    rows_by_guid = {}
+    display_order = []
+
+    if loaded_links is None:
+        loaded_links = get_loaded_links(host_doc)
+
+    for info in loaded_links:
+        guid = info.get("guid")
+        if guid and guid not in rows_by_guid:
+            rows_by_guid[guid] = {
+                "instance": info.get("instance"),
+                "title": info.get("title") or "Unknown Link",
+                "guid": guid,
+                "is_loaded": bool(info.get("is_loaded")),
+                "history_only": False,
+                "snapshot_count": 0,
+                "latest_snapshot_timestamp": "",
+                "latest_snapshot_mode": "",
+                "storage_roots": [],
+            }
+            display_order.append(guid)
+
+    for candidate_root in _iter_storage_roots(storage_root):
+        snapshots_root = _get_snapshots_root(candidate_root, create=False)
+        if not snapshots_root or not os.path.isdir(snapshots_root):
+            continue
+
+        for folder_name in sorted(os.listdir(snapshots_root)):
+            folder = os.path.join(snapshots_root, folder_name)
+            if not os.path.isdir(folder):
+                continue
+
+            latest = _load_latest_snapshot_from_folder(folder)
+            if latest is None:
+                continue
+
+            guid = latest.get("linked_model_guid") or folder_name
+            row = rows_by_guid.get(guid)
+            if row is None:
+                row = {
+                    "instance": None,
+                    "title": latest.get("linked_model_title") or folder_name,
+                    "guid": guid,
+                    "is_loaded": False,
+                    "history_only": True,
+                    "snapshot_count": 0,
+                    "latest_snapshot_timestamp": "",
+                    "latest_snapshot_mode": "",
+                    "storage_roots": [],
+                }
+                rows_by_guid[guid] = row
+                display_order.append(guid)
+
+            row["title"] = row.get("title") or latest.get("linked_model_title") or folder_name
+            row["history_only"] = not bool(row.get("is_loaded"))
+            row["snapshot_count"] += _count_snapshot_files(folder)
+
+            latest_ts = latest.get("timestamp_sort", "")
+            current_ts = row.get("latest_snapshot_timestamp_sort", "")
+            if latest_ts >= current_ts:
+                row["latest_snapshot_timestamp_sort"] = latest_ts
+                row["latest_snapshot_timestamp"] = latest.get("timestamp", "")
+                row["latest_snapshot_mode"] = get_snapshot_mode(latest)
+                if not row.get("is_loaded"):
+                    row["title"] = latest.get("linked_model_title") or row["title"]
+
+            if candidate_root not in row["storage_roots"]:
+                row["storage_roots"].append(candidate_root)
+
+    rows = [rows_by_guid[key] for key in display_order]
+    rows.sort(
+        key=lambda row: (
+            0 if row.get("is_loaded") else 1,
+            row.get("title", "").lower(),
+            row.get("guid", ""),
+        )
+    )
+    return rows
+
+
+# ---------------------------------------------------------------------------
+# Public: snapshot build + persistence
+# ---------------------------------------------------------------------------
+
+def collect_linked_model_elements(link_doc, capture_error_details=False, max_error_details=DEFAULT_MAX_ERROR_DETAILS, progress_callback=None, snapshot_mode=SNAPSHOT_MODE_FULL, link_transform=None, link_transform_data=None):
+    """
+    Collect all recordable 3D elements from linked model.
+    Returns (elements_dict, skipped_count, error_count, error_details).
+    elements_dict keyed by UniqueId.
+    """
+    from Autodesk.Revit.DB import FilteredElementCollector
+    elements = {}
+    skipped  = 0
+    errors   = 0
+    error_details = []
+    detail_limit = _normalise_detail_limit(max_error_details)
+    snapshot_mode = _normalise_snapshot_mode(snapshot_mode)
+    include_parameters = snapshot_mode == SNAPSHOT_MODE_FULL
+    caches = {
+        "workset_names": {},
+        "element_names": {},
+        "family_type_names": {},
+        "type_parameters": {},
+    }
+    started_at = time.time()
+
+    def report_progress(processed, total, note):
+        if progress_callback is None:
+            return
+        elapsed = max(time.time() - started_at, 0.0)
+        eta_seconds = None
+        percent = 0
+        if total > 0:
+            percent = int(round((float(processed) / float(total)) * 100.0))
+        if processed > 0 and total > processed:
+            eta_seconds = (elapsed / float(processed)) * float(total - processed)
+        progress_callback({
+            "processed": processed,
+            "total": total,
+            "percent": percent,
+            "elapsed_seconds": elapsed,
+            "eta_seconds": eta_seconds,
+            "note": note,
+        })
+
+    try:
+        report_progress(0, 0, "Enumerating linked model elements...")
+        collector = FilteredElementCollector(link_doc).WhereElementIsNotElementType()
+        total = 0
+        try:
+            total = collector.GetElementCount()
+        except Exception:
+            total = 0
+        report_every = max(1, total // 100) if total else 250
+        if total:
+            report_progress(0, total, "Processing {0} candidate elements ({1} mode)...".format(total, snapshot_mode))
+        else:
+            report_progress(0, 0, "Processing linked model elements ({0} mode)...".format(snapshot_mode))
+        for index, elem in enumerate(collector, 1):
+            try:
+                rec = _record_element(
+                    elem,
+                    link_doc,
+                    caches=caches,
+                    include_parameters=include_parameters,
+                    snapshot_mode=snapshot_mode,
+                    link_transform=link_transform,
+                    link_transform_data=link_transform_data,
+                )
+                if rec is None:
+                    skipped += 1
+                else:
+                    elements[rec["unique_id"]] = rec
+            except Exception as ex:
+                errors += 1
+                if capture_error_details and len(error_details) < detail_limit:
+                    uid = None
+                    element_id = None
+                    category_name = None
+                    try:
+                        uid = elem.UniqueId
+                    except Exception:
+                        pass
+                    try:
+                        element_id = _elementid_value(elem.Id)
+                    except Exception:
+                        pass
+                    try:
+                        category_name = elem.Category.Name if elem.Category else None
+                    except Exception:
+                        pass
+                    error_details.append({
+                        "unique_id": uid,
+                        "element_id": element_id,
+                        "category_name": category_name,
+                        "error": str(ex),
+                    })
+            if index == 1 or (total and index == total) or (index % report_every) == 0:
+                if total:
+                    note = "Processed {0} of {1} elements...".format(index, total)
+                else:
+                    note = "Processed {0} elements...".format(index)
+                report_progress(index, total, note)
+    except Exception as ex:
+        raise RuntimeError(
+            "Collection failed for linked model: {0}".format(ex)
+        )
+    return elements, skipped, errors, error_details
+
+
+def build_snapshot(link_instance, host_doc, capture_error_details=False, max_error_details=DEFAULT_MAX_ERROR_DETAILS, progress_callback=None, snapshot_mode=SNAPSHOT_MODE_FULL):
+    """
+    Build a complete snapshot dict for the given RevitLinkInstance.
+    Does NOT write to disk — call save_snapshot() separately.
+    Raises ValueError if the link document is not loaded.
+    """
+    import uuid as _uuid
+    started_at = time.time()
+    snapshot_mode = _normalise_snapshot_mode(snapshot_mode)
+
+    link_doc = link_instance.GetLinkDocument()
+    if link_doc is None:
+        raise ValueError(
+            "Linked model is not loaded. Load it before taking a snapshot."
+        )
+    link_transform, link_transform_data = _get_link_transform_record(link_instance)
+
+    linked_guid  = link_doc.ProjectInformation.UniqueId
+    linked_title = link_doc.Title
+
+    try:
+        linked_path = link_doc.PathName or ""
+    except Exception:
+        linked_path = ""
+
+    try:
+        host_path = host_doc.PathName or ""
+    except Exception:
+        host_path = ""
+
+    try:
+        revit_version = str(host_doc.Application.VersionNumber)
+    except Exception:
+        revit_version = "unknown"
+
+    detail_limit = _normalise_detail_limit(max_error_details)
+    elements, skipped, errors, error_details = collect_linked_model_elements(
+        link_doc,
+        capture_error_details=capture_error_details,
+        max_error_details=detail_limit,
+        progress_callback=progress_callback,
+        snapshot_mode=snapshot_mode,
+        link_transform=link_transform,
+        link_transform_data=link_transform_data,
+    )
+
+    now            = datetime.datetime.now()
+    timestamp_iso  = now.strftime("%Y-%m-%dT%H:%M:%S")
+    timestamp_sort = now.strftime("%Y%m%dT%H%M%S")
+
+    return {
+        "schema_version":     SCHEMA_VERSION,
+        "snapshot_id":        str(_uuid.uuid4()),
+        "timestamp":          timestamp_iso,
+        "timestamp_sort":     timestamp_sort,
+        "linked_model_guid":  linked_guid,
+        "storage_key":        _get_guid_storage_folder_name(linked_guid),
+        "linked_model_title": linked_title,
+        "linked_model_path":  linked_path,
+        "host_model_path":    host_path,
+        "host_revit_version": revit_version,
+        "element_count":      len(elements),
+        "skipped_count":      skipped,
+        "error_count":        errors,
+        "capture_error_details": bool(capture_error_details),
+        "error_detail_limit": detail_limit,
+        "snapshot_mode":       snapshot_mode,
+        "parameter_profile":   _get_parameter_profile_for_mode(snapshot_mode),
+        "link_transform":      link_transform_data,
+        "error_details":      error_details if capture_error_details else [],
+        "snapshot_duration_seconds": round(max(time.time() - started_at, 0.0), 2),
+        "elements":           elements,
+    }
+
+
+def resolve_storage_root(host_doc):
+    """
+    Primary:  folder containing the host Revit model.
+    Fallback: %%APPDATA%%\\pyRevit\\LMM
+    """
+    try:
+        p = host_doc.PathName
+        if p:
+            folder = os.path.dirname(p)
+            if folder and os.path.isdir(folder):
+                return folder
+    except Exception:
+        pass
+    return _get_fallback_storage_root()
+
+
+def save_snapshot(snapshot, storage_root):
+    """
+    Persist snapshot to disk with history rotation.
+    Returns path to the new current.json.
+    """
+    guid  = snapshot["linked_model_guid"]
+    title = snapshot.get("linked_model_title", "unknown")
+    save_errors = []
+
+    for candidate_root in (storage_root, _get_fallback_storage_root()):
+        try:
+            folder = _resolve_storage_folder(guid, title, candidate_root, create=True)
+            current_path = os.path.join(folder, "current.json")
+
+            if os.path.isfile(current_path):
+                existing = _load_json(current_path)
+                if existing:
+                    old_ts = existing.get("timestamp_sort", "00000000T000000")
+                    archive_path = os.path.join(folder, "{0}_previous.json".format(old_ts))
+                    _write_json(archive_path, existing)
+                    try:
+                        _write_snapshot_metadata_file(archive_path, existing)
+                    except Exception:
+                        pass
+
+            archives = sorted(
+                f for f in os.listdir(folder) if f.endswith("_previous.json")
+            )
+            while len(archives) > MAX_HISTORY:
+                try:
+                    oldest_archive = archives.pop(0)
+                    os.remove(os.path.join(folder, oldest_archive))
+                    oldest_meta = _get_snapshot_metadata_path(
+                        os.path.join(folder, oldest_archive)
+                    )
+                    if os.path.isfile(oldest_meta):
+                        os.remove(oldest_meta)
+                except Exception:
+                    break
+
+            _write_json(current_path, snapshot)
+            try:
+                _write_snapshot_metadata_file(current_path, snapshot)
+            except Exception:
+                pass
+            return current_path
+        except Exception as ex:
+            save_errors.append("{0}: {1}".format(candidate_root, ex))
+            continue
+
+    raise IOError(
+        "Could not persist snapshot to primary or fallback storage roots. {0}".format(
+            " | ".join(save_errors)
+        )
+    )
+
+
+def list_snapshots(linked_model_guid, linked_title, storage_root):
+    """
+    Return available snapshots for a linked model, newest first.
+    Each entry: {path, timestamp, timestamp_sort, label,
+                 snapshot_id, element_count, is_current}
+    """
+    result = []
+    seen_paths = set()
+    seen_ids = set()
+
+    for candidate_root in _iter_storage_roots(storage_root):
+        folder = _resolve_storage_folder(
+            linked_model_guid,
+            linked_title,
+            candidate_root,
+            create=False,
+        )
+        if not folder or not os.path.isdir(folder):
+            continue
+
+        current_path = os.path.join(folder, "current.json")
+        if os.path.isfile(current_path):
+            snap = _load_snapshot_metadata(current_path)
+            snapshot_id = snap.get("snapshot_id", "") if snap else ""
+            if snap and current_path not in seen_paths and snapshot_id not in seen_ids:
+                result.append({
+                    "path":           current_path,
+                    "timestamp":      snap.get("timestamp", ""),
+                    "timestamp_sort": snap.get("timestamp_sort", ""),
+                    "label":          "Current  ({0})".format(snap.get("timestamp", "?")),
+                    "snapshot_id":    snapshot_id,
+                    "element_count":  snap.get("element_count", 0),
+                    "snapshot_mode":  get_snapshot_mode(snap),
+                    "parameter_profile": get_snapshot_parameter_profile(snap),
+                    "is_current":     True,
+                })
+                seen_paths.add(current_path)
+                if snapshot_id:
+                    seen_ids.add(snapshot_id)
+
+        for fname in sorted(
+            (f for f in os.listdir(folder) if f.endswith("_previous.json")),
+            reverse=True,
+        ):
+            path = os.path.join(folder, fname)
+            snap = _load_snapshot_metadata(path)
+            snapshot_id = snap.get("snapshot_id", "") if snap else ""
+            if snap and path not in seen_paths and snapshot_id not in seen_ids:
+                result.append({
+                    "path":           path,
+                    "timestamp":      snap.get("timestamp", ""),
+                    "timestamp_sort": snap.get("timestamp_sort", ""),
+                    "label":          "Previous ({0})".format(snap.get("timestamp", "?")),
+                    "snapshot_id":    snapshot_id,
+                    "element_count":  snap.get("element_count", 0),
+                    "snapshot_mode":  get_snapshot_mode(snap),
+                    "parameter_profile": get_snapshot_parameter_profile(snap),
+                    "is_current":     False,
+                })
+                seen_paths.add(path)
+                if snapshot_id:
+                    seen_ids.add(snapshot_id)
+
+    result.sort(
+        key=lambda item: (
+            item.get("timestamp_sort", ""),
+            1 if item.get("is_current") else 0,
+        ),
+        reverse=True,
+    )
+    return result
+
+
+def get_snapshot_status(linked_model_guid, linked_title, storage_root):
+    """
+    Lightweight snapshot status lookup for the Snapshot tab.
+    Uses file existence plus small metadata sidecars/header parsing rather than
+    loading full snapshot payloads.
+    """
+    status = {
+        "has_snapshot": False,
+        "has_current": False,
+        "snapshot_count": 0,
+        "history_count": 0,
+        "latest_timestamp": "",
+        "latest_mode": "",
+        "latest_profile": "",
+        "element_count": None,
+        "current_path": "",
+        "latest_path": "",
+    }
+    if not linked_model_guid:
+        return status
+
+    seen_paths = set()
+    latest_sort = ""
+
+    for candidate_root in _iter_storage_roots(storage_root):
+        folder = _resolve_storage_folder(
+            linked_model_guid,
+            linked_title,
+            candidate_root,
+            create=False,
+        )
+        if not folder or not os.path.isdir(folder):
+            continue
+
+        current_path = os.path.join(folder, "current.json")
+        if os.path.isfile(current_path) and current_path not in seen_paths:
+            seen_paths.add(current_path)
+            status["has_snapshot"] = True
+            status["has_current"] = True
+            status["snapshot_count"] += 1
+            status["current_path"] = current_path
+            metadata = _load_snapshot_metadata(current_path)
+            if metadata:
+                current_sort = metadata.get("timestamp_sort", "")
+                if current_sort >= latest_sort:
+                    latest_sort = current_sort
+                    status["latest_timestamp"] = metadata.get("timestamp", "")
+                    status["latest_mode"] = get_snapshot_mode(metadata)
+                    status["latest_profile"] = get_snapshot_parameter_profile(metadata)
+                    status["element_count"] = metadata.get("element_count")
+                    status["latest_path"] = current_path
+            elif not status["latest_timestamp"]:
+                status["latest_timestamp"] = _safe_file_modified_timestamp(current_path)
+                status["latest_path"] = current_path
+
+        latest_previous_path = None
+        for fname in sorted(
+            (f for f in os.listdir(folder) if f.endswith("_previous.json")),
+            reverse=True,
+        ):
+            path = os.path.join(folder, fname)
+            if path in seen_paths:
+                continue
+            seen_paths.add(path)
+            status["has_snapshot"] = True
+            status["snapshot_count"] += 1
+            status["history_count"] += 1
+            if latest_previous_path is None:
+                latest_previous_path = path
+
+        if not status["has_current"] and latest_previous_path:
+            metadata = _load_snapshot_metadata(latest_previous_path)
+            if metadata:
+                latest_sort = metadata.get("timestamp_sort", latest_sort)
+                status["latest_timestamp"] = metadata.get("timestamp", "")
+                status["latest_mode"] = get_snapshot_mode(metadata)
+                status["latest_profile"] = get_snapshot_parameter_profile(metadata)
+                status["element_count"] = metadata.get("element_count")
+                status["latest_path"] = latest_previous_path
+            elif not status["latest_timestamp"]:
+                status["latest_timestamp"] = _safe_file_modified_timestamp(latest_previous_path)
+                status["latest_path"] = latest_previous_path
+
+    return status
+
+
+def load_snapshot(path):
+    """Load and validate a snapshot from disk. Raises on failure."""
+    snap = _load_json(path)
+    if snap is None:
+        raise IOError("Cannot load snapshot: {0}".format(path))
+    ver = snap.get("schema_version")
+    if ver != SCHEMA_VERSION:
+        raise ValueError(
+            "Snapshot schema v{0} not supported (expected v{1}): {2}".format(
+                ver, SCHEMA_VERSION, path
+            )
+        )
+    snap["snapshot_mode"] = get_snapshot_mode(snap)
+    snap["parameter_profile"] = get_snapshot_parameter_profile(snap)
+    return snap
+
+
+# ---------------------------------------------------------------------------
+# Public: comparison
+# ---------------------------------------------------------------------------
+
+def compare_snapshots(snap_old, snap_new):
+    """
+    Diff two snapshots. snap_old is the baseline, snap_new is current.
+
+    Returns:
+        {
+          added:           [unique_id, ...],
+          deleted:         [unique_id, ...],
+          changed:         [{unique_id, element_record_new,
+                             diffs: [{field, old_value, new_value, category}],
+                             categories: [str]}],
+          unchanged_count: int,
+          snapshot_old_id: str,
+          snapshot_new_id: str,
+          timestamp_old:   str,
+          timestamp_new:   str,
+          summary:         {added, deleted, changed, unchanged,
+                            total_old, total_new},
+        }
+    """
+    compatibility = get_snapshot_compare_compatibility(snap_old, snap_new)
+    if not compatibility["compatible"]:
+        raise ValueError(compatibility["message"])
+
+    elems_old = snap_old.get("elements", {})
+    elems_new = snap_new.get("elements", {})
+    ids_old   = set(elems_old.keys())
+    ids_new   = set(elems_new.keys())
+
+    added   = sorted(ids_new - ids_old)
+    deleted = sorted(ids_old - ids_new)
+    common  = ids_old & ids_new
+
+    changed         = []
+    unchanged_count = 0
+
+    for uid in common:
+        rec_old = elems_old[uid]
+        rec_new = elems_new[uid]
+
+        h_old = rec_old.get("change_hash")
+        h_new = rec_new.get("change_hash")
+
+        if h_old and h_new and h_old == h_new:
+            # Geometry/identity unchanged — check only parameters
+            param_diffs = _diff_parameters(
+                rec_old.get("parameters", {}),
+                rec_new.get("parameters", {}),
+            )
+            if param_diffs:
+                changed.append({
+                    "unique_id":          uid,
+                    "element_record_new": rec_new,
+                    "diffs":              param_diffs,
+                    "categories":         [CHANGE_PARAMETER],
+                })
+            else:
+                unchanged_count += 1
+            continue
+
+        diffs = _diff_element(rec_old, rec_new)
+        if diffs:
+            cats = sorted(set(d["category"] for d in diffs))
+            changed.append({
+                "unique_id":          uid,
+                "element_record_new": rec_new,
+                "diffs":              diffs,
+                "categories":         cats,
+            })
+        else:
+            unchanged_count += 1
+
+    rollups = _build_compare_rollups(added, deleted, changed, elems_old, elems_new)
+
+    return {
+        "added":           added,
+        "deleted":         deleted,
+        "changed":         changed,
+        "unchanged_count": unchanged_count,
+        "snapshot_old_id": snap_old.get("snapshot_id"),
+        "snapshot_new_id": snap_new.get("snapshot_id"),
+        "timestamp_old":   snap_old.get("timestamp"),
+        "timestamp_new":   snap_new.get("timestamp"),
+        "snapshot_old_mode": compatibility["old_mode"],
+        "snapshot_new_mode": compatibility["new_mode"],
+        "snapshot_old_profile": compatibility["old_profile"],
+        "snapshot_new_profile": compatibility["new_profile"],
+        "rollups":         rollups,
+        "summary": {
+            "added":     len(added),
+            "deleted":   len(deleted),
+            "changed":   len(changed),
+            "unchanged": unchanged_count,
+            "total_old": len(ids_old),
+            "total_new": len(ids_new),
+        },
+    }
+
+
+def _build_compare_rollups(added_ids, deleted_ids, changed_rows, elems_old, elems_new):
+    category_rollups = {}
+    change_type_rollups = {}
+
+    def ensure_category(category_name):
+        key = category_name or "(Uncategorised)"
+        row = category_rollups.get(key)
+        if row is None:
+            row = {
+                "category_name": key,
+                "added": 0,
+                "deleted": 0,
+                "changed": 0,
+                "total": 0,
+            }
+            category_rollups[key] = row
+        return row
+
+    def ensure_change_type(change_name):
+        key = change_name or "(Unknown)"
+        row = change_type_rollups.get(key)
+        if row is None:
+            row = {
+                "change_type": key,
+                "count": 0,
+            }
+            change_type_rollups[key] = row
+        return row
+
+    for uid in added_ids:
+        rec = elems_new.get(uid, {})
+        category = rec.get("category_name")
+        row = ensure_category(category)
+        row["added"] += 1
+        row["total"] += 1
+
+    for uid in deleted_ids:
+        rec = elems_old.get(uid, {})
+        category = rec.get("category_name")
+        row = ensure_category(category)
+        row["deleted"] += 1
+        row["total"] += 1
+
+    for change in changed_rows:
+        rec = change.get("element_record_new", {})
+        category = rec.get("category_name")
+        row = ensure_category(category)
+        row["changed"] += 1
+        row["total"] += 1
+        for category_name in change.get("categories", []):
+            change_row = ensure_change_type(category_name)
+            change_row["count"] += 1
+
+    category_rows = sorted(
+        category_rollups.values(),
+        key=lambda row: (-row["total"], row["category_name"]),
+    )
+    change_type_rows = sorted(
+        change_type_rollups.values(),
+        key=lambda row: (-row["count"], row["change_type"]),
+    )
+    return {
+        "categories": category_rows,
+        "change_types": change_type_rows,
+    }
+
+
+def _diff_element(rec_old, rec_new):
+    """Full field-by-field diff. Returns list of diff dicts."""
+    diffs = []
+
+    def push(field, oval, nval, category):
+        diffs.append({
+            "field":     field,
+            "old_value": oval,
+            "new_value": nval,
+            "category":  category,
+        })
+
+    for ax in ("location_x", "location_y", "location_z"):
+        if _floats_differ(rec_old.get(ax), rec_new.get(ax), LOC_TOL_FT):
+            push(ax, rec_old.get(ax), rec_new.get(ax), CHANGE_LOCATION)
+    for ax in ("host_location_x", "host_location_y", "host_location_z"):
+        if _floats_differ(rec_old.get(ax), rec_new.get(ax), LOC_TOL_FT):
+            push(ax, rec_old.get(ax), rec_new.get(ax), CHANGE_LOCATION)
+    for ax in ("link_transform_origin_x", "link_transform_origin_y", "link_transform_origin_z"):
+        if _floats_differ(rec_old.get(ax), rec_new.get(ax), LOC_TOL_FT):
+            push(ax, rec_old.get(ax), rec_new.get(ax), CHANGE_LOCATION)
+
+    if _floats_differ(
+        rec_old.get("location_rotation"),
+        rec_new.get("location_rotation"),
+        ROT_TOL,
+    ):
+        push("location_rotation",
+             rec_old.get("location_rotation"),
+             rec_new.get("location_rotation"),
+             CHANGE_ROTATION)
+    if _floats_differ(
+        rec_old.get("host_location_rotation"),
+        rec_new.get("host_location_rotation"),
+        ROT_TOL,
+    ):
+        push("host_location_rotation",
+             rec_old.get("host_location_rotation"),
+             rec_new.get("host_location_rotation"),
+             CHANGE_ROTATION)
+    if _floats_differ(
+        rec_old.get("link_transform_rotation_z"),
+        rec_new.get("link_transform_rotation_z"),
+        ROT_TOL,
+    ):
+        push("link_transform_rotation_z",
+             rec_old.get("link_transform_rotation_z"),
+             rec_new.get("link_transform_rotation_z"),
+             CHANGE_ROTATION)
+    for basis in (
+        "link_transform_basis_xx", "link_transform_basis_xy", "link_transform_basis_xz",
+        "link_transform_basis_yx", "link_transform_basis_yy", "link_transform_basis_yz",
+        "link_transform_basis_zx", "link_transform_basis_zy", "link_transform_basis_zz",
+    ):
+        if _floats_differ(rec_old.get(basis), rec_new.get(basis), ROT_TOL):
+            push(basis, rec_old.get(basis), rec_new.get(basis), CHANGE_ROTATION)
+
+    for bb in ("bb_min_x", "bb_min_y", "bb_min_z",
+               "bb_max_x", "bb_max_y", "bb_max_z"):
+        if _floats_differ(rec_old.get(bb), rec_new.get(bb), BB_TOL_FT):
+            push(bb, rec_old.get(bb), rec_new.get(bb), CHANGE_SIZE)
+    for bb in ("host_bb_min_x", "host_bb_min_y", "host_bb_min_z",
+               "host_bb_max_x", "host_bb_max_y", "host_bb_max_z"):
+        if _floats_differ(rec_old.get(bb), rec_new.get(bb), BB_TOL_FT):
+            push(bb, rec_old.get(bb), rec_new.get(bb), CHANGE_SIZE)
+
+    if rec_old.get("family_name") != rec_new.get("family_name"):
+        push("family_name",
+             rec_old.get("family_name"), rec_new.get("family_name"), CHANGE_TYPE)
+    if rec_old.get("type_name") != rec_new.get("type_name"):
+        push("type_name",
+             rec_old.get("type_name"), rec_new.get("type_name"), CHANGE_TYPE)
+
+    if rec_old.get("workset_id") != rec_new.get("workset_id"):
+        push("workset_name",
+             rec_old.get("workset_name"), rec_new.get("workset_name"), CHANGE_WORKSET)
+
+    if rec_old.get("level_id") != rec_new.get("level_id"):
+        push("level_name",
+             rec_old.get("level_name"), rec_new.get("level_name"), CHANGE_LEVEL)
+
+    for pf, ph in (
+        ("phase_created_id",    "phase_created_name"),
+        ("phase_demolished_id", "phase_demolished_name"),
+    ):
+        if rec_old.get(pf) != rec_new.get(pf):
+            push(ph, rec_old.get(ph), rec_new.get(ph), CHANGE_PHASE)
+
+    diffs.extend(
+        _diff_parameters(
+            rec_old.get("parameters", {}),
+            rec_new.get("parameters", {}),
+        )
+    )
+    return diffs
+
+
+def _diff_parameters(params_old, params_new):
+    """Diff two parameter snapshots. Returns list of diff dicts."""
+    diffs     = []
+    all_names = (
+        set(params_old.keys()) | set(params_new.keys())
+    ) - {"__params_truncated__"}
+
+    for name in sorted(all_names):
+        eo = params_old.get(name)
+        en = params_new.get(name)
+        oval = eo.get("value") if eo else None
+        nval = en.get("value") if en else None
+        if oval == nval:
+            continue
+        if eo and eo.get("storage_type") == "Double":
+            if not _floats_differ(oval, nval, FLOAT_TOL):
+                continue
+        diffs.append({
+            "field":     "param:{0}".format(name),
+            "old_value": oval,
+            "new_value": nval,
+            "category":  CHANGE_PARAMETER,
+        })
+    return diffs
+```
+## FILE_END: lib/linked_model_monitor_engine.py
+
+## FILE_START: lib/linked_model_monitor_ui.py
+## META: sha1=8d9f2292f75111432dd07b2be369854204913614 size=36248
+## TYPE: text
+## IMPORTS: ["GUI.style_guide_2026","System.Windows","System.Windows.Threading","clr","linked_model_monitor_engine","pyrevit"]
+## FUNCTIONS: ["__init__","instance","guid","is_loaded","__init__","guid","__init__","path","snapshot_id","__init__","diffs","rec_new","__init__","__init__","__init__","__init__","__init__","_set_status","_set_snapshot_progress","_format_duration","_pump_ui_events","_exit_frame","_on_snapshot_progress","_invalidate_history_cache","_get_loaded_links","_get_history_targets","_get_snapshots_for_link","_get_snapshot_status","on_main_tab_selection_changed","_load_links_snapshot_tab","on_take_snapshot_clicked","_parse_error_detail_limit","_get_selected_snapshot_mode","on_snapshot_link_selection_changed","_load_links_history_tab","on_history_link_selection_changed","on_compare_clicked","_populate_compare_tab","_apply_compare_filter","on_filter_all_clicked","on_filter_added_clicked","on_filter_deleted_clicked","on_filter_changed_clicked","on_changed_row_selected","on_export_report_clicked","on_close_clicked"]
+## CLASSES: ["LinkRow","HistoryLinkRow","SnapshotRow","ChangedRow","AddedDeletedRow","DiffRow","CategoryRollupRow","ChangeTypeRollupRow","LinkedModelMonitorWindow"]
+```python
+# -*- coding: utf-8 -*-
+"""
+Linked Model Monitor — WPF code-behind.
+All Revit API calls go through the engine. This module owns only
+UI state, callbacks, and data binding.
+"""
+
+import clr
+
+clr.AddReference("PresentationFramework")
+clr.AddReference("PresentationCore")
+clr.AddReference("WindowsBase")
+
+from System.Windows import Visibility
+from System.Windows.Threading import (
+    Dispatcher,
+    DispatcherFrame,
+    DispatcherPriority,
+    DispatcherOperationCallback,
+)
+
+from pyrevit import forms, script
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    apply_window_contract  = None
+    apply_topmost_and_parent = None
+    apply_style_guide_resources = None
+
+import linked_model_monitor_engine as engine
+
+output = script.get_output()
+
+
+# ---------------------------------------------------------------------------
+# Data-binding rows
+# ---------------------------------------------------------------------------
+
+class LinkRow(object):
+    def __init__(self, info):
+        self._info     = info
+        self.Title     = info["title"]
+        self.Status    = "Loaded" if info["is_loaded"] else "NOT LOADED"
+        self.Guid      = info["guid"] or "N/A"
+
+    @property
+    def instance(self):
+        return self._info["instance"]
+
+    @property
+    def guid(self):
+        return self._info["guid"]
+
+    @property
+    def is_loaded(self):
+        return self._info["is_loaded"]
+
+
+class HistoryLinkRow(object):
+    def __init__(self, info):
+        self._info = info
+        self.Title = info.get("title") or "Unknown Link"
+        self.Guid = info.get("guid") or "N/A"
+        self.HistoryCount = str(info.get("snapshot_count", 0))
+        self.LatestSnapshot = info.get("latest_snapshot_timestamp") or "-"
+        latest_mode = info.get("latest_snapshot_mode") or ""
+        self.LatestMode = str(latest_mode).title() if latest_mode else "-"
+        if info.get("is_loaded"):
+            self.Status = "Loaded + History" if info.get("snapshot_count", 0) else "Loaded"
+        elif info.get("history_only"):
+            self.Status = "History Only"
+        else:
+            self.Status = "Not Loaded"
+
+    @property
+    def guid(self):
+        return self._info.get("guid")
+
+
+class SnapshotRow(object):
+    def __init__(self, info):
+        self._info       = info
+        self.Label       = info["label"]
+        self.ElementCount = str(info["element_count"])
+        self.Timestamp   = info["timestamp"]
+        self.TimestampSort = info.get("timestamp_sort", "")
+        self.Mode        = str(info.get("snapshot_mode", engine.SNAPSHOT_MODE_FULL)).title()
+        self.Profile     = str(info.get("parameter_profile", engine.PARAMETER_PROFILE_CURATED_V1))
+        self.Path        = info["path"]
+        self.IsCurrentStr = "Yes" if info["is_current"] else "No"
+
+    @property
+    def path(self):
+        return self._info["path"]
+
+    @property
+    def snapshot_id(self):
+        return self._info["snapshot_id"]
+
+
+class ChangedRow(object):
+    def __init__(self, uid, rec_new, diffs, categories):
+        self.UniqueId   = uid
+        self.Category   = rec_new.get("category_name", "")
+        self.Family     = rec_new.get("family_name", "")
+        self.TypeName   = rec_new.get("type_name", "")
+        self.Changes    = ", ".join(categories)
+        self.ChangeCount = str(len(diffs))
+        self._diffs     = diffs
+        self._rec_new   = rec_new
+
+    @property
+    def diffs(self):
+        return self._diffs
+
+    @property
+    def rec_new(self):
+        return self._rec_new
+
+
+class AddedDeletedRow(object):
+    def __init__(self, uid, rec):
+        self.UniqueId  = uid
+        self.Category  = rec.get("category_name", "") if rec else ""
+        self.Family    = rec.get("family_name", "")   if rec else ""
+        self.TypeName  = rec.get("type_name", "")     if rec else ""
+        self.Level     = rec.get("level_name", "")    if rec else ""
+        self._rec      = rec
+
+
+class DiffRow(object):
+    def __init__(self, diff):
+        self.Field    = diff["field"]
+        self.OldValue = str(diff["old_value"]) if diff["old_value"] is not None else "(none)"
+        self.NewValue = str(diff["new_value"]) if diff["new_value"] is not None else "(none)"
+        self.Category = diff["category"]
+
+
+class CategoryRollupRow(object):
+    def __init__(self, info):
+        self.Category = info.get("category_name", "")
+        self.Added = str(info.get("added", 0))
+        self.Deleted = str(info.get("deleted", 0))
+        self.Changed = str(info.get("changed", 0))
+        self.Total = str(info.get("total", 0))
+
+
+class ChangeTypeRollupRow(object):
+    def __init__(self, info):
+        self.ChangeType = info.get("change_type", "")
+        self.Count = str(info.get("count", 0))
+
+
+# ---------------------------------------------------------------------------
+# Main window
+# ---------------------------------------------------------------------------
+
+class LinkedModelMonitorWindow(forms.WPFWindow):
+    def __init__(self, xaml_path, host_doc, storage_root):
+        forms.WPFWindow.__init__(self, xaml_path)
+
+        if apply_style_guide_resources:
+            apply_style_guide_resources(self)
+        if apply_window_contract:
+            apply_window_contract(self)
+        if apply_topmost_and_parent:
+            apply_topmost_and_parent(self)
+
+        self._host_doc     = host_doc
+        self._storage_root = storage_root
+        self._compare_result = None
+        self._loaded_links_cache = None
+        self._history_targets_cache = None
+        self._snapshot_history_cache = {}
+        self._snapshot_status_cache = {}
+        self._history_tab_loaded = False
+
+        # Named controls
+        self._links_grid    = self.FindName("LinksGrid")
+        self._status_text   = self.FindName("StatusText")
+        self._snapshot_tab  = self.FindName("SnapshotTab")
+        self._history_tab   = self.FindName("HistoryTab")
+        self._compare_tab   = self.FindName("CompareTab")
+
+        self._snapshot_links_grid  = self.FindName("SnapshotLinksGrid")
+        self._btn_take_snapshot    = self.FindName("BtnTakeSnapshot")
+        self._snapshot_info_text   = self.FindName("SnapshotInfoText")
+        self._chk_capture_error_details = self.FindName("ChkCaptureErrorDetails")
+        self._txt_error_detail_limit = self.FindName("TxtErrorDetailLimit")
+        self._cmb_snapshot_mode = self.FindName("CmbSnapshotMode")
+        self._snapshot_progress_panel = self.FindName("SnapshotProgressPanel")
+        self._snapshot_progress_bar = self.FindName("SnapshotProgressBar")
+        self._snapshot_progress_text = self.FindName("SnapshotProgressText")
+        self._snapshot_progress_percent_text = self.FindName("SnapshotProgressPercentText")
+        self._snapshot_progress_hint_text = self.FindName("SnapshotProgressHintText")
+
+        self._history_links_grid   = self.FindName("HistoryLinksGrid")
+        self._history_grid         = self.FindName("HistoryGrid")
+        self._btn_compare          = self.FindName("BtnCompare")
+        self._history_info_text    = self.FindName("HistoryInfoText")
+
+        self._compare_summary      = self.FindName("CompareSummaryText")
+        self._category_rollup_grid = self.FindName("CategoryRollupGrid")
+        self._change_type_rollup_grid = self.FindName("ChangeTypeRollupGrid")
+        self._added_grid           = self.FindName("AddedGrid")
+        self._deleted_grid         = self.FindName("DeletedGrid")
+        self._changed_grid         = self.FindName("ChangedGrid")
+        self._diffs_grid           = self.FindName("DiffsGrid")
+        self._diffs_header         = self.FindName("DiffsHeader")
+
+        self._filter_all_btn       = self.FindName("FilterAllBtn")
+        self._filter_added_btn     = self.FindName("FilterAddedBtn")
+        self._filter_deleted_btn   = self.FindName("FilterDeletedBtn")
+        self._filter_changed_btn   = self.FindName("FilterChangedBtn")
+
+        self._active_filter = "all"
+        self._set_status("Ready. Select a linked model to get started.")
+        self._set_snapshot_progress(0, "Idle.", "", visible=False)
+        self._load_links_snapshot_tab()
+        if self._history_grid is not None:
+            self._history_grid.ItemsSource = []
+
+    # ------------------------------------------------------------------
+    # Status
+    # ------------------------------------------------------------------
+
+    def _set_status(self, text):
+        if self._status_text is not None:
+            self._status_text.Text = text
+
+    def _set_snapshot_progress(self, percent, text, hint, visible=True, indeterminate=False):
+        if self._snapshot_progress_panel is not None:
+            self._snapshot_progress_panel.Visibility = (
+                Visibility.Visible if visible else Visibility.Collapsed
+            )
+        if self._snapshot_progress_bar is not None:
+            self._snapshot_progress_bar.IsIndeterminate = bool(indeterminate)
+            if not indeterminate:
+                if percent is None:
+                    percent = 0
+                self._snapshot_progress_bar.Value = max(0, min(100, percent))
+        if self._snapshot_progress_text is not None:
+            self._snapshot_progress_text.Text = text or ""
+        if self._snapshot_progress_percent_text is not None:
+            self._snapshot_progress_percent_text.Text = (
+                "" if indeterminate else "{0}%".format(max(0, min(100, int(percent or 0))))
+            )
+        if self._snapshot_progress_hint_text is not None:
+            self._snapshot_progress_hint_text.Text = hint or ""
+
+    def _format_duration(self, total_seconds):
+        if total_seconds is None:
+            return ""
+        total_seconds = max(int(total_seconds), 0)
+        minutes, seconds = divmod(total_seconds, 60)
+        hours, minutes = divmod(minutes, 60)
+        if hours:
+            return "{0}h {1}m {2}s".format(hours, minutes, seconds)
+        if minutes:
+            return "{0}m {1}s".format(minutes, seconds)
+        return "{0}s".format(seconds)
+
+    def _pump_ui_events(self):
+        try:
+            frame = DispatcherFrame()
+
+            def _exit_frame(_):
+                frame.Continue = False
+                return None
+
+            Dispatcher.CurrentDispatcher.BeginInvoke(
+                DispatcherPriority.Background,
+                DispatcherOperationCallback(_exit_frame),
+                None,
+            )
+            Dispatcher.PushFrame(frame)
+        except Exception:
+            pass
+
+    def _on_snapshot_progress(self, progress):
+        processed = progress.get("processed", 0)
+        total = progress.get("total", 0)
+        percent = progress.get("percent", 0)
+        note = progress.get("note", "Working...")
+        elapsed = self._format_duration(progress.get("elapsed_seconds"))
+        eta = self._format_duration(progress.get("eta_seconds"))
+
+        hint_parts = []
+        if total:
+            hint_parts.append("{0} / {1}".format(processed, total))
+        if elapsed:
+            hint_parts.append("Elapsed: {0}".format(elapsed))
+        if eta:
+            hint_parts.append("ETA: {0}".format(eta))
+
+        self._set_snapshot_progress(
+            percent,
+            note,
+            "  |  ".join(hint_parts),
+            visible=True,
+            indeterminate=(total <= 0),
+        )
+        self._pump_ui_events()
+
+    # ------------------------------------------------------------------
+    # Tab: Snapshot
+    # ------------------------------------------------------------------
+
+    def _invalidate_history_cache(self, guid=None):
+        self._history_targets_cache = None
+        if guid:
+            self._snapshot_history_cache.pop(guid, None)
+            self._snapshot_status_cache.pop(guid, None)
+        else:
+            self._snapshot_history_cache = {}
+            self._snapshot_status_cache = {}
+
+    def _get_loaded_links(self, refresh=False):
+        if refresh or self._loaded_links_cache is None:
+            self._loaded_links_cache = engine.get_loaded_links(self._host_doc)
+        return self._loaded_links_cache
+
+    def _get_history_targets(self, refresh=False):
+        if refresh or self._history_targets_cache is None:
+            self._history_targets_cache = engine.list_history_targets(
+                self._host_doc,
+                self._storage_root,
+                loaded_links=self._get_loaded_links(refresh=refresh),
+            )
+        return self._history_targets_cache
+
+    def _get_snapshots_for_link(self, guid, title, refresh=False):
+        if not guid:
+            return []
+        cache_key = guid
+        if refresh or cache_key not in self._snapshot_history_cache:
+            self._snapshot_history_cache[cache_key] = engine.list_snapshots(
+                guid,
+                title,
+                self._storage_root,
+            )
+        return self._snapshot_history_cache.get(cache_key, [])
+
+    def _get_snapshot_status(self, guid, title, refresh=False):
+        if not guid:
+            return None
+        cache_key = guid
+        if refresh or cache_key not in self._snapshot_status_cache:
+            self._snapshot_status_cache[cache_key] = engine.get_snapshot_status(
+                guid,
+                title,
+                self._storage_root,
+            )
+        return self._snapshot_status_cache.get(cache_key)
+
+    def on_main_tab_selection_changed(self, sender, args):
+        try:
+            if getattr(args, "OriginalSource", None) is not sender:
+                return
+        except Exception:
+            pass
+        if sender is None or self._history_tab is None:
+            return
+        try:
+            selected_item = sender.SelectedItem
+        except Exception:
+            return
+        if selected_item is self._history_tab and not self._history_tab_loaded:
+            self._load_links_history_tab()
+            self._history_tab_loaded = True
+
+    def _load_links_snapshot_tab(self):
+        links = self._get_loaded_links()
+        rows  = [LinkRow(l) for l in links]
+        if self._snapshot_links_grid is not None:
+            self._snapshot_links_grid.ItemsSource = rows
+        if not rows:
+            self._set_status("No linked models found in this document.")
+
+    def on_take_snapshot_clicked(self, sender, args):
+        grid = self._snapshot_links_grid
+        if grid is None or grid.SelectedItem is None:
+            self._set_status("Select a linked model first.")
+            return
+
+        row = grid.SelectedItem
+        if not row.is_loaded:
+            self._set_status("Cannot snapshot: link '{0}' is not loaded.".format(row.Title))
+            return
+
+        capture_error_details = False
+        max_error_details = engine.DEFAULT_MAX_ERROR_DETAILS
+        snapshot_mode = self._get_selected_snapshot_mode()
+        if self._chk_capture_error_details is not None:
+            capture_error_details = bool(self._chk_capture_error_details.IsChecked)
+        if self._txt_error_detail_limit is not None:
+            parsed_limit = self._parse_error_detail_limit(self._txt_error_detail_limit.Text)
+            if parsed_limit is None:
+                self._set_status("Error detail limit must be a non-negative whole number.")
+                return
+            max_error_details = parsed_limit
+
+        self._set_status("Taking snapshot for '{0}'...".format(row.Title))
+        if self._btn_take_snapshot is not None:
+            self._btn_take_snapshot.IsEnabled = False
+        self._set_snapshot_progress(
+            0,
+            "Preparing snapshot for '{0}'...".format(row.Title),
+            "Initialising...",
+            visible=True,
+            indeterminate=True,
+        )
+        try:
+            snapshot = engine.build_snapshot(
+                row.instance,
+                self._host_doc,
+                capture_error_details=capture_error_details,
+                max_error_details=max_error_details,
+                progress_callback=self._on_snapshot_progress,
+                snapshot_mode=snapshot_mode,
+            )
+            path     = engine.save_snapshot(snapshot, self._storage_root)
+            self._set_snapshot_progress(
+                100,
+                "Snapshot saved for '{0}'.".format(snapshot["linked_model_title"]),
+                "Saved to {0}".format(path),
+                visible=True,
+                indeterminate=False,
+            )
+            msg = (
+                "Snapshot saved.\n"
+                "  Model:    {0}\n"
+                "  Mode:     {1}\n"
+                "  Profile:  {2}\n"
+                "  Elements: {3} recorded, {4} skipped, {5} errors\n"
+                "  Duration: {6}s\n"
+                "  Path:     {7}"
+            ).format(
+                snapshot["linked_model_title"],
+                snapshot.get("snapshot_mode", engine.SNAPSHOT_MODE_FULL),
+                snapshot.get("parameter_profile", engine.PARAMETER_PROFILE_CURATED_V1),
+                snapshot["element_count"],
+                snapshot["skipped_count"],
+                snapshot["error_count"],
+                snapshot.get("snapshot_duration_seconds", "?"),
+                path,
+            )
+            error_details = snapshot.get("error_details", [])
+            if capture_error_details:
+                msg += (
+                    "\n  Error detail capture: ON (limit {0}, captured {1})"
+                ).format(snapshot.get("error_detail_limit", 0), len(error_details))
+                if error_details:
+                    msg += "\n\nTop error details:"
+                    for idx, detail in enumerate(error_details[:5]):
+                        msg += (
+                            "\n  {0}. UID={1} EID={2} CAT={3} ERR={4}"
+                        ).format(
+                            idx + 1,
+                            detail.get("unique_id") or "?",
+                            detail.get("element_id"),
+                            detail.get("category_name") or "?",
+                            detail.get("error") or "?",
+                        )
+            if self._snapshot_info_text is not None:
+                self._snapshot_info_text.Text = msg
+            self._set_status(
+                "Snapshot complete — {0} elements.".format(snapshot["element_count"])
+            )
+            # Refresh history tab
+            self._invalidate_history_cache(guid=row.guid)
+            if self._history_tab_loaded:
+                self._load_links_history_tab()
+        except Exception as ex:
+            self._set_status("Snapshot failed: {0}".format(ex))
+            self._set_snapshot_progress(
+                0,
+                "Snapshot failed.",
+                str(ex),
+                visible=True,
+                indeterminate=False,
+            )
+            if self._snapshot_info_text is not None:
+                self._snapshot_info_text.Text = "Error: {0}".format(ex)
+        finally:
+            if self._btn_take_snapshot is not None:
+                self._btn_take_snapshot.IsEnabled = True
+
+    def _parse_error_detail_limit(self, text):
+        if text is None:
+            return engine.DEFAULT_MAX_ERROR_DETAILS
+        try:
+            value = int(str(text).strip())
+        except Exception:
+            return None
+        if value < 0:
+            return None
+        return value
+
+    def _get_selected_snapshot_mode(self):
+        if self._cmb_snapshot_mode is None:
+            return engine.SNAPSHOT_MODE_FULL
+        selected_item = self._cmb_snapshot_mode.SelectedItem
+        if selected_item is None:
+            return engine.SNAPSHOT_MODE_FULL
+        try:
+            tag_value = selected_item.Tag
+            if tag_value:
+                return engine._normalise_snapshot_mode(str(tag_value))
+        except Exception:
+            pass
+        try:
+            return engine._normalise_snapshot_mode(str(selected_item.Content))
+        except Exception:
+            return engine.SNAPSHOT_MODE_FULL
+
+    def on_snapshot_link_selection_changed(self, sender, args):
+        grid = self._snapshot_links_grid
+        if grid is None or grid.SelectedItem is None:
+            return
+        row = grid.SelectedItem
+        if self._snapshot_info_text is not None:
+            if not row.guid:
+                self._snapshot_info_text.Text = (
+                    "No stable linked model GUID was found for this selection."
+                )
+                return
+            status = None
+            try:
+                status = self._get_snapshot_status(row.guid, row.Title)
+            except Exception:
+                status = None
+            if not status or not status.get("has_snapshot"):
+                self._snapshot_info_text.Text = "No existing snapshot. First time."
+                return
+
+            latest_timestamp = status.get("latest_timestamp") or "Unknown"
+            latest_mode = status.get("latest_mode") or "unknown"
+            element_count = status.get("element_count")
+            history_count = status.get("history_count", 0)
+            if status.get("has_current"):
+                lines = [
+                    "Existing current snapshot found.",
+                    "Latest capture: {0}".format(latest_timestamp),
+                    "Mode: {0}".format(str(latest_mode).title()),
+                ]
+                if element_count is not None:
+                    lines.append("Elements: {0}".format(element_count))
+                if history_count:
+                    lines.append("Archived history files: {0}".format(history_count))
+                lines.append("")
+                lines.append("Taking a new snapshot will archive the current one.")
+                self._snapshot_info_text.Text = "\n".join(lines)
+                return
+
+            self._snapshot_info_text.Text = (
+                "Stored snapshot history exists, but no current snapshot file was found.\n"
+                "Latest stored capture: {0}\n"
+                "Archived history files: {1}\n\n"
+                "Taking a new snapshot will create a new current snapshot."
+            ).format(latest_timestamp, history_count)
+
+    # ------------------------------------------------------------------
+    # Tab: History
+    # ------------------------------------------------------------------
+
+    def _load_links_history_tab(self):
+        rows = [HistoryLinkRow(info) for info in self._get_history_targets()]
+        if self._history_links_grid is not None:
+            self._history_links_grid.ItemsSource = rows
+        if self._history_info_text is not None and not rows:
+            self._history_info_text.Text = "No stored or loaded linked model history was found."
+
+    def on_history_link_selection_changed(self, sender, args):
+        grid = self._history_links_grid
+        if grid is None or grid.SelectedItem is None:
+            return
+        row = grid.SelectedItem
+        if not row.guid:
+            self._set_status("Selected history entry has no linked model GUID.")
+            return
+        try:
+            snaps = self._get_snapshots_for_link(row.guid, row.Title)
+            snap_rows = [SnapshotRow(s) for s in snaps]
+            if self._history_grid is not None:
+                self._history_grid.ItemsSource = snap_rows
+            if self._history_info_text is not None:
+                mode_summary = ""
+                if snap_rows:
+                    modes = sorted(set(r.Mode for r in snap_rows))
+                    mode_summary = " Modes present: {0}. Compare snapshots captured in the same mode.".format(
+                        ", ".join(modes)
+                    )
+                self._history_info_text.Text = (
+                    "{0} snapshot(s) found for '{1}'.{2}".format(len(snap_rows), row.Title, mode_summary)
+                )
+            if not snap_rows:
+                self._set_status("No snapshots found for '{0}'.".format(row.Title))
+        except Exception as ex:
+            self._set_status("Failed to list snapshots: {0}".format(ex))
+
+    def on_compare_clicked(self, sender, args):
+        grid = self._history_grid
+        if grid is None:
+            return
+        selected = list(grid.SelectedItems)
+        if len(selected) != 2:
+            self._set_status(
+                "Select exactly 2 snapshots to compare (hold Ctrl to multi-select)."
+            )
+            return
+
+        # Sort so that older = [0], newer = [1]
+        selected.sort(key=lambda r: r.TimestampSort or r.Timestamp)
+        snap_old_path = selected[0].path
+        snap_new_path = selected[1].path
+
+        self._set_status("Loading snapshots...")
+        try:
+            snap_old = engine.load_snapshot(snap_old_path)
+            snap_new = engine.load_snapshot(snap_new_path)
+        except Exception as ex:
+            self._set_status("Failed to load snapshots: {0}".format(ex))
+            return
+
+        compatibility = engine.get_snapshot_compare_compatibility(snap_old, snap_new)
+        if not compatibility["compatible"]:
+            message = compatibility["message"]
+            self._set_status("Comparison blocked: {0}".format(message))
+            if self._compare_summary is not None:
+                self._compare_summary.Text = (
+                    "Comparison blocked.\n\n"
+                    "Baseline mode: {0}\n"
+                    "Baseline profile: {1}\n"
+                    "Current mode:  {2}\n"
+                    "Current profile:  {3}\n\n"
+                    "{4}"
+                ).format(
+                    compatibility["old_mode"].title(),
+                    compatibility["old_profile"],
+                    compatibility["new_mode"].title(),
+                    compatibility["new_profile"],
+                    message,
+                )
+            forms.alert(
+                message,
+                title="Linked Model Monitor",
+                warn_icon=True,
+            )
+            return
+
+        self._set_status("Comparing...")
+        try:
+            result = engine.compare_snapshots(snap_old, snap_new)
+        except Exception as ex:
+            self._set_status("Comparison failed: {0}".format(ex))
+            return
+
+        self._compare_result = result
+        self._populate_compare_tab(result, snap_old, snap_new)
+        self._active_filter = "all"
+        self._apply_compare_filter()
+
+        # Switch to Compare tab
+        tab_ctrl = self.FindName("MainTabControl")
+        if tab_ctrl is not None:
+            tab_ctrl.SelectedIndex = 2
+
+        self._set_status(
+            "Compare complete. Added: {added}, Deleted: {deleted}, "
+            "Changed: {changed}, Unchanged: {unchanged}.".format(
+                **result["summary"]
+            )
+        )
+
+    # ------------------------------------------------------------------
+    # Tab: Compare
+    # ------------------------------------------------------------------
+
+    def _populate_compare_tab(self, result, snap_old, snap_new):
+        s = result["summary"]
+        summary = (
+            "Baseline:  {old_title}  ({old_ts})\n"
+            "Mode:      {old_mode}\n"
+            "Profile:   {old_profile}\n"
+            "Current:   {new_title}  ({new_ts})\n\n"
+            "Mode:      {new_mode}\n\n"
+            "Profile:   {new_profile}\n\n"
+            "Added:     {added}\n"
+            "Deleted:   {deleted}\n"
+            "Changed:   {changed}\n"
+            "Unchanged: {unchanged}\n"
+            "Total (baseline): {total_old}   Total (current): {total_new}"
+        ).format(
+            old_title = snap_old.get("linked_model_title", "?"),
+            new_title = snap_new.get("linked_model_title", "?"),
+            old_ts    = result["timestamp_old"] or "?",
+            new_ts    = result["timestamp_new"] or "?",
+            old_mode  = result.get("snapshot_old_mode", engine.SNAPSHOT_MODE_FULL).title(),
+            old_profile = result.get("snapshot_old_profile", engine.PARAMETER_PROFILE_CURATED_V1),
+            new_mode  = result.get("snapshot_new_mode", engine.SNAPSHOT_MODE_FULL).title(),
+            new_profile = result.get("snapshot_new_profile", engine.PARAMETER_PROFILE_CURATED_V1),
+            **s
+        )
+        if self._compare_summary is not None:
+            self._compare_summary.Text = summary
+
+        rollups = result.get("rollups", {})
+        category_rows = [CategoryRollupRow(row) for row in rollups.get("categories", [])]
+        change_type_rows = [ChangeTypeRollupRow(row) for row in rollups.get("change_types", [])]
+        if self._category_rollup_grid is not None:
+            self._category_rollup_grid.ItemsSource = category_rows
+        if self._change_type_rollup_grid is not None:
+            self._change_type_rollup_grid.ItemsSource = change_type_rows
+
+        # Added grid
+        elems_old = snap_old.get("elements", {})
+        elems_new = snap_new.get("elements", {})
+        added_rows   = [
+            AddedDeletedRow(uid, elems_new.get(uid)) for uid in result["added"]
+        ]
+        deleted_rows = [
+            AddedDeletedRow(uid, elems_old.get(uid)) for uid in result["deleted"]
+        ]
+        changed_rows = [
+            ChangedRow(
+                r["unique_id"],
+                r["element_record_new"],
+                r["diffs"],
+                r["categories"],
+            )
+            for r in result["changed"]
+        ]
+
+        if self._added_grid is not None:
+            self._added_grid.ItemsSource = added_rows
+        if self._deleted_grid is not None:
+            self._deleted_grid.ItemsSource = deleted_rows
+        if self._changed_grid is not None:
+            self._changed_grid.ItemsSource = changed_rows
+        if self._diffs_grid is not None:
+            self._diffs_grid.ItemsSource = []
+        if self._diffs_header is not None:
+            self._diffs_header.Text = "Select a changed element to see field diffs."
+
+    def _apply_compare_filter(self):
+        if self._compare_result is None:
+            return
+        f = self._active_filter
+        added_vis   = Visibility.Visible if f in ("all", "added")   else Visibility.Collapsed
+        deleted_vis = Visibility.Visible if f in ("all", "deleted") else Visibility.Collapsed
+        changed_vis = Visibility.Visible if f in ("all", "changed") else Visibility.Collapsed
+
+        for name, vis in (
+            ("AddedPanel",   added_vis),
+            ("DeletedPanel", deleted_vis),
+            ("ChangedPanel", changed_vis),
+        ):
+            panel = self.FindName(name)
+            if panel is not None:
+                panel.Visibility = vis
+
+    def on_filter_all_clicked(self, sender, args):
+        self._active_filter = "all"
+        self._apply_compare_filter()
+
+    def on_filter_added_clicked(self, sender, args):
+        self._active_filter = "added"
+        self._apply_compare_filter()
+
+    def on_filter_deleted_clicked(self, sender, args):
+        self._active_filter = "deleted"
+        self._apply_compare_filter()
+
+    def on_filter_changed_clicked(self, sender, args):
+        self._active_filter = "changed"
+        self._apply_compare_filter()
+
+    def on_changed_row_selected(self, sender, args):
+        grid = self._changed_grid
+        if grid is None or grid.SelectedItem is None:
+            return
+        row   = grid.SelectedItem
+        diffs = row.diffs
+        diff_rows = [DiffRow(d) for d in diffs]
+        if self._diffs_grid is not None:
+            self._diffs_grid.ItemsSource = diff_rows
+        if self._diffs_header is not None:
+            self._diffs_header.Text = (
+                "Field diffs for {0} — {1} change(s)".format(
+                    row.UniqueId, len(diffs)
+                )
+            )
+
+    def on_export_report_clicked(self, sender, args):
+        if self._compare_result is None:
+            self._set_status("No comparison result to export.")
+            return
+        try:
+            out = output
+            s   = self._compare_result["summary"]
+            out.print_md("## Linked Model Monitor — Comparison Report")
+            out.print_md(
+                "**Added:** {0}  |  **Deleted:** {1}  |  "
+                "**Changed:** {2}  |  **Unchanged:** {3}".format(
+                    s["added"], s["deleted"], s["changed"], s["unchanged"]
+                )
+            )
+            out.print_md(
+                "**Baseline Mode:** {0}  |  **Current Mode:** {1}".format(
+                    self._compare_result.get("snapshot_old_mode", engine.SNAPSHOT_MODE_FULL).title(),
+                    self._compare_result.get("snapshot_new_mode", engine.SNAPSHOT_MODE_FULL).title(),
+                )
+            )
+            out.print_md(
+                "**Baseline Profile:** {0}  |  **Current Profile:** {1}".format(
+                    self._compare_result.get("snapshot_old_profile", engine.PARAMETER_PROFILE_CURATED_V1),
+                    self._compare_result.get("snapshot_new_profile", engine.PARAMETER_PROFILE_CURATED_V1),
+                )
+            )
+            rollups = self._compare_result.get("rollups", {})
+            if rollups.get("categories"):
+                out.print_md("### Category Rollups")
+                rows_out = [["Category", "Added", "Deleted", "Changed", "Total"]]
+                for row in rollups["categories"]:
+                    rows_out.append([
+                        row.get("category_name", ""),
+                        row.get("added", 0),
+                        row.get("deleted", 0),
+                        row.get("changed", 0),
+                        row.get("total", 0),
+                    ])
+                out.print_table(rows_out)
+            if rollups.get("change_types"):
+                out.print_md("### Change Type Rollups")
+                rows_out = [["Change Type", "Count"]]
+                for row in rollups["change_types"]:
+                    rows_out.append([
+                        row.get("change_type", ""),
+                        row.get("count", 0),
+                    ])
+                out.print_table(rows_out)
+            if self._compare_result["added"]:
+                out.print_md("### Added Elements ({0})".format(s["added"]))
+                out.print_table(
+                    [["UniqueId"]] +
+                    [[uid] for uid in self._compare_result["added"]]
+                )
+            if self._compare_result["deleted"]:
+                out.print_md("### Deleted Elements ({0})".format(s["deleted"]))
+                out.print_table(
+                    [["UniqueId"]] +
+                    [[uid] for uid in self._compare_result["deleted"]]
+                )
+            if self._compare_result["changed"]:
+                out.print_md("### Changed Elements ({0})".format(s["changed"]))
+                rows_out = [["UniqueId", "Category", "Family", "Type", "Changes"]]
+                for r in self._compare_result["changed"]:
+                    rec = r["element_record_new"]
+                    rows_out.append([
+                        r["unique_id"],
+                        rec.get("category_name", ""),
+                        rec.get("family_name", ""),
+                        rec.get("type_name", ""),
+                        ", ".join(r["categories"]),
+                    ])
+                out.print_table(rows_out)
+            self._set_status("Report exported to pyRevit output window.")
+        except Exception as ex:
+            self._set_status("Export failed: {0}".format(ex))
+
+    def on_close_clicked(self, sender, args):
+        self.Close()
+```
+## FILE_END: lib/linked_model_monitor_ui.py
+
 ## FILE_START: lib/linked_room_extrusion_engine.py
 ## META: sha1=08a03d55e9659c3a347777910c203860a13a9bce size=28203
 ## TYPE: text
@@ -26883,9 +30797,9 @@ def build_context(document):
 ## FILE_END: lib/package_creator_context.py
 
 ## FILE_START: lib/package_creator_dock.py
-## META: sha1=e9d455f6a72efedacd31c9d0cfdaa23aa7f4e50c size=3512
+## META: sha1=3bda395ee8babfac6fe64b43ef8128884d76c950 size=4014
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.UI","System","imp","os","pyrevit","uuid"]
+## IMPORTS: ["Autodesk.Revit.UI","System","System.Threading","imp","os","pyrevit","uuid"]
 ## FUNCTIONS: ["_load_panel_module","_pane_exists","_try_register","register_package_creator_panel","_open_via_forms","_open_via_revit_api","show_or_focus_panel"]
 ## CLASSES: []
 ```python
@@ -26895,6 +30809,7 @@ import imp
 import uuid
 
 from pyrevit import forms
+from System.Threading import Thread
 
 
 def _load_panel_module():
@@ -26991,13 +30906,31 @@ def _open_via_revit_api():
 
 
 def show_or_focus_panel():
-    ok, err = register_package_creator_panel()
-    if not ok:
-        return False, err or "Dockable panel registration failed."
+    global _REGISTERED
+    open_ok = False
+    open_err = None
 
-    open_ok, open_err = _open_via_forms()
-    if not open_ok:
-        open_ok, open_err = _open_via_revit_api()
+    for attempt in range(3):
+        ok, err = register_package_creator_panel()
+        if not ok:
+            open_err = err or "Dockable panel registration failed."
+        else:
+            open_ok, open_err = _open_via_forms()
+            if not open_ok:
+                open_ok, open_err = _open_via_revit_api()
+
+        if open_ok:
+            break
+
+        error_text = str(open_err or "").lower()
+        if "has not been created yet" in error_text:
+            _REGISTERED = False
+            _try_register()
+            Thread.Sleep(150)
+            continue
+
+        if attempt < 2:
+            Thread.Sleep(100)
 
     if open_ok:
         panel = get_active_panel()
@@ -40135,7 +44068,7 @@ main()
 ## FILE_END: lib/Snippets/Community/Super Pin/super_pin.py
 
 ## FILE_START: lib/status.xaml
-## META: sha1=afce2f9fe4de2dd53ba409cc936ced9513380b89 size=3381
+## META: sha1=3822c3b4d98c8500e2375d9676329471d8d3dca9 size=3257
 ## TYPE: text
 ```
 <Window
@@ -40195,7 +44128,6 @@ main()
             <TextBox x:Name="txtOutput" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
         </Border>
         <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-            <Button x:Name="btnHide" Style="{StaticResource SecondaryButton}" Content="Hide" Width="90" Margin="0,0,8,0"/>
             <Button x:Name="btnStop" Style="{StaticResource PrimaryButton}" Content="Stop + Save" Width="110"/>
         </StackPanel>
     </Grid>
@@ -40204,10 +44136,10 @@ main()
 ## FILE_END: lib/status.xaml
 
 ## FILE_START: lib/telemetry.py
-## META: sha1=50ecc18a09b2c87097528fd70dcd8a866fb6d114 size=22973
+## META: sha1=9780440cd713a8fd28e164209c95c6de9711b0a3 size=24997
 ## TYPE: text
 ## IMPORTS: ["System","System.Windows","System.Windows.Controls.Primitives","datetime","io","json","os","pyrevit","threading","time","traceback"]
-## FUNCTIONS: ["_now_iso","_safe_text","_sanitize_name","_extension_root","_relative_path","_guess_tool_name","_active_document_title","_active_view_name","_host_context","_target_roots","_local_root","_network_root","_tool_file_name","_date_key","_safe_json_read","_safe_int","_count_up","_user_key","_new_payload","_normalize_payload","_compact_event","_update_payload","_write_json_atomic","_group_events_by_tool","_upsert_tool_events","_write_events","_write_event","_flush_local_locked","_flush_network_locked","flush_local","flush_network","flush_now","get_buffer_state","_increment","_build_base_event","track_tool_click","track_gui_click","get_target_roots","get_existing_roots","get_local_root","list_tool_files","read_tool_payload","summarize_root","_control_name","_patch_wpf_window","_wire_window","_on_click","_show_wrapper","_show_dialog_wrapper","_register_global_wpf_click_handler","_on_any_click","_on_document_saving","_on_document_synced","_register_flush_handlers","register"]
+## FUNCTIONS: ["_now_iso","_safe_text","_sanitize_name","_extension_root","_relative_path","_guess_tool_name","_active_document_title","_active_view_name","_host_context","_target_roots","_local_root","_network_root","_network_roots","_tool_file_name","_date_key","_safe_json_read","_safe_int","_count_up","_user_key","_new_payload","_normalize_payload","_compact_event","_update_payload","_write_json_atomic","_group_events_by_tool","_upsert_tool_events","_write_events","_write_event","_flush_local_locked","_flush_network_locked","flush_local","flush_network","flush_now","get_buffer_state","_increment","_build_base_event","track_tool_click","track_gui_click","get_target_roots","get_existing_roots","get_local_root","list_tool_files","read_tool_payload","summarize_root","_control_name","_patch_wpf_window","_wire_window","_on_click","_show_wrapper","_show_dialog_wrapper","_register_global_wpf_click_handler","_on_any_click","_on_document_saving","_on_document_synced","_register_flush_handlers","register"]
 ## CLASSES: []
 ```python
 # -*- coding: utf-8 -*-
@@ -40236,6 +44168,7 @@ except Exception:
 ENV_ACTIVE_TOOL = 'RBG_TELEMETRY_ACTIVE_TOOL'
 ENV_READY = 'RBG_TELEMETRY_READY'
 ENV_ERROR = 'RBG_TELEMETRY_LAST_ERROR'
+ENV_ENABLE_WPF_PATCH = 'RBG_TELEMETRY_ENABLE_WPF_PATCH'
 
 _LOCAL_ROOT = os.path.join(
     os.environ.get('APPDATA', ''),
@@ -40243,7 +44176,8 @@ _LOCAL_ROOT = os.path.join(
     'Telemetry'
 )
 
-_NETWORK_ROOT = r'\\rbgshare.sjgroup.local\dfs\ProjectDocs\Sydney\Production\Computational\RBG_pyRevit\Telemetry'
+_NETWORK_ROOT = r'P:\Production\Computational\RBG_pyRevit\Telemetry'
+_NETWORK_ROOT_FALLBACK = r'\\rbgshare.sjgroup.local\dfs\ProjectDocs\Sydney\Production\Computational\RBG_pyRevit\Telemetry'
 
 _LOCK = threading.Lock()
 _COUNTERS = {
@@ -40348,7 +44282,11 @@ def _host_context():
 
 
 def _target_roots():
-    return [_LOCAL_ROOT, _NETWORK_ROOT]
+    roots = [_LOCAL_ROOT]
+    for root in _network_roots():
+        if root not in roots:
+            roots.append(root)
+    return roots
 
 
 def _local_root():
@@ -40356,7 +44294,27 @@ def _local_root():
 
 
 def _network_root():
+    roots = _network_roots()
+    if roots:
+        return roots[0]
     return _NETWORK_ROOT
+
+
+def _network_roots():
+    roots = []
+    env_root = _safe_text(os.environ.get('RBG_PYREVIT_TELEMETRY_ROOT'))
+    if env_root:
+        roots.append(env_root)
+    roots.extend([_NETWORK_ROOT, _NETWORK_ROOT_FALLBACK])
+
+    unique = []
+    for root in roots:
+        text = _safe_text(root)
+        if not text:
+            continue
+        if text not in unique:
+            unique.append(text)
+    return unique
 
 
 def _tool_file_name(event):
@@ -40671,14 +44629,33 @@ def _flush_network_locked(reason='manual'):
 
     batch = list(_NETWORK_BACKLOG)
     write_errors = []
-
-    try:
-        _write_events(_network_root(), batch)
-    except Exception:
+    network_roots = _network_roots()
+    if not network_roots:
         write_errors.append({
-            'root': _network_root(),
-            'error': _safe_text(traceback.format_exc())
+            'root': None,
+            'error': 'No network telemetry root configured.'
         })
+    else:
+        written = False
+        for root in network_roots:
+            try:
+                _write_events(root, batch)
+                written = True
+                break
+            except Exception:
+                write_errors.append({
+                    'root': root,
+                    'error': _safe_text(traceback.format_exc())
+                })
+
+        if written:
+            del _NETWORK_BACKLOG[:]
+            return {
+                'ok': True,
+                'reason': reason,
+                'flushed': len(batch),
+                'network_backlog': 0
+            }
 
     if write_errors:
         script.set_envvar(ENV_ERROR, _safe_text(write_errors))
@@ -40690,12 +44667,12 @@ def _flush_network_locked(reason='manual'):
             'errors': write_errors
         }
 
-    del _NETWORK_BACKLOG[:]
     return {
-        'ok': True,
+        'ok': False,
         'reason': reason,
-        'flushed': len(batch),
-        'network_backlog': 0
+        'flushed': 0,
+        'network_backlog': len(_NETWORK_BACKLOG),
+        'errors': [{'root': None, 'error': 'Unknown network telemetry flush failure.'}]
     }
 
 
@@ -40768,6 +44745,8 @@ def track_tool_click(tool_path=None, source='script_entry'):
 
         script.set_envvar(ENV_ACTIVE_TOOL, tool_path or event['tool']['path'])
         _write_event(event)
+        _flush_local_locked(reason='tool_click')
+        _flush_network_locked(reason='tool_click')
 
 
 def track_gui_click(control_name=None, control_type=None, tool_path=None, metadata=None):
@@ -40793,6 +44772,10 @@ def track_gui_click(control_name=None, control_type=None, tool_path=None, metada
         event['session_gui_click_count'] = _increment('gui_clicks', counter_key)
 
         _write_event(event)
+        # Persist GUI usage in short batches to avoid losing events if Revit closes before save/sync.
+        if len(_PENDING_EVENTS) >= 5:
+            _flush_local_locked(reason='gui_click_batch')
+            _flush_network_locked(reason='gui_click_batch')
 
 
 def get_target_roots():
@@ -41019,10 +45002,14 @@ def _register_flush_handlers():
 
 def register():
     global _REGISTERED
-    if _REGISTERED:
+    # pyRevit reload re-imports this module while Revit app event handlers
+    # from prior imports can still be attached in-process.
+    if _REGISTERED or script.get_envvar(ENV_READY):
+        _REGISTERED = True
         return
 
-    _patch_wpf_window()
+    if bool(script.get_envvar(ENV_ENABLE_WPF_PATCH)):
+        _patch_wpf_window()
     _register_flush_handlers()
     _REGISTERED = True
     script.set_envvar(ENV_READY, True)
@@ -41031,10 +45018,10 @@ def register():
 ## FILE_END: lib/telemetry.py
 
 ## FILE_START: lib/txn_logger.py
-## META: sha1=b01db5d658d0ee4bf26efc1707271521c98307a8 size=27093
+## META: sha1=f261de5426367abb4830da88eca2d9a04199cb2b size=27618
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","System","io","json","os","pyrevit","traceback"]
-## FUNCTIONS: ["_now","_safe_text","_clean_name","_doc_key","_output_dir","_value_string","_param_value","_param_key","_point_xyz","_location_data","_bbox_center","_bbox_data","_owner_view","_owner_view_data","_movement_signature","_vector_delta","_movement_summary","_movement_changed","_level_name","_type_data","_parameter_map","_snapshot_element","_movement_changed","_dict_diff","_snapshot_diff","_infer_source","__init__","hide_window","stop_logger","on_closing","refresh","__init__","_window","show_window","refresh_window","_control_state","_is_tracked","_session_payload","_write_file","_activate","_deactivate","_sync","_active_context","_doc_snapshot_map","_record_failure","_record_change","_on_idling","register","register"]
+## FUNCTIONS: ["_now","_safe_text","_clean_name","_doc_key","_output_dir","_value_string","_param_value","_param_key","_point_xyz","_location_data","_bbox_center","_bbox_data","_owner_view","_owner_view_data","_movement_signature","_vector_delta","_movement_summary","_movement_changed","_level_name","_type_data","_parameter_map","_snapshot_element","_movement_changed","_dict_diff","_snapshot_diff","_infer_source","__init__","stop_logger","on_closing","refresh","__init__","_window","show_window","refresh_window","_control_state","_is_tracked","_session_payload","_write_file","_activate","_deactivate","_sync","_active_context","_doc_snapshot_map","_record_failure","_record_change","_on_idling","register","register"]
 ## CLASSES: ["StatusWindow","TransactionLogger"]
 ```python
 # -*- coding: utf-8 -*-
@@ -41494,19 +45481,25 @@ class StatusWindow(forms.WPFWindow):
     def __init__(self, xaml_path, logger):
         forms.WPFWindow.__init__(self, xaml_path)
         self.logger = logger
-        self.btnHide.Click += self.hide_window
+        self.Topmost = True
         self.btnStop.Click += self.stop_logger
         self.Closing += self.on_closing
 
-    def hide_window(self, sender, args):
-        self.Hide()
-
     def stop_logger(self, sender, args):
+        try:
+            self.btnStop.IsEnabled = False
+            self.btnStop.Content = 'Stopping...'
+        except:
+            pass
         script.set_envvar(ENV_ACTIVE, False)
 
     def on_closing(self, sender, args):
         args.Cancel = True
-        self.Hide()
+        try:
+            self.Topmost = True
+            self.Activate()
+        except:
+            pass
 
     def refresh(self):
         logger = self.logger
@@ -41557,8 +45550,16 @@ class TransactionLogger(object):
     def show_window(self):
         window = self._window()
         window.refresh()
+        try:
+            window.Topmost = True
+        except:
+            pass
         if not window.IsVisible:
             window.Show()
+        try:
+            window.Activate()
+        except:
+            pass
 
     def refresh_window(self):
         if self.status_window:
@@ -41908,7 +45909,10 @@ class TransactionLogger(object):
             pass
 
     def register(self):
-        if self.registered:
+        # pyRevit reload re-imports this module while Revit app event handlers
+        # from prior imports can still be attached in-process.
+        if self.registered or script.get_envvar(ENV_READY):
+            self.registered = True
             return
 
         app = HOST_APP.app
@@ -41946,6 +45950,1407 @@ def register():
 ```
 ## FILE_END: lib/txn_logger.py
 
+## FILE_START: lib/view_filter_editor_engine.py
+## META: sha1=76a38ca6724650535ee5e25e643f4692f9ddddbd size=12173
+## TYPE: text
+## IMPORTS: ["Autodesk.Revit.DB","pyrevit"]
+## FUNCTIONS: ["__init__","proj_line_color","proj_line_weight","proj_fill_color","proj_fill_pattern_id","surface_transparency","proj_fill_pattern_visible","cut_line_color","cut_line_weight","cut_fill_color","cut_fill_pattern_id","cut_fill_pattern_visible","halftone","get_or_create_ogs","collect_all_filters","collect_views_and_templates","build_filter_rows_for_view","build_all_rows","revit_color_to_hex","hex_to_revit_color","get_pattern_name","collect_fill_patterns","collect_line_patterns","__init__","apply_filter_overrides","remove_filters_from_views"]
+## CLASSES: ["FilterOverrideVM","FilterEditPayload"]
+```python
+# -*- coding: utf-8 -*-
+"""
+view_filter_editor_engine.py
+Revit API engine for ViewFilterEditor.
+Handles: collecting filters, reading overrides per view/template,
+         writing OverrideGraphicSettings back, colour/pattern helpers.
+No WPF imports. No module-level doc reference.
+IronPython 2.7 / Revit 2022-2026.
+"""
+
+from pyrevit import DB
+from Autodesk.Revit.DB import (
+    FilteredElementCollector,
+    ParameterFilterElement,
+    View,
+    OverrideGraphicSettings,
+    Color,
+    FillPatternElement,
+    LinePatternElement,
+    Transaction,
+    ElementId,
+)
+
+# ─────────────────────────────────────────────────────────────────
+# Data-transfer objects
+# ─────────────────────────────────────────────────────────────────
+
+class FilterOverrideVM(object):
+    """View-model for one filter override row on a single view."""
+
+    def __init__(self, filter_id, filter_name, view_id, view_name, is_template,
+                 is_enabled, is_visible, ogs):
+        self.filter_id    = filter_id    # ElementId
+        self.filter_name  = filter_name  # str
+        self.view_id      = view_id      # ElementId
+        self.view_name    = view_name    # str
+        self.is_template  = is_template  # bool
+        self.is_enabled   = is_enabled   # bool
+        self.is_visible   = is_visible   # bool
+        self.ogs          = ogs          # OverrideGraphicSettings (may be None)
+
+    # ---- Projection/Surface
+    @property
+    def proj_line_color(self):
+        if self.ogs is None: return None
+        c = self.ogs.ProjectionLineColor
+        return c if c.IsValid else None
+
+    @property
+    def proj_line_weight(self):
+        if self.ogs is None: return -1
+        return self.ogs.ProjectionLineWeight
+
+    @property
+    def proj_fill_color(self):
+        if self.ogs is None: return None
+        c = self.ogs.SurfaceForegroundPatternColor
+        return c if c.IsValid else None
+
+    @property
+    def proj_fill_pattern_id(self):
+        if self.ogs is None: return ElementId.InvalidElementId
+        return self.ogs.SurfaceForegroundPatternId
+
+    @property
+    def surface_transparency(self):
+        if self.ogs is None: return 0
+        return self.ogs.Transparency
+
+    @property
+    def proj_fill_pattern_visible(self):
+        if self.ogs is None: return True
+        return self.ogs.IsSurfaceForegroundPatternVisible
+
+    # ---- Cut
+    @property
+    def cut_line_color(self):
+        if self.ogs is None: return None
+        c = self.ogs.CutLineColor
+        return c if c.IsValid else None
+
+    @property
+    def cut_line_weight(self):
+        if self.ogs is None: return -1
+        return self.ogs.CutLineWeight
+
+    @property
+    def cut_fill_color(self):
+        if self.ogs is None: return None
+        c = self.ogs.CutForegroundPatternColor
+        return c if c.IsValid else None
+
+    @property
+    def cut_fill_pattern_id(self):
+        if self.ogs is None: return ElementId.InvalidElementId
+        return self.ogs.CutForegroundPatternId
+
+    @property
+    def cut_fill_pattern_visible(self):
+        if self.ogs is None: return True
+        return self.ogs.IsCutForegroundPatternVisible
+
+    # ---- Halftone
+    @property
+    def halftone(self):
+        if self.ogs is None: return False
+        return self.ogs.Halftone
+
+    # ─── Mutation helpers ────────────────────────────────────────
+
+    def get_or_create_ogs(self):
+        """Return the existing OGS or a fresh one."""
+        if self.ogs is None:
+            self.ogs = OverrideGraphicSettings()
+        return self.ogs
+
+
+# ─────────────────────────────────────────────────────────────────
+# Collection helpers
+# ─────────────────────────────────────────────────────────────────
+
+def collect_all_filters(doc):
+    """Return list of (ElementId, name) for every ParameterFilterElement in doc."""
+    filters = (
+        FilteredElementCollector(doc)
+        .OfClass(ParameterFilterElement)
+        .ToElements()
+    )
+    return [(f.Id, f.Name) for f in filters]
+
+
+def collect_views_and_templates(doc):
+    """
+    Return (template_views, regular_views) — both lists of DB.View.
+    Excludes view types that cannot hold filters (schedules, legends, etc.).
+    """
+    all_views = (
+        FilteredElementCollector(doc)
+        .OfClass(View)
+        .WhereElementIsNotElementType()
+        .ToElements()
+    )
+
+    _exclude_types = {
+        DB.ViewType.Schedule,
+        DB.ViewType.ColumnSchedule,
+        DB.ViewType.PanelSchedule,
+        DB.ViewType.Legend,
+        DB.ViewType.Undefined,
+    }
+
+    templates = []
+    regular   = []
+    for v in all_views:
+        try:
+            vtype = v.ViewType
+        except Exception:
+            continue
+        if vtype in _exclude_types:
+            continue
+        try:
+            if v.IsTemplate:
+                templates.append(v)
+            else:
+                regular.append(v)
+        except Exception:
+            continue
+
+    templates.sort(key=lambda v: v.Name)
+    regular.sort(key=lambda v: v.Name)
+    return templates, regular
+
+
+def build_filter_rows_for_view(doc, view):
+    """
+    Return list of FilterOverrideVM for every filter applied to *view*.
+    """
+    rows = []
+    try:
+        filter_ids = list(view.GetFilters())
+    except Exception:
+        return rows
+
+    is_tmpl = bool(view.IsTemplate)
+
+    for fid in filter_ids:
+        try:
+            f_elem = doc.GetElement(fid)
+            f_name = f_elem.Name if f_elem is not None else "Unknown ({})".format(fid)
+        except Exception:
+            f_name = "Unknown ({})".format(fid)
+
+        try:
+            enabled = view.GetIsFilterEnabled(fid)
+        except Exception:
+            enabled = True
+
+        try:
+            visible = view.GetFilterVisibility(fid)
+        except Exception:
+            visible = True
+
+        try:
+            ogs = view.GetFilterOverrides(fid)
+        except Exception:
+            ogs = None
+
+        rows.append(FilterOverrideVM(
+            filter_id=fid,
+            filter_name=f_name,
+            view_id=view.Id,
+            view_name=view.Name,
+            is_template=is_tmpl,
+            is_enabled=enabled,
+            is_visible=visible,
+            ogs=ogs,
+        ))
+
+    return rows
+
+
+def build_all_rows(doc):
+    """
+    Build FilterOverrideVM rows for every view/template in the project.
+    Returns (template_rows, regular_rows) where each entry is a FilterOverrideVM.
+    """
+    templates, regulars = collect_views_and_templates(doc)
+
+    template_rows = []
+    for v in templates:
+        template_rows.extend(build_filter_rows_for_view(doc, v))
+
+    regular_rows = []
+    for v in regulars:
+        regular_rows.extend(build_filter_rows_for_view(doc, v))
+
+    return template_rows, regular_rows
+
+
+# ─────────────────────────────────────────────────────────────────
+# Colour / pattern display helpers
+# ─────────────────────────────────────────────────────────────────
+
+def revit_color_to_hex(color):
+    """Convert DB.Color to '#RRGGBB' string, or None if invalid."""
+    if color is None or not color.IsValid:
+        return None
+    return "#{:02X}{:02X}{:02X}".format(int(color.Red), int(color.Green), int(color.Blue))
+
+
+def hex_to_revit_color(hex_str):
+    """Parse '#RRGGBB' → DB.Color."""
+    h = hex_str.lstrip("#")
+    r = int(h[0:2], 16)
+    g = int(h[2:4], 16)
+    b = int(h[4:6], 16)
+    return Color(r, g, b)
+
+
+def get_pattern_name(doc, pattern_id):
+    """Return fill pattern name or '' if not set."""
+    if pattern_id is None or pattern_id == ElementId.InvalidElementId:
+        return ""
+    try:
+        elem = doc.GetElement(pattern_id)
+        return elem.Name if elem is not None else ""
+    except Exception:
+        return ""
+
+
+def collect_fill_patterns(doc):
+    """Return list of (ElementId, name) for all fill patterns."""
+    results = []
+    try:
+        patterns = (
+            FilteredElementCollector(doc)
+            .OfClass(FillPatternElement)
+            .ToElements()
+        )
+        for p in patterns:
+            results.append((p.Id, p.Name))
+        results.sort(key=lambda x: x[1])
+    except Exception:
+        pass
+    return results
+
+
+def collect_line_patterns(doc):
+    """Return list of (ElementId, name) for all line patterns."""
+    results = []
+    try:
+        patterns = (
+            FilteredElementCollector(doc)
+            .OfClass(LinePatternElement)
+            .ToElements()
+        )
+        for p in patterns:
+            results.append((p.Id, p.Name))
+        results.sort(key=lambda x: x[1])
+    except Exception:
+        pass
+    return results
+
+
+# ─────────────────────────────────────────────────────────────────
+# Write-back
+# ─────────────────────────────────────────────────────────────────
+
+class FilterEditPayload(object):
+    """Carries a list of FilterOverrideVM whose ogs/flags have been mutated."""
+    def __init__(self, rows):
+        self.rows = rows  # list of FilterOverrideVM
+
+
+def apply_filter_overrides(doc, payload):
+    """
+    Commit all mutated FilterOverrideVM rows to their views in a single transaction.
+    Raises on any failure so the caller can alert the user.
+    """
+    t = Transaction(doc, "ViewFilterEditor - Apply Overrides")
+    t.Start()
+    try:
+        for row in payload.rows:
+            view = doc.GetElement(row.view_id)
+            if view is None:
+                continue
+
+            # Enable/disable
+            try:
+                view.SetIsFilterEnabled(row.filter_id, row.is_enabled)
+            except Exception:
+                pass
+
+            # Visibility
+            try:
+                view.SetFilterVisibility(row.filter_id, row.is_visible)
+            except Exception:
+                pass
+
+            # Graphic overrides
+            if row.ogs is not None:
+                try:
+                    view.SetFilterOverrides(row.filter_id, row.ogs)
+                except Exception:
+                    pass
+
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        raise ex
+
+
+def remove_filters_from_views(doc, rows):
+    """
+    Remove each filter from its view/template.
+    rows: list of FilterOverrideVM.
+    Returns (removed_count, skipped_count).
+    Raises on transaction failure.
+    """
+    removed = 0
+    skipped = 0
+    t = Transaction(doc, "ViewFilterEditor - Remove Filters")
+    t.Start()
+    try:
+        for row in rows:
+            view = doc.GetElement(row.view_id)
+            if view is None:
+                skipped += 1
+                continue
+            try:
+                view.RemoveFilter(row.filter_id)
+                removed += 1
+            except Exception:
+                skipped += 1
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        raise ex
+    return removed, skipped
+```
+## FILE_END: lib/view_filter_editor_engine.py
+
+## FILE_START: lib/view_filter_editor_ui.py
+## META: sha1=04650b62bf556e216a6e34c655d5e35a63a2bf53 size=32094
+## TYPE: text
+## IMPORTS: ["GUI.style_guide_2026","System","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","view_filter_editor_engine"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_hex_to_wpf_brush","__init__","_pname","flush_to_vm","__init__","_populate_grids","_apply_items_to_grid","_update_counts","_wire_events","ProjLineColorSwatch_Click","ProjFillColorSwatch_Click","CutLineColorSwatch_Click","CutFillColorSwatch_Click","BulkProjLineColorSwatch_Click","BulkProjFillColorSwatch_Click","BulkCutLineColorSwatch_Click","BulkCutFillColorSwatch_Click","_on_grid_selection","_get_selected_items","_show_panel","_on_search","_on_filter_combo","_apply_filter","_passes","_populate_detail_panel","_set_swatch","_populate_pattern_combo","_on_proj_line_color_click","_on_proj_fill_color_click","_on_cut_line_color_click","_on_cut_fill_color_click","_pick_color_for","_on_detail_apply","_populate_bulk_pattern_combos","_pick_bulk_color","_on_bulk_apply","_on_select_all_template","_on_clear_all_template","_on_select_all_regular","_on_clear_all_regular","_on_remove","_on_apply","_show_result","_on_result_close","_on_cancel","show_dialog"]
+## CLASSES: ["FilterRowItem","ViewFilterEditorWindow"]
+```python
+# -*- coding: utf-8 -*-
+"""
+view_filter_editor_ui.py
+WPF window code-behind for ViewFilterEditor.
+Separated from the engine; all Revit API read/write goes through
+view_filter_editor_engine.py.
+"""
+
+import os
+import clr
+
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('WindowsBase')
+clr.AddReference('System')
+
+from System.Windows import Visibility, MessageBox, MessageBoxButton, MessageBoxResult
+from System.Windows.Controls import ComboBoxItem
+from System.Windows.Media import SolidColorBrush, Color as WpfColor
+from System import Uri
+from System.Windows import ResourceDictionary
+
+from pyrevit import forms
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception:
+    def apply_window_contract(w): pass
+    def apply_topmost_and_parent(w): pass
+    def apply_style_guide_resources(w): pass
+
+try:
+    from view_filter_editor_engine import (
+        FilterEditPayload,
+        revit_color_to_hex,
+        hex_to_revit_color,
+        get_pattern_name,
+    )
+except Exception:
+    FilterEditPayload = None
+    revit_color_to_hex = None
+    hex_to_revit_color = None
+    get_pattern_name   = None
+
+
+def _hex_to_wpf_brush(hex_str):
+    """'#RRGGBB' → WPF SolidColorBrush, or None."""
+    if not hex_str:
+        return None
+    try:
+        h = hex_str.lstrip('#')
+        r = int(h[0:2], 16)
+        g = int(h[2:4], 16)
+        b = int(h[4:6], 16)
+        return SolidColorBrush(WpfColor.FromRgb(r, g, b))
+    except Exception:
+        return None
+
+
+# ─── Row model exposed to XAML via ItemsSource ───────────────────
+
+class FilterRowItem(object):
+    """
+    Lightweight Python object binding to the DataGrid row.
+    Wraps a FilterOverrideVM and exposes all editable properties
+    as simple Python attributes (WPF DataGrid with x:Name binds won't
+    use INotifyPropertyChanged; we read cells on Apply).
+    """
+
+    def __init__(self, vm, fill_patterns, pattern_lookup):
+        # pattern_lookup: dict of ElementId.IntegerValue -> name string
+        self._vm            = vm
+        self._fill_patterns = fill_patterns
+        self._dirty         = False
+
+        # Editable state (mirrors VM, mutated by UI callbacks)
+        self.FilterName     = vm.filter_name
+        self.ViewName       = vm.view_name
+        self.IsTemplate     = vm.is_template
+        self.IsEnabled      = vm.is_enabled
+        self.IsVisible      = vm.is_visible
+        self.Halftone       = vm.halftone
+        self.Transparency   = vm.surface_transparency
+
+        # Colour hex strings (or empty)
+        self.ProjLineColor  = revit_color_to_hex(vm.proj_line_color) or ""
+        self.ProjFillColor  = revit_color_to_hex(vm.proj_fill_color) or ""
+        self.CutLineColor   = revit_color_to_hex(vm.cut_line_color)  or ""
+        self.CutFillColor   = revit_color_to_hex(vm.cut_fill_color)  or ""
+
+        # Pattern names via pre-built lookup (avoids per-row doc.GetElement calls)
+        def _pname(eid):
+            if eid is None:
+                return ""
+            try:
+                return pattern_lookup.get(eid.IntegerValue, "")
+            except Exception:
+                return ""
+
+        self.ProjFillPatternName = _pname(vm.proj_fill_pattern_id)
+        self.CutFillPatternName  = _pname(vm.cut_fill_pattern_id)
+
+        # Store selected pattern IDs
+        self._proj_fill_pattern_id = vm.proj_fill_pattern_id
+        self._cut_fill_pattern_id  = vm.cut_fill_pattern_id
+
+    def flush_to_vm(self):
+        """Push UI state back into the underlying FilterOverrideVM."""
+        vm = self._vm
+        vm.is_enabled = bool(self.IsEnabled)
+        vm.is_visible = bool(self.IsVisible)
+
+        ogs = vm.get_or_create_ogs()
+
+        # Halftone
+        try:
+            ogs.SetHalftone(bool(self.Halftone))
+        except Exception:
+            pass
+
+        # Transparency
+        try:
+            t = int(self.Transparency)
+            if 0 <= t <= 100:
+                ogs.SetSurfaceTransparency(t)
+        except Exception:
+            pass
+
+        # Projection line colour
+        if self.ProjLineColor:
+            try:
+                ogs.SetProjectionLineColor(hex_to_revit_color(self.ProjLineColor))
+            except Exception:
+                pass
+
+        # Surface (projection) foreground fill colour
+        if self.ProjFillColor:
+            try:
+                ogs.SetSurfaceForegroundPatternColor(hex_to_revit_color(self.ProjFillColor))
+            except Exception:
+                pass
+
+        # Surface foreground fill pattern
+        try:
+            ogs.SetSurfaceForegroundPatternId(self._proj_fill_pattern_id)
+        except Exception:
+            pass
+
+        # Cut line colour
+        if self.CutLineColor:
+            try:
+                ogs.SetCutLineColor(hex_to_revit_color(self.CutLineColor))
+            except Exception:
+                pass
+
+        # Cut foreground fill colour
+        if self.CutFillColor:
+            try:
+                ogs.SetCutForegroundPatternColor(hex_to_revit_color(self.CutFillColor))
+            except Exception:
+                pass
+
+        # Cut foreground fill pattern
+        try:
+            ogs.SetCutForegroundPatternId(self._cut_fill_pattern_id)
+        except Exception:
+            pass
+
+        vm.ogs = ogs
+        self._dirty = True
+
+
+# ─── WPF Window ──────────────────────────────────────────────────
+
+class ViewFilterEditorWindow(forms.WPFWindow):
+
+    def __init__(self, xaml_path, doc, template_rows, regular_rows,
+                 fill_patterns, line_patterns):
+        forms.WPFWindow.__init__(self, xaml_path)
+
+        self._doc           = doc
+        self._template_rows = template_rows
+        self._regular_rows  = regular_rows
+        self._fill_patterns = fill_patterns
+        self._line_patterns = line_patterns
+        self._payload       = None
+        self._current_item  = None
+
+        # Pre-build pattern name lookup: IntegerValue -> name
+        pattern_lookup = {}
+        for pid, pname in fill_patterns:
+            try:
+                pattern_lookup[pid.IntegerValue] = pname
+            except Exception:
+                pass
+
+        # Build row items (no per-row doc.GetElement calls)
+        self._tmpl_items = [
+            FilterRowItem(r, fill_patterns, pattern_lookup)
+            for r in template_rows
+        ]
+        self._reg_items = [
+            FilterRowItem(r, fill_patterns, pattern_lookup)
+            for r in regular_rows
+        ]
+        self._all_items = self._tmpl_items + self._reg_items
+
+        # Apply style guide
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
+
+        self._populate_grids()
+        self._wire_events()
+
+    # ── Grid population ───────────────────────────────────────────
+
+    def _populate_grids(self):
+        self._apply_items_to_grid(self.TemplateGrid, self._tmpl_items)
+        self._apply_items_to_grid(self.RegularGrid,  self._reg_items)
+        self._update_counts()
+
+    def _apply_items_to_grid(self, grid, items):
+        try:
+            grid.ItemsSource = items
+        except Exception:
+            pass
+
+    def _update_counts(self):
+        try:
+            self.TemplateBadge.Text = "{} filters".format(len(self._tmpl_items))
+        except Exception:
+            pass
+        try:
+            self.RegularBadge.Text = "{} filters".format(len(self._reg_items))
+        except Exception:
+            pass
+
+    # ── Event wiring ──────────────────────────────────────────────
+
+    def _wire_events(self):
+        try:
+            self.SearchBox.TextChanged += self._on_search
+        except Exception:
+            pass
+        try:
+            self.ViewFilterBox.SelectionChanged += self._on_filter_combo
+        except Exception:
+            pass
+        try:
+            self.ApplyBtn.Click += self._on_apply
+        except Exception:
+            pass
+        try:
+            self.CancelBtn.Click += self._on_cancel
+        except Exception:
+            pass
+        try:
+            self.TemplateGrid.SelectionChanged += self._on_grid_selection
+        except Exception:
+            pass
+        try:
+            self.RegularGrid.SelectionChanged += self._on_grid_selection
+        except Exception:
+            pass
+        try:
+            self.SelectAllTemplateBtn.Click  += self._on_select_all_template
+            self.ClearAllTemplateBtn.Click   += self._on_clear_all_template
+            self.SelectAllRegularBtn.Click   += self._on_select_all_regular
+            self.ClearAllRegularBtn.Click    += self._on_clear_all_regular
+        except Exception:
+            pass
+        try:
+            self.DetailApplyBtn.Click += self._on_detail_apply
+        except Exception:
+            pass
+        try:
+            self.DetailRemoveBtn.Click += self._on_remove
+        except Exception:
+            pass
+        try:
+            self.BulkApplyBtn.Click += self._on_bulk_apply
+        except Exception:
+            pass
+        try:
+            self.BulkRemoveBtn.Click += self._on_remove
+        except Exception:
+            pass
+        try:
+            self.ResultCloseBtn.Click += self._on_result_close
+        except Exception:
+            pass
+        # Populate bulk pattern combos once at startup
+        self._populate_bulk_pattern_combos()
+
+    # ── XAML-named colour swatch handlers (called by wpf.LoadComponent) ──────
+
+    def ProjLineColorSwatch_Click(self, sender, e):
+        self._pick_color_for('ProjLineColor', self.ProjLineColorSwatch)
+
+    def ProjFillColorSwatch_Click(self, sender, e):
+        self._pick_color_for('ProjFillColor', self.ProjFillColorSwatch)
+
+    def CutLineColorSwatch_Click(self, sender, e):
+        self._pick_color_for('CutLineColor', self.CutLineColorSwatch)
+
+    def CutFillColorSwatch_Click(self, sender, e):
+        self._pick_color_for('CutFillColor', self.CutFillColorSwatch)
+
+    # Bulk swatch handlers
+    def BulkProjLineColorSwatch_Click(self, sender, e):
+        self._pick_bulk_color('_bulk_proj_line', self.BulkProjLineColorSwatch)
+
+    def BulkProjFillColorSwatch_Click(self, sender, e):
+        self._pick_bulk_color('_bulk_proj_fill', self.BulkProjFillColorSwatch)
+
+    def BulkCutLineColorSwatch_Click(self, sender, e):
+        self._pick_bulk_color('_bulk_cut_line', self.BulkCutLineColorSwatch)
+
+    def BulkCutFillColorSwatch_Click(self, sender, e):
+        self._pick_bulk_color('_bulk_cut_fill', self.BulkCutFillColorSwatch)
+
+    # ── Panel switching ───────────────────────────────────────────
+
+    def _on_grid_selection(self, sender=None, e=None):
+        """Switch right panel based on how many rows are selected."""
+        selected = self._get_selected_items()
+        count = len(selected)
+
+        if count == 0:
+            self._show_panel('empty')
+            try:
+                self.StatusLabel.Text = u"Select a row to edit its overrides."
+            except Exception:
+                pass
+        elif count == 1:
+            self._show_panel('detail')
+            item = selected[0]
+            self._populate_detail_panel(item)
+            try:
+                self.StatusLabel.Text = u"Editing: {} on {}".format(
+                    item.FilterName, item.ViewName)
+            except Exception:
+                pass
+        else:
+            self._show_panel('bulk')
+            try:
+                self.BulkSelectionBadge.Text = u"{} rows".format(count)
+                self.StatusLabel.Text = u"{} rows selected — bulk editing.".format(count)
+            except Exception:
+                pass
+
+    def _get_selected_items(self):
+        """Return list of FilterRowItem from whichever grid has focus/selection."""
+        items = []
+        for grid in (self.TemplateGrid, self.RegularGrid):
+            try:
+                for item in grid.SelectedItems:
+                    if item is not None and item not in items:
+                        items.append(item)
+            except Exception:
+                pass
+        return items
+
+    def _show_panel(self, which):
+        """Show one of: 'detail', 'bulk', 'empty'."""
+        try:
+            self.DetailPanel.Visibility = Visibility.Visible  if which == 'detail' else Visibility.Collapsed
+            self.BulkPanel.Visibility   = Visibility.Visible  if which == 'bulk'   else Visibility.Collapsed
+            self.EmptyPanel.Visibility  = Visibility.Visible  if which == 'empty'  else Visibility.Collapsed
+        except Exception:
+            pass
+
+    def _on_search(self, sender=None, e=None):
+        query = (self.SearchBox.Text or "").strip().lower()
+        self._apply_filter(query)
+
+    def _on_filter_combo(self, sender=None, e=None):
+        query = (self.SearchBox.Text or "").strip().lower()
+        self._apply_filter(query)
+
+    def _apply_filter(self, query):
+        combo_idx = 0
+        try:
+            combo_idx = self.ViewFilterBox.SelectedIndex
+        except Exception:
+            pass
+
+        def _passes(item):
+            if query and query not in item.FilterName.lower() and query not in item.ViewName.lower():
+                return False
+            # combo: 0=All, 1=Enabled only, 2=Disabled only, 3=Hidden only
+            if combo_idx == 1 and not item.IsEnabled:
+                return False
+            if combo_idx == 2 and item.IsEnabled:
+                return False
+            if combo_idx == 3 and item.IsVisible:
+                return False
+            return True
+
+        self.TemplateGrid.ItemsSource = [i for i in self._tmpl_items if _passes(i)]
+        self.RegularGrid.ItemsSource  = [i for i in self._reg_items  if _passes(i)]
+        self._update_counts()
+
+    # ── Selection helpers ─────────────────────────────────────────
+
+    def _populate_detail_panel(self, item):
+        """Fill the detail-edit panel with the selected row's values."""
+        try:
+            self.DetailFilterName.Text = item.FilterName
+            self.DetailViewName.Text   = item.ViewName
+            self.DetailEnabled.IsChecked   = item.IsEnabled
+            self.DetailVisible.IsChecked   = item.IsVisible
+            self.DetailHalftone.IsChecked  = item.Halftone
+
+            # Transparency
+            try:
+                self.DetailTransparency.Text = str(item.Transparency)
+            except Exception:
+                pass
+
+            # Colour swatches
+            self._set_swatch(self.ProjLineColorSwatch,  item.ProjLineColor)
+            self._set_swatch(self.ProjFillColorSwatch,  item.ProjFillColor)
+            self._set_swatch(self.CutLineColorSwatch,   item.CutLineColor)
+            self._set_swatch(self.CutFillColorSwatch,   item.CutFillColor)
+
+            # Pattern combos
+            self._populate_pattern_combo(self.ProjFillPatternCombo,
+                                         item._proj_fill_pattern_id)
+            self._populate_pattern_combo(self.CutFillPatternCombo,
+                                         item._cut_fill_pattern_id)
+
+            self._current_item = item
+            self._show_panel('detail')
+        except Exception:
+            pass
+
+    def _set_swatch(self, border, hex_str):
+        try:
+            if hex_str:
+                brush = _hex_to_wpf_brush(hex_str)
+                border.Background = brush
+                border.ToolTip    = hex_str
+            else:
+                border.Background = SolidColorBrush(WpfColor.FromRgb(240, 240, 240))
+                border.ToolTip    = "(no override)"
+        except Exception:
+            pass
+
+    def _populate_pattern_combo(self, combo, selected_id):
+        try:
+            combo.Items.Clear()
+            none_item = ComboBoxItem()
+            none_item.Content = "(no override)"
+            none_item.Tag     = None
+            combo.Items.Add(none_item)
+            combo.SelectedIndex = 0
+
+            for pid, pname in self._fill_patterns:
+                ci = ComboBoxItem()
+                ci.Content = pname
+                ci.Tag     = pid
+                combo.Items.Add(ci)
+                try:
+                    if pid == selected_id:
+                        combo.SelectedItem = ci
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    # ── Colour swatch click (simple hex input via MessageBox prompt) ──
+
+    def _on_proj_line_color_click(self, sender, e):
+        self._pick_color_for('ProjLineColor', self.ProjLineColorSwatch)
+
+    def _on_proj_fill_color_click(self, sender, e):
+        self._pick_color_for('ProjFillColor', self.ProjFillColorSwatch)
+
+    def _on_cut_line_color_click(self, sender, e):
+        self._pick_color_for('CutLineColor', self.CutLineColorSwatch)
+
+    def _on_cut_fill_color_click(self, sender, e):
+        self._pick_color_for('CutFillColor', self.CutFillColorSwatch)
+
+    def _pick_color_for(self, attr, swatch):
+        """Prompt for hex color (WPF has no built-in color picker; use InputBox pattern)."""
+        try:
+            current = getattr(self._current_item, attr, "") or "#FFFFFF"
+            # Use pyRevit's simple input prompt
+            from pyrevit import forms as pf
+            result = pf.ask_for_string(
+                prompt="Enter hex color (e.g. #FF0000):",
+                title="Pick Colour",
+                default=current,
+            )
+            if result and result.startswith('#') and len(result) in (7, 9):
+                setattr(self._current_item, attr, result.upper()[:7])
+                self._set_swatch(swatch, result.upper()[:7])
+        except Exception:
+            pass
+
+    # ── Detail panel Apply ────────────────────────────────────────
+
+    def _on_detail_apply(self, sender=None, e=None):
+        """Push detail-panel edits back into the current FilterRowItem."""
+        try:
+            item = self._current_item
+            item.IsEnabled  = bool(self.DetailEnabled.IsChecked)
+            item.IsVisible  = bool(self.DetailVisible.IsChecked)
+            item.Halftone   = bool(self.DetailHalftone.IsChecked)
+
+            try:
+                t = int(self.DetailTransparency.Text or "0")
+                item.Transparency = max(0, min(100, t))
+            except Exception:
+                pass
+
+            # Pattern combo selections
+            try:
+                sel = self.ProjFillPatternCombo.SelectedItem
+                if sel is not None and sel.Tag is not None:
+                    item._proj_fill_pattern_id = sel.Tag
+            except Exception:
+                pass
+            try:
+                sel = self.CutFillPatternCombo.SelectedItem
+                if sel is not None and sel.Tag is not None:
+                    item._cut_fill_pattern_id = sel.Tag
+            except Exception:
+                pass
+
+            # Flush to VM
+            item.flush_to_vm()
+
+            # Refresh swatch display
+            self._set_swatch(self.ProjLineColorSwatch, item.ProjLineColor)
+            self._set_swatch(self.ProjFillColorSwatch, item.ProjFillColor)
+            self._set_swatch(self.CutLineColorSwatch,  item.CutLineColor)
+            self._set_swatch(self.CutFillColorSwatch,  item.CutFillColor)
+
+            try:
+                staged = len([i for i in self._all_items if i._dirty])
+                self.StatusLabel.Text = u"Staged: {} change(s) ready to apply.".format(staged)
+            except Exception:
+                pass
+        except Exception as ex:
+            MessageBox.Show("Detail apply error: {}".format(ex), "View Filter Editor")
+
+    # ── Bulk edit helpers ─────────────────────────────────────────
+
+    def _populate_bulk_pattern_combos(self):
+        """Populate BulkProjPatternCombo and BulkCutPatternCombo once at startup."""
+        for combo in (self.BulkProjPatternCombo, self.BulkCutPatternCombo):
+            try:
+                combo.Items.Clear()
+                none_item = ComboBoxItem()
+                none_item.Content = "(no override)"
+                none_item.Tag     = None
+                combo.Items.Add(none_item)
+                combo.SelectedIndex = 0
+                for pid, pname in self._fill_patterns:
+                    ci = ComboBoxItem()
+                    ci.Content = pname
+                    ci.Tag     = pid
+                    combo.Items.Add(ci)
+            except Exception:
+                pass
+        # Initialise bulk colour store
+        self._bulk_proj_line = ""
+        self._bulk_proj_fill = ""
+        self._bulk_cut_line  = ""
+        self._bulk_cut_fill  = ""
+
+    def _pick_bulk_color(self, attr, swatch):
+        """Pick a colour for a bulk field and update its swatch."""
+        try:
+            current = getattr(self, attr, "") or "#FFFFFF"
+            from pyrevit import forms as pf
+            result = pf.ask_for_string(
+                prompt="Enter hex color (e.g. #FF0000):",
+                title="Pick Colour",
+                default=current,
+            )
+            if result and result.startswith('#') and len(result.strip()) in (7, 9):
+                val = result.strip().upper()[:7]
+                setattr(self, attr, val)
+                self._set_swatch(swatch, val)
+        except Exception:
+            pass
+
+    def _on_bulk_apply(self, sender=None, e=None):
+        """Apply the bulk-edit fields to every selected row that has its Apply checkbox ticked."""
+        selected = self._get_selected_items()
+        if not selected:
+            return
+
+        # Read which fields are opted-in
+        apply_enabled     = bool(self.BulkApplyEnabled.IsChecked)
+        apply_visible     = bool(self.BulkApplyVisible.IsChecked)
+        apply_halftone    = bool(self.BulkApplyHalftone.IsChecked)
+        apply_proj_line   = bool(self.BulkApplyProjLine.IsChecked)
+        apply_proj_fill   = bool(self.BulkApplyProjFill.IsChecked)
+        apply_transparency = bool(self.BulkApplyTransparency.IsChecked)
+        apply_cut_line    = bool(self.BulkApplyCutLine.IsChecked)
+        apply_cut_fill    = bool(self.BulkApplyCutFill.IsChecked)
+        apply_proj_pat    = bool(self.BulkApplyProjPattern.IsChecked)
+        apply_cut_pat     = bool(self.BulkApplyCutPattern.IsChecked)
+
+        if not any([apply_enabled, apply_visible, apply_halftone,
+                    apply_proj_line, apply_proj_fill, apply_transparency,
+                    apply_cut_line, apply_cut_fill, apply_proj_pat, apply_cut_pat]):
+            MessageBox.Show(
+                "No fields are ticked.\n\nTick the checkbox next to each field you want to change.",
+                "Bulk Edit")
+            return
+
+        # Read bulk values
+        new_enabled  = bool(self.BulkEnabled.IsChecked)
+        new_visible  = bool(self.BulkVisible.IsChecked)
+        new_halftone = bool(self.BulkHalftone.IsChecked)
+
+        new_transparency = 0
+        try:
+            new_transparency = max(0, min(100, int(self.BulkTransparency.Text or "0")))
+        except Exception:
+            pass
+
+        new_proj_line = self._bulk_proj_line
+        new_proj_fill = self._bulk_proj_fill
+        new_cut_line  = self._bulk_cut_line
+        new_cut_fill  = self._bulk_cut_fill
+
+        new_proj_pat_id = None
+        try:
+            sel = self.BulkProjPatternCombo.SelectedItem
+            if sel is not None:
+                new_proj_pat_id = sel.Tag
+        except Exception:
+            pass
+
+        new_cut_pat_id = None
+        try:
+            sel = self.BulkCutPatternCombo.SelectedItem
+            if sel is not None:
+                new_cut_pat_id = sel.Tag
+        except Exception:
+            pass
+
+        # Apply to each selected item
+        for item in selected:
+            if apply_enabled:
+                item.IsEnabled = new_enabled
+            if apply_visible:
+                item.IsVisible = new_visible
+            if apply_halftone:
+                item.Halftone  = new_halftone
+            if apply_transparency:
+                item.Transparency = new_transparency
+            if apply_proj_line and new_proj_line:
+                item.ProjLineColor = new_proj_line
+            if apply_proj_fill and new_proj_fill:
+                item.ProjFillColor = new_proj_fill
+            if apply_cut_line and new_cut_line:
+                item.CutLineColor = new_cut_line
+            if apply_cut_fill and new_cut_fill:
+                item.CutFillColor = new_cut_fill
+            if apply_proj_pat and new_proj_pat_id is not None:
+                item._proj_fill_pattern_id = new_proj_pat_id
+            if apply_cut_pat and new_cut_pat_id is not None:
+                item._cut_fill_pattern_id = new_cut_pat_id
+
+            item.flush_to_vm()
+
+        # Force DataGrid to refresh visible cells
+        try:
+            self.TemplateGrid.Items.Refresh()
+        except Exception:
+            pass
+        try:
+            self.RegularGrid.Items.Refresh()
+        except Exception:
+            pass
+
+        staged = len([i for i in self._all_items if i._dirty])
+        try:
+            self.StatusLabel.Text = u"Staged: {} change(s) across {} row(s) ready to apply.".format(
+                staged, len(selected))
+            self.BulkSelectionBadge.Text = u"{} rows staged".format(len(selected))
+        except Exception:
+            pass
+
+    # ── Select/Clear all ──────────────────────────────────────────
+
+    def _on_select_all_template(self, sender=None, e=None):
+        try:
+            self.TemplateGrid.SelectAll()
+        except Exception:
+            pass
+
+    def _on_clear_all_template(self, sender=None, e=None):
+        try:
+            self.TemplateGrid.UnselectAll()
+        except Exception:
+            pass
+
+    def _on_select_all_regular(self, sender=None, e=None):
+        try:
+            self.RegularGrid.SelectAll()
+        except Exception:
+            pass
+
+    def _on_clear_all_regular(self, sender=None, e=None):
+        try:
+            self.RegularGrid.UnselectAll()
+        except Exception:
+            pass
+
+    # ── Remove filter from view/template ─────────────────────────
+
+    def _on_remove(self, sender=None, e=None):
+        selected = self._get_selected_items()
+        if not selected:
+            return
+
+        # Build a readable summary for the confirmation dialog
+        count = len(selected)
+        # Summarise unique filter+view pairs
+        lines = []
+        for item in selected[:6]:  # show up to 6 in the prompt
+            lines.append(u"  \u2022 {} \u2192 {}".format(item.FilterName, item.ViewName))
+        if count > 6:
+            lines.append(u"  \u2026 and {} more".format(count - 6))
+
+        msg = (
+            u"Remove {} filter application(s) from their views / templates?\n\n"
+            u"{}\n\n"
+            u"This cannot be undone (Revit undo stack will contain the transaction)."
+        ).format(count, u"\n".join(lines))
+
+        confirm = MessageBox.Show(
+            msg,
+            u"Confirm Remove",
+            MessageBoxButton.YesNo
+        )
+        if confirm != MessageBoxResult.Yes:
+            return
+
+        try:
+            from view_filter_editor_engine import remove_filters_from_views
+            vms = [item._vm for item in selected]
+            removed, skipped = remove_filters_from_views(self._doc, vms)
+
+            # Remove rows from the in-memory lists and refresh grids
+            selected_set = set(id(i) for i in selected)
+            self._tmpl_items = [i for i in self._tmpl_items if id(i) not in selected_set]
+            self._reg_items  = [i for i in self._reg_items  if id(i) not in selected_set]
+            self._all_items  = self._tmpl_items + self._reg_items
+            try:
+                self.TemplateGrid.ItemsSource = self._tmpl_items
+                self.RegularGrid.ItemsSource  = self._reg_items
+                self._update_counts()
+            except Exception:
+                pass
+            self._show_panel('empty')
+
+            detail = u"Removed {} filter application(s).".format(removed)
+            if skipped:
+                detail += u"\n{} could not be removed (view may be read-only).".format(skipped)
+            self._show_result(success=(removed > 0), title=u"Filters Removed", detail=detail)
+
+        except Exception as ex:
+            self._show_result(
+                success=False,
+                title=u"Remove Failed",
+                detail=u"{}".format(ex)
+            )
+
+    # ── Main Apply / Cancel ───────────────────────────────────────
+
+    def _on_apply(self, sender=None, e=None):
+        dirty = [i for i in self._all_items if i._dirty]
+        if not dirty:
+            result = MessageBox.Show(
+                "No changes have been staged.\n\nClose without applying?",
+                "View Filter Editor",
+                MessageBoxButton.YesNo
+            )
+            if result == MessageBoxResult.Yes:
+                self.Close()
+            return
+
+        payload = FilterEditPayload([i._vm for i in dirty])
+        try:
+            from view_filter_editor_engine import apply_filter_overrides
+            apply_filter_overrides(self._doc, payload)
+            self._show_result(
+                success=True,
+                title=u"Changes Applied",
+                detail=u"{} override(s) written across {} filter row(s).".format(
+                    len(payload.rows), len(dirty))
+            )
+        except Exception as ex:
+            self._show_result(
+                success=False,
+                title=u"Apply Failed",
+                detail=u"{}".format(ex)
+            )
+
+    def _show_result(self, success, title, detail):
+        """Show the ResultOverlay with success or error state, then close on dismiss."""
+        try:
+            self.ResultOverlay.Visibility = Visibility.Visible
+            self.ResultIcon.Text    = u"\u2713" if success else u"\u2717"
+            self.ResultIcon.Foreground  = SolidColorBrush(
+                WpfColor.FromRgb(76, 175, 80) if success else WpfColor.FromRgb(229, 57, 53)
+            )
+            self.ResultTitle.Text  = title
+            self.ResultDetail.Text = detail
+        except Exception:
+            # Fallback: just close
+            self.Close()
+
+    def _on_result_close(self, sender=None, e=None):
+        self.Close()
+
+    def _on_cancel(self, sender=None, e=None):
+        self.Close()
+
+    # ── Public API ────────────────────────────────────────────────
+
+    def show_dialog(self):
+        self.ShowDialog()
+```
+## FILE_END: lib/view_filter_editor_ui.py
+
+## FILE_START: lib/wpf_style_template_ui.py
+## META: sha1=4228f6c4301351717b36550bf383f42d6e16b4cc size=5855
+## TYPE: text
+## IMPORTS: ["GUI.style_guide_2026","System.Windows","clr","pyrevit"]
+## FUNCTIONS: ["__init__","__init__","_bind_demo_data","_set_status","_reset_notifications","_update_notification_summary","on_demo_action_clicked","on_notification_dismiss","on_reset_notifications_clicked","on_picker_selection_changed","on_search_text_changed","on_close_clicked"]
+## CLASSES: ["DemoTableRow","WpfStyleTemplateWindow"]
+```python
+# -*- coding: utf-8 -*-
+import clr
+
+clr.AddReference("PresentationFramework")
+clr.AddReference("PresentationCore")
+clr.AddReference("WindowsBase")
+clr.AddReference("System")
+
+from System.Windows import Visibility
+from pyrevit import forms
+
+try:
+    from GUI.style_guide_2026 import (
+        apply_window_contract,
+        apply_topmost_and_parent,
+        apply_style_guide_resources,
+    )
+except Exception as ex:
+    raise ImportError("Failed to import style guide helpers: {}".format(ex))
+
+
+class DemoTableRow(object):
+    def __init__(self, category, size, count, length, mass):
+        self.Category = category
+        self.Size = size
+        self.Count = count
+        self.Length = length
+        self.Mass = mass
+
+
+class WpfStyleTemplateWindow(forms.WPFWindow):
+    def __init__(self, xaml_path):
+        forms.WPFWindow.__init__(self, xaml_path)
+
+        apply_style_guide_resources(self)
+        apply_window_contract(self)
+        apply_topmost_and_parent(self)
+
+        self._status_bar_text = self.FindName("StatusBarText")
+        self._search_preview = self.FindName("SearchPreview")
+        self._selection_count_badge_text = self.FindName("SelectionCountBadgeText")
+        self._rows_count_badge_text = self.FindName("RowsCountBadgeText")
+        self._notification_summary_text = self.FindName("NotificationSummaryText")
+        self._demo_picker = self.FindName("DemoPicker")
+        self._rows_grid = self.FindName("RowsGrid")
+        self._code_shared_helpers = self.FindName("CodeSharedHelpers")
+        self._code_external_event = self.FindName("CodeExternalEvent")
+
+        self._notification_map = {
+            "error": self.FindName("ErrorNotification"),
+            "warning": self.FindName("WarningNotification"),
+            "success": self.FindName("SuccessNotification"),
+            "info": self.FindName("InfoNotification"),
+        }
+
+        self._bind_demo_data()
+        self._reset_notifications()
+        self._set_status("Ready - use this tool as the baseline for new WPF tools.")
+
+    def _bind_demo_data(self):
+        rows = [
+            DemoTableRow("Slab", "N16", "1,240", "4,960.0", "7,813.6"),
+            DemoTableRow("Beam", "N20", "860", "3,440.0", "8,466.4"),
+            DemoTableRow("Column", "N28", "320", "1,280.0", "6,189.6"),
+            DemoTableRow("Wall", "R12", "145", "580.0", "1,214.7"),
+        ]
+
+        self._rows_grid.ItemsSource = rows
+        self._rows_count_badge_text.Text = "{} rows".format(len(rows))
+
+        self._code_shared_helpers.Text = (
+            "from GUI.style_guide_2026 import (\r\n"
+            "    apply_window_contract,\r\n"
+            "    apply_topmost_and_parent,\r\n"
+            "    apply_style_guide_resources,\r\n"
+            ")\r\n"
+            "\r\n"
+            "# In your WPF window __init__:\r\n"
+            "apply_style_guide_resources(self)\r\n"
+            "apply_window_contract(self)\r\n"
+            "apply_topmost_and_parent(self)\r\n"
+        )
+
+        self._code_external_event.Text = (
+            "class _RevitHandler(IExternalEventHandler):\r\n"
+            "    def __init__(self):\r\n"
+            "        self.action = None\r\n"
+            "\r\n"
+            "    def Execute(self, app):\r\n"
+            "        if self.action:\r\n"
+            "            try:\r\n"
+            "                self.action()\r\n"
+            "            finally:\r\n"
+            "                self.action = None\r\n"
+            "\r\n"
+            "    def GetName(self):\r\n"
+            "        return \"WpfStyleTemplateHandler\"\r\n"
+            "\r\n"
+            "def _run_in_revit(self, callback):\r\n"
+            "    self._handler.action = callback\r\n"
+            "    self._event.Raise()\r\n"
+        )
+
+    def _set_status(self, text):
+        self._status_bar_text.Text = text
+
+    def _reset_notifications(self):
+        for panel in self._notification_map.values():
+            panel.Visibility = Visibility.Visible
+        self._update_notification_summary()
+
+    def _update_notification_summary(self):
+        visible = 0
+        for panel in self._notification_map.values():
+            if panel.Visibility == Visibility.Visible:
+                visible += 1
+        self._notification_summary_text.Text = "{} notifications visible".format(visible)
+
+    def on_demo_action_clicked(self, sender, args):
+        label = sender.Tag
+        if not label:
+            label = sender.Content
+        self._set_status("Demo action clicked: {}.".format(label))
+
+    def on_notification_dismiss(self, sender, args):
+        key = str(sender.Tag or "")
+        panel = self._notification_map.get(key)
+        if panel is None:
+            return
+
+        panel.Visibility = Visibility.Collapsed
+        self._update_notification_summary()
+        self._set_status("Dismissed {} notification.".format(key))
+
+    def on_reset_notifications_clicked(self, sender, args):
+        self._reset_notifications()
+        self._set_status("Notification bars reset.")
+
+    def on_picker_selection_changed(self, sender, args):
+        count = self._demo_picker.SelectedItems.Count
+        self._selection_count_badge_text.Text = str(count)
+        self._set_status("{} picker item(s) selected.".format(count))
+
+    def on_search_text_changed(self, sender, args):
+        text = (sender.Text or "").strip()
+        if text:
+            self._search_preview.Text = "Filter preview: {}".format(text)
+            self._set_status("Search preview updated for '{}'.".format(text))
+        else:
+            self._search_preview.Text = "Filter preview: all rows"
+            self._set_status("Search preview cleared.")
+
+    def on_close_clicked(self, sender, args):
+        self.Close()
+```
+## FILE_END: lib/wpf_style_template_ui.py
+
 ## FILE_START: RBG_SYD_Tools.tab/bundle.yaml
 ## META: sha1=6a994994611f91edd1017b5ca6b6b6da8e736a28 size=101
 ## TYPE: text
@@ -41965,19 +47370,42 @@ layout:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton/script.py
-## META: sha1=2dfbd6d372983cac56b60d42bfa622c4dce5da1b size=16266
+## META: sha1=6902f8e240b64089bcead7e09291fc2fe8c57a66 size=17238
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","Snippets._coordinates","clr","datetime","lib.Snippets._coordinates","os","pyrevit","sys","telemetry","tempfile"]
 ## FUNCTIONS: ["_log","_find_extension_root","setParameters","StructuralColumnSelect","StructuralFoundationsSelect","GenericModelSelect"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__="Add\nCoordinates"
 __doc__ = """
 Version = 1.5
@@ -42070,7 +47498,7 @@ except ImportError:
         forms.alert(
             "Failed to import Snippets._coordinates.\n"
             "Checked lib path:\n{0}\n\nOriginal error:\n{1}".format(_lib_dir, imp_err),
-            title="Add Coordinates – Missing Snippets"
+            title="Add Coordinates â€“ Missing Snippets"
         )
         raise
 
@@ -42082,9 +47510,9 @@ uidoc = __revit__.ActiveUIDocument
 
 output = script.get_output()
 
-# ╔═╗╦  ╔═╗╔═╗╔═╗
-# ║  ║  ╠═╣╚═╗╚═╗
-# ╚═╝╩═╝╩ ╩╚═╝╚═╝
+# â•”â•â•—â•¦  â•”â•â•—â•”â•â•—â•”â•â•—
+# â•‘  â•‘  â• â•â•£â•šâ•â•—â•šâ•â•—
+# â•šâ•â•â•©â•â•â•© â•©â•šâ•â•â•šâ•â•
 #--------------------------------------------------
 # Transaction will be started when writing parameters (after user selection)
 
@@ -42355,7 +47783,7 @@ except Exception:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton/Thumbs.db
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton/tool-context.md
-## META: sha1=ca3c098aace860fed9474851a5d08ae4f43f003d size=555
+## META: sha1=f5b65e6fd49fc45ded288d1e972e422f2d6f82e1 size=992
 ## TYPE: text
 ```markdown
 # Add Coordinates
@@ -42363,6 +47791,13 @@ except Exception:
 ## Purpose
 Add or update shared parameters on selected or model-wide elements with project and survey coordinate values.
 
+
+## Workflow
+- Make sure you're in a clean 3D view with your elements visible.
+- Form Selection: Choose from Select Elements in View or Select All Elements In Model.
+- If Select Elements in View, either drag to select or Ctrl+Click to select desired elements.
+- If Select All Elements in Model, select from Structural Columns, Structural Foundations or Generic Models.
+- Returns a selectable list of all elements that have been updated.
 ## Entry Points
 - `script.py`
 
@@ -42464,19 +47899,42 @@ except:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton/script.py
-## META: sha1=944fc4d9f54498e73ecd184c53c99fdd54b96905 size=8536
+## META: sha1=8567fecdaa1c77e30a3f93a52016616230fda2db size=9343
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","pyrevit","re","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","os","pyrevit","re","sys","telemetry"]
 ## FUNCTIONS: ["get_unit_label","convert_from_internal","format_number","build_token_from_param","merge_existing_and_new","choose_source_param_name","get_source_param"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "MagpieGroup Data"
 __doc__ = "Copy a chosen parameter into 'RBG_MagpieGroup' as [valueUnit,] and keep existing text."
 
@@ -42652,7 +48110,7 @@ def choose_source_param_name(default_name, sample_element):
         "Use '{}' as source parameter?".format(default_name),
         options=[
             "Use '{}'".format(default_name),
-            "Select From List…",
+            "Select From Listâ€¦",
             "Cancel",
         ],
     )
@@ -42780,7 +48238,7 @@ except:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton/tool-context.md
-## META: sha1=f1461b4334184a39bd79004d7c91e44da1e7429e size=529
+## META: sha1=b1709a36e035c65e9322cfd9e0efe0829e7b0218 size=560
 ## TYPE: text
 ```markdown
 # MagpieGroup Data
@@ -42788,6 +48246,9 @@ except:
 ## Purpose
 Copy a chosen source parameter into `RBG_MagpieGroup` using a formatted token while preserving existing text.
 
+
+## Workflow
+- Selection stage
 ## Entry Points
 - `script.py`
 
@@ -42809,19 +48270,42 @@ Copy a chosen source parameter into `RBG_MagpieGroup` using a formatted token wh
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton/script.py
-## META: sha1=542d3e51ff0fe4d6c21967ce82466f2a9f2eac77 size=5259
+## META: sha1=0d72630b4acb23d05975f778b91ed227c3455a87 size=6062
 ## TYPE: text
-## IMPORTS: ["pyrevit","telemetry"]
+## IMPORTS: ["os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["pick_schedule","__init__","_build_display_name","__str__","__init__","__str__","pick_existing_field","pick_replacement_schedulable_field","copy_basic_field_properties","swap_field_parameter","main"]
 ## CLASSES: ["ScheduleFieldOption","SchedulableFieldOption"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 from pyrevit import revit, DB, forms
 
 doc = revit.doc
@@ -43010,7 +48494,7 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/ScheduleUpdater.pushbutton/tool-context.md
-## META: sha1=b999eeaadc33b13e89ac6300363c4d622ad99749 size=558
+## META: sha1=8a62f98db7878097aaa73b0b1d9a28d42e76b1dc size=732
 ## TYPE: text
 ```markdown
 # Schedule Updater
@@ -43018,6 +48502,12 @@ if __name__ == '__main__':
 ## Purpose
 Inspect schedules and help users choose or add fields through a guided selection workflow.
 
+
+## Workflow
+- Select schedule and review current fields
+- Search and stage additional schedulable fields
+- Preview resulting field layout
+- Apply updates and verify summary
 ## Entry Points
 - `script.py`
 
@@ -43039,19 +48529,42 @@ Inspect schedules and help users choose or add fields through a guided selection
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/script.py
-## META: sha1=2aa1b43af7f045d4440663d0cb3cbe3215d82eb1 size=75491
+## META: sha1=b29849a30e927c0882192a5b22705862d6a23958 size=80997
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","clr","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_lookup_param","__init__","__str__","_name_from_display","_param_kind","collect_param_names","collect_param_items","_datatype_label","_unit_label","_convert_from_internal","_format_value","_format_as_string","get_param_info","build_preview","_wrap","execute_copy","_cat","_log_skip","_log_error","_log_copy","_safe_elements","_current_selection","_pick_interactively","_all_in_active_view","_is_2d","_all_2d_in_model","_all_3d_in_model","_all_2d_in_active_view","_all_3d_in_active_view","_all_in_model","_choose_elements","__init__","_on_load","_load_scope","_set_list","_set_list","_filter_and_refresh","_on_left_filter","_on_right_filter","_on_format_changed","_on_left_select","_on_right_select","_on_copy","_on_cancel","_build_results","_brush","_tb","_sep","_make_exp","_cat_row","_paint_meta","ctrl","_clear_meta","_refresh_preview","_set_status"]
 ## CLASSES: ["ParamListItem","ParamCopierWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Param Copier"
 __doc__ = "Copy parameter values from a source parameter to a target parameter across selected elements."
 
@@ -43098,9 +48611,9 @@ except Exception:
 uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document
 
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # Engine
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def _lookup_param(element, name):
     """Look up a parameter by name on instance, then fall back to type."""
@@ -43344,9 +48857,9 @@ def get_param_info(elements, param_name):
     info = {
         "name": param_name,
         "storage_type": None,
-        "storage_type_str": "—",
-        "data_type_label": "—",
-        "unit_label": "—",
+        "storage_type_str": "â€”",
+        "data_type_label": "â€”",
+        "unit_label": "â€”",
         "is_read_only": False,
         "sample_values": [],
         "available_count": 0,
@@ -43367,7 +48880,7 @@ def get_param_info(elements, param_name):
             info["storage_type_str"] = str(p.StorageType).split(".")[-1]
             info["data_type_label"] = _datatype_label(p)
             unit = _unit_label(p)
-            info["unit_label"] = unit if unit else "—"
+            info["unit_label"] = unit if unit else "â€”"
             info["is_read_only"] = bool(p.IsReadOnly)
 
         try:
@@ -43386,7 +48899,7 @@ def get_param_info(elements, param_name):
 
 def build_preview(src_info, tgt_info, prefix=u"", suffix=u"", include_unit=True):
     """
-    Return (preview_text, warning_text) describing what copy src→tgt would produce,
+    Return (preview_text, warning_text) describing what copy srcâ†’tgt would produce,
     accounting for any prefix, suffix, and include_unit format options.
     """
     src_st = src_info.get("storage_type")
@@ -43611,7 +49124,7 @@ def execute_copy(elements, src_name, tgt_name, prefix=u"", suffix=u"", include_u
                         str(s_st).split(".")[-1], str(t_st).split(".")[-1]))
 
             except Exception as ex:
-                errors.append(u"id:{0} — {1}".format(el.Id.IntegerValue, str(ex)))
+                errors.append(u"id:{0} â€” {1}".format(el.Id.IntegerValue, str(ex)))
                 skipped += 1
                 _log_error(el, type(ex).__name__)
 
@@ -43627,9 +49140,9 @@ def execute_copy(elements, src_name, tgt_name, prefix=u"", suffix=u"", include_u
     return (copied, skipped, errors, skip_log, error_log, copy_by_cat)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # Element scope helpers (pre-launch)
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def _safe_elements(raw_list):
     """Filter out None and invalid/deleted elements."""
@@ -43659,10 +49172,10 @@ def _pick_interactively():
     try:
         refs = uidoc.Selection.PickObjects(
             ObjectType.Element,
-            "Select elements for Parameter Copier — click to add, then Finish")
+            "Select elements for Parameter Copier â€” click to add, then Finish")
         return _safe_elements([doc.GetElement(r.ElementId) for r in refs])
     except Exception:
-        # OperationCanceledException (Esc) lands here — silent return is correct
+        # OperationCanceledException (Esc) lands here â€” silent return is correct
         return []
 
 
@@ -43825,9 +49338,9 @@ def _choose_elements():
     return None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # WPF window
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 WINDOW_XAML = r"""
 <Window
@@ -43841,9 +49354,52 @@ WINDOW_XAML = r"""
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI">
 
     <Window.Resources>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#E8E9EC"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="24,16"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
         <!-- Keyed styles (applied explicitly) -->
         <Style x:Key="SectionHeader" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
@@ -43892,7 +49448,7 @@ WINDOW_XAML = r"""
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Button">
+        <Style x:Key="PrimaryButton" TargetType="Button">
             <Setter Property="Background" Value="#1F4FD9"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -43909,6 +49465,7 @@ WINDOW_XAML = r"""
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource PrimaryButton}"/>
         <Style TargetType="Border" x:Key="MetaPanel">
             <Setter Property="Background" Value="#FFFFFFFF"/>
             <Setter Property="BorderBrush" Value="#DDE1E6"/>
@@ -43925,7 +49482,7 @@ WINDOW_XAML = r"""
             <Setter Property="Padding" Value="12,8"/>
             <Setter Property="Margin" Value="0,8,0,0"/>
         </Style>
-        <Style x:Key="SecondaryActionButton" TargetType="Button">
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#1F4FD9"/>
             <Setter Property="BorderBrush" Value="#DDE1E6"/>
@@ -44043,23 +49600,22 @@ WINDOW_XAML = r"""
 
     <DockPanel>
 
-        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="10,10,10,0">
+        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="10,10,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
-                    <TextBlock Text="PC" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="PC" Style="{StaticResource ToolAppBarIconTextStyle}"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Parameter Copier" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
-                    <TextBlock Text="Review parameters, preview the copy, and run the transfer." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                    <TextBlock Text="SJ-B+C Â· Parameter Copier" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Review parameters, preview the copy, and run the transfer." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
                 </StackPanel>
-                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
-                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
                 </Border>
             </Grid>
         </Border>
@@ -44080,7 +49636,7 @@ WINDOW_XAML = r"""
                     HorizontalAlignment="Right" Margin="10,8,10,8">
             <Button x:Name="btnCopy" Content="Copy Parameters"
                     Width="155" Margin="0,0,8,0" IsEnabled="False"/>
-            <Button x:Name="btnCancel" Content="Close" Width="90" Style="{StaticResource SecondaryActionButton}"/>
+            <Button x:Name="btnCancel" Content="Close" Width="90" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
 
         <!-- Scope bar (top) -->
@@ -44112,7 +49668,7 @@ WINDOW_XAML = r"""
         <!-- Main TabControl -->
         <TabControl x:Name="tabMain">
 
-            <!-- ═══ PARAMETERS TAB ════════════════════════════════════════ -->
+            <!-- â•â•â• PARAMETERS TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
             <TabItem Header="  Parameters  " x:Name="tabParams">
                 <DockPanel Margin="10,8,10,6">
 
@@ -44165,7 +49721,7 @@ WINDOW_XAML = r"""
                         <!-- LEFT: Source -->
                         <DockPanel Grid.Column="0">
                             <TextBlock DockPanel.Dock="Top" Style="{StaticResource SectionHeader}"
-                                       Text="Source Parameter (Left — reads from here)"/>
+                                       Text="Source Parameter (Left â€” reads from here)"/>
                             <TextBlock DockPanel.Dock="Top" Foreground="#5E6A75" FontSize="11"
                                        Margin="0,0,0,3" Text="Filter"/>
                             <TextBox DockPanel.Dock="Top" x:Name="txtLeftFilter" Margin="0,0,0,6"/>
@@ -44173,15 +49729,15 @@ WINDOW_XAML = r"""
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Data Type"/>
-                                        <TextBlock x:Name="txtLeftDataType" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtLeftDataType" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Storage Type"/>
-                                        <TextBlock x:Name="txtLeftStorageType" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtLeftStorageType" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Display Unit"/>
-                                        <TextBlock x:Name="txtLeftUnit" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtLeftUnit" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Read Only"/>
-                                        <TextBlock x:Name="txtLeftReadOnly" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtLeftReadOnly" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Sample Values (first 5 elements)"/>
-                                        <TextBlock x:Name="txtLeftSamples" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtLeftSamples" Style="{StaticResource MetaValue}" Text="â€”"/>
                                     </StackPanel>
                                 </ScrollViewer>
                             </Border>
@@ -44196,7 +49752,7 @@ WINDOW_XAML = r"""
                         <!-- RIGHT: Target -->
                         <DockPanel Grid.Column="2">
                             <TextBlock DockPanel.Dock="Top" Style="{StaticResource SectionHeader}"
-                                       Text="Target Parameter (Right — writes to here)"/>
+                                       Text="Target Parameter (Right â€” writes to here)"/>
                             <TextBlock DockPanel.Dock="Top" Foreground="#5E6A75" FontSize="11"
                                        Margin="0,0,0,3" Text="Filter"/>
                             <TextBox DockPanel.Dock="Top" x:Name="txtRightFilter" Margin="0,0,0,6"/>
@@ -44204,15 +49760,15 @@ WINDOW_XAML = r"""
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <StackPanel>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Data Type"/>
-                                        <TextBlock x:Name="txtRightDataType" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtRightDataType" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Storage Type"/>
-                                        <TextBlock x:Name="txtRightStorageType" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtRightStorageType" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Display Unit"/>
-                                        <TextBlock x:Name="txtRightUnit" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtRightUnit" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Read Only"/>
-                                        <TextBlock x:Name="txtRightReadOnly" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtRightReadOnly" Style="{StaticResource MetaValue}" Text="â€”"/>
                                         <TextBlock Style="{StaticResource MetaLabel}" Text="Sample Values (first 5 elements)"/>
-                                        <TextBlock x:Name="txtRightSamples" Style="{StaticResource MetaValue}" Text="—"/>
+                                        <TextBlock x:Name="txtRightSamples" Style="{StaticResource MetaValue}" Text="â€”"/>
                                     </StackPanel>
                                 </ScrollViewer>
                             </Border>
@@ -44222,7 +49778,7 @@ WINDOW_XAML = r"""
                 </DockPanel>
             </TabItem>
 
-            <!-- ═══ RESULTS TAB ══════════════════════════════════════════ -->
+            <!-- â•â•â• RESULTS TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
             <TabItem Header="  Results  " x:Name="tabResults" IsEnabled="False">
                 <DockPanel Margin="10,8,10,6">
                         <Border DockPanel.Dock="Top" Background="#FFF9FAFB" BorderBrush="#DDE1E6"
@@ -44376,7 +49932,7 @@ class ParamCopierWindow(forms.WPFWindow):
                     return
                 if len(elems) > 5000:
                     self._set_status(
-                        u"Large scope: {0} elements — parameter scan may take "
+                        u"Large scope: {0} elements â€” parameter scan may take "
                         u"several seconds.".format(len(elems)))
             else:
                 elems = []
@@ -44405,13 +49961,13 @@ class ParamCopierWindow(forms.WPFWindow):
             self._set_status(u"Load failed: {0}".format(str(_ex)))
             self.txtElementCount.Text = u"Error"
 
-    # ── List helpers ──────────────────────────────────────────────────────────
+    # â”€â”€ List helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def _set_list(self, listbox, items):
         """Populate a ListBox using display strings from ParamListItem list."""
         col = List[String]()
         for item in items:
-            col.Add(str(item))  # Python str() calls __str__ — avoids IronPython type-name bug
+            col.Add(str(item))  # Python str() calls __str__ â€” avoids IronPython type-name bug
         listbox.ItemsSource = col
 
     def _filter_and_refresh(self, listbox, query):
@@ -44422,7 +49978,7 @@ class ParamCopierWindow(forms.WPFWindow):
             filtered = self._all_items
         self._set_list(listbox, filtered)
 
-    # ── Event handlers ────────────────────────────────────────────────────────
+    # â”€â”€ Event handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def _on_left_filter(self, sender, e):
         self._filter_and_refresh(self.lstLeft, self.txtLeftFilter.Text)
@@ -44689,9 +50245,9 @@ class ParamCopierWindow(forms.WPFWindow):
             return getattr(self, "txt{0}{1}".format(
                 "Left" if side == "left" else "Right", suffix))
 
-        ctrl("DataType").Text = info.get("data_type_label") or u"—"
-        ctrl("StorageType").Text = info.get("storage_type_str") or u"—"
-        ctrl("Unit").Text = info.get("unit_label") or u"—"
+        ctrl("DataType").Text = info.get("data_type_label") or u"â€”"
+        ctrl("StorageType").Text = info.get("storage_type_str") or u"â€”"
+        ctrl("Unit").Text = info.get("unit_label") or u"â€”"
         ctrl("ReadOnly").Text = u"Yes" if info.get("is_read_only") else u"No"
         samples = info.get("sample_values", [])
         ctrl("Samples").Text = u"\n".join(samples) if samples else u"(no values set)"
@@ -44700,7 +50256,7 @@ class ParamCopierWindow(forms.WPFWindow):
         for suffix in ("DataType", "StorageType", "Unit", "ReadOnly", "Samples"):
             try:
                 getattr(self, "txt{0}{1}".format(
-                    "Left" if side == "left" else "Right", suffix)).Text = u"—"
+                    "Left" if side == "left" else "Right", suffix)).Text = u"â€”"
             except Exception:
                 pass
 
@@ -44743,9 +50299,9 @@ class ParamCopierWindow(forms.WPFWindow):
             pass
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # Entry point
-# ─────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 try:
     win = ParamCopierWindow()
@@ -44759,6 +50315,24 @@ except Exception as _launch_ex:
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/script.py
 
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/tool-context.md
+## META: sha1=7016bf0f9ac69b135d4ecf625a72eb0b1504801d size=254
+## TYPE: text
+```markdown
+# ParamCopier
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Select source category and parameter
+- Select target category and parameter
+- Preview mapping values
+- Run copy simulation and inspect output
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/ParamCopier.pushbutton/tool-context.md
+
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
@@ -44766,31 +50340,139 @@ except Exception as _launch_ex:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/launcher.xaml
-## META: sha1=01e56315923ebec60d629cc70a8aa03795b6721d size=4072
+## META: sha1=29e9accd187bd8de28df009dd1426c4b8842f767 size=9846
 ## TYPE: text
 ```
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Transaction Logger"
-    Width="360" Height="430"
-    ResizeMode="CanResizeWithGrip"
+    Width="420"
+    Height="520"
+    ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    Topmost="False"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI"
-    ShowInTaskbar="False">
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
+
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
-        </ResourceDictionary>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9"/>
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB"/>
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE"/>
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7"/>
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98"/>
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6"/>
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC"/>
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF"/>
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="20,14"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="MinWidth" Value="64"/>
+            <Setter Property="Padding" Value="14,6,14,6"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+            <Setter Property="Padding" Value="8,4,8,8"/>
+        </Style>
     </Window.Resources>
+
     <Grid Margin="14,12,14,12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -44798,7 +50480,7 @@ except Exception as _launch_ex:
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -44809,42 +50491,37 @@ except Exception as _launch_ex:
                     <TextBlock Text="TL" Style="{StaticResource ToolAppBarIconTextStyle}"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Transaction Logger" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Configure capture scope and snapshot diffing before starting the logger." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="Transaction Logger" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Capture transaction activity in CSV for diagnostics and review." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
                 </StackPanel>
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
                 </Border>
             </Grid>
         </Border>
 
-        <!-- Capture mode -->
-        <GroupBox Grid.Row="1" Header="Capture Mode" Padding="8,4,8,8" Margin="0,0,0,8">
+        <GroupBox Grid.Row="1" Header="Capture Mode">
             <StackPanel>
                 <RadioButton x:Name="rbFull" Content="Full model + annotations" IsChecked="True" Margin="0,4,0,2"/>
                 <RadioButton x:Name="rbTargeted" Content="Targeted categories" Margin="0,2"/>
             </StackPanel>
         </GroupBox>
 
-        <!-- Category list — enabled only in Targeted mode -->
-        <GroupBox x:Name="gbCategories" Grid.Row="2" Header="Categories" IsEnabled="False"
-                  Padding="8,4,8,8" Margin="0,0,0,8">
-            <ListBox x:Name="lstCategories" SelectionMode="Extended" Height="110"
+        <GroupBox x:Name="gbCategories" Grid.Row="2" Header="Categories" IsEnabled="False">
+            <ListBox x:Name="lstCategories" SelectionMode="Multiple" Height="120"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         </GroupBox>
 
-        <!-- Snapshot mode -->
-        <GroupBox Grid.Row="3" Header="Snapshot Mode" Padding="8,4,8,8" Margin="0,0,0,8">
+        <GroupBox Grid.Row="3" Header="Snapshot Mode">
             <StackPanel>
-                <RadioButton x:Name="rbSnapNone" Content="Off  —  fast, no before/after diff" IsChecked="True" Margin="0,4,0,2"/>
-                <RadioButton x:Name="rbSnapLazy" Content="Lazy  —  capture element state (enables diff)" Margin="0,2"/>
+                <RadioButton x:Name="rbSnapNone" Content="Off  -  fast, no before/after diff" IsChecked="True" Margin="0,4,0,2"/>
+                <RadioButton x:Name="rbSnapLazy" Content="Lazy  -  capture element state (enables diff)" Margin="0,2"/>
             </StackPanel>
         </GroupBox>
 
-        <!-- Buttons -->
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
-            <Button x:Name="btnCancel" Style="{StaticResource SecondaryButton}" Content="Cancel" Width="80" Margin="0,0,8,0"/>
-            <Button x:Name="btnStart" Style="{StaticResource PrimaryButton}" Content="Start Logging" Width="120"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+            <Button x:Name="btnCancel" Content="Cancel" Width="90" Margin="0,0,8,0" Style="{StaticResource SecondaryButton}"/>
+            <Button x:Name="btnStart" Content="Start Logging" Width="130" Style="{StaticResource PrimaryButton}"/>
         </StackPanel>
     </Grid>
 </Window>
@@ -44853,24 +50530,48 @@ except Exception as _launch_ex:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/launcher.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/script.py
-## META: sha1=0a8cda71682e476fe662ef65120ff40aa05128ee size=5057
+## META: sha1=16ca2e33e55be31c935f0150e6b408f9db34cbfe size=6204
 ## TYPE: text
-## IMPORTS: ["GUI.style_guide_2026","os","pyrevit","sys","telemetry","txn_logger"]
+## IMPORTS: ["GUI.style_guide_2026","os","pyrevit","sys","telemetry","traceback","txn_logger"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","default_output_dir","get_category_names","_find_extension_root","_ensure_logger_ready","__init__","_on_mode_change","_on_start","_on_cancel"]
 ## CLASSES: ["LauncherWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = 'Transaction Logger'
 __doc__ = 'Log all transactions in the current Revit session to a CSV file.'
 
 import os
 import sys
+import traceback
 
 from pyrevit import forms, script, HOST_APP
 
@@ -45015,7 +50716,7 @@ active = bool(script.get_envvar(ENV_ACTIVE))
 if active:
     stop = forms.alert(
         'Transaction Logger is currently running.\n\nStop logging and save the current log?',
-        title='Transaction Logger — Running',
+        title='Transaction Logger â€” Running',
         yes=True, no=True
     )
     if stop:
@@ -45027,8 +50728,15 @@ if not doc:
     forms.alert('Open a document first.', title='Transaction Logger', exitscript=True)
 
 launcher_xaml = os.path.join(os.path.dirname(__file__), 'launcher.xaml')
-window = LauncherWindow(launcher_xaml, doc)
-window.ShowDialog()
+try:
+    window = LauncherWindow(launcher_xaml, doc)
+    window.ShowDialog()
+except Exception:
+    forms.alert(
+        'Transaction Logger UI failed to load.\n\n{0}'.format(traceback.format_exc()),
+        title='Transaction Logger',
+        exitscript=True
+    )
 
 if not window._result:
     script.exit()
@@ -45039,11 +50747,16 @@ script.set_envvar(ENV_CATEGORIES, ';'.join(config['categories']))
 script.set_envvar(ENV_OUTPUT, default_output_dir())
 script.set_envvar(ENV_SNAPSHOT, config['snapshot_mode'])
 script.set_envvar(ENV_ACTIVE, True)
+
+try:
+    forms.toast('Transaction Logger started.', title='Transaction Logger')
+except Exception:
+    pass
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton/tool-context.md
-## META: sha1=2e0c15707ff8d15090255c87f0f584dc6e99780b size=681
+## META: sha1=3b7e6236bc4962b1a472a81b409e03a39867ee81 size=739
 ## TYPE: text
 ```markdown
 # Transaction Logger
@@ -45051,6 +50764,10 @@ script.set_envvar(ENV_ACTIVE, True)
 ## Purpose
 Configure and toggle transaction logging for the active Revit session, either across the full model or targeted categories.
 
+
+## Workflow
+- Execution stage
+- Results and status stage
 ## Entry Points
 - `script.py`
 
@@ -45078,118 +50795,206 @@ author: Harley TRAPPITT
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/bundle.yaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/dashboard.xaml
-## META: sha1=77f985cae53cec86a9de22f779a44af7621f2582 size=26899
+## META: sha1=7295f6a9f431ab491a326f27d53f49783818e25a size=26891
 ## TYPE: text
 ```
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Tool Dashboard"
-    Height="700"
-    Width="1260"
+    Height="760"
+    Width="1280"
+    MinHeight="560"
+    MinWidth="940"
     WindowStartupLocation="CenterScreen"
-    ShowInTaskbar="False"
     ResizeMode="CanResizeWithGrip"
-    MinHeight="540"
-    MinWidth="920"
+    ShowInTaskbar="False"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
 
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="WarningBrush" Color="#E67E22" />
+        <SolidColorBrush x:Key="WarningContainerBrush" Color="#FDF3E9" />
 
-        <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
-        <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
-        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
-        <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
-        <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
-        <SolidColorBrush x:Key="RbgTextSecondaryBrush" Color="#FF4D5965"/>
-        <SolidColorBrush x:Key="RbgTextMutedBrush" Color="#FF8C97A3"/>
-        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
-        <SolidColorBrush x:Key="RbgAccentSoftBrush" Color="#FFF0F7FF"/>
-
-        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="20,14" />
         </Style>
 
-        <Style x:Key="DashboardNeutralButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10,4"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="14,6,14,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="ButtonBorder"
-                                Background="{TemplateBinding Background}"
+                        <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="12"
-                                SnapsToDevicePixels="True">
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}"/>
+                                              VerticalAlignment="Center" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
-                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.92"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.55"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="DashboardPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DashboardNeutralButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
-            <Setter Property="Foreground" Value="White"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <!-- Card ListBoxItem: selection/hover highlight applied directly to card border -->
+        <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CompactButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="10,5,10,5" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="MinWidth" Value="30" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+
         <Style x:Key="CardItemStyle" TargetType="ListBoxItem">
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Margin" Value="4"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Border x:Name="CardBorder"
-                                Width="202"
-                                Height="86"
-                            CornerRadius="16"
-                            Background="{StaticResource RbgCardBackgroundBrush}"
-                            BorderBrush="{StaticResource RbgCardBorderBrush}"
+                                Width="210"
+                                Height="90"
+                                CornerRadius="10"
+                                Background="{StaticResource SurfaceBrush}"
+                                BorderBrush="{StaticResource OutlineBrush}"
                                 BorderThickness="1"
                                 Padding="10,8"
                                 Cursor="Hand">
-                            <ContentPresenter/>
+                            <ContentPresenter />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgAccentSoftBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderThickness" Value="2"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderThickness" Value="2" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -45197,17 +51002,33 @@ author: Harley TRAPPITT
             </Setter>
         </Style>
 
-        <!-- Tool card inner content template -->
+        <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="True" />
+            <Setter Property="Padding" Value="2,3" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
+
         <DataTemplate x:Key="ToolCardTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Border Width="32"
                         Height="32"
-                    CornerRadius="12"
+                        CornerRadius="7"
                         Background="{Binding accent}"
                         VerticalAlignment="Top"
                         Margin="0,2,0,0">
@@ -45216,61 +51037,59 @@ author: Harley TRAPPITT
                                VerticalAlignment="Center"
                                Foreground="White"
                                FontSize="14"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold" />
                 </Border>
 
                 <StackPanel Grid.Column="1">
                     <DockPanel>
                         <TextBlock Text="{Binding favorite_glyph}"
                                    DockPanel.Dock="Right"
-                                   Foreground="#FFE3A21A"
+                                   Foreground="{StaticResource WarningBrush}"
                                    FontSize="11"
                                    VerticalAlignment="Center"
-                                   Margin="3,0,0,0"/>
+                                   Margin="3,0,0,0" />
                         <Border DockPanel.Dock="Right"
                                 Background="{Binding source_badge_accent}"
-                            CornerRadius="12"
+                                CornerRadius="4"
                                 Padding="4,1"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center">
                             <TextBlock Text="{Binding source_badge}"
                                        Foreground="White"
                                        FontSize="9"
-                                       FontWeight="SemiBold"/>
+                                       FontWeight="SemiBold" />
                         </Border>
                         <TextBlock Text="{Binding title}"
                                    FontWeight="SemiBold"
                                    FontSize="12"
-                                   Foreground="{StaticResource RbgTextPrimaryBrush}"
-                                   TextTrimming="CharacterEllipsis"/>
+                                   Foreground="{StaticResource OnSurfaceBrush}"
+                                   TextTrimming="CharacterEllipsis" />
                     </DockPanel>
                     <TextBlock Text="{Binding group}"
                                FontSize="10"
-                               Foreground="{StaticResource RbgTextMutedBrush}"
-                               Margin="0,2,0,0"/>
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               Margin="0,2,0,0" />
                     <TextBlock Text="{Binding short_description}"
                                FontSize="11"
-                               Foreground="{StaticResource RbgTextSecondaryBrush}"
+                               Foreground="#FF4D5965"
                                TextWrapping="Wrap"
                                MaxHeight="28"
-                               Margin="0,3,0,0"/>
+                               Margin="0,3,0,0" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
-        <!-- Favourites quick-launch button template -->
         <DataTemplate x:Key="FavButtonTemplate">
             <Button Click="fav_quick_launch"
+                    Style="{StaticResource GhostButton}"
                     Height="34"
-                    Margin="0,0,6,0"
+                    Margin="0,0,8,0"
                     Padding="10,0"
-                    Background="{StaticResource RbgCardBackgroundBrush}"
-                    BorderBrush="{StaticResource RbgCardBorderBrush}"
-                    Cursor="Hand">
+                    MinWidth="120">
                 <StackPanel Orientation="Horizontal">
                     <Border Width="20"
                             Height="20"
-                            CornerRadius="12"
+                            CornerRadius="5"
                             Background="{Binding accent}"
                             Margin="0,0,7,0"
                             VerticalAlignment="Center">
@@ -45279,129 +51098,85 @@ author: Harley TRAPPITT
                                    VerticalAlignment="Center"
                                    Foreground="White"
                                    FontSize="10"
-                                   FontWeight="Bold"/>
+                                   FontWeight="Bold" />
                     </Border>
                     <TextBlock Text="{Binding title}"
                                FontSize="12"
                                VerticalAlignment="Center"
                                MaxWidth="130"
-                               TextTrimming="CharacterEllipsis"/>
+                               TextTrimming="CharacterEllipsis" />
                 </StackPanel>
             </Button>
         </DataTemplate>
-
-        </ResourceDictionary>
     </Window.Resources>
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
-                    <TextBlock Text="TD" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                    <TextBlock Text="DB" Style="{StaticResource ToolAppBarIconTextStyle}" />
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Browse, group, and launch extension tools from a unified catalog." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}" />
+                    <TextBlock Text="Launch, filter, and organize tool access from one shared surface." Style="{StaticResource ToolAppBarSubtitleStyle}" />
                 </StackPanel>
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}" />
                 </Border>
             </Grid>
         </Border>
 
-        <!-- Row 0: Search and filter bar -->
-        <Border Grid.Row="1"
-            Style="{StaticResource SectionCardBorderStyle}"
-                Padding="10,7"
-                Margin="0,0,0,8">
+        <Border Grid.Row="1" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8">
             <DockPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="12,0,0,0">
-                    <Button x:Name="AllFilterButton"
-                            Content="All"
-                            Width="50"
-                            Height="28"
-                            Margin="0,0,4,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_all_click"/>
-                    <Button x:Name="FavoritesFilterButton"
-                            Content="Starred"
-                            Width="62"
-                            Height="28"
-                            Margin="0,0,4,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_favorites_click"/>
-                    <Button x:Name="RecentFilterButton"
-                            Content="Recent"
-                            Width="62"
-                            Height="28"
-                            Margin="0,0,14,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_recent_click"/>
-                    <TextBlock x:Name="SummaryText"
-                               VerticalAlignment="Center"
-                               Foreground="{StaticResource RbgTextMutedBrush}"
-                               FontSize="12"/>
+                    <Button x:Name="AllFilterButton" Content="All" Width="58" Margin="0,0,4,0" Style="{StaticResource CompactButton}" Click="show_all_click" />
+                    <Button x:Name="FavoritesFilterButton" Content="Starred" Width="70" Margin="0,0,4,0" Style="{StaticResource CompactButton}" Click="show_favorites_click" />
+                    <Button x:Name="RecentFilterButton" Content="Recent" Width="70" Margin="0,0,4,0" Style="{StaticResource CompactButton}" Click="show_recent_click" />
+                    <Button Content="Refresh" Width="78" Margin="0,0,12,0" Style="{StaticResource SecondaryButton}" Click="refresh_catalog_click" />
+                    <TextBlock x:Name="SummaryText" VerticalAlignment="Center" Foreground="{StaticResource OnSurfaceVariantBrush}" FontSize="12" />
                 </StackPanel>
                 <DockPanel>
-                    <Button DockPanel.Dock="Right"
-                            Content="✕"
-                            Width="28"
-                            Height="28"
-                            Margin="6,0,0,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="clear_search_click"/>
-                    <TextBox x:Name="SearchBox"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Padding="6,0"
-                             FontSize="13"
-                             Background="{StaticResource RbgSurfaceSubtleBrush}"
-                             BorderBrush="{StaticResource RbgCardBorderBrush}"
-                             TextChanged="search_changed"/>
+                    <Button DockPanel.Dock="Right" Content="&#215;" Margin="8,0,0,0" Style="{StaticResource IconButton}" Click="clear_search_click" />
+                    <TextBox x:Name="SearchBox" Style="{StaticResource SearchTextBoxStyle}" TextChanged="search_changed" />
                 </DockPanel>
             </DockPanel>
         </Border>
 
-        <!-- Row 1: Favourites quick-launch bar (collapsed when no favourites) -->
         <Border x:Name="FavoritesSection"
-            Grid.Row="2"
-                Background="#FFFEFDF0"
-                BorderBrush="#FFFDE8A0"
+                Grid.Row="2"
+                Background="{StaticResource WarningContainerBrush}"
+                BorderBrush="#FFF4D28A"
                 BorderThickness="1"
-                CornerRadius="8"
-                Padding="10,5"
+                CornerRadius="10"
+                Padding="10,6"
                 Margin="0,0,0,8"
                 Visibility="Collapsed">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left"
                            Text="★  Quick launch:"
-                           Foreground="#FFBF9000"
+                           Foreground="#FF9A6A00"
                            FontSize="12"
                            FontWeight="SemiBold"
                            VerticalAlignment="Center"
-                           Margin="0,0,12,0"/>
-                <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Hidden"
-                              Height="40">
-                    <ItemsControl x:Name="FavoritesBar"
-                                  ItemTemplate="{StaticResource FavButtonTemplate}"
-                                  VerticalAlignment="Center">
+                           Margin="0,0,12,0" />
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Height="40">
+                    <ItemsControl x:Name="FavoritesBar" ItemTemplate="{StaticResource FavButtonTemplate}" VerticalAlignment="Center">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
+                                <StackPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
@@ -45409,70 +51184,35 @@ author: Harley TRAPPITT
             </DockPanel>
         </Border>
 
-        <!-- Row 2: Groups sidebar + card grid + details panel -->
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="290" />
             </Grid.ColumnDefinitions>
 
-            <!-- Groups sidebar -->
-            <Border Grid.Column="0"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="8"
-                    Margin="0,0,8,0">
+            <Border Grid.Column="0" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,8,0">
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Top"
-                               Text="Groups"
-                               FontSize="13"
-                               FontWeight="Bold"
-                               Margin="4,0,4,8"/>
+                    <TextBlock DockPanel.Dock="Top" Text="Groups" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource PrimaryBrush}" Margin="4,0,4,8" />
                     <StackPanel DockPanel.Dock="Bottom" Margin="0,6,0,0">
-                        <Button Content="New Group"
-                                Height="26"
-                                Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="new_group_click"/>
-                        <Button Content="Delete Group"
-                                Height="26"
-                                Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="delete_group_click"/>
-                        <Button Content="Add to Group"
-                                Height="26"
-                                Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="add_tool_to_group_click"/>
-                        <Button Content="Remove from Group"
-                                Height="26"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="remove_tool_from_group_click"/>
+                        <Button Content="New Group" Margin="0,0,0,3" Style="{StaticResource CompactButton}" Click="new_group_click" />
+                        <Button Content="Delete Group" Margin="0,0,0,3" Style="{StaticResource CompactButton}" Click="delete_group_click" />
+                        <Button Content="Add to Group" Margin="0,0,0,3" Style="{StaticResource CompactButton}" Click="add_tool_to_group_click" />
+                        <Button Content="Remove from Group" Style="{StaticResource CompactButton}" Click="remove_tool_from_group_click" />
                     </StackPanel>
                     <TreeView x:Name="GroupTree"
                              SelectedItemChanged="group_changed"
                              FontSize="12"
-                             Background="#FFF9FAFB"
-                             BorderBrush="#FFE1E4E8">
+                             Background="{StaticResource SurfaceContainerBrush}"
+                             BorderBrush="{StaticResource OutlineBrush}">
                         <TreeView.ItemContainerStyle>
-                            <Style TargetType="TreeViewItem">
-                                <Setter Property="IsExpanded" Value="True"/>
-                                <Setter Property="Padding" Value="2,3"/>
-                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                            </Style>
+                            <Style TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemStyle}" />
                         </TreeView.ItemContainerStyle>
                     </TreeView>
                 </DockPanel>
             </Border>
 
-            <!-- Card grid -->
-            <Border Grid.Column="1"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="6">
+            <Border Grid.Column="1" Style="{StaticResource SectionCardBorderStyle}">
                 <ListBox x:Name="CardGrid"
                          SelectionChanged="tool_changed"
                          MouseDoubleClick="tool_double_click"
@@ -45483,129 +51223,61 @@ author: Harley TRAPPITT
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
+                            <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
             </Border>
 
-            <!-- Details panel -->
-            <Border Grid.Column="2"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="12"
-                    Margin="8,0,0,0">
+            <Border Grid.Column="2" Style="{StaticResource SectionCardBorderStyle}" Margin="8,0,0,0" Padding="12">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-
-                    <!-- Icon + title + category -->
                     <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-                        <Border x:Name="DetailIconBadge"
-                                Width="44"
-                                Height="44"
-                            CornerRadius="12"
-                                Background="#FF66727D">
-                            <TextBlock x:Name="DetailIconText"
-                                       Text="&#183;"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="17"
-                                       FontWeight="Bold"
-                                       Foreground="White"/>
+                        <Border x:Name="DetailIconBadge" Width="44" Height="44" CornerRadius="10" Background="#FF66727D">
+                            <TextBlock x:Name="DetailIconText" Text="&#183;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" />
                         </Border>
                         <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                            <TextBlock x:Name="TitleText"
-                                       FontSize="14"
-                                       FontWeight="Bold"
-                                       Text="Select a tool"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="192"/>
-                            <TextBlock x:Name="CategoryText"
-                                       FontSize="11"
-                                       Foreground="{StaticResource RbgTextMutedBrush}"
-                                       Margin="0,3,0,0"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="192"/>
+                            <TextBlock x:Name="TitleText" FontSize="14" FontWeight="Bold" Text="Select a tool" TextWrapping="Wrap" MaxWidth="202" />
+                            <TextBlock x:Name="CategoryText" FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,3,0,0" TextWrapping="Wrap" MaxWidth="202" />
                         </StackPanel>
                     </StackPanel>
-
-                    <!-- Tags + status -->
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
-                        <TextBlock x:Name="TagsText"
-                                   FontSize="11"
-                                   Foreground="{StaticResource RbgTextMutedBrush}"
-                                   TextWrapping="Wrap"/>
-                        <TextBlock x:Name="StatusText"
-                                   FontSize="11"
-                                   Foreground="{StaticResource RbgTextMutedBrush}"
-                                   Margin="0,3,0,0"/>
-                        <TextBlock x:Name="SourceText"
-                                   FontSize="10"
-                                   Foreground="{StaticResource RbgTextSecondaryBrush}"
-                                   Margin="0,3,0,0"
-                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="TagsText" FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}" TextWrapping="Wrap" />
+                        <TextBlock x:Name="StatusText" FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,3,0,0" />
+                        <TextBlock x:Name="SourceText" FontSize="10" Foreground="#FF6B7280" Margin="0,3,0,0" TextWrapping="Wrap" />
                     </StackPanel>
-
-                    <!-- Description + docstring (scrollable) -->
                     <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock x:Name="DescriptionText"
-                                       FontSize="12"
-                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
-                                       TextWrapping="Wrap"
-                                       Margin="0,0,0,10"/>
-                            <TextBlock x:Name="DocstringLabel"
-                                       Text="Script Documentation"
-                                       FontSize="11"
-                                       FontWeight="Bold"
-                                       Foreground="{StaticResource RbgTextMutedBrush}"
-                                       Margin="0,0,0,4"
-                                       Visibility="Collapsed"/>
-                            <TextBlock x:Name="DocstringText"
-                                       FontSize="11"
-                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
-                                       TextWrapping="Wrap"
-                                       Visibility="Collapsed"/>
+                            <TextBlock x:Name="DescriptionText" FontSize="12" Foreground="#FF4D5965" TextWrapping="Wrap" Margin="0,0,0,10" />
+                            <TextBlock x:Name="DocstringLabel" Text="Script Documentation" FontSize="11" FontWeight="Bold" Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4" Visibility="Collapsed" />
+                            <TextBlock x:Name="DocstringText" FontSize="11" Foreground="#FF5E6A75" TextWrapping="Wrap" Visibility="Collapsed" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </Border>
         </Grid>
 
-        <!-- Row 3: Action buttons footer -->
-        <Border Grid.Row="4"
-            Style="{StaticResource SectionCardBorderStyle}"
-                Padding="10,7"
-                Margin="0,8,0,0">
+        <Border Grid.Row="4" Style="{StaticResource SectionCardBorderStyle}" Margin="0,8,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="FavoriteButton"
                         Content="&#9734;"
-                        Width="34"
-                        Height="30"
+                        Width="36"
                         Margin="0,0,6,0"
                         FontSize="15"
-                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         ToolTip="Toggle favourite"
-                        Click="toggle_favorite_click"/>
-                <Button Content="Run Tool"
-                        Width="90"
-                        Height="30"
-                        Margin="0,0,6,0"
-                    Style="{StaticResource DashboardPrimaryButtonStyle}"
-                        Click="run_selected_click"/>
-                <Button Content="Close"
-                        Width="72"
-                        Height="30"
-                    Style="{StaticResource DashboardNeutralButtonStyle}"
-                        Click="close_click"/>
+                        Style="{StaticResource GhostButton}"
+                        Click="toggle_favorite_click" />
+                <Button Content="Run Tool" Width="96" Margin="0,0,6,0" Style="{StaticResource PrimaryButton}" Click="run_selected_click" />
+                <Button Content="Close" Width="80" Style="{StaticResource SecondaryButton}" Click="close_click" />
             </StackPanel>
         </Border>
-
     </Grid>
 </Window>
+
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/dashboard.xaml
 
@@ -46266,7 +51938,7 @@ author: Harley TRAPPITT
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/icons/RBG.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_data.py
-## META: sha1=9f893968f58915065c1eccfd287f216798cb6563 size=28762
+## META: sha1=5fb425816cdb72b873097870e01d135822e6f75d size=28863
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Windows","clr","codecs","json","os","pyrevit","pyrevit.extensions","re","time","xml.etree.ElementTree"]
 ## FUNCTIONS: ["_safe_text","_safe_int","_safe_bool","_get_revit_version_key","_derive_extension_root","_get_cache_path","_default_icon_for_group","_default_accent_for_group","_clean_name","_clean_panel_name","_derive_tab_panel","__init__","_resolve_enabled","tags_text","short_description","search_blob","_tool_to_dict","_resolve_possible_script_path","_save_cache","_load_from_cache","_read_json","_collect_existing_script_paths","_collect_existing_command_ids","_get_revit_addins_dirs","_manifest_command_entries","_iter_ribbon_items","_scan_ribbon_commands","discover_non_pyrevit_commands","load_catalog","_ext_display_name","_read_yaml_field","discover_pyrevit_tools","get_builtin_groups","get_tab_panel_map","get_tool_map","filter_tools"]
@@ -46772,7 +52444,7 @@ def discover_non_pyrevit_commands(existing_command_ids=None):
     return discovered
 
 
-def load_catalog(bundle_dir, force_rebuild=False):
+def load_catalog(bundle_dir, force_rebuild=False, include_revit_commands=True):
     # Fast path: return cached result if it was written this session
     if not force_rebuild:
         cached = _load_from_cache(bundle_dir)
@@ -46812,16 +52484,17 @@ def load_catalog(bundle_dir, force_rebuild=False):
         except Exception:
             pass
 
-    try:
-        existing_command_ids = _collect_existing_command_ids(tools)
-        discovered_addins = discover_non_pyrevit_commands(existing_command_ids=existing_command_ids)
-        existing_ids = set(t.tool_id for t in tools)
-        for tool in discovered_addins:
-            if tool.tool_id not in existing_ids:
-                tools.append(tool)
-                existing_ids.add(tool.tool_id)
-    except Exception:
-        pass
+    if include_revit_commands:
+        try:
+            existing_command_ids = _collect_existing_command_ids(tools)
+            discovered_addins = discover_non_pyrevit_commands(existing_command_ids=existing_command_ids)
+            existing_ids = set(t.tool_id for t in tools)
+            for tool in discovered_addins:
+                if tool.tool_id not in existing_ids:
+                    tools.append(tool)
+                    existing_ids.add(tool.tool_id)
+        except Exception:
+            pass
 
     # Safety pass: protect the UI from duplicate IDs even if upstream data collides.
     unique_tools = []
@@ -47043,9 +52716,9 @@ def filter_tools(tools, selected_group, personal_groups, search_text):
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_data.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_dock.py
-## META: sha1=3c84c59684a9d735e517dee101af3034fa4fc865 size=3632
+## META: sha1=a8b2a94fc69565190ca009c59e18eacca3837a52 size=3704
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.UI","System","imp","os","pyrevit","uuid"]
+## IMPORTS: ["Autodesk.Revit.UI","System","System.Threading","imp","os","pyrevit","uuid"]
 ## FUNCTIONS: ["_load_ui_module","_pane_exists","_try_register","register_dashboard_panel","_open_via_forms","_open_via_revit_api","show_or_focus_panel"]
 ## CLASSES: []
 ```python
@@ -47055,6 +52728,7 @@ import imp
 import uuid
 
 from pyrevit import forms
+from System.Threading import Thread
 
 
 def _load_ui_module():
@@ -47149,23 +52823,30 @@ def _open_via_revit_api():
 
 def show_or_focus_panel():
     global _REGISTERED
-    ok, err = register_dashboard_panel()
-    if not ok:
-        return False, err or 'Dockable panel registration failed.'
+    open_ok = False
+    open_err = None
 
-    open_ok, open_err = _open_via_forms()
-    if not open_ok:
-        open_ok, open_err = _open_via_revit_api()
-
-    if not open_ok and open_err and 'has not been created yet' in str(open_err).lower():
-        _REGISTERED = False
-        retry_ok, retry_err = _try_register()
-        if retry_ok or _pane_exists():
+    for attempt in range(3):
+        ok, err = register_dashboard_panel()
+        if not ok:
+            open_err = err or 'Dockable panel registration failed.'
+        else:
             open_ok, open_err = _open_via_forms()
             if not open_ok:
                 open_ok, open_err = _open_via_revit_api()
-        elif retry_err:
-            open_err = retry_err
+
+        if open_ok:
+            break
+
+        error_text = str(open_err or '').lower()
+        if 'has not been created yet' in error_text:
+            _REGISTERED = False
+            _try_register()
+            Thread.Sleep(150)
+            continue
+
+        if attempt < 2:
+            Thread.Sleep(100)
 
     if open_ok:
         panel = get_active_panel()
@@ -47374,10 +53055,10 @@ def save_user_data(data):
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_store.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/dashboard_ui.py
-## META: sha1=5d023f8a2db65541a0d66c5553989c7324d70120 size=26188
+## META: sha1=4c58cdd03c6facaa8b18d412de13a086e71d03b9 size=28174
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.UI","System","System.Windows","System.Windows.Controls","System.Windows.Media","codecs","dashboard_data","dashboard_runner","dashboard_store","os","pyrevit","re","uuid"]
-## FUNCTIONS: ["_get_brush_conv","_read_script_doc","_compute_panel_id","get_panel_source","get_active_panel","__init__","_tool_source_badge","_initialize_dashboard","refresh_state","_close_surface","_normalize_select_result","_get_personal_groups","_get_favorites","_get_recent_tools","_get_selected_group","_select_group_tag","_get_selected_tool","_save","_load_groups","_refresh_favorites_bar","_apply_view_mode","_build_cards","_set_selected_tool_by_id","_refresh_tools","_get_summary_text","_clear_details","_to_brush","_set_favorite_button_text","_can_post_revit_command","_build_source_line","_update_details","_update_filter_buttons","_add_recent_tool","search_changed","clear_search_click","group_changed","tool_changed","show_all_click","show_favorites_click","show_recent_click","toggle_favorite_click","fav_quick_launch","run_selected_click","tool_double_click","close_click","new_group_click","delete_group_click","add_tool_to_group_click","remove_tool_from_group_click","__init__","__init__","_close_surface"]
+## FUNCTIONS: ["_get_brush_conv","_read_script_doc","_compute_panel_id","get_panel_source","get_active_panel","__init__","_tool_source_badge","_initialize_dashboard","refresh_state","_reload_dashboard_data","_close_surface","_normalize_select_result","_get_personal_groups","_get_favorites","_get_recent_tools","_get_selected_group","_select_group_tag","_get_selected_tool","_save","_load_groups","_refresh_favorites_bar","_apply_view_mode","_build_cards","_set_selected_tool_by_id","_refresh_tools","_get_summary_text","_clear_details","_to_brush","_set_favorite_button_text","_can_post_revit_command","_build_source_line","_update_details","_update_filter_buttons","_apply","_add_recent_tool","search_changed","clear_search_click","group_changed","tool_changed","show_all_click","show_favorites_click","show_recent_click","refresh_catalog_click","toggle_favorite_click","fav_quick_launch","run_selected_click","tool_double_click","close_click","new_group_click","delete_group_click","add_tool_to_group_click","remove_tool_from_group_click","__init__","__init__","_close_surface"]
 ## CLASSES: ["ToolCard","DashboardControllerMixin","DashboardWindow","DashboardDockPanel"]
 ```python
 # -*- coding: utf-8 -*-
@@ -47526,14 +53207,7 @@ class DashboardControllerMixin(object):
 
     def refresh_state(self):
         try:
-            self.tools = load_catalog(self.bundle_dir, force_rebuild=True)
-            self.tool_map = get_tool_map(self.tools)
-            self.user_data = load_user_data(self.tool_map.keys())
-
-            self._load_groups()
-            self._update_filter_buttons()
-            self._refresh_tools()
-            self._refresh_favorites_bar()
+            self._reload_dashboard_data()
             self._clear_details()
             return True, None
         except Exception as exc:
@@ -47549,6 +53223,18 @@ class DashboardControllerMixin(object):
             except Exception:
                 pass
             return False, str(exc)
+
+    def _reload_dashboard_data(self, selected_group_tag=None, selected_tool_id=None):
+        self.tools = load_catalog(self.bundle_dir, force_rebuild=True)
+        self.tool_map = get_tool_map(self.tools)
+        self.user_data = load_user_data(self.tool_map.keys())
+
+        self._load_groups()
+        if selected_group_tag is not None:
+            self._select_group_tag(selected_group_tag)
+        self._update_filter_buttons()
+        self._refresh_tools(keep_selected_tool_id=selected_tool_id)
+        self._refresh_favorites_bar()
 
     def _close_surface(self):
         if hasattr(self, 'Close'):
@@ -47856,9 +53542,22 @@ class DashboardControllerMixin(object):
             self.DocstringText.Visibility = Visibility.Collapsed
 
     def _update_filter_buttons(self):
-        self.AllFilterButton.FontWeight = FontWeights.Bold if self.view_mode == 'all' else FontWeights.Normal
-        self.FavoritesFilterButton.FontWeight = FontWeights.Bold if self.view_mode == 'favorites' else FontWeights.Normal
-        self.RecentFilterButton.FontWeight = FontWeights.Bold if self.view_mode == 'recent' else FontWeights.Normal
+        active_bg = self._to_brush('#E7EDFB')
+        active_border = self._to_brush('#1F4FD9')
+        active_fg = self._to_brush('#1640B0')
+        idle_bg = self._to_brush('Transparent')
+        idle_border = self._to_brush('#DDE1E6')
+        idle_fg = self._to_brush('#8A8F98')
+
+        def _apply(button, selected):
+            button.FontWeight = FontWeights.Bold if selected else FontWeights.Normal
+            button.Background = active_bg if selected else idle_bg
+            button.BorderBrush = active_border if selected else idle_border
+            button.Foreground = active_fg if selected else idle_fg
+
+        _apply(self.AllFilterButton, self.view_mode == 'all')
+        _apply(self.FavoritesFilterButton, self.view_mode == 'favorites')
+        _apply(self.RecentFilterButton, self.view_mode == 'recent')
 
     # ------------------------------------------------------------------ #
     # Recent tracking                                                      #
@@ -47905,6 +53604,40 @@ class DashboardControllerMixin(object):
         self.view_mode = 'recent'
         self._update_filter_buttons()
         self._refresh_tools()
+
+    def refresh_catalog_click(self, sender, args):
+        selected_group = self._get_selected_group()
+        selected_tool = self._get_selected_tool()
+        selected_tool_id = getattr(selected_tool, 'tool_id', None) if selected_tool else None
+        existing_ids = set(self.tool_map.keys()) if getattr(self, 'tool_map', None) else set()
+
+        try:
+            self._reload_dashboard_data(
+                selected_group_tag=selected_group,
+                selected_tool_id=selected_tool_id
+            )
+        except Exception as exc:
+            forms.alert(
+                'Dashboard refresh failed.\n\n{0}'.format(exc),
+                title='Tool Dashboard'
+            )
+            return
+
+        added_count = len(set(self.tool_map.keys()) - existing_ids)
+        if added_count > 0:
+            forms.alert(
+                'Refresh complete.\n\nAdded {0} new tool{1} to the dashboard.'.format(
+                    added_count,
+                    '' if added_count == 1 else 's'
+                ),
+                title='Tool Dashboard'
+            )
+            return
+
+        forms.alert(
+            'Refresh complete.\n\nNo missing tools were found.',
+            title='Tool Dashboard'
+        )
 
     # ------------------------------------------------------------------ #
     # Favourites                                                           #
@@ -48295,125 +54028,242 @@ def run_linked_views_setup():
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/lib/tools/views.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/panel.xaml
-## META: sha1=ce9a862b26b8680114c7b87fe0ad36cb381b6002 size=25889
+## META: sha1=3dc67f139f2948c477b8345244f81b59ee80340d size=30566
 ## TYPE: text
 ```
 <Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="#FFFBFE"
-    Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    Background="#FFFBFE">
 
     <Page.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="WarningBrush" Color="#E67E22" />
+        <SolidColorBrush x:Key="WarningContainerBrush" Color="#FDF3E9" />
 
-        <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
-        <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
-        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
-        <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
-        <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
-        <SolidColorBrush x:Key="RbgTextSecondaryBrush" Color="#FF4D5965"/>
-        <SolidColorBrush x:Key="RbgTextMutedBrush" Color="#FF8C97A3"/>
-        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
-        <SolidColorBrush x:Key="RbgAccentSoftBrush" Color="#FFF0F7FF"/>
-
-        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="20,14" />
         </Style>
 
-        <Style x:Key="DashboardNeutralButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10,4"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="14,6,14,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="ButtonBorder"
-                                Background="{TemplateBinding Background}"
+                        <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="12"
-                                SnapsToDevicePixels="True">
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}"/>
+                                              VerticalAlignment="Center" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
-                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.92"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.55"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="DashboardPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DashboardNeutralButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
-            <Setter Property="Foreground" Value="White"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CompactButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="10,5,10,5" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="MinWidth" Value="30" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+
+        <Style x:Key="BadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="5,2" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="BadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="9" />
+            <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
         <Style x:Key="CardItemStyle" TargetType="ListBoxItem">
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Margin" Value="4"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Border x:Name="CardBorder"
-                                Width="202"
-                                Height="86"
-                            CornerRadius="16"
-                            Background="{StaticResource RbgCardBackgroundBrush}"
-                            BorderBrush="{StaticResource RbgCardBorderBrush}"
+                                Width="210"
+                                Height="90"
+                                CornerRadius="10"
+                                Background="{StaticResource SurfaceBrush}"
+                                BorderBrush="{StaticResource OutlineBrush}"
                                 BorderThickness="1"
                                 Padding="10,8"
                                 Cursor="Hand">
-                            <ContentPresenter/>
+                            <ContentPresenter />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgSurfaceSubtleBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgCardBorderHoverBrush}"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource RbgAccentSoftBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
-                                <Setter TargetName="CardBorder" Property="BorderThickness" Value="2"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="CardBorder" Property="BorderThickness" Value="2" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="True" />
+            <Setter Property="Padding" Value="2,3" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         </Style>
 
         <DataTemplate x:Key="ToolCardTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Border Width="32"
                         Height="32"
-                    CornerRadius="12"
+                        CornerRadius="7"
                         Background="{Binding accent}"
                         VerticalAlignment="Top"
                         Margin="0,2,0,0">
@@ -48422,60 +54272,59 @@ def run_linked_views_setup():
                                VerticalAlignment="Center"
                                Foreground="White"
                                FontSize="14"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold" />
                 </Border>
 
                 <StackPanel Grid.Column="1">
                     <DockPanel>
                         <TextBlock Text="{Binding favorite_glyph}"
                                    DockPanel.Dock="Right"
-                                   Foreground="#FFE3A21A"
+                                   Foreground="{StaticResource WarningBrush}"
                                    FontSize="11"
                                    VerticalAlignment="Center"
-                                   Margin="3,0,0,0"/>
+                                   Margin="3,0,0,0" />
                         <Border DockPanel.Dock="Right"
                                 Background="{Binding source_badge_accent}"
-                            CornerRadius="12"
+                                CornerRadius="4"
                                 Padding="4,1"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center">
                             <TextBlock Text="{Binding source_badge}"
                                        Foreground="White"
                                        FontSize="9"
-                                       FontWeight="SemiBold"/>
+                                       FontWeight="SemiBold" />
                         </Border>
                         <TextBlock Text="{Binding title}"
                                    FontWeight="SemiBold"
                                    FontSize="12"
-                                   Foreground="{StaticResource RbgTextPrimaryBrush}"
-                                   TextTrimming="CharacterEllipsis"/>
+                                   Foreground="{StaticResource OnSurfaceBrush}"
+                                   TextTrimming="CharacterEllipsis" />
                     </DockPanel>
                     <TextBlock Text="{Binding group}"
                                FontSize="10"
-                               Foreground="{StaticResource RbgTextMutedBrush}"
-                               Margin="0,2,0,0"/>
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               Margin="0,2,0,0" />
                     <TextBlock Text="{Binding short_description}"
                                FontSize="11"
-                               Foreground="{StaticResource RbgTextSecondaryBrush}"
+                               Foreground="#FF4D5965"
                                TextWrapping="Wrap"
                                MaxHeight="28"
-                               Margin="0,3,0,0"/>
+                               Margin="0,3,0,0" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FavButtonTemplate">
             <Button Click="fav_quick_launch"
+                    Style="{StaticResource GhostButton}"
                     Height="34"
-                    Margin="0,0,6,0"
+                    Margin="0,0,8,0"
                     Padding="10,0"
-                    Background="{StaticResource RbgCardBackgroundBrush}"
-                    BorderBrush="{StaticResource RbgCardBorderBrush}"
-                    Cursor="Hand">
+                    MinWidth="120">
                 <StackPanel Orientation="Horizontal">
                     <Border Width="20"
                             Height="20"
-                            CornerRadius="12"
+                            CornerRadius="5"
                             Background="{Binding accent}"
                             Margin="0,0,7,0"
                             VerticalAlignment="Center">
@@ -48484,117 +54333,108 @@ def run_linked_views_setup():
                                    VerticalAlignment="Center"
                                    Foreground="White"
                                    FontSize="10"
-                                   FontWeight="Bold"/>
+                                   FontWeight="Bold" />
                     </Border>
                     <TextBlock Text="{Binding title}"
                                FontSize="12"
                                VerticalAlignment="Center"
                                MaxWidth="130"
-                               TextTrimming="CharacterEllipsis"/>
+                               TextTrimming="CharacterEllipsis" />
                 </StackPanel>
             </Button>
         </DataTemplate>
-
     </Page.Resources>
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
-                    <TextBlock Text="TD" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                    <TextBlock Text="DB" Style="{StaticResource ToolAppBarIconTextStyle}" />
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Browse, group, and launch extension tools from a unified catalog." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="Tool Dashboard" Style="{StaticResource ToolAppBarTitleStyle}" />
+                    <TextBlock Text="Launch, filter, and organize tool access from one shared surface." Style="{StaticResource ToolAppBarSubtitleStyle}" />
                 </StackPanel>
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}" />
                 </Border>
             </Grid>
         </Border>
 
-        <Border Grid.Row="1"
-            Style="{StaticResource SectionCardBorderStyle}"
-                Padding="10,7"
-                Margin="0,0,0,8">
+        <Border Grid.Row="1" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8">
             <DockPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="12,0,0,0">
                     <Button x:Name="AllFilterButton"
                             Content="All"
-                            Width="50"
-                            Height="28"
+                            Width="58"
                             Margin="0,0,4,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_all_click"/>
+                            Style="{StaticResource CompactButton}"
+                            Click="show_all_click" />
                     <Button x:Name="FavoritesFilterButton"
                             Content="Starred"
-                            Width="62"
-                            Height="28"
+                            Width="70"
                             Margin="0,0,4,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_favorites_click"/>
+                            Style="{StaticResource CompactButton}"
+                            Click="show_favorites_click" />
                     <Button x:Name="RecentFilterButton"
                             Content="Recent"
-                            Width="62"
-                            Height="28"
-                            Margin="0,0,14,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="show_recent_click"/>
+                            Width="70"
+                            Margin="0,0,4,0"
+                            Style="{StaticResource CompactButton}"
+                            Click="show_recent_click" />
+                    <Button Content="Refresh"
+                            Width="78"
+                            Margin="0,0,12,0"
+                            Style="{StaticResource SecondaryButton}"
+                            Click="refresh_catalog_click" />
                     <TextBlock x:Name="SummaryText"
                                VerticalAlignment="Center"
-                               Foreground="{StaticResource RbgTextMutedBrush}"
-                               FontSize="12"/>
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               FontSize="12" />
                 </StackPanel>
                 <DockPanel>
                     <Button DockPanel.Dock="Right"
-                            Content="✕"
-                            Width="28"
-                            Height="28"
-                            Margin="6,0,0,0"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                            Click="clear_search_click"/>
+                            Content="&#215;"
+                            Margin="8,0,0,0"
+                            Style="{StaticResource IconButton}"
+                            Click="clear_search_click" />
                     <TextBox x:Name="SearchBox"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Padding="6,0"
-                             FontSize="13"
-                             Background="{StaticResource RbgSurfaceSubtleBrush}"
-                             BorderBrush="{StaticResource RbgCardBorderBrush}"
-                             TextChanged="search_changed"/>
+                             Style="{StaticResource SearchTextBoxStyle}"
+                             TextChanged="search_changed" />
                 </DockPanel>
             </DockPanel>
         </Border>
 
         <Border x:Name="FavoritesSection"
-            Grid.Row="2"
-                Background="#FFFEFDF0"
-                BorderBrush="#FFFDE8A0"
+                Grid.Row="2"
+                Background="{StaticResource WarningContainerBrush}"
+                BorderBrush="#FFF4D28A"
                 BorderThickness="1"
-                CornerRadius="8"
-                Padding="10,5"
+                CornerRadius="10"
+                Padding="10,6"
                 Margin="0,0,0,8"
                 Visibility="Collapsed">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left"
                            Text="★  Quick launch:"
-                           Foreground="#FFBF9000"
+                           Foreground="#FF9A6A00"
                            FontSize="12"
                            FontWeight="SemiBold"
                            VerticalAlignment="Center"
-                           Margin="0,0,12,0"/>
+                           Margin="0,0,12,0" />
                 <ScrollViewer HorizontalScrollBarVisibility="Auto"
                               VerticalScrollBarVisibility="Hidden"
                               Height="40">
@@ -48603,7 +54443,7 @@ def run_linked_views_setup():
                                   VerticalAlignment="Center">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
+                                <StackPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
@@ -48613,65 +54453,49 @@ def run_linked_views_setup():
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="290" />
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="8"
-                    Margin="0,0,8,0">
+            <Border Grid.Column="0" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,8,0">
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top"
                                Text="Groups"
                                FontSize="13"
-                               FontWeight="Bold"
-                               Margin="4,0,4,8"/>
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource PrimaryBrush}"
+                               Margin="4,0,4,8" />
                     <StackPanel DockPanel.Dock="Bottom" Margin="0,6,0,0">
                         <Button Content="New Group"
-                                Height="26"
                                 Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="new_group_click"/>
+                                Style="{StaticResource CompactButton}"
+                                Click="new_group_click" />
                         <Button Content="Delete Group"
-                                Height="26"
                                 Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="delete_group_click"/>
+                                Style="{StaticResource CompactButton}"
+                                Click="delete_group_click" />
                         <Button Content="Add to Group"
-                                Height="26"
                                 Margin="0,0,0,3"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="add_tool_to_group_click"/>
+                                Style="{StaticResource CompactButton}"
+                                Click="add_tool_to_group_click" />
                         <Button Content="Remove from Group"
-                                Height="26"
-                                FontSize="11"
-                            Style="{StaticResource DashboardNeutralButtonStyle}"
-                                Click="remove_tool_from_group_click"/>
+                                Style="{StaticResource CompactButton}"
+                                Click="remove_tool_from_group_click" />
                     </StackPanel>
                     <TreeView x:Name="GroupTree"
                              SelectedItemChanged="group_changed"
                              FontSize="12"
-                             Background="#FFF9FAFB"
-                             BorderBrush="#FFE1E4E8">
+                             Background="{StaticResource SurfaceContainerBrush}"
+                             BorderBrush="{StaticResource OutlineBrush}">
                         <TreeView.ItemContainerStyle>
-                            <Style TargetType="TreeViewItem">
-                                <Setter Property="IsExpanded" Value="True"/>
-                                <Setter Property="Padding" Value="2,3"/>
-                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                            </Style>
+                            <Style TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemStyle}" />
                         </TreeView.ItemContainerStyle>
                     </TreeView>
                 </DockPanel>
             </Border>
 
-            <Border Grid.Column="1"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="6">
+            <Border Grid.Column="1" Style="{StaticResource SectionCardBorderStyle}">
                 <ListBox x:Name="CardGrid"
                          SelectionChanged="tool_changed"
                          MouseDoubleClick="tool_double_click"
@@ -48682,36 +54506,33 @@ def run_linked_views_setup():
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
+                            <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
             </Border>
 
-            <Border Grid.Column="2"
-                    Style="{StaticResource SectionCardBorderStyle}"
-                    Padding="12"
-                    Margin="8,0,0,0">
+            <Border Grid.Column="2" Style="{StaticResource SectionCardBorderStyle}" Margin="8,0,0,0" Padding="12">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
                         <Border x:Name="DetailIconBadge"
                                 Width="44"
                                 Height="44"
-                            CornerRadius="12"
+                                CornerRadius="10"
                                 Background="#FF66727D">
                             <TextBlock x:Name="DetailIconText"
                                        Text="&#183;"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="17"
+                                       FontSize="20"
                                        FontWeight="Bold"
-                                       Foreground="White"/>
+                                       Foreground="White" />
                         </Border>
                         <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
                             <TextBlock x:Name="TitleText"
@@ -48719,87 +54540,81 @@ def run_linked_views_setup():
                                        FontWeight="Bold"
                                        Text="Select a tool"
                                        TextWrapping="Wrap"
-                                       MaxWidth="192"/>
+                                       MaxWidth="202" />
                             <TextBlock x:Name="CategoryText"
                                        FontSize="11"
-                                       Foreground="{StaticResource RbgTextMutedBrush}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}"
                                        Margin="0,3,0,0"
                                        TextWrapping="Wrap"
-                                       MaxWidth="192"/>
+                                       MaxWidth="202" />
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
                         <TextBlock x:Name="TagsText"
                                    FontSize="11"
-                                   Foreground="{StaticResource RbgTextMutedBrush}"
-                                   TextWrapping="Wrap"/>
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                   TextWrapping="Wrap" />
                         <TextBlock x:Name="StatusText"
                                    FontSize="11"
-                                   Foreground="{StaticResource RbgTextMutedBrush}"
-                                   Margin="0,3,0,0"/>
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                   Margin="0,3,0,0" />
                         <TextBlock x:Name="SourceText"
                                    FontSize="10"
-                                   Foreground="{StaticResource RbgTextSecondaryBrush}"
+                                   Foreground="#FF6B7280"
                                    Margin="0,3,0,0"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap" />
                     </StackPanel>
 
                     <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                         <StackPanel>
                             <TextBlock x:Name="DescriptionText"
                                        FontSize="12"
-                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
+                                       Foreground="#FF4D5965"
                                        TextWrapping="Wrap"
-                                       Margin="0,0,0,10"/>
+                                       Margin="0,0,0,10" />
                             <TextBlock x:Name="DocstringLabel"
                                        Text="Script Documentation"
                                        FontSize="11"
                                        FontWeight="Bold"
-                                       Foreground="{StaticResource RbgTextMutedBrush}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}"
                                        Margin="0,0,0,4"
-                                       Visibility="Collapsed"/>
+                                       Visibility="Collapsed" />
                             <TextBlock x:Name="DocstringText"
                                        FontSize="11"
-                                       Foreground="{StaticResource RbgTextSecondaryBrush}"
+                                       Foreground="#FF5E6A75"
                                        TextWrapping="Wrap"
-                                       Visibility="Collapsed"/>
+                                       Visibility="Collapsed" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </Border>
         </Grid>
 
-        <Border Grid.Row="4"
-            Style="{StaticResource SectionCardBorderStyle}"
-                Padding="10,7"
-                Margin="0,8,0,0">
+        <Border Grid.Row="4" Style="{StaticResource SectionCardBorderStyle}" Margin="0,8,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="FavoriteButton"
                         Content="&#9734;"
-                        Width="34"
-                        Height="30"
+                        Width="36"
                         Margin="0,0,6,0"
                         FontSize="15"
-                    Style="{StaticResource DashboardNeutralButtonStyle}"
                         ToolTip="Toggle favourite"
-                        Click="toggle_favorite_click"/>
+                        Style="{StaticResource GhostButton}"
+                        Click="toggle_favorite_click" />
                 <Button Content="Run Tool"
-                        Width="90"
-                        Height="30"
+                        Width="96"
                         Margin="0,0,6,0"
-                    Style="{StaticResource DashboardPrimaryButtonStyle}"
-                        Click="run_selected_click"/>
+                        Style="{StaticResource PrimaryButton}"
+                        Click="run_selected_click" />
                 <Button Content="Close"
-                        Width="72"
-                        Height="30"
-                    Style="{StaticResource DashboardNeutralButtonStyle}"
-                        Click="close_click"/>
+                        Width="80"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="close_click" />
             </StackPanel>
         </Border>
-
     </Grid>
 </Page>
+
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/panel.xaml
 
@@ -48872,6 +54687,38 @@ if __name__ == '__main__':
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/script.py
 
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/tool-context.md
+## META: sha1=d964492889901698ecf90b9abff5e3b70e802e43 size=536
+## TYPE: text
+```markdown
+# Tool Dashboard
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Execution stage
+- Results and status stage
+## Entry Points
+- `dashboard.xaml`
+- `lib/dashboard_data.py`
+- `lib/dashboard_dock.py`
+- `lib/dashboard_runner.py`
+- `lib/dashboard_store.py`
+- `lib/dashboard_ui.py`
+- `lib/tools/__init__.py`
+- `lib/tools/data.py`
+- `lib/tools/elements.py`
+- `lib/tools/qa.py`
+- `lib/tools/sheets.py`
+- `lib/tools/views.py`
+- `panel.xaml`
+- `script.py`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton/tool-context.md
+
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
@@ -48879,7 +54726,7 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/panel.xaml
-## META: sha1=6ae71667aaa19b7ce95f0c11c181161861431548 size=29006
+## META: sha1=130e7c765f440267d324c3033017730c789266ab size=31916
 ## TYPE: text
 ```
 <Page
@@ -48887,18 +54734,67 @@ if __name__ == '__main__':
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI">
 
     <Page.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
         <SolidColorBrush x:Key="RbgCardBackgroundBrush" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="RbgCardBorderBrush" Color="#FFD8DDE3"/>
-        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FFBBC3CD"/>
+        <SolidColorBrush x:Key="RbgCardBorderHoverBrush" Color="#FF1F4FD9"/>
         <SolidColorBrush x:Key="RbgSurfaceSubtleBrush" Color="#FFF9FAFB"/>
         <SolidColorBrush x:Key="RbgTextPrimaryBrush" Color="#FF1A1A1A"/>
-        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF2D89EF"/>
+        <SolidColorBrush x:Key="RbgAccentBrush" Color="#FF1F4FD9"/>
+        <SolidColorBrush x:Key="RbgAccentHoverBrush" Color="#FF1640B0"/>
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FF1A1A1A"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="24,16"/>
+            <Setter Property="BorderBrush" Value="#FFE8E9EC"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Opacity" Value="0.72"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,4,0,0"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
 
         <Style x:Key="PanelCardBorderStyle" TargetType="Border">
             <Setter Property="Background" Value="{StaticResource RbgCardBackgroundBrush}"/>
@@ -48914,7 +54810,7 @@ if __name__ == '__main__':
             <Setter Property="Foreground" Value="{StaticResource RbgTextPrimaryBrush}"/>
             <Setter Property="BorderBrush" Value="{StaticResource RbgCardBorderBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="Padding" Value="14,6"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -48950,7 +54846,17 @@ if __name__ == '__main__':
             <Setter Property="Background" Value="{StaticResource RbgAccentBrush}"/>
             <Setter Property="BorderBrush" Value="{StaticResource RbgAccentBrush}"/>
             <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource RbgAccentHoverBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource RbgAccentHoverBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.55"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Margin="10">
@@ -49210,7 +55116,7 @@ if __name__ == '__main__':
 
                                 <TextBlock Text="Printer Preset" FontWeight="Bold"/>
                                 <DockPanel Margin="0,2,0,6">
-                                    <Button x:Name="BtnApplyPrinterPreset" Content="Apply Preset" Width="88" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0"/>
+                                    <Button x:Name="BtnApplyPrinterPreset" Content="Apply Preset" Width="88" Height="22" DockPanel.Dock="Right" Margin="6,0,0,0" Style="{StaticResource PanelPrimaryButtonStyle}"/>
                                     <ComboBox x:Name="CmbPrinterPreset" Height="22"/>
                                 </DockPanel>
 
@@ -49353,7 +55259,7 @@ if __name__ == "__main__":
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/PackageCreator.pushbutton/tool-context.md
-## META: sha1=e2256fcfd5603f1ed3a48713fa58cf7f14faf33d size=7288
+## META: sha1=182d5a27b880ce05d56e8492de51a34790c980fb size=7493
 ## TYPE: text
 ```markdown
 # PackageCreator Dockable Panel
@@ -49363,6 +55269,13 @@ Deliver a Revit dockable panel that reproduces as much practical functionality a
 
 The panel must stay open while users continue modeling and provide live issue-package context for the active Revit project.
 
+
+## Workflow
+- Refresh and locate project context
+- Apply project details and naming rules
+- Run package checks and review status table
+- Run export and create stages
+- Run full flow and validate outcomes
 ## Entry Points
 - script.py
 - startup.py
@@ -49595,19 +55508,42 @@ Panel sections are summary-first and action-oriented, not desktop-app tabs squee
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton/script.py
-## META: sha1=b293d0db49d6115a0e6bf4e7ee6520d29c2ae829 size=7546
+## META: sha1=43b8fde89b2e6469fc34cab2870d0025d0061e82 size=8349
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.DB.Structure","Autodesk.Revit.UI.Selection","System.Collections.Generic","clr","pyrevit","pyrevit.framework","telemetry","traceback"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.DB.Structure","Autodesk.Revit.UI.Selection","System.Collections.Generic","clr","os","pyrevit","pyrevit.framework","sys","telemetry","traceback"]
 ## FUNCTIONS: ["StructuralColumnSelect","StructuralFramingSelect","WallSelect"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__="Disallow/Detach Elements" #Title of the extension
 __doc__ = """
 Version = 1.1
@@ -49770,7 +55706,7 @@ print("Script completed.")
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/DisallowDetach.pushbutton/tool-context.md
-## META: sha1=90f85a24cab6baab9ccc9b2c23c10a6fbbf62be2 size=559
+## META: sha1=f306fa3892d9cc091075c0923006fdf7df58a11a size=983
 ## TYPE: text
 ```markdown
 # Disallow Detach Elements
@@ -49778,6 +55714,13 @@ print("Script completed.")
 ## Purpose
 Convert beam and wall joins to disallowed states and remove column attachments for targeted structural elements.
 
+
+## Workflow
+- Make sure you're in a clean 3D view with your elements visible.
+- Form Selection: Choose from Select Elements in View or Select All Elements In Model.
+- If Select Elements in View, either drag to select or Ctrl+Click to select desired elements.
+- If Select All Elements in Model, select from Structural Framing, Structural Columns or Walls.
+- Returns a selectable list of all elements that have been updated.
 ## Entry Points
 - `script.py`
 
@@ -49799,19 +55742,42 @@ Convert beam and wall joins to disallowed states and remove column attachments f
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton/script.py
-## META: sha1=aa0ae70d56475f2e39187154be43e08360051778 size=23489
+## META: sha1=c3f343b5009d3827ad20d855702a622a0770cdd8 size=24356
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI","System.Collections.Generic","clr","pyrevit","pyrevit.framework","telemetry","traceback"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI","System.Collections.Generic","clr","os","pyrevit","pyrevit.framework","sys","telemetry","traceback"]
 ## FUNCTIONS: ["is_group_member","is_editable","is_target_category","is_pinnable","toggle_pin","set_pin","collect_elements_for_bic","summarize_and_confirm","_accordion_block","_estimate_url_length","_smart_chunks","_net_list_ids","_get_family_and_type","_append_bucket","_page_links_for_type","_build_family_sections","_build_skipped_sections"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Quick Pin\nCategories"
 __doc__   = """Version = 1.4
 ________________________________________________________________
@@ -49873,7 +55839,7 @@ def is_editable(el):
         status = DB.WorksharingUtils.GetCheckoutStatus(doc, el.Id)
         return status in (DB.CheckoutStatus.OwnedByCurrentUser, DB.CheckoutStatus.NotOwned)
     except:
-        # Non-workshared or API can’t determine—assume editable
+        # Non-workshared or API canâ€™t determineâ€”assume editable
         return True
 
 def is_target_category(el):
@@ -50212,7 +56178,7 @@ def _page_links_for_type(elems, short_label):
     return u'<span class="pg">{}</span>'.format(u' '.join(pg_links))
 
 # -----------------------------
-# Main — category-only multi-select (model-wide)
+# Main â€” category-only multi-select (model-wide)
 # -----------------------------
 try:
     choices = forms.SelectFromList.show(list(CATEGORY_MAP.keys()),
@@ -50220,7 +56186,7 @@ try:
                                         title="Select Category(s) to toggle pin across the model",
                                         width=400, height=500)
     if not choices:
-        output.print_md("### ⚠️ No category selected. Operation cancelled.")
+        output.print_md("### âš ï¸ No category selected. Operation cancelled.")
         script.exit()
 
     if isinstance(choices, (list, tuple)):
@@ -50259,11 +56225,11 @@ try:
     output.print_md('\n'.join(md_lines))
 
     if not collected:
-        output.print_md("### ℹ️ No elements found in selected category(ies).")
+        output.print_md("### â„¹ï¸ No elements found in selected category(ies).")
         script.exit()
 
     if not summarize_and_confirm(collected, action=action_choice, title='Preview: Model-wide categories'):
-        output.print_md("### ⚠️ Operation cancelled by user.")
+        output.print_md("### âš ï¸ Operation cancelled by user.")
         script.exit()
 
     title = '{}: Categories {}'.format(action_choice, ','.join(choices_list))
@@ -50349,7 +56315,7 @@ try:
                 els = type_map[typ]
                 fam_total += len(els)
                 pages_html = _page_links_for_type(els, typ)  # [1] [2] ...
-                typelines.append(u'- {} — {}={} {}'.format(typ, state_label, len(els), pages_html))
+                typelines.append(u'- {} â€” {}={} {}'.format(typ, state_label, len(els), pages_html))
             inner = u'\n'.join(typelines) if typelines else u'<i>No items.</i>'
 
             if fam_total > 1:
@@ -50380,7 +56346,7 @@ try:
                 els = type_map[typ]
                 fam_total += len(els)
                 pages_html = _page_links_for_type(els, typ)
-                rows.append(u'- {} — Skipped={} {}'.format(typ, len(els), pages_html))
+                rows.append(u'- {} â€” Skipped={} {}'.format(typ, len(els), pages_html))
                 # annotate group members (lightweight note)
                 for el in els:
                     try:
@@ -50394,7 +56360,7 @@ try:
                                     grp_link = output.linkify(lst, 'Group {}'.format(group_inst.Id.IntegerValue))
                                 except:
                                     grp_link = output.linkify([group_inst.Id], 'Group {}'.format(group_inst.Id.IntegerValue))
-                                rows.append(u'    · Element [{}] in {}'.format(el.Id.IntegerValue, grp_link))
+                                rows.append(u'    Â· Element [{}] in {}'.format(el.Id.IntegerValue, grp_link))
                     except:
                         pass
             inner = u'\n'.join(rows) if rows else u'<i>No items.</i>'
@@ -50414,23 +56380,23 @@ try:
     ))
 
     # Render main accordions (collapsed by default)
-    acc1 = _accordion_block(u'📌 Pinned',   u'{} item(s)'.format(len(toggled_pinned)),   html_pinned,   open_default=START_EXPANDED, small=False)
-    acc2 = _accordion_block(u'📍 Unpinned', u'{} item(s)'.format(len(toggled_unpinned)), html_unpinned, open_default=START_EXPANDED, small=False)
-    acc3 = _accordion_block(u'⛔ Skipped',  u'{} item(s)'.format(len(skipped_items)),    html_skipped,  open_default=START_EXPANDED, small=False)
+    acc1 = _accordion_block(u'ðŸ“Œ Pinned',   u'{} item(s)'.format(len(toggled_pinned)),   html_pinned,   open_default=START_EXPANDED, small=False)
+    acc2 = _accordion_block(u'ðŸ“ Unpinned', u'{} item(s)'.format(len(toggled_unpinned)), html_unpinned, open_default=START_EXPANDED, small=False)
+    acc3 = _accordion_block(u'â›” Skipped',  u'{} item(s)'.format(len(skipped_items)),    html_skipped,  open_default=START_EXPANDED, small=False)
 
     output.print_html(acc1)
     output.print_html(acc2)
     output.print_html(acc3)
 
 except Exception as e:
-    output.print_md("### ❌ Error has occurred:")
+    output.print_md("### âŒ Error has occurred:")
     import traceback
     output.print_md("```\n{}\n```".format(traceback.format_exc()))
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton/tool-context.md
-## META: sha1=ea7cb91d57c29cd201ebdc162b6c9abc5242bb46 size=509
+## META: sha1=f624261531832d6abf1363782b52cf088ac6859e size=551
 ## TYPE: text
 ```markdown
 # Quick Pin Categories
@@ -50438,6 +56404,9 @@ except Exception as e:
 ## Purpose
 Pin, unpin, or toggle pin state for selected categories across the model.
 
+
+## Workflow
+- Load and preparation stage
 ## Entry Points
 - `script.py`
 
@@ -50459,19 +56428,42 @@ Pin, unpin, or toggle pin state for selected categories across the model.
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/script.py
-## META: sha1=cbcd1b31a5f124e8c2f401885e00162ebbc2b46a size=86163
+## META: sha1=ad8c702990377454f57392ab261b46eaf81a2a6f size=94720
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","NetTopologySuite.Geometries","NetTopologySuite.Operation.Polygonize","NetTopologySuite.Operation.Union","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","System.Windows.Shapes","clr","math","os","pyrevit","telemetry","traceback"]
-## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","get_output_window","log","find_extension_root","load_nts","area_to_m2","m2_to_internal","get_element_name","load_user_settings","save_user_settings","AllowElement","AllowReference","AllowElement","AllowReference","__init__","__str__","__init__","kept_count","part_count","replace_ready","__init__","_set_combo_items","_set_combo_value","_get_combo_value","_bind_lists","apply_settings","collect_settings","ok_click","cancel_click","__init__","on_loaded","build_tree","make_group_header","make_part_header","group_text","part_text","refresh_group_row","refresh_all_rows","refresh_summary","on_group_check_changed","on_part_check_changed","on_tree_selected","on_select_all","on_select_none","on_keep_largest","on_invert","redraw_current","on_ok","on_cancel","clear_preview","get_preview_loops_for_part","get_preview_bounds","to_canvas_point","draw_loop","draw_candidate","draw_group","draw_part_focus","ask_preflight_settings","pick_floors","pick_splitters","is_shape_edited","get_floor_sketch","get_sketch_plane","xyz_to_uv","uv_to_xyz","project_point_to_plane","project_dir_to_plane","almost_equal_uv","clean_uv","close_uv","signed_area","normalize_loop","ensure_orientation","uv_distance","polyline_length_uv","loop_perimeter_uv","loop_bbox_short_side_uv","point_segment_distance_uv","polyline_to_segments_uv","min_distance_between_segment_sets","curve_to_uv_polyline","curve_array_to_uv_loop","get_floor_profile_uv","get_location_curve","get_param_by_names","get_param_double_by_names","get_param_int_by_names","get_wall_width","get_symbol_param_double_by_names","get_bbox_projected_width","get_linear_element_width","get_linear_element_offset","extend_uv_polyline","offset_uv_polyline","get_bbox_loop_uv","get_closed_profile_from_location_point","splitter_to_uv","get_floor_boundary_loops_on_target_plane","make_open_splitter","make_closed_splitter","get_linear_splitters_from_element","get_closed_splitters_from_floor","get_closed_splitters_from_bbox_or_point","get_foundation_splitters","get_column_splitters","get_splitter_category_key","get_splitter_modes_from_settings","element_to_splitter_primitives","collect_splitter_primitives","split_primitives_for_partition","is_open_splitter_near_boundary","is_closed_loop_near_boundary","dedupe_open_splitters","dedupe_closed_loops","estimate_part_effective_width","is_sliver_part","filter_splitters_for_source","to_coordinate_array","to_ring_array","to_geometry_array","to_ring_array","to_linestring","ring_to_uv","polygon_to_part","part_key","partition_uv_profile","polygon_from_loop","get_floor_offset","get_floor_structural_flag","build_curve_loop","create_floor_from_candidate","collect_dependents","get_preview_basis","xyz_to_preview_uv","uv_loop_to_preview_uv","prepare_candidates","apply_initial_selection","group_candidates","review_candidates_wpf","get_safe_delete_ids","print_report","main"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","NetTopologySuite.Geometries","NetTopologySuite.Operation.Polygonize","NetTopologySuite.Operation.Union","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Media","System.Windows.Shapes","clr","math","os","pyrevit","sys","telemetry","traceback"]
+## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","get_output_window","log","find_extension_root","load_nts","area_to_m2","m2_to_internal","get_element_name","load_user_settings","save_user_settings","AllowElement","AllowReference","AllowElement","AllowReference","__init__","__str__","__init__","kept_count","part_count","replace_ready","__init__","_set_combo_items","_set_combo_value","_get_combo_value","_bind_lists","apply_settings","collect_settings","ok_click","cancel_click","__init__","on_loaded","build_tree","make_group_header","make_part_header","group_text","part_text","refresh_group_row","refresh_all_rows","refresh_summary","on_group_check_changed","on_part_check_changed","on_tree_selected","on_select_all","on_select_none","on_keep_largest","on_invert","redraw_current","on_ok","on_cancel","clear_preview","get_preview_loops_for_part","get_preview_bounds","to_canvas_point","draw_loop","draw_candidate","draw_group","draw_part_focus","ask_preflight_settings","pick_floors","pick_splitters","is_shape_edited","get_floor_sketch","get_sketch_plane","xyz_to_uv","uv_to_xyz","project_point_to_plane","project_dir_to_plane","almost_equal_uv","clean_uv","close_uv","signed_area","normalize_loop","ensure_orientation","uv_distance","polyline_length_uv","loop_perimeter_uv","loop_bbox_short_side_uv","point_segment_distance_uv","polyline_to_segments_uv","min_distance_between_segment_sets","curve_to_uv_polyline","curve_array_to_uv_loop","get_floor_profile_uv","get_location_curve","get_param_by_names","get_param_double_by_names","get_param_int_by_names","get_wall_width","get_symbol_param_double_by_names","get_bbox_projected_width","get_linear_element_width","get_linear_element_offset","extend_uv_polyline","offset_uv_polyline","get_bbox_loop_uv","get_closed_profile_from_location_point","splitter_to_uv","get_floor_boundary_loops_on_target_plane","make_open_splitter","make_closed_splitter","get_linear_splitters_from_element","get_closed_splitters_from_floor","get_closed_splitters_from_bbox_or_point","get_foundation_splitters","get_column_splitters","get_splitter_category_key","get_splitter_modes_from_settings","element_to_splitter_primitives","collect_splitter_primitives","split_primitives_for_partition","is_open_splitter_near_boundary","is_closed_loop_near_boundary","dedupe_open_splitters","dedupe_closed_loops","estimate_part_effective_width","is_sliver_part","filter_splitters_for_source","to_coordinate_array","to_ring","to_ring_array","to_geometry_array","to_linestring","ring_to_uv","polygon_to_part","part_key","partition_uv_profile","polygon_from_loop","get_floor_offset","get_floor_structural_flag","build_curve_loop","create_floor_from_candidate","collect_dependents","get_preview_basis","xyz_to_preview_uv","uv_loop_to_preview_uv","prepare_candidates","apply_initial_selection","group_candidates","review_candidates_wpf","get_safe_delete_ids","print_report","main"]
 ## CLASSES: ["FloorFilter","MixedSplitterFilter","CandidatePart","SourceFloorGroup","SplitSetupWindow","SplitReviewWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Floor Splitter"
 __doc__ = """Split one or more floors using mixed splitter elements."""
 
@@ -50615,14 +56607,105 @@ SETUP_XAML = r"""
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI">
+    <Window.Resources>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#E8E9EC"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="14,12"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="34"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="8,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="14,6"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#1F4FD9"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="16"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+        </Style>
+    </Window.Resources>
     <Grid Margin="12">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="FS" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C Â· Floor Splitter" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Configure split logic, review parts, and apply confidently." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel>
 
                 <GroupBox Header="General" Margin="0,0,0,10">
@@ -50636,7 +56719,7 @@ SETUP_XAML = r"""
                         <CheckBox x:Name="chkAllowApproxCurves" Content="Allow approximate curves" Margin="0,2,0,6"/>
                         <CheckBox x:Name="chkShowReport" Content="Show report" Margin="0,2,0,6"/>
 
-                        <TextBlock Text="Minimum area (m²)"/>
+                        <TextBlock Text="Minimum area (mÂ²)"/>
                         <TextBox x:Name="txtMinArea" Margin="0,4,0,0"/>
                     </StackPanel>
                 </GroupBox>
@@ -50685,9 +56768,9 @@ SETUP_XAML = r"""
             </StackPanel>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-            <Button x:Name="btnOk" Content="OK" Width="90" Margin="0,0,8,0"/>
-            <Button x:Name="btnCancel" Content="Cancel" Width="90"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button x:Name="btnOk" Content="OK" Width="90" Margin="0,0,8,0" Style="{StaticResource PrimaryButton}"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="90" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
     </Grid>
 </Window>
@@ -50708,23 +56791,114 @@ REVIEW_XAML = r"""
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI">
+    <Window.Resources>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#E8E9EC"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="14,12"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="34"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="8,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="14,6"/>
+            <Setter Property="Background" Value="#1F4FD9"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#1F4FD9"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="16"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#1F4FD9"/>
+            <Setter Property="BorderBrush" Value="#DDE1E6"/>
+        </Style>
+    </Window.Resources>
 
     <Grid Margin="8">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="FS" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C Â· Floor Splitter" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Review split candidates and keep only the correct result parts." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
         <TextBlock Name="txtSummary"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    Margin="0,0,0,8"
                    FontSize="14"
                    FontWeight="Bold"
                    Text="Review split floor results"/>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="430"/>
                 <ColumnDefinition Width="8"/>
@@ -50756,16 +56930,16 @@ REVIEW_XAML = r"""
             </Border>
         </Grid>
 
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,8,0,0">
-            <Button Name="btnSelectAll" Content="Select All Parts" Width="120" Margin="0,0,6,0"/>
-            <Button Name="btnSelectNone" Content="Select None" Width="100" Margin="0,0,6,0"/>
-            <Button Name="btnLargest" Content="Keep Largest Per Source" Width="160" Margin="0,0,6,0"/>
-            <Button Name="btnInvert" Content="Invert Selection" Width="110" Margin="0,0,20,0"/>
-            <Button Name="btnOk" Content="OK" Width="90" Margin="0,0,6,0"/>
-            <Button Name="btnCancel" Content="Cancel" Width="90"/>
+            <Button Name="btnSelectAll" Content="Select All Parts" Width="120" Margin="0,0,6,0" Style="{StaticResource SecondaryButton}"/>
+            <Button Name="btnSelectNone" Content="Select None" Width="100" Margin="0,0,6,0" Style="{StaticResource SecondaryButton}"/>
+            <Button Name="btnLargest" Content="Keep Largest Per Source" Width="160" Margin="0,0,6,0" Style="{StaticResource SecondaryButton}"/>
+            <Button Name="btnInvert" Content="Invert Selection" Width="110" Margin="0,0,20,0" Style="{StaticResource SecondaryButton}"/>
+            <Button Name="btnOk" Content="OK" Width="90" Margin="0,0,6,0" Style="{StaticResource PrimaryButton}"/>
+            <Button Name="btnCancel" Content="Cancel" Width="90" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
     </Grid>
 </Window>
@@ -50931,7 +57105,7 @@ class CandidatePart(object):
 
     def __str__(self):
         approx_text = " | approx" if self.approximated else ""
-        return "Part {} | {:.2f} m² | holes {}{}".format(
+        return "Part {} | {:.2f} mÂ² | holes {}{}".format(
             self.index,
             self.area_m2,
             self.hole_count,
@@ -51202,7 +57376,7 @@ class SplitReviewWindow(forms.WPFWindow):
 
     def part_text(self, part):
         approx_text = " | approx" if part.approximated else ""
-        return "Part {} | {:.2f} m² | holes {}{}".format(
+        return "Part {} | {:.2f} mÂ² | holes {}{}".format(
             part.index,
             part.area_m2,
             part.hole_count,
@@ -51248,7 +57422,7 @@ class SplitReviewWindow(forms.WPFWindow):
             kept_count += len([p for p in group.parts if p.keep])
 
         curves_text = "Tessellated curves" if self.settings["allow_approx_curves"] else "Strict lines"
-        self.txtSummary.Text = "Review split floor results | Sources: {} | Parts: {} | Selected: {} | Min area: {:.2f} m² | {}".format(
+        self.txtSummary.Text = "Review split floor results | Sources: {} | Parts: {} | Selected: {} | Min area: {:.2f} mÂ² | {}".format(
             source_count,
             part_count,
             kept_count,
@@ -52524,17 +58698,19 @@ def filter_splitters_for_source(shell_uv, holes_uv, splitter_uvs, closed_split_l
 def to_coordinate_array(uv_points, closed):
     pts = close_uv(uv_points) if closed else list(uv_points)
     coords = [Coordinate(float(u), float(v)) for u, v in pts]
-    return Arraycoords
+    return Array[Coordinate](coords)
+
+
+def to_ring(uv_points):
+    return LinearRing(to_coordinate_array(uv_points, True))
+
 
 def to_ring_array(rings):
-    return Arraylist(rings)
+    return Array[LinearRing](list(rings or []))
 
 
 def to_geometry_array(geometries):
-    return Arraylist(geometries)
-
-def to_ring_array(rings):
-    return Arrayrings
+    return Array[Geometry](list(geometries or []))
 
 
 def to_linestring(uv_points):
@@ -52970,7 +59146,7 @@ def print_report(show_report, settings, created_floors, skipped, deleted_ids, de
     output.print_md("## Split Floors Report")
     output.print_md("- Original handling: {}".format(settings["replace_mode"]))
     output.print_md("- Result selection: {}".format(settings["selection_mode"]))
-    output.print_md("- Minimum area: {:.2f} m²".format(settings["min_area_m2"]))
+    output.print_md("- Minimum area: {:.2f} mÂ²".format(settings["min_area_m2"]))
     output.print_md("- Preview orientation: {}".format(settings["preview_orientation"]))
     output.print_md("- Framing mode: {}".format(settings["framing_mode"]))
     output.print_md("- Walls mode: {}".format(settings["walls_mode"]))
@@ -53138,7 +59314,7 @@ except Exception as ex:
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/SlabSplitter.pushbutton/tool-context.md
-## META: sha1=f68641cb5f34cfd9b8fa5134cf38b960b599ad8c size=866
+## META: sha1=1687d23490f19070845fd9288529951b4757c34d size=1027
 ## TYPE: text
 ```markdown
 # Slab Splitter
@@ -53146,6 +59322,14 @@ except Exception as ex:
 ## Purpose
 Split one or more floors using mixed splitter elements and review or approve resulting parts.
 
+
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Preview and inspection stage
+- Execution stage
+- Results and status stage
 ## Entry Points
 - `script.py`
 
@@ -53171,20 +59355,43 @@ Split one or more floors using mixed splitter elements and review or approve res
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton/script.py
-## META: sha1=16cbc05c63019c4c043fd1d03fe0bee60108b75c size=14727
+## META: sha1=5ecc258ab8d51a3a082a194492e3f2913971a010 size=15572
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","System.Collections.Generic","clr","os","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","System.Collections.Generic","clr","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["collect_all_revision_clouds","map_revisions_to_clouds","__init__","__str__","get_line_graphics_styles","__init__","__str__","safe_element_name","unique_group_name","group_name_from_context","make_group","ensure_drafting_view_for_sheet","create_detail_lines","set_line_style_for_detail_ids","get_cloud_dependent_curve_ids","copy_elements_in_view","copy_group_aligned_between_views","is_owned_by_other"]
 ## CLASSES: ["_RevisionItem","_GSItem"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
-__title__ = "RevClouds ➜ Detail Groups"
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
+__title__ = "RevClouds to Detail Groups"
 __doc__ = """Version = 1.4
 Date    = 25.02.2026
 _____________________________________________________________________
@@ -53243,7 +59450,7 @@ class _RevisionItem(object):
         except: pass
         parts = [u"[{}]".format(self.rev.SequenceNumber)]
         if num: parts.append(num)
-        if desc: parts.append(u"— {}".format(desc))
+        if desc: parts.append(u"â€” {}".format(desc))
         tail = []
         if iss: tail.append(iss)
         if date_val: tail.append(date_val)
@@ -53439,7 +59646,7 @@ if __name__ == '__main__':
         # Nothing to run; show message and exit
         skip_lines = [u"Cloud Id {} on '{}' (owner: {})".format(cid, vname, own) for (cid, vname, own) in ownership_skips]
         forms.alert("All clouds in scope are owned by other users and were skipped:\n\n" + u"\n".join(skip_lines),
-                    title="Clouds ➜ Detail Groups | Ownership", warn_icon=True, exitscript=True)
+                    title="Clouds âžœ Detail Groups | Ownership", warn_icon=True, exitscript=True)
 
     # Optional Line Style
     gs_list = get_line_graphics_styles(doc)
@@ -53513,21 +59720,21 @@ if __name__ == '__main__':
     # Compose ownership skip summary
     own_summary = ""
     if ownership_skips:
-        lines = [u"• Cloud Id {} on '{}' (owner: {})".format(cid, vname, own) for (cid, vname, own) in ownership_skips]
+        lines = [u"â€¢ Cloud Id {} on '{}' (owner: {})".format(cid, vname, own) for (cid, vname, own) in ownership_skips]
         own_summary = u"\n\nSkipped (ownership): {}\n{}".format(len(ownership_skips), u"\n".join(lines))
 
     forms.alert(
         "Scope: {}\nRevision: [Seq {}] {}\nGroups created (direct): {}\nGroups created (fallback): {}\nOther skips: {}{}\n\nOriginal clouds have been kept."
         .format(scope_choice.upper(), selected_revision.SequenceNumber, num,
                 made_groups, fallback_makes, skips, own_summary),
-        title="Clouds ➜ Detail Groups | Completed",
+        title="Clouds âžœ Detail Groups | Completed",
         warn_icon=False
     )
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/RevCloudDetailLine.pushbutton/tool-context.md
-## META: sha1=988650ad2e23ba90b2fc9ef4f73b8839175d1365 size=567
+## META: sha1=3b63eed7d9bdee6573ae205d293c61aae6dfb72d size=627
 ## TYPE: text
 ```markdown
 # RevClouds to Detail Groups
@@ -53535,6 +59742,10 @@ if __name__ == '__main__':
 ## Purpose
 Create detail-group equivalents of revision cloud linework for a selected revision and scope.
 
+
+## Workflow
+- Load and preparation stage
+- Execution stage
 ## Entry Points
 - `script.py`
 
@@ -53556,19 +59767,42 @@ Create detail-group equivalents of revision cloud linework for a selected revisi
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/script.py
-## META: sha1=bb68602145db9c825f3ac56965f931a842bf9e2a size=17894
+## META: sha1=11a392f1677072701a5afb3c0d509a47967f0fe3 size=20400
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","clr","os","pyrevit","sys","telemetry","wpf"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","get_all_levels_sorted_by_elevation","extract_wrapped","get_type_name_for_element","is_annotation_category","param_equals_level_id","collect_elements_on_level","build_grouped_dict","__init__","_build_category_block","_build_element_row","_on_select_all","_on_select_category","_on_select_element","_on_close","__init__","__str__"]
 ## CLASSES: ["SelectByLevelWindow","LevelListItem"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Elements by Level"
 __doc__ = """Version = 1.1
 Date    = 23.02.2026
@@ -53579,9 +59813,9 @@ Category and sorted by Type Name. Outputs linkified rows to let you
 zoom/select items directly from the report.
 """
 
-# ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
-# ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
-# ╩╩ ╩╩  ╚═╝╩╚═ ╩ ╚═╝
+# â•¦â•”â•¦â•—â•”â•â•—â•”â•â•—â•¦â•â•—â•”â•¦â•—â•”â•â•—
+# â•‘â•‘â•‘â•‘â• â•â•â•‘ â•‘â• â•¦â• â•‘ â•šâ•â•—
+# â•©â•© â•©â•©  â•šâ•â•â•©â•šâ• â•© â•šâ•â•
 # ==================================================
 # Regular + Autodesk
 import os, sys
@@ -53625,9 +59859,9 @@ from System.Windows.Media import Brushes, SolidColorBrush, Color, BrushConverter
 from System.Windows.Input import MouseButtonState
 import wpf
 
-# ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
-# ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
-#  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝ 
+# â•¦  â•¦â•”â•â•—â•¦â•â•—â•¦â•”â•â•—â•”â•— â•¦  â•”â•â•—â•”â•â•—
+# â•šâ•—â•”â•â• â•â•£â• â•¦â•â•‘â• â•â•£â• â•©â•—â•‘  â•‘â•£ â•šâ•â•—
+#  â•šâ• â•© â•©â•©â•šâ•â•©â•© â•©â•šâ•â•â•©â•â•â•šâ•â•â•šâ•â• 
 # ==================================================
 doc   = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
@@ -53643,9 +59877,9 @@ def _brush(hex_value):
 INCLUDE_VIEW_SPECIFIC = False      # include view-specific elements if True
 INCLUDE_ANNOTATION    = False      # include annotation categories if True
 
-# ╔═╗╦ ╦╔╗╔╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-# ╠╣ ║ ║║║║║   ║ ║║ ║║║║╚═╗
-# ╚  ╚═╝╝╚╝╚═╝ ╩ ╩╚═╝╝╚╝╚═╝ 
+# â•”â•â•—â•¦ â•¦â•”â•—â•”â•”â•â•—â•”â•¦â•—â•¦â•”â•â•—â•”â•—â•”â•”â•â•—
+# â• â•£ â•‘ â•‘â•‘â•‘â•‘â•‘   â•‘ â•‘â•‘ â•‘â•‘â•‘â•‘â•šâ•â•—
+# â•š  â•šâ•â•â•â•šâ•â•šâ•â• â•© â•©â•šâ•â•â•â•šâ•â•šâ•â• 
 # ==================================================
 def get_all_levels_sorted_by_elevation(revit_doc):
     """Return list of Level elements sorted by elevation then name."""
@@ -53816,16 +60050,16 @@ def build_grouped_dict(revit_doc, elements):
         result.append((cat_name, rows))
     return result
 
-# ╦ ╦╔═╗╔═╗  ╦ ╦╦╔╗╔╔╦╗╔═╗╦ ╦
-# ╠╣ ╠═╝╠╣   ║║║║║║║ ║║║ ║║║║
-# ╚  ╩  ╚    ╚╩╝╩╝╚╝═╩╝╚═╝╚╩╝
+# â•¦ â•¦â•”â•â•—â•”â•â•—  â•¦ â•¦â•¦â•”â•—â•”â•”â•¦â•—â•”â•â•—â•¦ â•¦
+# â• â•£ â• â•â•â• â•£   â•‘â•‘â•‘â•‘â•‘â•‘â•‘ â•‘â•‘â•‘ â•‘â•‘â•‘â•‘
+# â•š  â•©  â•š    â•šâ•©â•â•©â•â•šâ•â•â•©â•â•šâ•â•â•šâ•©â•
 # ==================================================
 class SelectByLevelWindow(Window):
     """Modal WPF results window for SelectbyLevel.
 
     After ShowDialog() the caller should check self.pending_ids:
-      - None  → user closed without a selection action
-      - list  → ElementIds to select (and zoom to) in Revit
+      - None  â†’ user closed without a selection action
+      - list  â†’ ElementIds to select (and zoom to) in Revit
     """
 
     def __init__(self, level_name, grouped_data):
@@ -53859,7 +60093,7 @@ class SelectByLevelWindow(Window):
                 self._build_category_block(cat_name, rows, cat_ids)
             )
 
-    # ── builders ────────────────────────────────────────────────
+    # â”€â”€ builders â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def _build_category_block(self, cat_name, rows, cat_ids):
         """Return an Expander for one category."""
@@ -53868,7 +60102,7 @@ class SelectByLevelWindow(Window):
         expander.Margin = Thickness(0, 0, 0, 10)
         expander.Background = _brush("#FFFBFE")
 
-        # ── Expander header ──
+        # â”€â”€ Expander header â”€â”€
         header = StackPanel()
         header.Orientation = ControlOrientation.Horizontal
         header.Margin = Thickness(4, 4, 4, 4)
@@ -53898,7 +60132,7 @@ class SelectByLevelWindow(Window):
 
         expander.Header = header
 
-        # ── Expander body: element rows ──
+        # â”€â”€ Expander body: element rows â”€â”€
         body = StackPanel()
         body.Margin = Thickness(14, 2, 4, 6)
 
@@ -53950,7 +60184,7 @@ class SelectByLevelWindow(Window):
 
         return row
 
-    # ── event handlers ───────────────────────────────────────────
+    # â”€â”€ event handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def _on_select_all(self, sender, e):
         self.pending_ids = list(self._all_ids)
@@ -53968,9 +60202,9 @@ class SelectByLevelWindow(Window):
         self.Close()
 
 
-# ╔╦╗╔═╗╦╔╗╔
-# ║║║╠═╣║║║║
-# ╩ ╩╩ ╩╩╝╚╝ 
+# â•”â•¦â•—â•”â•â•—â•¦â•”â•—â•”
+# â•‘â•‘â•‘â• â•â•£â•‘â•‘â•‘â•‘
+# â•© â•©â•© â•©â•©â•â•šâ• 
 # ==================================================
 if __name__ == '__main__':
 
@@ -54047,224 +60281,249 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/SelectByLevelWindow.xaml
-## META: sha1=184a6d2b3e457bcddbbb0c5540a96b910b9cd7a6 size=11021
+## META: sha1=5f59f60958b83992cb09066794c7af0e00a81a28 size=12204
 ## TYPE: text
 ```
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Elements by Level"
-    MinWidth="660" Width="820"
-    MinHeight="380" Height="660"
+    MinWidth="700"
+    Width="860"
+    MinHeight="420"
+    Height="700"
     WindowStartupLocation="CenterScreen"
     ShowInTaskbar="False"
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI"
+    FontFamily="Segoe UI Variable, Segoe UI"
     FontSize="12">
 
     <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
 
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#1A1A1A"/>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="24,16" />
         </Style>
 
-        <!-- Category header button: Select All -->
-        <Style x:Key="BtnCatSelect" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F4FD9"/>
-            <Setter Property="BorderBrush" Value="#DDE1E6"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="8,2"/>
-            <Setter Property="Height" Value="22"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="16,6,16,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="12"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E7EDFB"/>
-                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Element row button: Select -->
-        <Style x:Key="BtnElemSelect" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F4FD9"/>
-            <Setter Property="BorderBrush" Value="#DDE1E6"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="6,1"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="12"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E7EDFB"/>
-                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Footer action button -->
-        <Style x:Key="BtnFooter" TargetType="Button">
-            <Setter Property="Background" Value="#1F4FD9"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="14,4"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
                                 CornerRadius="20"
                                 Padding="{TemplateBinding Padding}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#1640B0"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="BtnFooterSecondary" TargetType="Button" BasedOn="{StaticResource BtnFooter}">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F4FD9"/>
-            <Setter Property="BorderBrush" Value="#DDE1E6"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <!-- Expander toggle button override for dark theme -->
-        <Style TargetType="ToggleButton" x:Key="ExpanderToggle">
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border Background="Transparent" Padding="2">
-                            <Path x:Name="Arrow"
-                                  Data="M0,0 L6,6 L12,0"
-                                    Stroke="#FF6B7785" StrokeThickness="2"
-                                  VerticalAlignment="Center"
-                                  HorizontalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Arrow" Property="Data" Value="M0,6 L6,0 L12,6"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Arrow" Property="Stroke" Value="#FF2D89EF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style x:Key="CompactButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Padding" Value="10,4,10,4" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinWidth" Value="0" />
         </Style>
 
+        <Style x:Key="BtnCatSelect" TargetType="Button" BasedOn="{StaticResource CompactButton}">
+            <Setter Property="Margin" Value="0,0,0,0" />
+        </Style>
+
+        <Style x:Key="BtnElemSelect" TargetType="Button" BasedOn="{StaticResource CompactButton}">
+            <Setter Property="Height" Value="22" />
+            <Setter Property="Padding" Value="8,3,8,3" />
+        </Style>
+
+        <Style x:Key="BtnFooter" TargetType="Button" BasedOn="{StaticResource PrimaryButton}" />
+
+        <Style x:Key="BtnFooterSecondary" TargetType="Button" BasedOn="{StaticResource SecondaryButton}" />
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
     </Window.Resources>
 
-    <DockPanel LastChildFill="True">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="12,12,12,0" CornerRadius="8">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
-                    <TextBlock Text="EL" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="EL" Style="{StaticResource ToolAppBarIconTextStyle}" />
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock x:Name="TxtTitle" FontSize="16" FontWeight="SemiBold" Foreground="#FFFFFF" Text="Elements by Level"/>
-                    <TextBlock x:Name="TxtSummary" FontSize="11" Foreground="#FFFFFF" Opacity="0.7" Margin="0,4,0,0" Text=""/>
+                    <TextBlock x:Name="TxtTitle" Text="Elements by Level" Style="{StaticResource ToolAppBarTitleStyle}" />
+                    <TextBlock x:Name="TxtSummary" Text="" Style="{StaticResource ToolAppBarSubtitleStyle}" Margin="0,2,0,0" />
                 </StackPanel>
-                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
-                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}" />
                 </Border>
             </Grid>
         </Border>
 
-        <!-- ── Column header row ─────────────────────── -->
-        <Border DockPanel.Dock="Top" Background="#FFF9FAFB" BorderBrush="#FFE1E4E8" BorderThickness="0,0,0,1" Padding="14,5,14,5">
-            <Grid>
+        <Border Grid.Row="1" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8">
+            <Grid Background="{StaticResource SurfaceContainerBrush}" Padding="14,7">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="24"/>    <!-- arrow spacer -->
-                    <ColumnDefinition Width="*"/>     <!-- Type Name -->
-                    <ColumnDefinition Width="110"/>   <!-- Element Id -->
-                    <ColumnDefinition Width="68"/>    <!-- Select btn -->
+                    <ColumnDefinition Width="24" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="68" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Text="Type Name"  FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold"/>
-                <TextBlock Grid.Column="2" Text="Element Id" FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Type Name" FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold" />
+                <TextBlock Grid.Column="2" Text="Element Id" FontSize="11" Foreground="#FF5E6A75" FontWeight="Bold" />
             </Grid>
         </Border>
 
-        <!-- ── Footer ────────────────────────────────── -->
-        <Border DockPanel.Dock="Bottom" Background="#F4F5F7" Padding="16,8" BorderBrush="#DDE1E6" BorderThickness="1,0,1,1" Margin="12,0,12,12" CornerRadius="0,0,8,8">
+        <Border Grid.Row="2" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8">
+            <DockPanel LastChildFill="True" Background="{StaticResource SurfaceContainerHighBrush}" Padding="12,8">
+                <TextBlock DockPanel.Dock="Left"
+                           Text="Expand categories to inspect level-bound instances and select subsets."
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                           FontSize="11"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+
+        <Border Grid.Row="3" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          Background="{StaticResource SurfaceBrush}">
+                <StackPanel x:Name="CategoryPanel" Margin="10,8,10,8" />
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="4" Style="{StaticResource SectionCardBorderStyle}" Padding="16,8">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnSelectAll"
                         Style="{StaticResource BtnFooter}"
-                        Width="180" Margin="0,0,10,0"
-                        Content="Select All Elements"/>
+                        Width="180"
+                        Margin="0,0,10,0"
+                        Content="Select All Elements" />
                 <Button x:Name="BtnClose"
                         Style="{StaticResource BtnFooterSecondary}"
-                        Width="80"
-                        Content="Close"/>
+                        Width="82"
+                        Content="Close" />
             </StackPanel>
         </Border>
-
-        <!-- ── Category list ─────────────────────────── -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled"
-                      Background="#FFFBFE"
-                      Margin="12,0,12,0">
-            <StackPanel x:Name="CategoryPanel" Margin="0,2,0,8"/>
-        </ScrollViewer>
-
-    </DockPanel>
+    </Grid>
 </Window>
 
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/SelectByLevelWindow.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/tool-context.md
-## META: sha1=97363b5e6ab76ed837033f8efe3d808b9090691d size=563
+## META: sha1=de3b739f452b75bf999c3a8b49273ebfbbe68266 size=704
 ## TYPE: text
 ```markdown
 # Elements by Level
@@ -54272,6 +60531,11 @@ if __name__ == '__main__':
 ## Purpose
 List elements associated with a selected level, grouped by category and sorted by type, with linkified report output.
 
+
+## Workflow
+- Choose level and category filters
+- Apply optional include-view-specific/annotation toggles
+- Generate grouped element report
 ## Entry Points
 - `script.py`
 
@@ -54286,7 +60550,7 @@ List elements associated with a selected level, grouped by category and sorted b
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack2.stack/SelectbyLevel.pushbutton/tool-context.md
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/bundle.yaml
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/bundle.yaml
 ## META: sha1=fee41b031d32c4b8ebe4a8c2bb906010e0c54eba size=203
 ## TYPE: text
 ```yaml
@@ -54297,9 +60561,9 @@ context:
 # highlight: updated
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/bundle.yaml
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/bundle.yaml
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/config.py
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/config.py
 ## META: sha1=6f88c7a71a2546c06eb9448deaf41127ba8978bb size=980
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","pyrevit"]
@@ -54350,40 +60614,63 @@ for g in grids:
 t.Commit()
 tg.Assimilate()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/config.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/config.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/icon.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/icon.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/icon.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/off.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/off.png
 ## META: sha1=df4378db42ca51757ddfd2ea9a887a7d61af261d size=479
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/off.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/off.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/on.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/on.png
 ## META: sha1=3d0b52d77f86ff64930805433ea141c2ecdbc798 size=496
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/on.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/on.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/script.py
-## META: sha1=6c8129984912364fffa450fe8207e7d112b0f91d size=1159
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/script.py
+## META: sha1=40d2bb91d726eb0e95cd64ce4715a86cf2fe8054 size=1962
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: []
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Grids: Set 2D Extents"
 
 from Autodesk.Revit.DB import *
@@ -54427,10 +60714,10 @@ for g in grids:
 t.Commit()
 tg.Assimilate()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/script.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/script.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/tool-context.md
-## META: sha1=545e30a34aaf609eb4dd4ebb3bfded18c724b6a7 size=513
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/tool-context.md
+## META: sha1=9ea195c2899edf2e1e4163d609a3da2ffef744a7 size=779
 ## TYPE: text
 ```markdown
 # Grid Extents
@@ -54438,6 +60725,11 @@ tg.Assimilate()
 ## Purpose
 Set visible grids in the active view to 2D extents quickly.
 
+
+## Workflow
+- Prepare the target view and confirm the grids, levels, or view settings you want to adjust.
+- Run Grid Extents with the required scope or option settings.
+- Review the updated view result and rerun if the displayed extents or filters need refinement.
 ## Entry Points
 - `script.py`
 
@@ -54450,9 +60742,9 @@ Set visible grids in the active view to 2D extents quickly.
 - Minimize regeneration and transaction overhead for large views.
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton/tool-context.md
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton/tool-context.md
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/bundle.yaml
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/bundle.yaml
 ## META: sha1=b01e585d4393561aa38e959c025efc675d3693ea size=212
 ## TYPE: text
 ```yaml
@@ -54463,9 +60755,9 @@ context:
 # highlight: updated
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/bundle.yaml
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/bundle.yaml
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/config.py
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/config.py
 ## META: sha1=e10f69d9bae91cfa8b4c6987c3119fbe9c8397f2 size=2423
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","pyrevit"]
@@ -54546,28 +60838,51 @@ for lvl in levels:
         pass
 t.Commit()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/config.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/config.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/icon.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/icon.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/icon.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/script.py
-## META: sha1=4c4bac8d57d8fa635a7c7d4d36103ba43eedb348 size=2522
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/script.py
+## META: sha1=f8081a6f54d842ac787909cb156157ce0596902f size=3325
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["_pick_level_line_in_view","_classify_left_right_end"]
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Levels: Head Switcher (Left)"
 from Autodesk.Revit.DB import *
 from pyrevit import script
@@ -54641,10 +60956,10 @@ for lvl in levels:
         pass
 t.Commit()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/script.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/script.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/tool-context.md
-## META: sha1=504752052d54a10a9aaadaca289d093debd070a0 size=535
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/tool-context.md
+## META: sha1=8bc9a15aaed1fa706418115a6f1b202008c9564a size=566
 ## TYPE: text
 ```markdown
 # Level Head Switcher
@@ -54652,6 +60967,9 @@ t.Commit()
 ## Purpose
 Show the left level bubble and hide the right bubble for levels visible in section and elevation views.
 
+
+## Workflow
+- Selection stage
 ## Entry Points
 - `script.py`
 
@@ -54664,9 +60982,9 @@ Show the left level bubble and hide the right bubble for levels visible in secti
 - Skip levels safely when visible curves cannot be resolved.
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton/tool-context.md
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton/tool-context.md
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/bundle.yaml
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/bundle.yaml
 ## META: sha1=706c7b0af47470e55b413e657e7d8cf6baa0398e size=205
 ## TYPE: text
 ```yaml
@@ -54677,9 +60995,9 @@ context:
 # highlight: updated
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/bundle.yaml
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/bundle.yaml
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/config.py
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/config.py
 ## META: sha1=19e5ceacae367964c094115f918f4b7b16e99463 size=1763
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","pyrevit"]
@@ -54747,40 +61065,63 @@ for lvl in levels:
 t.Commit()
 tg.Assimilate()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/config.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/config.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/icon.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/icon.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/icon.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/off.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/off.png
 ## META: sha1=df4378db42ca51757ddfd2ea9a887a7d61af261d size=479
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/off.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/off.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/on.png
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/on.png
 ## META: sha1=3d0b52d77f86ff64930805433ea141c2ecdbc798 size=496
 ## TYPE: binary
 (binary not inlined)
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/on.png
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/on.png
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/script.py
-## META: sha1=aba71ca2120933843161bf6c1d3f6854f5d3fede size=1343
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/script.py
+## META: sha1=1cfa5f737eabefe7635f247ab8919b9a18cd5ad9 size=2146
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: []
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Levels: Set 2D Extents (Sections & Elevations)"
 
 from Autodesk.Revit.DB import *
@@ -54826,10 +61167,10 @@ for lvl in levels:
 t.Commit()
 tg.Assimilate()
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/script.py
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/script.py
 
-## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/tool-context.md
-## META: sha1=36e341818117e54d5b7d9ce50157e6266c908bb4 size=482
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/tool-context.md
+## META: sha1=50e8b446ec83ec96df9eea1842fb67f4e4cf97a9 size=750
 ## TYPE: text
 ```markdown
 # Levels Extents
@@ -54837,6 +61178,11 @@ tg.Assimilate()
 ## Purpose
 Set visible levels in the active section or elevation view to 2D extents.
 
+
+## Workflow
+- Prepare the target view and confirm the grids, levels, or view settings you want to adjust.
+- Run Levels Extents with the required scope or option settings.
+- Review the updated view result and rerun if the displayed extents or filters need refinement.
 ## Entry Points
 - `script.py`
 
@@ -54849,7 +61195,7 @@ Set visible levels in the active section or elevation view to 2D extents.
 - Keep failure handling non-fatal per level so one problematic datum does not stop the run.
 
 ```
-## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton/tool-context.md
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
@@ -54858,19 +61204,42 @@ Set visible levels in the active section or elevation view to 2D extents.
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/script.py
-## META: sha1=e45b4e8739f097d5bc23bcdd93416e59de74dca6 size=2628
+## META: sha1=131c832d5abd5c255242414f3124f37cf652a271 size=4069
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","System.Collections.Generic","clr","pyrevit","pyrevit.framework","telemetry","traceback"]
+## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.UI.Selection","System.Collections.Generic","clr","os","pyrevit","pyrevit.framework","sys","telemetry","traceback"]
 ## FUNCTIONS: []
 ## CLASSES: []
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__   = "Crop Views\nQuick Off"
 __doc__     = """Version = 1.0
 ________________________________________________________________
@@ -54885,9 +61254,9 @@ For ALL Views in the Active Sheet.
 ________________________________________________________________
 """
 
-# ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
-# ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
-# ╩╩ ╩╩  ╚═╝╩╚═ ╩ ╚═╝
+# â•¦â•”â•¦â•—â•”â•â•—â•”â•â•—â•¦â•â•—â•”â•¦â•—â•”â•â•—
+# â•‘â•‘â•‘â•‘â• â•â•â•‘ â•‘â• â•¦â• â•‘ â•šâ•â•—
+# â•©â•© â•©â•©  â•šâ•â•â•©â•šâ• â•© â•šâ•â•
 #==================================================
 from Autodesk.Revit.DB import *
 from Autodesk.Revit.UI.Selection import ObjectType
@@ -54901,18 +61270,18 @@ clr.AddReference('System')
 from System.Collections.Generic import List
 
 
-# ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
-# ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
-#  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝
+# â•¦  â•¦â•”â•â•—â•¦â•â•—â•¦â•”â•â•—â•”â•— â•¦  â•”â•â•—â•”â•â•—
+# â•šâ•—â•”â•â• â•â•£â• â•¦â•â•‘â• â•â•£â• â•©â•—â•‘  â•‘â•£ â•šâ•â•—
+#  â•šâ• â•© â•©â•©â•šâ•â•©â•© â•©â•šâ•â•â•©â•â•â•šâ•â•â•šâ•â•
 #==================================================
 app    = __revit__.Application
 uidoc  = __revit__.ActiveUIDocument
 doc    = __revit__.ActiveUIDocument.Document #type:Document
 
 
-# ╔╦╗╔═╗╦╔╗╔
-# ║║║╠═╣║║║║
-# ╩ ╩╩ ╩╩╝╚╝
+# â•”â•¦â•—â•”â•â•—â•¦â•”â•—â•”
+# â•‘â•‘â•‘â• â•â•£â•‘â•‘â•‘â•‘
+# â•© â•©â•© â•©â•©â•â•šâ•
 #==================================================
 
 output = script.get_output()
@@ -54929,7 +61298,7 @@ try:
             if hasattr(view, 'CropBoxVisible'):
                 view.CropBoxVisible = 0
             else:
-                output.print_md("### ⚠️ View '{}' does not support Crop Region visibility toggle.".format(view.Name))
+                output.print_md("### âš ï¸ View '{}' does not support Crop Region visibility toggle.".format(view.Name))
         t.Commit()
     else:
         view = doc.ActiveView
@@ -54941,16 +61310,16 @@ try:
 
             t.Commit()
         else:
-            output.print_md("### ⚠️ The active view does not support Crop Region visibility toggle.")
+            output.print_md("### âš ï¸ The active view does not support Crop Region visibility toggle.")
 except Exception as e:
-    output.print_md("### ❌ Error has occurred:")
+    output.print_md("### âŒ Error has occurred:")
     import traceback
     output.print_md("```\n{}\n```".format(traceback.format_exc()))
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/tool-context.md
-## META: sha1=e2e1756e0b8d048aebc666f6bfe5f54e58372f5b size=538
+## META: sha1=2f8855de26fdf77e44ec6ceb7be4d25c1dfcbaa9 size=769
 ## TYPE: text
 ```markdown
 # Crop Views Quick Off
@@ -54958,6 +61327,11 @@ except Exception as e:
 ## Purpose
 Turn crop region visibility off for the active view or for all placed views on the active sheet.
 
+
+## Workflow
+- Review the current sheet or viewport order before making changes.
+- Run Crop Views Quick Off with the target sheet items you want to reorder.
+- Confirm the final sheet layout matches the intended presentation order.
 ## Entry Points
 - `script.py`
 
@@ -54973,7 +61347,7 @@ Turn crop region visibility off for the active view or for all placed views on t
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/CropView.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/BatchLinkViewSetup.xaml
-## META: sha1=0188203979345c471bfc7518c53bdd10043874a5 size=5451
+## META: sha1=f6e6d4b1e1a7149e3170050d6d7deb885c371bc3 size=5524
 ## TYPE: text
 ```
 <Window
@@ -54989,9 +61363,11 @@ Turn crop region visibility off for the active view or for all placed views on t
     Foreground="#1A1A1A"
     FontFamily="Segoe UI">
     <Window.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <DockPanel Margin="12">
         <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
@@ -55083,19 +61459,43 @@ Turn crop region visibility off for the active view or for all placed views on t
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/script.py
-## META: sha1=83d6066b7b86c500ff10881209194e219af3be63 size=72221
+## META: sha1=5e9e91e769b00a085fe9b91ffb63cf58b9c9d415 size=80516
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","re","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Controls","System.Windows.Media","clr","os","pyrevit","re","sys","telemetry"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_brush","safe_str","normalize_text","get_element_name","get_debug_log_path","log_line","reset_log","get_view_template_name","get_view_level","get_view_level_name","get_level_elevation","get_scope_box_name","get_viewport_map","is_supported_plan_view","get_property_name","get_enum_value_from_property","try_get_current_linked_view_id","set_linked_view_override","__init__","ToString","__str__","__init__","ToString","__str__","__init__","short_name","ToString","__str__","__init__","ToString","__str__","__init__","ToString","__str__","__init__","host_blob","__init__","collect_level_choices","collect_host_views","collect_link_items","collect_linked_plan_views","linked_matches_filter","find_match","make_host_sort_key","make_linked_sort_key","write_xaml_temp","__init__","_setup","_wire_events","_refresh_single_linked_lists","_refresh_multi_linked_counts","_current_mode","_current_rule_mode","_selected_scope","_selected_template","_selected_level_from","_selected_level_to","_single_link_item","_host_matches_filters","_get_visible_host_items","_get_linked_items_for_link","_get_filtered_sorted_linked_items","_cache_row_state","_refresh_mode_panels","_refresh_rule_panel_visibility","_refresh_window","_refresh_counts","on_single_refresh_linked","on_multi_refresh_rules","on_single_linked_filter_changed","_build_rows","_new_row_grid","_base_row_widgets","on_checkbox_click","_build_single_row","on_combo_changed","_build_multi_row","_clear_host_results","_add_rule","_build_rule_row","on_filter_changed","on_chk","on_link","on_match","on_sort","_remove_rule","_active_multi_rules","_get_rule_linked_items","_preview_single","_apply_single","_preview_multi","_apply_multi","on_mode_changed","on_rule_mode_changed","on_apply_filters","on_clear_filters","on_host_filter_changed","on_single_link_changed","on_single_mode_controls_changed","on_multi_controls_changed","on_single_preview","on_single_apply","on_add_rule","on_remove_rule","on_multi_preview","on_multi_apply","on_select_visible","on_select_none","on_select_placed","on_select_unmatched","on_close"]
 ## CLASSES: ["LevelChoice","SimpleChoice","LinkItem","LinkedViewItem","EmptyLinkedViewItem","HostViewItem","MultiRuleItem","BatchLinkViewWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
+
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Batch Link View Setup"
 __doc__ = "Single and multi-link Revit Link By Linked View setup."
 
@@ -55178,53 +61578,218 @@ XAML = r"""
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
-    <DockPanel Margin="10">
-        <Border DockPanel.Dock="Top" Background="#1A1A1A" Padding="24,16" Margin="0,0,0,10" CornerRadius="8">
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="24,16" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="14,6,14,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button" BasedOn="{StaticResource SecondaryButton}" />
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+    </Window.Resources>
+
+    <DockPanel Margin="12">
+        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
-                    <TextBlock Text="LV" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="LV" Style="{StaticResource ToolAppBarIconTextStyle}"/>
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Batch Link View Setup" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
-                    <TextBlock Text="Match host views to linked views, preview the outcome, and apply the mapping." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                    <TextBlock Text="SJ-B+C · Batch Link View Setup" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Match host views to linked views, preview the outcome, and apply the mapping." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
                 </StackPanel>
-                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
-                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
                 </Border>
             </Grid>
         </Border>
         <StackPanel DockPanel.Dock="Top">
-            <Grid Margin="0,0,0,8">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="220"/>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="220"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Border Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8" Padding="12,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Mode" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
-                <ComboBox x:Name="cmbMode" Grid.Column="1" Margin="4,0,20,0" MinWidth="180"/>
+                    <TextBlock Grid.Column="0" Text="Mode" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cmbMode" Grid.Column="1" Margin="4,0,20,0" MinWidth="180"/>
 
-                <TextBlock Grid.Column="2" Text="Multi Rule Mode" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
-                <ComboBox x:Name="cmbRuleMode" Grid.Column="3" Margin="4,0,20,0" MinWidth="180"/>
+                    <TextBlock Grid.Column="2" Text="Multi Rule Mode" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cmbRuleMode" Grid.Column="3" Margin="4,0,20,0" MinWidth="180"/>
 
-                <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock x:Name="txtLinkedCount" Text="0 linked views" Margin="0,0,18,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="txtHostCount" Text="0 host views" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
+                    <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock x:Name="txtLinkedCount" Text="0 linked views" Margin="0,0,18,0" VerticalAlignment="Center" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                        <TextBlock x:Name="txtHostCount" Text="0 host views" VerticalAlignment="Center" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-            <Border BorderBrush="#FFD0D0D0" BorderThickness="1" Padding="8" Margin="0,0,0,8">
+            <Border Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8" Padding="10">
                 <StackPanel>
-                    <TextBlock Text="Host Targeting" FontWeight="Bold" Margin="0,0,0,6"/>
+                    <TextBlock Text="Host Targeting" FontWeight="SemiBold" Margin="0,0,0,6"/>
                     <Grid Margin="0,0,0,8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
@@ -55272,14 +61837,14 @@ XAML = r"""
                         <TextBlock Grid.Column="4" Text="Host Sort" VerticalAlignment="Center"/>
                         <ComboBox x:Name="cmbHostSort" Grid.Column="5" Margin="4,0,10,0"/>
 
-                        <TextBlock x:Name="txtSummary" Grid.Column="6" VerticalAlignment="Center" Foreground="#1F4FD9"/>
+                        <TextBlock x:Name="txtSummary" Grid.Column="6" VerticalAlignment="Center" Foreground="{StaticResource PrimaryBrush}"/>
                     </Grid>
                 </StackPanel>
             </Border>
 
-            <Border x:Name="SinglePanel" BorderBrush="#FFD0D0D0" BorderThickness="1" Padding="8" Margin="0,0,0,8">
+            <Border x:Name="SinglePanel" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8" Padding="10">
                 <StackPanel>
-                    <TextBlock Text="Single Link Setup" FontWeight="Bold" Margin="0,0,0,6"/>
+                    <TextBlock Text="Single Link Setup" FontWeight="SemiBold" Margin="0,0,0,6"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="90"/>
@@ -55307,16 +61872,16 @@ XAML = r"""
 
                         <StackPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button x:Name="btnSingleRefreshLinked" Content="Refresh Linked" Width="105" Margin="0,0,6,0"/>
-                            <Button x:Name="btnSinglePreview" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
-                            <Button x:Name="btnSingleApply" Content="Apply" Width="90"/>
+                            <Button x:Name="btnSinglePreview" Style="{StaticResource PrimaryButton}" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
+                            <Button x:Name="btnSingleApply" Style="{StaticResource PrimaryButton}" Content="Apply" Width="90"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </Border>
 
-            <Border x:Name="MultiPanel" BorderBrush="#FFD0D0D0" BorderThickness="1" Padding="8" Margin="0,0,0,8">
+            <Border x:Name="MultiPanel" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,8" Padding="10">
                 <StackPanel>
-                    <TextBlock Text="Multi Link Setup" FontWeight="Bold" Margin="0,0,0,6"/>
+                    <TextBlock Text="Multi Link Setup" FontWeight="SemiBold" Margin="0,0,0,6"/>
 
                     <Grid x:Name="MultiGlobalRulePanel" Margin="0,0,0,8">
                         <Grid.ColumnDefinitions>
@@ -55342,8 +61907,8 @@ XAML = r"""
                             <Button x:Name="btnMultiRefreshRules" Content="Refresh Rules" Width="100" Margin="0,0,6,0"/>
                             <Button x:Name="btnAddRule" Content="Add Rule" Width="90" Margin="0,0,6,0"/>
                             <Button x:Name="btnRemoveRule" Content="Remove Rule" Width="95" Margin="0,0,20,0"/>
-                            <Button x:Name="btnMultiPreview" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
-                            <Button x:Name="btnMultiApply" Content="Apply" Width="90"/>
+                            <Button x:Name="btnMultiPreview" Style="{StaticResource PrimaryButton}" Content="Preview Matches" Width="120" Margin="0,0,6,0"/>
+                            <Button x:Name="btnMultiApply" Style="{StaticResource PrimaryButton}" Content="Apply" Width="90"/>
                         </StackPanel>
                     </Grid>
 
@@ -55374,7 +61939,7 @@ XAML = r"""
                 <Button x:Name="btnSelectNone" Content="Select None" Width="95" Margin="0,0,6,0"/>
                 <Button x:Name="btnSelectPlaced" Content="Select Placed" Width="95" Margin="0,0,6,0"/>
                 <Button x:Name="btnSelectUnmatched" Content="Select Unmatched" Width="110" Margin="0,0,20,0"/>
-                <Button x:Name="btnClose" Content="Close" Width="90"/>
+                <Button x:Name="btnClose" Content="Close" Width="90" Style="{StaticResource GhostButton}"/>
             </WrapPanel>
 
             <Grid Margin="0,0,0,4">
@@ -55397,9 +61962,11 @@ XAML = r"""
             </Grid>
         </StackPanel>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="RowsPanel"/>
-        </ScrollViewer>
+        <Border Style="{StaticResource SectionCardBorderStyle}" Padding="6">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="RowsPanel"/>
+            </ScrollViewer>
+        </Border>
     </DockPanel>
 </Window>
 """
@@ -56932,6 +63499,25 @@ window.ShowDialog()
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/script.py
 
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/tool-context.md
+## META: sha1=e962265c1566e2c44166bce756303a44cb9624b9 size=312
+## TYPE: text
+```markdown
+# LinkedViews
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Select link instance and load eligible linked views
+- Select source and host target views
+- Preview placement and alignment mode
+- Create/update linked view representation
+## Entry Points
+- `BatchLinkViewSetup.xaml`
+- `script.py`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/LinkedViews.pushbutton/tool-context.md
+
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
 ## TYPE: binary
@@ -56939,19 +63525,42 @@ window.ShowDialog()
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/script.py
-## META: sha1=bc8b0373dbf3e3372fa1e4f1db50690d4b12f8b3 size=12171
+## META: sha1=12f243dfb107197f92c6920dade0f893872a7f9f size=12989
 ## TYPE: text
-## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Markup","clr","pyrevit","telemetry"]
+## IMPORTS: ["Autodesk.Revit.DB","GUI.style_guide_2026","System","System.IO","System.Windows","System.Windows.Markup","clr","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","__init__","fmt_len","safe_elem_name","view_template_info","collect_plans","get_vr_data","set_vr_data","__init__","_load_window","_wire","show","_set_status","refresh","_apply_filters","_restore_selection","_sel_view","_sel_id","_update_infos","_update_compare","_copy_viewrange","_on_filter_changed","_on_selection_changed","_on_refresh","_on_swap","_on_copy_a_to_b","_on_copy_b_to_a","_on_copy_a_to_targets","_on_close"]
 ## CLASSES: ["VRRow","ViewRangeTool"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Plan View Range Tool"
 __doc__ = "Compare and copy plan view range settings across multiple views"
 
@@ -57302,7 +63911,7 @@ class ViewRangeTool(object):
             self._set_status("Select Plan A and Plan B.")
             return
         n = self._copy_viewrange(a, [b])
-        self._set_status("Copied A → B ({} view).".format(n))
+        self._set_status("Copied A â†’ B ({} view).".format(n))
         self._update_compare()
 
     def _on_copy_b_to_a(self, sender, args):
@@ -57312,7 +63921,7 @@ class ViewRangeTool(object):
             self._set_status("Select Plan A and Plan B.")
             return
         n = self._copy_viewrange(b, [a])
-        self._set_status("Copied B → A ({} view).".format(n))
+        self._set_status("Copied B â†’ A ({} view).".format(n))
         self._update_compare()
 
     def _on_copy_a_to_targets(self, sender, args):
@@ -57325,7 +63934,7 @@ class ViewRangeTool(object):
             self._set_status("Select at least one Target.")
             return
         n = self._copy_viewrange(a, targets)
-        self._set_status("Copied A → Targets ({} views).".format(n))
+        self._set_status("Copied A â†’ Targets ({} views).".format(n))
 
     def _on_close(self, sender, args):
         self.window.Close()
@@ -57336,7 +63945,7 @@ ViewRangeTool().show()
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/tool-context.md
-## META: sha1=424ee340162d63dcef8e9bd8736ce96cf5a2b8a6 size=562
+## META: sha1=159baae1570967a69769d53dbe24c427c1aefb03 size=692
 ## TYPE: text
 ```markdown
 # Plan View Range Tool
@@ -57344,6 +63953,13 @@ ViewRangeTool().show()
 ## Purpose
 Compare plan view range settings across multiple views and support controlled copying of those settings.
 
+
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Execution stage
+- Results and status stage
 ## Entry Points
 - `script.py`
 
@@ -57359,249 +63975,358 @@ Compare plan view range settings across multiple views and support controlled co
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/UI.xaml
-## META: sha1=702b02c1cbdd6cbc84701f2eb2fb4884b33f5679 size=13478
+## META: sha1=48531f4add83877880e5aed29865ca730d919d12 size=19267
 ## TYPE: text
 ```
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="View Range Compare + Copy"
-        Height="900" Width="1120"
+        Height="900"
+        Width="1120"
+        MinHeight="760"
+        MinWidth="980"
         WindowStartupLocation="CenterScreen"
-    ShowInTaskbar="False"
+        ShowInTaskbar="False"
         ResizeMode="CanResizeWithGrip"
-        Background="{DynamicResource Bg}"
-        Foreground="{DynamicResource Fg}"
-        FontFamily="Segoe UI">
+        Background="#FFFBFE"
+        Foreground="#1A1A1A"
+        FontFamily="Segoe UI Variable, Segoe UI"
+        FontSize="12">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="Bg" Color="#FFFBFE"/>
-        <SolidColorBrush x:Key="Panel" Color="#F4F5F7"/>
-        <SolidColorBrush x:Key="Panel2" Color="#ECEDF0"/>
-        <SolidColorBrush x:Key="Border" Color="#DDE1E6"/>
-        <SolidColorBrush x:Key="Fg" Color="#1A1A1A"/>
-        <SolidColorBrush x:Key="Muted" Color="#8A8F98"/>
-        <SolidColorBrush x:Key="WarnRow" Color="#FDF3E9"/>
-        <SolidColorBrush x:Key="InputBg" Color="#FFFBFE"/>
-        <SolidColorBrush x:Key="InputBorder" Color="#DDE1E6"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="WarningContainerBrush" Color="#FDF3E9" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
 
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="{DynamicResource InputBg}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="6,3"/>
-            <Setter Property="Height" Value="26"/>
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="24,16" />
         </Style>
 
-        <Style TargetType="ListBox">
-            <Setter Property="Background" Value="{DynamicResource InputBg}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
-        <Style TargetType="CheckBox">
-            <Setter Property="Foreground" Value="{DynamicResource Muted}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="12,0,0,0"/>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F4FD9"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Border}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10,6"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="16,6,16,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E7EDFB"/>
-                                <Setter Property="BorderBrush" Value="#1F4FD9"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#ECEDF0"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.45"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Background" Value="#1F4FD9"/>
-            <Setter Property="Foreground" Value="#FFFFFF"/>
-            <Setter Property="BorderBrush" Value="#1F4FD9"/>
-            <Setter Property="BorderThickness" Value="0"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GhostButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}" />
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="20,16" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="8,2" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="12,0,0,0" />
         </Style>
 
         <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="{DynamicResource InputBg}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Fg}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="RowBackground" Value="#FFFBFE"/>
-            <Setter Property="AlternatingRowBackground" Value="#F4F5F7"/>
-            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowBackground" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="AlternatingRowBackground" Value="{StaticResource SurfaceContainerBrush}" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="HeadersVisibility" Value="Column" />
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#1F4FD9"/>
-            <Setter Property="Foreground" Value="#FFFFFF"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Border}"/>
-            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
         <Style TargetType="DataGridCell">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="6,3"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="6,3" />
         </Style>
     </Window.Resources>
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#1A1A1A" CornerRadius="8" Padding="24,16" Margin="0,0,0,12">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Width="38" Height="38" CornerRadius="12" Background="#1F4FD9">
-                    <TextBlock Text="VR" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="VR" Style="{StaticResource ToolAppBarIconTextStyle}" />
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · View Range Compare + Copy" Foreground="#FFFFFF" FontSize="16" FontWeight="SemiBold"/>
-                    <TextBlock Text="Compare two plans, inspect differences, and copy view range settings to selected targets." Foreground="#FFFFFF" Opacity="0.7" FontSize="11"/>
+                    <TextBlock Text="SJ-B+C · View Range Compare + Copy" Style="{StaticResource ToolAppBarTitleStyle}" />
+                    <TextBlock Text="Compare two plans, inspect differences, and copy view range settings to selected targets." Style="{StaticResource ToolAppBarSubtitleStyle}" />
                 </StackPanel>
-                <Border Grid.Column="2" Background="#1F4FD9" CornerRadius="12" Padding="10,3" VerticalAlignment="Center">
-                    <TextBlock Text="v0.1" Foreground="#FFFFFF" FontSize="10" FontWeight="SemiBold"/>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}" />
                 </Border>
             </Grid>
         </Border>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="290"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="340"/>
+                <ColumnDefinition Width="290" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="340" />
             </Grid.ColumnDefinitions>
 
-            <!-- LEFT: Plan A / B -->
-            <Border Grid.Column="0" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="16" Padding="20,16">
+            <Border Grid.Column="0" Style="{StaticResource SectionCardBorderStyle}">
                 <StackPanel>
-
                     <DockPanel Margin="0,0,0,12">
-                        <Button Name="btnRefresh" Content="Refresh Views" Width="130" Height="26"/>
-                        <TextBlock Text="Each list has its own filter." VerticalAlignment="Center"
-                                   Foreground="{DynamicResource Muted}" Margin="10,0,0,0"/>
+                        <Button Name="btnRefresh" Content="Refresh Views" Width="130" Height="28" Style="{StaticResource SecondaryButton}" />
+                        <TextBlock Text="Each list has its own filter."
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                   Margin="10,0,0,0" />
                     </DockPanel>
 
-                    <TextBlock Text="Plan A" FontWeight="SemiBold" FontSize="13"/>
-                    <TextBox Name="tbFilterA" Margin="0,6,0,6" ToolTip="Filter Plan A list"/>
-                    <ListBox Name="lbPlanA" Height="170" SelectionMode="Single" DisplayMemberPath="Name"/>
-                    <TextBlock Name="txtAInfo" Text="Template: -   |   View Range Controlled: -"
-                               Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,6,0,10"/>
+                    <TextBlock Text="Plan A" FontWeight="SemiBold" FontSize="13" />
+                    <TextBox Name="tbFilterA" Margin="0,6,0,6" ToolTip="Filter Plan A list" />
+                    <ListBox Name="lbPlanA" Height="170" SelectionMode="Single" DisplayMemberPath="Name" />
+                    <TextBlock Name="txtAInfo"
+                               Text="Template: -   |   View Range Controlled: -"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               TextWrapping="Wrap"
+                               Margin="0,6,0,10" />
 
-                    <Button Name="btnCopyAtoB" Style="{StaticResource PrimaryActionButton}" Content="Copy A → B" Margin="0,0,0,6"/>
-                    <Button Name="btnCopyBtoA" Style="{StaticResource PrimaryActionButton}" Content="Copy B → A" Margin="0,0,0,16"/>
+                    <Button Name="btnCopyAtoB" Style="{StaticResource PrimaryActionButton}" Content="Copy A -&gt; B" Margin="0,0,0,6" />
+                    <Button Name="btnCopyBtoA" Style="{StaticResource PrimaryActionButton}" Content="Copy B -&gt; A" Margin="0,0,0,16" />
 
-                    <Separator Margin="0,0,0,12" Background="{DynamicResource Border}"/>
+                    <Separator Margin="0,0,0,12" Background="{StaticResource OutlineBrush}" />
 
-                    <TextBlock Text="Plan B" FontWeight="SemiBold" FontSize="13"/>
-                    <TextBox Name="tbFilterB" Margin="0,6,0,6" ToolTip="Filter Plan B list"/>
-                    <ListBox Name="lbPlanB" Height="170" SelectionMode="Single" DisplayMemberPath="Name"/>
-                    <TextBlock Name="txtBInfo" Text="Template: -   |   View Range Controlled: -"
-                               Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,6,0,10"/>
+                    <TextBlock Text="Plan B" FontWeight="SemiBold" FontSize="13" />
+                    <TextBox Name="tbFilterB" Margin="0,6,0,6" ToolTip="Filter Plan B list" />
+                    <ListBox Name="lbPlanB" Height="170" SelectionMode="Single" DisplayMemberPath="Name" />
+                    <TextBlock Name="txtBInfo"
+                               Text="Template: -   |   View Range Controlled: -"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               TextWrapping="Wrap"
+                               Margin="0,6,0,10" />
 
-                    <Button Name="btnSwap" Content="Swap A ↔ B" Margin="0,0,0,6"/>
-                    <Button Name="btnClose" Content="Close" Margin="0,12,0,0"/>
+                    <Button Name="btnSwap" Content="Swap A &lt;-&gt; B" Margin="0,0,0,6" Style="{StaticResource SecondaryButton}" />
+                    <Button Name="btnClose" Content="Close" Margin="0,12,0,0" Style="{StaticResource GhostButton}" />
                 </StackPanel>
             </Border>
 
-            <!-- MIDDLE: comparison -->
-            <Border Grid.Column="1" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="12,0,12,0">
+            <Border Grid.Column="1" Style="{StaticResource SectionCardBorderStyle}" Margin="12,0,12,0">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <DockPanel Grid.Row="0" Margin="0,0,0,8">
-                        <TextBlock Text="View Range Comparison (live)" FontWeight="SemiBold" FontSize="13"/>
-                        <CheckBox Name="chkDiffOnly" Content="Show different planes only"/>
-                        <TextBlock Text="   (different rows highlighted)" Foreground="{DynamicResource Muted}"
-                                   VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="View Range Comparison (live)" FontWeight="SemiBold" FontSize="13" />
+                        <CheckBox Name="chkDiffOnly" Content="Show different planes only" />
+                        <TextBlock Text="(different rows highlighted)"
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,0,0" />
                     </DockPanel>
 
-                    <DataGrid Name="dgCompare" Grid.Row="1"
-                              AutoGenerateColumns="False" IsReadOnly="True"
-                              CanUserAddRows="False" CanUserDeleteRows="False"
+                    <DataGrid Name="dgCompare"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
                               RowHeaderWidth="0">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Diff}" Value="True">
-                                        <Setter Property="Background" Value="{DynamicResource WarnRow}"/>
+                                        <Setter Property="Background" Value="{StaticResource WarningContainerBrush}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </DataGrid.RowStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Plane" Binding="{Binding Plane}" Width="1.2*"/>
-                            <DataGridTextColumn Header="A Level" Binding="{Binding ALevel}" Width="2*"/>
-                            <DataGridTextColumn Header="A Offset" Binding="{Binding AOffset}" Width="1.2*"/>
-                            <DataGridTextColumn Header="B Level" Binding="{Binding BLevel}" Width="2*"/>
-                            <DataGridTextColumn Header="B Offset" Binding="{Binding BOffset}" Width="1.2*"/>
+                            <DataGridTextColumn Header="Plane" Binding="{Binding Plane}" Width="1.2*" />
+                            <DataGridTextColumn Header="A Level" Binding="{Binding ALevel}" Width="2*" />
+                            <DataGridTextColumn Header="A Offset" Binding="{Binding AOffset}" Width="1.2*" />
+                            <DataGridTextColumn Header="B Level" Binding="{Binding BLevel}" Width="2*" />
+                            <DataGridTextColumn Header="B Offset" Binding="{Binding BOffset}" Width="1.2*" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </Border>
 
-            <!-- RIGHT: targets -->
-            <Border Grid.Column="2" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}"
-                    BorderThickness="1" CornerRadius="16" Padding="20,16">
+            <Border Grid.Column="2" Style="{StaticResource SectionCardBorderStyle}">
                 <StackPanel>
-                    <TextBlock Text="Targets (multi-select)" FontWeight="SemiBold" FontSize="13"/>
-                    <TextBox Name="tbFilterT" Margin="0,6,0,6" ToolTip="Filter Targets list"/>
-                    <ListBox Name="lbTargets" Margin="0,0,0,10" Height="445"
-                             SelectionMode="Extended" DisplayMemberPath="Name"/>
+                    <TextBlock Text="Targets (multi-select)" FontWeight="SemiBold" FontSize="13" />
+                    <TextBox Name="tbFilterT" Margin="0,6,0,6" ToolTip="Filter Targets list" />
+                    <ListBox Name="lbTargets" Margin="0,0,0,10" Height="445" SelectionMode="Extended" DisplayMemberPath="Name" />
 
-                    <Button Name="btnCopyAToTargets" Style="{StaticResource PrimaryActionButton}" Content="Copy A → Selected Targets" Height="34"/>
-                    <TextBlock Text="Tip: Ctrl/Shift to multi-select." Foreground="{DynamicResource Muted}" Margin="0,8,0,0"/>
+                    <Button Name="btnCopyAToTargets"
+                            Style="{StaticResource PrimaryActionButton}"
+                            Content="Copy A -&gt; Selected Targets"
+                            Height="34" />
+                    <TextBlock Text="Tip: Ctrl/Shift to multi-select."
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               Margin="0,8,0,0" />
                 </StackPanel>
             </Border>
         </Grid>
 
-        <Border Grid.Row="2" Background="{DynamicResource Panel}" BorderBrush="{DynamicResource Border}" BorderThickness="1"
-                CornerRadius="8" Padding="12,8" Margin="0,10,0,0">
-            <TextBlock Name="txtStatus" Text="Ready." Foreground="{DynamicResource Muted}"/>
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceContainerBrush}"
+                BorderBrush="{StaticResource OutlineBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="12,8"
+                Margin="0,10,0,0">
+            <TextBlock Name="txtStatus" Text="Ready." Foreground="{StaticResource OnSurfaceVariantBrush}" />
         </Border>
     </Grid>
 </Window>
+
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton/UI.xaml
 
@@ -57612,20 +64337,43 @@ Compare plan view range settings across multiple views and support controlled co
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/script.py
-## META: sha1=b7e5aad78b0dd7fd403bfebb3a07a22b5a03b3ea size=355867
+## META: sha1=4026b45cf6ec30880dc65a7e3bd256971426c9c9 size=356674
 ## TYPE: text
 ## IMPORTS: ["Autodesk.Revit.DB","Autodesk.Revit.Exceptions","Autodesk.Revit.UI.Selection","GUI.style_guide_2026","System","System.Collections.Generic","System.Windows","System.Windows.Controls","System.Windows.Input","System.Windows.Media","System.Windows.Media.Imaging","System.Windows.Shapes","System.Windows.Threading","clr","detailmove_engine","glob","math","os","pyrevit","sys","telemetry","time","traceback"]
 ## FUNCTIONS: ["apply_topmost_and_parent","apply_window_contract","apply_style_guide_resources","_brush","get_name","mm_to_ft","ft_to_mm","try_parse_positive_int","try_parse_positive_float","try_parse_non_negative_float","try_parse_float","safe_int","add_xyz","sub_xyz","mul_xyz","dot_xyz","cross_xyz","vec_length","normalize","normalize_xy","canonical_xy_direction","combine_warning_text","_append","chunk_list","estimate_layout_capacity","__init__","__str__","__init__","__str__","__init__","__init__","__init__","copy_user_state_from","__init__","copy_user_state_from","__init__","__init__","__str__","__init__","__str__","__init__","validate_scope_frame","_build_section_basis","validate_section_direction","get_view_associated_level_id","view_matches_level","view_supports_associated_level","force_view_associated_level","get_view_range_signature","build_remapped_view_range_signature","apply_view_range_signature","view_range_matches","enforce_associated_level_and_view_range","get_scope_box_param","set_scope_box","get_scope_boxes","get_creator_category_items","_get_param_by_builtin_names","_get_param_by_lookup_names","_get_param","_param_to_text","_param_to_level_name","_param_to_offset_mm_text","_get_type_name","_get_category_id_value","_first_non_empty_param_text","_build_creator_element_row","get_creator_elements_for_categories","get_scope_box_ids_visible_in_active_plan","get_levels","get_plan_type_candidates","get_section_type_candidates","get_plan_template_candidates","get_section_template_candidates","get_titleblock_candidates","get_most_used_titleblock_type_id","get_existing_sheet_candidates","get_viewport_type_candidates","get_post_sectionmove_plan_candidates","build_existing_view_map","build_existing_view_map_for_creator","_consume_views","build_existing_sheet_numbers","build_placed_view_id_set","build_viewport_index_by_view_id","get_view_outline_size_ft","get_existing_selectable_views","make_unique_name","make_unique_sheet_number","_is_reuse_candidate_compatible","get_or_create_view","build_scope_frame","is_scope_box_element","get_levels_in_scope","get_section_top_elevation","create_plan_view","apply_plan_crop_from_frame","build_section_box","create_section_view","activate_symbol_if_needed","create_scope_sheet","can_add_view_to_sheet","get_sheet_rect_bounds","build_grid_positions","build_grid_positions_with_rows","build_vertical_stack_positions","build_plan_top_sections_positions","__init__","pump_ui","begin_progress","update_progress","set_progress_total","end_progress","_set_stage1_inline_status","_record_stage2_diag","_trim_preview_name","plans_enabled","sections_enabled","_set_combo","_select_combo_index","_select_combo_value","_selected_choice","_selected_element","_selected_value","_set_required_control_state","_update_required_field_highlights","_normalize_selected_items","_set_listbox_items_with_preserve","_set_choice_items_with_preserve","_reload_creator_grid","_reload_section_snapshot_grid","_reload_stage1_view_name_grid","_reload_selector_grid","_ensure_selector_cache_loaded","_ensure_sheet_cache_loaded","_ensure_preferred_titleblock_default","_setup_ui","_get_creator_name_filter_text","_get_creator_sort_mode","_get_creator_element_sort_mode","get_creator_source_mode","_is_scope_source_mode","_selected_creator_category_values","_selected_creator_category_ids","_get_creator_type_filter_text","_get_creator_group_filter_field","_get_creator_group_sort_mode","_creator_itemize_instances_enabled","_get_selected_creator_type_names","_refresh_section_create_mode_options","_is_scope_grouped_section_mode","_is_element_grouped_section_mode","_get_element_line_filter_text","_get_element_line_bucket_mm","_get_selected_element_line_keys","_set_element_line_items_with_preserve","_element_line_mark","_element_line_xy_bucket_key","_build_element_line_groups","_get_primary_level_for_element_row","_refresh_element_line_groups","_set_element_grid_headers","_update_creator_element_column_headers","_get_selected_creator_items","apply_creator_category_filters","refresh_creator_elements_from_categories","_rebuild_creator_type_items","apply_creator_type_filters","apply_creator_element_filters","update_creator_source_panels","update_workflow_stage_panels","_update_workflow_stepper","workflow_step_click","_creator_visible_only_enabled","apply_creator_scope_filters","creator_scope_filter_changed","update_post_stage_controls","_update_layout_panels","_is_free_form_layout","_make_placement_key","_apply_free_form_overrides","_compute_creator_signature","_invalidate_creator_rows","_ensure_creator_rows_current","get_source_mode","get_effective_source_mode","_is_stage2_snapshot","_is_stage3_sheet_layout","_get_snapshot_temp_dir","_resolve_creator_row_snapshot_views","_build_stage2_snapshot_items","_build_stage1_view_name_items","refresh_stage1_view_name_editor","refresh_stage2_snapshot_list","_find_stage2_snapshot_item_for_row","_get_selected_stage2_row","_select_stage2_row","_sync_stage2_controls_from_selected_row","_export_view_snapshot_path","_set_image_source_from_path","_apply_snapshot_image_rotation","_pick_alignment_vector_xy","_vector_to_angle_deg","_get_stage2_target_rows","stage2_pick_plan_rotation_click","stage2_pick_section_alignment_click","_attach_snapshot_zoom_behavior","_set_snapshot_image_zoom","snapshot_image_mouse_wheel","snapshot_image_mouse_left_button_down","_build_stage2_snapshot_row_card","_build_stage2_plan_schematic","_build_stage2_section_schematic","render_stage2_snapshot_selected","_get_section_offsets_ft","_find_level_by_name","_apply_vertical_mapping_rows","_read_vertical_mapping_into_rows","_prefer_summary_preview_mode","_get_preview_card_limit","_show_stage2_preview_tab","_estimate_stage1_assoc_targets","_estimate_stage1_sectionmove_groups","_estimate_stage1_create_operations","get_create_mode","get_sheet_mode","_default_viewport_type_name","_get_selected_scope_items","_get_selected_level_items","_get_selected_existing_sheet_items","_get_selected_selector_view_items","_get_selected_level_ids","_get_selected_existing_sheet_ids","_get_selected_selector_view_ids","_get_filtered_level_text","_get_filtered_sheet_text","_get_filtered_selector_view_text","_build_level_choice","_rebuild_scope_level_tree","_sync_scope_level_ids_from_tree","scope_level_checkbox_changed","_format_scope_level_status_line","_get_scope_level_map","_get_scope_assigned_level_ids","_get_selected_scope_level_map","_make_creator_key","_make_selector_key","_get_row_section_frame","_compute_creator_warning","_refresh_creator_warnings","_estimate_creator_counts","_rebuild_level_list","_update_level_selection_status","_apply_level_selection_to_selected_scopes","_rebuild_creator_rows","_build_merged_scope_frame","_rebuild_creator_rows_from_elements","_selector_view_matches_filters","refresh_selector_views_only","_rebuild_selector_rows","_rebuild_selector_rows_from_items","_set_stage2_views","refresh_scope_and_levels","refresh_selector_only","get_layout_request","_parse_unequal_row_pattern","get_reserved_offsets_mm","get_usable_sheet_bounds","_get_view_outline_size_ft","_build_viewport_index_by_view_id","_get_preview_sheet_bounds","_get_creator_row_actual_outline_size_ft","_estimate_row_sheet_footprint_ft","_build_weighted_grid_positions","_build_weighted_rows_positions","apply_layout_preset","get_active_rows","_should_keep_scope_groups","get_active_groups","build_layout_for_rows","_layout_existing_placements","_wrap_sheet_overflow_enabled","_layout_within_bounds","_build_wrapped_grid_sheet_layouts","_row_width","_emit_current_sheet","_commit_current_row_or_new_sheet","_pack_placements_to_sheet_layouts","_build_sheet_layouts_for_rows","estimate_total_required_sheets","update_sheet_panel_visibility","update_advanced_mode","mark_preview_dirty","clear_preview","get_selected_existing_sheets","refresh_summary","_refresh_stage1_name_summary","_preview_rect_size","_row_display_name","_count_row_roles","_estimate_group_preview_meta","_compute_preview_signature","_preview_should_use_summary_only","_preview_progress_stride","_build_summary_preview_card","_build_preview_limit_notice_card","_get_default_title_offset_ft","_register_freeform_preview_item","_refresh_freeform_selection_visuals","_select_freeform_key","_persist_freeform_item_from_visual","_align_selected_freeform_views","_align_selected_freeform_titles","_build_preview_card","freeform_rect_mouse_left_button_down","freeform_rect_mouse_move","freeform_rect_mouse_left_button_up","freeform_title_mouse_left_button_down","freeform_title_mouse_move","freeform_title_mouse_left_button_up","_build_preview_jobs_limited","render_preview","validate_before_create","_get_plan_name_pattern","_get_section_name_pattern","_render_view_name_pattern","_get_legacy_plan_base_name","_get_legacy_section_base_name","get_plan_base_name","get_section_base_name","_apply_viewport_type","_apply_viewport_title_position","_apply_viewport_type_only","_apply_viewport_title_only","_build_creator_view_map","_index_progress","_create_plan","_create_section","_build_selector_view_map","_run_stage1_creator","_assoc_progress","_move_progress","_run_stage1_selector","_selected_post_sectionmove_plan","_run_associated_level_stage","_run_post_sectionmove_stage","update_source_mode_panels","update_plan_section_visibility","_place_sheet_plan","create_views_and_optionally_place","apply_bulk_to_creator_rows","apply_bulk_to_selector_rows","auto_plan_order","auto_section_order","auto_selector_order","scope_boxes_changed","level_filter_changed","levels_selection_changed","select_visible_levels_click","clear_visible_levels_click","selector_filter_changed","selector_views_changed","source_mode_changed","creator_source_mode_changed","creator_category_filter_changed","creator_type_filter_changed","creator_types_changed","creator_categories_changed","creator_element_filter_changed","creator_elements_changed","element_line_groups_changed","element_split_mode_changed","element_line_filter_changed","element_line_bucket_changed","workflow_tab_changed","stage2_tab_changed","setup_changed","stage1_name_pattern_changed","toggle_plans","toggle_sections","layout_preset_changed","layout_type_changed","create_mode_changed","toggle_sheets","sheet_mode_changed","sheet_filter_changed","existing_sheets_changed","select_placed_sheets_click","clear_freeform_positions_click","proceed_to_sheet_layout_click","_mark","proceed_to_stage3_click","stage2_refresh_snapshots_click","stage1_refresh_view_names_click","stage1_apply_view_names_click","stage1_view_name_grid_changed","stage2_read_vertical_from_sections_click","section_snapshot_selection_changed","apply_section_snapshot_settings_click","clear_freeform_selection_click","align_selected_views_bottom_click","align_selected_views_left_click","align_selected_titles_bottom_click","align_selected_titles_left_click","advanced_mode_changed","select_creator_rows_click","clear_creator_rows_click","select_selector_rows_click","clear_selector_rows_click","apply_bulk_creator_click","apply_bulk_selector_click","auto_plan_order_click","auto_section_order_click","auto_selector_order_click","assignment_direction_changed","assignment_viewport_changed","selector_assignment_changed","creator_grid_changed","selector_grid_changed","section_snapshot_grid_changed","preview_click","create_click","cancel_click","build_window","run"]
 ## CLASSES: ["ChoiceItem","CreatorElementRow","ScopeFrame","LayoutRequest","AssignmentRow","SelectorRow","PlannedPlacement","Stage2SnapshotItem","Stage1ViewNameItem","UiState","ViewCreatorWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 try:
     import telemetry
-    telemetry.track_tool_click(__file__)
 except Exception:
-    pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 # --- START script.py PART 1/4 ---
 
 __title__ = "View Creator / Selector"
@@ -60857,7 +67605,7 @@ class ViewCreatorWindow(forms.WPFWindow):
                 bubble.Style = self.FindResource("WizardStepBubbleDoneBorderStyle")
                 bubble_text.Style = self.FindResource("WizardStepBubbleDoneTextStyle")
                 label.Style = self.FindResource("WizardStepLabelDoneStyle")
-                bubble_text.Text = u"✓"
+                bubble_text.Text = u"âœ“"
             elif index_value == stage_index:
                 bubble.Style = self.FindResource("WizardStepBubbleActiveBorderStyle")
                 bubble_text.Style = self.FindResource("WizardStepBubbleActiveTextStyle")
@@ -66801,7 +73549,7 @@ if __name__ == "__main__":
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/tool-context.md
-## META: sha1=f6ca438dd1bcb8d3459f6758a3eb7db0ade818d1 size=855
+## META: sha1=8f92357ee359438d2be92219ed1f1d1eae459e38 size=1016
 ## TYPE: text
 ```markdown
 # Scope Box View Creation
@@ -66809,6 +73557,14 @@ if __name__ == "__main__":
 ## Purpose
 Create and lay out views on sheets from a scope-box driven workflow with a WPF creator and selector interface.
 
+
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Preview and inspection stage
+- Execution stage
+- Results and status stage
 ## Entry Points
 - `script.py`
 - `ViewCreator.xaml`
@@ -66830,10 +73586,10 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/ViewCreator.xaml
-## META: sha1=213b402743b7f7b003098e7d1f969a4540e1604e size=115371
+## META: sha1=289e77a92aee4b24dc6fcb041ee1d35f0bfbede4 size=118628
 ## TYPE: text
 ```
-﻿<Window
+<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="View Creator / Selector"
@@ -66846,15 +73602,132 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
     Foreground="#1A1A1A"
-    FontFamily="Segoe UI">
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
 
     <Window.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-        <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9"/>
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB"/>
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE"/>
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7"/>
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98"/>
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6"/>
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC"/>
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF"/>
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="24,16"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="64"/>
+            <Setter Property="Padding" Value="14,6,14,6"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Button" BasedOn="{StaticResource SecondaryButton}"/>
-        <Style x:Key="WorkflowTabControlStyle" TargetType="TabControl" BasedOn="{StaticResource WizardContentTabControlStyle}"/>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Padding" Value="8,0,8,0"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Padding" Value="8,0,8,0"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
     </Window.Resources>
 
     <Grid Margin="12">
@@ -66864,25 +73737,22 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
                 <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
                     <TextBlock Text="VC" Style="{StaticResource ToolAppBarIconTextStyle}"/>
                 </Border>
-
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · View Creator / Selector" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Create views, review sections, and lay out sheets through the step workflow." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="View Creator / Selector" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Create and layout views on sheets from creator or selector workflows." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
                 </StackPanel>
-
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
                 </Border>
             </Grid>
         </Border>
@@ -66905,50 +73775,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled">
                     <StackPanel>
-                        <Border Style="{StaticResource WizardStepperContainerStyle}" Margin="0,0,0,12">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Button x:Name="btnWorkflowStep0" Grid.Column="0" Tag="0" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
-                                    <StackPanel>
-                                        <Border x:Name="brdWorkflowStep0Bubble" Style="{StaticResource WizardStepBubbleActiveBorderStyle}">
-                                            <TextBlock x:Name="txtWorkflowStep0Bubble" Text="1" Style="{StaticResource WizardStepBubbleActiveTextStyle}"/>
-                                        </Border>
-                                        <TextBlock x:Name="txtWorkflowStep0Label" Text="View Set" Style="{StaticResource WizardStepLabelActiveStyle}"/>
-                                    </StackPanel>
-                                </Button>
-
-                                <Border x:Name="brdWorkflowConn0" Grid.Column="1" Style="{StaticResource WizardStepConnectorPendingStyle}"/>
-
-                                <Button x:Name="btnWorkflowStep1" Grid.Column="2" Tag="1" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
-                                    <StackPanel>
-                                        <Border x:Name="brdWorkflowStep1Bubble" Style="{StaticResource WizardStepBubblePendingBorderStyle}">
-                                            <TextBlock x:Name="txtWorkflowStep1Bubble" Text="2" Style="{StaticResource WizardStepBubblePendingTextStyle}"/>
-                                        </Border>
-                                        <TextBlock x:Name="txtWorkflowStep1Label" Text="Section Snapshot" Style="{StaticResource WizardStepLabelPendingStyle}"/>
-                                    </StackPanel>
-                                </Button>
-
-                                <Border x:Name="brdWorkflowConn1" Grid.Column="3" Style="{StaticResource WizardStepConnectorPendingStyle}"/>
-
-                                <Button x:Name="btnWorkflowStep2" Grid.Column="4" Tag="2" Click="workflow_step_click" Style="{StaticResource WizardStepButtonStyle}">
-                                    <StackPanel>
-                                        <Border x:Name="brdWorkflowStep2Bubble" Style="{StaticResource WizardStepBubblePendingBorderStyle}">
-                                            <TextBlock x:Name="txtWorkflowStep2Bubble" Text="3" Style="{StaticResource WizardStepBubblePendingTextStyle}"/>
-                                        </Border>
-                                        <TextBlock x:Name="txtWorkflowStep2Label" Text="Sheet Layout" Style="{StaticResource WizardStepLabelPendingStyle}"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                        </Border>
-
-                        <TabControl x:Name="tabWorkflow" Style="{StaticResource WorkflowTabControlStyle}" SelectionChanged="workflow_tab_changed">
+                        <TabControl x:Name="tabWorkflow" SelectionChanged="workflow_tab_changed">
                             <TabItem x:Name="tabViewSet" Header="1. View Set">
                                 <StackPanel Margin="0,8,0,0">
 
@@ -67124,7 +73951,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <StackPanel Margin="10">
                                         <TextBlock x:Name="txtLevelSelectionStatus"
                                                    Margin="0,0,0,8"
-                                                   Foreground="#FF5E6A75"
+                                                   Foreground="DimGray"
                                                    TextWrapping="Wrap"
                                                    Text="Select one or more scope boxes to assign applicable levels."/>
 
@@ -67236,7 +74063,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtElementLineStatus"
                                                    Margin="0,0,0,8"
-                                                   Foreground="#FF5E6A75"
+                                                   Foreground="DimGray"
                                                    TextWrapping="Wrap"
                                                    Text="Select element rows on the left to derive line groups by number/location."/>
 
@@ -67263,7 +74090,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                     <TextBlock x:Name="txtPlanViewCount"
                                                Margin="0,0,0,4"
-                                               Foreground="#FF5E6A75"
+                                               Foreground="DimGray"
                                                Text="Plan views: 0"/>
 
                                     <StackPanel x:Name="pnlPlanSettings">
@@ -67279,7 +74106,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtPlanNameExample"
                                                    Margin="0,0,0,8"
-                                                   Foreground="#FF5E6A75"
+                                                   Foreground="DimGray"
                                                    TextWrapping="Wrap"
                                                    Text="Plan example: automatic"/>
 
@@ -67328,7 +74155,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                     <TextBlock x:Name="txtSectionViewCount"
                                                Margin="0,0,0,4"
-                                               Foreground="#FF5E6A75"
+                                               Foreground="DimGray"
                                                Text="Section views: 0"/>
 
                                     <StackPanel x:Name="pnlSectionSettings">
@@ -67343,7 +74170,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                         <TextBlock x:Name="txtSectionNameExample"
                                                    Margin="0,0,0,8"
-                                                   Foreground="#FF5E6A75"
+                                                   Foreground="DimGray"
                                                    TextWrapping="Wrap"
                                                    Text="Section example: automatic"/>
 
@@ -67395,8 +74222,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </StackPanel>
                             </GroupBox>
 
-                                <Button x:Name="btnProceedToSheetStage"
-                                    Style="{StaticResource PrimaryButton}"
+                            <Button x:Name="btnProceedToSheetStage"
                                     Width="240"
                                     Height="30"
                                     HorizontalAlignment="Left"
@@ -67404,14 +74230,16 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     Content="Run Stage 1: Create/Collect Views"
                                     Click="proceed_to_sheet_layout_click"/>
 
-                                <Border x:Name="bdrStage1InlineStatus"
-                                    Style="{StaticResource LegendInfoCardBorderStyle}"
+                            <Border x:Name="bdrStage1InlineStatus"
                                     Margin="0,0,0,10"
-                                    Padding="12,8">
+                                    Padding="8"
+                                    Background="#FFF7FAFD"
+                                    BorderBrush="#FFD0DCE8"
+                                    BorderThickness="1">
                                 <StackPanel>
                                     <TextBlock x:Name="txtStage1InlineStatus"
                                                Margin="0,0,0,6"
-                                               Foreground="#FF5E6A75"
+                                               Foreground="DimGray"
                                                TextWrapping="Wrap"
                                                Text="Stage 1 status: idle."/>
                                     <ProgressBar x:Name="pbStage1InlineProgress"
@@ -67480,8 +74308,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </Grid>
                             </GroupBox>
 
-                                <Button x:Name="btnProceedSelectorStage"
-                                    Style="{StaticResource PrimaryButton}"
+                            <Button x:Name="btnProceedSelectorStage"
                                     Width="260"
                                     Height="30"
                                     HorizontalAlignment="Left"
@@ -67498,7 +74325,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <GroupBox Header="Section Snapshot Controls" Margin="0,0,0,10">
                                         <StackPanel Margin="10">
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="#FF5E6A75"
+                                                       Foreground="DimGray"
                                                        TextWrapping="Wrap"
                                                        Text="Preview plan/section snapshots, then adjust section cut side and level-based vertical offsets before Sheet Layout."/>
 
@@ -67529,7 +74356,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                             </StackPanel>
 
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="#FF5E6A75"
+                                                       Foreground="DimGray"
                                                        TextWrapping="Wrap"
                                                        Text="Pick an edge first (preferred). If cancelled or unavailable, pick two points. Use Section Side = Aligned to apply custom section orientation."/>
 
@@ -67579,7 +74406,6 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                                             <StackPanel Orientation="Horizontal">
                                                 <Button x:Name="btnApplySectionSnapshotSettings"
-                                                    Style="{StaticResource PrimaryButton}"
                                                         Width="220"
                                                         Height="28"
                                                         Margin="0,0,10,0"
@@ -67594,7 +74420,6 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                                     Click="stage2_read_vertical_from_sections_click"/>
 
                                                 <Button x:Name="btnProceedToStage3"
-                                                    Style="{StaticResource PrimaryButton}"
                                                         Width="220"
                                                         Height="28"
                                                         Content="Proceed to Stage 3: Sheet Layout"
@@ -67602,7 +74427,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                             </StackPanel>
 
                                             <TextBlock Margin="0,8,0,0"
-                                                       Foreground="#FF5E6A75"
+                                                       Foreground="DimGray"
                                                        Text="Tip: select rows below, then Apply. If no rows are selected, Apply targets all section rows."/>
                                         </StackPanel>
                                     </GroupBox>
@@ -67673,7 +74498,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                     <GroupBox Header="Stage 1 View Name Editor" Margin="0,0,0,10">
                                         <StackPanel Margin="8">
                                             <TextBlock Margin="0,0,0,8"
-                                                       Foreground="#FF5E6A75"
+                                                       Foreground="DimGray"
                                                        TextWrapping="Wrap"
                                                        Text="Review and edit Plan/Section names produced by Stage 1 before continuing to Sheet Layout."/>
 
@@ -68096,7 +74921,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                Text="Stage 2 snapshot: rendered rows with Plan View (left) and Section View (right)."/>
                 </DockPanel>
 
-                <Border Grid.Row="1" BorderBrush="#FFD8DDE3" BorderThickness="1" Background="#FFF9FAFB">
+                <Border Grid.Row="1" BorderBrush="#FFD0D0D0" BorderThickness="1" Background="WhiteSmoke">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                         <StackPanel x:Name="spStage2SnapshotRows" Margin="8"/>
                     </ScrollViewer>
@@ -68117,8 +74942,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 
                     <Border x:Name="bdrWarnings"
                             Padding="8"
-                            Background="#FFFFF4E5"
-                            BorderBrush="#FFF5C98A"
+                            Background="#FFF8E7C2"
+                            BorderBrush="#FFD1A84A"
                             BorderThickness="1"
                             Visibility="Collapsed">
                         <TextBlock x:Name="txtWarnings" TextWrapping="Wrap"/>
@@ -68174,8 +74999,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <Border Grid.Row="1"
                                 Margin="0,0,0,8"
                                 Padding="8"
-                            Background="#FFF9FAFB"
-                            BorderBrush="#FFD8DDE3"
+                                Background="#FFF3F3F3"
+                                BorderBrush="#FFD0D0D0"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -68197,7 +75022,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                            Text="Apply to Selected"/>
 
                                 <StackPanel Grid.Column="1" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Direction"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Direction"/>
                                     <ComboBox x:Name="cbBulkSectionDirectionCreator">
                                         <ComboBoxItem>Front</ComboBoxItem>
                                         <ComboBoxItem>Back</ComboBoxItem>
@@ -68207,22 +75032,22 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Plan Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Plan Order"/>
                                     <TextBox x:Name="tbBulkPlanOrderCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="3" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Section Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Section Order"/>
                                     <TextBox x:Name="tbBulkSectionOrderCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="4" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Viewport Type"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Viewport Type"/>
                                     <ComboBox x:Name="cbBulkViewportTypeCreator"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="5" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Title Position"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Title Position"/>
                                     <ComboBox x:Name="cbBulkTitlePositionCreator"/>
                                 </StackPanel>
 
@@ -68351,8 +75176,8 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <Border Grid.Row="1"
                                 Margin="0,0,0,8"
                                 Padding="8"
-                            Background="#FFF9FAFB"
-                            BorderBrush="#FFD8DDE3"
+                                Background="#FFF3F3F3"
+                                BorderBrush="#FFD0D0D0"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -68365,17 +75190,17 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                 </Grid.ColumnDefinitions>
 
                                 <StackPanel Grid.Column="0" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Order"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Order"/>
                                     <TextBox x:Name="tbBulkOrderSelector"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Viewport Type"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Viewport Type"/>
                                     <ComboBox x:Name="cbBulkViewportTypeSelector"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Margin="0,0,8,0">
-                                    <TextBlock Margin="0,0,0,2" Foreground="#FF5E6A75" Text="Title Position"/>
+                                    <TextBlock Margin="0,0,0,2" Foreground="DimGray" Text="Title Position"/>
                                     <ComboBox x:Name="cbBulkTitlePositionSelector"/>
                                 </StackPanel>
 
@@ -68464,7 +75289,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                             <TextBlock x:Name="txtPreviewHint"
                                        Grid.Column="0"
                                        Margin="0,0,12,0"
-                                       Foreground="#FF5E6A75"
+                                       Foreground="DimGray"
                                        TextWrapping="Wrap"
                                        VerticalAlignment="Center"
                                        Text="Select source data, then click Preview."/>
@@ -68483,7 +75308,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                                                                 Margin="0,0,12,0"
                                                                 VerticalAlignment="Center"
                                                                 Orientation="Horizontal">
-                                                            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="#FF5E6A75" Text="Sheet Limit"/>
+                                                            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="DimGray" Text="Sheet Limit"/>
                                                             <ComboBox x:Name="cbPreviewCardLimit" Width="74" SelectionChanged="setup_changed">
                                                                 <ComboBoxItem Content="4"/>
                                                                 <ComboBoxItem Content="8"/>
@@ -68547,74 +75372,199 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
             </Grid>
         </Grid>
 
-        <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Margin="0,12,0,0">
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceContainerBrush}"
+                BorderBrush="{StaticResource OutlineBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Margin="0,12,0,0"
+                Padding="12,8">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
                 <Button x:Name="btnCreate"
-                    Style="{StaticResource PrimaryButton}"
-                    Width="100"
-                    Height="28"
-                    Margin="0,0,8,0"
-                    Click="create_click">Create</Button>
-            <Button x:Name="btnCancel"
-                    Width="100"
-                    Height="28"
-                    Click="cancel_click">Cancel</Button>
-        </StackPanel>
+                        Width="100"
+                        Margin="0,0,8,0"
+                        Style="{StaticResource PrimaryButton}"
+                        Click="create_click">Create</Button>
+                <Button x:Name="btnCancel"
+                        Width="100"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="cancel_click">Cancel</Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
-
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton/ViewCreator.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/DetailMoveWindow.xaml
-## META: sha1=fb7b4eaa7f078e9a17f4b88d52c591648a7695d8 size=14297
+## META: sha1=2627ddfa62dfa6fe085392250b63ef11b2d0da52 size=21457
 ## TYPE: text
 ```
-﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Section/Detail Vertical Extension Updater"
         Height="960"
         Width="1360"
     MinHeight="860"
     MinWidth="1180"
-        ShowInTaskbar="False"
-            ResizeMode="CanResizeWithGrip"
+        ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
-        Background="#FFFBFE"
-        Foreground="#1A1A1A"
-        FontFamily="Segoe UI">
+    ShowInTaskbar="False"
+    Topmost="False"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
 
     <Window.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-        <Style TargetType="GroupBox" BasedOn="{StaticResource SectionCardGroupBoxStyle}"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9"/>
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB"/>
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE"/>
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7"/>
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98"/>
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6"/>
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC"/>
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A"/>
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF"/>
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="24,16"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="64"/>
+            <Setter Property="Padding" Value="14,6,14,6"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Button" BasedOn="{StaticResource SecondaryButton}"/>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Padding" Value="8,0,8,0"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Padding" Value="8,0,8,0"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
     </Window.Resources>
 
     <DockPanel Margin="12">
 
-        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+        <Border DockPanel.Dock="Top" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
                 <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
                     <TextBlock Text="SU" Style="{StaticResource ToolAppBarIconTextStyle}"/>
                 </Border>
-
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Section Updater" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Stage-based scope, plan, and vertical extent updates for sections and details." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="Section/Detail Vertical Extension Updater" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Stage-based tool with per-view explicit vertical mapping." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
                 </StackPanel>
-
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock Text="RBG" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
                 </Border>
             </Grid>
         </Border>
@@ -68660,7 +75610,7 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         </WrapPanel>
                         <CheckBox Name="ChkSelectionOnly">Selection only / no updates</CheckBox>
                         <TextBlock Name="TxtTargetCount" Margin="0,8,0,4"/>
-                        <TextBlock Name="TxtCatalogCount" Margin="0,0,0,8" Foreground="#FF5E6A75" TextWrapping="Wrap"/>
+                        <TextBlock Name="TxtCatalogCount" Margin="0,0,0,8" Foreground="DimGray" TextWrapping="Wrap"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Margin="0,8,0,0">
@@ -68703,14 +75653,14 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                     <TextBlock Name="TxtPlanNote"
                             TextWrapping="Wrap"
                             Margin="0,0,0,8"
-                            Foreground="#FF5E6A75"/>
+                            Foreground="DimGray"/>
 
                     <TextBlock Margin="0,0,0,4" FontWeight="Bold">Scope box visible in selected plan</TextBlock>
 
                     <ComboBox Name="CmbScopeBox" Width="280" Margin="0,0,0,10"/>
 
                     <CheckBox Name="ChkMovePlan">Move / rotate in plan</CheckBox>
-                    <CheckBox Name="ChkFlipAfter" Margin="0,6,0,0">Flip 180 deg after move</CheckBox>
+                    <CheckBox Name="ChkFlipAfter" Margin="0,6,0,0">Flip 180° after move</CheckBox>
                     <CheckBox Name="ChkMatchHorizontal" Margin="0,6,0,0">Match horizontal extents to scope box side</CheckBox>
                     <CheckBox Name="ChkAssignScopeBox" Margin="0,6,0,0">Assign scope box last</CheckBox>
 
@@ -68727,10 +75677,10 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                             FontWeight="Bold"
                             Text="Plan/extents stage ready: No affected sections added."/>
 
-                        <Button Name="BtnRunPlanExtent"
-                            Style="{StaticResource PrimaryButton}"
+                    <Button Name="BtnRunPlanExtent"
                             Width="160"
                             Height="30"
+                            Style="{StaticResource PrimaryButton}"
                             IsEnabled="False">
                         Run Plan + Extents
                     </Button>
@@ -68810,13 +75760,13 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
                         <StackPanel Name="StageMapRows"/>
                     </ScrollViewer>
 
-                        <Button Name="BtnRunVerticalCrop"
-                            Style="{StaticResource PrimaryButton}"
+                    <Button Name="BtnRunVerticalCrop"
                             Grid.Row="3"
                             Width="180"
                             Height="30"
                             Margin="0,8,0,0"
                             HorizontalAlignment="Left"
+                            Style="{StaticResource PrimaryButton}"
                             IsEnabled="False">
                         Run Vertical Crop Update
                     </Button>
@@ -68837,13 +75787,12 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
         </GroupBox>
 
         <WrapPanel DockPanel.Dock="Bottom" Margin="0,12,0,0" HorizontalAlignment="Right">
-            <Button Name="BtnRun" Style="{StaticResource PrimaryButton}" Width="120" Height="30" Margin="0,0,8,0">Run</Button>
-            <Button Name="BtnCancel" Width="120" Height="30">Cancel</Button>
+            <Button Name="BtnRun" Width="120" Height="30" Margin="0,0,8,0" Style="{StaticResource PrimaryButton}">Run</Button>
+            <Button Name="BtnCancel" Width="120" Height="30" Style="{StaticResource SecondaryButton}">Cancel</Button>
         </WrapPanel>
 
     </DockPanel>
 </Window>
-
 
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/DetailMoveWindow.xaml
@@ -68855,19 +75804,13 @@ Create and lay out views on sheets from a scope-box driven workflow with a WPF c
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/script.py
-## META: sha1=fa0071e1de3a1a6517a68b1a3b93dc4028b832fb size=1531
+## META: sha1=0a464eb63f263a93bd7a2a8cb8d4b26a680eb9a6 size=2585
 ## TYPE: text
 ## IMPORTS: ["os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["_find_extension_root","main"]
 ## CLASSES: []
 ```python
 ﻿# -*- coding: utf-8 -*-
-
-try:
-    import telemetry
-    telemetry.track_tool_click(__file__)
-except Exception:
-    pass
 
 __title__ = 'Section/Detail Updater'
 __doc____ = 'Update section and detail views to match the view template of the parent view.'
@@ -68902,8 +75845,44 @@ lib_dir = os.path.join(extension_root, 'lib')
 if lib_dir not in sys.path:
     sys.path.insert(0, lib_dir)
 
-DetailMoveWindow = __import__('detailmove_ui').DetailMoveWindow
-run_detailmove = __import__('detailmove_engine').run_detailmove
+try:
+    import telemetry
+except Exception:
+    telemetry = None
+
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
+try:
+    DetailMoveWindow = __import__('detailmove_ui').DetailMoveWindow
+    run_detailmove = __import__('detailmove_engine').run_detailmove
+except Exception as import_error:
+    forms.alert(
+        'Section Updater could not load shared library modules from:\n{0}\n\n{1}'.format(lib_dir, import_error),
+        title='Section/Detail Updater',
+        exitscript=True
+    )
 
 
 def main():
@@ -68925,7 +75904,7 @@ if __name__ == '__main__':
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SectionUpdater.pushbutton/tool-context.md
-## META: sha1=c3971ab6f66d33f44b6f211c783c365c86f7531d size=807
+## META: sha1=c96ed7cf1af39a00cc00a2abb361bf08f6181869 size=1037
 ## TYPE: text
 ```markdown
 # Section Move
@@ -68933,6 +75912,13 @@ if __name__ == '__main__':
 ## Purpose
 Drive the DetailMove workflow for staging, previewing, and executing section or detail relocation tasks through a dedicated WPF window.
 
+
+## Workflow
+- Filter and stage section/detail targets
+- Configure plan move and scope alignment
+- Configure vertical crop levels and offsets
+- Run plan/extents stage or full update
+- Review summary output and adjust before rerun
 ## Entry Points
 - `script.py`
 - `DetailMoveWindow.xaml`
@@ -68960,20 +75946,43 @@ Drive the DetailMove workflow for staging, previewing, and executing section or 
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/icon.png
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/script.py
-## META: sha1=620ead3dfc5bfd1ed0d4fe0c8ed2702f2a89f9a5 size=15359
+## META: sha1=f8f14166d5697e6f9e6ad0cb064a60ad0828e081 size=16152
 ## TYPE: text
-## IMPORTS: ["GUI.style_guide_2026","importlib","os","pyrevit","sys"]
+## IMPORTS: ["GUI.style_guide_2026","importlib","os","pyrevit","sys","telemetry"]
 ## FUNCTIONS: ["apply_window_contract","apply_topmost_and_parent","apply_style_guide_resources","_find_extension_root","__init__","__init__","__init__","OnSheetSelectionChanged","_status","_scope_changed","_sheet_set_changed","_filter_changed","_param_changed","_select_all_visible_click","_clear_selection_click","_close_click","_scope_value","_current_scope_sheets","_update_scope_controls","_load_scope_rows","_set_selected_rows","_apply_filter_to_rows","_analysis_sheets","_current_param_value","_param_as_text","_selected_sheets","_refresh_analysis_and_params","_resolve_default_param_keys","norm","_selected_param_keys","_refresh_preview","_apply_click","main"]
 ## CLASSES: ["SheetRow","PreviewRow","SheetNoOfNoWindow"]
 ```python
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 try:
-	telemetry = __import__("telemetry")
-	telemetry.track_tool_click(__file__)
+    import telemetry
 except Exception:
-	pass
+    telemetry = None
 
+if telemetry is None:
+    try:
+        import os
+        import sys
+        _telemetry_root = os.path.abspath(os.path.dirname(__file__))
+        while _telemetry_root and not _telemetry_root.lower().endswith('.extension'):
+            _telemetry_parent = os.path.dirname(_telemetry_root)
+            if _telemetry_parent == _telemetry_root:
+                _telemetry_root = None
+                break
+            _telemetry_root = _telemetry_parent
+        if _telemetry_root:
+            _telemetry_lib = os.path.join(_telemetry_root, 'lib')
+            if _telemetry_lib not in sys.path:
+                sys.path.insert(0, _telemetry_lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
 __title__ = "Sheet # of #"
 __doc__ = "Analyze active titleblock parameters and update Sheet # of # values by sheet scope."
 
@@ -69454,266 +76463,364 @@ if __name__ == "__main__":
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/script.py
 
 ## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/SheetNoOfNoWindow.xaml
-## META: sha1=07997105315cfad8a13c0cbc7ee263a4c461d0a1 size=15555
+## META: sha1=0a7d8b88ef7df86037c8adf9f58ee8ff0fd28fab size=21019
 ## TYPE: text
 ```
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Sheet # of #"
-    MinWidth="1600" Width="1660"
-    MinHeight="700" Height="760"
+    MinWidth="1600"
+    Width="1660"
+    MinHeight="700"
+    Height="760"
     WindowStartupLocation="CenterScreen"
     ShowInTaskbar="False"
     ResizeMode="CanResizeWithGrip"
     Background="#FFFBFE"
-    Foreground="#1A1A1A"
-    FontFamily="Segoe UI"
+    FontFamily="Segoe UI Variable, Segoe UI"
     FontSize="12">
 
     <Window.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../../../lib/GUI/Resources/RBG_StyleGuide_2026.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#1A1A1A"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="#2EA043" />
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="24,16" />
         </Style>
 
-        <Style TargetType="DataGrid">
-            <Setter Property="Foreground" Value="#1A1A1A"/>
-            <Setter Property="Background" Value="#FFFFFF"/>
-            <Setter Property="BorderBrush" Value="#FFD8DDE3"/>
-            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
-            <Setter Property="RowBackground" Value="#FFFFFFFF"/>
-            <Setter Property="AlternatingRowBackground" Value="#FFF9FAFB"/>
-            <Setter Property="HorizontalGridLinesBrush" Value="#FFE1E4E8"/>
-            <Setter Property="VerticalGridLinesBrush" Value="#FFE1E4E8"/>
-            <Setter Property="HeadersVisibility" Value="Column"/>
-            <Setter Property="CanUserAddRows" Value="False"/>
-            <Setter Property="CanUserDeleteRows" Value="False"/>
-            <Setter Property="CanUserResizeRows" Value="False"/>
-            <Setter Property="SelectionUnit" Value="FullRow"/>
-            <Setter Property="SelectionMode" Value="Extended"/>
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
-        <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#FFF9FAFB"/>
-            <Setter Property="Foreground" Value="#FF5E6A75"/>
-            <Setter Property="BorderBrush" Value="#FFE1E4E8"/>
-            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="6,4"/>
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
-        <Style x:Key="CurrentValueText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FFB42318"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Center"/>
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
-        <Style x:Key="NewValueText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FF2EA043"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Center"/>
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
         </Style>
 
-        <Style x:Key="ActionButton" TargetType="Button">
-            <Setter Property="Background" Value="#1F4FD9"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#1F4FD9"/>
-            <Setter Property="Padding" Value="14,6"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="14,6,14,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#1640B0"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="ApplyButton" TargetType="Button" BasedOn="{StaticResource ActionButton}">
-            <Setter Property="Background" Value="#2EA043"/>
-            <Setter Property="BorderBrush" Value="#2EA043"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Height" Value="34"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Style x:Key="SecondaryActionButton" TargetType="Button" BasedOn="{StaticResource ActionButton}">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F4FD9"/>
-            <Setter Property="BorderBrush" Value="#DDE1E6"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="{StaticResource SuccessBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="RowBackground" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="AlternatingRowBackground" Value="#FFF9FAFB" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#FFE1E4E8" />
+            <Setter Property="VerticalGridLinesBrush" Value="#FFE1E4E8" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserResizeRows" Value="False" />
+            <Setter Property="SelectionUnit" Value="FullRow" />
+            <Setter Property="SelectionMode" Value="Extended" />
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FFF9FAFB" />
+            <Setter Property="Foreground" Value="#FF5E6A75" />
+            <Setter Property="BorderBrush" Value="#FFE1E4E8" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="6,4" />
+        </Style>
+
+        <Style x:Key="CurrentValueText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFB42318" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="NewValueText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF2EA043" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="20,16" />
         </Style>
     </Window.Resources>
 
     <Grid Margin="14">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}">
-                    <TextBlock Text="SN" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                    <TextBlock Text="SN" Style="{StaticResource ToolAppBarIconTextStyle}" />
                 </Border>
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="SJ-B+C · Sheet # of #" Style="{StaticResource ToolAppBarTitleStyle}"/>
-                    <TextBlock Text="Filter sheet scope, preview numbering changes, and apply parameter updates." Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                    <TextBlock Text="Sheet # of #" Style="{StaticResource ToolAppBarTitleStyle}" />
+                    <TextBlock Text="Select sheet scope, filter and select target sheets, then apply parameter mapping." Style="{StaticResource ToolAppBarSubtitleStyle}" />
                 </StackPanel>
                 <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
-                    <TextBlock Text="v0.1" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                    <TextBlock x:Name="TxtModelSummary" Text="Model sheets: 0" Style="{StaticResource ToolAppBarBadgeTextStyle}" />
                 </Border>
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,0,10">
+        <Border Grid.Row="1" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="260" />
                 </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <TextBlock FontSize="12" FontWeight="SemiBold" Text="Sheet Scope and Mapping"/>
-                    <TextBlock Margin="0,4,0,0" Foreground="#FF5E6A75"
-                               Text="Select sheet scope, filter and select target sheets, then apply default or custom parameter mapping."/>
-                </StackPanel>
-                <TextBlock x:Name="TxtModelSummary" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF5E6A75"/>
+
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Sheet Scope" />
+                <ComboBox x:Name="CmbScope" Grid.Column="1" Margin="8,0,12,0" VerticalAlignment="Center" />
+
+                <TextBlock x:Name="TxtSheetSetLabel" Grid.Column="2" VerticalAlignment="Center" Text="Sheet Set" />
+                <ComboBox x:Name="CmbSheetSet" Grid.Column="3" Margin="8,0,12,0" VerticalAlignment="Center" />
+
+                <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="Sheet # Param" />
+                <ComboBox x:Name="CmbSheetNoParam" Grid.Column="5" Margin="8,0,12,0" VerticalAlignment="Center" />
             </Grid>
         </Border>
 
-        <Border Grid.Row="2" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,0,10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition Width="220"/>
-                    <ColumnDefinition Width="130"/>
-                    <ColumnDefinition Width="260"/>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition Width="260"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Sheet Scope"/>
-                <ComboBox x:Name="CmbScope" Grid.Column="1" Margin="8,0,12,0" VerticalAlignment="Center"/>
-
-                <TextBlock x:Name="TxtSheetSetLabel" Grid.Column="2" VerticalAlignment="Center" Text="Sheet Set"/>
-                <ComboBox x:Name="CmbSheetSet" Grid.Column="3" Margin="8,0,12,0" VerticalAlignment="Center"/>
-
-                <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="Sheet # Param"/>
-                <ComboBox x:Name="CmbSheetNoParam" Grid.Column="5" Margin="8,0,12,0" VerticalAlignment="Center"/>
-            </Grid>
-        </Border>
-
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.05*"/>
-                <ColumnDefinition Width="0.95*"/>
+                <ColumnDefinition Width="1.05*" />
+                <ColumnDefinition Width="0.95*" />
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="0,0,8,0">
+            <Border Grid.Column="0" Style="{StaticResource SectionCardBorderStyle}" Margin="0,0,8,0">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Margin="0,0,0,8">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBox x:Name="TxtFilter" Grid.Column="0" Margin="0,0,8,0"
+                        <TextBox x:Name="TxtFilter"
+                                 Grid.Column="0"
+                                 Margin="0,0,8,0"
                                  VerticalAlignment="Center"
-                                 ToolTip="Filter by sheet number or sheet name"/>
-                        <Button x:Name="BtnSelectAllVisible" Grid.Column="1" Margin="0,0,8,0" Width="140"
-                                Style="{StaticResource ActionButton}" Content="Select All Visible"/>
-                        <Button x:Name="BtnClearSelection" Grid.Column="2" Width="120"
-                                Style="{StaticResource ActionButton}" Content="Clear Selection"/>
+                                 ToolTip="Filter by sheet number or sheet name" />
+                        <Button x:Name="BtnSelectAllVisible"
+                                Grid.Column="1"
+                                Margin="0,0,8,0"
+                                Width="140"
+                                Style="{StaticResource PrimaryButton}"
+                                Content="Select All Visible" />
+                        <Button x:Name="BtnClearSelection"
+                                Grid.Column="2"
+                                Width="120"
+                                Style="{StaticResource SecondaryButton}"
+                                Content="Clear Selection" />
                     </Grid>
 
-                    <DataGrid x:Name="GridSheets" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
+                    <DataGrid x:Name="GridSheets"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
                               SelectionChanged="OnSheetSelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Sheet No." Binding="{Binding SheetNumber}" Width="120"/>
-                            <DataGridTextColumn Header="Sheet Name" Binding="{Binding SheetName}" Width="SizeToCells" MinWidth="280"/>
+                            <DataGridTextColumn Header="Sheet No." Binding="{Binding SheetNumber}" Width="120" />
+                            <DataGridTextColumn Header="Sheet Name" Binding="{Binding SheetName}" Width="SizeToCells" MinWidth="280" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="16" Padding="20,16" Margin="8,0,0,0">
+            <Border Grid.Column="1" Style="{StaticResource SectionCardBorderStyle}" Margin="8,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="TxtSelectionSummary" Grid.Row="0" FontWeight="Bold"/>
+                    <TextBlock x:Name="TxtSelectionSummary" Grid.Row="0" FontWeight="Bold" />
 
                     <Grid Grid.Row="1" Margin="0,8,0,8">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="140"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Total # Param"/>
-                        <ComboBox x:Name="CmbOfParam" Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Total # Param" />
+                        <ComboBox x:Name="CmbOfParam" Grid.Column="1" VerticalAlignment="Center" />
                     </Grid>
 
                     <DataGrid x:Name="GridPreview" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Sheet Name" Binding="{Binding SheetName}" Width="SizeToCells" MinWidth="280"/>
+                            <DataGridTextColumn Header="Sheet Name" Binding="{Binding SheetName}" Width="SizeToCells" MinWidth="280" />
                             <DataGridTemplateColumn Header="Current Sheet no." Width="110">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding CurrentSheetNo}" Style="{StaticResource CurrentValueText}"/>
+                                        <TextBlock Text="{Binding CurrentSheetNo}" Style="{StaticResource CurrentValueText}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="New Sheet no." Width="110">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ExpectedSheetNo}" Style="{StaticResource NewValueText}"/>
+                                        <TextBlock Text="{Binding ExpectedSheetNo}" Style="{StaticResource NewValueText}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="Current Of" Width="95">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding CurrentOfNo}" Style="{StaticResource CurrentValueText}"/>
+                                        <TextBlock Text="{Binding CurrentOfNo}" Style="{StaticResource CurrentValueText}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="New Of" Width="95">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ExpectedOfNo}" Style="{StaticResource NewValueText}"/>
+                                        <TextBlock Text="{Binding ExpectedOfNo}" Style="{StaticResource NewValueText}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -69723,26 +76830,1107 @@ if __name__ == "__main__":
             </Border>
         </Grid>
 
-        <Border Grid.Row="4" Background="#FFFFFFFF" BorderBrush="#FFD8DDE3" BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,10,0,0">
+        <Border Grid.Row="3" Style="{StaticResource SectionCardBorderStyle}" Margin="0,10,0,0" Padding="20,12">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" Foreground="#FF5E6A75"
-                           Text="Ready."/>
+                <TextBlock x:Name="TxtStatus"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                           Text="Ready." />
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button x:Name="BtnApply" Width="170" Margin="0,0,8,0" Style="{StaticResource ApplyButton}" Content="Apply Updates"/>
-                    <Button x:Name="BtnClose" Width="90" Style="{StaticResource SecondaryActionButton}" Content="Close"/>
+                    <Button x:Name="BtnApply"
+                            Width="170"
+                            Margin="0,0,8,0"
+                            Style="{StaticResource SuccessButton}"
+                            Content="Apply Updates" />
+                    <Button x:Name="BtnClose"
+                            Width="90"
+                            Style="{StaticResource SecondaryButton}"
+                            Content="Close" />
                 </StackPanel>
             </Grid>
         </Border>
     </Grid>
 </Window>
+
 ```
 ## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/SheetNoOfNoWindow.xaml
+
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/tool-context.md
+## META: sha1=aa1653decf7d18479bda33dc41322068a4347a15 size=257
+## TYPE: text
+```markdown
+# SheetNo
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Pick scope and sheet set
+- Select target sheet parameter
+- Preview resulting values
+- Apply simulation and review summary
+## Entry Points
+- `script.py`
+- `SheetNoOfNoWindow.xaml`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/SheetNo.pushbutton/tool-context.md
+
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/icon.png
+## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
+## TYPE: binary
+(binary not inlined)
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/icon.png
+
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/script.py
+## META: sha1=843037dbabeda0d99b9072c15190eded7958e61a size=3243
+## TYPE: text
+## IMPORTS: ["clr","os","pyrevit","sys","telemetry","traceback","view_filter_editor_engine","view_filter_editor_ui"]
+## FUNCTIONS: ["_find_lib","main"]
+## CLASSES: []
+```python
+﻿# -*- coding: utf-8 -*-
+import os, sys, traceback
+
+from pyrevit import script as _pyscript
+output = _pyscript.get_output()
+
+try:
+    import telemetry
+except Exception:
+    telemetry = None
+
+if telemetry is None:
+    try:
+        _root = os.path.abspath(os.path.dirname(__file__))
+        while _root and not _root.lower().endswith('.extension'):
+            _p = os.path.dirname(_root)
+            if _p == _root: _root = None; break
+            _root = _p
+        if _root:
+            _lib = os.path.join(_root, 'lib')
+            if _lib not in sys.path:
+                sys.path.insert(0, _lib)
+            import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
+
+__title__ = "View Filter\nEditor"
+__doc__ = "Version = 1.0 | Author = Harley Trappitt | Date = 2026-08-17"
+
+import clr
+clr.AddReference('PresentationFramework')
+clr.AddReference('PresentationCore')
+clr.AddReference('WindowsBase')
+clr.AddReference('System')
+
+from pyrevit import revit, forms
+
+bundle_dir = os.path.dirname(__file__)
+
+def _find_lib():
+    current = os.path.abspath(bundle_dir)
+    while True:
+        if current.lower().endswith('.extension'):
+            return os.path.join(current, 'lib')
+        parent = os.path.dirname(current)
+        if parent == current:
+            return None
+        current = parent
+
+_lib = _find_lib()
+if _lib and _lib not in sys.path:
+    sys.path.insert(0, _lib)
+
+try:
+    from view_filter_editor_engine import (
+        build_all_rows,
+        collect_fill_patterns,
+        collect_line_patterns,
+    )
+except Exception:
+    output.print_md('**Engine import failed:**\n```\n{}\n```'.format(traceback.format_exc()))
+    raise SystemExit
+
+try:
+    from view_filter_editor_ui import ViewFilterEditorWindow
+except Exception:
+    output.print_md('**UI import failed:**\n```\n{}\n```'.format(traceback.format_exc()))
+    raise SystemExit
+
+
+def main():
+    doc  = revit.doc
+    xaml = os.path.join(bundle_dir, 'ViewFilterEditor.xaml')
+
+    if not os.path.exists(xaml):
+        forms.alert('Missing XAML:\n{}'.format(xaml), exitscript=True)
+
+    try:
+        template_rows, regular_rows = build_all_rows(doc)
+    except Exception:
+        output.print_md('**Collection failed:**\n```\n{}\n```'.format(traceback.format_exc()))
+        raise SystemExit
+
+    if not template_rows and not regular_rows:
+        forms.alert('No view filters are applied in this project.', title='View Filter Editor')
+        return
+
+    fill_patterns = collect_fill_patterns(doc)
+    line_patterns = collect_line_patterns(doc)
+
+    try:
+        window = ViewFilterEditorWindow(
+            xaml_path=xaml,
+            doc=doc,
+            template_rows=template_rows,
+            regular_rows=regular_rows,
+            fill_patterns=fill_patterns,
+            line_patterns=line_patterns,
+        )
+    except Exception:
+        output.print_md('**Window create failed:**\n```\n{}\n```'.format(traceback.format_exc()))
+        raise SystemExit
+
+    try:
+        window.show_dialog()
+    except Exception:
+        output.print_md('**Dialog failed:**\n```\n{}\n```'.format(traceback.format_exc()))
+        raise SystemExit
+
+
+main()
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/script.py
+
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/tool-context.md
+## META: sha1=ea7e1c8a5848a8c90c3527533154353e5f37dda6 size=1937
+## TYPE: text
+```markdown
+# View Filter Editor
+
+## Purpose
+Browse all applied view filters in the project, split between View Templates and regular views. Allows filtering, sorting, and editing of per-view filter overrides — Enable, Visibility, Projection/Surface (Lines, Patterns, Transparency), Cut (Lines, Patterns), and Halftone — mirroring Revit's native Filters tab.
+
+
+## Workflow
+- Review the target views or templates whose filter overrides need to be inspected.
+- Run View Filter Editor to browse, adjust, and stage the required filter override changes.
+- Apply the staged edits and verify the resulting visibility and graphics overrides are correct.
+## Entry Points
+- `script.py` — thin entry point: loads engine + UI, calls `main()`
+- `ViewFilterEditor.xaml` — WPF layout (app bar, search toolbar, tabbed DataGrids, right-panel editor, footer)
+
+## Owning Dependencies
+- `lib/view_filter_editor_engine.py` — all Revit API logic: collection, FilterOverrideVM data objects, colour helpers, Transaction write-back
+- `lib/view_filter_editor_ui.py` — WPF code-behind (FilterRowItem display model, ViewFilterEditorWindow)
+
+## Critical Constraints
+- Never acquire `doc` at module level in engine or UI — always passed from `script.py`
+- Transaction must be a plain `Start()/Commit()/RollBack()` sequence (IronPython 2.7 does not support `with Transaction(...)`)
+- `ViewFilterEditorWindow` extends `forms.WPFWindow`; XAML path is always passed explicitly from the bundle dir
+- All writes go through `apply_filter_overrides(doc, payload)` in the engine — UI only stages changes
+
+## Working Notes
+- Colour swatches are clickable Borders; colours use `#RRGGBB` hex strings internally
+- Pattern combos are populated at row-select time from `collect_fill_patterns(doc)`
+- Detail panel is hidden until a DataGrid row is selected; `Stage Changes` marks row dirty
+- Only dirty rows are committed when `Apply to Revit` is clicked
+
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/tool-context.md
+
+## FILE_START: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/ViewFilterEditor.xaml
+## META: sha1=ca40a9dbf117e880c6071c76f0bedacc38397e9a size=54186
+## TYPE: text
+```
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="RBG · View Filter Editor"
+    Height="780" Width="1240"
+    MinHeight="520" MinWidth="900"
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9"/>
+            <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB"/>
+            <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0"/>
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE"/>
+            <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7"/>
+            <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98"/>
+            <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6"/>
+            <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC"/>
+            <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF"/>
+
+            <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="24,16"/>
+            </Style>
+            <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+                <Setter Property="Width" Value="38"/>
+                <Setter Property="Height" Value="38"/>
+                <Setter Property="CornerRadius" Value="12"/>
+                <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}"/>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="FontSize" Value="11"/>
+            </Style>
+            <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="CornerRadius" Value="12"/>
+                <Setter Property="Padding" Value="10,3"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}"/>
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            <Style x:Key="ColorSwatchStyle" TargetType="Border">
+                <Setter Property="Width"           Value="38"/>
+                <Setter Property="Height"          Value="20"/>
+                <Setter Property="CornerRadius"    Value="4"/>
+                <Setter Property="BorderBrush"     Value="{StaticResource OutlineBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor"          Value="Hand"/>
+                <Setter Property="Margin"          Value="2,0"/>
+            </Style>
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Background"      Value="#1A1A1A"/>
+                <Setter Property="Foreground"      Value="#FFFFFF"/>
+                <Setter Property="FontSize"        Value="10"/>
+                <Setter Property="FontWeight"      Value="SemiBold"/>
+                <Setter Property="Padding"         Value="6,6"/>
+                <Setter Property="BorderBrush"     Value="#333"/>
+                <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            </Style>
+            <Style TargetType="DataGridRow">
+                <Setter Property="Background" Value="#FFFBFE"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#E7EDFB"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#F4F5F7"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="DataGridCell">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding"         Value="6,3"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background"  Value="Transparent"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Foreground"  Value="#1A1A1A"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="PrimaryBtn" TargetType="Button">
+                <Setter Property="Height"         Value="30"/>
+                <Setter Property="MinWidth"      Value="64"/>
+                <Setter Property="Padding"        Value="16,0"/>
+                <Setter Property="Background"     Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="Foreground"     Value="{StaticResource OnPrimaryBrush}"/>
+                <Setter Property="FontWeight"     Value="SemiBold"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush"    Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="Cursor"         Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="15" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.6"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="SecondaryBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+                <Setter Property="Background"     Value="Transparent"/>
+                <Setter Property="Foreground"     Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush"    Value="{StaticResource OutlineBrush}"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.6"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="DangerBtn" TargetType="Button" BasedOn="{StaticResource PrimaryBtn}">
+                <Setter Property="Background"  Value="#C62828"/>
+                <Setter Property="Foreground"  Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#B71C1C"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="SmallBtn" TargetType="Button">
+                <Setter Property="Height"         Value="26"/>
+                <Setter Property="Padding"        Value="10,0"/>
+                <Setter Property="Background"     Value="Transparent"/>
+                <Setter Property="Foreground"     Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="FontSize"       Value="11"/>
+                <Setter Property="BorderBrush"    Value="{StaticResource OutlineBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor"         Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="13" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="SectionLabel" TargetType="TextBlock">
+                <Setter Property="FontSize"   Value="10"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Foreground" Value="#8A8F98"/>
+                <Setter Property="Margin"     Value="0,8,0,4"/>
+            </Style>
+            <!-- Opt-in toggle pill for bulk "include this field" buttons -->
+            <Style x:Key="ToggleOptIn" TargetType="ToggleButton">
+                <Setter Property="Width"          Value="20"/>
+                <Setter Property="Height"         Value="20"/>
+                <Setter Property="Padding"        Value="0"/>
+                <Setter Property="Cursor"         Value="Hand"/>
+                <Setter Property="BorderThickness" Value="1.5"/>
+                <Setter Property="BorderBrush"    Value="#B0B8C8"/>
+                <Setter Property="Background"     Value="Transparent"/>
+                <Setter Property="Foreground"     Value="#8A8F98"/>
+                <Setter Property="FontSize"       Value="11"/>
+                <Setter Property="FontWeight"     Value="Bold"/>
+                <Setter Property="ToolTip"        Value="Tick to include this field in bulk edit"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border x:Name="Pill"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4" Width="20" Height="20">
+                                <TextBlock x:Name="Glyph" Text="+"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="{TemplateBinding Foreground}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="Pill"  Property="Background"    Value="#1F4FD9"/>
+                                    <Setter TargetName="Pill"  Property="BorderBrush"   Value="#1F4FD9"/>
+                                    <Setter TargetName="Glyph" Property="Text"          Value="✓"/>
+                                    <Setter TargetName="Glyph" Property="Foreground"    Value="White"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Pill"  Property="BorderBrush"   Value="#1F4FD9"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- APP BAR -->
+        <Border Grid.Row="0" Style="{StaticResource ToolAppBarBorderStyle}" Padding="20,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource ToolAppBarIconBorderStyle}" CornerRadius="10">
+                    <TextBlock Text="VF" Style="{StaticResource ToolAppBarIconTextStyle}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="RBG · View Filter Editor" Style="{StaticResource ToolAppBarTitleStyle}"/>
+                    <TextBlock Text="Browse and edit applied view filters across templates and views."
+                               Style="{StaticResource ToolAppBarSubtitleStyle}"/>
+                </StackPanel>
+                <Border Grid.Column="2" Style="{StaticResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="v1.0" Style="{StaticResource ToolAppBarBadgeTextStyle}"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- TOOLBAR -->
+        <Border Grid.Row="1" Background="{StaticResource SurfaceContainerBrush}"
+                BorderBrush="{StaticResource OutlineBrush}" BorderThickness="0,0,0,1" Padding="16,8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Search:" VerticalAlignment="Center"
+                           Margin="0,0,8,0" Foreground="#8A8F98" FontSize="11"/>
+                <TextBox x:Name="SearchBox" Width="200" Height="26"
+                         Padding="8,0" BorderBrush="#DDE1E6" BorderThickness="1"
+                         Background="White" VerticalContentAlignment="Center"/>
+                <TextBlock Text="Show:" VerticalAlignment="Center"
+                           Margin="16,0,8,0" Foreground="#8A8F98" FontSize="11"/>
+                <ComboBox x:Name="ViewFilterBox" Width="160" Height="26" SelectedIndex="0">
+                    <ComboBoxItem Content="All filters"/>
+                    <ComboBoxItem Content="Enabled only"/>
+                    <ComboBoxItem Content="Disabled only"/>
+                    <ComboBoxItem Content="Hidden only"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+
+        <!-- CONTENT -->
+        <Grid Grid.Row="2" Margin="12,10,12,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="310" MinWidth="280"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- LEFT: tabs + grids -->
+            <TabControl Grid.Column="0" Background="Transparent" BorderThickness="0">
+
+                <!-- TAB: View Templates -->
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="View Templates" Margin="0,0,6,0"/>
+                            <Border Background="#E7EDFB" CornerRadius="10" Padding="6,2">
+                                <TextBlock x:Name="TemplateBadge" Text="0"
+                                           FontSize="10" Foreground="#1640B0"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Margin="0,8,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,6">
+                            <Button x:Name="SelectAllTemplateBtn" Content="Select All"
+                                    Style="{StaticResource SmallBtn}" Margin="0,0,6,0"/>
+                            <Button x:Name="ClearAllTemplateBtn" Content="Clear"
+                                    Style="{StaticResource SmallBtn}"/>
+                        </StackPanel>
+                        <DataGrid x:Name="TemplateGrid"
+                                  EnableRowVirtualization="True"
+                                  VirtualizingStackPanel.IsVirtualizing="True"
+                                  VirtualizingStackPanel.VirtualizationMode="Recycling" Grid.Row="1"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="False"
+                                  SelectionMode="Extended"
+                                  SelectionUnit="FullRow"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserReorderColumns="True"
+                                  CanUserSortColumns="True"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="Horizontal"
+                                  HorizontalGridLinesBrush="#E8E9EC"
+                                  RowHeight="26"
+                                  BorderBrush="#DDE1E6"
+                                  BorderThickness="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Filter Name"
+                                    Binding="{Binding FilterName}" Width="170" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="View / Template"
+                                    Binding="{Binding ViewName}" Width="160" IsReadOnly="True"/>
+                                <DataGridCheckBoxColumn Header="Enabled"
+                                    Binding="{Binding IsEnabled, Mode=TwoWay}" Width="58"/>
+                                <DataGridCheckBoxColumn Header="Visible"
+                                    Binding="{Binding IsVisible, Mode=TwoWay}" Width="52"/>
+                                <DataGridTextColumn Header="Proj Line"
+                                    Binding="{Binding ProjLineColor}" Width="76"/>
+                                <DataGridTextColumn Header="Proj Fill"
+                                    Binding="{Binding ProjFillColor}" Width="76"/>
+                                <DataGridTextColumn Header="Transparency"
+                                    Binding="{Binding Transparency, Mode=TwoWay}" Width="72"/>
+                                <DataGridTextColumn Header="Cut Line"
+                                    Binding="{Binding CutLineColor}" Width="76"/>
+                                <DataGridTextColumn Header="Cut Fill"
+                                    Binding="{Binding CutFillColor}" Width="76"/>
+                                <DataGridCheckBoxColumn Header="Halftone"
+                                    Binding="{Binding Halftone, Mode=TwoWay}" Width="60"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+                <!-- TAB: Regular Views -->
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Views (non-template)" Margin="0,0,6,0"/>
+                            <Border Background="#EAF5EE" CornerRadius="10" Padding="6,2">
+                                <TextBlock x:Name="RegularBadge" Text="0"
+                                           FontSize="10" Foreground="#268A3A"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Margin="0,8,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,6">
+                            <Button x:Name="SelectAllRegularBtn" Content="Select All"
+                                    Style="{StaticResource SmallBtn}" Margin="0,0,6,0"/>
+                            <Button x:Name="ClearAllRegularBtn" Content="Clear"
+                                    Style="{StaticResource SmallBtn}"/>
+                        </StackPanel>
+                        <DataGrid x:Name="RegularGrid"
+                                  EnableRowVirtualization="True"
+                                  VirtualizingStackPanel.IsVirtualizing="True"
+                                  VirtualizingStackPanel.VirtualizationMode="Recycling" Grid.Row="1"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="False"
+                                  SelectionMode="Extended"
+                                  SelectionUnit="FullRow"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserReorderColumns="True"
+                                  CanUserSortColumns="True"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="Horizontal"
+                                  HorizontalGridLinesBrush="#E8E9EC"
+                                  RowHeight="26"
+                                  BorderBrush="#DDE1E6"
+                                  BorderThickness="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Filter Name"
+                                    Binding="{Binding FilterName}" Width="170" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="View"
+                                    Binding="{Binding ViewName}" Width="160" IsReadOnly="True"/>
+                                <DataGridCheckBoxColumn Header="Enabled"
+                                    Binding="{Binding IsEnabled, Mode=TwoWay}" Width="58"/>
+                                <DataGridCheckBoxColumn Header="Visible"
+                                    Binding="{Binding IsVisible, Mode=TwoWay}" Width="52"/>
+                                <DataGridTextColumn Header="Proj Line"
+                                    Binding="{Binding ProjLineColor}" Width="76"/>
+                                <DataGridTextColumn Header="Proj Fill"
+                                    Binding="{Binding ProjFillColor}" Width="76"/>
+                                <DataGridTextColumn Header="Transparency"
+                                    Binding="{Binding Transparency, Mode=TwoWay}" Width="72"/>
+                                <DataGridTextColumn Header="Cut Line"
+                                    Binding="{Binding CutLineColor}" Width="76"/>
+                                <DataGridTextColumn Header="Cut Fill"
+                                    Binding="{Binding CutFillColor}" Width="76"/>
+                                <DataGridCheckBoxColumn Header="Halftone"
+                                    Binding="{Binding Halftone, Mode=TwoWay}" Width="60"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <!-- SPLITTER -->
+            <GridSplitter Grid.Column="1" Width="8" HorizontalAlignment="Stretch"
+                          Background="#DDE1E6" ShowsPreview="True"/>
+
+            <!-- RIGHT: panels stacked, only one visible at a time -->
+            <Grid Grid.Column="2">
+
+                <!-- SINGLE-ROW DETAIL PANEL -->
+                <Border x:Name="DetailPanel"
+                        BorderBrush="#DDE1E6" BorderThickness="1"
+                        CornerRadius="8" Background="#FFFBFE"
+                        Visibility="Collapsed" Padding="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="16,14,16,14">
+
+                            <TextBlock Text="EDIT FILTER OVERRIDE"
+                                       FontSize="10" FontWeight="Bold"
+                                       Foreground="#8A8F98" Margin="0,0,0,10"/>
+
+                            <TextBlock Style="{StaticResource SectionLabel}" Text="FILTER"/>
+                            <TextBox x:Name="DetailFilterName" IsReadOnly="True"
+                                     Background="#F4F5F7" BorderBrush="#DDE1E6"/>
+                            <TextBlock Style="{StaticResource SectionLabel}" Text="VIEW / TEMPLATE"/>
+                            <TextBox x:Name="DetailViewName" IsReadOnly="True"
+                                     Background="#F4F5F7" BorderBrush="#DDE1E6"/>
+
+                            <TextBlock Style="{StaticResource SectionLabel}" Text="FLAGS"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <CheckBox x:Name="DetailEnabled" Content="Enable Filter"
+                                          VerticalAlignment="Center" Margin="0,0,16,0"/>
+                                <CheckBox x:Name="DetailVisible" Content="Visibility"
+                                          VerticalAlignment="Center" Margin="0,0,16,0"/>
+                                <CheckBox x:Name="DetailHalftone" Content="Halftone"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <Border Margin="0,10,0,0" BorderBrush="#DDE1E6"
+                                    BorderThickness="0,0,0,1" Padding="0,0,0,6">
+                                <TextBlock Text="PROJECTION / SURFACE"
+                                           FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                            </Border>
+
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Lines:"
+                                           VerticalAlignment="Center" FontSize="11"/>
+                                <Border x:Name="ProjLineColorSwatch" Grid.Column="1"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="ProjLineColorSwatch_Click"/>
+                                <TextBlock x:Name="ProjLineWeightLabel" Grid.Column="2"
+                                           Text="wt: —" FontSize="10" Foreground="#8A8F98"
+                                           VerticalAlignment="Center" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Patterns:"
+                                           VerticalAlignment="Center" FontSize="11"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Border x:Name="ProjFillColorSwatch"
+                                            Style="{StaticResource ColorSwatchStyle}"
+                                            Background="#F0F0F0" ToolTip="Click to change"
+                                            MouseLeftButtonDown="ProjFillColorSwatch_Click"/>
+                                    <ComboBox x:Name="ProjFillPatternCombo"
+                                              Width="130" Height="24" FontSize="10" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Transparency %:"
+                                           VerticalAlignment="Center" FontSize="11"/>
+                                <TextBox x:Name="DetailTransparency" Grid.Column="1"
+                                         Height="24" Text="0" VerticalContentAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="0–100"
+                                           FontSize="10" Foreground="#8A8F98"
+                                           VerticalAlignment="Center" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <Border Margin="0,12,0,0" BorderBrush="#DDE1E6"
+                                    BorderThickness="0,0,0,1" Padding="0,0,0,6">
+                                <TextBlock Text="CUT" FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                            </Border>
+
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Lines:"
+                                           VerticalAlignment="Center" FontSize="11"/>
+                                <Border x:Name="CutLineColorSwatch" Grid.Column="1"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="CutLineColorSwatch_Click"/>
+                                <TextBlock x:Name="CutLineWeightLabel" Grid.Column="2"
+                                           Text="wt: —" FontSize="10" Foreground="#8A8F98"
+                                           VerticalAlignment="Center" Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Patterns:"
+                                           VerticalAlignment="Center" FontSize="11"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Border x:Name="CutFillColorSwatch"
+                                            Style="{StaticResource ColorSwatchStyle}"
+                                            Background="#F0F0F0" ToolTip="Click to change"
+                                            MouseLeftButtonDown="CutFillColorSwatch_Click"/>
+                                    <ComboBox x:Name="CutFillPatternCombo"
+                                              Width="130" Height="24" FontSize="10" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Button x:Name="DetailApplyBtn" Content="Stage Changes"
+                                    Style="{StaticResource PrimaryBtn}"
+                                    Margin="0,16,0,0" HorizontalAlignment="Stretch"/>
+                            <Button x:Name="DetailRemoveBtn" Content="Remove from View / Template"
+                                    Style="{StaticResource DangerBtn}"
+                                    Margin="0,6,0,0" HorizontalAlignment="Stretch"/>
+                            <TextBlock Text="Staged changes are written to Revit when you click Apply."
+                                       FontSize="10" Foreground="#8A8F98"
+                                       TextWrapping="Wrap" Margin="0,6,0,0"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- MULTI-ROW BULK EDIT PANEL -->
+                <Border x:Name="BulkPanel"
+                        BorderBrush="#1F4FD9" BorderThickness="1"
+                        CornerRadius="8" Background="#FFFBFE"
+                        Visibility="Collapsed" Padding="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="16,14,16,14">
+
+                            <!-- Header with count badge -->
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="BULK EDIT"
+                                           FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                                <Border Grid.Column="1" Background="#E7EDFB"
+                                        CornerRadius="10" Padding="8,2">
+                                    <TextBlock x:Name="BulkSelectionBadge" Text="0 rows"
+                                               FontSize="10" Foreground="#1640B0" FontWeight="SemiBold"/>
+                                </Border>
+                            </Grid>
+
+                            <TextBlock Text="Tick a field to include it. Leave unticked to leave unchanged."
+                                       FontSize="10" Foreground="#8A8F98"
+                                       TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                            <!-- FLAGS -->
+                            <Border Margin="0,0,0,0" BorderBrush="#DDE1E6"
+                                    BorderThickness="0,0,0,1" Padding="0,0,0,6">
+                                <TextBlock Text="FLAGS" FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                            </Border>
+
+                            <Grid Margin="0,8,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!-- Enable -->
+                                <ToggleButton x:Name="BulkApplyEnabled" Grid.Row="0" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center" Margin="0,0,0,6"/>
+                                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal"
+                                            Margin="4,0,0,6">
+                                    <CheckBox x:Name="BulkEnabled" Content="Enable Filter"
+                                              VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <!-- Visible -->
+                                <ToggleButton x:Name="BulkApplyVisible" Grid.Row="1" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center" Margin="0,0,0,6"/>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                            Margin="4,0,0,6">
+                                    <CheckBox x:Name="BulkVisible" Content="Visibility"
+                                              VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <!-- Halftone -->
+                                <ToggleButton x:Name="BulkApplyHalftone" Grid.Row="2" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
+                                            Margin="4,0,0,0">
+                                    <CheckBox x:Name="BulkHalftone" Content="Halftone"
+                                              VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- PROJECTION / SURFACE -->
+                            <Border Margin="0,10,0,0" BorderBrush="#DDE1E6"
+                                    BorderThickness="0,0,0,1" Padding="0,0,0,6">
+                                <TextBlock Text="PROJECTION / SURFACE"
+                                           FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                            </Border>
+
+                            <!-- Proj line colour -->
+                            <Grid Margin="0,8,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyProjLine" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Lines:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <Border x:Name="BulkProjLineColorSwatch" Grid.Column="2"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="BulkProjLineColorSwatch_Click"/>
+                            </Grid>
+
+                            <!-- Proj fill colour -->
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyProjFill" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Proj Fill:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <Border x:Name="BulkProjFillColorSwatch" Grid.Column="2"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="BulkProjFillColorSwatch_Click"/>
+                            </Grid>
+
+                            <!-- Transparency -->
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyTransparency" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Transp %:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <TextBox x:Name="BulkTransparency" Grid.Column="2"
+                                         Height="24" Text="0" VerticalContentAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Text="0–100" FontSize="10"
+                                           Foreground="#8A8F98" VerticalAlignment="Center"
+                                           Margin="6,0,0,0"/>
+                            </Grid>
+
+                            <!-- CUT -->
+                            <Border Margin="0,6,0,0" BorderBrush="#DDE1E6"
+                                    BorderThickness="0,0,0,1" Padding="0,0,0,6">
+                                <TextBlock Text="CUT" FontSize="10" FontWeight="Bold" Foreground="#1F4FD9"/>
+                            </Border>
+
+                            <!-- Cut line colour -->
+                            <Grid Margin="0,8,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyCutLine" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Lines:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <Border x:Name="BulkCutLineColorSwatch" Grid.Column="2"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="BulkCutLineColorSwatch_Click"/>
+                            </Grid>
+
+                            <!-- Cut fill colour -->
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyCutFill" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Cut Fill:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <Border x:Name="BulkCutFillColorSwatch" Grid.Column="2"
+                                        Style="{StaticResource ColorSwatchStyle}"
+                                        Background="#F0F0F0" ToolTip="Click to change"
+                                        MouseLeftButtonDown="BulkCutFillColorSwatch_Click"/>
+                            </Grid>
+
+                            <!-- Proj fill pattern -->
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyProjPattern" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Proj Pattern:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <ComboBox x:Name="BulkProjPatternCombo" Grid.Column="2"
+                                          Height="24" FontSize="10"/>
+                            </Grid>
+
+                            <!-- Cut fill pattern -->
+                            <Grid Margin="0,0,0,6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton x:Name="BulkApplyCutPattern" Grid.Column="0"
+                                              Style="{StaticResource ToggleOptIn}"
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Cut Pattern:"
+                                           VerticalAlignment="Center" FontSize="11" Margin="4,0,0,0"/>
+                                <ComboBox x:Name="BulkCutPatternCombo" Grid.Column="2"
+                                          Height="24" FontSize="10"/>
+                            </Grid>
+
+                            <!-- Bulk Stage button -->
+                            <Button x:Name="BulkApplyBtn" Content="Stage Changes to All Selected"
+                                    Style="{StaticResource PrimaryBtn}"
+                                    Margin="0,14,0,0" HorizontalAlignment="Stretch"/>
+                            <Button x:Name="BulkRemoveBtn" Content="Remove from View / Template"
+                                    Style="{StaticResource DangerBtn}"
+                                    Margin="0,6,0,0" HorizontalAlignment="Stretch"/>
+                            <TextBlock Text="Only ticked fields are overwritten. Unticked fields are left as-is."
+                                       FontSize="10" Foreground="#8A8F98"
+                                       TextWrapping="Wrap" Margin="0,6,0,0"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- EMPTY HINT -->
+                <Border x:Name="EmptyPanel"
+                        Visibility="Visible">
+                    <TextBlock Text="Select one or more rows to edit."
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Foreground="#8A8F98" FontSize="12"/>
+                </Border>
+
+            </Grid>
+        </Grid>
+
+        <!-- FOOTER -->
+        <Border Grid.Row="3" BorderBrush="{StaticResource OutlineBrush}" BorderThickness="0,1,0,0"
+                Background="{StaticResource SurfaceContainerBrush}" Padding="16,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="StatusLabel"
+                           Grid.Column="0" VerticalAlignment="Center"
+                           Text="Select a row to edit its overrides."
+                           FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="CancelBtn" Content="Cancel"
+                            Style="{StaticResource SecondaryBtn}"
+                            Width="90" Margin="0,0,8,0"/>
+                    <Button x:Name="ApplyBtn" Content="Apply to Revit"
+                            Style="{StaticResource PrimaryBtn}" Width="120"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- RESULT OVERLAY — shown after apply, covers full window -->
+        <Border x:Name="ResultOverlay"
+                Grid.Row="0" Grid.RowSpan="4"
+                Visibility="Collapsed"
+                Background="#CC000000">
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center"
+                    CornerRadius="12" Padding="40,32"
+                    MinWidth="340" MaxWidth="520">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#1E2A3A"/>
+                    </Style>
+                </Border.Style>
+                <StackPanel>
+                    <TextBlock x:Name="ResultIcon" Text="✓"
+                               HorizontalAlignment="Center"
+                               FontSize="40" FontWeight="Bold"
+                               Foreground="#4CAF50" Margin="0,0,0,12"/>
+                    <TextBlock x:Name="ResultTitle" Text="Changes Applied"
+                               HorizontalAlignment="Center"
+                               FontSize="16" FontWeight="SemiBold"
+                               Foreground="White" Margin="0,0,0,8"/>
+                    <TextBlock x:Name="ResultDetail" Text=""
+                               HorizontalAlignment="Center" TextAlignment="Center"
+                               FontSize="12" Foreground="#AAAAAA"
+                               TextWrapping="Wrap" Margin="0,0,0,24"/>
+                    <Button x:Name="ResultCloseBtn" Content="Close"
+                            Style="{StaticResource PrimaryBtn}"
+                            HorizontalAlignment="Center" Width="120"/>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</Window>
+```
+## FILE_END: RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton/ViewFilterEditor.xaml
 
 ## FILE_START: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
@@ -69835,6 +78023,24 @@ except Exception as e:
     output.print_md("```\n{}\n```".format(traceback.format_exc()))
 ```
 ## FILE_END: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton/script.py
+
+## FILE_START: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton/tool-context.md
+## META: sha1=6e27717c87873b1c77fe69f53bb2660115422920 size=363
+## TYPE: text
+```markdown
+# Tool1
+## Purpose
+Turn Crop Region Visibility (Off Only!) For the Active View OR For ALL Views in the Active Sheet.
+## Workflow
+- Review the current sheet or viewport order before making changes.
+- Run Tool1 with the target sheet items you want to reorder.
+- Confirm the final sheet layout matches the intended presentation order.
+
+## Entry Points
+- `script.py`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool1.pushbutton/tool-context.md
 
 ## FILE_START: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/icon.png
 ## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
@@ -70214,6 +78420,27 @@ ViewRangeTool().show()
 ```
 ## FILE_END: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/script.py
 
+## FILE_START: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/tool-context.md
+## META: sha1=1ddd48cc5c8f3c9be8e35f1dc1803d69c125b681 size=234
+## TYPE: text
+```markdown
+# Tool2
+## Purpose
+Purpose not documented in tool-context.md.
+## Workflow
+- Selection stage
+- Load and preparation stage
+- Filter and scope stage
+- Execution stage
+- Results and status stage
+
+## Entry Points
+- `script.py`
+- `UI.xaml`
+
+```
+## FILE_END: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/tool-context.md
+
 ## FILE_START: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/UI.xaml
 ## META: sha1=7522cb341d0a19890e4e6a9807e9bf08127d1835 size=11572
 ## TYPE: text
@@ -70433,17 +78660,1539 @@ ViewRangeTool().show()
 ```
 ## FILE_END: RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton/UI.xaml
 
-## FILE_START: startup.py
-## META: sha1=3f5729dafc5c9e8bc6a855a1618a08114a3d0d8b size=2259
+## FILE_START: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/bundle.yaml
+## META: sha1=c6f28ba97de755286af1f101e2ad860c51549768 size=130
 ## TYPE: text
-## IMPORTS: ["dashboard_data","dashboard_dock","os","package_creator_dock","sys","telemetry","threading","txn_logger"]
-## FUNCTIONS: ["_register_package_creator_panel","_register_dashboard_panel","_prewarm_dashboard_catalog"]
+```yaml
+title: WPF UI Template
+tooltip: Reference tool showing the approved 2026 WPF theme, controls, states, and interaction patterns.
+
+```
+## FILE_END: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/bundle.yaml
+
+## FILE_START: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/icon.png
+## META: sha1=002b8050d3ae368521a52481350cba4c38baae94 size=1074
+## TYPE: binary
+(binary not inlined)
+## FILE_END: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/icon.png
+
+## FILE_START: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/script.py
+## META: sha1=502708870ce2b810cb5a276a06058ab3011c76a5 size=2104
+## TYPE: text
+## IMPORTS: ["os","pyrevit","sys","telemetry","traceback","wpf_style_template_ui"]
+## FUNCTIONS: ["_find_extension_root","_ensure_lib_on_path","main"]
+## CLASSES: []
+```python
+# -*- coding: utf-8 -*-
+import os
+import sys
+import traceback
+
+from pyrevit import forms
+from pyrevit import script as _pyscript
+
+output = _pyscript.get_output()
+
+try:
+    import telemetry
+except Exception:
+    telemetry = None
+
+
+def _find_extension_root(start_path):
+    current = os.path.abspath(start_path)
+    while True:
+        if current.lower().endswith(".extension"):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            return None
+        current = parent
+
+
+def _ensure_lib_on_path():
+    extension_root = _find_extension_root(os.path.dirname(__file__))
+    if not extension_root:
+        return None
+
+    lib_path = os.path.join(extension_root, "lib")
+    if lib_path not in sys.path:
+        sys.path.insert(0, lib_path)
+    return lib_path
+
+
+_lib = _ensure_lib_on_path()
+
+if telemetry is None and _lib:
+    try:
+        import telemetry
+    except Exception:
+        telemetry = None
+
+if telemetry is not None:
+    try:
+        telemetry.track_tool_click(__file__)
+    except Exception:
+        pass
+
+
+__title__ = "WPF UI\nTemplate"
+__doc__ = "Reference WPF style and UI pattern template for RBG pyRevit tools."
+
+
+try:
+    from wpf_style_template_ui import WpfStyleTemplateWindow
+except Exception:
+    output.print_md("**UI import failed:**\n```\n{}\n```".format(traceback.format_exc()))
+    raise SystemExit
+
+
+def main():
+    bundle_dir = os.path.dirname(__file__)
+    xaml_path = os.path.join(bundle_dir, "WPFStyleTemplate.xaml")
+
+    if not os.path.exists(xaml_path):
+        forms.alert("Missing XAML:\n{}".format(xaml_path), exitscript=True)
+
+    try:
+        window = WpfStyleTemplateWindow(xaml_path=xaml_path)
+    except Exception:
+        output.print_md("**Window create failed:**\n```\n{}\n```".format(traceback.format_exc()))
+        raise SystemExit
+
+    try:
+        window.show_dialog()
+    except Exception:
+        output.print_md("**Dialog failed:**\n```\n{}\n```".format(traceback.format_exc()))
+        raise SystemExit
+
+
+main()
+```
+## FILE_END: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/script.py
+
+## FILE_START: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/tool-context.md
+## META: sha1=c5758436247da374210f3e50abaebce254cb4188 size=1436
+## TYPE: text
+```markdown
+# WPF UI Template
+
+## Purpose
+Reference tool that demonstrates the approved RBG pyRevit WPF shell, typography, buttons, tabs, cards, picker behavior, DataGrid treatment, chips, badges, notification bars, and footer status bar in one place. This is the canonical base visual reference for new WPF tools in this extension.
+
+
+## Workflow
+- Prepare the target view and confirm the grids, levels, or view settings you want to adjust.
+- Run WPF UI Template with the required scope or option settings.
+- Review the updated view result and rerun if the displayed extents or filters need refinement.
+## Entry Points
+- `script.py` — thin entry point that loads the shared UI module and opens the dialog
+- `WPFStyleTemplate.xaml` — reference surface for the theme and component patterns
+
+## Owning Dependencies
+- `lib/wpf_style_template_ui.py` — controller and sample data binding
+- `lib/GUI/style_guide_2026.py` — window contract, parent ownership, shared style dictionary merge
+- `lib/GUI/Resources/RBG_StyleGuide_2026.xaml` — shared palette and base styles
+
+## Critical Constraints
+- Keep this tool as a reference surface, not a Revit-modifying workflow
+- Prefer shared named resources over inline colours when extending the template
+- Keep pushbutton logic thin and place reusable UI behavior in `lib`
+- If future modeless behavior is added, route Revit work through `ExternalEvent` rather than direct WPF callbacks
+```
+## FILE_END: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/tool-context.md
+
+## FILE_START: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/WPFStyleTemplate.xaml
+## META: sha1=9f4d1266d18828e126d91e7cee6436cc828708c0 size=91457
+## TYPE: text
+```
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="RBG · WPF UI Template"
+    Height="980"
+    Width="1320"
+    MinHeight="760"
+    MinWidth="1080"
+    WindowStartupLocation="CenterScreen"
+    ShowInTaskbar="False"
+    ResizeMode="CanResizeWithGrip"
+    Background="#FFFBFE"
+    Foreground="#1A1A1A"
+    FontFamily="Segoe UI Variable, Segoe UI"
+    FontSize="12">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#1F4FD9" />
+        <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PrimaryContainerBrush" Color="#E7EDFB" />
+        <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="#1640B0" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFBFE" />
+        <SolidColorBrush x:Key="SurfaceContainerBrush" Color="#F4F5F7" />
+        <SolidColorBrush x:Key="SurfaceContainerHighBrush" Color="#ECEDF0" />
+        <SolidColorBrush x:Key="OnSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="#8A8F98" />
+        <SolidColorBrush x:Key="OutlineBrush" Color="#DDE1E6" />
+        <SolidColorBrush x:Key="OutlineVariantBrush" Color="#E8E9EC" />
+        <SolidColorBrush x:Key="ErrorBrush" Color="#E03C2C" />
+        <SolidColorBrush x:Key="ErrorContainerBrush" Color="#FDECEA" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="#2EA043" />
+        <SolidColorBrush x:Key="SuccessContainerBrush" Color="#EAF5EE" />
+        <SolidColorBrush x:Key="WarningBrush" Color="#E67E22" />
+        <SolidColorBrush x:Key="WarningContainerBrush" Color="#FDF3E9" />
+        <SolidColorBrush x:Key="InverseSurfaceBrush" Color="#1A1A1A" />
+        <SolidColorBrush x:Key="InverseOnSurfaceBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="GuideMutedBrush" Color="#6B6B6B" />
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="LegendInfoCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="12,8" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource InverseSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineVariantBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="24,16" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarIconTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ToolAppBarSubtitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource InverseOnSurfaceBrush}" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,3" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ToolAppBarBadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="WizardTabControlStyle" TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TabPanel Grid.Row="0"
+                                      IsItemsHost="True"
+                                      Margin="0,0,0,12"
+                                      Background="Transparent" />
+                            <Border Grid.Row="1"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="0">
+                                <ContentPresenter x:Name="PART_SelectedContentHost"
+                                                  ContentSource="SelectedContent" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WizardTabItemStyle" TargetType="TabItem">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="TabBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="14"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="TabBorder" Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                                <Setter TargetName="TabBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource OnPrimaryContainerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TabBorder" Property="Background" Value="{StaticResource SurfaceContainerHighBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WizardStepperContainerStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="24,16" />
+        </Style>
+
+        <Style x:Key="WizardStepBubblePendingBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="28" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1.5" />
+        </Style>
+
+        <Style x:Key="WizardStepBubbleActiveBorderStyle" TargetType="Border" BasedOn="{StaticResource WizardStepBubblePendingBorderStyle}">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="3" />
+        </Style>
+
+        <Style x:Key="WizardStepBubbleDoneBorderStyle" TargetType="Border" BasedOn="{StaticResource WizardStepBubblePendingBorderStyle}">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="WizardStepBubblePendingTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="WizardStepBubbleActiveTextStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepBubblePendingTextStyle}">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+
+        <Style x:Key="WizardStepBubbleDoneTextStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepBubblePendingTextStyle}">
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="WizardStepLabelPendingStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="WizardStepLabelActiveStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepLabelPendingStyle}">
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="WizardStepLabelDoneStyle" TargetType="TextBlock" BasedOn="{StaticResource WizardStepLabelActiveStyle}" />
+
+        <Style x:Key="WizardStepConnectorPendingStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="Height" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="6,13,6,0" />
+        </Style>
+
+        <Style x:Key="WizardStepConnectorDoneStyle" TargetType="Border" BasedOn="{StaticResource WizardStepConnectorPendingStyle}">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="18,6,18,6" />
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource OnPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="18,6,18,6" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GhostButton" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="18,6,18,6" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource OnSurfaceVariantBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SurfaceContainerBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource OnSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="{StaticResource SuccessBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#268A3A" />
+                    <Setter Property="BorderBrush" Value="#268A3A" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DestructiveButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="{StaticResource ErrorBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B1301F" />
+                    <Setter Property="BorderBrush" Value="#B1301F" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SectionCardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="20,16" />
+            <Setter Property="Margin" Value="0,0,0,16" />
+        </Style>
+
+        <Style x:Key="SectionTitleTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="SectionHintTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariantBrush}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="10,2,0,0" />
+        </Style>
+
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource GuideMutedBrush}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+        </Style>
+
+        <Style x:Key="HelperTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource GuideMutedBrush}" />
+            <Setter Property="FontSize" Value="10" />
+        </Style>
+
+        <Style x:Key="DialogTitleStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="WizardHeadingStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontWeight" Value="Light" />
+        </Style>
+
+        <Style x:Key="CardHeadingStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="PanelHeadingStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="BadgeBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="6,2" />
+            <Setter Property="MinWidth" Value="20" />
+        </Style>
+
+        <Style x:Key="BadgeTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="FilledChipBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8,3" />
+        </Style>
+
+        <Style x:Key="OutlinedChipBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8,3" />
+        </Style>
+
+        <Style x:Key="ChipTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="TonalButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Padding" Value="18,6,18,6" />
+            <Setter Property="Background" Value="{DynamicResource PrimaryContainerBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimaryContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryContainerBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="32" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="{DynamicResource PrimaryContainerBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimaryContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryContainerBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="16"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DemoPickerItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource PrimaryContainerBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DemoDataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserResizeRows" Value="False" />
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowBackground" Value="{DynamicResource SurfaceBrush}" />
+            <Setter Property="AlternatingRowBackground" Value="{DynamicResource SurfaceBrush}" />
+        </Style>
+
+        <Style x:Key="DemoDataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="DemoDataGridRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource PrimaryContainerBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryContainerBrush}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SurfaceContainerHighBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DemoDataGridCellStyle" TargetType="DataGridCell">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryContainerBrush}" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="AcceptsReturn" Value="True" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="Background" Value="{DynamicResource SurfaceContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}" />
+            <Setter Property="Height" Value="120" />
+            <Setter Property="Padding" Value="10,8" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Style="{DynamicResource ToolAppBarBorderStyle}" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{DynamicResource ToolAppBarIconBorderStyle}">
+                    <TextBlock Text="SJ" Style="{DynamicResource ToolAppBarIconTextStyle}" />
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="SJ-B+C · WPF UI Template" Style="{DynamicResource ToolAppBarTitleStyle}" />
+                    <TextBlock Text="Revit 2026 reference surface for approved tokens, controls, states, tables, and notifications." Style="{DynamicResource ToolAppBarSubtitleStyle}" />
+                </StackPanel>
+
+                <Border Grid.Column="2" Style="{DynamicResource ToolAppBarBadgeBorderStyle}">
+                    <TextBlock Text="2026" Style="{DynamicResource ToolAppBarBadgeTextStyle}" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <Border Style="{DynamicResource WizardStepperContainerStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <Border Style="{DynamicResource WizardStepBubbleDoneBorderStyle}">
+                                <TextBlock Text="1" Style="{DynamicResource WizardStepBubbleDoneTextStyle}" />
+                            </Border>
+                            <TextBlock Text="Shell" Style="{DynamicResource WizardStepLabelDoneStyle}" />
+                        </StackPanel>
+
+                        <Border Grid.Column="1" Width="70" Style="{DynamicResource WizardStepConnectorDoneStyle}" />
+
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                            <Border Style="{DynamicResource WizardStepBubbleActiveBorderStyle}">
+                                <TextBlock Text="2" Style="{DynamicResource WizardStepBubbleActiveTextStyle}" />
+                            </Border>
+                            <TextBlock Text="Controls" Style="{DynamicResource WizardStepLabelActiveStyle}" />
+                        </StackPanel>
+
+                        <Border Grid.Column="3" Width="70" Style="{DynamicResource WizardStepConnectorPendingStyle}" />
+
+                        <StackPanel Grid.Column="4" HorizontalAlignment="Center">
+                            <Border Style="{DynamicResource WizardStepBubblePendingBorderStyle}">
+                                <TextBlock Text="3" Style="{DynamicResource WizardStepBubblePendingTextStyle}" />
+                            </Border>
+                            <TextBlock Text="Patterns" Style="{DynamicResource WizardStepLabelPendingStyle}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Window Shell + Tab Treatment" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Required shell attributes, top app bar, and styled tabs" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Border Style="{DynamicResource LegendInfoCardBorderStyle}" Margin="0,0,0,14">
+                            <StackPanel>
+                                <TextBlock Text="Always use CenterScreen, ShowInTaskbar=False, ResizeMode=CanResizeWithGrip, and Topmost=False via apply_topmost_and_parent()." Style="{StaticResource HelperTextStyle}" />
+                                <TextBlock Text="Do not hardcode colours or create one-off button styles when the shared palette already exists." Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <TabControl Style="{DynamicResource WizardTabControlStyle}" Background="Transparent">
+                            <TabItem Header="Foundation" Style="{DynamicResource WizardTabItemStyle}">
+                                <Border Style="{DynamicResource LegendInfoCardBorderStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="Foundation" Style="{StaticResource PanelHeadingStyle}" />
+                                        <TextBlock Text="Use the shared palette from the style guide XAML, apply the window contract in Python, and keep the pushbutton entry point thin." Style="{StaticResource BodyTextStyle}" Margin="0,8,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
+                            </TabItem>
+                            <TabItem Header="Controls" Style="{DynamicResource WizardTabItemStyle}">
+                                <Border Style="{DynamicResource LegendInfoCardBorderStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="Controls" Style="{StaticResource PanelHeadingStyle}" />
+                                        <TextBlock Text="Approved button variants, input spacing, ListBox selection colors, DataGrid headers, badges, and notification bars should stay visually consistent." Style="{StaticResource BodyTextStyle}" Margin="0,8,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
+                            </TabItem>
+                            <TabItem Header="Patterns" Style="{DynamicResource WizardTabItemStyle}">
+                                <Border Style="{DynamicResource LegendInfoCardBorderStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="Patterns" Style="{StaticResource PanelHeadingStyle}" />
+                                        <TextBlock Text="Use this tool as the visual baseline when building new WPF workflows, especially multi-step editors, dashboards, and review tools." Style="{StaticResource BodyTextStyle}" Margin="0,8,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
+                            </TabItem>
+                        </TabControl>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Colour Tokens" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Use shared palette resources; avoid inline hex in production tools" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <WrapPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource PrimaryBrush}" CornerRadius="8" />
+                                <TextBlock Text="Primary" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource PrimaryContainerBrush}" BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1" CornerRadius="8" />
+                                <TextBlock Text="PrimaryContainer" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1" CornerRadius="8" />
+                                <TextBlock Text="Surface" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource SurfaceContainerBrush}" BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1" CornerRadius="8" />
+                                <TextBlock Text="SurfaceContainer" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource ErrorBrush}" CornerRadius="8" />
+                                <TextBlock Text="Error" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource SuccessBrush}" CornerRadius="8" />
+                                <TextBlock Text="Success" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,12,10">
+                                <Border Width="92" Height="40" Background="{DynamicResource WarningBrush}" CornerRadius="8" />
+                                <TextBlock Text="Warning" Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Naming Conventions" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Reference naming for controls, handlers, and shared constants" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="XAML control names" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="camelCase" Style="{StaticResource BodyTextStyle}" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="resultsGrid, statusBarText" Style="{StaticResource HelperTextStyle}" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Python event handlers" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="on_verb_noun" Style="{StaticResource BodyTextStyle}" />
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="on_search_text_changed" Style="{StaticResource HelperTextStyle}" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Helper functions" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="_leading_underscore" Style="{StaticResource BodyTextStyle}" />
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="_set_status, _reset_notifications" Style="{StaticResource HelperTextStyle}" />
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Brush constants" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="BR_NAME" Style="{StaticResource BodyTextStyle}" />
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="BR_BLUE, BR_GREY_2" Style="{StaticResource HelperTextStyle}" />
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Grid helpers" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="_px / _star / _auto" Style="{StaticResource BodyTextStyle}" />
+                            <TextBlock Grid.Row="4" Grid.Column="2" Text="Prefer existing shared helper patterns" Style="{StaticResource HelperTextStyle}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Typography" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Approved sizes: 9, 10, 11, 12, 13, 14, 15, 17" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="260" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Dialog Title" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="Tool Name" Style="{StaticResource DialogTitleStyle}" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Wizard Heading" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Select Your Options" Style="{StaticResource WizardHeadingStyle}" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Wizard Card Title" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="Export Settings" Style="{StaticResource CardHeadingStyle}" />
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Panel Heading" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="Naming Convention" Style="{StaticResource PanelHeadingStyle}" />
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Section Header" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="Project Sheets" FontSize="12" FontWeight="SemiBold" />
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="Body / Combo / Radio" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="5" Grid.Column="1" Text="Standard body text and control labels" Style="{StaticResource BodyTextStyle}" />
+
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Field Label / Subtitle / Tip" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="6" Grid.Column="1" Text="24 sheets found · Shift+Click for multi-select" Style="{StaticResource HelperTextStyle}" />
+
+                            <TextBlock Grid.Row="7" Grid.Column="0" Text="Arrow Group Label" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Grid.Row="7" Grid.Column="1" Text="MOVE TO SELECTED" FontSize="9" Foreground="{DynamicResource OnSurfaceVariantBrush}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Buttons" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Primary, secondary, ghost, tonal, success, destructive, icon" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <StackPanel>
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="PrimaryButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource PrimaryButton}" Content="Run" Tag="Primary Run" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource PrimaryButton}" Content="Apply" Tag="Primary Apply" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource PrimaryButton}" Content="Next" Tag="Primary Next" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="SecondaryButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource SecondaryButton}" Content="Cancel" Tag="Secondary Cancel" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource SecondaryButton}" Content="Back" Tag="Secondary Back" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource SecondaryButton}" Content="Reset" Tag="Secondary Reset" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="GhostButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource GhostButton}" Content="Skip" Tag="Ghost Skip" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource GhostButton}" Content="More info" Tag="Ghost More info" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource GhostButton}" Content="Dismiss" Tag="Ghost Dismiss" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="TonalButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{StaticResource TonalButtonStyle}" Content="Filter" Tag="Tonal Filter" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{StaticResource TonalButtonStyle}" Content="Options" Tag="Tonal Options" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="SuccessButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource SuccessButton}" Content="Confirm" Tag="Success Confirm" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource SuccessButton}" Content="Finish" Tag="Success Finish" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel Margin="0,0,0,10">
+                                <TextBlock Text="DestructiveButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource DestructiveButton}" Content="Delete" Tag="Destructive Delete" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{DynamicResource DestructiveButton}" Content="Remove All" Tag="Destructive Remove All" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+
+                            <WrapPanel>
+                                <TextBlock Text="IconButton" Width="150" Style="{StaticResource HelperTextStyle}" VerticalAlignment="Center" />
+                                <Button Style="{StaticResource IconButtonStyle}" Content="&lt;" Tag="Icon Left" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{StaticResource IconButtonStyle}" Content="&gt;" Tag="Icon Right" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{StaticResource IconButtonStyle}" Content="↑" Tag="Icon Up" Click="on_demo_action_clicked" Margin="0,0,8,0" />
+                                <Button Style="{StaticResource IconButtonStyle}" Content="↓" Tag="Icon Down" Click="on_demo_action_clicked" />
+                            </WrapPanel>
+                        </StackPanel>
+
+                        <Border Style="{DynamicResource LegendInfoCardBorderStyle}" Margin="0,14,0,0">
+                            <TextBlock Text="Use IsDefault=True on the real OK / Apply action and IsCancel=True on the real Cancel / Close action." Style="{StaticResource HelperTextStyle}" TextWrapping="Wrap" />
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Form Controls" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="TextBox, ComboBox, CheckBox, RadioButton, ListBox extended selection" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="340" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Sheet Number" Style="{StaticResource FieldLabelStyle}" />
+                                <TextBox Text="A-101" Margin="0,0,0,12" />
+
+                                <TextBlock Text="Export Format" Style="{StaticResource FieldLabelStyle}" />
+                                <ComboBox x:Name="FormatCombo" Margin="0,0,0,12" SelectedIndex="1">
+                                    <ComboBoxItem Content="PDF" />
+                                    <ComboBoxItem Content="DWG" />
+                                    <ComboBoxItem Content="IFC" />
+                                </ComboBox>
+
+                                <TextBlock Text="Search / Filter Preview" Style="{StaticResource FieldLabelStyle}" />
+                                <TextBox x:Name="SearchBox" TextChanged="on_search_text_changed" Margin="0,0,0,4" />
+                                <TextBlock x:Name="SearchPreview" Text="Filter preview: all rows" Style="{StaticResource HelperTextStyle}" Margin="0,0,0,12" />
+
+                                <CheckBox Content="Include linked views" Margin="0,0,0,8" />
+                                <CheckBox Content="Preserve naming patterns" Margin="0,0,0,12" />
+
+                                <TextBlock Text="Mode" Style="{StaticResource FieldLabelStyle}" />
+                                <StackPanel>
+                                    <RadioButton Content="Review only" IsChecked="True" Margin="0,0,0,4" />
+                                    <RadioButton Content="Stage updates" Margin="0,0,0,4" />
+                                    <RadioButton Content="Apply immediately" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <DockPanel Margin="0,0,0,4">
+                                    <TextBlock Text="Select Sheets" Style="{StaticResource FieldLabelStyle}" />
+                                    <Border Style="{StaticResource BadgeBorderStyle}" HorizontalAlignment="Right" Margin="10,0,0,0">
+                                        <TextBlock x:Name="SelectionCountBadgeText" Text="0" Style="{StaticResource BadgeTextStyle}" />
+                                    </Border>
+                                </DockPanel>
+
+                                <ListBox x:Name="DemoPicker"
+                                         Height="170"
+                                         SelectionMode="Extended"
+                                         SelectionChanged="on_picker_selection_changed"
+                                         ItemContainerStyle="{StaticResource DemoPickerItemStyle}">
+                                    <ListBoxItem Content="A-100 - Ground Floor" />
+                                    <ListBoxItem Content="A-101 - Level 1" />
+                                    <ListBoxItem Content="A-102 - Level 2" />
+                                    <ListBoxItem Content="A-103 - Level 3" />
+                                    <ListBoxItem Content="A-200 - Roof Plan" />
+                                </ListBox>
+
+                                <TextBlock Text='SelectionMode="Extended" · Shift+Click for range' Style="{StaticResource HelperTextStyle}" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Tables" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Primary header fill, row hover, selected state, summary footer" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <DockPanel Margin="0,0,0,8">
+                            <TextBlock Text="Reo Schedule Demo" Style="{StaticResource PanelHeadingStyle}" />
+                            <Border Style="{StaticResource BadgeBorderStyle}" HorizontalAlignment="Right" Margin="10,0,0,0">
+                                <TextBlock x:Name="RowsCountBadgeText" Text="4 rows" Style="{StaticResource BadgeTextStyle}" />
+                            </Border>
+                        </DockPanel>
+
+                        <DataGrid x:Name="RowsGrid"
+                                  Height="230"
+                                  Style="{StaticResource DemoDataGridStyle}"
+                                  ColumnHeaderStyle="{StaticResource DemoDataGridColumnHeaderStyle}"
+                                  RowStyle="{StaticResource DemoDataGridRowStyle}"
+                                  CellStyle="{StaticResource DemoDataGridCellStyle}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CATEGORY" Binding="{Binding Category}" Width="*" />
+                                <DataGridTextColumn Header="SIZE" Binding="{Binding Size}" Width="110" />
+                                <DataGridTextColumn Header="COUNT" Binding="{Binding Count}" Width="110" />
+                                <DataGridTextColumn Header="LENGTH (m)" Binding="{Binding Length}" Width="110" />
+                                <DataGridTextColumn Header="MASS (kg)" Binding="{Binding Mass}" Width="110" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Border Background="{DynamicResource PrimaryBrush}" CornerRadius="0,0,12,12" Padding="10,8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition Width="110" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="TOTAL" Foreground="{DynamicResource OnPrimaryBrush}" FontSize="12" FontWeight="Bold" />
+                                <TextBlock Grid.Column="2" Text="2,420" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                                <TextBlock Grid.Column="3" Text="9,680.0" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                                <TextBlock Grid.Column="4" Text="22,469.6" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Row Highlight States" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Use left edge only; never full border" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Border Background="{DynamicResource PrimaryContainerBrush}" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="3,0,0,0" Padding="10,8" Margin="0,0,0,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Selected" Foreground="{DynamicResource OnPrimaryContainerBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="PrimaryContainer background with primary edge" />
+                                <TextBlock Grid.Column="2" Text="—" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="{DynamicResource PrimaryContainerBrush}" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="3,0,0,0" Padding="10,8" Margin="0,0,0,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Update / Running" Foreground="{DynamicResource OnPrimaryContainerBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="PrimaryContainer with a running indicator" />
+                                <TextBlock Grid.Column="2" Text="↻" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="{DynamicResource WarningContainerBrush}" BorderBrush="{DynamicResource WarningBrush}" BorderThickness="3,0,0,0" Padding="10,8" Margin="0,0,0,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Warning" Foreground="{DynamicResource WarningBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="Non-blocking issue" />
+                                <TextBlock Grid.Column="2" Text="!" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="{DynamicResource ErrorContainerBrush}" BorderBrush="{DynamicResource ErrorBrush}" BorderThickness="3,0,0,0" Padding="10,8" Margin="0,0,0,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Error" Foreground="{DynamicResource ErrorBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="Blocking issue" />
+                                <TextBlock Grid.Column="2" Text="✕" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="{DynamicResource SuccessContainerBrush}" BorderBrush="{DynamicResource SuccessBrush}" BorderThickness="3,0,0,0" Padding="10,8" Margin="0,0,0,6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Success / Done" Foreground="{DynamicResource SuccessBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="Finished successfully" />
+                                <TextBlock Grid.Column="2" Text="✓" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="3,0,0,0" Padding="10,8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Idle (default)" Foreground="{DynamicResource OnSurfaceVariantBrush}" FontWeight="SemiBold" />
+                                <TextBlock Grid.Column="1" Text="Surface background and no semantic tint" />
+                                <TextBlock Grid.Column="2" Text="—" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Chips and Badges" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Solid, outlined, paired key/value, and count badges" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <WrapPanel>
+                            <Border Style="{StaticResource FilledChipBorderStyle}" Background="{DynamicResource PrimaryBrush}" Margin="0,0,10,10">
+                                <TextBlock Text="Active" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnPrimaryBrush}" FontWeight="SemiBold" />
+                            </Border>
+                            <Border Style="{StaticResource FilledChipBorderStyle}" Background="{DynamicResource SuccessBrush}" Margin="0,0,10,10">
+                                <TextBlock Text="Complete" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnPrimaryBrush}" FontWeight="SemiBold" />
+                            </Border>
+                            <Border Style="{StaticResource FilledChipBorderStyle}" Background="{DynamicResource WarningBrush}" Margin="0,0,10,10">
+                                <TextBlock Text="Pending" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnPrimaryBrush}" FontWeight="SemiBold" />
+                            </Border>
+                            <Border Style="{StaticResource FilledChipBorderStyle}" Background="{DynamicResource ErrorBrush}" Margin="0,0,10,10">
+                                <TextBlock Text="Failed" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnPrimaryBrush}" FontWeight="SemiBold" />
+                            </Border>
+
+                            <Border Style="{StaticResource OutlinedChipBorderStyle}" Margin="0,0,10,10">
+                                <TextBlock Text="A-100" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnSurfaceVariantBrush}" />
+                            </Border>
+                            <Border Style="{StaticResource OutlinedChipBorderStyle}" Margin="0,0,10,10">
+                                <TextBlock Text="Level 2" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnSurfaceVariantBrush}" />
+                            </Border>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,10,10">
+                                <Border Background="{DynamicResource PrimaryBrush}" CornerRadius="4,0,0,4" Padding="8,3">
+                                    <TextBlock Text="Sheet" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnPrimaryBrush}" FontWeight="SemiBold" />
+                                </Border>
+                                <Border Background="{DynamicResource SurfaceContainerBrush}" BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1" CornerRadius="0,4,4,0" Padding="8,3">
+                                    <TextBlock Text="A-100" Style="{StaticResource ChipTextStyle}" Foreground="{DynamicResource OnSurfaceVariantBrush}" />
+                                </Border>
+                            </StackPanel>
+
+                            <Border Style="{StaticResource BadgeBorderStyle}" Margin="0,0,10,10">
+                                <TextBlock Text="3" Style="{StaticResource BadgeTextStyle}" />
+                            </Border>
+                            <Border Background="{DynamicResource ErrorBrush}" CornerRadius="12" Padding="6,2" MinWidth="20" Margin="0,0,10,10">
+                                <TextBlock Text="!" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Center" />
+                            </Border>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Notification Bars" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Persistent status bar below + dismissible inline notifications" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <DockPanel Margin="0,0,0,8">
+                            <TextBlock x:Name="NotificationSummaryText" Text="4 notifications visible" Style="{StaticResource HelperTextStyle}" />
+                            <Button Content="Reset Notifications" Style="{DynamicResource SecondaryButton}" Click="on_reset_notifications_clicked" HorizontalAlignment="Right" Margin="12,0,0,0" />
+                        </DockPanel>
+
+                        <Border x:Name="ErrorNotification" Background="{DynamicResource ErrorBrush}" CornerRadius="8" Padding="10,8" Margin="0,0,0,8">
+                            <DockPanel>
+                                <TextBlock Text="⚠" Foreground="{DynamicResource OnPrimaryBrush}" FontSize="14" FontWeight="Bold" Margin="0,0,10,0" />
+                                <TextBlock Text="3 elements failed to export — check log for details" Foreground="{DynamicResource OnPrimaryBrush}" VerticalAlignment="Center" />
+                                <Button Content="✕" Tag="error" Click="on_notification_dismiss" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </Border>
+
+                        <Border x:Name="WarningNotification" Background="{DynamicResource WarningBrush}" CornerRadius="8" Padding="10,8" Margin="0,0,0,8">
+                            <DockPanel>
+                                <TextBlock Text="!" Foreground="{DynamicResource OnPrimaryBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,10,0" />
+                                <TextBlock Text="Some sheets have non-standard naming" Foreground="{DynamicResource OnPrimaryBrush}" VerticalAlignment="Center" />
+                                <Button Content="✕" Tag="warning" Click="on_notification_dismiss" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </Border>
+
+                        <Border x:Name="SuccessNotification" Background="{DynamicResource SuccessBrush}" CornerRadius="8" Padding="10,8" Margin="0,0,0,8">
+                            <DockPanel>
+                                <TextBlock Text="✓" Foreground="{DynamicResource OnPrimaryBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,10,0" />
+                                <TextBlock Text="All parameters updated successfully" Foreground="{DynamicResource OnPrimaryBrush}" VerticalAlignment="Center" />
+                                <Button Content="✕" Tag="success" Click="on_notification_dismiss" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </Border>
+
+                        <Border x:Name="InfoNotification" Background="{DynamicResource PrimaryBrush}" CornerRadius="8" Padding="10,8">
+                            <DockPanel>
+                                <TextBlock Text="i" Foreground="{DynamicResource OnPrimaryBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,10,0" />
+                                <TextBlock Text="Shift+Click to multi-select rows" Foreground="{DynamicResource OnPrimaryBrush}" VerticalAlignment="Center" />
+                                <Button Content="✕" Tag="info" Click="on_notification_dismiss" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource OnPrimaryBrush}" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Shared Helper and External Event References" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Keep reusable patterns visible to future tool authors" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <TextBlock Text="Shared helper imports" Style="{StaticResource FieldLabelStyle}" />
+                        <TextBox x:Name="CodeSharedHelpers" Style="{StaticResource CodeTextBoxStyle}" Margin="0,0,0,12" />
+
+                        <TextBlock Text="Modeless external event pattern" Style="{StaticResource FieldLabelStyle}" />
+                        <TextBox x:Name="CodeExternalEvent" Style="{StaticResource CodeTextBoxStyle}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Consistency Rules" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Most common UI review findings" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="NEVER" Foreground="{DynamicResource ErrorBrush}" FontSize="13" FontWeight="Bold" Margin="0,0,0,8" />
+                                <TextBlock Text="X Hardcode colours - reference the palette" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Use font sizes outside 9, 10, 11, 12, 13, 14, 15, 17" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Place action buttons at the top or middle of the window" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Use red outside destructive actions and error bars" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Use SelectionMode=Single on picker list boxes" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Set Topmost=True on tool windows" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="X Inline colours or duplicate styles instead of named resources" Style="{StaticResource BodyTextStyle}" TextWrapping="Wrap" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="ALWAYS" Foreground="{DynamicResource SuccessBrush}" FontSize="13" FontWeight="Bold" Margin="0,0,0,8" />
+                                <TextBlock Text="OK ResizeMode=CanResizeWithGrip" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK ShowInTaskbar=False and CenterScreen" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK IsCancel on Cancel / Close and IsDefault on the main Apply / OK action" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK PrimaryButton for Apply / Save / Next / Run" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK SuccessButton for positive confirmation" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK DestructiveButton for delete / remove actions" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK Both RowStyle and CellStyle on DataGrids" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,6" TextWrapping="Wrap" />
+                                <TextBlock Text="OK SelectionMode=Extended on picker ListBoxes" Style="{StaticResource BodyTextStyle}" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCardBorderStyle}">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,12">
+                            <TextBlock Text="Complete Template" Style="{StaticResource SectionTitleTextStyle}" />
+                            <TextBlock Text="Starter skeleton for new WPF tool windows" Style="{StaticResource SectionHintTextStyle}" />
+                        </DockPanel>
+
+                        <Border BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1" CornerRadius="12">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" Style="{DynamicResource ToolAppBarBorderStyle}" CornerRadius="12,12,0,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Style="{DynamicResource ToolAppBarIconBorderStyle}">
+                                            <TextBlock Text="SJ" Style="{DynamicResource ToolAppBarIconTextStyle}" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock Text="SJ-B+C · New Tool" Style="{DynamicResource ToolAppBarTitleStyle}" />
+                                            <TextBlock Text="Step 1 of 3 — Setup" Style="{DynamicResource ToolAppBarSubtitleStyle}" />
+                                        </StackPanel>
+                                        <Border Grid.Column="2" Style="{DynamicResource ToolAppBarBadgeBorderStyle}">
+                                            <TextBlock Text="v0.1" Style="{DynamicResource ToolAppBarBadgeTextStyle}" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+
+                                <StackPanel Grid.Row="1" Margin="16">
+                                    <TextBlock Text="Section Title" Style="{StaticResource DialogTitleStyle}" Margin="0,0,0,10" />
+                                    <TextBlock Text="Field Label" Style="{StaticResource FieldLabelStyle}" />
+                                    <TextBox Text="Enter value..." Margin="0,0,0,10" />
+                                    <TextBlock Text="Select Option" Style="{StaticResource FieldLabelStyle}" />
+                                    <ComboBox SelectedIndex="1">
+                                        <ComboBoxItem Content="Option A" />
+                                        <ComboBoxItem Content="Option B" />
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <DockPanel Grid.Row="2" Margin="16,0,16,16" LastChildFill="False">
+                                    <Button Content="Cancel" Style="{DynamicResource GhostButton}" IsCancel="True" DockPanel.Dock="Right" />
+                                    <Button Content="Apply" Style="{DynamicResource PrimaryButton}" IsDefault="True" DockPanel.Dock="Right" Margin="0,0,8,0" />
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="2" Background="{DynamicResource PrimaryBrush}" CornerRadius="8" Padding="12,10" Margin="0,12,0,0">
+            <DockPanel LastChildFill="False">
+                <TextBlock x:Name="StatusBarText"
+                           Text="Ready - use this tool as the baseline for new WPF tools."
+                           Foreground="{DynamicResource OnPrimaryBrush}"
+                           FontSize="11"
+                           VerticalAlignment="Center"
+                           DockPanel.Dock="Left" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                    <Button Content="Use as Reference"
+                            Style="{DynamicResource PrimaryButton}"
+                            Tag="Footer Use as Reference"
+                            Click="on_demo_action_clicked"
+                            IsDefault="True"
+                            Margin="0,0,8,0" />
+                    <Button Content="Close"
+                            Style="{DynamicResource GhostButton}"
+                            Click="on_close_clicked"
+                            IsCancel="True" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
+```
+## FILE_END: RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton/WPFStyleTemplate.xaml
+
+## FILE_START: startup.py
+## META: sha1=f0bd01fb96df3570e73b7e1c48d6d84ea6b2e3d3 size=5008
+## TYPE: text
+## IMPORTS: ["imp","os","sys","telemetry","threading","txn_logger","uuid"]
+## FUNCTIONS: ["_log_startup","_extension_token","_load_module_unique","_find_dashboard_lib_dir","_register_package_creator_panel","_register_dashboard_panel","_prewarm_dashboard_catalog"]
 ## CLASSES: []
 ```python
 # -*- coding: utf-8 -*-
 import os
 import sys
 import threading
+import imp
+import uuid
 
 root_dir = os.path.dirname(__file__)
 lib_dir = os.path.join(root_dir, 'lib')
@@ -70457,33 +80206,99 @@ txn_logger.register()
 telemetry.register()
 
 
-def _register_package_creator_panel():
+def _log_startup(message):
     try:
-        from package_creator_dock import register_package_creator_panel
-        register_package_creator_panel()
+        print('[RBG startup] {0}'.format(message))
     except Exception:
         pass
 
 
-def _register_dashboard_panel():
+def _extension_token():
     try:
-        dashboard_lib = os.path.join(
+        normalized = os.path.normcase(os.path.abspath(root_dir))
+        return uuid.uuid5(uuid.UUID('f55c1b89-1451-455e-94da-8b8c7316e7a7'), normalized).hex[:8]
+    except Exception:
+        return 'unknown'
+
+
+def _load_module_unique(module_path, module_key):
+    module_name = '{0}_{1}'.format(module_key, _extension_token())
+    return imp.load_source(module_name, module_path)
+
+
+def _find_dashboard_lib_dir():
+    candidates = [
+        os.path.join(
+            root_dir,
+            'RBG_SYD_Tools_Working.tab',
+            'RBG Tools_Data.panel',
+            'DataStack3.stack',
+            'Dashboard.pushbutton',
+            'lib'
+        ),
+        os.path.join(
+            root_dir,
+            'RBG_SYD_Tools.tab',
+            'RBG Tools_Data.panel',
+            'DataStack3.stack',
+            'Dashboard.pushbutton',
+            'lib'
+        ),
+        os.path.join(
             root_dir,
             'RBG_SYD_Tools_Working.tab',
             'Dashboard.panel',
             'Dashboard.pushbutton',
             'lib'
         )
-        if not os.path.isdir(dashboard_lib):
+    ]
+
+    for candidate in candidates:
+        if os.path.isdir(candidate):
+            return candidate
+
+    return None
+
+
+def _register_package_creator_panel():
+    try:
+        dock_path = os.path.join(lib_dir, 'package_creator_dock.py')
+        if not os.path.isfile(dock_path):
+            _log_startup('Package Creator dock module missing: {0}'.format(dock_path))
+            return
+        dock_module = _load_module_unique(dock_path, 'package_creator_dock')
+        register_panel = getattr(dock_module, 'register_package_creator_panel', None)
+        if register_panel is None:
+            _log_startup('Package Creator register function not found in module.')
+            return
+        register_panel()
+    except Exception as exc:
+        _log_startup('Package Creator registration failed: {0}'.format(exc))
+
+
+def _register_dashboard_panel():
+    try:
+        dashboard_lib = _find_dashboard_lib_dir()
+        if not dashboard_lib:
+            _log_startup('Dashboard lib folder not found; startup registration skipped.')
+            return
+
+        dock_path = os.path.join(dashboard_lib, 'dashboard_dock.py')
+        if not os.path.isfile(dock_path):
+            _log_startup('Dashboard dock module missing: {0}'.format(dock_path))
             return
 
         if dashboard_lib not in sys.path:
             sys.path.insert(0, dashboard_lib)
 
-        from dashboard_dock import register_dashboard_panel
-        register_dashboard_panel()
-    except Exception:
-        pass
+        dock_module = _load_module_unique(dock_path, 'dashboard_dock')
+        register_panel = getattr(dock_module, 'register_dashboard_panel', None)
+        if register_panel is None:
+            _log_startup('Dashboard register function not found in module.')
+            return
+        register_panel()
+    except Exception as exc:
+        _log_startup('Dashboard registration failed: {0}'.format(exc))
 
 
 def _prewarm_dashboard_catalog():
@@ -70494,14 +80309,8 @@ def _prewarm_dashboard_catalog():
     falls back to a live build if the cache is absent or stale.
     """
     try:
-        dashboard_lib = os.path.join(
-            root_dir,
-            'RBG_SYD_Tools_Working.tab',
-            'Dashboard.panel',
-            'Dashboard.pushbutton',
-            'lib'
-        )
-        if not os.path.isdir(dashboard_lib):
+        dashboard_lib = _find_dashboard_lib_dir()
+        if not dashboard_lib:
             return
 
         if dashboard_lib not in sys.path:
@@ -70509,11 +80318,22 @@ def _prewarm_dashboard_catalog():
 
         bundle_dir = os.path.dirname(dashboard_lib)
 
-        from dashboard_data import load_catalog
-        # Force discovery each startup/reload so per-user extension changes are picked up immediately.
-        load_catalog(bundle_dir, force_rebuild=True)
-    except Exception:
-        pass
+        data_path = os.path.join(dashboard_lib, 'dashboard_data.py')
+        if not os.path.isfile(data_path):
+            _log_startup('Dashboard data module missing: {0}'.format(data_path))
+            return
+
+        data_module = _load_module_unique(data_path, 'dashboard_data')
+        load_catalog = getattr(data_module, 'load_catalog', None)
+        if load_catalog is None:
+            _log_startup('Dashboard load_catalog function missing; prewarm skipped.')
+            return
+
+        # Startup prewarm runs on a background thread.
+        # Skip ribbon command discovery here because Revit UI objects are not thread-safe.
+        load_catalog(bundle_dir, force_rebuild=True, include_revit_commands=False)
+    except Exception as exc:
+        _log_startup('Dashboard prewarm failed: {0}'.format(exc))
 
 
 _prewarm_thread = threading.Thread(target=_prewarm_dashboard_catalog)
@@ -70526,8 +80346,8 @@ _register_dashboard_panel()
 ## FILE_END: startup.py
 
 ## BUNDLE_INTEGRITY
-FILES: 300
-TOTAL_BYTES: 4934085
+FILES: 335
+TOTAL_BYTES: 5389153
 STATUS: COMPLETE
 TRUNCATION: NONE
 ## END_BUNDLE

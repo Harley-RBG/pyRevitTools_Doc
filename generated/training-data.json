@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T23:49:51.888Z",
+  "generatedAt": "2026-08-23T01:37:26.826Z",
   "shared": {
     "levels": [
       "Level 00",
@@ -33,14 +33,21 @@
   },
   "byTool": {
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "categories",
+        "parameters"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
         "scopeBoxes": [],
         "detailViews": [],
         "sheets": [],
-        "parameters": []
+        "parameters": [
+          "Mark",
+          "Type Name",
+          "Comments"
+        ]
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/MagpieGroup.pushbutton": {
@@ -134,7 +141,9 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "categories"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
@@ -174,7 +183,9 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Elements.panel/ElementStack1.stack/QuickPin.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "categories"
+      ],
       "mock": {
         "levels": [],
         "planViews": [],
@@ -217,18 +228,7 @@
         "parameters": []
       }
     },
-    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton": {
-      "requiredSources": [],
-      "mock": {
-        "levels": [],
-        "planViews": [],
-        "scopeBoxes": [],
-        "detailViews": [],
-        "sheets": [],
-        "parameters": []
-      }
-    },
-    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton": {
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton": {
       "requiredSources": [
         "levels"
       ],
@@ -245,7 +245,24 @@
         "parameters": []
       }
     },
-    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton": {
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton": {
+      "requiredSources": [
+        "levels"
+      ],
+      "mock": {
+        "levels": [
+          "Level 00",
+          "Level 01",
+          "Level 02"
+        ],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton": {
       "requiredSources": [
         "levels"
       ],
@@ -284,10 +301,15 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "plan views"
+      ],
       "mock": {
         "levels": [],
-        "planViews": [],
+        "planViews": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan"
+        ],
         "scopeBoxes": [],
         "detailViews": [],
         "sheets": [],
@@ -295,13 +317,28 @@
       }
     },
     "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton": {
-      "requiredSources": [],
+      "requiredSources": [
+        "plan views",
+        "scope boxes",
+        "sheets"
+      ],
       "mock": {
         "levels": [],
-        "planViews": [],
-        "scopeBoxes": [],
+        "planViews": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan"
+        ],
+        "scopeBoxes": [
+          "SB-A-Core",
+          "SB-B-East Wing",
+          "SB-C-Tower"
+        ],
         "detailViews": [],
-        "sheets": [],
+        "sheets": [
+          "S100",
+          "S101",
+          "S200"
+        ],
         "parameters": []
       }
     },
@@ -356,6 +393,17 @@
           "Type Name",
           "Comments"
         ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
       }
     },
     "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton": {
@@ -551,6 +599,17 @@
       }
     },
     "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton": {
+      "requiredSources": [],
+      "mock": {
+        "levels": [],
+        "planViews": [],
+        "scopeBoxes": [],
+        "detailViews": [],
+        "sheets": [],
+        "parameters": []
+      }
+    },
+    "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton": {
       "requiredSources": [],
       "mock": {
         "levels": [],

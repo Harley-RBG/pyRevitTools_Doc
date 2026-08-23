@@ -461,6 +461,310 @@
           ]
         ]
       }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton": {
+      "dashboard": {
+        "groupOptions": [
+          "All Tools",
+          "Data",
+          "Views",
+          "Sheets",
+          "Selection"
+        ],
+        "cards": [
+          {
+            "title": "Package Creator",
+            "group": "Data",
+            "status": "Ready",
+            "source": "RBG Tools_Data",
+            "summary": "Create staged issue packages with validation and export steps.",
+            "favorite": true,
+            "recent": true
+          },
+          {
+            "title": "ParamCopier",
+            "group": "Data",
+            "status": "Review",
+            "source": "RBG Tools_Data",
+            "summary": "Map and transfer parameter values between source and target categories.",
+            "favorite": true,
+            "recent": false
+          },
+          {
+            "title": "Plan View Range Tool",
+            "group": "Views",
+            "status": "Ready",
+            "source": "RBG Tools_Views",
+            "summary": "Compare two views and copy view range settings to staged targets.",
+            "favorite": false,
+            "recent": true
+          },
+          {
+            "title": "View Filter Editor",
+            "group": "Views",
+            "status": "Ready",
+            "source": "RBG Tools_Views",
+            "summary": "Inspect and stage per-view filter override changes before applying.",
+            "favorite": false,
+            "recent": true
+          },
+          {
+            "title": "Cloud Revisions",
+            "group": "Sheets",
+            "status": "Ready",
+            "source": "JasonHacksRevit",
+            "summary": "Classify revision cloud coverage across sheets and revisions.",
+            "favorite": false,
+            "recent": false
+          },
+          {
+            "title": "CategoryPicker",
+            "group": "Selection",
+            "status": "Ready",
+            "source": "JasonHacksRevit",
+            "summary": "Build category-based selections with discipline filtering.",
+            "favorite": true,
+            "recent": false
+          }
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton": {
+      "transactionLogger": {
+        "categories": [
+          "Structural Framing",
+          "Structural Columns",
+          "Floors",
+          "Walls",
+          "Detail Items",
+          "Revit Links"
+        ],
+        "snapshotModes": [
+          "Off - fast, no before/after diff",
+          "Lazy - capture element state (enables diff)"
+        ],
+        "outputPath": "C:/Temp/RBG/transaction-log-demo.csv",
+        "sessionRows": [
+          [
+            "Startup logger active",
+            "Yes"
+          ],
+          [
+            "Current mode",
+            "Targeted categories"
+          ],
+          [
+            "Snapshot capture",
+            "Lazy"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton": {
+      "planViewRange": {
+        "planOptions": [
+          "S-1001 Level 00 Framing Plan",
+          "S-1002 Level 01 Framing Plan",
+          "S-1003 Level 02 Framing Plan"
+        ],
+        "targetViews": [
+          "S-2001 Level 00 Host Plan",
+          "S-2002 Level 01 Host Plan",
+          "S-2003 Level 02 Host Plan"
+        ],
+        "comparisonRows": [
+          [
+            "Top",
+            "Level 02",
+            "2400",
+            "Level 02",
+            "2400"
+          ],
+          [
+            "Cut",
+            "Level 01",
+            "1200",
+            "Level 01",
+            "1500"
+          ],
+          [
+            "Bottom",
+            "Level 01",
+            "0",
+            "Level 01",
+            "0"
+          ],
+          [
+            "View Depth",
+            "Level 00",
+            "-500",
+            "Level 00",
+            "-1500"
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton": {
+      "scopeBoxViewCreation": {
+        "sourceModes": [
+          "Creator workflow",
+          "Selector workflow"
+        ],
+        "planViews": [
+          "GA-SS LEVEL 1E",
+          "GA-SS LEVEL 2E",
+          "GA-SS LEVEL 3E"
+        ],
+        "scopeBoxes": [
+          "SB-A Core",
+          "SB-B East Wing",
+          "SB-C Tower"
+        ],
+        "titleBlocks": [
+          "A1 - Structural",
+          "A3 - Detail",
+          "A1 - Presentation"
+        ],
+        "stage1Rows": [
+          [
+            "SB-A Core",
+            "Level 01",
+            "S-CORE L01 PLAN",
+            "S-CORE L01 SECTION",
+            "Ready"
+          ],
+          [
+            "SB-B East Wing",
+            "Level 02",
+            "S-EAST L02 PLAN",
+            "S-EAST L02 SECTION",
+            "Rename"
+          ],
+          [
+            "SB-C Tower",
+            "Level 03",
+            "S-TWR L03 PLAN",
+            "S-TWR L03 SECTION",
+            "Ready"
+          ]
+        ],
+        "sheetRows": [
+          [
+            "S401",
+            "A1 - Structural",
+            "2 views",
+            "Ready"
+          ],
+          [
+            "S402",
+            "A1 - Structural",
+            "2 views",
+            "Warning"
+          ]
+        ],
+        "warningRows": [
+          [
+            "S402",
+            "Viewport spacing needs review before placing sheet."
+          ],
+          [
+            "SB-B East Wing",
+            "Section name conflicts with existing view."
+          ]
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton": {
+      "viewFilterEditor": {
+        "showModes": [
+          "All filters",
+          "Only modified",
+          "Only hidden"
+        ],
+        "patternOptions": [
+          "<None>",
+          "Solid Fill",
+          "Diagonal 45",
+          "Cross Hatch"
+        ],
+        "templateRows": [
+          {
+            "id": "tpl-1",
+            "view": "STR - GA Template",
+            "filter": "Concrete",
+            "enabled": true,
+            "visible": true,
+            "halftone": false,
+            "transparency": 15,
+            "status": "Clean"
+          },
+          {
+            "id": "tpl-2",
+            "view": "STR - Steel Template",
+            "filter": "Structural Framing",
+            "enabled": true,
+            "visible": true,
+            "halftone": false,
+            "transparency": 0,
+            "status": "Clean"
+          }
+        ],
+        "viewRows": [
+          {
+            "id": "view-1",
+            "view": "S-1002 Level 01 Framing Plan",
+            "filter": "Rebar",
+            "enabled": true,
+            "visible": false,
+            "halftone": true,
+            "transparency": 60,
+            "status": "Dirty"
+          },
+          {
+            "id": "view-2",
+            "view": "S-3001 Typical Sections",
+            "filter": "Concrete",
+            "enabled": true,
+            "visible": true,
+            "halftone": false,
+            "transparency": 10,
+            "status": "Clean"
+          }
+        ]
+      }
+    },
+    "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton": {
+      "wpfTemplate": {
+        "steps": [
+          "Shell",
+          "Controls",
+          "Patterns"
+        ],
+        "componentCards": [
+          [
+            "App bar + badges",
+            "Canonical top chrome for titles, version tags, and status chips."
+          ],
+          [
+            "Cards + grids",
+            "Primary content layout with consistent spacing and surface hierarchy."
+          ],
+          [
+            "Buttons + chips",
+            "Approved primary, secondary, success, destructive, and compact actions."
+          ],
+          [
+            "Notifications",
+            "Inline warning, success, and helper bars for safe user feedback."
+          ]
+        ],
+        "checklist": [
+          "Use shared palette resources instead of inline colours.",
+          "Keep the pushbutton entry point thin and move reusable UI logic into lib.",
+          "Route future modeless Revit actions through ExternalEvent.",
+          "Apply both RowStyle and CellStyle on DataGrids."
+        ]
+      }
     }
   }
 }

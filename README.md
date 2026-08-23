@@ -106,6 +106,15 @@ npm run site:update:quick  # bundle update + quick generate
 
 `generate:force` still rebuilds index/diagnostics, but tool pages now use content comparison and skip unchanged files.
 
+Workflow documentation sync for the production extension:
+
+```bash
+npm run tool-context:sync-workflows
+node scripts/sync-tool-context-workflows.mjs --apply --backup-dir="C:\\path\\to\\backups"
+```
+
+The sync script reads [bundle.md](C:/Users/harley.trappitt/Documents/GitHub/pyRevitToolsDoc/bundle.md), [generated/tool-catalog.json](C:/Users/harley.trappitt/Documents/GitHub/pyRevitToolsDoc/generated/tool-catalog.json), and [generated/ui-manifest.json](C:/Users/harley.trappitt/Documents/GitHub/pyRevitToolsDoc/generated/ui-manifest.json) to add or update `## Workflow` sections in extension `tool-context.md` files. Run without `--apply` first for a dry run, and always provide a backup directory when writing to the production extension.
+
 4. Open `index.html` directly, or run a local preview server:
 
 ```bash

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T23:37:41.137Z",
+  "generatedAt": "2026-08-23T01:31:28.916Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -14,6 +14,8 @@
       "inputs": [],
       "notes": [
         "Keep extension-root and `lib` bootstrap reliable before any coordinate logic runs. Preserve both selection-scoped and model-wide workflows. Report missing parameters or skipped elements explicitly rather than failing silently.",
+        "Adjust PointConverter Class and functions imported from Snippets\\\\_coordinates library.",
+        "Add warning that RBG param was not found, etc.",
         "Files in bundle: 4"
       ],
       "authors": [
@@ -73,13 +75,12 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
-      "screenshotCount": 5,
+      "screenshotCount": 4,
       "screenshotPaths": [
-        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator1.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator2.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator3.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator4.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator5.png"
+        "generated/tool-screenshots/RBG_SYD_Tools/Package Creator1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/Package Creator2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/Package Creator3.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/Package Creator4.png"
       ],
       "uiKind": "mixed"
     },
@@ -90,16 +91,16 @@
       "panel": "RBG Tools Data",
       "stack": "DataStack2",
       "location": "RBG_SYD_Tools.tab > RBG Tools_Data.panel > DataStack2.stack > ParamCopier.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 2"
+        "Files in bundle: 3"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 2,
+      "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-paramcopier.html",
       "screenshotCount": 1,
       "screenshotPaths": [
@@ -147,12 +148,12 @@
         "Launch the RBG Tool Dashboard"
       ],
       "notes": [
-        "Files in bundle: 18"
+        "Files in bundle: 19"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 18,
+      "fileCount": 19,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-dashboard.html",
       "screenshotCount": 1,
       "screenshotPaths": [
@@ -179,8 +180,10 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
-      "screenshotCount": 0,
-      "screenshotPaths": [],
+      "screenshotCount": 1,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/Transaction Logger.png"
+      ],
       "uiKind": "mixed"
     },
     {
@@ -195,6 +198,10 @@
       "inputs": [],
       "notes": [
         "Grouped elements remain a known limitation and should not be treated as safely editable. Preserve category-specific behavior for walls, framing, and columns. Any future unpin or regroup workflow should stay explicit and reversible.",
+        "Check if pinned, then un-pin, run script, and re-pin.",
+        "Select All elements by Category is still WIP, need to fix.",
+        "Aim to push selection functions into library and use from there.",
+        "Potential 'ungroup/re-group' function for grouped elements.",
         "Files in bundle: 3"
       ],
       "authors": [
@@ -297,9 +304,10 @@
       ],
       "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
-      "screenshotCount": 1,
+      "screenshotCount": 2,
       "screenshotPaths": [
-        "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter.png"
+        "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter2.png"
       ],
       "uiKind": "pyrevit-form"
     },
@@ -327,12 +335,12 @@
       "uiKind": "none"
     },
     {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton",
       "title": "Grids\n2D / 3D",
       "tab": "SJ pyRevit",
       "panel": "RBG Tools Views",
-      "stack": "ShiftClick1",
-      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > GridExtents.pushbutton",
+      "stack": "Level and Grids",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > Level and Grids.pulldown > GridExtents.pushbutton",
       "function": "Click: Set visible Grids in Active View to 2D (view-specific) extents.\nShift+Click: Set them to 3D (model) extents.",
       "purpose": "Set visible grids in the active view to 2D extents quickly.",
       "inputs": [
@@ -353,12 +361,12 @@
       "uiKind": "pyrevit-form"
     },
     {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton",
       "title": "Levels\n2D / 3D",
       "tab": "SJ pyRevit",
       "panel": "RBG Tools Views",
-      "stack": "ShiftClick1",
-      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > LevelsExtents.pushbutton",
+      "stack": "Level and Grids",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > Level and Grids.pulldown > LevelsExtents.pushbutton",
       "function": "Click: Set visible Levels in Active View to 2D (view-specific) extents.\nShift+Click: Set them to 3D (model) extents.",
       "purpose": "Set visible levels in the active section or elevation view to 2D extents.",
       "inputs": [
@@ -379,12 +387,12 @@
       "uiKind": "pyrevit-form"
     },
     {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton",
       "title": "Levels: Head Switch\nLeft / Right",
       "tab": "SJ pyRevit",
       "panel": "RBG Tools Views",
-      "stack": "ShiftClick1",
-      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ShiftClick1.stack > LevelHeadSwitcher.pushbutton",
+      "stack": "Level and Grids",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > Level and Grids.pulldown > LevelHeadSwitcher.pushbutton",
       "function": "Click: Set visible Levels in Active View to Left Header only.\nShift+Click: Set them to Right Header only.",
       "purpose": "Show the left level bubble and hide the right bubble for levels visible in section and elevation views.",
       "inputs": [
@@ -411,16 +419,16 @@
       "panel": "RBG Tools Views",
       "stack": "ViewStack1",
       "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack1.stack > LinkedViews.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`BatchLinkViewSetup.xaml` `script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-linkedviews.html",
       "screenshotCount": 1,
       "screenshotPaths": [
@@ -473,12 +481,11 @@
       ],
       "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
-      "screenshotCount": 4,
+      "screenshotCount": 3,
       "screenshotPaths": [
-        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png",
-        "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png"
+        "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector3.png"
       ],
       "uiKind": "mixed"
     },
@@ -504,7 +511,7 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
       "screenshotCount": 1,
       "screenshotPaths": [
-        "generated/tool-screenshots/RBG_SYD_Tools/SectionDetail Updater.png"
+        "generated/tool-screenshots/RBG_SYD_Tools/Section Detail Updater.png"
       ],
       "uiKind": "mixed"
     },
@@ -515,17 +522,41 @@
       "panel": "RBG Tools Views",
       "stack": "ViewStack2",
       "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack2.stack > SheetNo.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py` `SheetNoOfNoWindow.xaml`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sheetno.html",
+      "screenshotCount": 0,
+      "screenshotPaths": [],
+      "uiKind": "mixed"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton",
+      "title": "View Filter Editor",
+      "tab": "SJ pyRevit",
+      "panel": "RBG Tools Views",
+      "stack": "ViewStack3",
+      "location": "RBG_SYD_Tools.tab > RBG Tools_Views.panel > ViewStack3.stack > ViewFilterEditor.pushbutton",
+      "function": "`script.py` — thin entry point: loads engine + UI, calls `main()` `ViewFilterEditor.xaml` — WPF layout (app bar, search toolbar, tabbed DataGrids, right-panel editor, footer)",
+      "purpose": "Browse all applied view filters in the project, split between View Templates and regular views. Allows filtering, sorting, and editing of per-view filter overrides — Enable, Visibility, Projection/Surface (Lines, Patterns, Transparency), Cut (Lines, Patterns), and Halftone — mirroring Revit's native Filters tab.",
+      "inputs": [],
+      "notes": [
+        "Never acquire `doc` at module level in engine or UI — always passed from `script.py` Transaction must be a plain `Start()/Commit()/RollBack()` sequence (IronPython 2.7 does not support `with Transaction(...)`) `ViewFilterEditorWindow` extends `forms.WPFWindow`; XAML path is always passed explicitly from the bundle dir All writes go through `apply_filter_overrides(doc, payload)` in the engine — UI only stages changes",
+        "Colour swatches are clickable Borders; colours use `#RRGGBB` hex strings internally Pattern combos are populated at row-select time from `collect_fill_patterns(doc)` Detail panel is hidden until a DataGrid row is selected; `Stage Changes` marks row dirty Only dirty rows are committed when `Apply to Revit` is clicked",
+        "Files in bundle: 4"
+      ],
+      "authors": [
+        "Unknown"
+      ],
+      "fileCount": 4,
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-viewfiltereditor.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
       "uiKind": "mixed"
@@ -537,16 +568,16 @@
       "panel": "Selection",
       "stack": "Direct",
       "location": "JasonHacksRevit.tab > Selection.panel > CategoryPicker.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`CategoryPicker.py` `CategoryPicker.xaml` `script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 5"
+        "Files in bundle: 6"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 5,
+      "fileCount": 6,
       "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
       "screenshotCount": 1,
       "screenshotPaths": [
@@ -561,16 +592,16 @@
       "panel": "Selection",
       "stack": "memo",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Copy State.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`CopyState_script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-copy-state.html",
       "screenshotCount": 7,
       "screenshotPaths": [
@@ -591,16 +622,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > MClear.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-mclear.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -613,16 +644,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > MDeduct.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-mdeduct.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -635,16 +666,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Next.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-next.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -657,16 +688,16 @@
       "panel": "Selection",
       "stack": "memo",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Paste State.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`PasteState_script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-paste-state.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -679,16 +710,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Prev.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-prev.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -701,19 +732,24 @@
       "panel": "Selection",
       "stack": "Direct",
       "location": "JasonHacksRevit.tab > Selection.panel > Propagate Extents Override.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Jason Braga"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
-      "screenshotCount": 0,
-      "screenshotPaths": [],
+      "screenshotCount": 4,
+      "screenshotPaths": [
+        "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override1.png",
+        "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override2.png",
+        "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override3.png",
+        "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override4.png"
+      ],
       "uiKind": "pyrevit-form"
     },
     {
@@ -723,16 +759,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Purge Memory Files.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-purge-memory-files.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -745,16 +781,16 @@
       "panel": "Selection",
       "stack": "Memory",
       "location": "JasonHacksRevit.tab > Selection.panel > memo.stack > Memory.pulldown > Save Memory as Selection.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-selection-save-memory-as-selection.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -767,16 +803,16 @@
       "panel": "Selection",
       "stack": "Unhide",
       "location": "JasonHacksRevit.tab > Selection.panel > Visibility.stack > Unhide.pulldown > UnhideAllElements.pushbutton",
-      "function": "See tool context and source files for behavior details.",
-      "purpose": "Purpose not documented in tool-context.md.",
+      "function": "`script.py`",
+      "purpose": "Unhide all Elements in the active view",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-selection-unhideallelements.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -795,12 +831,12 @@
         "Lists revisions that appear on sheets via revision clouds only. Excludes revisions manually ticked in the sheet revision box."
       ],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-sheets-cloudrevisions.html",
       "screenshotCount": 1,
       "screenshotPaths": [
@@ -815,16 +851,16 @@
       "panel": "Sheets",
       "stack": "Sheet Tools",
       "location": "JasonHacksRevit.tab > Sheets.panel > Sheet Tools.pulldown > Reorder Selected Viewport.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 4"
+        "Files in bundle: 5"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 4,
+      "fileCount": 5,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-selected-viewport.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -837,16 +873,16 @@
       "panel": "Sheets",
       "stack": "Sheet Tools",
       "location": "JasonHacksRevit.tab > Sheets.panel > Sheet Tools.pulldown > Reorder Viewports.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`ReorderViewports_mode_ui.xaml` `ReorderViewports_script.py` `ReorderViewports_sheets_ui.xaml` `ReorderViewports_ui.xaml`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 6"
+        "Files in bundle: 7"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 6,
+      "fileCount": 7,
       "pagePath": "tools/sj-pyrevit-sheets-reorder-viewports.html",
       "screenshotCount": 2,
       "screenshotPaths": [
@@ -862,16 +898,16 @@
       "panel": "SYD Prod WIP",
       "stack": "Josh",
       "location": "RBG_SYD_Tools.tab > SYD_Prod_WIP.panel > Josh.pulldown > Tool1.pushbutton",
-      "function": "See tool context and source files for behavior details.",
-      "purpose": "Purpose not documented in tool-context.md.",
+      "function": "`script.py`",
+      "purpose": "Turn Crop Region Visibility (Off Only!) For the Active View OR For ALL Views in the Active Sheet.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 2"
+        "Files in bundle: 3"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 2,
+      "fileCount": 3,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool1.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
@@ -884,20 +920,50 @@
       "panel": "SYD Prod WIP",
       "stack": "Josh",
       "location": "RBG_SYD_Tools.tab > SYD_Prod_WIP.panel > Josh.pulldown > Tool2.pushbutton",
-      "function": "See tool context and source files for behavior details.",
+      "function": "`script.py` `UI.xaml`",
       "purpose": "Purpose not documented in tool-context.md.",
       "inputs": [],
       "notes": [
-        "Files in bundle: 3"
+        "Files in bundle: 4"
       ],
       "authors": [
         "Unknown"
       ],
-      "fileCount": 3,
+      "fileCount": 4,
       "pagePath": "tools/sj-pyrevit-syd-prod-wip-tool2.html",
       "screenshotCount": 0,
       "screenshotPaths": [],
       "uiKind": "wpf"
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton",
+      "title": "WPF UI Template",
+      "tab": "SJ pyRevit",
+      "panel": "Templates",
+      "stack": "Direct",
+      "location": "RBG_SYD_Tools.tab > Templates.panel > WPFStyleTemplate.pushbutton",
+      "function": "Reference tool showing the approved 2026 WPF theme, controls, states, and interaction patterns.",
+      "purpose": "Reference tool that demonstrates the approved RBG pyRevit WPF shell, typography, buttons, tabs, cards, picker behavior, DataGrid treatment, chips, badges, notification bars, and footer status bar in one place. This is the canonical base visual reference for new WPF tools in this extension.",
+      "inputs": [
+        "Reference tool showing the approved 2026 WPF theme, controls, states, and interaction patterns."
+      ],
+      "notes": [
+        "Keep this tool as a reference surface, not a Revit-modifying workflow Prefer shared named resources over inline colours when extending the template Keep pushbutton logic thin and place reusable UI behavior in `lib` If future modeless behavior is added, route Revit work through `ExternalEvent` rather than direct WPF callbacks",
+        "Files in bundle: 5"
+      ],
+      "authors": [
+        "Unknown"
+      ],
+      "fileCount": 5,
+      "pagePath": "tools/sj-pyrevit-templates-wpfstyletemplate.html",
+      "screenshotCount": 4,
+      "screenshotPaths": [
+        "generated/tool-screenshots/RBG_SYD_Tools/WPF Template1.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/WPF Template2.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/WPF Template3.png",
+        "generated/tool-screenshots/RBG_SYD_Tools/WPF Template4.png"
+      ],
+      "uiKind": "mixed"
     }
   ]
 }

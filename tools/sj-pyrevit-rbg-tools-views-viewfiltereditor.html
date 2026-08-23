@@ -1,0 +1,2162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>View Filter Editor | Comp Design Wiki</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-title">Comp Design Wiki</span>
+      <span class="topbar-badge">Tool Detail</span>
+      <span class="topbar-tag">v1</span>
+    </div>
+
+    <div class="page">
+      <div class="part">
+        <span class="part-num">Tool</span>
+        <span class="part-title">View Filter Editor</span>
+        <span class="part-rule"></span>
+      </div>
+
+      <div class="priority-card">
+        <strong>Toolbar path:</strong> RBG_SYD_Tools.tab &gt; RBG Tools_Views.panel &gt; ViewStack3.stack &gt; ViewFilterEditor.pushbutton
+      </div>
+
+      <div class="wiki-article-layout">
+        <main class="wiki-article-main">
+      <section class="card wiki-section" id="overview">
+        <div class="card-head">
+          <span class="card-title">Overview</span>
+          <span class="card-hint">SJ pyRevit / RBG Tools Views / ViewStack3</span>
+        </div>
+        <div class="card-body tool-page-summary wiki-body">
+          <a class="back-link" href="../index.html">← Back to catalog</a>
+          <p class="wiki-overview-lead"><strong>Purpose:</strong> Browse all applied view filters in the project, split between View Templates and regular views. Allows filtering, sorting, and editing of per-view filter overrides — Enable, Visibility, Projection/Surface (Lines, Patterns, Transparency), Cut (Lines, Patterns), and Halftone — mirroring Revit&#39;s native Filters tab.</p>
+          <p class="wiki-overview-process"><strong>Process at a glance:</strong> Review the target views or templates whose filter overrides need to be inspected. → Run View Filter Editor to browse, adjust, and stage the required filter override changes. → Apply the staged edits and verify the resulting visibility and graphics overrides are correct.</p>
+          <div class="wiki-meta-grid">
+            <p><strong>Function:</strong> `script.py` — thin entry point: loads engine + UI, calls `main()` `ViewFilterEditor.xaml` — WPF layout (app bar, search toolbar, tabbed DataGrids, right-panel editor, footer)</p>
+            <p><strong>Toolbar tab:</strong> SJ pyRevit</p>
+            <p><strong>Panel:</strong> RBG Tools Views</p>
+            <p><strong>Simulator type:</strong> mixed</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="workflow">
+        <div class="card-head">
+          <span class="card-title">Workflow</span>
+          <span class="card-hint">Compact start-to-finish path with supporting UI signals</span>
+        </div>
+        <div class="card-body wiki-body">
+          <h4 class="subhead">Start-to-Finish Flow</h4>
+          <ol class="workflow-list"><li><strong>Step 1</strong><span>Review the target views or templates whose filter overrides need to be inspected.</span></li><li><strong>Preparation</strong><span>Run View Filter Editor to browse, adjust, and stage the required filter override changes.</span></li><li><strong>Result</strong><span>Apply the staged edits and verify the resulting visibility and graphics overrides are correct.</span></li></ol>
+
+          <h4 class="subhead">Key Workflow Methods</h4>
+          <ul><li><code>main()</code></li></ul>
+
+          <h4 class="subhead">Detected Forms Calls</h4>
+          <div class="mockup-chip-row"><span class="mockup-chip">forms.alert</span></div>
+
+          <h4 class="subhead">Window Titles</h4>
+          <ul><li>View Filter\nEditor</li></ul>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="simulator">
+        <div class="card-head">
+          <span class="card-title">Simulator</span>
+          <span class="card-hint">Interactive training mode (mixed)</span>
+        </div>
+        <div class="card-body wiki-body">
+          <p class="simulator-intro">This simulator is for training only and does not execute live pyRevit/Revit logic.</p>
+          <h4 class="subhead">Screenshot Reference</h4>
+          <p class="muted">No UI screenshots mapped for this tool yet. Simulator uses inferred controls from code/XAML.</p>
+          <div class="simulator-shell">
+            <div class="simulator-toolbar">
+              <span class="sim-chip">Controls: <strong id="sim-control-count">0</strong></span>
+              <span class="sim-chip">Events: <strong id="sim-event-count">0</strong></span>
+              <span class="sim-chip">Prompts: <strong id="sim-prompt-count">0</strong></span>
+            </div>
+            <div class="sim-tabs" role="tablist" aria-label="Simulator tabs">
+              <button type="button" class="sim-tab is-active" aria-selected="true">Parameters</button>
+              <button type="button" class="sim-tab" aria-selected="false">Results</button>
+            </div>
+            <div id="simulator-root" class="simulator-root" aria-live="polite"></div>
+            <div class="simulator-output">
+              <h4 class="subhead">Simulated Output</h4>
+              <pre id="sim-output">Ready.</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card wiki-section" id="notes">
+        <div class="card-head">
+          <span class="card-title">Notes</span>
+          <span class="card-hint">Inputs, files, and extracted notes</span>
+        </div>
+        <div class="card-body tool-detail-grid wiki-body">
+          <div>
+            <h4 class="subhead">Inputs</h4>
+            <p class="muted">No explicit click or shift-click input hints were detected.</p>
+          </div>
+          <div>
+            <h4 class="subhead">Files (4)</h4>
+            <ul><li><code>icon.png</code></li><li><code>script.py</code></li><li><code>tool-context.md</code></li><li><code>ViewFilterEditor.xaml</code></li></ul>
+          </div>
+          <div>
+            <h4 class="subhead">Notes</h4>
+            <ul><li>Never acquire `doc` at module level in engine or UI — always passed from `script.py` Transaction must be a plain `Start()/Commit()/RollBack()` sequence (IronPython 2.7 does not support `with Transaction(...)`) `ViewFilterEditorWindow` extends `forms.WPFWindow`; XAML path is always passed explicitly from the bundle dir All writes go through `apply_filter_overrides(doc, payload)` in the engine — UI only stages changes</li><li>Colour swatches are clickable Borders; colours use `#RRGGBB` hex strings internally Pattern combos are populated at row-select time from `collect_fill_patterns(doc)` Detail panel is hidden until a DataGrid row is selected; `Stage Changes` marks row dirty Only dirty rows are committed when `Apply to Revit` is clicked</li><li>Files in bundle: 4</li></ul>
+          </div>
+        </div>
+      </section>
+        </main>
+
+        <aside class="wiki-rail" aria-label="Page progress">
+          <h3>On This Page</h3>
+          <nav class="wiki-toc" aria-label="Tool article sections">
+            <a class="wiki-toc-link" href="#overview">Overview</a>
+            <a class="wiki-toc-link" href="#workflow">Workflow</a>
+            <a class="wiki-toc-link" href="#simulator">Simulator</a>
+            <a class="wiki-toc-link" href="#notes">Notes</a>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const SIMULATOR = {"toolId":"RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton","profile":"viewfiltereditor-high-fidelity","uiKind":"mixed","sourceType":"xaml","xamlFiles":["ViewFilterEditor.xaml"],"sourceKinds":["external-xaml"],"controls":[{"id":"vfe-search","name":"SearchBox","kind":"text","label":"Search","required":false},{"id":"vfe-show","name":"ViewFilterBox","kind":"select","label":"Show","required":false},{"id":"vfe-rows","name":"FilterRows","kind":"table","label":"Filter rows","required":false},{"id":"vfe-enabled","name":"Enabled","kind":"checkbox","label":"Enabled","required":false},{"id":"vfe-visible","name":"Visible","kind":"checkbox","label":"Visible","required":false},{"id":"vfe-halftone","name":"Halftone","kind":"checkbox","label":"Halftone","required":false},{"id":"vfe-transparency","name":"Transparency","kind":"text","label":"Transparency","required":false},{"id":"vfe-pattern","name":"Pattern","kind":"select","label":"Projection pattern","required":false},{"id":"vfe-stage","name":"StageChanges","kind":"button","label":"Stage Changes","required":true},{"id":"vfe-apply","name":"ApplyBtn","kind":"button","label":"Apply to Revit","required":true}],"events":[{"controlId":"vfe-search","event":"change","handler":"search_changed"},{"controlId":"vfe-stage","event":"click","handler":"stage_changes"},{"controlId":"vfe-apply","event":"click","handler":"apply_filter_overrides"}],"prompts":[{"type":"alert","message":"Select a row before staging filter override changes."},{"type":"alert","message":"Only dirty rows are applied by the real tool. This run is simulated only."}],"workflow":[{"step":1,"label":"Browse View Templates or Views and search for target filters"},{"step":2,"label":"Select a row to load its per-view override editor"},{"step":3,"label":"Stage changes for visibility, patterns, transparency, and halftone"},{"step":4,"label":"Apply the dirty rows through the simulator summary"}],"dynamicSources":[],"scenarios":[{"id":"view-filter-editor-training","title":"View Filter Editor Training Run","steps":["Search filters","Select row","Stage changes","Apply simulation"],"expectedOutput":["Dirty rows tracked","Apply summary shown","No Revit model changes were made"]}],"fidelityFlags":["high-fidelity-template-applied","xaml-guided-layout"],"confidence":{"controls":"high","workflow":"high","prompts":"high"}};
+        const DATASET = {"viewFilterEditor":{"showModes":["All filters","Only modified","Only hidden"],"patternOptions":["<None>","Solid Fill","Diagonal 45","Cross Hatch"],"templateRows":[{"id":"tpl-1","view":"STR - GA Template","filter":"Concrete","enabled":true,"visible":true,"halftone":false,"transparency":15,"status":"Clean"},{"id":"tpl-2","view":"STR - Steel Template","filter":"Structural Framing","enabled":true,"visible":true,"halftone":false,"transparency":0,"status":"Clean"}],"viewRows":[{"id":"view-1","view":"S-1002 Level 01 Framing Plan","filter":"Rebar","enabled":true,"visible":false,"halftone":true,"transparency":60,"status":"Dirty"},{"id":"view-2","view":"S-3001 Typical Sections","filter":"Concrete","enabled":true,"visible":true,"halftone":false,"transparency":10,"status":"Clean"}]}};
+        const SCREENSHOTS = [];
+        const links = Array.from(document.querySelectorAll('.wiki-toc-link'));
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+        const simulatorRoot = document.getElementById('simulator-root');
+        const simOutput = document.getElementById('sim-output');
+
+        function setText(id, value) {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = String(value);
+          }
+        }
+
+        function getControlOptions(control) {
+          const source = DATASET.selectOptions || {};
+          const options = source[control.id] || source[control.name] || source[control.label] || [];
+          if (!Array.isArray(options) || !options.length) {
+            return null;
+          }
+          return options.map((item) => String(item));
+        }
+
+        function initializeScreenshotGallery() {
+          const gallery = document.querySelector('[data-sim-gallery]');
+          if (!gallery || !SCREENSHOTS.length) {
+            return;
+          }
+
+          const image = gallery.querySelector('[data-gallery-image]');
+          const caption = gallery.querySelector('[data-gallery-caption]');
+          const counter = gallery.querySelector('[data-gallery-counter]');
+          const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
+          let activeIndex = 0;
+          let zoom = 1;
+
+          function applyZoom() {
+            if (image) {
+              image.style.transform = 'scale(' + zoom.toFixed(2) + ')';
+            }
+          }
+
+          function setActive(index) {
+            const nextIndex = Math.max(0, Math.min(SCREENSHOTS.length - 1, index));
+            const next = SCREENSHOTS[nextIndex];
+            if (!next || !image) {
+              return;
+            }
+
+            activeIndex = nextIndex;
+            image.src = '../' + next.localPath;
+            image.alt = 'View Filter Editor screenshot: ' + next.fileName;
+            if (caption) {
+              caption.textContent = next.fileName;
+            }
+            if (counter) {
+              counter.textContent = (nextIndex + 1) + ' / ' + SCREENSHOTS.length;
+            }
+            thumbs.forEach((thumb, thumbIndex) => thumb.classList.toggle('is-active', thumbIndex === nextIndex));
+            zoom = 1;
+            applyZoom();
+          }
+
+          Array.from(gallery.querySelectorAll('[data-gallery-zoom]')).forEach((button) => {
+            button.addEventListener('click', function () {
+              const action = button.getAttribute('data-gallery-zoom');
+              if (action === 'in') {
+                zoom = Math.min(2.5, zoom + 0.25);
+              } else if (action === 'out') {
+                zoom = Math.max(0.5, zoom - 0.25);
+              } else {
+                zoom = 1;
+              }
+              applyZoom();
+            });
+          });
+
+          thumbs.forEach((thumb) => {
+            thumb.addEventListener('click', function () {
+              const nextIndex = Number(thumb.getAttribute('data-gallery-thumb') || '0');
+              setActive(nextIndex);
+            });
+          });
+
+          const openButton = gallery.querySelector('[data-gallery-open]');
+          if (openButton && image) {
+            openButton.addEventListener('click', function () {
+              window.open(image.src, '_blank', 'noopener');
+            });
+            image.addEventListener('click', function () {
+              window.open(image.src, '_blank', 'noopener');
+            });
+          }
+
+          setActive(activeIndex);
+        }
+
+        function createInput(control) {
+          const wrap = document.createElement('label');
+          wrap.className = 'sim-control';
+
+          const title = document.createElement('span');
+          title.className = 'sim-label';
+          title.textContent = control.label + (control.required ? ' *' : '');
+          wrap.appendChild(title);
+
+          let field;
+          if (control.kind === 'text') {
+            field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder = 'Enter ' + control.label;
+          } else if (control.kind === 'select') {
+            field = document.createElement('select');
+            const selectOptions = getControlOptions(control) || ['Option A', 'Option B', 'Option C'];
+            ['Select...'].concat(selectOptions).forEach((optionText, index) => {
+              const option = document.createElement('option');
+              option.value = index === 0 ? '' : optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'multiselect') {
+            field = document.createElement('select');
+            field.multiple = true;
+            const multiOptions = getControlOptions(control) || ['Sample 1', 'Sample 2', 'Sample 3'];
+            multiOptions.forEach((optionText) => {
+              const option = document.createElement('option');
+              option.value = optionText;
+              option.textContent = optionText;
+              field.appendChild(option);
+            });
+          } else if (control.kind === 'checkbox') {
+            field = document.createElement('input');
+            field.type = 'checkbox';
+          } else if (control.kind === 'radio') {
+            field = document.createElement('input');
+            field.type = 'radio';
+          } else {
+            field = document.createElement('input');
+            field.type = 'text';
+          }
+
+          field.dataset.controlId = control.id;
+          field.dataset.required = control.required ? 'true' : 'false';
+          field.className = 'sim-field';
+          wrap.appendChild(field);
+          return wrap;
+        }
+
+        function createButton(control) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'sim-action';
+          button.textContent = control.label || 'Run';
+          button.dataset.controlId = control.id;
+          button.addEventListener('click', function () {
+            const requiredFields = Array.from(simulatorRoot.querySelectorAll('[data-required="true"]'));
+            const missing = requiredFields.filter((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              if (field.multiple) {
+                return !Array.from(field.selectedOptions).length;
+              }
+              return !String(field.value || '').trim();
+            });
+
+            if (missing.length) {
+              simOutput.textContent = 'Validation failed. Complete required inputs before running.';
+              return;
+            }
+
+            simOutput.textContent = [
+              'Simulation complete.',
+              'Action: ' + button.textContent,
+              'Controls evaluated: ' + SIMULATOR.controls.length,
+              'Events mapped: ' + SIMULATOR.events.length,
+              'No Revit model changes were made.',
+            ].join('\n');
+          });
+          return button;
+        }
+
+        function renderAddCoordinatesSimulator() {
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          const state = {
+            scope: '',
+            category: 'Structural Columns',
+          };
+
+          const shell = document.createElement('section');
+          shell.className = 'sim-alert-shell';
+
+          const chrome = document.createElement('div');
+          chrome.className = 'sim-alert-chrome';
+          chrome.innerHTML = '<span>Add Coordinates</span><span>pyRevit</span>';
+          shell.appendChild(chrome);
+
+          const body = document.createElement('div');
+          body.className = 'sim-alert-body';
+          body.innerHTML = '<p class="sim-alert-title">Choose your selection type</p><p class="sim-alert-copy">Select elements in the active view, or run a model-wide coordinate update by category.</p>';
+          shell.appendChild(body);
+
+          const commandList = document.createElement('div');
+          commandList.className = 'sim-alert-command-list';
+          body.appendChild(commandList);
+
+          const stateCard = document.createElement('div');
+          stateCard.className = 'sim-alert-state';
+          body.appendChild(stateCard);
+
+          function renderState() {
+            stateCard.innerHTML = '';
+
+            if (!state.scope) {
+              const placeholder = document.createElement('p');
+              placeholder.className = 'muted';
+              placeholder.textContent = 'Pick a training path to reveal the remaining steps.';
+              stateCard.appendChild(placeholder);
+              return;
+            }
+
+            const summary = document.createElement('p');
+            summary.className = 'sim-alert-summary';
+            summary.textContent = state.scope === 'view'
+              ? 'Active-view path selected. The real tool now waits for element picks in the current view.'
+              : 'Model-wide path selected. Choose the category that should receive updated coordinate values.';
+            stateCard.appendChild(summary);
+
+            if (state.scope === 'model') {
+              const selectWrap = document.createElement('label');
+              selectWrap.className = 'sim-control';
+              const label = document.createElement('span');
+              label.className = 'sim-label';
+              label.textContent = 'Category';
+              selectWrap.appendChild(label);
+
+              const select = document.createElement('select');
+              select.className = 'sim-field';
+              ['Structural Columns', 'Structural Foundations', 'Generic Models'].forEach((optionText) => {
+                const option = document.createElement('option');
+                option.value = optionText;
+                option.textContent = optionText;
+                if (optionText === state.category) {
+                  option.selected = true;
+                }
+                select.appendChild(option);
+              });
+              select.addEventListener('change', function () {
+                state.category = select.value;
+              });
+              selectWrap.appendChild(select);
+              stateCard.appendChild(selectWrap);
+            }
+
+            const runButton = document.createElement('button');
+            runButton.type = 'button';
+            runButton.className = 'sim-action';
+            runButton.textContent = 'Run Coordinate Update';
+            runButton.addEventListener('click', function () {
+              const targetLabel = state.scope === 'view' ? 'selected active-view elements' : state.category;
+              simOutput.textContent = [
+                'Simulation complete.',
+                'Target scope: ' + targetLabel,
+                'Coordinate parameters staged: RBG_Survey_SP_X / Y / Z',
+                'Results: updated element list ready for review.',
+                'No Revit model changes were made.',
+              ].join('\n');
+            });
+            stateCard.appendChild(runButton);
+          }
+
+          [
+            {
+              label: 'Select Elements in View',
+              hint: 'Pick elements manually from the active 3D view before the update runs.',
+              value: 'view',
+            },
+            {
+              label: 'Select All Elements In Model',
+              hint: 'Choose a category and run the shared-parameter update across the model.',
+              value: 'model',
+            },
+          ].forEach((item) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'sim-alert-choice';
+            button.innerHTML = '<strong>' + item.label + '</strong><span>' + item.hint + '</span>';
+            button.addEventListener('click', function () {
+              state.scope = item.value;
+              Array.from(commandList.children).forEach((node) => node.classList.remove('is-active'));
+              button.classList.add('is-active');
+              simOutput.textContent = item.value === 'view'
+                ? 'Ready to simulate active-view element picking.'
+                : 'Ready to simulate category-driven model update.';
+              renderState();
+            });
+            commandList.appendChild(button);
+          });
+
+          renderState();
+          simulatorRoot.appendChild(shell);
+        }
+
+        function renderInferredXamlSimulator() {
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          const controls = Array.isArray(SIMULATOR.controls) ? SIMULATOR.controls : [];
+          const inputControls = controls.filter((control) => ['text', 'select', 'multiselect', 'checkbox', 'radio'].includes(control.kind));
+          const buttonControls = controls.filter((control) => control.kind === 'button');
+          const tableControls = controls.filter((control) => control.kind === 'table');
+          const blockControls = controls.filter((control) => !['text', 'select', 'multiselect', 'checkbox', 'radio', 'button', 'table'].includes(control.kind));
+          const workflowSteps = Array.isArray(SIMULATOR.workflow) ? SIMULATOR.workflow : [];
+
+          const shell = document.createElement('section');
+          shell.className = 'sim-xaml-shell';
+
+          const header = document.createElement('div');
+          header.className = 'sim-xaml-header';
+          header.innerHTML = '<strong>Inferred WPF workspace</strong><span>Source: ' + (SIMULATOR.xamlFiles || []).join(', ') + '</span>';
+          shell.appendChild(header);
+
+          const body = document.createElement('div');
+          body.className = 'sim-xaml-body';
+          shell.appendChild(body);
+
+          const left = document.createElement('div');
+          left.className = 'sim-xaml-pane';
+          body.appendChild(left);
+
+          if (workflowSteps.length) {
+            const workflowCard = document.createElement('div');
+            workflowCard.className = 'sim-xaml-card';
+            workflowCard.innerHTML = '<h5>Workflow stages</h5>';
+            const list = document.createElement('ol');
+            list.className = 'sim-xaml-list';
+            workflowSteps.forEach((step) => {
+              const item = document.createElement('li');
+              item.textContent = step.label;
+              list.appendChild(item);
+            });
+            workflowCard.appendChild(list);
+            left.appendChild(workflowCard);
+          }
+
+          if (blockControls.length) {
+            const blockCard = document.createElement('div');
+            blockCard.className = 'sim-xaml-card';
+            blockCard.innerHTML = '<h5>Detected layout regions</h5>';
+            const wrap = document.createElement('div');
+            wrap.className = 'sim-xaml-blocks';
+            blockControls.slice(0, 12).forEach((control) => {
+              const chip = document.createElement('span');
+              chip.className = 'mockup-chip';
+              chip.textContent = control.label || control.name || control.kind;
+              wrap.appendChild(chip);
+            });
+            blockCard.appendChild(wrap);
+            left.appendChild(blockCard);
+          }
+
+          if (SIMULATOR.prompts.length) {
+            const promptCard = document.createElement('div');
+            promptCard.className = 'sim-xaml-card';
+            promptCard.innerHTML = '<h5>Prompts</h5>';
+            const list = document.createElement('ul');
+            list.className = 'sim-xaml-list';
+            SIMULATOR.prompts.forEach((prompt) => {
+              const item = document.createElement('li');
+              item.textContent = prompt.type + ': ' + prompt.message;
+              list.appendChild(item);
+            });
+            promptCard.appendChild(list);
+            left.appendChild(promptCard);
+          }
+
+          const right = document.createElement('div');
+          right.className = 'sim-xaml-pane';
+          body.appendChild(right);
+
+          if (inputControls.length) {
+            const formCard = document.createElement('div');
+            formCard.className = 'sim-xaml-card';
+            formCard.innerHTML = '<h5>Controls</h5>';
+            const form = document.createElement('div');
+            form.className = 'sim-form';
+            inputControls.slice(0, 12).forEach((control) => {
+              form.appendChild(createInput(control));
+            });
+            formCard.appendChild(form);
+            right.appendChild(formCard);
+          }
+
+          if (tableControls.length) {
+            const tableCard = document.createElement('div');
+            tableCard.className = 'sim-xaml-card';
+            tableCard.innerHTML = '<h5>Table preview</h5>';
+            tableControls.forEach((control) => {
+              const datasetRows = Array.isArray(DATASET.sampleTableRows) && DATASET.sampleTableRows.length
+                ? DATASET.sampleTableRows
+                : [
+                    ['Row 01', control.label || control.name || 'Pending'],
+                    ['Row 02', 'Ready'],
+                    ['Row 03', 'Review'],
+                  ];
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap';
+              const table = document.createElement('table');
+              table.innerHTML = '<thead><tr><th>Item</th><th>State</th></tr></thead>';
+              const tbody = document.createElement('tbody');
+              datasetRows.slice(0, 6).forEach((row, index) => {
+                const cells = Array.isArray(row) ? row : [row, ''];
+                const tr = document.createElement('tr');
+                if (index === 0) {
+                  tr.className = 'is-active';
+                }
+                tr.innerHTML = '<td>' + String(cells[0] || '') + '</td><td>' + String(cells[1] || '') + '</td>';
+                tbody.appendChild(tr);
+              });
+              table.appendChild(tbody);
+              tableWrap.appendChild(table);
+              tableCard.appendChild(tableWrap);
+            });
+            right.appendChild(tableCard);
+          }
+
+          if (buttonControls.length) {
+            const actionRow = document.createElement('div');
+            actionRow.className = 'sim-action-row';
+            buttonControls.slice(0, 8).forEach((control) => {
+              actionRow.appendChild(createButton(control));
+            });
+            right.appendChild(actionRow);
+          }
+
+          if (!inputControls.length && !tableControls.length && !buttonControls.length && !blockControls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured XAML controls were inferred. Use the workflow and screenshot reference as the training guide.';
+            right.appendChild(fallback);
+          }
+
+          simulatorRoot.appendChild(shell);
+        }
+
+        function renderSimulator() {
+          if (!simulatorRoot) {
+            return;
+          }
+
+          if (String(SIMULATOR.profile || '') === 'addcoordinates-dialog') {
+            renderAddCoordinatesSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'section-updater-high-fidelity') {
+            renderSectionUpdaterSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'packagecreator-high-fidelity') {
+            renderPackageCreatorSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'paramcopier-high-fidelity') {
+            renderParamCopierSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'sheetno-high-fidelity') {
+            renderSheetNoSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'scheduleupdater-high-fidelity') {
+            renderScheduleUpdaterSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'linkedviews-high-fidelity') {
+            renderLinkedViewsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'categorypicker-high-fidelity') {
+            renderCategoryPickerSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'reorderviewports-high-fidelity') {
+            renderReorderViewportsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'copystate-high-fidelity') {
+            renderCopyStateSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'propagateextentsoverride-high-fidelity') {
+            renderPropagateExtentsOverrideSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'cloudrevisions-high-fidelity') {
+            renderCloudRevisionsSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'elementsbylevel-high-fidelity') {
+            renderElementsByLevelSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'dashboard-high-fidelity') {
+            renderDashboardSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'transactionlogger-high-fidelity') {
+            renderTransactionLoggerSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'planviewrange-high-fidelity') {
+            renderPlanViewRangeSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'scopeboxviewcreation-high-fidelity') {
+            renderScopeBoxViewCreationSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'viewfiltereditor-high-fidelity') {
+            renderViewFilterEditorSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'wpftemplate-reference') {
+            renderWpfTemplateSimulator();
+            return;
+          }
+          if (String(SIMULATOR.profile || '') === 'xaml-inferred-layout') {
+            renderInferredXamlSimulator();
+            return;
+          }
+
+          simulatorRoot.innerHTML = '';
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          if (!SIMULATOR.controls.length) {
+            const fallback = document.createElement('p');
+            fallback.className = 'muted';
+            fallback.textContent = 'No structured controls were detected. Use workflow and prompts as the training guide.';
+            simulatorRoot.appendChild(fallback);
+            return;
+          }
+
+          const form = document.createElement('div');
+          form.className = 'sim-form';
+          const actionRow = document.createElement('div');
+          actionRow.className = 'sim-action-row';
+
+          SIMULATOR.controls.forEach((control) => {
+            if (control.kind === 'button') {
+              actionRow.appendChild(createButton(control));
+              return;
+            }
+            if (control.kind === 'table') {
+              const datasetRows = Array.isArray(DATASET.sampleTableRows) ? DATASET.sampleTableRows : [];
+              const tableRows = datasetRows.length
+                ? datasetRows.map((row) => {
+                  const cells = Array.isArray(row) ? row : [row];
+                  const left = String(cells[0] || '');
+                  const right = String(cells[1] || 'Ready');
+                  return '<tr><td>' + left + '</td><td>' + right + '</td></tr>';
+                }).join('')
+                : '<tr><td>Sample Row A</td><td>Ready</td></tr><tr><td>Sample Row B</td><td>Queued</td></tr>';
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'sim-table-wrap sim-span-full';
+              tableWrap.innerHTML = '<table><thead><tr><th>' + control.label + '</th><th>Status</th></tr></thead><tbody>' + tableRows + '</tbody></table>';
+              form.appendChild(tableWrap);
+              return;
+            }
+            form.appendChild(createInput(control));
+          });
+
+          if (!SIMULATOR.controls.some((control) => control.kind === 'button')) {
+            actionRow.appendChild(createButton({ id: 'sim-run', label: 'Run Simulation', kind: 'button' }));
+          }
+
+          if (actionRow.children.length) {
+            form.appendChild(actionRow);
+          }
+
+          simulatorRoot.appendChild(form);
+        }
+
+        function renderPackageCreatorSimulator() {
+          const dataset = DATASET.packageCreator || {};
+          const officeOptions = Array.isArray(dataset.officeOptions) && dataset.officeOptions.length ? dataset.officeOptions : ['SYD', 'MEL', 'BNE'];
+          const yearOptions = Array.isArray(dataset.yearOptions) && dataset.yearOptions.length ? dataset.yearOptions : ['2026', '2025', '2024'];
+          const stageRows = Array.isArray(dataset.stageRows) && dataset.stageRows.length
+            ? dataset.stageRows
+            : [['Project Link', 'Pending'], ['Rules', 'Pending'], ['Checks', 'Pending'], ['Export', 'Pending'], ['Create', 'Pending']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid">' +
+              '<section class="hf-pane">' +
+                '<h5>Project Setup</h5>' +
+                '<label class="sim-control"><span class="sim-label">Project search</span><input id="pc-project-search" class="sim-field" type="text" placeholder="Search project..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Office</span><select id="pc-office" class="sim-field">' + officeOptions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Year folder</span><select id="pc-year-folder" class="sim-field">' + yearOptions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Project docs root *</span><input id="pc-docs-root" class="sim-field" type="text" value="' + String(dataset.projectDocsRoot || '') + '" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Model key *</span><input id="pc-model-key" class="sim-field" type="text" value="' + String(dataset.modelKey || '') + '" /></label>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Naming Inputs</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet number source parameter</span><input id="pc-sheet-number-param" class="sim-field" type="text" value="' + String(dataset.sheetNumberParam || '') + '" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Revision source parameter</span><input id="pc-revision-param" class="sim-field" type="text" value="' + String(dataset.revisionParam || '') + '" /></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-refresh">Refresh</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-search">Search</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-apply-project">Apply Project</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-apply-rules">Apply Rules</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Stage Status</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Stage</th><th>Status</th></tr></thead><tbody>' + stageRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-run-check">Run Check</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-stage-export">Stage 4: Export</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pc-stage-create">Stage 5: Create</button>' +
+                  '<button type="button" class="sim-action" id="pc-run-full-flow">Run Full Flow</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('pc-run-full-flow').addEventListener('click', function () {
+            const docsRoot = String(document.getElementById('pc-docs-root').value || '').trim();
+            const modelKey = String(document.getElementById('pc-model-key').value || '').trim();
+            if (!docsRoot || !modelKey) {
+              simOutput.textContent = 'Validation failed. Project docs root and model key are required.';
+              return;
+            }
+            simOutput.textContent = 'PackageCreator full flow simulation complete.\nChecks: OK\nExport stage: simulated\nCreate stage: simulated\nNo Revit model changes were made.';
+          });
+          document.getElementById('pc-run-check').addEventListener('click', function () {
+            simOutput.textContent = 'Validation checks complete (simulated).\nIssues found: 0';
+          });
+        }
+
+        function renderParamCopierSimulator() {
+          const dataset = DATASET.paramCopier || {};
+          const sourceCategories = Array.isArray(dataset.sourceCategories) && dataset.sourceCategories.length ? dataset.sourceCategories : ['Walls', 'Floors', 'Structural Framing'];
+          const targetCategories = Array.isArray(dataset.targetCategories) && dataset.targetCategories.length ? dataset.targetCategories : sourceCategories;
+          const sourceParams = Array.isArray(dataset.sourceParameters) && dataset.sourceParameters.length ? dataset.sourceParameters : ['Comments', 'Mark', 'Type Name'];
+          const targetParams = Array.isArray(dataset.targetParameters) && dataset.targetParameters.length ? dataset.targetParameters : ['RBG_Comments', 'RBG_Mark', 'RBG_TypeName'];
+          const copyModes = Array.isArray(dataset.copyModes) && dataset.copyModes.length ? dataset.copyModes : ['Overwrite target', 'Fill empty target only'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['W-101', 'Beam A', 'Copied'], ['W-102', 'Beam B', 'Copied']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Mapping Setup</h5>' +
+                '<label class="sim-control"><span class="sim-label">Source category *</span><select id="pm-source-category" class="sim-field">' + sourceCategories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Source parameter *</span><select id="pm-source-param" class="sim-field">' + sourceParams.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target category *</span><select id="pm-target-category" class="sim-field">' + targetCategories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target parameter *</span><select id="pm-target-param" class="sim-field">' + targetParams.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Copy mode *</span><select id="pm-copy-mode" class="sim-field">' + copyModes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="pm-only-selected" type="checkbox" /> Only selected elements</label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Preview Mappings</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Element</th><th>Mapped Value</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pm-preview">Preview</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pm-reset">Reset</button>' +
+                  '<button type="button" class="sim-action" id="pm-copy">Copy Parameters</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('pm-preview').addEventListener('click', function () {
+            simOutput.textContent = 'Preview generated for ' + rows.length + ' rows (simulated).';
+          });
+          document.getElementById('pm-copy').addEventListener('click', function () {
+            simOutput.textContent = 'ParamCopier simulation complete.\nRows updated: ' + rows.length + '\nNo Revit model changes were made.';
+          });
+          document.getElementById('pm-reset').addEventListener('click', function () {
+            simOutput.textContent = 'Mapping controls reset (simulated).';
+          });
+        }
+
+        function renderSheetNoSimulator() {
+          const source = DATASET.selectOptions || {};
+          const scopes = source.cmbscope || ['Active View', 'Current Sheet Set', 'Selected Sheets'];
+          const sheetSets = source.cmbsheetset || ['A-Documentation', 'S-Structural'];
+          const params = source.cmbsheetnoparam || ['Sheet Number'];
+          const rows = Array.isArray(DATASET.sampleTableRows) && DATASET.sampleTableRows.length
+            ? DATASET.sampleTableRows
+            : [['S101 | Level 01', 'Ready'], ['S201 | Level 02', 'Review']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Selection and Formatting</h5>' +
+                '<label class="sim-control"><span class="sim-label">Scope *</span><select id="sn-scope" class="sim-field">' + scopes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Sheet set</span><select id="sn-sheetset" class="sim-field">' + sheetSets.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Sheet number parameter *</span><select id="sn-param" class="sim-field">' + params.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Prefix</span><input id="sn-prefix" class="sim-field" type="text" placeholder="e.g. GA-" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Suffix</span><input id="sn-suffix" class="sim-field" type="text" placeholder="e.g. -IFC" /></label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="sn-preview">Preview Changes</button>' +
+                  '<button type="button" class="sim-action" id="sn-apply">Apply Sheet Numbers</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('sn-preview').addEventListener('click', function () {
+            simOutput.textContent = 'Sheet numbering preview generated for ' + rows.length + ' rows (simulated).';
+          });
+          document.getElementById('sn-apply').addEventListener('click', function () {
+            simOutput.textContent = 'SheetNo simulation complete.\nUpdated rows: ' + rows.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderScheduleUpdaterSimulator() {
+          const dataset = DATASET.scheduleUpdater || {};
+          const schedules = Array.isArray(dataset.schedules) && dataset.schedules.length ? dataset.schedules : ['S-Concrete Reinforcement', 'S-Steel Framing'];
+          const existing = Array.isArray(dataset.existingFields) && dataset.existingFields.length ? dataset.existingFields : ['Mark', 'Type', 'Comments'];
+          const available = Array.isArray(dataset.availableFields) && dataset.availableFields.length ? dataset.availableFields : ['RBG_Stage', 'RBG_Discipline', 'RBG_Approval'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['RBG_Stage', 'Add'], ['RBG_Discipline', 'Add']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Schedule + Field Selection</h5>' +
+                '<label class="sim-control"><span class="sim-label">Schedule *</span><select id="su-schedule" class="sim-field">' + schedules.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Field search</span><input id="su-field-search" class="sim-field" type="text" placeholder="Filter available fields..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Existing fields</span><select id="su-existing-fields" class="sim-field" multiple>' + existing.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Available fields</span><select id="su-available-fields" class="sim-field" multiple>' + available.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="su-refresh">Refresh</button>' +
+                  '<button type="button" class="sim-action" id="su-add-fields">Add Selected Fields</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="su-remove-fields">Remove Selected Fields</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Field Updates Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Field</th><th>Action</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || 'Add') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action" id="su-apply">Apply Updates</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('su-refresh').addEventListener('click', function () {
+            simOutput.textContent = 'Schedules refreshed (simulated).';
+          });
+          document.getElementById('su-add-fields').addEventListener('click', function () {
+            simOutput.textContent = 'Selected fields staged for add (simulated).';
+          });
+          document.getElementById('su-remove-fields').addEventListener('click', function () {
+            simOutput.textContent = 'Selected fields staged for removal (simulated).';
+          });
+          document.getElementById('su-apply').addEventListener('click', function () {
+            simOutput.textContent = 'Schedule Updater simulation complete.\nUpdated fields: ' + rows.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderLinkedViewsSimulator() {
+          const dataset = DATASET.linkedViews || {};
+          const links = Array.isArray(dataset.linkInstances) && dataset.linkInstances.length ? dataset.linkInstances : ['ARC-Model.rvt', 'STR-Reference.rvt'];
+          const sourceViews = Array.isArray(dataset.sourceViews) && dataset.sourceViews.length ? dataset.sourceViews : ['L01 - Structural Plan', 'L02 - Structural Plan'];
+          const targetViews = Array.isArray(dataset.targetViews) && dataset.targetViews.length ? dataset.targetViews : ['Host L01 Plan', 'Host L02 Plan'];
+          const modes = Array.isArray(dataset.modes) && dataset.modes.length ? dataset.modes : ['Overlay', 'By shared coordinates'];
+          const rows = Array.isArray(dataset.previewRows) && dataset.previewRows.length ? dataset.previewRows : [['L01 - Structural Plan', 'Host L01 Plan', 'Ready']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Linked View Mapping</h5>' +
+                '<label class="sim-control"><span class="sim-label">Revit link instance *</span><select id="lv-link-instance" class="sim-field">' + links.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Linked source view *</span><select id="lv-source-view" class="sim-field">' + sourceViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Host target view *</span><select id="lv-target-view" class="sim-field">' + targetViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Placement mode *</span><select id="lv-mode" class="sim-field">' + modes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="lv-align-crop" type="checkbox" checked /> Align crop to linked view extents</label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="lv-load">Load Linked Views</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="lv-preview-btn">Preview Placement</button>' +
+                  '<button type="button" class="sim-action" id="lv-create">Create / Update</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Placement Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Linked View</th><th>Host View</th><th>Status</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || 'Ready') + '</td></tr>').join('') + '</tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('lv-load').addEventListener('click', function () {
+            simOutput.textContent = 'Linked views loaded from selected link (simulated).';
+          });
+          document.getElementById('lv-preview-btn').addEventListener('click', function () {
+            simOutput.textContent = 'Placement preview generated (simulated).';
+          });
+          document.getElementById('lv-create').addEventListener('click', function () {
+            simOutput.textContent = 'LinkedViews simulation complete.\nMapped rows: ' + rows.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderCategoryPickerSimulator() {
+          const dataset = DATASET.categoryPicker || {};
+          const discipline = Array.isArray(dataset.disciplineFilters) && dataset.disciplineFilters.length ? dataset.disciplineFilters : ['All', 'Architecture', 'Structure', 'MEP'];
+          const categories = Array.isArray(dataset.categories) && dataset.categories.length ? dataset.categories : ['Walls', 'Floors', 'Doors', 'Structural Framing', 'Columns'];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Category Selection</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search categories</span><input id="cp-search" class="sim-field" type="text" placeholder="Type to filter..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Discipline filter</span><select id="cp-discipline" class="sim-field">' + discipline.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Categories *</span><select id="cp-categories" class="sim-field" multiple>' + categories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cp-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cp-clear">Clear</button>' +
+                  '<button type="button" class="sim-action" id="cp-apply">Select Elements</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Selection Summary</h5>' +
+                '<p class="muted">Selected category count: <strong id="cp-count">0</strong></p>' +
+                '<p class="muted">Use multi-select to stage category picks before applying.</p>' +
+              '</section>' +
+            '</div>';
+
+          const list = document.getElementById('cp-categories');
+          const countNode = document.getElementById('cp-count');
+          function updateCount() {
+            countNode.textContent = String(Array.from(list.selectedOptions).length);
+          }
+          list.addEventListener('change', updateCount);
+          updateCount();
+
+          document.getElementById('cp-select-all').addEventListener('click', function () {
+            Array.from(list.options).forEach((option) => { option.selected = true; });
+            updateCount();
+            simOutput.textContent = 'All categories selected (simulated).';
+          });
+          document.getElementById('cp-clear').addEventListener('click', function () {
+            Array.from(list.options).forEach((option) => { option.selected = false; });
+            updateCount();
+            simOutput.textContent = 'Category selection cleared (simulated).';
+          });
+          document.getElementById('cp-apply').addEventListener('click', function () {
+            const count = Array.from(list.selectedOptions).length;
+            if (!count) {
+              simOutput.textContent = 'Validation failed. Select at least one category.';
+              return;
+            }
+            simOutput.textContent = 'CategoryPicker simulation complete.\nCategories selected: ' + count + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderReorderViewportsSimulator() {
+          const dataset = DATASET.reorderViewports || {};
+          const sheets = Array.isArray(dataset.sheets) && dataset.sheets.length ? dataset.sheets : ['S101 - Plan', 'S201 - Sections'];
+          const rows = Array.isArray(dataset.viewportRows) && dataset.viewportRows.length ? dataset.viewportRows : [['01', 'General Notes'], ['02', 'Plan View'], ['03', 'Typical Section']];
+          const workingRows = rows.map((row) => [String(row[0] || ''), String(row[1] || '')]);
+          let activeIndex = workingRows.length ? 0 : -1;
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Sheet + Ordering</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet *</span><select id="rv-sheet" class="sim-field">' + sheets.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-up">Move Up</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-down">Move Down</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="rv-auto">Auto Sort</button>' +
+                  '<button type="button" class="sim-action" id="rv-apply">Apply Viewport Order</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Viewport Order</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Order</th><th>Viewport</th></tr></thead><tbody id="rv-rows"></tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          const tbody = document.getElementById('rv-rows');
+          function renderRows() {
+            tbody.innerHTML = workingRows.map((row, index) => '<tr data-idx="' + index + '"' + (index === activeIndex ? ' class="is-active"' : '') + '><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>').join('');
+            Array.from(tbody.querySelectorAll('tr')).forEach((tr) => {
+              tr.addEventListener('click', function () {
+                activeIndex = Number(tr.getAttribute('data-idx'));
+                renderRows();
+              });
+            });
+          }
+
+          function swapRows(a, b) {
+            const tmp = workingRows[a];
+            workingRows[a] = workingRows[b];
+            workingRows[b] = tmp;
+            activeIndex = b;
+            renderRows();
+          }
+
+          document.getElementById('rv-up').addEventListener('click', function () {
+            if (activeIndex <= 0) return;
+            swapRows(activeIndex, activeIndex - 1);
+            simOutput.textContent = 'Viewport moved up (simulated).';
+          });
+          document.getElementById('rv-down').addEventListener('click', function () {
+            if (activeIndex < 0 || activeIndex >= workingRows.length - 1) return;
+            swapRows(activeIndex, activeIndex + 1);
+            simOutput.textContent = 'Viewport moved down (simulated).';
+          });
+          document.getElementById('rv-auto').addEventListener('click', function () {
+            workingRows.sort((a, b) => a[1].localeCompare(b[1]));
+            activeIndex = workingRows.length ? 0 : -1;
+            renderRows();
+            simOutput.textContent = 'Auto sort applied alphabetically (simulated).';
+          });
+          document.getElementById('rv-apply').addEventListener('click', function () {
+            if (!workingRows.length) {
+              simOutput.textContent = 'Validation failed. No viewport rows available.';
+              return;
+            }
+            simOutput.textContent = 'Reorder Viewports simulation complete.\nRows applied: ' + workingRows.length + '\nNo Revit model changes were made.';
+          });
+
+          renderRows();
+        }
+
+        function renderCopyStateSimulator() {
+          const dataset = DATASET.copyState || {};
+          const actions = Array.isArray(dataset.actions) && dataset.actions.length
+            ? dataset.actions
+            : ['Filter Overrides', 'Scope Box', 'Annotations', 'Propagate Extents', 'Viewport Title', 'Revit Links', 'DWG Links'];
+          const memoryRows = Array.isArray(dataset.memoryRows) && dataset.memoryRows.length
+            ? dataset.memoryRows
+            : [['Filter Overrides', 'Empty'], ['Scope Box', 'Empty'], ['Viewport Title', 'Empty'], ['Revit Links', 'Empty']];
+          const stagedRows = Array.isArray(dataset.stagedRows) && dataset.stagedRows.length
+            ? dataset.stagedRows
+            : [['Active View', 'S101 - General Arrangement'], ['Selections', '0 actions selected']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Action Picker</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search actions</span><input id="cs-search" class="sim-field" type="text" placeholder="Filter actions..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Actions to copy *</span><select id="cs-actions" class="sim-field" multiple>' + actions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-clear-all">Clear All</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Memory Slots</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Slot</th><th>Status</th></tr></thead><tbody>' + memoryRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<h5 style="margin-top:1rem;">Current Selection Context</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody>' + stagedRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cs-preview">Preview Memory Payload</button>' +
+                  '<button type="button" class="sim-action" id="cs-copy">Copy to Memory</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const actionList = document.getElementById('cs-actions');
+          document.getElementById('cs-select-all').addEventListener('click', function () {
+            Array.from(actionList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All copy actions selected (simulated).';
+          });
+          document.getElementById('cs-clear-all').addEventListener('click', function () {
+            Array.from(actionList.options).forEach((option) => { option.selected = false; });
+            simOutput.textContent = 'Copy action selection cleared (simulated).';
+          });
+          document.getElementById('cs-preview').addEventListener('click', function () {
+            const count = Array.from(actionList.selectedOptions).length;
+            simOutput.textContent = 'CopyState preview generated.\nActions staged: ' + count + '\nMemory payload ready (simulated).';
+          });
+          document.getElementById('cs-copy').addEventListener('click', function () {
+            const selected = Array.from(actionList.selectedOptions).map((item) => item.value).filter(Boolean);
+            if (!selected.length) {
+              simOutput.textContent = 'Validation failed. Select at least one action to copy.';
+              return;
+            }
+            simOutput.textContent = 'CopyState simulation complete.\nActions copied: ' + selected.join(', ') + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderPropagateExtentsOverrideSimulator() {
+          const dataset = DATASET.propagateExtentsOverride || {};
+          const hostViews = Array.isArray(dataset.hostViews) && dataset.hostViews.length
+            ? dataset.hostViews
+            : ['L01 - Structural Plan', 'L02 - Structural Plan', 'L03 - Roof Plan'];
+          const targetViews = Array.isArray(dataset.targetViews) && dataset.targetViews.length
+            ? dataset.targetViews
+            : ['L01 - General Arrangement', 'L02 - General Arrangement', 'L03 - General Arrangement'];
+          const viewTypes = Array.isArray(dataset.viewTypes) && dataset.viewTypes.length
+            ? dataset.viewTypes
+            : ['FloorPlan', 'CeilingPlan', 'Section'];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Host View</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search host view</span><input id="pe-host-search" class="sim-field" type="text" placeholder="Filter host views..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Host view type</span><select id="pe-host-type" class="sim-field">' + ['-- Show all --'].concat(viewTypes).map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Host view *</span><select id="pe-host-view" class="sim-field">' + hostViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-use-host">Use Selected Host View</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Target Views</h5>' +
+                '<label class="sim-control"><span class="sim-label">Search target views</span><input id="pe-target-search" class="sim-field" type="text" placeholder="Filter target views..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Target view type</span><select id="pe-target-type" class="sim-field">' + ['-- Show all --'].concat(viewTypes).map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Target views *</span><select id="pe-target-views" class="sim-field" multiple>' + targetViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-check-all">Check All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-uncheck-all">Uncheck All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pe-toggle-all">Toggle All</button>' +
+                  '<button type="button" class="sim-action" id="pe-run">Propagate Grid + Level Extents</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const targetList = document.getElementById('pe-target-views');
+          document.getElementById('pe-use-host').addEventListener('click', function () {
+            simOutput.textContent = 'Host view staged for propagation (simulated).';
+          });
+          document.getElementById('pe-check-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All target views checked (simulated).';
+          });
+          document.getElementById('pe-uncheck-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = false; });
+            simOutput.textContent = 'All target views unchecked (simulated).';
+          });
+          document.getElementById('pe-toggle-all').addEventListener('click', function () {
+            Array.from(targetList.options).forEach((option) => { option.selected = !option.selected; });
+            simOutput.textContent = 'Target view selection toggled (simulated).';
+          });
+          document.getElementById('pe-run').addEventListener('click', function () {
+            const host = String(document.getElementById('pe-host-view').value || '').trim();
+            const targetCount = Array.from(targetList.selectedOptions).length;
+            if (!host || !targetCount) {
+              simOutput.textContent = 'Validation failed. Select one host view and one or more target views.';
+              return;
+            }
+            simOutput.textContent = 'Propagate Extents Override simulation complete.\nHost: ' + host + '\nTargets: ' + targetCount + '\nGrid/level propagation and crop override simulated.\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderCloudRevisionsSimulator() {
+          const dataset = DATASET.cloudRevisions || {};
+          const cloudOnly = Array.isArray(dataset.cloudOnlyRows) && dataset.cloudOnlyRows.length
+            ? dataset.cloudOnlyRows
+            : [['S101', 'General Notes', 'A', 'Tender', 'DIRECT']];
+          const both = Array.isArray(dataset.bothRows) && dataset.bothRows.length
+            ? dataset.bothRows
+            : [['S201', 'Level 02 Framing', 'B', 'For Construction', 'VIA VIEW']];
+          const manualOnly = Array.isArray(dataset.manualOnlyRows) && dataset.manualOnlyRows.length
+            ? dataset.manualOnlyRows
+            : [['A301', 'Elevations', 'C', 'Issued for Coordination', 'MANUAL']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          function renderRows(rows) {
+            return rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || '') + '</td><td>' + String(row[3] || '') + '</td><td>' + String(row[4] || '') + '</td></tr>').join('');
+          }
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid">' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Revision Cloud Classifier</h5>' +
+                '<label class="sim-control"><span class="sim-label">Sheet filter</span><input id="cr-sheet-filter" class="sim-field" type="text" placeholder="e.g. S101" /></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="cr-refresh">Refresh Revisions</button>' +
+                  '<button type="button" class="sim-action" id="cr-report">Generate Classification Report</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 1: Cloud Only</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(cloudOnly) + '</tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 2: Cloud + Manual</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(both) + '</tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>List 3: Manual Only</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Name</th><th>Rev</th><th>Description</th><th>Mode</th></tr></thead><tbody>' + renderRows(manualOnly) + '</tbody></table></div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('cr-refresh').addEventListener('click', function () {
+            simOutput.textContent = 'Revision clouds and sheet revision ids reloaded (simulated).';
+          });
+          document.getElementById('cr-report').addEventListener('click', function () {
+            const total = cloudOnly.length + both.length + manualOnly.length;
+            simOutput.textContent = 'Cloud Revisions report generated (simulated).\nCloud only: ' + cloudOnly.length + '\nCloud + manual: ' + both.length + '\nManual only: ' + manualOnly.length + '\nTotal classified pairs: ' + total + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderElementsByLevelSimulator() {
+          const dataset = DATASET.elementsByLevel || {};
+          const levels = Array.isArray(dataset.levels) && dataset.levels.length ? dataset.levels : ['Level 01', 'Level 02', 'Roof'];
+          const categories = Array.isArray(dataset.categories) && dataset.categories.length
+            ? dataset.categories
+            : ['Structural Framing', 'Structural Columns', 'Walls', 'Floors', 'Rooms'];
+          const rows = Array.isArray(dataset.elementRows) && dataset.elementRows.length
+            ? dataset.elementRows
+            : [['W310x97', '734921'], ['300UC52', '734922'], ['Concrete Slab 200', '734923']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Level Selection + Filters</h5>' +
+                '<label class="sim-control"><span class="sim-label">Level *</span><select id="ebl-level" class="sim-field">' + levels.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Category search</span><input id="ebl-search" class="sim-field" type="text" placeholder="Filter categories..." /></label>' +
+                '<label class="sim-control"><span class="sim-label">Categories *</span><select id="ebl-categories" class="sim-field" multiple>' + categories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="ebl-include-view-specific" type="checkbox" /> Include view-specific elements</label>' +
+                '<label><input id="ebl-include-annotation" type="checkbox" /> Include annotation categories</label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="ebl-select-all">Select All Elements</button>' +
+                  '<button type="button" class="sim-action" id="ebl-list">List Elements by Level</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Element Report Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Type Name</th><th>Element Id</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<p class="muted">Report output is the primary interaction surface for this tool.</p>' +
+              '</section>' +
+            '</div>';
+
+          const categoryList = document.getElementById('ebl-categories');
+          document.getElementById('ebl-select-all').addEventListener('click', function () {
+            Array.from(categoryList.options).forEach((option) => { option.selected = true; });
+            simOutput.textContent = 'All categories selected for level listing (simulated).';
+          });
+          document.getElementById('ebl-list').addEventListener('click', function () {
+            const selectedCategories = Array.from(categoryList.selectedOptions).length;
+            if (!selectedCategories) {
+              simOutput.textContent = 'Validation failed. Select at least one category.';
+              return;
+            }
+            simOutput.textContent = 'Elements by Level simulation complete.\nCategories scanned: ' + selectedCategories + '\nRows listed: ' + rows.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderDashboardSimulator() {
+          const dataset = DATASET.dashboard || {};
+          const cards = Array.isArray(dataset.cards) && dataset.cards.length ? dataset.cards.slice() : [
+            { title: 'Package Creator', group: 'Data', status: 'Ready', source: 'RBG Tools_Data', summary: 'Create staged issue packages with validation and export steps.', favorite: true, recent: true },
+            { title: 'View Filter Editor', group: 'Views', status: 'Ready', source: 'RBG Tools_Views', summary: 'Inspect and stage per-view filter override changes before applying.', favorite: false, recent: true },
+          ];
+          const groups = Array.isArray(dataset.groupOptions) && dataset.groupOptions.length ? dataset.groupOptions : ['All Tools'].concat(cards.map((card) => String(card.group || 'General')));
+          let activeGroup = String(groups[0] || 'All Tools');
+          let activeFilter = 'all';
+          let searchText = '';
+          let selectedIndex = 0;
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="dash-layout">' +
+              '<section class="hf-pane">' +
+                '<h5>Filter + Search</h5>' +
+                '<div class="dash-filter-row">' +
+                  '<button type="button" class="sim-action sim-action-secondary dash-filter" data-filter="all">All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary dash-filter" data-filter="favorites">Starred</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary dash-filter" data-filter="recent">Recent</button>' +
+                '</div>' +
+                '<label class="sim-control"><span class="sim-label">Search</span><input id="dash-search" class="sim-field" type="search" placeholder="Filter tools..." /></label>' +
+                '<div id="dash-groups" class="dash-groups"></div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Tool Cards</h5>' +
+                '<div id="dash-summary" class="muted"></div>' +
+                '<div id="dash-cards" class="dash-card-list"></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Selected Tool</h5>' +
+                '<div id="dash-detail" class="dash-detail"></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="dash-toggle-favorite">Toggle Favorite</button>' +
+                  '<button type="button" class="sim-action" id="dash-launch">Quick Launch</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          function getVisibleCards() {
+            return cards.filter((card) => {
+              if (activeGroup !== 'All Tools' && String(card.group || '') !== activeGroup) {
+                return false;
+              }
+              if (activeFilter === 'favorites' && !card.favorite) {
+                return false;
+              }
+              if (activeFilter === 'recent' && !card.recent) {
+                return false;
+              }
+              if (searchText && !JSON.stringify(card).toLowerCase().includes(searchText.toLowerCase())) {
+                return false;
+              }
+              return true;
+            });
+          }
+
+          function ensureSelection(visibleCards) {
+            if (!visibleCards.length) {
+              selectedIndex = -1;
+              return;
+            }
+            if (selectedIndex < 0 || selectedIndex >= visibleCards.length) {
+              selectedIndex = 0;
+            }
+          }
+
+          function renderGroups() {
+            const groupWrap = document.getElementById('dash-groups');
+            groupWrap.innerHTML = groups.map((group) => {
+              const label = String(group);
+              const active = label === activeGroup ? ' is-active' : '';
+              return '<button type="button" class="dash-group-btn' + active + '" data-group="' + label + '">' + label + '</button>';
+            }).join('');
+            Array.from(groupWrap.querySelectorAll('[data-group]')).forEach((button) => {
+              button.addEventListener('click', function () {
+                activeGroup = button.getAttribute('data-group') || 'All Tools';
+                selectedIndex = 0;
+                renderDashboard();
+              });
+            });
+          }
+
+          function renderDashboard() {
+            const visibleCards = getVisibleCards();
+            ensureSelection(visibleCards);
+            const summary = document.getElementById('dash-summary');
+            const cardsWrap = document.getElementById('dash-cards');
+            const detailWrap = document.getElementById('dash-detail');
+            const selected = selectedIndex >= 0 ? visibleCards[selectedIndex] : null;
+
+            summary.textContent = visibleCards.length + ' tool cards shown for ' + activeGroup + '.';
+            cardsWrap.innerHTML = visibleCards.length
+              ? visibleCards.map((card, index) => {
+                  const active = index === selectedIndex ? ' is-active' : '';
+                  const glyph = card.favorite ? '★' : '•';
+                  return '<button type="button" class="dash-card' + active + '" data-card-index="' + index + '">' +
+                    '<span class="dash-card-title">' + String(card.title || '') + '</span>' +
+                    '<span class="dash-card-meta">' + glyph + ' ' + String(card.group || 'General') + ' · ' + String(card.status || 'Ready') + '</span>' +
+                    '<span class="dash-card-copy">' + String(card.summary || '') + '</span>' +
+                  '</button>';
+                }).join('')
+              : '<p class="muted">No dashboard cards match the current filters.</p>';
+
+            detailWrap.innerHTML = selected
+              ? '<strong>' + String(selected.title || '') + '</strong>' +
+                '<span class="dash-detail-meta">' + String(selected.source || '') + ' · ' + String(selected.status || 'Ready') + '</span>' +
+                '<p>' + String(selected.summary || '') + '</p>'
+              : '<p class="muted">Select a tool card to inspect its dashboard summary.</p>';
+
+            Array.from(cardsWrap.querySelectorAll('[data-card-index]')).forEach((button) => {
+              button.addEventListener('click', function () {
+                selectedIndex = Number(button.getAttribute('data-card-index') || 0);
+                renderDashboard();
+                if (visibleCards[selectedIndex]) {
+                  simOutput.textContent = 'Selected dashboard card: ' + visibleCards[selectedIndex].title;
+                }
+              });
+            });
+          }
+
+          renderGroups();
+          renderDashboard();
+
+          Array.from(simulatorRoot.querySelectorAll('.dash-filter')).forEach((button) => {
+            button.addEventListener('click', function () {
+              activeFilter = button.getAttribute('data-filter') || 'all';
+              Array.from(simulatorRoot.querySelectorAll('.dash-filter')).forEach((node) => node.classList.remove('is-active'));
+              button.classList.add('is-active');
+              selectedIndex = 0;
+              renderDashboard();
+            });
+          });
+          const allFilterButton = simulatorRoot.querySelector('.dash-filter[data-filter="all"]');
+          if (allFilterButton) {
+            allFilterButton.classList.add('is-active');
+          }
+
+          document.getElementById('dash-search').addEventListener('input', function (event) {
+            searchText = event.target.value || '';
+            selectedIndex = 0;
+            renderDashboard();
+          });
+
+          document.getElementById('dash-toggle-favorite').addEventListener('click', function () {
+            const visibleCards = getVisibleCards();
+            const selected = selectedIndex >= 0 ? visibleCards[selectedIndex] : null;
+            if (!selected) {
+              simOutput.textContent = 'Select a dashboard card before toggling favorites.';
+              return;
+            }
+            selected.favorite = !selected.favorite;
+            renderDashboard();
+            simOutput.textContent = 'Favorite state updated for ' + selected.title + ' (simulated).';
+          });
+
+          document.getElementById('dash-launch').addEventListener('click', function () {
+            const visibleCards = getVisibleCards();
+            const selected = selectedIndex >= 0 ? visibleCards[selectedIndex] : null;
+            if (!selected) {
+              simOutput.textContent = 'Select a dashboard card before launching.';
+              return;
+            }
+            simOutput.textContent = 'Dashboard quick launch simulated for ' + selected.title + '.\nNo pyRevit or Revit process was started.';
+          });
+        }
+
+        function renderTransactionLoggerSimulator() {
+          const dataset = DATASET.transactionLogger || {};
+          const categories = Array.isArray(dataset.categories) && dataset.categories.length
+            ? dataset.categories
+            : ['Structural Framing', 'Floors', 'Walls'];
+          const snapshotModes = Array.isArray(dataset.snapshotModes) && dataset.snapshotModes.length
+            ? dataset.snapshotModes
+            : ['Off - fast, no before/after diff', 'Lazy - capture element state (enables diff)'];
+          const sessionRows = Array.isArray(dataset.sessionRows) && dataset.sessionRows.length
+            ? dataset.sessionRows
+            : [['Startup logger active', 'Yes'], ['Current mode', 'Full model + annotations']];
+          const outputPath = String(dataset.outputPath || 'C:/Temp/RBG/transaction-log-demo.csv');
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid hf-grid-two">' +
+              '<section class="hf-pane">' +
+                '<h5>Capture Mode</h5>' +
+                '<label><input type="radio" name="tl-mode" id="tl-mode-full" checked /> Full model + annotations</label>' +
+                '<label><input type="radio" name="tl-mode" id="tl-mode-targeted" /> Targeted categories</label>' +
+                '<label class="sim-control"><span class="sim-label">Categories</span><select id="tl-categories" class="sim-field" multiple disabled>' + categories.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Snapshot mode</span><select id="tl-snapshot" class="sim-field">' + snapshotModes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Output path</span><input id="tl-output" class="sim-field" type="text" value="' + outputPath + '" /></label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Logger Session Preview</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Setting</th><th>Value</th></tr></thead><tbody>' + sessionRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="tl-cancel">Cancel</button>' +
+                  '<button type="button" class="sim-action" id="tl-start">Start Logging</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const targeted = document.getElementById('tl-mode-targeted');
+          const full = document.getElementById('tl-mode-full');
+          const categorySelect = document.getElementById('tl-categories');
+          function syncMode() {
+            categorySelect.disabled = !targeted.checked;
+          }
+          targeted.addEventListener('change', syncMode);
+          full.addEventListener('change', syncMode);
+          syncMode();
+
+          document.getElementById('tl-start').addEventListener('click', function () {
+            const selectedCategories = Array.from(categorySelect.selectedOptions).map((option) => option.value);
+            if (targeted.checked && !selectedCategories.length) {
+              simOutput.textContent = 'Validation failed. Choose at least one category for targeted logging.';
+              return;
+            }
+            simOutput.textContent = 'Transaction Logger simulation started.\nMode: ' + (targeted.checked ? 'Targeted categories' : 'Full model + annotations') + '\nSnapshot: ' + document.getElementById('tl-snapshot').value + '\nOutput: ' + document.getElementById('tl-output').value + '\nNo live logger was started.';
+          });
+          document.getElementById('tl-cancel').addEventListener('click', function () {
+            simOutput.textContent = 'Transaction Logger setup dismissed (simulated).';
+          });
+        }
+
+        function renderPlanViewRangeSimulator() {
+          const dataset = DATASET.planViewRange || {};
+          const planOptions = Array.isArray(dataset.planOptions) && dataset.planOptions.length
+            ? dataset.planOptions
+            : ['S-1001 Level 00 Framing Plan', 'S-1002 Level 01 Framing Plan'];
+          const targetViews = Array.isArray(dataset.targetViews) && dataset.targetViews.length
+            ? dataset.targetViews
+            : ['S-2001 Level 00 Host Plan', 'S-2002 Level 01 Host Plan'];
+          const rows = Array.isArray(dataset.comparisonRows) && dataset.comparisonRows.length
+            ? dataset.comparisonRows
+            : [['Top', 'Level 02', '2400', 'Level 02', '2400'], ['Cut', 'Level 01', '1200', 'Level 01', '1500']];
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="hf-grid">' +
+              '<section class="hf-pane">' +
+                '<h5>Compare Plans</h5>' +
+                '<label class="sim-control"><span class="sim-label">Plan A *</span><select id="pvr-plan-a" class="sim-field">' + planOptions.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Plan B *</span><select id="pvr-plan-b" class="sim-field">' + planOptions.map((item, index) => '<option' + (index === 1 ? ' selected' : '') + '>' + item + '</option>').join('') + '</select></label>' +
+                '<label><input id="pvr-template-aware" type="checkbox" checked /> Respect view template control flags</label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pvr-compare">Compare</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="pvr-swap">Swap A/B</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>View Range Comparison</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Plane</th><th>A Level</th><th>A Offset</th><th>B Level</th><th>B Offset</th></tr></thead><tbody>' + rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || '') + '</td><td>' + String(row[3] || '') + '</td><td>' + String(row[4] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Copy Targets</h5>' +
+                '<label class="sim-control"><span class="sim-label">Targets *</span><select id="pvr-targets" class="sim-field" multiple>' + targetViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action" id="pvr-copy">Copy View Range</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          document.getElementById('pvr-compare').addEventListener('click', function () {
+            simOutput.textContent = 'Plan View Range comparison refreshed for ' + document.getElementById('pvr-plan-a').value + ' vs ' + document.getElementById('pvr-plan-b').value + ' (simulated).';
+          });
+          document.getElementById('pvr-swap').addEventListener('click', function () {
+            const a = document.getElementById('pvr-plan-a');
+            const b = document.getElementById('pvr-plan-b');
+            const temp = a.value;
+            a.value = b.value;
+            b.value = temp;
+            simOutput.textContent = 'Plan A and Plan B swapped (simulated).';
+          });
+          document.getElementById('pvr-copy').addEventListener('click', function () {
+            const selectedTargets = Array.from(document.getElementById('pvr-targets').selectedOptions);
+            if (!selectedTargets.length) {
+              simOutput.textContent = 'Validation failed. Select at least one target view.';
+              return;
+            }
+            simOutput.textContent = 'Plan View Range copy simulated.\nSource: ' + document.getElementById('pvr-plan-a').value + '\nTargets: ' + selectedTargets.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderScopeBoxViewCreationSimulator() {
+          const dataset = DATASET.scopeBoxViewCreation || {};
+          const sourceModes = Array.isArray(dataset.sourceModes) && dataset.sourceModes.length ? dataset.sourceModes : ['Creator workflow', 'Selector workflow'];
+          const planViews = Array.isArray(dataset.planViews) && dataset.planViews.length ? dataset.planViews : ['GA-SS LEVEL 1E', 'GA-SS LEVEL 2E'];
+          const scopeBoxes = Array.isArray(dataset.scopeBoxes) && dataset.scopeBoxes.length ? dataset.scopeBoxes : ['SB-A Core', 'SB-B East Wing'];
+          const titleBlocks = Array.isArray(dataset.titleBlocks) && dataset.titleBlocks.length ? dataset.titleBlocks : ['A1 - Structural', 'A3 - Detail'];
+          const stage1Rows = Array.isArray(dataset.stage1Rows) && dataset.stage1Rows.length ? dataset.stage1Rows : [['SB-A Core', 'Level 01', 'S-CORE L01 PLAN', 'S-CORE L01 SECTION', 'Ready']];
+          const sheetRows = Array.isArray(dataset.sheetRows) && dataset.sheetRows.length ? dataset.sheetRows : [['S401', 'A1 - Structural', '2 views', 'Ready']];
+          const warningRows = Array.isArray(dataset.warningRows) && dataset.warningRows.length ? dataset.warningRows : [['SB-B East Wing', 'Section name conflict detected.']];
+          let activeStage = 0;
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="scope-layout">' +
+              '<section class="hf-pane scope-stage-pane">' +
+                '<h5>Workflow Stages</h5>' +
+                '<div id="svc-stage-tabs" class="scope-stage-tabs"></div>' +
+                '<label class="sim-control"><span class="sim-label">Source mode *</span><select id="svc-mode" class="sim-field">' + sourceModes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Plan view *</span><select id="svc-plan" class="sim-field">' + planViews.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box *</span><select id="svc-scope" class="sim-field">' + scopeBoxes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Titleblock</span><select id="svc-titleblock" class="sim-field">' + titleBlocks.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Stage 1 View Name Editor</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Source</th><th>Level</th><th>Plan Name</th><th>Section Name</th><th>Status</th></tr></thead><tbody>' + stage1Rows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || '') + '</td><td>' + String(row[3] || '') + '</td><td>' + String(row[4] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="svc-load">Load Scope Boxes</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="svc-stage-names">Apply View Names</button>' +
+                  '<button type="button" class="sim-action" id="svc-create">Create + Layout Views</button>' +
+                '</div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Sheet Layout + Warnings</h5>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>Sheet</th><th>Titleblock</th><th>Views</th><th>Status</th></tr></thead><tbody>' + sheetRows.map((row) => '<tr><td>' + String(row[0] || '') + '</td><td>' + String(row[1] || '') + '</td><td>' + String(row[2] || '') + '</td><td>' + String(row[3] || '') + '</td></tr>').join('') + '</tbody></table></div>' +
+                '<div class="scope-warning-list">' + warningRows.map((row) => '<div class="scope-warning-item"><strong>' + String(row[0] || '') + '</strong><span>' + String(row[1] || '') + '</span></div>').join('') + '</div>' +
+              '</section>' +
+            '</div>';
+
+          function renderStages() {
+            const stages = ['1. View Set', '2. Name Editor', '3. Sheet Layout'];
+            const wrap = document.getElementById('svc-stage-tabs');
+            wrap.innerHTML = stages.map((label, index) => {
+              const active = index === activeStage ? ' is-active' : '';
+              return '<button type="button" class="scope-stage-tab' + active + '" data-stage="' + index + '">' + label + '</button>';
+            }).join('');
+            Array.from(wrap.querySelectorAll('[data-stage]')).forEach((button) => {
+              button.addEventListener('click', function () {
+                activeStage = Number(button.getAttribute('data-stage') || 0);
+                renderStages();
+                simOutput.textContent = 'Scope Box View Creation stage changed to ' + button.textContent + ' (simulated).';
+              });
+            });
+          }
+
+          renderStages();
+
+          document.getElementById('svc-load').addEventListener('click', function () {
+            activeStage = 0;
+            renderStages();
+            simOutput.textContent = 'Scope boxes loaded for ' + document.getElementById('svc-plan').value + ' (simulated).';
+          });
+          document.getElementById('svc-stage-names').addEventListener('click', function () {
+            activeStage = 1;
+            renderStages();
+            simOutput.textContent = 'Stage 1 naming simulated for ' + stage1Rows.length + ' rows.';
+          });
+          document.getElementById('svc-create').addEventListener('click', function () {
+            activeStage = 2;
+            renderStages();
+            simOutput.textContent = 'Scope Box View Creation simulation complete.\nViews staged: ' + stage1Rows.length + '\nSheets reviewed: ' + sheetRows.length + '\nWarnings: ' + warningRows.length + '\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderViewFilterEditorSimulator() {
+          const dataset = DATASET.viewFilterEditor || {};
+          const showModes = Array.isArray(dataset.showModes) && dataset.showModes.length ? dataset.showModes : ['All filters', 'Only modified'];
+          const patterns = Array.isArray(dataset.patternOptions) && dataset.patternOptions.length ? dataset.patternOptions : ['<None>', 'Solid Fill'];
+          const templateRows = Array.isArray(dataset.templateRows) && dataset.templateRows.length ? dataset.templateRows.map((row) => Object.assign({}, row)) : [];
+          const viewRows = Array.isArray(dataset.viewRows) && dataset.viewRows.length ? dataset.viewRows.map((row) => Object.assign({}, row)) : [];
+          let activeTab = 'templates';
+          let selectedIndex = 0;
+          const dirtyIds = new Set();
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="vfe-layout">' +
+              '<section class="hf-pane vfe-main">' +
+                '<div class="vfe-toolbar">' +
+                  '<label class="sim-control"><span class="sim-label">Search</span><input id="vfe-search" class="sim-field" type="search" placeholder="Search view or filter..." /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Show</span><select id="vfe-show" class="sim-field">' + showModes.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+                '</div>' +
+                '<div class="scope-stage-tabs">' +
+                  '<button type="button" class="scope-stage-tab is-active" data-vfe-tab="templates">View Templates</button>' +
+                  '<button type="button" class="scope-stage-tab" data-vfe-tab="views">Views</button>' +
+                '</div>' +
+                '<div class="sim-table-wrap"><table><thead><tr><th>View</th><th>Filter</th><th>Visible</th><th>Transparency</th><th>Status</th></tr></thead><tbody id="vfe-body"></tbody></table></div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Detail Editor</h5>' +
+                '<div id="vfe-detail"></div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="vfe-stage">Stage Changes</button>' +
+                  '<button type="button" class="sim-action" id="vfe-apply">Apply to Revit</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          function activeRows() {
+            return activeTab === 'templates' ? templateRows : viewRows;
+          }
+
+          function selectedRow() {
+            const rows = activeRows();
+            if (!rows.length) {
+              return null;
+            }
+            if (selectedIndex < 0 || selectedIndex >= rows.length) {
+              selectedIndex = 0;
+            }
+            return rows[selectedIndex];
+          }
+
+          function renderDetail() {
+            const row = selectedRow();
+            const detail = document.getElementById('vfe-detail');
+            if (!row) {
+              detail.innerHTML = '<p class="muted">Select one or more rows to edit.</p>';
+              return;
+            }
+            detail.innerHTML =
+              '<div class="vfe-detail-head"><strong>' + String(row.view || '') + '</strong><span>' + String(row.filter || '') + '</span></div>' +
+              '<label><input id="vfe-enabled" type="checkbox"' + (row.enabled ? ' checked' : '') + ' /> Enabled</label>' +
+              '<label><input id="vfe-visible" type="checkbox"' + (row.visible ? ' checked' : '') + ' /> Visible</label>' +
+              '<label><input id="vfe-halftone" type="checkbox"' + (row.halftone ? ' checked' : '') + ' /> Halftone</label>' +
+              '<label class="sim-control"><span class="sim-label">Transparency</span><input id="vfe-transparency" class="sim-field" type="number" min="0" max="100" value="' + Number(row.transparency || 0) + '" /></label>' +
+              '<label class="sim-control"><span class="sim-label">Projection pattern</span><select id="vfe-pattern" class="sim-field">' + patterns.map((item) => '<option>' + item + '</option>').join('') + '</select></label>' +
+              '<p class="muted">Only staged rows are committed by the simulator.</p>';
+          }
+
+          function renderTable() {
+            const query = String(document.getElementById('vfe-search').value || '').toLowerCase();
+            const show = document.getElementById('vfe-show').value || 'All filters';
+            const rows = activeRows().filter((row) => {
+              if (query && !(String(row.view || '').toLowerCase().includes(query) || String(row.filter || '').toLowerCase().includes(query))) {
+                return false;
+              }
+              if (show === 'Only modified' && row.status !== 'Dirty' && !dirtyIds.has(row.id)) {
+                return false;
+              }
+              if (show === 'Only hidden' && row.visible !== false) {
+                return false;
+              }
+              return true;
+            });
+            const body = document.getElementById('vfe-body');
+            body.innerHTML = rows.length
+              ? rows.map((row, index) => {
+                  const active = selectedRow() && row.id === selectedRow().id ? ' class="is-active"' : '';
+                  const status = dirtyIds.has(row.id) ? 'Staged' : row.status;
+                  return '<tr' + active + ' data-row-id="' + row.id + '" data-row-index="' + index + '"><td>' + String(row.view || '') + '</td><td>' + String(row.filter || '') + '</td><td>' + (row.visible ? 'Yes' : 'No') + '</td><td>' + String(row.transparency || 0) + '%</td><td>' + String(status || 'Clean') + '</td></tr>';
+                }).join('')
+              : '<tr><td colspan="5">No filter rows match the current search and mode.</td></tr>';
+
+            Array.from(body.querySelectorAll('[data-row-id]')).forEach((rowNode) => {
+              rowNode.addEventListener('click', function () {
+                const rowsNow = activeRows().filter((row) => {
+                  if (query && !(String(row.view || '').toLowerCase().includes(query) || String(row.filter || '').toLowerCase().includes(query))) {
+                    return false;
+                  }
+                  if (show === 'Only modified' && row.status !== 'Dirty' && !dirtyIds.has(row.id)) {
+                    return false;
+                  }
+                  if (show === 'Only hidden' && row.visible !== false) {
+                    return false;
+                  }
+                  return true;
+                });
+                const clickedId = rowNode.getAttribute('data-row-id');
+                const actualIndex = activeRows().findIndex((row) => row.id === clickedId);
+                if (actualIndex >= 0) {
+                  selectedIndex = actualIndex;
+                } else if (rowsNow.length) {
+                  selectedIndex = 0;
+                }
+                renderTable();
+                renderDetail();
+                if (clickedId) {
+                  simOutput.textContent = 'Selected filter row ' + clickedId + ' (simulated).';
+                }
+              });
+            });
+          }
+
+          function syncTabButtons() {
+            Array.from(simulatorRoot.querySelectorAll('[data-vfe-tab]')).forEach((button) => {
+              const active = button.getAttribute('data-vfe-tab') === activeTab;
+              button.classList.toggle('is-active', active);
+            });
+          }
+
+          syncTabButtons();
+          renderTable();
+          renderDetail();
+
+          Array.from(simulatorRoot.querySelectorAll('[data-vfe-tab]')).forEach((button) => {
+            button.addEventListener('click', function () {
+              activeTab = button.getAttribute('data-vfe-tab') || 'templates';
+              selectedIndex = 0;
+              syncTabButtons();
+              renderTable();
+              renderDetail();
+              simOutput.textContent = 'Switched View Filter Editor to ' + button.textContent + ' (simulated).';
+            });
+          });
+          document.getElementById('vfe-search').addEventListener('input', function () {
+            renderTable();
+          });
+          document.getElementById('vfe-show').addEventListener('change', function () {
+            renderTable();
+          });
+          document.getElementById('vfe-stage').addEventListener('click', function () {
+            const row = selectedRow();
+            if (!row) {
+              simOutput.textContent = 'Select a filter row before staging changes.';
+              return;
+            }
+            row.enabled = document.getElementById('vfe-enabled').checked;
+            row.visible = document.getElementById('vfe-visible').checked;
+            row.halftone = document.getElementById('vfe-halftone').checked;
+            row.transparency = Number(document.getElementById('vfe-transparency').value || 0);
+            row.status = 'Dirty';
+            dirtyIds.add(row.id);
+            renderTable();
+            renderDetail();
+            simOutput.textContent = 'Changes staged for ' + row.view + ' / ' + row.filter + '.';
+          });
+          document.getElementById('vfe-apply').addEventListener('click', function () {
+            if (!dirtyIds.size) {
+              simOutput.textContent = 'No staged changes found. Use Stage Changes first.';
+              return;
+            }
+            simOutput.textContent = 'View Filter Editor simulation complete.\nDirty rows applied: ' + dirtyIds.size + '\nWrites go through apply_filter_overrides(doc, payload) in the real tool.\nNo Revit model changes were made.';
+          });
+        }
+
+        function renderWpfTemplateSimulator() {
+          const dataset = DATASET.wpfTemplate || {};
+          const steps = Array.isArray(dataset.steps) && dataset.steps.length ? dataset.steps : ['Shell', 'Controls', 'Patterns'];
+          const cards = Array.isArray(dataset.componentCards) && dataset.componentCards.length ? dataset.componentCards : [['Cards + grids', 'Primary content layout with consistent spacing and surface hierarchy.']];
+          const checklist = Array.isArray(dataset.checklist) && dataset.checklist.length ? dataset.checklist : ['Use shared palette resources instead of inline colours.'];
+          let activeStep = 1;
+
+          setText('sim-control-count', SIMULATOR.controls.length);
+          setText('sim-event-count', SIMULATOR.events.length);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          simulatorRoot.innerHTML =
+            '<div class="template-layout">' +
+              '<section class="hf-pane">' +
+                '<h5>Reference Progression</h5>' +
+                '<div id="wpf-step-tabs" class="scope-stage-tabs"></div>' +
+                '<p class="muted">This tool is a reference surface, so the simulator focuses on approved patterns rather than model edits.</p>' +
+              '</section>' +
+              '<section class="hf-pane hf-pane-wide">' +
+                '<h5>Approved Component Patterns</h5>' +
+                '<div class="template-card-grid">' + cards.map((card) => '<article class="template-card"><strong>' + String(card[0] || '') + '</strong><p>' + String(card[1] || '') + '</p></article>').join('') + '</div>' +
+              '</section>' +
+              '<section class="hf-pane">' +
+                '<h5>Checklist</h5>' +
+                '<div class="scope-warning-list">' + checklist.map((item) => '<div class="scope-warning-item"><strong>OK</strong><span>' + String(item) + '</span></div>').join('') + '</div>' +
+                '<div class="sim-action-row hf-actions">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="wpf-copy-shell">Copy Starter Skeleton</button>' +
+                  '<button type="button" class="sim-action" id="wpf-mark-reviewed">Mark Reviewed</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          function renderSteps() {
+            const wrap = document.getElementById('wpf-step-tabs');
+            wrap.innerHTML = steps.map((step, index) => {
+              const active = index === activeStep ? ' is-active' : '';
+              return '<button type="button" class="scope-stage-tab' + active + '" data-step="' + index + '">' + String(step) + '</button>';
+            }).join('');
+            Array.from(wrap.querySelectorAll('[data-step]')).forEach((button) => {
+              button.addEventListener('click', function () {
+                activeStep = Number(button.getAttribute('data-step') || 0);
+                renderSteps();
+                simOutput.textContent = 'WPF template reference focused on ' + button.textContent + ' patterns.';
+              });
+            });
+          }
+
+          renderSteps();
+          document.getElementById('wpf-copy-shell').addEventListener('click', function () {
+            simOutput.textContent = 'Starter shell copy simulated.\nUse the WPF UI Template as the canonical reference for new tools.';
+          });
+          document.getElementById('wpf-mark-reviewed').addEventListener('click', function () {
+            simOutput.textContent = 'Reference review complete.\nChecklist items covered: ' + checklist.length + '.';
+          });
+        }
+
+        function renderSectionUpdaterSimulator() {
+          setText('sim-control-count', 22);
+          setText('sim-event-count', 9);
+          setText('sim-prompt-count', SIMULATOR.prompts.length);
+
+          const secup = DATASET.sectionUpdater || {};
+          const activeView = String(secup.activeView || 'BRACING TRUSS A/B - DETAILS');
+          const defaultFilter = String(secup.defaultFilter || 'truss');
+
+          const sampleSections = Array.isArray(secup.sampleSections) && secup.sampleSections.length
+            ? secup.sampleSections.map((item) => String(item))
+            : [
+              'TRUSS B - SECTION (L0-1)',
+              'TRUSS B - SECTION (L2-3)',
+              'TRUSS B - SECTION (L3-4)',
+              'TRUSS B - SECTION (L4-5)',
+              'TRUSS B - SECTION (L5-6)',
+              'TRUSS B - SECTION (L6-7)',
+              'TRUSS C - SECTION (L0-1)',
+              'TRUSS C - SECTION (L1-2)',
+              'TRUSS C - SECTION (L2-3)',
+            ];
+
+          const rows = Array.isArray(secup.rows) && secup.rows.length
+            ? secup.rows
+            : [
+              ['TRUSS B - SECTION (L2-3)', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E', '-200.0', 'SSL LEVEL 1W', '3575.0', 'FFL LEVEL 3E'],
+              ['TRUSS B - SECTION (L3-4)', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E', '-200.0', 'SSL LEVEL 3W', '290.0', 'FFL LEVEL 4E'],
+              ['TRUSS B - SECTION (L4-5)', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W', '-2040.0', 'SSL LEVEL 4W', '180.0', 'SSL LEVEL 6W'],
+              ['TRUSS B - SECTION (L5-6)', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W', '-300.0', 'SSL LEVEL 5W', '1845.0', 'SSL LEVEL 7W'],
+              ['TRUSS B - SECTION (L6-7)', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW', '-1115.0', 'SSL LEVEL 6W', '2310.0', 'SSL LEVEL 8AW'],
+            ];
+
+          const planViews = Array.isArray(secup.planViews) && secup.planViews.length ? secup.planViews : ['GA-SS LEVEL 1E', 'GA-SS LEVEL 2E'];
+          const scopeBoxes = Array.isArray(secup.scopeBoxes) && secup.scopeBoxes.length ? secup.scopeBoxes : ['TRUSS B - GA E11/EA-EB', 'TRUSS C - GA E12/EA-EB'];
+          const scopeSides = Array.isArray(secup.scopeSides) && secup.scopeSides.length ? secup.scopeSides : ['Top', 'Bottom', 'Left', 'Right'];
+          const lowerLevels = Array.isArray(secup.lowerLevelOptions) && secup.lowerLevelOptions.length ? secup.lowerLevelOptions : ['DATUM'];
+          const upperLevels = Array.isArray(secup.upperLevelOptions) && secup.upperLevelOptions.length ? secup.upperLevelOptions : ['NEW ROOF'];
+          const lowerOffset = String(secup.defaultLowerOffset || '0.0');
+          const upperOffset = String(secup.defaultUpperOffset || '0.0');
+
+          function optionList(values) {
+            return values.map((value) => '<option>' + String(value) + '</option>').join('');
+          }
+
+          simulatorRoot.innerHTML =
+            '<div class="secup-layout">' +
+              '<section class="secup-pane">' +
+                '<h5>Targets</h5>' +
+                '<p class="muted">Active view: ' + activeView + '</p>' +
+                '<label class="sim-control"><span class="sim-label">Name filter</span><input id="secup-filter" class="sim-field" type="text" value="' + defaultFilter + '" /></label>' +
+                '<label class="sim-control"><span class="sim-label">Sort</span><select id="secup-sort" class="sim-field"><option>Name A-Z</option><option>Name Z-A</option></select></label>' +
+                '<div class="secup-toggle-row">' +
+                  '<label><input id="secup-visible-only" type="checkbox" /> Visible in selected plan only</label>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-refresh">Refresh</button>' +
+                '</div>' +
+                '<div class="secup-list-wrap"><select id="secup-sections" multiple class="sim-field secup-list"></select></div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-select-all">Select All</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-clear-selection">Select None</button>' +
+                '</div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<button type="button" class="sim-action" id="secup-add">Add to Selection</button>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-clear-added">Clear Added</button>' +
+                '</div>' +
+                '<p><strong>Affected sections: </strong><span id="secup-affected-count">0</span></p>' +
+              '</section>' +
+              '<section class="secup-pane">' +
+                '<h5>Plan + extent stages</h5>' +
+                '<label class="sim-control"><span class="sim-label">Plan view for plan/scope stages</span><select class="sim-field">' + optionList(planViews) + '</select></label>' +
+                '<label class="sim-control"><span class="sim-label">Scope box visible in selected plan</span><select class="sim-field">' + optionList(scopeBoxes) + '</select></label>' +
+                '<div class="secup-toggle-col">' +
+                  '<label><input type="checkbox" /> Move / rotate in plan</label>' +
+                  '<label><input type="checkbox" /> Flip 180 after move</label>' +
+                  '<label><input type="checkbox" /> Match horizontal extents to scope box side</label>' +
+                  '<label><input type="checkbox" /> Assign scope box last</label>' +
+                '</div>' +
+                '<label class="sim-control"><span class="sim-label">Scope box side</span><select class="sim-field">' + optionList(scopeSides) + '</select></label>' +
+                '<p><strong>Plan/extents stage ready:</strong> <span id="secup-stage-count">0</span> affected section(s).</p>' +
+                '<button type="button" class="sim-action" id="secup-run-plan">Run Plan + Extents</button>' +
+              '</section>' +
+              '<section class="secup-pane secup-pane-wide">' +
+                '<h5>Crop vertical extents from Levels</h5>' +
+                '<div class="secup-toggle-col">' +
+                  '<label><input type="radio" name="secup-crop-mode" checked /> Keep current vertical extents</label>' +
+                  '<label><input type="radio" name="secup-crop-mode" /> Update vertical crop extents from Levels</label>' +
+                '</div>' +
+                '<div class="sim-action-row secup-actions-inline">' +
+                  '<label class="sim-control"><span class="sim-label">Lower</span><select class="sim-field">' + optionList(lowerLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Lower off mm</span><input class="sim-field" type="text" value="' + lowerOffset + '" /></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper</span><select class="sim-field">' + optionList(upperLevels) + '</select></label>' +
+                  '<label class="sim-control"><span class="sim-label">Upper off mm</span><input class="sim-field" type="text" value="' + upperOffset + '" /></label>' +
+                  '<button type="button" class="sim-action sim-action-secondary" id="secup-batch">Apply Batch To Selected</button>' +
+                '</div>' +
+                '<div class="sim-table-wrap secup-table-wrap">' +
+                  '<table><thead><tr><th>View</th><th>Current lower</th><th>Cur off mm</th><th>Current upper</th><th>Cur off mm</th><th>Target lower</th><th>New off mm</th><th>Target upper</th></tr></thead><tbody id="secup-rows"></tbody></table>' +
+                '</div>' +
+                '<div class="sim-action-row">' +
+                  '<button type="button" class="sim-action" id="secup-run-vertical">Run Vertical Crop Update</button>' +
+                  '<button type="button" class="sim-action" id="secup-run-all">Run</button>' +
+                '</div>' +
+              '</section>' +
+            '</div>';
+
+          const sectionList = document.getElementById('secup-sections');
+          const filterInput = document.getElementById('secup-filter');
+          const affectedCount = document.getElementById('secup-affected-count');
+          const stageCount = document.getElementById('secup-stage-count');
+          const rowsRoot = document.getElementById('secup-rows');
+          const selected = new Set();
+
+          function renderSections() {
+            const q = String(filterInput.value || '').toLowerCase();
+            const visible = sampleSections.filter((name) => name.toLowerCase().includes(q));
+            sectionList.innerHTML = visible.map((name) => '<option value="' + name + '">' + name + '</option>').join('');
+          }
+
+          function renderRows() {
+            rowsRoot.innerHTML = rows.map((row) => '<tr>' + row.map((cell) => '<td>' + cell + '</td>').join('') + '</tr>').join('');
+          }
+
+          function refreshCounters() {
+            const count = selected.size;
+            affectedCount.textContent = String(count);
+            stageCount.textContent = String(count);
+          }
+
+          document.getElementById('secup-refresh').addEventListener('click', function () {
+            renderSections();
+            simOutput.textContent = 'Refreshed visible section list.';
+          });
+
+          filterInput.addEventListener('input', renderSections);
+
+          document.getElementById('secup-select-all').addEventListener('click', function () {
+            Array.from(sectionList.options).forEach((opt) => {
+              opt.selected = true;
+            });
+          });
+
+          document.getElementById('secup-clear-selection').addEventListener('click', function () {
+            Array.from(sectionList.options).forEach((opt) => {
+              opt.selected = false;
+            });
+          });
+
+          document.getElementById('secup-add').addEventListener('click', function () {
+            Array.from(sectionList.selectedOptions).forEach((opt) => selected.add(opt.value));
+            refreshCounters();
+            simOutput.textContent = 'Added sections to staged selection: ' + selected.size;
+          });
+
+          document.getElementById('secup-clear-added').addEventListener('click', function () {
+            selected.clear();
+            refreshCounters();
+            simOutput.textContent = 'Cleared staged section selection.';
+          });
+
+          document.getElementById('secup-run-plan').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Add at least one section before running Plan + Extents.';
+              return;
+            }
+            simOutput.textContent = 'Plan + Extents complete. Sections processed: ' + selected.size + '\nMove/rotate: simulated\nScope alignment: simulated';
+          });
+
+          document.getElementById('secup-run-vertical').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Add at least one section before running Vertical Crop Update.';
+              return;
+            }
+            simOutput.textContent = 'Vertical Crop Update complete. Updated rows: ' + selected.size + '\nLower/upper constraints applied from simulator controls.';
+          });
+
+          document.getElementById('secup-batch').addEventListener('click', function () {
+            simOutput.textContent = 'Batch target values applied to current staged rows (simulated).';
+          });
+
+          document.getElementById('secup-run-all').addEventListener('click', function () {
+            if (!selected.size) {
+              simOutput.textContent = 'Validation failed. Stage selections before full run.';
+              return;
+            }
+            simOutput.textContent = 'Full run complete.\nSelected: ' + selected.size + '\nPlan/Extents: OK\nVertical Crop: OK\nIssues: 0';
+          });
+
+          renderSections();
+          renderRows();
+          refreshCounters();
+        }
+
+        initializeScreenshotGallery();
+        renderSimulator();
+
+        if (!links.length || !sections.length || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const sectionToLink = new Map(
+          links.map((link) => [link.getAttribute('href').slice(1), link])
+        );
+
+        function setActive(id) {
+          for (const link of links) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) {
+              return;
+            }
+
+            const id = visible[0].target.id;
+            if (sectionToLink.has(id)) {
+              setActive(id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: [0.1, 0.4, 0.7],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
+  </body>
+</html>

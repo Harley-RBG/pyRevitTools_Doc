@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T23:49:51.888Z",
+  "generatedAt": "2026-08-23T01:37:26.826Z",
   "source": "bundle.md",
   "tools": [
     {
@@ -15,47 +15,122 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack1.stack/AddCoordinates.pushbutton",
+        "profile": "addcoordinates-dialog",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
         "sourceKinds": [],
-        "controls": [],
-        "events": [],
+        "controls": [
+          {
+            "id": "coord-selection-view",
+            "name": "Select Elements in View",
+            "kind": "button",
+            "label": "Select Elements in View",
+            "required": true
+          },
+          {
+            "id": "coord-selection-model",
+            "name": "Select All Elements In Model",
+            "kind": "button",
+            "label": "Select All Elements In Model",
+            "required": true
+          },
+          {
+            "id": "coord-category",
+            "name": "CategoryList",
+            "kind": "select",
+            "label": "Category",
+            "required": false
+          },
+          {
+            "id": "coord-run",
+            "name": "RunCoordinateUpdate",
+            "kind": "button",
+            "label": "Run Coordinate Update",
+            "required": true
+          },
+          {
+            "id": "coord-results",
+            "name": "UpdatedElements",
+            "kind": "table",
+            "label": "Updated elements",
+            "required": false
+          }
+        ],
+        "events": [
+          {
+            "controlId": "coord-selection-view",
+            "event": "click",
+            "handler": "select_view_scope"
+          },
+          {
+            "controlId": "coord-selection-model",
+            "event": "click",
+            "handler": "select_model_scope"
+          },
+          {
+            "controlId": "coord-run",
+            "event": "click",
+            "handler": "run_coordinate_update"
+          }
+        ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Choose your selection type."
           },
           {
             "type": "SelectFromList",
-            "message": "Simulated SelectFromList interaction"
+            "message": "Choose a category for model-wide update."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Prepare a clean 3D view with the target elements visible"
+          },
+          {
+            "step": 2,
+            "label": "Choose either active-view selection or a model-wide category run"
+          },
+          {
+            "step": 3,
+            "label": "Update project and survey shared coordinate parameters"
+          },
+          {
+            "step": 4,
+            "label": "Review the selectable list of updated elements"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "categories",
+          "parameters"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "addcoordinates-training",
+            "title": "Add Coordinates Training Run",
             "steps": [
-              "Selection stage"
+              "Choose the selection scope",
+              "Pick view elements or a model category",
+              "Run the coordinate update",
+              "Review updated element results"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Coordinate parameters staged for the chosen elements",
+              "Updated element list displayed",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "dialog-guided-layout",
+          "screenshot-guided-layout"
+        ],
         "confidence": {
-          "controls": "low",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -118,28 +193,23 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-packagecreator.html",
       "screenshots": [
         {
-          "fileName": "PackageCreator1.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator1.png",
+          "fileName": "Package Creator1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Package Creator1.png",
           "tabFolder": "RBG_SYD_Tools"
         },
         {
-          "fileName": "PackageCreator2.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator2.png",
+          "fileName": "Package Creator2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Package Creator2.png",
           "tabFolder": "RBG_SYD_Tools"
         },
         {
-          "fileName": "PackageCreator3.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator3.png",
+          "fileName": "Package Creator3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Package Creator3.png",
           "tabFolder": "RBG_SYD_Tools"
         },
         {
-          "fileName": "PackageCreator4.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator4.png",
-          "tabFolder": "RBG_SYD_Tools"
-        },
-        {
-          "fileName": "PackageCreator5.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/PackageCreator5.png",
+          "fileName": "Package Creator4.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Package Creator4.png",
           "tabFolder": "RBG_SYD_Tools"
         }
       ],
@@ -728,6 +798,7 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack3.stack/Dashboard.pushbutton",
+        "profile": "dashboard-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -739,279 +810,137 @@
         ],
         "controls": [
           {
-            "id": "buttonborder",
-            "name": "ButtonBorder",
-            "kind": "button",
-            "label": "ButtonBorder",
-            "required": false
-          },
-          {
-            "id": "cardborder",
-            "name": "CardBorder",
-            "kind": "block",
-            "label": "CardBorder",
-            "required": false
-          },
-          {
-            "id": "allfilterbutton",
+            "id": "dash-filter-all",
             "name": "AllFilterButton",
-            "kind": "button",
-            "label": "AllFilterButton",
-            "required": false
-          },
-          {
-            "id": "favoritesfilterbutton",
-            "name": "FavoritesFilterButton",
-            "kind": "button",
-            "label": "FavoritesFilterButton",
-            "required": false
-          },
-          {
-            "id": "recentfilterbutton",
-            "name": "RecentFilterButton",
-            "kind": "button",
-            "label": "RecentFilterButton",
-            "required": false
-          },
-          {
-            "id": "summarytext",
-            "name": "SummaryText",
-            "kind": "text",
-            "label": "SummaryText",
-            "required": false
-          },
-          {
-            "id": "searchbox",
-            "name": "SearchBox",
-            "kind": "block",
-            "label": "SearchBox",
-            "required": false
-          },
-          {
-            "id": "favoritessection",
-            "name": "FavoritesSection",
-            "kind": "block",
-            "label": "FavoritesSection",
-            "required": false
-          },
-          {
-            "id": "favoritesbar",
-            "name": "FavoritesBar",
-            "kind": "block",
-            "label": "FavoritesBar",
-            "required": false
-          },
-          {
-            "id": "grouptree",
-            "name": "GroupTree",
-            "kind": "block",
-            "label": "GroupTree",
-            "required": false
-          },
-          {
-            "id": "button-10",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "treeview-11",
-            "name": "TreeView",
-            "kind": "tree",
-            "label": "TreeView",
-            "required": false
-          },
-          {
-            "id": "listbox-12",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
-            "required": true
-          },
-          {
-            "id": "textbox-13",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "action-all",
-            "name": "All",
             "kind": "button",
             "label": "All",
             "required": false
           },
           {
-            "id": "action-starred",
-            "name": "Starred",
+            "id": "dash-filter-favorites",
+            "name": "FavoritesFilterButton",
             "kind": "button",
             "label": "Starred",
             "required": false
           },
           {
-            "id": "action-recent",
-            "name": "Recent",
+            "id": "dash-filter-recent",
+            "name": "RecentFilterButton",
             "kind": "button",
             "label": "Recent",
             "required": false
           },
           {
-            "id": "action",
-            "name": "✕",
-            "kind": "button",
-            "label": "✕",
+            "id": "dash-search",
+            "name": "SearchBox",
+            "kind": "text",
+            "label": "Search",
             "required": false
           },
           {
-            "id": "action-new-group",
-            "name": "New Group",
-            "kind": "button",
-            "label": "New Group",
+            "id": "dash-groups",
+            "name": "GroupTree",
+            "kind": "tree",
+            "label": "Groups",
             "required": false
           },
           {
-            "id": "action-delete-group",
-            "name": "Delete Group",
-            "kind": "button",
-            "label": "Delete Group",
+            "id": "dash-cards",
+            "name": "CardGrid",
+            "kind": "table",
+            "label": "Tool cards",
             "required": false
           },
           {
-            "id": "action-add-to-group",
-            "name": "Add to Group",
+            "id": "dash-toggle-favorite",
+            "name": "FavoriteButton",
             "kind": "button",
-            "label": "Add to Group",
+            "label": "Toggle Favorite",
             "required": false
           },
           {
-            "id": "action-remove-from-group",
-            "name": "Remove from Group",
+            "id": "dash-launch",
+            "name": "QuickLaunch",
             "kind": "button",
-            "label": "Remove from Group",
-            "required": false
+            "label": "Quick Launch",
+            "required": true
           }
         ],
         "events": [
           {
-            "controlId": "action-all",
+            "controlId": "dash-filter-all",
             "event": "click",
-            "handler": "on_all"
+            "handler": "show_all_click"
           },
           {
-            "controlId": "action-starred",
+            "controlId": "dash-filter-favorites",
             "event": "click",
-            "handler": "on_starred"
+            "handler": "show_favorites_click"
           },
           {
-            "controlId": "action-recent",
+            "controlId": "dash-filter-recent",
             "event": "click",
-            "handler": "on_recent"
+            "handler": "show_recent_click"
           },
           {
-            "controlId": "action",
-            "event": "click",
-            "handler": "on_item"
+            "controlId": "dash-search",
+            "event": "change",
+            "handler": "search_changed"
           },
           {
-            "controlId": "action-new-group",
+            "controlId": "dash-launch",
             "event": "click",
-            "handler": "on_new-group"
-          },
-          {
-            "controlId": "action-delete-group",
-            "event": "click",
-            "handler": "on_delete-group"
-          },
-          {
-            "controlId": "action-add-to-group",
-            "event": "click",
-            "handler": "on_add-to-group"
-          },
-          {
-            "controlId": "action-remove-from-group",
-            "event": "click",
-            "handler": "on_remove-from-group"
+            "handler": "launch_selected_tool"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
-          },
-          {
-            "type": "ask_for_string",
-            "message": "Simulated ask_for_string interaction"
-          },
-          {
-            "type": "is_registered_dockable_panel",
-            "message": "Simulated is_registered_dockable_panel interaction"
-          },
-          {
-            "type": "open_dockable_panel",
-            "message": "Simulated open_dockable_panel interaction"
-          },
-          {
-            "type": "register_dockable_panel",
-            "message": "Simulated register_dockable_panel interaction"
-          },
-          {
-            "type": "SelectFromList",
-            "message": "Simulated SelectFromList interaction"
-          },
-          {
-            "type": "WPFPanel",
-            "message": "Simulated WPFPanel interaction"
-          },
-          {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "message": "Select a dashboard card before launching or toggling favorites."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Filter by all, starred, recent, or group categories"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Search the shared card catalog and review card summaries"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Inspect the selected tool detail panel"
           },
           {
             "step": 4,
-            "label": "Execution stage"
-          },
-          {
-            "step": 5,
-            "label": "Results and status stage"
+            "label": "Quick-launch the staged tool from the dashboard"
           }
         ],
         "dynamicSources": [],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "dashboard-training",
+            "title": "Dashboard Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Execution stage",
-              "Results and status stage"
+              "Filter catalog",
+              "Select tool card",
+              "Inspect detail panel",
+              "Quick launch"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
-              "No Revit model changes were made"
+              "Tool cards narrowed",
+              "Selected tool summary shown",
+              "No pyRevit process was started"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
           "prompts": "medium"
         }
@@ -1021,9 +950,16 @@
       "id": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
       "title": "Transaction Logger",
       "pagePath": "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "fileName": "Transaction Logger.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Transaction Logger.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Data.panel/DataStack2.stack/Transaction Logger.pushbutton",
+        "profile": "transactionlogger-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -1034,170 +970,123 @@
         ],
         "controls": [
           {
-            "id": "rbfull",
-            "name": "rbFull",
-            "kind": "block",
-            "label": "rbFull",
-            "required": false
-          },
-          {
-            "id": "rbtargeted",
-            "name": "rbTargeted",
-            "kind": "block",
-            "label": "rbTargeted",
-            "required": false
-          },
-          {
-            "id": "gbcategories",
-            "name": "gbCategories",
-            "kind": "block",
-            "label": "gbCategories",
-            "required": false
-          },
-          {
-            "id": "lstcategories",
-            "name": "lstCategories",
-            "kind": "block",
-            "label": "lstCategories",
-            "required": false
-          },
-          {
-            "id": "rbsnapnone",
-            "name": "rbSnapNone",
-            "kind": "block",
-            "label": "rbSnapNone",
-            "required": false
-          },
-          {
-            "id": "rbsnaplazy",
-            "name": "rbSnapLazy",
-            "kind": "block",
-            "label": "rbSnapLazy",
-            "required": false
-          },
-          {
-            "id": "btncancel",
-            "name": "btnCancel",
-            "kind": "button",
-            "label": "btnCancel",
-            "required": false
-          },
-          {
-            "id": "btnstart",
-            "name": "btnStart",
-            "kind": "button",
-            "label": "btnStart",
-            "required": false
-          },
-          {
-            "id": "on-mode-change",
-            "name": "on_mode_change",
-            "kind": "block",
-            "label": "on_mode_change",
-            "required": false
-          },
-          {
-            "id": "on-start",
-            "name": "on_start",
-            "kind": "block",
-            "label": "on_start",
-            "required": false
-          },
-          {
-            "id": "on-cancel",
-            "name": "on_cancel",
-            "kind": "block",
-            "label": "on_cancel",
-            "required": false
-          },
-          {
-            "id": "radiobutton-11",
-            "name": "RadioButton",
+            "id": "tl-mode",
+            "name": "CaptureMode",
             "kind": "radio",
-            "label": "RadioButton",
-            "required": false
-          },
-          {
-            "id": "button-12",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "listbox-13",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
+            "label": "Capture mode",
             "required": true
           },
           {
-            "id": "action-cancel",
-            "name": "Cancel",
-            "kind": "button",
-            "label": "Cancel",
+            "id": "tl-categories",
+            "name": "CategoryList",
+            "kind": "multiselect",
+            "label": "Categories",
             "required": false
           },
           {
-            "id": "action-start-logging",
-            "name": "Start Logging",
+            "id": "tl-snapshot",
+            "name": "SnapshotMode",
+            "kind": "select",
+            "label": "Snapshot mode",
+            "required": true
+          },
+          {
+            "id": "tl-output",
+            "name": "OutputPath",
+            "kind": "text",
+            "label": "Output path",
+            "required": true
+          },
+          {
+            "id": "tl-session",
+            "name": "SessionPreview",
+            "kind": "table",
+            "label": "Session preview",
+            "required": false
+          },
+          {
+            "id": "tl-start",
+            "name": "StartLogging",
             "kind": "button",
             "label": "Start Logging",
+            "required": true
+          },
+          {
+            "id": "tl-cancel",
+            "name": "Cancel",
+            "kind": "button",
+            "label": "Cancel",
             "required": false
           }
         ],
         "events": [
           {
-            "controlId": "action-cancel",
-            "event": "click",
-            "handler": "on_cancel"
+            "controlId": "tl-mode",
+            "event": "change",
+            "handler": "capture_mode_changed"
           },
           {
-            "controlId": "action-start-logging",
+            "controlId": "tl-start",
             "event": "click",
-            "handler": "on_start-logging"
+            "handler": "start_logging"
+          },
+          {
+            "controlId": "tl-cancel",
+            "event": "click",
+            "handler": "cancel"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Choose at least one category when targeted capture mode is enabled."
           },
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "Logger setup simulated. No live CSV capture was started."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Execution stage"
+            "label": "Choose full-model or targeted category capture"
           },
           {
             "step": 2,
-            "label": "Results and status stage"
+            "label": "Set the snapshot mode and confirm the log output path"
+          },
+          {
+            "step": 3,
+            "label": "Start the simulated logger session and review readiness"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "categories"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "transaction-logger-training",
+            "title": "Transaction Logger Training Run",
             "steps": [
-              "Execution stage",
-              "Results and status stage"
+              "Pick capture mode",
+              "Configure snapshot mode",
+              "Start logging"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
-              "No Revit model changes were made"
+              "Mode recorded",
+              "Output path confirmed",
+              "No live logger was started"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -1227,7 +1116,23 @@
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Make sure you're in a clean 3D view with your elements visible."
+          },
+          {
+            "step": 2,
+            "label": "Form Selection: Choose from Select Elements in View or Select All Elements In Model."
+          },
+          {
+            "step": 3,
+            "label": "If Select Elements in View, either drag to select or Ctrl+Click to select desired elements."
+          },
+          {
+            "step": 4,
+            "label": "If Select All Elements in Model, select from Structural Framing, Structural Columns or Walls."
+          },
+          {
+            "step": 5,
+            "label": "Returns a selectable list of all elements that have been updated."
           }
         ],
         "dynamicSources": [],
@@ -1236,7 +1141,11 @@
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Selection stage"
+              "Make sure you're in a clean 3D view with your elements visible.",
+              "Form Selection: Choose from Select Elements in View or Select All Elements In Model.",
+              "If Select Elements in View, either drag to select or Ctrl+Click to select desired elements.",
+              "If Select All Elements in Model, select from Structural Framing, Structural Columns or Walls.",
+              "Returns a selectable list of all elements that have been updated."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -1428,7 +1337,9 @@
             "label": "Load and preparation stage"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "categories"
+        ],
         "scenarios": [
           {
             "id": "default-training",
@@ -1512,8 +1423,13 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html",
       "screenshots": [
         {
-          "fileName": "Floor Splitter.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter.png",
+          "fileName": "Floor Splitter1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter1.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "Floor Splitter2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Floor Splitter2.png",
           "tabFolder": "RBG_SYD_Tools"
         }
       ],
@@ -1638,15 +1554,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the current sheet or viewport order before making changes."
+          },
+          {
+            "step": 2,
+            "label": "Run Crop Views Quick Off with the target sheet items you want to reorder."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the final sheet layout matches the intended presentation order."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the current sheet or viewport order before making changes.",
+              "Run Crop Views Quick Off with the target sheet items you want to reorder.",
+              "Confirm the final sheet layout matches the intended presentation order."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -1657,18 +1587,18 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
     },
     {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton",
       "title": "Grids\n2D / 3D",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-gridextents.html",
       "screenshots": [],
       "simulator": {
-        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/GridExtents.pushbutton",
+        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/GridExtents.pushbutton",
         "uiKind": "pyrevit-form",
         "sourceType": "python",
         "xamlFiles": [],
@@ -1676,45 +1606,20 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
-        "dynamicSources": [],
-        "scenarios": [
+        "workflow": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
-            "steps": [
-              "Review inputs",
-              "Run simulation"
-            ],
-            "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
-              "No Revit model changes were made"
-            ]
+            "step": 1,
+            "label": "Prepare the target view and confirm the grids, levels, or view settings you want to adjust."
+          },
+          {
+            "step": 2,
+            "label": "Run Grid Extents with the required scope or option settings."
+          },
+          {
+            "step": 3,
+            "label": "Review the updated view result and rerun if the displayed extents or filters need refinement."
           }
         ],
-        "confidence": {
-          "controls": "low",
-          "workflow": "low",
-          "prompts": "low"
-        }
-      }
-    },
-    {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
-      "title": "Levels\n2D / 3D",
-      "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
-      "screenshots": [],
-      "simulator": {
-        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelsExtents.pushbutton",
-        "uiKind": "pyrevit-form",
-        "sourceType": "python",
-        "xamlFiles": [],
-        "sourceKinds": [],
-        "controls": [],
-        "events": [],
-        "prompts": [],
-        "workflow": [],
         "dynamicSources": [
           "levels"
         ],
@@ -1723,8 +1628,9 @@
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Prepare the target view and confirm the grids, levels, or view settings you want to adjust.",
+              "Run Grid Extents with the required scope or option settings.",
+              "Review the updated view result and rerun if the displayed extents or filters need refinement."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -1735,18 +1641,72 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
     },
     {
-      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton",
+      "title": "Levels\n2D / 3D",
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelsextents.html",
+      "screenshots": [],
+      "simulator": {
+        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelsExtents.pushbutton",
+        "uiKind": "pyrevit-form",
+        "sourceType": "python",
+        "xamlFiles": [],
+        "sourceKinds": [],
+        "controls": [],
+        "events": [],
+        "prompts": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Prepare the target view and confirm the grids, levels, or view settings you want to adjust."
+          },
+          {
+            "step": 2,
+            "label": "Run Levels Extents with the required scope or option settings."
+          },
+          {
+            "step": 3,
+            "label": "Review the updated view result and rerun if the displayed extents or filters need refinement."
+          }
+        ],
+        "dynamicSources": [
+          "levels"
+        ],
+        "scenarios": [
+          {
+            "id": "default-training",
+            "title": "Default Training Run",
+            "steps": [
+              "Prepare the target view and confirm the grids, levels, or view settings you want to adjust.",
+              "Run Levels Extents with the required scope or option settings.",
+              "Review the updated view result and rerun if the displayed extents or filters need refinement."
+            ],
+            "expectedOutput": [
+              "Simulation complete",
+              "Validation checks passed",
+              "No Revit model changes were made"
+            ]
+          }
+        ],
+        "confidence": {
+          "controls": "low",
+          "workflow": "high",
+          "prompts": "low"
+        }
+      }
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton",
       "title": "Levels: Head Switch\nLeft / Right",
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html",
       "screenshots": [],
       "simulator": {
-        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ShiftClick1.stack/LevelHeadSwitcher.pushbutton",
+        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/Level and Grids.pulldown/LevelHeadSwitcher.pushbutton",
         "uiKind": "none",
         "sourceType": "none",
         "xamlFiles": [],
@@ -1962,6 +1922,7 @@
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack1.stack/PlanViewRange.pushbutton",
+        "profile": "planviewrange-high-fidelity",
         "uiKind": "wpf",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -1974,224 +1935,131 @@
         ],
         "controls": [
           {
-            "id": "on-filter-changed",
-            "name": "on_filter_changed",
-            "kind": "block",
-            "label": "on_filter_changed",
-            "required": false
-          },
-          {
-            "id": "on-selection-changed",
-            "name": "on_selection_changed",
-            "kind": "block",
-            "label": "on_selection_changed",
-            "required": false
-          },
-          {
-            "id": "on-refresh",
-            "name": "on_refresh",
-            "kind": "block",
-            "label": "on_refresh",
-            "required": false
-          },
-          {
-            "id": "on-swap",
-            "name": "on_swap",
-            "kind": "block",
-            "label": "on_swap",
-            "required": false
-          },
-          {
-            "id": "on-copy-a-to-b",
-            "name": "on_copy_a_to_b",
-            "kind": "block",
-            "label": "on_copy_a_to_b",
-            "required": false
-          },
-          {
-            "id": "on-copy-b-to-a",
-            "name": "on_copy_b_to_a",
-            "kind": "block",
-            "label": "on_copy_b_to_a",
-            "required": false
-          },
-          {
-            "id": "on-copy-a-to-targets",
-            "name": "on_copy_a_to_targets",
-            "kind": "block",
-            "label": "on_copy_a_to_targets",
-            "required": false
-          },
-          {
-            "id": "on-close",
-            "name": "on_close",
-            "kind": "block",
-            "label": "on_close",
-            "required": false
-          },
-          {
-            "id": "button-8",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "datagridtextcolumn-9",
-            "name": "DataGridTextColumn",
-            "kind": "table",
-            "label": "DataGridTextColumn",
-            "required": false
-          },
-          {
-            "id": "datagrid-10",
-            "name": "DataGrid",
-            "kind": "table",
-            "label": "DataGrid",
-            "required": false
-          },
-          {
-            "id": "listbox-11",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
+            "id": "pvr-plan-a",
+            "name": "PlanA",
+            "kind": "select",
+            "label": "Plan A",
             "required": true
           },
           {
-            "id": "textbox-12",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
+            "id": "pvr-plan-b",
+            "name": "PlanB",
+            "kind": "select",
+            "label": "Plan B",
             "required": true
           },
           {
-            "id": "checkbox-13",
-            "name": "CheckBox",
+            "id": "pvr-template-aware",
+            "name": "TemplateAware",
             "kind": "checkbox",
-            "label": "CheckBox",
+            "label": "Respect template control",
             "required": false
           },
           {
-            "id": "action-refresh-views",
-            "name": "Refresh Views",
-            "kind": "button",
-            "label": "Refresh Views",
+            "id": "pvr-comparison",
+            "name": "ComparisonTable",
+            "kind": "table",
+            "label": "Comparison rows",
             "required": false
           },
           {
-            "id": "action-copy-a-b",
-            "name": "Copy A → B",
+            "id": "pvr-targets",
+            "name": "Targets",
+            "kind": "multiselect",
+            "label": "Targets",
+            "required": true
+          },
+          {
+            "id": "pvr-compare",
+            "name": "Compare",
             "kind": "button",
-            "label": "Copy A → B",
+            "label": "Compare",
             "required": false
           },
           {
-            "id": "action-copy-b-a",
-            "name": "Copy B → A",
+            "id": "pvr-swap",
+            "name": "SwapAB",
             "kind": "button",
-            "label": "Copy B → A",
+            "label": "Swap A/B",
             "required": false
           },
           {
-            "id": "action-swap-a-b",
-            "name": "Swap A ↔ B",
+            "id": "pvr-copy",
+            "name": "CopyViewRange",
             "kind": "button",
-            "label": "Swap A ↔ B",
-            "required": false
-          },
-          {
-            "id": "action-close",
-            "name": "Close",
-            "kind": "button",
-            "label": "Close",
-            "required": false
-          },
-          {
-            "id": "action-copy-a-selected-targets",
-            "name": "Copy A → Selected Targets",
-            "kind": "button",
-            "label": "Copy A → Selected Targets",
-            "required": false
+            "label": "Copy View Range",
+            "required": true
           }
         ],
         "events": [
           {
-            "controlId": "action-refresh-views",
+            "controlId": "pvr-compare",
             "event": "click",
-            "handler": "on_refresh-views"
+            "handler": "compare_view_ranges"
           },
           {
-            "controlId": "action-copy-a-b",
+            "controlId": "pvr-swap",
             "event": "click",
-            "handler": "on_copy-a-b"
+            "handler": "swap_plan_inputs"
           },
           {
-            "controlId": "action-copy-b-a",
+            "controlId": "pvr-copy",
             "event": "click",
-            "handler": "on_copy-b-a"
-          },
-          {
-            "controlId": "action-swap-a-b",
-            "event": "click",
-            "handler": "on_swap-a-b"
-          },
-          {
-            "controlId": "action-close",
-            "event": "click",
-            "handler": "on_close"
-          },
-          {
-            "controlId": "action-copy-a-selected-targets",
-            "event": "click",
-            "handler": "on_copy-a-selected-targets"
+            "handler": "copy_view_ranges"
           }
         ],
-        "prompts": [],
+        "prompts": [
+          {
+            "type": "alert",
+            "message": "Select at least one target before running the copy simulation."
+          }
+        ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Choose the two plan views to compare"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Review live view range differences across all planes"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Stage one or more target views for copy"
           },
           {
             "step": 4,
-            "label": "Execution stage"
-          },
-          {
-            "step": 5,
-            "label": "Results and status stage"
+            "label": "Run the copy simulation and inspect the summary"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "plan views"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "plan-view-range-training",
+            "title": "Plan View Range Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Execution stage",
-              "Results and status stage"
+              "Choose plans",
+              "Compare rows",
+              "Select targets",
+              "Copy simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "Differences highlighted",
+              "Targets staged",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "low"
+          "prompts": "high"
         }
       }
     },
@@ -2201,28 +2069,24 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html",
       "screenshots": [
         {
-          "fileName": "View CreatorSelector1.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1.png",
+          "fileName": "View Creator Selector1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector1.png",
           "tabFolder": "RBG_SYD_Tools"
         },
         {
-          "fileName": "View CreatorSelector1A.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector1A.png",
+          "fileName": "View Creator Selector2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector2.png",
           "tabFolder": "RBG_SYD_Tools"
         },
         {
-          "fileName": "View CreatorSelector2.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector2.png",
-          "tabFolder": "RBG_SYD_Tools"
-        },
-        {
-          "fileName": "View CreatorSelector3.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View CreatorSelector3.png",
+          "fileName": "View Creator Selector3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/View Creator Selector3.png",
           "tabFolder": "RBG_SYD_Tools"
         }
       ],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack2.stack/ScopeBoxViewCreation.pushbutton",
+        "profile": "scopeboxviewcreation-high-fidelity",
         "uiKind": "mixed",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -2233,332 +2097,148 @@
         ],
         "controls": [
           {
-            "id": "colstageleft",
-            "name": "colStageLeft",
-            "kind": "block",
-            "label": "colStageLeft",
-            "required": false
-          },
-          {
-            "id": "colstagegap",
-            "name": "colStageGap",
-            "kind": "block",
-            "label": "colStageGap",
-            "required": false
-          },
-          {
-            "id": "colstageright",
-            "name": "colStageRight",
-            "kind": "block",
-            "label": "colStageRight",
-            "required": false
-          },
-          {
-            "id": "stageinputpane",
-            "name": "stageInputPane",
-            "kind": "block",
-            "label": "stageInputPane",
-            "required": false
-          },
-          {
-            "id": "btnworkflowstep0",
-            "name": "btnWorkflowStep0",
-            "kind": "button",
-            "label": "btnWorkflowStep0",
-            "required": false
-          },
-          {
-            "id": "brdworkflowstep0bubble",
-            "name": "brdWorkflowStep0Bubble",
-            "kind": "block",
-            "label": "brdWorkflowStep0Bubble",
-            "required": false
-          },
-          {
-            "id": "txtworkflowstep0bubble",
-            "name": "txtWorkflowStep0Bubble",
-            "kind": "text",
-            "label": "txtWorkflowStep0Bubble",
-            "required": false
-          },
-          {
-            "id": "txtworkflowstep0label",
-            "name": "txtWorkflowStep0Label",
-            "kind": "text",
-            "label": "txtWorkflowStep0Label",
-            "required": false
-          },
-          {
-            "id": "brdworkflowconn0",
-            "name": "brdWorkflowConn0",
-            "kind": "block",
-            "label": "brdWorkflowConn0",
-            "required": false
-          },
-          {
-            "id": "btnworkflowstep1",
-            "name": "btnWorkflowStep1",
-            "kind": "button",
-            "label": "btnWorkflowStep1",
-            "required": false
-          },
-          {
-            "id": "combobox-10",
-            "name": "ComboBox",
+            "id": "svc-mode",
+            "name": "SourceMode",
             "kind": "select",
-            "label": "ComboBox",
+            "label": "Source mode",
             "required": true
           },
           {
-            "id": "button-11",
-            "name": "Button",
-            "kind": "button",
-            "label": "Button",
-            "required": false
-          },
-          {
-            "id": "datagridtextcolumn-12",
-            "name": "DataGridTextColumn",
-            "kind": "table",
-            "label": "DataGridTextColumn",
-            "required": false
-          },
-          {
-            "id": "textbox-13",
-            "name": "TextBox",
-            "kind": "text",
-            "label": "TextBox",
-            "required": true
-          },
-          {
-            "id": "datagridtemplatecolumn-14",
-            "name": "DataGridTemplateColumn",
-            "kind": "table",
-            "label": "DataGridTemplateColumn",
-            "required": false
-          },
-          {
-            "id": "checkbox-15",
-            "name": "CheckBox",
-            "kind": "checkbox",
-            "label": "CheckBox",
-            "required": false
-          },
-          {
-            "id": "datagrid-16",
-            "name": "DataGrid",
-            "kind": "table",
-            "label": "DataGrid",
-            "required": false
-          },
-          {
-            "id": "comboboxitem-17",
-            "name": "ComboBoxItem",
+            "id": "svc-plan",
+            "name": "PlanView",
             "kind": "select",
-            "label": "ComboBoxItem",
+            "label": "Plan view",
             "required": true
           },
           {
-            "id": "listbox-18",
-            "name": "ListBox",
-            "kind": "multiselect",
-            "label": "ListBox",
+            "id": "svc-scope",
+            "name": "ScopeBox",
+            "kind": "select",
+            "label": "Scope box",
             "required": true
           },
           {
-            "id": "radiobutton-19",
-            "name": "RadioButton",
-            "kind": "radio",
-            "label": "RadioButton",
+            "id": "svc-titleblock",
+            "name": "Titleblock",
+            "kind": "select",
+            "label": "Titleblock",
             "required": false
           },
           {
-            "id": "tabitem-20",
-            "name": "TabItem",
-            "kind": "tabs",
-            "label": "TabItem",
-            "required": false
-          },
-          {
-            "id": "datagridcheckboxcolumn-21",
-            "name": "DataGridCheckBoxColumn",
+            "id": "svc-stage1",
+            "name": "Stage1ViewNames",
             "kind": "table",
-            "label": "DataGridCheckBoxColumn",
+            "label": "Stage 1 view names",
             "required": false
           },
           {
-            "id": "tabcontrol-22",
-            "name": "TabControl",
-            "kind": "tabs",
-            "label": "TabControl",
+            "id": "svc-sheet-preview",
+            "name": "SheetPreview",
+            "kind": "table",
+            "label": "Sheet layout preview",
             "required": false
           },
           {
-            "id": "treeview-23",
-            "name": "TreeView",
-            "kind": "tree",
-            "label": "TreeView",
-            "required": false
-          },
-          {
-            "id": "action-select-visible",
-            "name": "Select Visible",
+            "id": "svc-load",
+            "name": "LoadScopeBoxes",
             "kind": "button",
-            "label": "Select Visible",
+            "label": "Load Scope Boxes",
             "required": false
           },
           {
-            "id": "action-clear-visible",
-            "name": "Clear Visible",
+            "id": "svc-stage-names",
+            "name": "ApplyViewNames",
             "kind": "button",
-            "label": "Clear Visible",
-            "required": false
+            "label": "Apply View Names",
+            "required": true
           },
           {
-            "id": "action-run-stage-1-create-collect-views",
-            "name": "Run Stage 1: Create/Collect Views",
+            "id": "svc-create",
+            "name": "CreateLayout",
             "kind": "button",
-            "label": "Run Stage 1: Create/Collect Views",
-            "required": false
-          },
-          {
-            "id": "action-run-stage-1-collect-selected-views",
-            "name": "Run Stage 1: Collect Selected Views",
-            "kind": "button",
-            "label": "Run Stage 1: Collect Selected Views",
-            "required": false
-          },
-          {
-            "id": "action-pick-plan-rotation",
-            "name": "Pick Plan Rotation",
-            "kind": "button",
-            "label": "Pick Plan Rotation",
-            "required": false
-          },
-          {
-            "id": "action-pick-section-alignment-aligned",
-            "name": "Pick Section Alignment (Aligned)",
-            "kind": "button",
-            "label": "Pick Section Alignment (Aligned)",
-            "required": false
-          },
-          {
-            "id": "action-apply-to-selected-rows",
-            "name": "Apply To Selected Rows",
-            "kind": "button",
-            "label": "Apply To Selected Rows",
-            "required": false
-          },
-          {
-            "id": "action-read-current-extents",
-            "name": "Read Current Extents",
-            "kind": "button",
-            "label": "Read Current Extents",
-            "required": false
+            "label": "Create + Layout Views",
+            "required": true
           }
         ],
         "events": [
           {
-            "controlId": "action-select-visible",
+            "controlId": "svc-load",
             "event": "click",
-            "handler": "on_select-visible"
+            "handler": "load_scope_boxes"
           },
           {
-            "controlId": "action-clear-visible",
+            "controlId": "svc-stage-names",
             "event": "click",
-            "handler": "on_clear-visible"
+            "handler": "apply_view_names"
           },
           {
-            "controlId": "action-run-stage-1-create-collect-views",
+            "controlId": "svc-create",
             "event": "click",
-            "handler": "on_run-stage-1-create-collect-views"
-          },
-          {
-            "controlId": "action-run-stage-1-collect-selected-views",
-            "event": "click",
-            "handler": "on_run-stage-1-collect-selected-views"
-          },
-          {
-            "controlId": "action-pick-plan-rotation",
-            "event": "click",
-            "handler": "on_pick-plan-rotation"
-          },
-          {
-            "controlId": "action-pick-section-alignment-aligned",
-            "event": "click",
-            "handler": "on_pick-section-alignment-aligned"
-          },
-          {
-            "controlId": "action-apply-to-selected-rows",
-            "event": "click",
-            "handler": "on_apply-to-selected-rows"
-          },
-          {
-            "controlId": "action-read-current-extents",
-            "event": "click",
-            "handler": "on_read-current-extents"
+            "handler": "run_sheet_layout"
           }
         ],
         "prompts": [
           {
             "type": "alert",
-            "message": "Simulated alert interaction"
+            "message": "Review warning rows before creating sheet layouts."
           },
           {
-            "type": "WPFWindow",
-            "message": "Simulated WPFWindow interaction"
+            "type": "alert",
+            "message": "View creation and sheet layout simulated. No Revit model changes were made."
           }
         ],
         "workflow": [
           {
             "step": 1,
-            "label": "Selection stage"
+            "label": "Choose creator or selector source mode"
           },
           {
             "step": 2,
-            "label": "Load and preparation stage"
+            "label": "Load scope boxes and plan context for the selected stage"
           },
           {
             "step": 3,
-            "label": "Filter and scope stage"
+            "label": "Edit generated plan/section names in Stage 1"
           },
           {
             "step": 4,
-            "label": "Preview and inspection stage"
+            "label": "Preview sheet layout rows and review warnings"
           },
           {
             "step": 5,
-            "label": "Execution stage"
-          },
-          {
-            "step": 6,
-            "label": "Results and status stage"
+            "label": "Run the combined create-and-layout simulation"
           }
         ],
-        "dynamicSources": [],
+        "dynamicSources": [
+          "plan views",
+          "scope boxes",
+          "sheets"
+        ],
         "scenarios": [
           {
-            "id": "default-training",
-            "title": "Default Training Run",
+            "id": "scope-box-view-creation-training",
+            "title": "Scope Box View Creation Training Run",
             "steps": [
-              "Selection stage",
-              "Load and preparation stage",
-              "Filter and scope stage",
-              "Preview and inspection stage",
-              "Execution stage",
-              "Results and status stage"
+              "Choose source mode",
+              "Load scope boxes",
+              "Stage view names",
+              "Create layout simulation"
             ],
             "expectedOutput": [
-              "Simulation complete",
-              "Validation checks passed",
+              "View names prepared",
+              "Sheet layout preview shown",
               "No Revit model changes were made"
             ]
           }
         ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
         "confidence": {
-          "controls": "medium",
+          "controls": "high",
           "workflow": "high",
-          "prompts": "medium"
+          "prompts": "high"
         }
       }
     },
@@ -2568,8 +2248,8 @@
       "pagePath": "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html",
       "screenshots": [
         {
-          "fileName": "SectionDetail Updater.png",
-          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/SectionDetail Updater.png",
+          "fileName": "Section Detail Updater.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/Section Detail Updater.png",
           "tabFolder": "RBG_SYD_Tools"
         }
       ],
@@ -3000,6 +2680,168 @@
       }
     },
     {
+      "id": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton",
+      "title": "View Filter Editor",
+      "pagePath": "tools/sj-pyrevit-rbg-tools-views-viewfiltereditor.html",
+      "screenshots": [],
+      "simulator": {
+        "toolId": "RBG_SYD_Tools.tab/RBG Tools_Views.panel/ViewStack3.stack/ViewFilterEditor.pushbutton",
+        "profile": "viewfiltereditor-high-fidelity",
+        "uiKind": "mixed",
+        "sourceType": "xaml",
+        "xamlFiles": [
+          "ViewFilterEditor.xaml"
+        ],
+        "sourceKinds": [
+          "external-xaml"
+        ],
+        "controls": [
+          {
+            "id": "vfe-search",
+            "name": "SearchBox",
+            "kind": "text",
+            "label": "Search",
+            "required": false
+          },
+          {
+            "id": "vfe-show",
+            "name": "ViewFilterBox",
+            "kind": "select",
+            "label": "Show",
+            "required": false
+          },
+          {
+            "id": "vfe-rows",
+            "name": "FilterRows",
+            "kind": "table",
+            "label": "Filter rows",
+            "required": false
+          },
+          {
+            "id": "vfe-enabled",
+            "name": "Enabled",
+            "kind": "checkbox",
+            "label": "Enabled",
+            "required": false
+          },
+          {
+            "id": "vfe-visible",
+            "name": "Visible",
+            "kind": "checkbox",
+            "label": "Visible",
+            "required": false
+          },
+          {
+            "id": "vfe-halftone",
+            "name": "Halftone",
+            "kind": "checkbox",
+            "label": "Halftone",
+            "required": false
+          },
+          {
+            "id": "vfe-transparency",
+            "name": "Transparency",
+            "kind": "text",
+            "label": "Transparency",
+            "required": false
+          },
+          {
+            "id": "vfe-pattern",
+            "name": "Pattern",
+            "kind": "select",
+            "label": "Projection pattern",
+            "required": false
+          },
+          {
+            "id": "vfe-stage",
+            "name": "StageChanges",
+            "kind": "button",
+            "label": "Stage Changes",
+            "required": true
+          },
+          {
+            "id": "vfe-apply",
+            "name": "ApplyBtn",
+            "kind": "button",
+            "label": "Apply to Revit",
+            "required": true
+          }
+        ],
+        "events": [
+          {
+            "controlId": "vfe-search",
+            "event": "change",
+            "handler": "search_changed"
+          },
+          {
+            "controlId": "vfe-stage",
+            "event": "click",
+            "handler": "stage_changes"
+          },
+          {
+            "controlId": "vfe-apply",
+            "event": "click",
+            "handler": "apply_filter_overrides"
+          }
+        ],
+        "prompts": [
+          {
+            "type": "alert",
+            "message": "Select a row before staging filter override changes."
+          },
+          {
+            "type": "alert",
+            "message": "Only dirty rows are applied by the real tool. This run is simulated only."
+          }
+        ],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Browse View Templates or Views and search for target filters"
+          },
+          {
+            "step": 2,
+            "label": "Select a row to load its per-view override editor"
+          },
+          {
+            "step": 3,
+            "label": "Stage changes for visibility, patterns, transparency, and halftone"
+          },
+          {
+            "step": 4,
+            "label": "Apply the dirty rows through the simulator summary"
+          }
+        ],
+        "dynamicSources": [],
+        "scenarios": [
+          {
+            "id": "view-filter-editor-training",
+            "title": "View Filter Editor Training Run",
+            "steps": [
+              "Search filters",
+              "Select row",
+              "Stage changes",
+              "Apply simulation"
+            ],
+            "expectedOutput": [
+              "Dirty rows tracked",
+              "Apply summary shown",
+              "No Revit model changes were made"
+            ]
+          }
+        ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
+        "confidence": {
+          "controls": "high",
+          "workflow": "high",
+          "prompts": "high"
+        }
+      }
+    },
+    {
       "id": "JasonHacksRevit.tab/Selection.panel/CategoryPicker.pushbutton",
       "title": "CategoryPicker",
       "pagePath": "tools/sj-pyrevit-selection-categorypicker.html",
@@ -3326,15 +3168,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the tool purpose and prerequisites: Purpose not documented in tool-context.md."
+          },
+          {
+            "step": 2,
+            "label": "Run MClear using the required model scope, options, or inputs."
+          },
+          {
+            "step": 3,
+            "label": "Review the outcome and confirm the tool completed the intended workflow."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the tool purpose and prerequisites: Purpose not documented in tool-context.md.",
+              "Run MClear using the required model scope, options, or inputs.",
+              "Review the outcome and confirm the tool completed the intended workflow."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3345,7 +3201,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3364,15 +3220,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the tool purpose and prerequisites: Purpose not documented in tool-context.md."
+          },
+          {
+            "step": 2,
+            "label": "Run MDeduct using the required model scope, options, or inputs."
+          },
+          {
+            "step": 3,
+            "label": "Review the outcome and confirm the tool completed the intended workflow."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the tool purpose and prerequisites: Purpose not documented in tool-context.md.",
+              "Run MDeduct using the required model scope, options, or inputs.",
+              "Review the outcome and confirm the tool completed the intended workflow."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3383,7 +3253,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3402,15 +3272,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the saved memory state or selection context that this action will affect."
+          },
+          {
+            "step": 2,
+            "label": "Run Next to move, save, clear, or purge the stored memory state."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the active selection or stored memory data reflects the expected state change."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the saved memory state or selection context that this action will affect.",
+              "Run Next to move, save, clear, or purge the stored memory state.",
+              "Confirm the active selection or stored memory data reflects the expected state change."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3421,7 +3305,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3641,15 +3525,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the saved memory state or selection context that this action will affect."
+          },
+          {
+            "step": 2,
+            "label": "Run Prev to move, save, clear, or purge the stored memory state."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the active selection or stored memory data reflects the expected state change."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the saved memory state or selection context that this action will affect.",
+              "Run Prev to move, save, clear, or purge the stored memory state.",
+              "Confirm the active selection or stored memory data reflects the expected state change."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3660,7 +3558,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3669,7 +3567,28 @@
       "id": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
       "title": "Propagate Extents Override",
       "pagePath": "tools/sj-pyrevit-selection-propagate-extents-override.html",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "fileName": "Propogate Extents Override1.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override1.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "Propogate Extents Override2.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override2.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "Propogate Extents Override3.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override3.png",
+          "tabFolder": "JasonHacksRevit"
+        },
+        {
+          "fileName": "Propogate Extents Override4.png",
+          "localPath": "generated/tool-screenshots/JasonHacksRevit/Propogate Extents Override4.png",
+          "tabFolder": "JasonHacksRevit"
+        }
+      ],
       "simulator": {
         "toolId": "JasonHacksRevit.tab/Selection.panel/Propagate Extents Override.pushbutton",
         "profile": "propagateextentsoverride-high-fidelity",
@@ -3852,15 +3771,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the saved memory state or selection context that this action will affect."
+          },
+          {
+            "step": 2,
+            "label": "Run Purge Memory Files to move, save, clear, or purge the stored memory state."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the active selection or stored memory data reflects the expected state change."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the saved memory state or selection context that this action will affect.",
+              "Run Purge Memory Files to move, save, clear, or purge the stored memory state.",
+              "Confirm the active selection or stored memory data reflects the expected state change."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3871,7 +3804,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3890,15 +3823,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the saved memory state or selection context that this action will affect."
+          },
+          {
+            "step": 2,
+            "label": "Run Save Memory as Selection to move, save, clear, or purge the stored memory state."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the active selection or stored memory data reflects the expected state change."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the saved memory state or selection context that this action will affect.",
+              "Run Save Memory as Selection to move, save, clear, or purge the stored memory state.",
+              "Confirm the active selection or stored memory data reflects the expected state change."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3909,7 +3856,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -3928,15 +3875,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Open the view where hidden elements need to be restored."
+          },
+          {
+            "step": 2,
+            "label": "Run UnhideAllElements on the current view or chosen scope."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the previously hidden elements are visible again and the view is correct."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Open the view where hidden elements need to be restored.",
+              "Run UnhideAllElements on the current view or chosen scope.",
+              "Confirm the previously hidden elements are visible again and the view is correct."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -3947,7 +3908,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -4290,15 +4251,29 @@
         "controls": [],
         "events": [],
         "prompts": [],
-        "workflow": [],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the current sheet or viewport order before making changes."
+          },
+          {
+            "step": 2,
+            "label": "Run Tool1 with the target sheet items you want to reorder."
+          },
+          {
+            "step": 3,
+            "label": "Confirm the final sheet layout matches the intended presentation order."
+          }
+        ],
         "dynamicSources": [],
         "scenarios": [
           {
             "id": "default-training",
             "title": "Default Training Run",
             "steps": [
-              "Review inputs",
-              "Run simulation"
+              "Review the current sheet or viewport order before making changes.",
+              "Run Tool1 with the target sheet items you want to reorder.",
+              "Confirm the final sheet layout matches the intended presentation order."
             ],
             "expectedOutput": [
               "Simulation complete",
@@ -4309,7 +4284,7 @@
         ],
         "confidence": {
           "controls": "low",
-          "workflow": "low",
+          "workflow": "high",
           "prompts": "low"
         }
       }
@@ -4321,6 +4296,7 @@
       "screenshots": [],
       "simulator": {
         "toolId": "RBG_SYD_Tools.tab/SYD_Prod_WIP.panel/Josh.pulldown/Tool2.pushbutton",
+        "profile": "xaml-inferred-layout",
         "uiKind": "wpf",
         "sourceType": "xaml",
         "xamlFiles": [
@@ -4551,6 +4527,133 @@
           "controls": "medium",
           "workflow": "high",
           "prompts": "low"
+        }
+      }
+    },
+    {
+      "id": "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton",
+      "title": "WPF UI Template",
+      "pagePath": "tools/sj-pyrevit-templates-wpfstyletemplate.html",
+      "screenshots": [
+        {
+          "fileName": "WPF Template1.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/WPF Template1.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "WPF Template2.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/WPF Template2.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "WPF Template3.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/WPF Template3.png",
+          "tabFolder": "RBG_SYD_Tools"
+        },
+        {
+          "fileName": "WPF Template4.png",
+          "localPath": "generated/tool-screenshots/RBG_SYD_Tools/WPF Template4.png",
+          "tabFolder": "RBG_SYD_Tools"
+        }
+      ],
+      "simulator": {
+        "toolId": "RBG_SYD_Tools.tab/Templates.panel/WPFStyleTemplate.pushbutton",
+        "profile": "wpftemplate-reference",
+        "uiKind": "mixed",
+        "sourceType": "xaml",
+        "xamlFiles": [
+          "WPFStyleTemplate.xaml"
+        ],
+        "sourceKinds": [
+          "external-xaml"
+        ],
+        "controls": [
+          {
+            "id": "wpf-steps",
+            "name": "WizardStepBar",
+            "kind": "tabs",
+            "label": "Reference steps",
+            "required": false
+          },
+          {
+            "id": "wpf-components",
+            "name": "ComponentCards",
+            "kind": "table",
+            "label": "Component cards",
+            "required": false
+          },
+          {
+            "id": "wpf-copy-shell",
+            "name": "CopyStarterShell",
+            "kind": "button",
+            "label": "Copy Starter Skeleton",
+            "required": false
+          },
+          {
+            "id": "wpf-mark-reviewed",
+            "name": "MarkReviewed",
+            "kind": "button",
+            "label": "Mark Reviewed",
+            "required": false
+          }
+        ],
+        "events": [
+          {
+            "controlId": "wpf-copy-shell",
+            "event": "click",
+            "handler": "copy_starter_shell"
+          },
+          {
+            "controlId": "wpf-mark-reviewed",
+            "event": "click",
+            "handler": "mark_reviewed"
+          }
+        ],
+        "prompts": [
+          {
+            "type": "alert",
+            "message": "Reference review only. This tool should not modify the Revit model."
+          }
+        ],
+        "workflow": [
+          {
+            "step": 1,
+            "label": "Review the canonical shell, toolbar, and badge patterns"
+          },
+          {
+            "step": 2,
+            "label": "Inspect approved controls, cards, chips, and table treatments"
+          },
+          {
+            "step": 3,
+            "label": "Use the checklist to guide new WPF tool implementations"
+          }
+        ],
+        "dynamicSources": [],
+        "scenarios": [
+          {
+            "id": "wpf-template-reference",
+            "title": "WPF Template Reference Run",
+            "steps": [
+              "Review shell",
+              "Inspect controls",
+              "Confirm checklist"
+            ],
+            "expectedOutput": [
+              "Approved patterns listed",
+              "Checklist reviewed",
+              "No Revit model changes were made"
+            ]
+          }
+        ],
+        "fidelityFlags": [
+          "high-fidelity-template-applied",
+          "xaml-guided-layout"
+        ],
+        "confidence": {
+          "controls": "high",
+          "workflow": "high",
+          "prompts": "medium"
         }
       }
     }

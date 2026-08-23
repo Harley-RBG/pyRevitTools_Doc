@@ -1,121 +1,127 @@
 {
   "byMode": {
     "fast": {
-      "generatedAt": "2026-08-17T23:57:48.547Z",
+      "generatedAt": "2026-08-23T01:37:26.826Z",
       "pages": {
         "tools/sj-pyrevit-rbg-tools-data-addcoordinates.html": {
-          "hash": "6663c40ec84530dd7e7d69b2518dc9f77e2ab124"
+          "hash": "00d1ba6516fb3e5e2f8fb40326573dc06118f6f1"
         },
         "tools/sj-pyrevit-rbg-tools-data-magpiegroup.html": {
-          "hash": "05c4e1fde125e5720b76be6c914e056a61b30bd3"
+          "hash": "7a5f35b813b4a705c486c28d335c7cb70a542060"
         },
         "tools/sj-pyrevit-rbg-tools-data-packagecreator.html": {
-          "hash": "1f91f76b1d9fe08ae03f653d1a9ca2767e6ad2ba"
+          "hash": "cee850191e4da94733084d46a1e6a733fd7df256"
         },
         "tools/sj-pyrevit-rbg-tools-data-paramcopier.html": {
-          "hash": "5d8f8bf7c2c31b7073ac54a7e6c0a3d30963a997"
+          "hash": "476231701b8e7e86d8033bea4e43f7ec3d406ea2"
         },
         "tools/sj-pyrevit-rbg-tools-data-scheduleupdater.html": {
-          "hash": "03ab6cbbbc40e473f7f66bfb4a54015024bbd516"
+          "hash": "a9a7cd448ce4f985efd59762e52329e6443f268e"
         },
         "tools/sj-pyrevit-rbg-tools-data-dashboard.html": {
-          "hash": "365f05e1e4574cd5c22da2dfbbc3c4347ae77872"
+          "hash": "0ff5120daff0acb9dc6f796b70b26c8b4a1bff61"
         },
         "tools/sj-pyrevit-rbg-tools-data-transaction-logger.html": {
-          "hash": "b0e4e5ae72415ca2cfae5902bc9cf8f9922bfc38"
+          "hash": "1f46cfccb66c902ccd03aabe1b1afbb7cd146b68"
         },
         "tools/sj-pyrevit-rbg-tools-elements-disallowdetach.html": {
-          "hash": "baed3666f1fb9542dd452e37807cc1602a114ce7"
+          "hash": "fc8ae478ee8a835a7cf2b9b7fbe8f9f086510d2a"
         },
         "tools/sj-pyrevit-rbg-tools-elements-selectbylevel.html": {
-          "hash": "9f1a2682ba3cd128be75fee08b7ceb89ebbcb0f2"
+          "hash": "cb1d0198e6312fa6d4ec95c41094bee0d92238ab"
         },
         "tools/sj-pyrevit-rbg-tools-elements-quickpin.html": {
-          "hash": "76020902fc1f879cba106e29c991376b1b6eaf29"
+          "hash": "487b165102a4711e9dbacabc607c4debfb1f3f0e"
         },
         "tools/sj-pyrevit-rbg-tools-elements-revclouddetailline.html": {
-          "hash": "7ce64ad56f2fd4f69fbb8adccfaa976d2879c177"
+          "hash": "78236c4fc9553e0d110893214f9c388f9eb8494b"
         },
         "tools/sj-pyrevit-rbg-tools-elements-slabsplitter.html": {
-          "hash": "d9c402ba5d8e489a50f2a591cfb6d602bc82c761"
+          "hash": "4d834bae8ec224c9a55d7f0462ca91431154a522"
         },
         "tools/sj-pyrevit-rbg-tools-views-cropview.html": {
-          "hash": "d4de83d5910cadb91069ef819d5c78dc8182002f"
+          "hash": "7439aeab24adb4665c876bcb50a338fef5948512"
         },
         "tools/sj-pyrevit-rbg-tools-views-gridextents.html": {
-          "hash": "1abc805e44618408f65b83522e14c15755547c57"
+          "hash": "a21b672e379d1dcab2105fe3d8f362a070d3a8b3"
         },
         "tools/sj-pyrevit-rbg-tools-views-levelsextents.html": {
-          "hash": "4d2620956d9c51c97cc0e3d32d0d4c642309e122"
+          "hash": "1ef56a56f54aeb33688dd401def584463da9a4f1"
         },
         "tools/sj-pyrevit-rbg-tools-views-levelheadswitcher.html": {
-          "hash": "9cd9ed2196c767e9a1ef956974af93688386595d"
+          "hash": "371f4c284b93aaf559356a7000acef38c871ea54"
         },
         "tools/sj-pyrevit-rbg-tools-views-linkedviews.html": {
-          "hash": "1e2ac41df97230d5156d4eab589793ab1b528443"
+          "hash": "5adfdde928d6fcd9bdc53a3937c1560b0631b1f8"
         },
         "tools/sj-pyrevit-rbg-tools-views-planviewrange.html": {
-          "hash": "f9794ce34b3308b46c9a886526d57a31f2cd1771"
+          "hash": "678affaac12d7c3a4527309cf28af404ca2bf34a"
         },
         "tools/sj-pyrevit-rbg-tools-views-scopeboxviewcreation.html": {
-          "hash": "cd0ebeb6a4d7bb27f7ec9b327df21b8455bc28c8"
+          "hash": "e02413e1da88a65f05acf2dccc5ec1216eb284a9"
         },
         "tools/sj-pyrevit-rbg-tools-views-sectionupdater.html": {
-          "hash": "a00fa55a3593e63474d831268fbc9fe74d84dabe"
+          "hash": "4cd86c396327a08002f0df3894b3bca8741d2715"
         },
         "tools/sj-pyrevit-rbg-tools-views-sheetno.html": {
-          "hash": "656e99c7539c5186a457bdaf829f697ab26a89bf"
+          "hash": "3df092f24e3ca3bcc44da32eee0ade1d55911217"
+        },
+        "tools/sj-pyrevit-rbg-tools-views-viewfiltereditor.html": {
+          "hash": "23d18b451b1cac63a7a325cc81dc458cc83c62e2"
         },
         "tools/sj-pyrevit-selection-categorypicker.html": {
-          "hash": "95647fdecabbc181f4dfb971bf7e494958df8c7c"
+          "hash": "a9f0fa2c943899204c96d20ed0770db43bae552f"
         },
         "tools/sj-pyrevit-selection-copy-state.html": {
-          "hash": "b85cf9b3e28f0de817293ab70b284449a8647824"
+          "hash": "162eeee865c0fae4596f2c78496e143d2c8b1559"
         },
         "tools/sj-pyrevit-selection-mclear.html": {
-          "hash": "fca627117c4ccb19c64f317f4ab28cb0e1e24b52"
+          "hash": "a7faea7c6b0b3e5769df4923b02f074aead41f92"
         },
         "tools/sj-pyrevit-selection-mdeduct.html": {
-          "hash": "92939816144d36dfafe49c69276b431c77417a8e"
+          "hash": "05df4d50ed0282e1bd3657213020891ea37329f4"
         },
         "tools/sj-pyrevit-selection-next.html": {
-          "hash": "57343ae7c4590e0b253b788c8abf74e144de7d86"
+          "hash": "d398af664c1e839451837909cb6cd45a6c114130"
         },
         "tools/sj-pyrevit-selection-paste-state.html": {
-          "hash": "1360a3ddd26e2c0ba0eff80f334e9071183bfc26"
+          "hash": "666fc5fe76be482872619e6d52ef42e089add90c"
         },
         "tools/sj-pyrevit-selection-prev.html": {
-          "hash": "7a7735024f7daf7ab4e37b0a4ee874e28a1ee1ba"
+          "hash": "80cf580cbec4bccce76b882d28871dbc40cf687c"
         },
         "tools/sj-pyrevit-selection-propagate-extents-override.html": {
-          "hash": "016c95fd1deb6c24d55b11c2cee1060a0eed23fd"
+          "hash": "233d7e45b294e028e25e585232bab1ed9f14916a"
         },
         "tools/sj-pyrevit-selection-purge-memory-files.html": {
-          "hash": "818c5f75e5428034bd2db53e54cdd7f1f4cb5edd"
+          "hash": "17e306481e7208ea53723ef572c21f908b50be8c"
         },
         "tools/sj-pyrevit-selection-save-memory-as-selection.html": {
-          "hash": "b05cbb67a43d99d0655c36b24da3541f60476dcb"
+          "hash": "345f81e7d8c9edd38aab354a86d6d053aea458a5"
         },
         "tools/sj-pyrevit-selection-unhideallelements.html": {
-          "hash": "9127485eec96bbe0aade18d740e97f2e1b7306be"
+          "hash": "482b64ed25bfba776b513cd87f4ac0841aee1828"
         },
         "tools/sj-pyrevit-sheets-cloudrevisions.html": {
-          "hash": "998b9fdadc2c1dcb0d24a6a76ac3c9f2c32f7ddd"
+          "hash": "a27854f7073c1590f4cb42303b71da45e6b59835"
         },
         "tools/sj-pyrevit-sheets-reorder-selected-viewport.html": {
-          "hash": "a01b397a8cc4a65c09bf92da76f9e3a38fc1a513"
+          "hash": "f4020679011386e6d6ef22a668554ea1a4efa670"
         },
         "tools/sj-pyrevit-sheets-reorder-viewports.html": {
-          "hash": "6603a87e59016e7e8c583a5121f846c907a6aa8a"
+          "hash": "74a2b620929f505af41716e2d51203c616c701b1"
         },
         "tools/sj-pyrevit-syd-prod-wip-tool1.html": {
-          "hash": "5c41ceefae28bf1a314ba5466d7ca21de4b029c3"
+          "hash": "7fa601a76c93c28182d02fd251d73c242d8366eb"
         },
         "tools/sj-pyrevit-syd-prod-wip-tool2.html": {
-          "hash": "d95a591ebfb46987008714ed1e2a6badace89be6"
+          "hash": "52ae73966ccb195782da9bfbfa72849049041580"
+        },
+        "tools/sj-pyrevit-templates-wpfstyletemplate.html": {
+          "hash": "665824b75dec649282153cd4c0973d8c0eb1b86e"
         },
         "tools/revit-tools-created-by.html": {
-          "hash": "ce62db0111e2b9fdbdc720baa07e31f8c1ef1601"
+          "hash": "6f6377aad6a04ee2476a40043f3fd8db07b63a8b"
         }
       }
     }

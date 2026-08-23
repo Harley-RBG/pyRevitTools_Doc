@@ -1,16 +1,41 @@
 {
-  "generatedAt": "2026-08-12T23:38:58.632Z",
+  "generatedAt": "2026-08-23T01:31:28.916Z",
   "totals": {
-    "tools": 37,
+    "tools": 39,
     "tabs": 1,
-    "filesInBundle": 300
+    "filesInBundle": 335
+  },
+  "screenshots": {
+    "total": 42,
+    "matched": 39,
+    "orphanCount": 3,
+    "orphanScreenshots": [
+      {
+        "fileName": "Export1.png",
+        "localPath": "generated/tool-screenshots/JasonHacksRevit/Export1.png",
+        "tabFolder": "JasonHacksRevit",
+        "normalizedName": "export"
+      },
+      {
+        "fileName": "Export2.png",
+        "localPath": "generated/tool-screenshots/JasonHacksRevit/Export2.png",
+        "tabFolder": "JasonHacksRevit",
+        "normalizedName": "export"
+      },
+      {
+        "fileName": "RBG_SYD_Tools Ribbon.png",
+        "localPath": "generated/tool-screenshots/RBG_SYD_Tools/RBG_SYD_Tools Ribbon.png",
+        "tabFolder": "RBG_SYD_Tools",
+        "normalizedName": "rbgsydtoolsribbon"
+      }
+    ]
   },
   "metadataCoverage": {
-    "withBundleYaml": 17,
-    "withToolContext": 17,
-    "titleFromPathFallback": 18,
-    "functionFallback": 18,
-    "purposeFallback": 20
+    "withBundleYaml": 18,
+    "withToolContext": 39,
+    "titleFromPathFallback": 0,
+    "functionFallback": 0,
+    "purposeFallback": 0
   },
   "duplicateTitles": []
 }
